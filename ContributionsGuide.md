@@ -6,7 +6,7 @@ The following outllines the process and governance for contributing to the ODA C
 * Before you create a contribution, you should create an issue against every artifact (component / operator / CTK) that you will create/update. You should also check that there are no open issues against those artifacts. This will avoid merge issues later on.
 * There are multiple issue types to use:
 
-[<img src="https://github.com/tmforum-rand/oda-component-definitions/blob/master/.github/Issues.PNG">](https://github.com/tmforum-rand/oda-component-definitions/issues)
+[<img src="https://github.com/tmforum-oda/oda-ca-docs/blob/master/.github/Issues.PNG">](https://github.com/tmforum-oda/oda-ca-docs/issues)
 
 
 Each issue type has its own template. e.g. a Feature uses:
