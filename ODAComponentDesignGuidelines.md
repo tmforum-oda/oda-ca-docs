@@ -84,7 +84,10 @@ The *version* and *description*, *maintainers* and *owners* are self-descriptive
       specification: https://open-api.tmforum.org/TMF632-Party-v4.0.0.swagger.json
 ```
 
-The *coreFunction* describes the core purpose of the software component. It describes the list of APIs that the component exposes as well as the APIs it is dependant on. The definitions within the *exposedAPIs* and *dependantAPIs* are experimental at this point, and we will modify and enhance them as we build-out the ODA Canvas and assemble a representative set of ODA Components. The current definition has an *implementation* which links to the Kubernetes service that implements the API, including the *port* where the http service is exposed. The *path* shows the API resource end-point, and can be used, for example, to automatically configure any API Gateway that is included as part of the Canvas. 
+The *coreFunction* describes the core purpose of the software component. It describes the list of APIs that the component exposes as well as the APIs it is dependant on. The definitions within the *exposedAPIs* and *dependantAPIs* are experimental at this point, and we will modify and enhance them as we build-out the ODA Canvas and assemble a representative set of ODA Components. The current definition has:
+* an *implementation* which links to the Kubernetes service that implements the API, including the *port* where the http service is exposed. 
+* The *path* shows the API resource end-point, and can be used, for example, to automatically configure any API Gateway that is included as part of the Canvas. Note that the *path* points to the root of the API (and you need to append the relavant path from the swagger document to get to an implemented API resource). 
+* The *specification* points to the swagger documentation for the API. The Component CTK (Compliance Test Kit) will look inside this swagger for the *basePath* determine which Open-API CTK to execute for that API. The *basePath* is of format `"/tmf-api/productCatalogManagement/v4/"` which shows it is a `tmf-api` for `productCatalogManagement` with major version `4`.
 
 ```
  eventNotification:
