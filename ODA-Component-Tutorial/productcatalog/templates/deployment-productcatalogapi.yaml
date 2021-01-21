@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{.Release.Name}}-productcatalogapi
+  labels:
+    oda.tmforum.org/componentName: {{.Release.Name}}-{{.Values.component.type}}
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: {{.Release.Name}}-productcatalogapi
+  template:
+    metadata:
+      labels:
+        app: {{.Release.Name}}-productcatalogapi
+    spec:
+      containers:
+      - name: {{.Release.Name}}-productcatalogapi
+        image: lesterthomas/productcatalogapi:latest
+        ports:
+        - name: {{.Release.Name}}-productcatalogapi
+          containerPort: 8080

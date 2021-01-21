@@ -113,7 +113,7 @@ npm-debug.log
 To build the docker image, we use the command:
 
 ```
-docker build -t lesterthomas/productcatalog:0.1 -t lesterthomas/productcatalog:latest -f dockerfile .
+docker build -t lesterthomas/productcatalogapi:0.1 -t lesterthomas/productcatalogapi:latest -f dockerfile .
 ```
 
 Note: we use the -t to tag the image. We give the image two tags, one with a version number and the other with a `latest` tag that will overwrite any previously uploaded images.
@@ -121,102 +121,160 @@ Note: we use the -t to tag the image. We give the image two tags, one with a ver
 Finally we upload the docker image to a Docker repository. I'm using the default [DockerHub](https://hub.docker.com) with an account `lesterthomas` that I have created previously. If this is the first time accessing the docker repository you will need to login first with the `docker login` command.
 
 ```
-docker push lesterthomas/productcatalog --all-tags
+docker push lesterthomas/productcatalogapi --all-tags
 ```
 
 
 ## 5. Create Component Envelope 
 
-The Component Envelope contains the meta-data required to automatically deploy and manage the component in an ODA-Canvas environment. The Component Envelope is a `.yaml` document extending the  Kubernetes Manifest standard. There is a detailed breakdown of the Component Envelope in [ODAComponentDesignGuidelines](https://github.com/tmforum-oda/oda-ca-docs/blob/master/ODAComponentDesignGuidelines.md).
+The Component Envelope contains the meta-data required to automatically deploy and manage the component in an ODA-Canvas environment. The envelope will contain meta-data about the standard Kubernetes resources, as well as the TM Forum ODA extensions. There is a detailed breakdown of the Component Envelope in [ODAComponentDesignGuidelines](https://github.com/tmforum-oda/oda-ca-docs/blob/master/ODAComponentDesignGuidelines.md).
 
-We will first create the standard Kubernetes resources. We use a `Deployment` resource to deploy the docker image we created in step 4. Create a new file `productcatalog.component.yaml`.
 
+We will use [Helm](https://helm.sh/) to create the component envelope as a Helm-Chart. This tutorial assumes you have already installed Helm on your local environment.
+
+The first step is to use `helm create <chartname>' which creates a boiler-plate chart:
 
 ```
----
+helm create productcatalog
+```
+
+The boiler-plate should be visible under the productcatalog folder. It contains a `Chart.yaml` (with meta-data about the chart) and a `values.yaml` (where we put any default parameters that we want to use). It also contains a `charts/` folder (empty) and a `templates/` folder (contining some boiler-plate Kubernetes templates).
+
+The `Chart.yaml` will look something like the code below - no changes are required.
+
+```
+apiVersion: v2
+name: productcatalog
+description: A Helm chart for Kubernetes
+
+# A chart can be either an 'application' or a 'library' chart.
+#
+# Application charts are a collection of templates that can be packaged into versioned archives
+# to be deployed.
+#
+# Library charts provide useful utilities or functions for the chart developer. They're included as
+# a dependency of application charts to inject those utilities and functions into the rendering
+# pipeline. Library charts do not define any templates and therefore cannot be deployed.
+type: application
+
+# This is the chart version. This version number should be incremented each time you make changes
+# to the chart and its templates, including the app version.
+# Versions are expected to follow Semantic Versioning (https://semver.org/)
+version: 0.1.0
+
+# This is the version number of the application being deployed. This version number should be
+# incremented each time you make changes to the application. Versions are not expected to
+# follow Semantic Versioning. They should reflect the version the application is using.
+# It is recommended to use it with quotes.
+appVersion: "1.16.0"
+```
+
+
+The `values.yaml` file contains some sample parameters that are used in the template samples. Where you see a parameter in curly brackets in the templates file (e.g. `{{ .Values.replicaCount }}`) - this will insert the value `replicaCount` from the values file into the template.
+
+The `Charts/` folder lets you include existing Helm charts into your new chart - for example, we could include one of the standard MongoDb Helm charts (which would support a high-availability multi-node MongoDb deployment, for example). For simplicity during this tutorial we will leave `Charts/` empty.
+
+Funally, most of the details we will create are in the `templates/` folder. Take a look inside this folder and you will see multiple sample templates:
+
+```
+deployment.yaml  
+hpa.yaml  
+ingress.yaml  
+serviceaccount.yaml  
+service.yaml
+```
+
+For our Product Catalog component, we will create two deployments (one for the nodejs container that implements the API, and one for the mongoDb).
+
+Delete the the `deployment.yaml` template and create two new templates called `deployment-productcatalogapi.yaml` and the other `deployment-mongodb.yaml`.
+
+Copy the code below into  `deployment-productcatalogapi.yaml`. I've chosen to only parameterise the `component.type` field (a production heml chart would typically parameterize many more values). The file also uses the `Release.Name` which is the name given to the instance of the component when deployed by Helm (we could potenticlly deploy multiple instanaces in the same ODA-Canvas).
+
+```
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: productcatalog
+  name: {{.Release.Name}}-productcatalogapi
   labels:
-    oda.tmforum.org/componentName: productcatalog
+    oda.tmforum.org/componentName: {{.Release.Name}}-{{.Values.component.type}}
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: productcatalog
+      app: {{.Release.Name}}-productcatalogapi
   template:
     metadata:
       labels:
-        app: productcatalog
+        app: {{.Release.Name}}-productcatalogapi
     spec:
       containers:
-      - name: productcatalog
-        image: lesterthomas/productcatalog:latest
+      - name: {{.Release.Name}}-productcatalogapi
+        image: lesterthomas/productcatalogapi:latest
         ports:
-        - name: productcatalog
+        - name: {{.Release.Name}}-productcatalogapi
           containerPort: 8080
 ```
 
+
 We also need to deploy a mongoDb. We will use the standard mongoDb image from dockerhub.
 
+
 ```
----
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: mongodb
+  name: {{.Release.Name}}-mongodb
   labels:
-    oda.tmforum.org/componentName: productcatalog
-    app: mongodb
+    oda.tmforum.org/componentName: {{.Release.Name}}-{{.Values.component.type}}
+    app: {{.Release.Name}}-mongodb
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: mongodb
+      app: {{.Release.Name}}-mongodb
   template:
     metadata:
       labels:
-        app: mongodb
+        app: {{.Release.Name}}-mongodb
     spec:
       containers:
-      - name: mongodb
+      - name: {{.Release.Name}}-mongodb
         image: mongo:latest
         ports:
-        - name: mongodb
+        - name: {{.Release.Name}}-mongodb
           containerPort: 27017
         volumeMounts:
-        - name: mongodb-pv-storage
+        - name: {{.Release.Name}}-mongodb-pv-storage
           mountPath: "/data/db"
       volumes:
-      - name: mongodb-pv-storage
+      - name: {{.Release.Name}}-mongodb-pv-storage
         persistentVolumeClaim:
-          claimName: mongodb-pv-claim
+          claimName: {{.Release.Name}}-mongodb-pv-claim
 ```
 
-The mongoDb requires a persistentVolume and so we create a persistentVolumeClaim resource.
+The mongoDb requires a persistentVolume and so we create a persistentVolumeClaim template `persistentVolumeClaim-mongodb.yaml`. 
+
 
 ```
----
 kind: PersistentVolumeClaim
 apiVersion: v1
 metadata:
-  name: mongodb-pv-claim
+  name: {{.Release.Name}}-mongodb-pv-claim
   labels:
-    oda.tmforum.org/componentName: productcatalog
+    oda.tmforum.org/componentName: {{.Release.Name}}-{{.Values.component.type}}
 spec:
   accessModes:
   - ReadWriteOnce
   resources:
     requests:
-      storage: 5Gi   
+      storage: 5Gi 
 ```
 
 
-We need to make the mongoDb available to the nodejs productcatalog image, so we create a Kubernetes Service resource. Note the service matches the connection url we created in step 3.
+We need to make the mongoDb available to the nodejs productcatalogapi image, so we create a Kubernetes Service resource in `service-mongodb.yaml`. Note the service matches the connection url we created in step 3.
+
 
 ```
----
 apiVersion: v1
 kind: Service
 metadata:
@@ -234,47 +292,48 @@ spec:
     app: mongodb
 ```
 
-We need to expose the API using a Service as well.
+We need to expose the product catalog API using a Service as well in `service-productcatalogapi.yaml`.
 
 ```
----
 apiVersion: v1
 kind: Service
 metadata:
-  name: productcatalog
+  name: {{.Release.Name}}-productcatalog
   labels:
-    app: productcatalog
-    oda.tmforum.org/componentName: productcatalog
+    app: {{.Release.Name}}-productcatalog
+    oda.tmforum.org/componentName: {{.Release.Name}}-{{.Values.component.type}}
 spec:
   ports:
   - port: 8080
-    targetPort: productcatalog
-    name: productcatalog
+    targetPort: {{.Release.Name}}-productcatalog
+    name: {{.Release.Name}}-productcatalog
   type: NodePort
   selector:
-    app: productcatalog
+    app: {{.Release.Name}}-productcatalog
 ```
 
 
-We have created all the Kubernetes resources to deploy the mongoDb and productcatalog nodejs containers and expose as services. The final step is to add the ODA-Component meta-data. This meta-data will be used at run-time to configure the canvas services.
+We have created all the Kubernetes resources to deploy the mongoDb and productcatalog nodejs containers and expose as services. The final step is to add the ODA-Component meta-data. This meta-data will be used at run-time to configure the canvas services. Create the code below in `component-productcatalog.yaml`.
 
+This is a relatively simple component that just exposes one API as part of its `coreFunction`.
 
 ```
----
 apiVersion: oda.tmforum.org/v1alpha1
 kind: component
 metadata:
-  name: productcatalog
+  name: {{.Release.Name}}-productcatalog
   labels:
-    oda.tmforum.org/componentName: productcatalog
+    oda.tmforum.org/componentName: {{.Release.Name}}-{{.Values.component.type}}
 spec:
-  type: ocs
+  type: {{.Values.component.type}}
   selector:
     matchLabels:
-     oda.tmforum.org/componentName: productcatalog
+     oda.tmforum.org/componentName: {{.Release.Name}}-{{.Values.component.type}}
   componentKinds:
     - group: core
-      kind: Service
+      kind: Service    
+    - group: core
+      kind: PersistentVolumeClaim
     - group: apps
       kind: Deployment  
   version: "0.0.1"
@@ -289,9 +348,9 @@ spec:
     exposedAPIs: 
     - name: productcatalogmanagement
       specification: https://raw.githubusercontent.com/tmforum-apis/TMF620_ProductCatalog/master/TMF620-ProductCatalog-v4.0.0.swagger.json
-      implementation: productcatalog
+      implementation: {{.Release.Name}}-productcatalogapi
       path: /tmf-api/productCatalogManagement/v4
-      developerUI: /docs
+      developerUI: /tmf-api/productCatalogManagement/v4/docs
       port: 8080
     dependantAPIs: []
   eventNotification:
@@ -302,11 +361,31 @@ spec:
     securitySchemes: []
 ```
 
+Finally we have to create the parameters in the `values.yaml` file. Since we have parameterized just 1 value, our values.yaml file will look like:
+
+```
+# Default values for productcatalog.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+
+component:
+  # Specifies whether a service account should be created
+  type: productcatalog
+```
 
 ## 6. Test component envelope using component CTK
 
 
-Download the ODA-Component CTK from [https://github.com/tmforum-oda/oda-component-ctk/](https://github.com/tmforum-oda/oda-component-ctk/).
+The CTK will operate against an instance of the component. We can generate a kubernetes manifest of an instance using the `helm template [instance namme] [chart]` command. We can take the output of this command into a temporary file:
+
+```
+helm template test productcatalog > test-instance.component.yaml
+```
+
+If you examine the test-instance.component.yaml you will see all the kubernetes resources (deployments, services, persistentVolumeClaim) as well as a component resource. All the resources are labelled as belonging to the component. Also the component describes its core function (exposing a single API).
+
+We can test that this component instance conforms to the ODA-Component standard by using the component CTK: Download the ODA-Component CTK from [https://github.com/tmforum-oda/oda-component-ctk/](https://github.com/tmforum-oda/oda-component-ctk/).
 
 
 Within the opa-component-ctk folder, install the ctk.
@@ -318,12 +397,13 @@ npm install
 Then run the ctk against the component envelope.
 
 ```
-npm start ../oda-component-tutorial/productcatalog.yaml
+npm start ../oda-ca-docs/ODA-Component-Tutorial/test-instance.component.yaml
 ```
 
-You shold get an output like the image below. If you receive any errors, fix the issue in the component envelope yaml file and try again.
+You shold get an output like the image below. If you receive any errors, fix the issue in the helm chart yaml file and try again.
 
 ![CTK image](./images/ctksuccess.png)
+
 
 
 ## 7. Deploy the component envelope into Open Digital Lab canvas
@@ -337,12 +417,19 @@ You shold get an output like the image below. If you receive any errors, fix the
 
 
 
+
+
+
+
 ## ISSUES & resolution
 
-1. Kubernetes ingress expect a 200 response at the root of the API. Without this, they do not create an ingress and instead return a 503 error. I've implemented the hmoepage (or entrypoint) concept so that the root of the API returns links to all the implemented operations. I've implemented this as a `/utils/entrypoint.js` module that is added into the swagger middleware. 
+1. Kubernetes ingress expect a 200 response at the root of the API. Without this, they do not create an ingress and instead return a 503 error. I've created an additional 'catch-all' middleware hook in the index.js. This returns a helpful link to the swagger docs for the API.
 ```
-  // create an entrypoint
-  app.use(swaggerDoc.basePath, entrypointUtils.entrypoint);
+  // for all other requests, show links
+  app.use(function (req, res) {
+    res.end('<!DOCTYPE html><html><body><p>The API docs are at <a href="/tmf-api/productCatalogManagement/v4/docs">/tmf-api/productCatalogManagement/v4/docs</a></p></body></html>');  
+  })  
 ```
 2. Due to a node version issue (i think!) the generated API RI does not work on the latest v15 of node. I have created container based on node v10. The issue is with the fs.copyFileSync function: The v15 expects the third parameter to be an optional `mode` whilst the current implementation has a call-back error function.
 3. api-docs are exposed at /api-docs which means that you cant host multiple apis on the same server. I've moved to host them at tmf-api/productCatalogManagement/v4/api-docs instead (and the swagger-ui at api/productCatalogManagement/v4/docs).
+4. MongoDb url in productcatalogapi image needs to include the Release Name (for the instance of the component) - pass this as an Environment variable.
