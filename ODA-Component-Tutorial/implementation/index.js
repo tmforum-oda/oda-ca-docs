@@ -4,7 +4,8 @@ const fs = require('fs'),
       path = require('path'),
       http = require('http'),
       mongoUtils = require('./utils/mongoUtils'),
-      swaggerUtils = require('./utils/swaggerUtils');
+      swaggerUtils = require('./utils/swaggerUtils'),
+      entrypointUtils = require('./utils/entrypoint');
 
 const {TError, TErrorEnum, sendError} = require('./utils/errorUtils');
 
@@ -57,14 +58,13 @@ swaggerTools.initializeMiddleware(swaggerDoc, function (middleware) {
 
   // Serve the Swagger documents and Swagger UI
   // using the more up-to-date swagger-ui-dist - not the default app.use(middleware.swaggerUi())
-  app.use(middleware.swaggerUi({   apiDocs: '/tmf-api/productCatalogManagement/v4/api-docs',
-    swaggerUi: '/tmf-api/productCatalogManagement/v4/docs',
+  app.use(middleware.swaggerUi({   apiDocs: swaggerDoc.basePath + 'api-docs',
+    swaggerUi: swaggerDoc.basePath + 'docs',
     swaggerUiDir: path.join(__dirname, 'node_modules', 'swagger-ui-dist') }));
 
-  // for all other requests, show links
-  app.use(function (req, res) {
-    res.end('<!DOCTYPE html><html><body><p>The API docs are at <a href="/tmf-api/productCatalogManagement/v4/docs">/tmf-api/productCatalogManagement/v4/docs</a></p></body></html>');  
-  })  
+  // create an entrypoint
+  app.use(swaggerDoc.basePath, entrypointUtils.entrypoint);
+
     // Start the server
   http.createServer(app).listen(serverPort, function () {
     console.log('Your server is listening on port %d (http://localhost:%d)', serverPort, serverPort);
@@ -72,6 +72,8 @@ swaggerTools.initializeMiddleware(swaggerDoc, function (middleware) {
   });
 
 });
+
+
 
 // handles timed out requests
 function haltOnTimedout(req, res, next) {

@@ -339,12 +339,10 @@ You shold get an output like the image below. If you receive any errors, fix the
 
 ## ISSUES & resolution
 
-1. Kubernetes ingress expect a 200 response at the root of the API. Without this, they do not create an ingress and instead return a 503 error. I've created an additional 'catch-all' middleware hook in the index.js. This returns a helpful link to the swagger docs for the API.
+1. Kubernetes ingress expect a 200 response at the root of the API. Without this, they do not create an ingress and instead return a 503 error. I've implemented the hmoepage (or entrypoint) concept so that the root of the API returns links to all the implemented operations. I've implemented this as a `/utils/entrypoint.js` module that is added into the swagger middleware. 
 ```
-  // for all other requests, show links
-  app.use(function (req, res) {
-    res.end('<!DOCTYPE html><html><body><p>The API docs are at <a href="/tmf-api/productCatalogManagement/v4/docs">/tmf-api/productCatalogManagement/v4/docs</a></p></body></html>');  
-  })  
+  // create an entrypoint
+  app.use(swaggerDoc.basePath, entrypointUtils.entrypoint);
 ```
 2. Due to a node version issue (i think!) the generated API RI does not work on the latest v15 of node. I have created container based on node v10. The issue is with the fs.copyFileSync function: The v15 expects the third parameter to be an optional `mode` whilst the current implementation has a call-back error function.
 3. api-docs are exposed at /api-docs which means that you cant host multiple apis on the same server. I've moved to host them at tmf-api/productCatalogManagement/v4/api-docs instead (and the swagger-ui at api/productCatalogManagement/v4/docs).
