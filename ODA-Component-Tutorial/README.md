@@ -298,18 +298,18 @@ We need to expose the product catalog API using a Service as well in `service-pr
 apiVersion: v1
 kind: Service
 metadata:
-  name: {{.Release.Name}}-productcatalog
+  name: {{.Release.Name}}-productcatalogapi
   labels:
-    app: {{.Release.Name}}-productcatalog
+    app: {{.Release.Name}}-productcatalogapi
     oda.tmforum.org/componentName: {{.Release.Name}}-{{.Values.component.type}}
 spec:
   ports:
   - port: 8080
-    targetPort: {{.Release.Name}}-productcatalog
-    name: {{.Release.Name}}-productcatalog
+    targetPort: {{.Release.Name}}-productcatalogapi
+    name: {{.Release.Name}}-productcatalogapi
   type: NodePort
   selector:
-    app: {{.Release.Name}}-productcatalog
+    app: {{.Release.Name}}-productcatalogapi
 ```
 
 
@@ -321,7 +321,7 @@ This is a relatively simple component that just exposes one API as part of its `
 apiVersion: oda.tmforum.org/v1alpha1
 kind: component
 metadata:
-  name: {{.Release.Name}}-productcatalog
+  name: {{.Release.Name}}-{{.Values.component.type}}
   labels:
     oda.tmforum.org/componentName: {{.Release.Name}}-{{.Values.component.type}}
 spec:
@@ -409,11 +409,19 @@ You shold get an output like the image below. If you receive any errors, fix the
 ## 7. Deploy the component envelope into Open Digital Lab canvas
 
 
+Connect to the Open Digital Lab: Get the kubectl config from the rancher environment at https://rke.tmforum.org/c/c-85kcq/monitoring - click the Kubeconfig File button in the top right:
 
+![Rancher](./images/Rancher.png)
 
+Copy this into your `~/.kube/config` file.
 
+You can test the connection using `kubectl get all --namespace components`. (You should either see a message `No resources found in components namespace.` or you may retrieve a list of kubernetes resources).
 
+To permanently save the namespace for all subsequent kubectl commands use:
 
+```
+kubectl config set-context --current --namespace=components
+```
 
 
 

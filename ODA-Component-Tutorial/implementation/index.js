@@ -63,6 +63,7 @@ swaggerTools.initializeMiddleware(swaggerDoc, function (middleware) {
     swaggerUiDir: path.join(__dirname, 'node_modules', 'swagger-ui-dist') }));
 
   // create an entrypoint
+  console.log('app.use entrypoint');
   app.use(swaggerDoc.basePath, entrypointUtils.entrypoint);
 
     // Start the server
