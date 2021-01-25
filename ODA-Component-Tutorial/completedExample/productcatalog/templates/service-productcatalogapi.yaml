@@ -1,16 +1,16 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: {{.Release.Name}}-productcatalog
+  name: {{.Release.Name}}-prodcatapi
   labels:
-    app: {{.Release.Name}}-productcatalog
+    app: {{.Release.Name}}-prodcatapi
     oda.tmforum.org/componentName: {{.Release.Name}}-{{.Values.component.type}}
 spec:
   ports:
   - port: 8080
-    targetPort: {{.Release.Name}}-productcatalog
-    name: {{.Release.Name}}-productcatalog
+    targetPort: {{.Release.Name}}-prodcatapi
+    name: {{.Release.Name}}-prodcatapi
   type: NodePort
   selector:
-    app: {{.Release.Name}}-productcatalog
+    app: {{.Release.Name}}-prodcatapi
 

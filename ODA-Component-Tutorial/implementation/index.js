@@ -13,16 +13,31 @@ const app = require('connect')();
 const swaggerTools = require('swagger-tools');
 
 const serverPort = 8080;
+var componentName = process.env.COMPONENT_NAME; // Component name from Helm deployment
+console.log('ComponentName:'+componentName);
 
 // Correct the url in swagger-ui-dist that points to some demo (like the petstore)
 // And add additional useful options
 fs.copyFileSync(path.join(__dirname, './index.html_replacement'),
-        path.join(__dirname, './node_modules/swagger-ui-dist/index.html'), (err) => {
+  path.join(__dirname, './node_modules/swagger-ui-dist/index.html'), (err) => {
   if(err) {
     console.log('Unable to replace swagger-ui-dist/index.html file - something wrong with the installation ??');
     process.exit(1);
   }
 })
+
+// add component name to url in swagger_ui
+fs.readFile(path.join(__dirname, './node_modules/swagger-ui-dist/index.html'), 'utf8', function (err,data) {
+  if (err) {
+    return console.log(err);
+  }
+  var result = data.replace(/url: \"/g, 'url: \"/' + componentName );
+  console.log('updating ' + path.join(__dirname, './node_modules/swagger-ui-dist/index.html'));
+  fs.writeFile(path.join(__dirname, './node_modules/swagger-ui-dist/index.html'), result, 'utf8', function (err) {
+      if (err) return console.log(err);
+  });
+});
+        
 
 // swaggerRouter configuration
 const options = {
@@ -31,7 +46,9 @@ const options = {
   useStubs: process.env.NODE_ENV === 'development' // Conditionally turn on stubs (mock mode)
 };
 
+
 const swaggerDoc = swaggerUtils.getSwaggerDoc();
+swaggerDoc.basePath = '/' + componentName + swaggerDoc.basePath
 
 // Initialize the Swagger middleware
 swaggerTools.initializeMiddleware(swaggerDoc, function (middleware) {
@@ -69,7 +86,7 @@ swaggerTools.initializeMiddleware(swaggerDoc, function (middleware) {
     // Start the server
   http.createServer(app).listen(serverPort, function () {
     console.log('Your server is listening on port %d (http://localhost:%d)', serverPort, serverPort);
-    console.log('Swagger-ui is available on http://localhost:%d/tmf-api/productCatalogManagement/v4/docs', serverPort);
+    console.log('Swagger-ui is available on http://localhost:'+ serverPort  + swaggerDoc.basePath + 'docs', serverPort);
   });
 
 });

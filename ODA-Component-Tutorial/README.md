@@ -13,7 +13,7 @@ Download Reference Implementation from `https://projects.tmforum.org/wiki/displa
 In the `utils/mongoUtils.js` file, you will need to replace the connectHelper with a helper function that uses local connection string:
 
 ```
-/* connection helper for running MongoDb locally */
+/* connection helper for running MongoDb from url */
 function connectHelper(callback) {
 
   var credentials_uri = "mongodb://localhost:27017/tmf";
@@ -35,13 +35,13 @@ function connectHelper(callback) {
 
 ## 3. Configure mongoDb connection url to use within Kubernetes.
 
-In the `utils/mongoUtils.js` file, you will need to update the local connection string to a url that wil work within Kubernetes (this will match the kubernetes service name for mongoDb)
+In the `utils/mongoUtils.js` file, you will need to update the local connection string to a url that wil work within Kubernetes (this will match the kubernetes service name for mongoDb). Note we include a release name passed as an environment variable (as we could potentially deploy multiple instances of a component in the same canvas).
 
 ```
-/* connection helper for running MongoDb locally */
+/* connection helper for running MongoDb from url */
 function connectHelper(callback) {
-
-  var credentials_uri = "mongodb://mongodb:27017/tmf";
+  var releaseName = process.env.RELEASE_NAME; // Release name from Helm deployment
+  var credentials_uri = "mongodb://" + releaseName + "-mongodb:27017/tmf";
   let options = {
     useNewUrlParser: true 
   };
@@ -188,7 +188,7 @@ For our Product Catalog component, we will create two deployments (one for the n
 
 Delete the the `deployment.yaml` template and create two new templates called `deployment-productcatalogapi.yaml` and the other `deployment-mongodb.yaml`.
 
-Copy the code below into  `deployment-productcatalogapi.yaml`. I've chosen to only parameterise the `component.type` field (a production heml chart would typically parameterize many more values). The file also uses the `Release.Name` which is the name given to the instance of the component when deployed by Helm (we could potenticlly deploy multiple instanaces in the same ODA-Canvas).
+Copy the code below into  `deployment-productcatalogapi.yaml`. I've chosen to only parameterise the `component.type` field (a production heml chart would typically parameterize many more values). The file also uses the `Release.Name` which is the name given to the instance of the component when deployed by Helm (we could potenticlly deploy multiple instanaces in the same ODA-Canvas). Note that we also pass the release name and component name as environment variables into the container.
 
 ```
 apiVersion: apps/v1
@@ -209,6 +209,11 @@ spec:
     spec:
       containers:
       - name: {{.Release.Name}}-productcatalogapi
+        env:
+        - name: RELEASE_NAME
+          value: {{.Release.Name}}           
+        - name: COMPONENT_NAME
+          value: {{.Release.Name}}-{{.Values.component.type}}           
         image: lesterthomas/productcatalogapi:latest
         ports:
         - name: {{.Release.Name}}-productcatalogapi
@@ -315,7 +320,7 @@ spec:
 
 We have created all the Kubernetes resources to deploy the mongoDb and productcatalog nodejs containers and expose as services. The final step is to add the ODA-Component meta-data. This meta-data will be used at run-time to configure the canvas services. Create the code below in `component-productcatalog.yaml`.
 
-This is a relatively simple component that just exposes one API as part of its `coreFunction`.
+This is a relatively simple component that just exposes one API as part of its `coreFunction`. Note that we have included the release name and component name in the root of the AI path (this is a good pattern to follow so that the API doesn't conflict with any other components deployed in the same environment).
 
 ```
 apiVersion: oda.tmforum.org/v1alpha1
@@ -349,8 +354,8 @@ spec:
     - name: productcatalogmanagement
       specification: https://raw.githubusercontent.com/tmforum-apis/TMF620_ProductCatalog/master/TMF620-ProductCatalog-v4.0.0.swagger.json
       implementation: {{.Release.Name}}-productcatalogapi
-      path: /tmf-api/productCatalogManagement/v4
-      developerUI: /tmf-api/productCatalogManagement/v4/docs
+      path: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/productCatalogManagement/v4
+      developerUI: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/productCatalogManagement/v4
       port: 8080
     dependantAPIs: []
   eventNotification:
@@ -423,6 +428,30 @@ To permanently save the namespace for all subsequent kubectl commands use:
 kubectl config set-context --current --namespace=components
 ```
 
+Install the component using Helm:
+
+```
+helm install test productcatalog/ --namespace components
+```
+
+You can then view the component in `kubectl`:
+
+```
+kubectl get components
+``
+
+The `kubectl get components` will show all the deployed components including the details of exposed apis and a developer-ui (if supplied). Initially these details will be blank - the component may take a few seconds to fully deploy. Once deployed, it should look like:
+
+![get components](./images/kubectl-get-components.png)
+
+If you navigate to the root or the API (in a web browser or in postman), you should see the entrypoint of the API:
+
+![api entrypoint](./images/api-entrypoint.png)
+
+If you navigate to the developer-ui, you shold see the swagger-ui tool:
+
+![swagger ui](./images/swagger-ui.png)
+
 
 
 
@@ -431,13 +460,15 @@ kubectl config set-context --current --namespace=components
 
 ## ISSUES & resolution
 
-1. Kubernetes ingress expect a 200 response at the root of the API. Without this, they do not create an ingress and instead return a 503 error. I've created an additional 'catch-all' middleware hook in the index.js. This returns a helpful link to the swagger docs for the API.
+1. Kubernetes ingress expect a 200 response at the root of the API. Without this, they do not create an ingress and instead return a 503 error. I've created an additional 'entrypoint' middleware hook in the index.js. This returns an entrypoint (or homepage) response for the API (following the TMF630 Design Guidelines).
+
 ```
-  // for all other requests, show links
-  app.use(function (req, res) {
-    res.end('<!DOCTYPE html><html><body><p>The API docs are at <a href="/tmf-api/productCatalogManagement/v4/docs">/tmf-api/productCatalogManagement/v4/docs</a></p></body></html>');  
-  })  
+  // create an entrypoint
+  console.log('app.use entrypoint');
+  app.use(swaggerDoc.basePath, entrypointUtils.entrypoint);
 ```
+
 2. Due to a node version issue (i think!) the generated API RI does not work on the latest v15 of node. I have created container based on node v10. The issue is with the fs.copyFileSync function: The v15 expects the third parameter to be an optional `mode` whilst the current implementation has a call-back error function.
-3. api-docs are exposed at /api-docs which means that you cant host multiple apis on the same server. I've moved to host them at tmf-api/productCatalogManagement/v4/api-docs instead (and the swagger-ui at api/productCatalogManagement/v4/docs).
+3. api-docs are exposed at /api-docs which means that you cant host multiple apis on the same server. I've moved to host them at /tmf-api/productCatalogManagement/v4/api-docs instead (and the swagger-ui at /tmf-api/productCatalogManagement/v4/docs).
 4. MongoDb url in productcatalogapi image needs to include the Release Name (for the instance of the component) - pass this as an Environment variable.
+5. I've included the component name in the root of the API (so that you can deploy multiple instances of the API in the same server). For a Helm install with release name test, the api is deployed at: /test-productcatalog/tmf-api/productCatalogManagement/v4/

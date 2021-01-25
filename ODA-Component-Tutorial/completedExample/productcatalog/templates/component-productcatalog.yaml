@@ -1,7 +1,7 @@
 apiVersion: oda.tmforum.org/v1alpha1
 kind: component
 metadata:
-  name: {{.Release.Name}}-productcatalog
+  name: {{.Release.Name}}-{{.Values.component.type}}
   labels:
     oda.tmforum.org/componentName: {{.Release.Name}}-{{.Values.component.type}}
 spec:
@@ -27,10 +27,10 @@ spec:
   coreFunction:
     exposedAPIs: 
     - name: productcatalogmanagement
-      specification: https://raw.githubusercontent.com/tmforum-apis/TMF620_ProductCatalog/master/TMF620-ProductCatalog-v4.0.0.swagger.json
-      implementation: {{.Release.Name}}-productcatalogapi
-      path: /tmf-api/productCatalogManagement/v4
-      developerUI: /tmf-api/productCatalogManagement/v4/docs
+      specification: https://raw.githubusercontent.com/tmforum-apis/TMF620_ProductCatalog/master/TMF620-productcatalog-v4.0.0.swagger.json
+      implementation: {{.Release.Name}}-prodcatapi
+      path: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/productCatalogManagement/v4
+      developerUI: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/productCatalogManagement/v4/docs
       port: 8080
     dependantAPIs: []
   eventNotification:
