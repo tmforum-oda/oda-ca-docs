@@ -2,10 +2,17 @@
 
 This tutorial shows the complete process to package, test and deploy an ODA-Component, using the nodejs reference implementation of the TMF620 Product Catalog Management API as the source code. You should be able to follow the process below using an existing software application as source (the process should work for simple applications - it is intended as a tutorial to get you started; For more complex applications you may have to decompose to multiple containers/micro-services and even multiple ODA-Components).
 
+For an introdution to the Open-Digital Architecture component model, take a look at the recording from the Digital Transformation World Series conference:
+
+![<img src="https://www.youtube.com/watch?v=e_m-nnKvWIs">](./images/DTW-Video.png)
+
+[DTW World Series Masterclass](https://www.youtube.com/watch?v=e_m-nnKvWIs)
+
+
 
 ### 1. Download Reference Implementation
 
-Download Reference Implementation from `https://projects.tmforum.org/wiki/display/API/Open+API+Table`.
+Download Reference Implementation from [https://projects.tmforum.org/wiki/display/API/Open+API+Table](https://projects.tmforum.org/wiki/display/API/Open+API+Table).
 
 
 ### 2. (optionally) test locally with local MongoDb.
