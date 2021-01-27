@@ -14,6 +14,12 @@ For an introdution to the Open-Digital Architecture component model, take a look
 
 Download Reference Implementation from [https://projects.tmforum.org/wiki/display/API/Open+API+Table](https://projects.tmforum.org/wiki/display/API/Open+API+Table).
 
+![<img src="https://projects.tmforum.org/wiki/display/API/Open+API+Table">](./images/Open-API-Table.png)
+
+
+The reference implementation provides a Nodejs API server implementation that requires a MongoDb backend. It provides a nice swagger-ui on top of a Open-API implementation stub.
+
+![Open-API Reference Implementation](./images/Reference-Implementation.png)
 
 ### 2. (optionally) test locally with local MongoDb.
 
@@ -40,7 +46,12 @@ function connectHelper(callback) {
 ```
 
 
-## 3. Configure mongoDb connection url to use within Kubernetes.
+## 3. Configure for use within Kubernetes.
+
+When we depoy this nodejs code for use within Kubernetes, it will connect to MongoDb using a url which is provided by a Kubernetes service. We also use environment variable to allow Kubernetes to, for example, determine the path where the API is exposed.
+
+
+### 3.1 Configure mongoDb connection url to use within Kubernetes
 
 In the `utils/mongoUtils.js` file, you will need to update the local connection string to a url that wil work within Kubernetes (this will match the kubernetes service name for mongoDb). Note we include a release name passed as an environment variable (as we could potentially deploy multiple instances of a component in the same canvas).
 
@@ -62,6 +73,56 @@ function connectHelper(callback) {
     }
   });
 }
+```
+### 3.2 Use environment variables to allow API path to be configured externally
+
+By default the nodejs code will serve the API at the path in the swagger file, which for our example is `/tmf-api/productCatalogManagement/v4/`. We want to potentially deploy multiple component instances in the same environment, and so we add a configurable `COMPONENT_NAME` to the start of the URL. We need to do this in the `swaggerDoc` as well as in the `swagger-ui-dist/index.html` that provides the swagger user interface.
+```
+const swaggerDoc = swaggerUtils.getSwaggerDoc();
+
+// Get Component instance name from Environment variable and put it at start of API path
+var componentName = process.env.COMPONENT_NAME; 
+console.log('ComponentName:'+componentName);
+
+swaggerDoc.basePath = '/' + componentName + swaggerDoc.basePath
+
+// add component name to url in swagger_ui
+fs.readFile(path.join(__dirname, './node_modules/swagger-ui-dist/index.html'), 'utf8', function (err,data) {
+  if (err) {
+    return console.log(err);
+  }
+  var result = data.replace(/url: \"/g, 'url: \"/' + componentName );
+  console.log('updating ' + path.join(__dirname, './node_modules/swagger-ui-dist/index.html'));
+  fs.writeFile(path.join(__dirname, './node_modules/swagger-ui-dist/index.html'), result, 'utf8', function (err) {
+      if (err) return console.log(err);
+  });
+});
+```
+
+### 3.3 Add home resource at root of the API, and also move where the docs and api-docs are hosted
+
+By default, the swagger tools expose a resource at all the paths in the API (defined in the swagger.yaml file); They don't offer any response at the root of the API. This can make it harder for a developer to discover the API paths. In addition, a Kubernetes ingress will by default test the root of the API (as a liveness test). If it receives no response, it will assume the microservice is dead and will not route any traffic to it. A simple solution is to create a home resource that provides a set of links to the other API endpoints. The TM Forum Open-API design standards (TMF630) provides a good definition of this resource which is called the `home` or `entrypoint` resource.
+
+I've created a simple module in `utils/entrypoint.js` to build this entrypoint resource at run-time from the swagger.yaml. Operating at run-time also allows you to send a contextual response (that might vary depending on the role of the user, for example).
+
+You integrate this module by adding `app.use(swaggerDoc.basePath, entrypointUtils.entrypoint);` as the last hook before starting the server.
+
+Finally, we change the path where the 'api-docs' and 'docs' are exposed. By default they are served at `/api-docs` and `/docs`. Again, we want to avoid conflicts if we have multiple components running in the same environment. We solve this by moving them to the full path of the API, so in our example, they would be at `/tmf-api/productCatalogManagement/v4/`
+
+```
+  // Serve the Swagger documents and Swagger UI
+  app.use(middleware.swaggerUi({   apiDocs: swaggerDoc.basePath + 'api-docs',
+    swaggerUi: swaggerDoc.basePath + 'docs',
+    swaggerUiDir: path.join(__dirname, 'node_modules', 'swagger-ui-dist') }));
+
+  // create an entrypoint
+  app.use(swaggerDoc.basePath, entrypointUtils.entrypoint);
+
+    // Start the server
+  http.createServer(app).listen(serverPort, function () {
+    console.log('Your server is listening on port %d (http://localhost:%d)', serverPort, serverPort);
+    console.log('Swagger-ui is available on http://localhost:'+ serverPort  + swaggerDoc.basePath + 'docs', serverPort);
+  });
 ```
 
 

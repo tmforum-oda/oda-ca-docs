@@ -13,8 +13,6 @@ const app = require('connect')();
 const swaggerTools = require('swagger-tools');
 
 const serverPort = 8080;
-var componentName = process.env.COMPONENT_NAME; // Component name from Helm deployment
-console.log('ComponentName:'+componentName);
 
 // Correct the url in swagger-ui-dist that points to some demo (like the petstore)
 // And add additional useful options
@@ -25,6 +23,20 @@ fs.copyFileSync(path.join(__dirname, './index.html_replacement'),
     process.exit(1);
   }
 })
+
+// swaggerRouter configuration
+const options = {
+  swaggerUi: path.join(__dirname, '/swagger.json'),
+  controllers: path.join(__dirname, './controllers'),
+  useStubs: process.env.NODE_ENV === 'development' // Conditionally turn on stubs (mock mode)
+};
+
+const swaggerDoc = swaggerUtils.getSwaggerDoc();
+
+
+// Get Component instance name from Environment variable and put it at start of API path
+var componentName = process.env.COMPONENT_NAME; 
+console.log('ComponentName:'+componentName);
 
 // add component name to url in swagger_ui
 fs.readFile(path.join(__dirname, './node_modules/swagger-ui-dist/index.html'), 'utf8', function (err,data) {
@@ -38,16 +50,6 @@ fs.readFile(path.join(__dirname, './node_modules/swagger-ui-dist/index.html'), '
   });
 });
         
-
-// swaggerRouter configuration
-const options = {
-  swaggerUi: path.join(__dirname, '/swagger.json'),
-  controllers: path.join(__dirname, './controllers'),
-  useStubs: process.env.NODE_ENV === 'development' // Conditionally turn on stubs (mock mode)
-};
-
-
-const swaggerDoc = swaggerUtils.getSwaggerDoc();
 swaggerDoc.basePath = '/' + componentName + swaggerDoc.basePath
 
 // Initialize the Swagger middleware
