@@ -4,7 +4,7 @@ This tutorial shows the complete process to package, test and deploy an ODA-Comp
 
 For an introdution to the Open-Digital Architecture component model, take a look at the recording from the Digital Transformation World Series conference:
 
-![<img src="https://www.youtube.com/watch?v=e_m-nnKvWIs">](./images/DTW-Video.png)
+![https://www.youtube.com/watch?v=e_m-nnKvWIs](./images/DTW-Video.png)
 
 [DTW World Series Masterclass](https://www.youtube.com/watch?v=e_m-nnKvWIs)
 
