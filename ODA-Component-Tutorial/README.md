@@ -2,6 +2,8 @@
 
 This tutorial shows the complete process to package, test and deploy an ODA-Component, using the nodejs reference implementation of the TMF620 Product Catalog Management API as the source code. You should be able to follow the process below using an existing software application as source (the process should work for simple applications - it is intended as a tutorial to get you started; For more complex applications you may have to decompose to multiple containers/micro-services and even multiple ODA-Components).
 
+There is a video of this tutorial at: [ODA Component Tutorial Video walkthrough](https://youtu.be/wZJ8d5uQ7_8)
+
 For an introdution to the Open-Digital Architecture component model, take a look at the recording from the Digital Transformation World Series conference:
 
 ![https://www.youtube.com/watch?v=e_m-nnKvWIs](./images/DTW-Video.png)
@@ -338,11 +340,13 @@ metadata:
   labels:
     oda.tmforum.org/componentName: {{.Release.Name}}-{{.Values.component.type}}
 spec:
+  storageClassName: default-st1
   accessModes:
   - ReadWriteOnce
   resources:
     requests:
       storage: 5Gi 
+
 ```
 
 
@@ -353,18 +357,18 @@ We need to make the mongoDb available to the nodejs productcatalogapi image, so 
 apiVersion: v1
 kind: Service
 metadata:
-  name: mongodb
+  name: {{.Release.Name}}-mongodb
   labels:
-    oda.tmforum.org/componentName: productcatalog
-    app: mongodb
+    oda.tmforum.org/componentName: {{.Release.Name}}-{{.Values.component.type}}
+    app: {{.Release.Name}}-mongodb
 spec:
   ports:
   - port: 27017
-    targetPort: mongodb
-    name: mongodb
+    targetPort: {{.Release.Name}}-mongodb
+    name: {{.Release.Name}}-mongodb
   type: NodePort
   selector:
-    app: mongodb
+    app: {{.Release.Name}}-mongodb
 ```
 
 We need to expose the product catalog API using a Service as well in `service-productcatalogapi.yaml`.
@@ -501,14 +505,14 @@ kubectl config set-context --current --namespace=components
 Install the component using Helm:
 
 ```
-helm install test productcatalog/ --namespace components
+helm install test productcatalog/ 
 ```
 
 You can then view the component in `kubectl`:
 
 ```
 kubectl get components
-``
+```
 
 The `kubectl get components` will show all the deployed components including the details of exposed apis and a developer-ui (if supplied). Initially these details will be blank - the component may take a few seconds to fully deploy. Once deployed, it should look like:
 
@@ -517,6 +521,7 @@ The `kubectl get components` will show all the deployed components including the
 If you navigate to the root or the API (in a web browser or in postman), you should see the entrypoint of the API:
 
 ![api entrypoint](./images/api-entrypoint.png)
+
 
 If you navigate to the developer-ui, you shold see the swagger-ui tool:
 

@@ -12,7 +12,7 @@ const {getResponseType, getPayloadType, getTypeDefinition} = require('./swaggerU
 
 var mongodb = null; 
 
-/* connection helper for running MongoDb locally */
+/* connection helper for running MongoDb from url */
 function connectHelper(callback) {
   var releaseName = process.env.RELEASE_NAME; // Release name from Helm deployment
 
