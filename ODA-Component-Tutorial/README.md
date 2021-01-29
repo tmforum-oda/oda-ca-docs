@@ -473,10 +473,10 @@ Within the opa-component-ctk folder, install the ctk.
 npm install
 ```
 
-Then run the ctk against the component envelope.
+Then run the static ctk against the component envelope.
 
 ```
-npm start ../oda-ca-docs/ODA-Component-Tutorial/test-instance.component.yaml
+npm static ../oda-ca-docs/ODA-Component-Tutorial/test-instance.component.yaml
 ```
 
 You shold get an output like the image below. If you receive any errors, fix the issue in the helm chart yaml file and try again.
@@ -527,6 +527,16 @@ If you navigate to the developer-ui, you shold see the swagger-ui tool:
 
 ![swagger ui](./images/swagger-ui.png)
 
+
+Finally, you can run the dynamic ctk against the component envelope.
+
+```
+npm dynamic ../oda-ca-docs/ODA-Component-Tutorial/test-instance.component.yaml
+```
+
+You should get a result like the image below:
+
+![CTK image](./images/ctkdynamicsuccess.png)
 
 
 
