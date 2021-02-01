@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{.Release.Name}}-prodcatapi
+  labels:
+    oda.tmforum.org/componentName: {{.Release.Name}}-{{.Values.component.type}}
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: {{.Release.Name}}-prodcatapi
+  template:
+    metadata:
+      labels:
+        app: {{.Release.Name}}-prodcatapi
+    spec:
+      containers:
+      - name: {{.Release.Name}}-prodcatapi
+        image: lesterthomas/productcatalogapi:latest
+        env:
+        - name: RELEASE_NAME
+          value: {{.Release.Name}}           
+        - name: COMPONENT_NAME
+          value: {{.Release.Name}}-{{.Values.component.type}}           
+        imagePullPolicy: Always
+        ports:
+        - name: {{.Release.Name}}-prodcatapi
+          containerPort: 8080

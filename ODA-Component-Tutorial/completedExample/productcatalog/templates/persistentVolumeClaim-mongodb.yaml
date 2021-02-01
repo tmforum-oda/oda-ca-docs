@@ -1,0 +1,13 @@
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: {{.Release.Name}}-mongodb-pv-claim
+  labels:
+    oda.tmforum.org/componentName: {{.Release.Name}}-{{.Values.component.type}}
+spec:
+  storageClassName: default-st1
+  accessModes:
+  - ReadWriteOnce
+  resources:
+    requests:
+      storage: 5Gi 
