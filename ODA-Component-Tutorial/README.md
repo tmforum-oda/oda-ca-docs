@@ -23,6 +23,9 @@ The reference implementation provides a Nodejs API server implementation that re
 
 ![Open-API Reference Implementation](./images/Reference-Implementation.png)
 
+The reference implementation is set-up to run in IBM Cloud (bluemix). To enable it to run locally or in a docker container, we edit the /api/swagger.yaml file to remove the `host:` field (it will default to looking in the current host), and change the `schemes:` from `https` to `http`.
+
+
 ### 2. (optionally) test locally with local MongoDb.
 
 In the `utils/mongoUtils.js` file, you will need to replace the connectHelper with a helper function that uses local connection string:
@@ -95,7 +98,7 @@ fs.readFile(path.join(__dirname, './node_modules/swagger-ui-dist/index.html'), '
   if (err) {
     return console.log(err);
   }
-  var result = data.replace(/url: \"/g, 'url: \"/' + componentName );
+  var result = data.replace(/\/api-docs/g, swaggerDoc.basePath + 'api-docs' );
   console.log('updating ' + path.join(__dirname, './node_modules/swagger-ui-dist/index.html'));
   fs.writeFile(path.join(__dirname, './node_modules/swagger-ui-dist/index.html'), result, 'utf8', function (err) {
       if (err) return console.log(err);
@@ -120,6 +123,7 @@ Finally, we change the path where the 'api-docs' and 'docs' are exposed. By defa
     swaggerUiDir: path.join(__dirname, 'node_modules', 'swagger-ui-dist') }));
 
   // create an entrypoint
+  const entrypointUtils = require('./utils/entrypoint');
   app.use(swaggerDoc.basePath, entrypointUtils.entrypoint);
 
     // Start the server
@@ -135,7 +139,7 @@ Finally, we change the path where the 'api-docs' and 'docs' are exposed. By defa
 Create a dockerfile with the instructions to build our image. We are starting with the official [node](https://hub.docker.com/_/node) docker image.
 
 ```
-FROM node
+FROM node:10
 ```
 
 This image comes with Node.js and NPM already installed so the next thing we need to do is to install the app dependencies.
@@ -167,7 +171,7 @@ CMD ["node", "index.js"]
 The complete dockerfile should look like:
 
 ```
-FROM node
+FROM node:10
 COPY implementation/package*.json .
 RUN npm install
 COPY implementation ./
@@ -449,7 +453,6 @@ Finally we have to create the parameters in the `values.yaml` file. Since we hav
 
 
 component:
-  # Specifies whether a service account should be created
   type: productcatalog
 ```
 
