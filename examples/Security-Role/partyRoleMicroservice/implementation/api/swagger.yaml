@@ -8,7 +8,7 @@ definitions:
     example:
       '@baseType': '@baseType'
       '@referredType': '@referredType'
-      '@schemaLocation': http://example.com/aeiou
+      '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
       '@type': '@type'
       description: description
       href: href
@@ -53,7 +53,7 @@ definitions:
     example:
       '@baseType': '@baseType'
       '@referredType': '@referredType'
-      '@schemaLocation': http://example.com/aeiou
+      '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
       '@type': '@type'
       href: href
       id: id
@@ -91,7 +91,7 @@ definitions:
       name/value pair.
     example:
       '@baseType': '@baseType'
-      '@schemaLocation': http://example.com/aeiou
+      '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
       '@type': '@type'
       name: name
       value: {}
@@ -125,11 +125,11 @@ definitions:
     description: Indicates the contact medium that could be used to contact the party.
     example:
       '@baseType': '@baseType'
-      '@schemaLocation': http://example.com/aeiou
+      '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
       '@type': '@type'
       characteristic:
         '@baseType': '@baseType'
-        '@schemaLocation': http://example.com/aeiou
+        '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
         '@type': '@type'
         city: city
         contactType: contactType
@@ -183,7 +183,7 @@ definitions:
       the current one.
     example:
       '@baseType': '@baseType'
-      '@schemaLocation': http://example.com/aeiou
+      '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
       '@type': '@type'
       creditProfileDate: '2000-01-23T04:56:07.000+00:00'
       creditRiskRating: 0
@@ -330,7 +330,7 @@ definitions:
       contact a party (an individual or an organization)
     example:
       '@baseType': '@baseType'
-      '@schemaLocation': http://example.com/aeiou
+      '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
       '@type': '@type'
       city: city
       contactType: contactType
@@ -394,12 +394,12 @@ definitions:
     description: The part played by a party in a given context.
     example:
       '@baseType': '@baseType'
-      '@schemaLocation': http://example.com/aeiou
+      '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
       '@type': '@type'
       account:
       - '@baseType': '@baseType'
         '@referredType': '@referredType'
-        '@schemaLocation': http://example.com/aeiou
+        '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
         '@type': '@type'
         description: description
         href: href
@@ -407,7 +407,7 @@ definitions:
         name: name
       - '@baseType': '@baseType'
         '@referredType': '@referredType'
-        '@schemaLocation': http://example.com/aeiou
+        '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
         '@type': '@type'
         description: description
         href: href
@@ -416,38 +416,38 @@ definitions:
       agreement:
       - '@baseType': '@baseType'
         '@referredType': '@referredType'
-        '@schemaLocation': http://example.com/aeiou
+        '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
         '@type': '@type'
         href: href
         id: id
         name: name
       - '@baseType': '@baseType'
         '@referredType': '@referredType'
-        '@schemaLocation': http://example.com/aeiou
+        '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
         '@type': '@type'
         href: href
         id: id
         name: name
       characteristic:
       - '@baseType': '@baseType'
-        '@schemaLocation': http://example.com/aeiou
+        '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
         '@type': '@type'
         name: name
         value: {}
         valueType: valueType
       - '@baseType': '@baseType'
-        '@schemaLocation': http://example.com/aeiou
+        '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
         '@type': '@type'
         name: name
         value: {}
         valueType: valueType
       contactMedium:
       - '@baseType': '@baseType'
-        '@schemaLocation': http://example.com/aeiou
+        '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
         '@type': '@type'
         characteristic:
           '@baseType': '@baseType'
-          '@schemaLocation': http://example.com/aeiou
+          '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
           '@type': '@type'
           city: city
           contactType: contactType
@@ -466,11 +466,11 @@ definitions:
           endDateTime: '2000-01-23T04:56:07.000+00:00'
           startDateTime: '2000-01-23T04:56:07.000+00:00'
       - '@baseType': '@baseType'
-        '@schemaLocation': http://example.com/aeiou
+        '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
         '@type': '@type'
         characteristic:
           '@baseType': '@baseType'
-          '@schemaLocation': http://example.com/aeiou
+          '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
           '@type': '@type'
           city: city
           contactType: contactType
@@ -490,7 +490,7 @@ definitions:
           startDateTime: '2000-01-23T04:56:07.000+00:00'
       creditProfile:
       - '@baseType': '@baseType'
-        '@schemaLocation': http://example.com/aeiou
+        '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
         '@type': '@type'
         creditProfileDate: '2000-01-23T04:56:07.000+00:00'
         creditRiskRating: 0
@@ -499,7 +499,7 @@ definitions:
           endDateTime: '2000-01-23T04:56:07.000+00:00'
           startDateTime: '2000-01-23T04:56:07.000+00:00'
       - '@baseType': '@baseType'
-        '@schemaLocation': http://example.com/aeiou
+        '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
         '@type': '@type'
         creditProfileDate: '2000-01-23T04:56:07.000+00:00'
         creditRiskRating: 0
@@ -510,7 +510,7 @@ definitions:
       engagedParty:
         '@baseType': '@baseType'
         '@referredType': '@referredType'
-        '@schemaLocation': http://example.com/aeiou
+        '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
         '@type': '@type'
         href: href
         id: id
@@ -522,14 +522,14 @@ definitions:
       paymentMethod:
       - '@baseType': '@baseType'
         '@referredType': '@referredType'
-        '@schemaLocation': http://example.com/aeiou
+        '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
         '@type': '@type'
         href: href
         id: id
         name: name
       - '@baseType': '@baseType'
         '@referredType': '@referredType'
-        '@schemaLocation': http://example.com/aeiou
+        '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
         '@type': '@type'
         href: href
         id: id
@@ -537,7 +537,7 @@ definitions:
       relatedParty:
       - '@baseType': '@baseType'
         '@referredType': '@referredType'
-        '@schemaLocation': http://example.com/aeiou
+        '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
         '@type': '@type'
         href: href
         id: id
@@ -545,7 +545,7 @@ definitions:
         role: role
       - '@baseType': '@baseType'
         '@referredType': '@referredType'
-        '@schemaLocation': http://example.com/aeiou
+        '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
         '@type': '@type'
         href: href
         id: id
@@ -630,12 +630,12 @@ definitions:
       event:
         partyRole:
           '@baseType': '@baseType'
-          '@schemaLocation': http://example.com/aeiou
+          '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
           '@type': '@type'
           account:
           - '@baseType': '@baseType'
             '@referredType': '@referredType'
-            '@schemaLocation': http://example.com/aeiou
+            '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
             '@type': '@type'
             description: description
             href: href
@@ -643,7 +643,7 @@ definitions:
             name: name
           - '@baseType': '@baseType'
             '@referredType': '@referredType'
-            '@schemaLocation': http://example.com/aeiou
+            '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
             '@type': '@type'
             description: description
             href: href
@@ -652,38 +652,38 @@ definitions:
           agreement:
           - '@baseType': '@baseType'
             '@referredType': '@referredType'
-            '@schemaLocation': http://example.com/aeiou
+            '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
             '@type': '@type'
             href: href
             id: id
             name: name
           - '@baseType': '@baseType'
             '@referredType': '@referredType'
-            '@schemaLocation': http://example.com/aeiou
+            '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
             '@type': '@type'
             href: href
             id: id
             name: name
           characteristic:
           - '@baseType': '@baseType'
-            '@schemaLocation': http://example.com/aeiou
+            '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
             '@type': '@type'
             name: name
             value: {}
             valueType: valueType
           - '@baseType': '@baseType'
-            '@schemaLocation': http://example.com/aeiou
+            '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
             '@type': '@type'
             name: name
             value: {}
             valueType: valueType
           contactMedium:
           - '@baseType': '@baseType'
-            '@schemaLocation': http://example.com/aeiou
+            '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
             '@type': '@type'
             characteristic:
               '@baseType': '@baseType'
-              '@schemaLocation': http://example.com/aeiou
+              '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
               '@type': '@type'
               city: city
               contactType: contactType
@@ -702,11 +702,11 @@ definitions:
               endDateTime: '2000-01-23T04:56:07.000+00:00'
               startDateTime: '2000-01-23T04:56:07.000+00:00'
           - '@baseType': '@baseType'
-            '@schemaLocation': http://example.com/aeiou
+            '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
             '@type': '@type'
             characteristic:
               '@baseType': '@baseType'
-              '@schemaLocation': http://example.com/aeiou
+              '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
               '@type': '@type'
               city: city
               contactType: contactType
@@ -726,7 +726,7 @@ definitions:
               startDateTime: '2000-01-23T04:56:07.000+00:00'
           creditProfile:
           - '@baseType': '@baseType'
-            '@schemaLocation': http://example.com/aeiou
+            '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
             '@type': '@type'
             creditProfileDate: '2000-01-23T04:56:07.000+00:00'
             creditRiskRating: 0
@@ -735,7 +735,7 @@ definitions:
               endDateTime: '2000-01-23T04:56:07.000+00:00'
               startDateTime: '2000-01-23T04:56:07.000+00:00'
           - '@baseType': '@baseType'
-            '@schemaLocation': http://example.com/aeiou
+            '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
             '@type': '@type'
             creditProfileDate: '2000-01-23T04:56:07.000+00:00'
             creditRiskRating: 0
@@ -746,7 +746,7 @@ definitions:
           engagedParty:
             '@baseType': '@baseType'
             '@referredType': '@referredType'
-            '@schemaLocation': http://example.com/aeiou
+            '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
             '@type': '@type'
             href: href
             id: id
@@ -758,14 +758,14 @@ definitions:
           paymentMethod:
           - '@baseType': '@baseType'
             '@referredType': '@referredType'
-            '@schemaLocation': http://example.com/aeiou
+            '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
             '@type': '@type'
             href: href
             id: id
             name: name
           - '@baseType': '@baseType'
             '@referredType': '@referredType'
-            '@schemaLocation': http://example.com/aeiou
+            '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
             '@type': '@type'
             href: href
             id: id
@@ -773,7 +773,7 @@ definitions:
           relatedParty:
           - '@baseType': '@baseType'
             '@referredType': '@referredType'
-            '@schemaLocation': http://example.com/aeiou
+            '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
             '@type': '@type'
             href: href
             id: id
@@ -781,7 +781,7 @@ definitions:
             role: role
           - '@baseType': '@baseType'
             '@referredType': '@referredType'
-            '@schemaLocation': http://example.com/aeiou
+            '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
             '@type': '@type'
             href: href
             id: id
@@ -841,12 +841,12 @@ definitions:
     example:
       partyRole:
         '@baseType': '@baseType'
-        '@schemaLocation': http://example.com/aeiou
+        '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
         '@type': '@type'
         account:
         - '@baseType': '@baseType'
           '@referredType': '@referredType'
-          '@schemaLocation': http://example.com/aeiou
+          '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
           '@type': '@type'
           description: description
           href: href
@@ -854,7 +854,7 @@ definitions:
           name: name
         - '@baseType': '@baseType'
           '@referredType': '@referredType'
-          '@schemaLocation': http://example.com/aeiou
+          '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
           '@type': '@type'
           description: description
           href: href
@@ -863,38 +863,38 @@ definitions:
         agreement:
         - '@baseType': '@baseType'
           '@referredType': '@referredType'
-          '@schemaLocation': http://example.com/aeiou
+          '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
           '@type': '@type'
           href: href
           id: id
           name: name
         - '@baseType': '@baseType'
           '@referredType': '@referredType'
-          '@schemaLocation': http://example.com/aeiou
+          '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
           '@type': '@type'
           href: href
           id: id
           name: name
         characteristic:
         - '@baseType': '@baseType'
-          '@schemaLocation': http://example.com/aeiou
+          '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
           '@type': '@type'
           name: name
           value: {}
           valueType: valueType
         - '@baseType': '@baseType'
-          '@schemaLocation': http://example.com/aeiou
+          '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
           '@type': '@type'
           name: name
           value: {}
           valueType: valueType
         contactMedium:
         - '@baseType': '@baseType'
-          '@schemaLocation': http://example.com/aeiou
+          '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
           '@type': '@type'
           characteristic:
             '@baseType': '@baseType'
-            '@schemaLocation': http://example.com/aeiou
+            '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
             '@type': '@type'
             city: city
             contactType: contactType
@@ -913,11 +913,11 @@ definitions:
             endDateTime: '2000-01-23T04:56:07.000+00:00'
             startDateTime: '2000-01-23T04:56:07.000+00:00'
         - '@baseType': '@baseType'
-          '@schemaLocation': http://example.com/aeiou
+          '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
           '@type': '@type'
           characteristic:
             '@baseType': '@baseType'
-            '@schemaLocation': http://example.com/aeiou
+            '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
             '@type': '@type'
             city: city
             contactType: contactType
@@ -937,7 +937,7 @@ definitions:
             startDateTime: '2000-01-23T04:56:07.000+00:00'
         creditProfile:
         - '@baseType': '@baseType'
-          '@schemaLocation': http://example.com/aeiou
+          '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
           '@type': '@type'
           creditProfileDate: '2000-01-23T04:56:07.000+00:00'
           creditRiskRating: 0
@@ -946,7 +946,7 @@ definitions:
             endDateTime: '2000-01-23T04:56:07.000+00:00'
             startDateTime: '2000-01-23T04:56:07.000+00:00'
         - '@baseType': '@baseType'
-          '@schemaLocation': http://example.com/aeiou
+          '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
           '@type': '@type'
           creditProfileDate: '2000-01-23T04:56:07.000+00:00'
           creditRiskRating: 0
@@ -957,7 +957,7 @@ definitions:
         engagedParty:
           '@baseType': '@baseType'
           '@referredType': '@referredType'
-          '@schemaLocation': http://example.com/aeiou
+          '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
           '@type': '@type'
           href: href
           id: id
@@ -969,14 +969,14 @@ definitions:
         paymentMethod:
         - '@baseType': '@baseType'
           '@referredType': '@referredType'
-          '@schemaLocation': http://example.com/aeiou
+          '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
           '@type': '@type'
           href: href
           id: id
           name: name
         - '@baseType': '@baseType'
           '@referredType': '@referredType'
-          '@schemaLocation': http://example.com/aeiou
+          '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
           '@type': '@type'
           href: href
           id: id
@@ -984,7 +984,7 @@ definitions:
         relatedParty:
         - '@baseType': '@baseType'
           '@referredType': '@referredType'
-          '@schemaLocation': http://example.com/aeiou
+          '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
           '@type': '@type'
           href: href
           id: id
@@ -992,7 +992,7 @@ definitions:
           role: role
         - '@baseType': '@baseType'
           '@referredType': '@referredType'
-          '@schemaLocation': http://example.com/aeiou
+          '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
           '@type': '@type'
           href: href
           id: id
@@ -1017,12 +1017,12 @@ definitions:
       event:
         partyRole:
           '@baseType': '@baseType'
-          '@schemaLocation': http://example.com/aeiou
+          '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
           '@type': '@type'
           account:
           - '@baseType': '@baseType'
             '@referredType': '@referredType'
-            '@schemaLocation': http://example.com/aeiou
+            '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
             '@type': '@type'
             description: description
             href: href
@@ -1030,7 +1030,7 @@ definitions:
             name: name
           - '@baseType': '@baseType'
             '@referredType': '@referredType'
-            '@schemaLocation': http://example.com/aeiou
+            '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
             '@type': '@type'
             description: description
             href: href
@@ -1039,38 +1039,38 @@ definitions:
           agreement:
           - '@baseType': '@baseType'
             '@referredType': '@referredType'
-            '@schemaLocation': http://example.com/aeiou
+            '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
             '@type': '@type'
             href: href
             id: id
             name: name
           - '@baseType': '@baseType'
             '@referredType': '@referredType'
-            '@schemaLocation': http://example.com/aeiou
+            '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
             '@type': '@type'
             href: href
             id: id
             name: name
           characteristic:
           - '@baseType': '@baseType'
-            '@schemaLocation': http://example.com/aeiou
+            '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
             '@type': '@type'
             name: name
             value: {}
             valueType: valueType
           - '@baseType': '@baseType'
-            '@schemaLocation': http://example.com/aeiou
+            '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
             '@type': '@type'
             name: name
             value: {}
             valueType: valueType
           contactMedium:
           - '@baseType': '@baseType'
-            '@schemaLocation': http://example.com/aeiou
+            '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
             '@type': '@type'
             characteristic:
               '@baseType': '@baseType'
-              '@schemaLocation': http://example.com/aeiou
+              '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
               '@type': '@type'
               city: city
               contactType: contactType
@@ -1089,11 +1089,11 @@ definitions:
               endDateTime: '2000-01-23T04:56:07.000+00:00'
               startDateTime: '2000-01-23T04:56:07.000+00:00'
           - '@baseType': '@baseType'
-            '@schemaLocation': http://example.com/aeiou
+            '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
             '@type': '@type'
             characteristic:
               '@baseType': '@baseType'
-              '@schemaLocation': http://example.com/aeiou
+              '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
               '@type': '@type'
               city: city
               contactType: contactType
@@ -1113,7 +1113,7 @@ definitions:
               startDateTime: '2000-01-23T04:56:07.000+00:00'
           creditProfile:
           - '@baseType': '@baseType'
-            '@schemaLocation': http://example.com/aeiou
+            '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
             '@type': '@type'
             creditProfileDate: '2000-01-23T04:56:07.000+00:00'
             creditRiskRating: 0
@@ -1122,7 +1122,7 @@ definitions:
               endDateTime: '2000-01-23T04:56:07.000+00:00'
               startDateTime: '2000-01-23T04:56:07.000+00:00'
           - '@baseType': '@baseType'
-            '@schemaLocation': http://example.com/aeiou
+            '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
             '@type': '@type'
             creditProfileDate: '2000-01-23T04:56:07.000+00:00'
             creditRiskRating: 0
@@ -1133,7 +1133,7 @@ definitions:
           engagedParty:
             '@baseType': '@baseType'
             '@referredType': '@referredType'
-            '@schemaLocation': http://example.com/aeiou
+            '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
             '@type': '@type'
             href: href
             id: id
@@ -1145,14 +1145,14 @@ definitions:
           paymentMethod:
           - '@baseType': '@baseType'
             '@referredType': '@referredType'
-            '@schemaLocation': http://example.com/aeiou
+            '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
             '@type': '@type'
             href: href
             id: id
             name: name
           - '@baseType': '@baseType'
             '@referredType': '@referredType'
-            '@schemaLocation': http://example.com/aeiou
+            '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
             '@type': '@type'
             href: href
             id: id
@@ -1160,7 +1160,7 @@ definitions:
           relatedParty:
           - '@baseType': '@baseType'
             '@referredType': '@referredType'
-            '@schemaLocation': http://example.com/aeiou
+            '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
             '@type': '@type'
             href: href
             id: id
@@ -1168,7 +1168,7 @@ definitions:
             role: role
           - '@baseType': '@baseType'
             '@referredType': '@referredType'
-            '@schemaLocation': http://example.com/aeiou
+            '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
             '@type': '@type'
             href: href
             id: id
@@ -1232,12 +1232,12 @@ definitions:
     example:
       partyRole:
         '@baseType': '@baseType'
-        '@schemaLocation': http://example.com/aeiou
+        '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
         '@type': '@type'
         account:
         - '@baseType': '@baseType'
           '@referredType': '@referredType'
-          '@schemaLocation': http://example.com/aeiou
+          '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
           '@type': '@type'
           description: description
           href: href
@@ -1245,7 +1245,7 @@ definitions:
           name: name
         - '@baseType': '@baseType'
           '@referredType': '@referredType'
-          '@schemaLocation': http://example.com/aeiou
+          '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
           '@type': '@type'
           description: description
           href: href
@@ -1254,38 +1254,38 @@ definitions:
         agreement:
         - '@baseType': '@baseType'
           '@referredType': '@referredType'
-          '@schemaLocation': http://example.com/aeiou
+          '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
           '@type': '@type'
           href: href
           id: id
           name: name
         - '@baseType': '@baseType'
           '@referredType': '@referredType'
-          '@schemaLocation': http://example.com/aeiou
+          '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
           '@type': '@type'
           href: href
           id: id
           name: name
         characteristic:
         - '@baseType': '@baseType'
-          '@schemaLocation': http://example.com/aeiou
+          '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
           '@type': '@type'
           name: name
           value: {}
           valueType: valueType
         - '@baseType': '@baseType'
-          '@schemaLocation': http://example.com/aeiou
+          '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
           '@type': '@type'
           name: name
           value: {}
           valueType: valueType
         contactMedium:
         - '@baseType': '@baseType'
-          '@schemaLocation': http://example.com/aeiou
+          '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
           '@type': '@type'
           characteristic:
             '@baseType': '@baseType'
-            '@schemaLocation': http://example.com/aeiou
+            '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
             '@type': '@type'
             city: city
             contactType: contactType
@@ -1304,11 +1304,11 @@ definitions:
             endDateTime: '2000-01-23T04:56:07.000+00:00'
             startDateTime: '2000-01-23T04:56:07.000+00:00'
         - '@baseType': '@baseType'
-          '@schemaLocation': http://example.com/aeiou
+          '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
           '@type': '@type'
           characteristic:
             '@baseType': '@baseType'
-            '@schemaLocation': http://example.com/aeiou
+            '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
             '@type': '@type'
             city: city
             contactType: contactType
@@ -1328,7 +1328,7 @@ definitions:
             startDateTime: '2000-01-23T04:56:07.000+00:00'
         creditProfile:
         - '@baseType': '@baseType'
-          '@schemaLocation': http://example.com/aeiou
+          '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
           '@type': '@type'
           creditProfileDate: '2000-01-23T04:56:07.000+00:00'
           creditRiskRating: 0
@@ -1337,7 +1337,7 @@ definitions:
             endDateTime: '2000-01-23T04:56:07.000+00:00'
             startDateTime: '2000-01-23T04:56:07.000+00:00'
         - '@baseType': '@baseType'
-          '@schemaLocation': http://example.com/aeiou
+          '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
           '@type': '@type'
           creditProfileDate: '2000-01-23T04:56:07.000+00:00'
           creditRiskRating: 0
@@ -1348,7 +1348,7 @@ definitions:
         engagedParty:
           '@baseType': '@baseType'
           '@referredType': '@referredType'
-          '@schemaLocation': http://example.com/aeiou
+          '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
           '@type': '@type'
           href: href
           id: id
@@ -1360,14 +1360,14 @@ definitions:
         paymentMethod:
         - '@baseType': '@baseType'
           '@referredType': '@referredType'
-          '@schemaLocation': http://example.com/aeiou
+          '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
           '@type': '@type'
           href: href
           id: id
           name: name
         - '@baseType': '@baseType'
           '@referredType': '@referredType'
-          '@schemaLocation': http://example.com/aeiou
+          '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
           '@type': '@type'
           href: href
           id: id
@@ -1375,7 +1375,7 @@ definitions:
         relatedParty:
         - '@baseType': '@baseType'
           '@referredType': '@referredType'
-          '@schemaLocation': http://example.com/aeiou
+          '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
           '@type': '@type'
           href: href
           id: id
@@ -1383,7 +1383,7 @@ definitions:
           role: role
         - '@baseType': '@baseType'
           '@referredType': '@referredType'
-          '@schemaLocation': http://example.com/aeiou
+          '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
           '@type': '@type'
           href: href
           id: id
@@ -1408,12 +1408,12 @@ definitions:
       event:
         partyRole:
           '@baseType': '@baseType'
-          '@schemaLocation': http://example.com/aeiou
+          '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
           '@type': '@type'
           account:
           - '@baseType': '@baseType'
             '@referredType': '@referredType'
-            '@schemaLocation': http://example.com/aeiou
+            '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
             '@type': '@type'
             description: description
             href: href
@@ -1421,7 +1421,7 @@ definitions:
             name: name
           - '@baseType': '@baseType'
             '@referredType': '@referredType'
-            '@schemaLocation': http://example.com/aeiou
+            '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
             '@type': '@type'
             description: description
             href: href
@@ -1430,38 +1430,38 @@ definitions:
           agreement:
           - '@baseType': '@baseType'
             '@referredType': '@referredType'
-            '@schemaLocation': http://example.com/aeiou
+            '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
             '@type': '@type'
             href: href
             id: id
             name: name
           - '@baseType': '@baseType'
             '@referredType': '@referredType'
-            '@schemaLocation': http://example.com/aeiou
+            '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
             '@type': '@type'
             href: href
             id: id
             name: name
           characteristic:
           - '@baseType': '@baseType'
-            '@schemaLocation': http://example.com/aeiou
+            '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
             '@type': '@type'
             name: name
             value: {}
             valueType: valueType
           - '@baseType': '@baseType'
-            '@schemaLocation': http://example.com/aeiou
+            '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
             '@type': '@type'
             name: name
             value: {}
             valueType: valueType
           contactMedium:
           - '@baseType': '@baseType'
-            '@schemaLocation': http://example.com/aeiou
+            '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
             '@type': '@type'
             characteristic:
               '@baseType': '@baseType'
-              '@schemaLocation': http://example.com/aeiou
+              '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
               '@type': '@type'
               city: city
               contactType: contactType
@@ -1480,11 +1480,11 @@ definitions:
               endDateTime: '2000-01-23T04:56:07.000+00:00'
               startDateTime: '2000-01-23T04:56:07.000+00:00'
           - '@baseType': '@baseType'
-            '@schemaLocation': http://example.com/aeiou
+            '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
             '@type': '@type'
             characteristic:
               '@baseType': '@baseType'
-              '@schemaLocation': http://example.com/aeiou
+              '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
               '@type': '@type'
               city: city
               contactType: contactType
@@ -1504,7 +1504,7 @@ definitions:
               startDateTime: '2000-01-23T04:56:07.000+00:00'
           creditProfile:
           - '@baseType': '@baseType'
-            '@schemaLocation': http://example.com/aeiou
+            '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
             '@type': '@type'
             creditProfileDate: '2000-01-23T04:56:07.000+00:00'
             creditRiskRating: 0
@@ -1513,7 +1513,7 @@ definitions:
               endDateTime: '2000-01-23T04:56:07.000+00:00'
               startDateTime: '2000-01-23T04:56:07.000+00:00'
           - '@baseType': '@baseType'
-            '@schemaLocation': http://example.com/aeiou
+            '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
             '@type': '@type'
             creditProfileDate: '2000-01-23T04:56:07.000+00:00'
             creditRiskRating: 0
@@ -1524,7 +1524,7 @@ definitions:
           engagedParty:
             '@baseType': '@baseType'
             '@referredType': '@referredType'
-            '@schemaLocation': http://example.com/aeiou
+            '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
             '@type': '@type'
             href: href
             id: id
@@ -1536,14 +1536,14 @@ definitions:
           paymentMethod:
           - '@baseType': '@baseType'
             '@referredType': '@referredType'
-            '@schemaLocation': http://example.com/aeiou
+            '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
             '@type': '@type'
             href: href
             id: id
             name: name
           - '@baseType': '@baseType'
             '@referredType': '@referredType'
-            '@schemaLocation': http://example.com/aeiou
+            '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
             '@type': '@type'
             href: href
             id: id
@@ -1551,7 +1551,7 @@ definitions:
           relatedParty:
           - '@baseType': '@baseType'
             '@referredType': '@referredType'
-            '@schemaLocation': http://example.com/aeiou
+            '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
             '@type': '@type'
             href: href
             id: id
@@ -1559,7 +1559,7 @@ definitions:
             role: role
           - '@baseType': '@baseType'
             '@referredType': '@referredType'
-            '@schemaLocation': http://example.com/aeiou
+            '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
             '@type': '@type'
             href: href
             id: id
@@ -1623,12 +1623,12 @@ definitions:
     example:
       partyRole:
         '@baseType': '@baseType'
-        '@schemaLocation': http://example.com/aeiou
+        '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
         '@type': '@type'
         account:
         - '@baseType': '@baseType'
           '@referredType': '@referredType'
-          '@schemaLocation': http://example.com/aeiou
+          '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
           '@type': '@type'
           description: description
           href: href
@@ -1636,7 +1636,7 @@ definitions:
           name: name
         - '@baseType': '@baseType'
           '@referredType': '@referredType'
-          '@schemaLocation': http://example.com/aeiou
+          '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
           '@type': '@type'
           description: description
           href: href
@@ -1645,38 +1645,38 @@ definitions:
         agreement:
         - '@baseType': '@baseType'
           '@referredType': '@referredType'
-          '@schemaLocation': http://example.com/aeiou
+          '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
           '@type': '@type'
           href: href
           id: id
           name: name
         - '@baseType': '@baseType'
           '@referredType': '@referredType'
-          '@schemaLocation': http://example.com/aeiou
+          '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
           '@type': '@type'
           href: href
           id: id
           name: name
         characteristic:
         - '@baseType': '@baseType'
-          '@schemaLocation': http://example.com/aeiou
+          '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
           '@type': '@type'
           name: name
           value: {}
           valueType: valueType
         - '@baseType': '@baseType'
-          '@schemaLocation': http://example.com/aeiou
+          '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
           '@type': '@type'
           name: name
           value: {}
           valueType: valueType
         contactMedium:
         - '@baseType': '@baseType'
-          '@schemaLocation': http://example.com/aeiou
+          '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
           '@type': '@type'
           characteristic:
             '@baseType': '@baseType'
-            '@schemaLocation': http://example.com/aeiou
+            '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
             '@type': '@type'
             city: city
             contactType: contactType
@@ -1695,11 +1695,11 @@ definitions:
             endDateTime: '2000-01-23T04:56:07.000+00:00'
             startDateTime: '2000-01-23T04:56:07.000+00:00'
         - '@baseType': '@baseType'
-          '@schemaLocation': http://example.com/aeiou
+          '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
           '@type': '@type'
           characteristic:
             '@baseType': '@baseType'
-            '@schemaLocation': http://example.com/aeiou
+            '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
             '@type': '@type'
             city: city
             contactType: contactType
@@ -1719,7 +1719,7 @@ definitions:
             startDateTime: '2000-01-23T04:56:07.000+00:00'
         creditProfile:
         - '@baseType': '@baseType'
-          '@schemaLocation': http://example.com/aeiou
+          '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
           '@type': '@type'
           creditProfileDate: '2000-01-23T04:56:07.000+00:00'
           creditRiskRating: 0
@@ -1728,7 +1728,7 @@ definitions:
             endDateTime: '2000-01-23T04:56:07.000+00:00'
             startDateTime: '2000-01-23T04:56:07.000+00:00'
         - '@baseType': '@baseType'
-          '@schemaLocation': http://example.com/aeiou
+          '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
           '@type': '@type'
           creditProfileDate: '2000-01-23T04:56:07.000+00:00'
           creditRiskRating: 0
@@ -1739,7 +1739,7 @@ definitions:
         engagedParty:
           '@baseType': '@baseType'
           '@referredType': '@referredType'
-          '@schemaLocation': http://example.com/aeiou
+          '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
           '@type': '@type'
           href: href
           id: id
@@ -1751,14 +1751,14 @@ definitions:
         paymentMethod:
         - '@baseType': '@baseType'
           '@referredType': '@referredType'
-          '@schemaLocation': http://example.com/aeiou
+          '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
           '@type': '@type'
           href: href
           id: id
           name: name
         - '@baseType': '@baseType'
           '@referredType': '@referredType'
-          '@schemaLocation': http://example.com/aeiou
+          '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
           '@type': '@type'
           href: href
           id: id
@@ -1766,7 +1766,7 @@ definitions:
         relatedParty:
         - '@baseType': '@baseType'
           '@referredType': '@referredType'
-          '@schemaLocation': http://example.com/aeiou
+          '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
           '@type': '@type'
           href: href
           id: id
@@ -1774,7 +1774,7 @@ definitions:
           role: role
         - '@baseType': '@baseType'
           '@referredType': '@referredType'
-          '@schemaLocation': http://example.com/aeiou
+          '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
           '@type': '@type'
           href: href
           id: id
@@ -1799,12 +1799,12 @@ definitions:
       event:
         partyRole:
           '@baseType': '@baseType'
-          '@schemaLocation': http://example.com/aeiou
+          '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
           '@type': '@type'
           account:
           - '@baseType': '@baseType'
             '@referredType': '@referredType'
-            '@schemaLocation': http://example.com/aeiou
+            '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
             '@type': '@type'
             description: description
             href: href
@@ -1812,7 +1812,7 @@ definitions:
             name: name
           - '@baseType': '@baseType'
             '@referredType': '@referredType'
-            '@schemaLocation': http://example.com/aeiou
+            '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
             '@type': '@type'
             description: description
             href: href
@@ -1821,38 +1821,38 @@ definitions:
           agreement:
           - '@baseType': '@baseType'
             '@referredType': '@referredType'
-            '@schemaLocation': http://example.com/aeiou
+            '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
             '@type': '@type'
             href: href
             id: id
             name: name
           - '@baseType': '@baseType'
             '@referredType': '@referredType'
-            '@schemaLocation': http://example.com/aeiou
+            '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
             '@type': '@type'
             href: href
             id: id
             name: name
           characteristic:
           - '@baseType': '@baseType'
-            '@schemaLocation': http://example.com/aeiou
+            '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
             '@type': '@type'
             name: name
             value: {}
             valueType: valueType
           - '@baseType': '@baseType'
-            '@schemaLocation': http://example.com/aeiou
+            '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
             '@type': '@type'
             name: name
             value: {}
             valueType: valueType
           contactMedium:
           - '@baseType': '@baseType'
-            '@schemaLocation': http://example.com/aeiou
+            '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
             '@type': '@type'
             characteristic:
               '@baseType': '@baseType'
-              '@schemaLocation': http://example.com/aeiou
+              '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
               '@type': '@type'
               city: city
               contactType: contactType
@@ -1871,11 +1871,11 @@ definitions:
               endDateTime: '2000-01-23T04:56:07.000+00:00'
               startDateTime: '2000-01-23T04:56:07.000+00:00'
           - '@baseType': '@baseType'
-            '@schemaLocation': http://example.com/aeiou
+            '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
             '@type': '@type'
             characteristic:
               '@baseType': '@baseType'
-              '@schemaLocation': http://example.com/aeiou
+              '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
               '@type': '@type'
               city: city
               contactType: contactType
@@ -1895,7 +1895,7 @@ definitions:
               startDateTime: '2000-01-23T04:56:07.000+00:00'
           creditProfile:
           - '@baseType': '@baseType'
-            '@schemaLocation': http://example.com/aeiou
+            '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
             '@type': '@type'
             creditProfileDate: '2000-01-23T04:56:07.000+00:00'
             creditRiskRating: 0
@@ -1904,7 +1904,7 @@ definitions:
               endDateTime: '2000-01-23T04:56:07.000+00:00'
               startDateTime: '2000-01-23T04:56:07.000+00:00'
           - '@baseType': '@baseType'
-            '@schemaLocation': http://example.com/aeiou
+            '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
             '@type': '@type'
             creditProfileDate: '2000-01-23T04:56:07.000+00:00'
             creditRiskRating: 0
@@ -1915,7 +1915,7 @@ definitions:
           engagedParty:
             '@baseType': '@baseType'
             '@referredType': '@referredType'
-            '@schemaLocation': http://example.com/aeiou
+            '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
             '@type': '@type'
             href: href
             id: id
@@ -1927,14 +1927,14 @@ definitions:
           paymentMethod:
           - '@baseType': '@baseType'
             '@referredType': '@referredType'
-            '@schemaLocation': http://example.com/aeiou
+            '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
             '@type': '@type'
             href: href
             id: id
             name: name
           - '@baseType': '@baseType'
             '@referredType': '@referredType'
-            '@schemaLocation': http://example.com/aeiou
+            '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
             '@type': '@type'
             href: href
             id: id
@@ -1942,7 +1942,7 @@ definitions:
           relatedParty:
           - '@baseType': '@baseType'
             '@referredType': '@referredType'
-            '@schemaLocation': http://example.com/aeiou
+            '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
             '@type': '@type'
             href: href
             id: id
@@ -1950,7 +1950,7 @@ definitions:
             role: role
           - '@baseType': '@baseType'
             '@referredType': '@referredType'
-            '@schemaLocation': http://example.com/aeiou
+            '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
             '@type': '@type'
             href: href
             id: id
@@ -2014,12 +2014,12 @@ definitions:
     example:
       partyRole:
         '@baseType': '@baseType'
-        '@schemaLocation': http://example.com/aeiou
+        '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
         '@type': '@type'
         account:
         - '@baseType': '@baseType'
           '@referredType': '@referredType'
-          '@schemaLocation': http://example.com/aeiou
+          '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
           '@type': '@type'
           description: description
           href: href
@@ -2027,7 +2027,7 @@ definitions:
           name: name
         - '@baseType': '@baseType'
           '@referredType': '@referredType'
-          '@schemaLocation': http://example.com/aeiou
+          '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
           '@type': '@type'
           description: description
           href: href
@@ -2036,38 +2036,38 @@ definitions:
         agreement:
         - '@baseType': '@baseType'
           '@referredType': '@referredType'
-          '@schemaLocation': http://example.com/aeiou
+          '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
           '@type': '@type'
           href: href
           id: id
           name: name
         - '@baseType': '@baseType'
           '@referredType': '@referredType'
-          '@schemaLocation': http://example.com/aeiou
+          '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
           '@type': '@type'
           href: href
           id: id
           name: name
         characteristic:
         - '@baseType': '@baseType'
-          '@schemaLocation': http://example.com/aeiou
+          '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
           '@type': '@type'
           name: name
           value: {}
           valueType: valueType
         - '@baseType': '@baseType'
-          '@schemaLocation': http://example.com/aeiou
+          '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
           '@type': '@type'
           name: name
           value: {}
           valueType: valueType
         contactMedium:
         - '@baseType': '@baseType'
-          '@schemaLocation': http://example.com/aeiou
+          '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
           '@type': '@type'
           characteristic:
             '@baseType': '@baseType'
-            '@schemaLocation': http://example.com/aeiou
+            '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
             '@type': '@type'
             city: city
             contactType: contactType
@@ -2086,11 +2086,11 @@ definitions:
             endDateTime: '2000-01-23T04:56:07.000+00:00'
             startDateTime: '2000-01-23T04:56:07.000+00:00'
         - '@baseType': '@baseType'
-          '@schemaLocation': http://example.com/aeiou
+          '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
           '@type': '@type'
           characteristic:
             '@baseType': '@baseType'
-            '@schemaLocation': http://example.com/aeiou
+            '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
             '@type': '@type'
             city: city
             contactType: contactType
@@ -2110,7 +2110,7 @@ definitions:
             startDateTime: '2000-01-23T04:56:07.000+00:00'
         creditProfile:
         - '@baseType': '@baseType'
-          '@schemaLocation': http://example.com/aeiou
+          '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
           '@type': '@type'
           creditProfileDate: '2000-01-23T04:56:07.000+00:00'
           creditRiskRating: 0
@@ -2119,7 +2119,7 @@ definitions:
             endDateTime: '2000-01-23T04:56:07.000+00:00'
             startDateTime: '2000-01-23T04:56:07.000+00:00'
         - '@baseType': '@baseType'
-          '@schemaLocation': http://example.com/aeiou
+          '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
           '@type': '@type'
           creditProfileDate: '2000-01-23T04:56:07.000+00:00'
           creditRiskRating: 0
@@ -2130,7 +2130,7 @@ definitions:
         engagedParty:
           '@baseType': '@baseType'
           '@referredType': '@referredType'
-          '@schemaLocation': http://example.com/aeiou
+          '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
           '@type': '@type'
           href: href
           id: id
@@ -2142,14 +2142,14 @@ definitions:
         paymentMethod:
         - '@baseType': '@baseType'
           '@referredType': '@referredType'
-          '@schemaLocation': http://example.com/aeiou
+          '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
           '@type': '@type'
           href: href
           id: id
           name: name
         - '@baseType': '@baseType'
           '@referredType': '@referredType'
-          '@schemaLocation': http://example.com/aeiou
+          '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
           '@type': '@type'
           href: href
           id: id
@@ -2157,7 +2157,7 @@ definitions:
         relatedParty:
         - '@baseType': '@baseType'
           '@referredType': '@referredType'
-          '@schemaLocation': http://example.com/aeiou
+          '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
           '@type': '@type'
           href: href
           id: id
@@ -2165,7 +2165,7 @@ definitions:
           role: role
         - '@baseType': '@baseType'
           '@referredType': '@referredType'
-          '@schemaLocation': http://example.com/aeiou
+          '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
           '@type': '@type'
           href: href
           id: id
@@ -2187,12 +2187,12 @@ definitions:
       Skipped properties: id,href'
     example:
       '@baseType': '@baseType'
-      '@schemaLocation': http://example.com/aeiou
+      '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
       '@type': '@type'
       account:
       - '@baseType': '@baseType'
         '@referredType': '@referredType'
-        '@schemaLocation': http://example.com/aeiou
+        '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
         '@type': '@type'
         description: description
         href: href
@@ -2200,7 +2200,7 @@ definitions:
         name: name
       - '@baseType': '@baseType'
         '@referredType': '@referredType'
-        '@schemaLocation': http://example.com/aeiou
+        '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
         '@type': '@type'
         description: description
         href: href
@@ -2209,38 +2209,38 @@ definitions:
       agreement:
       - '@baseType': '@baseType'
         '@referredType': '@referredType'
-        '@schemaLocation': http://example.com/aeiou
+        '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
         '@type': '@type'
         href: href
         id: id
         name: name
       - '@baseType': '@baseType'
         '@referredType': '@referredType'
-        '@schemaLocation': http://example.com/aeiou
+        '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
         '@type': '@type'
         href: href
         id: id
         name: name
       characteristic:
       - '@baseType': '@baseType'
-        '@schemaLocation': http://example.com/aeiou
+        '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
         '@type': '@type'
         name: name
         value: {}
         valueType: valueType
       - '@baseType': '@baseType'
-        '@schemaLocation': http://example.com/aeiou
+        '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
         '@type': '@type'
         name: name
         value: {}
         valueType: valueType
       contactMedium:
       - '@baseType': '@baseType'
-        '@schemaLocation': http://example.com/aeiou
+        '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
         '@type': '@type'
         characteristic:
           '@baseType': '@baseType'
-          '@schemaLocation': http://example.com/aeiou
+          '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
           '@type': '@type'
           city: city
           contactType: contactType
@@ -2259,11 +2259,11 @@ definitions:
           endDateTime: '2000-01-23T04:56:07.000+00:00'
           startDateTime: '2000-01-23T04:56:07.000+00:00'
       - '@baseType': '@baseType'
-        '@schemaLocation': http://example.com/aeiou
+        '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
         '@type': '@type'
         characteristic:
           '@baseType': '@baseType'
-          '@schemaLocation': http://example.com/aeiou
+          '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
           '@type': '@type'
           city: city
           contactType: contactType
@@ -2283,7 +2283,7 @@ definitions:
           startDateTime: '2000-01-23T04:56:07.000+00:00'
       creditProfile:
       - '@baseType': '@baseType'
-        '@schemaLocation': http://example.com/aeiou
+        '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
         '@type': '@type'
         creditProfileDate: '2000-01-23T04:56:07.000+00:00'
         creditRiskRating: 0
@@ -2292,7 +2292,7 @@ definitions:
           endDateTime: '2000-01-23T04:56:07.000+00:00'
           startDateTime: '2000-01-23T04:56:07.000+00:00'
       - '@baseType': '@baseType'
-        '@schemaLocation': http://example.com/aeiou
+        '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
         '@type': '@type'
         creditProfileDate: '2000-01-23T04:56:07.000+00:00'
         creditRiskRating: 0
@@ -2303,7 +2303,7 @@ definitions:
       engagedParty:
         '@baseType': '@baseType'
         '@referredType': '@referredType'
-        '@schemaLocation': http://example.com/aeiou
+        '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
         '@type': '@type'
         href: href
         id: id
@@ -2313,14 +2313,14 @@ definitions:
       paymentMethod:
       - '@baseType': '@baseType'
         '@referredType': '@referredType'
-        '@schemaLocation': http://example.com/aeiou
+        '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
         '@type': '@type'
         href: href
         id: id
         name: name
       - '@baseType': '@baseType'
         '@referredType': '@referredType'
-        '@schemaLocation': http://example.com/aeiou
+        '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
         '@type': '@type'
         href: href
         id: id
@@ -2328,7 +2328,7 @@ definitions:
       relatedParty:
       - '@baseType': '@baseType'
         '@referredType': '@referredType'
-        '@schemaLocation': http://example.com/aeiou
+        '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
         '@type': '@type'
         href: href
         id: id
@@ -2336,7 +2336,7 @@ definitions:
         role: role
       - '@baseType': '@baseType'
         '@referredType': '@referredType'
-        '@schemaLocation': http://example.com/aeiou
+        '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
         '@type': '@type'
         href: href
         id: id
@@ -2414,12 +2414,12 @@ definitions:
       Skipped properties: id,href'
     example:
       '@baseType': '@baseType'
-      '@schemaLocation': http://example.com/aeiou
+      '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
       '@type': '@type'
       account:
       - '@baseType': '@baseType'
         '@referredType': '@referredType'
-        '@schemaLocation': http://example.com/aeiou
+        '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
         '@type': '@type'
         description: description
         href: href
@@ -2427,7 +2427,7 @@ definitions:
         name: name
       - '@baseType': '@baseType'
         '@referredType': '@referredType'
-        '@schemaLocation': http://example.com/aeiou
+        '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
         '@type': '@type'
         description: description
         href: href
@@ -2436,38 +2436,38 @@ definitions:
       agreement:
       - '@baseType': '@baseType'
         '@referredType': '@referredType'
-        '@schemaLocation': http://example.com/aeiou
+        '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
         '@type': '@type'
         href: href
         id: id
         name: name
       - '@baseType': '@baseType'
         '@referredType': '@referredType'
-        '@schemaLocation': http://example.com/aeiou
+        '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
         '@type': '@type'
         href: href
         id: id
         name: name
       characteristic:
       - '@baseType': '@baseType'
-        '@schemaLocation': http://example.com/aeiou
+        '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
         '@type': '@type'
         name: name
         value: {}
         valueType: valueType
       - '@baseType': '@baseType'
-        '@schemaLocation': http://example.com/aeiou
+        '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
         '@type': '@type'
         name: name
         value: {}
         valueType: valueType
       contactMedium:
       - '@baseType': '@baseType'
-        '@schemaLocation': http://example.com/aeiou
+        '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
         '@type': '@type'
         characteristic:
           '@baseType': '@baseType'
-          '@schemaLocation': http://example.com/aeiou
+          '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
           '@type': '@type'
           city: city
           contactType: contactType
@@ -2486,11 +2486,11 @@ definitions:
           endDateTime: '2000-01-23T04:56:07.000+00:00'
           startDateTime: '2000-01-23T04:56:07.000+00:00'
       - '@baseType': '@baseType'
-        '@schemaLocation': http://example.com/aeiou
+        '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
         '@type': '@type'
         characteristic:
           '@baseType': '@baseType'
-          '@schemaLocation': http://example.com/aeiou
+          '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
           '@type': '@type'
           city: city
           contactType: contactType
@@ -2510,7 +2510,7 @@ definitions:
           startDateTime: '2000-01-23T04:56:07.000+00:00'
       creditProfile:
       - '@baseType': '@baseType'
-        '@schemaLocation': http://example.com/aeiou
+        '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
         '@type': '@type'
         creditProfileDate: '2000-01-23T04:56:07.000+00:00'
         creditRiskRating: 0
@@ -2519,7 +2519,7 @@ definitions:
           endDateTime: '2000-01-23T04:56:07.000+00:00'
           startDateTime: '2000-01-23T04:56:07.000+00:00'
       - '@baseType': '@baseType'
-        '@schemaLocation': http://example.com/aeiou
+        '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
         '@type': '@type'
         creditProfileDate: '2000-01-23T04:56:07.000+00:00'
         creditRiskRating: 0
@@ -2530,7 +2530,7 @@ definitions:
       engagedParty:
         '@baseType': '@baseType'
         '@referredType': '@referredType'
-        '@schemaLocation': http://example.com/aeiou
+        '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
         '@type': '@type'
         href: href
         id: id
@@ -2540,14 +2540,14 @@ definitions:
       paymentMethod:
       - '@baseType': '@baseType'
         '@referredType': '@referredType'
-        '@schemaLocation': http://example.com/aeiou
+        '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
         '@type': '@type'
         href: href
         id: id
         name: name
       - '@baseType': '@baseType'
         '@referredType': '@referredType'
-        '@schemaLocation': http://example.com/aeiou
+        '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
         '@type': '@type'
         href: href
         id: id
@@ -2555,7 +2555,7 @@ definitions:
       relatedParty:
       - '@baseType': '@baseType'
         '@referredType': '@referredType'
-        '@schemaLocation': http://example.com/aeiou
+        '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
         '@type': '@type'
         href: href
         id: id
@@ -2563,7 +2563,7 @@ definitions:
         role: role
       - '@baseType': '@baseType'
         '@referredType': '@referredType'
-        '@schemaLocation': http://example.com/aeiou
+        '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
         '@type': '@type'
         href: href
         id: id
@@ -2639,7 +2639,7 @@ definitions:
     example:
       '@baseType': '@baseType'
       '@referredType': '@referredType'
-      '@schemaLocation': http://example.com/aeiou
+      '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
       '@type': '@type'
       href: href
       id: id
@@ -2677,7 +2677,7 @@ definitions:
     example:
       '@baseType': '@baseType'
       '@referredType': '@referredType'
-      '@schemaLocation': http://example.com/aeiou
+      '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
       '@type': '@type'
       href: href
       id: id

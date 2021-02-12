@@ -184,7 +184,8 @@ function getPayloadSchema_old(req) {
 };
 
 function getURLScheme() {
-  return "https";
+  const swaggerDoc = getSwaggerDoc();
+  return swaggerDoc.schemes[0];
 }
 
 function getHost() {

@@ -208,7 +208,7 @@ function processCommonAttributes(req, type, obj) {
     }
 
     if(typeprops["@schemaLocation"]!==undefined && obj["@schemaLocation"]===undefined) {
-      const url = swaggerUtils.getURLScheme() + "://" + swaggerUtils.getHost() + "/docs/#/" 
+      const url = swaggerUtils.getURLScheme() + "://" + req.headers.host + swaggerUtils.getSwaggerDoc().basePath + "docs/#/" 
       obj["@schemaLocation"] = encodeURI(url);
     }
 
