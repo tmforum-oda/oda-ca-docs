@@ -5,25 +5,25 @@ metadata:
   labels:
     oda.tmforum.org/componentName: {{.Release.Name}}-{{.Values.component.type}}
 spec:
-  type: {{.Values.component.type}}
-  selector:
-    matchLabels:
-     oda.tmforum.org/componentName: {{.Release.Name}}-{{.Values.component.type}}
-  componentKinds:
-    - group: core
-      kind: Service    
-    - group: core
-      kind: PersistentVolumeClaim
-    - group: apps
-      kind: Deployment  
-  version: "0.0.1"
-  description: "Simple Product Catalog ODA-Component from Open-API reference implementation." 
-  maintainers:
-    - name: Lester Thomas
-      email: lester.thomas@vodafone.com
-  owners:
-    - name: Lester Thomas
-      email: lester.thomas@vodafone.com     
+#  componentType: {{.Values.component.type}}
+#  selector:
+#    matchLabels:
+#     oda.tmforum.org/componentName: {{.Release.Name}}-{{.Values.component.type}}
+#  componentKinds:
+#    - group: core
+#      kind: Service    
+#    - group: core
+#      kind: PersistentVolumeClaim
+#    - group: apps
+#      kind: Deployment  
+#  version: "0.0.1"
+#  description: "Simple Product Catalog ODA-Component from Open-API reference implementation." 
+#  maintainers:
+#    - name: Lester Thomas
+#      email: lester.thomas@vodafone.com
+#  owners:
+#    - name: Lester Thomas
+#      email: lester.thomas@vodafone.com     
   coreFunction:
     exposedAPIs: 
     - name: productcatalogmanagement
@@ -44,9 +44,9 @@ spec:
     subscribedEvents: []
   management: []
   security:
-    roles:
-      specification: https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
-      implementation: {{.Release.Name}}-prodcatapi
-      path: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/productCatalogManagement/v4
-      developerUI: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/productCatalogManagement/v4/docs      
-    securitySchemes: []
+    securitySchemes:
+      bearerAuth:
+        type: http
+        scheme: bearer
+        bearerFormat: JWT
+#    securitySchemes: []
