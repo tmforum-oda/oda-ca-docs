@@ -38,19 +38,20 @@ const swaggerDoc = swaggerUtils.getSwaggerDoc();
 var componentName = process.env.COMPONENT_NAME; 
 console.log('ComponentName:'+componentName);
 
+swaggerDoc.basePath = '/' + componentName + swaggerDoc.basePath
+
 // add component name to url in swagger_ui
 fs.readFile(path.join(__dirname, './node_modules/swagger-ui-dist/index.html'), 'utf8', function (err,data) {
   if (err) {
     return console.log(err);
   }
-  var result = data.replace(/url: \"/g, 'url: \"/' + componentName );
+  var result = data.replace(/api-docs/g, swaggerDoc.basePath + 'api-docs' );
   console.log('updating ' + path.join(__dirname, './node_modules/swagger-ui-dist/index.html'));
   fs.writeFile(path.join(__dirname, './node_modules/swagger-ui-dist/index.html'), result, 'utf8', function (err) {
       if (err) return console.log(err);
   });
 });
         
-swaggerDoc.basePath = '/' + componentName + swaggerDoc.basePath
 
 // Initialize the Swagger middleware
 swaggerTools.initializeMiddleware(swaggerDoc, function (middleware) {
