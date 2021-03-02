@@ -112,16 +112,36 @@ exports.deletePartyRole = function(req, res, next) {
   const internalError =  new TError(TErrorEnum.INTERNAL_SERVER_ERROR, "Internal database error");
 
   mongoUtils.connect().then(db => {
+
+    //need to query for the document before we delete it (so we can add it to event)
     db.collection(resourceType)
-      .deleteOne(query)
+      .findOne(query)
       .then(doc => {
-        if (doc.result.n == 1) {
-           sendDoc(res, 204, {});
-           notificationUtils.publish(req,doc);
-        } else { 
-           sendError(res, new TError(TErrorEnum.RESOURCE_NOT_FOUND,"No resource with given id found"));
+        if(doc) {
+          doc = cleanPayloadServiceType(doc);
+          notificationUtils.publish(req,doc);
+        } else {
+          sendError(res, new TError(TErrorEnum.RESOURCE_NOT_FOUND,"No resource with given id found"));
         }
-      }).catch(error => sendError(res, internalError))
+ 
+        db.collection(resourceType)
+        .deleteOne(query)
+        .then(doc => {
+          if (doc.result.n == 1) {
+              sendDoc(res, 204, {});
+          } else { 
+              sendError(res, new TError(TErrorEnum.RESOURCE_NOT_FOUND,"No resource with given id found"));
+          }
+        }).catch(error => sendError(res, internalError))        
+
+
+      })
+      .catch(error => {
+        console.log("deletePartyRole: error=" + error);
+        sendError(res, internalError);
+      });
+      
+
   })
   .catch(error => sendError(res, internalError));
 

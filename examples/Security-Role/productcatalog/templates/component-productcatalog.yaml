@@ -55,4 +55,3 @@ spec:
       path: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/partyRoleManagement/v4
       developerUI: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/partyRoleManagement/v4/docs
       port: 8080    
-#    securitySchemes: []
