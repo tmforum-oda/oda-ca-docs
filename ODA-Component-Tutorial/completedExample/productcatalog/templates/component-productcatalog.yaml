@@ -38,4 +38,8 @@ spec:
     subscribedEvents: []
   management: []
   security:
-    securitySchemes: []
+    securitySchemes: 
+      bearerAuth:
+        type: http
+        scheme: bearer
+        bearerFormat: JWT

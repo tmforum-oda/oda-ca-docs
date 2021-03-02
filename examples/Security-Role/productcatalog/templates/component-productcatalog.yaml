@@ -5,11 +5,11 @@ metadata:
   labels:
     oda.tmforum.org/componentName: {{.Release.Name}}-{{.Values.component.type}}
 spec:
-  componenttype: {{.Values.component.type}}
+  type: {{.Values.component.type}}
   selector:
     matchLabels:
      oda.tmforum.org/componentName: {{.Release.Name}}-{{.Values.component.type}}
-  componentkinds:
+  componentKinds:
   - group: core
     kind: Service    
   - group: core
