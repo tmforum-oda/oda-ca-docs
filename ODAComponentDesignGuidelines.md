@@ -26,7 +26,7 @@ The meta-data is defined using a Kubernetes [CustomResourceDefinition](https://k
 There is an example of the metadata for the productcatalog example component broken-down into sections below:
 
 ```
-apiVersion: oda.tmforum.org/v1alpha1
+apiVersion: oda.tmforum.org/v1alpha2
 kind: component
 metadata:
   name: vodafone-productcatalog
@@ -129,9 +129,15 @@ The *eventNotification* describes the data events that the component publishes a
         type: http
         scheme: bearer
         bearerFormat: JWT
+    partyrole:
+      specification: https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
+      implementation: r1-partyroleapi
+      path: /r1-productcatalog/tmf-api/partyRoleManagement/v4
+      developerUI: /r1-productcatalog/tmf-api/partyRoleManagement/v4/docs
+      port: 8080  
 ```
 
-The *management* and *security* describes management APIs the the component exposes that are part of its management (rather than part of its business function). Examples of management APIs are for self-testing, raising operational alarms, or configuring the component itself. The *security* section provides meta-data on the security mechanisms used by the component. Again, the current definitions within these sections are experimental and we will modify and enhance them as we build-out the ODA Canvas and assemble a representative set of ODA Components.
+The *management* and *security* describes management APIs the the component exposes that are part of its management (rather than part of its business function). Examples of management APIs are for self-testing, raising operational alarms, or configuring the component itself. The *security* section provides meta-data on the security mechanisms used by the component. Again, the current definitions within these sections are experimental and we will modify and enhance them as we build-out the ODA Canvas and assemble a representative set of ODA Components. As of version `v1alpha2` the security definition should include a partyrole property that describes the TMF669 PartyRole Open-API that all components must support (future versions may support multiple mechanisms for components to expose the roles they support).
 
 ## Step 2: Add labels to all the standard Kubernetes resources
 
