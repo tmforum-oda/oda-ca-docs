@@ -1,0 +1,37 @@
+{
+  "name": "party-role-management",
+  "version": "4.0.0",
+  "description": "This is Swagger UI environment generated for the TMF Party Role Management specification",
+  "main": "index.js",
+  "scripts": {
+    "prestart": "npm install",
+    "start": "node index.js"
+  },
+  "keywords": [
+    "swagger"
+  ],
+  "license": "Unlicense",
+  "private": true,
+  "dependencies": {
+    "body-parser": "^1.15.2",
+    "connect": "^3.2.0",
+    "express": "^4.15.3",
+    "js-yaml": "^3.3.0",
+    "uuid": "^3.3.2",
+    "query-to-mongo": "^0.9.0",
+    "swagger-tools": "0.10.1",
+    "cfenv": "^1.0.3",
+    "commander": "^2.6.0",
+    "http-post": "^0.1.1",
+    "http-proxy": "^1.8.1",
+    "mongodb": "^3.1.1",
+    "swagger-ui-dist": "^3.17.6",
+    "request": "^2.88.0",
+    "request-promise": "^4.2.2",
+    "untildify": "^3.0.3"
+  },
+  "engines": {
+    "node": ">=8.10",
+    "npm": ">=6.0"
+  }
+}

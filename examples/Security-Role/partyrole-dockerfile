@@ -1,0 +1,7 @@
+FROM node:10.19
+COPY partyRoleMicroservice/implementation/package*.json /src/
+WORKDIR /src
+RUN npm install
+COPY partyRoleMicroservice/implementation ./
+EXPOSE 8080
+CMD ["node", "index.js"]

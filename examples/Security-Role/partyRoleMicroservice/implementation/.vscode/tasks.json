@@ -1,0 +1,15 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"label": "bridge-to-kubernetes.service",
+			"type": "bridge-to-kubernetes.service",
+			"service": "r1-partyroleapi",
+			"ports": [
+				8080
+			],
+			"targetCluster": "oda-ca-candidate-stage-1",
+			"targetNamespace": "components"
+		}
+	]
+}
