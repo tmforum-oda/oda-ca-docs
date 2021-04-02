@@ -8,8 +8,6 @@ const querystring = require('querystring');
 
 const MongoClient = require('mongodb').MongoClient;
 
-const {getResponseType, getPayloadType, getTypeDefinition} = require('./swaggerUtils');
-
 var mongodb = null; 
 
 /* connection helper for running MongoDb from url */
@@ -30,7 +28,7 @@ function connectHelper(callback) {
     }
   });
 }
-
+/*
 function getMongoQuery(req) {
   var res;
   if(req instanceof Object) {
@@ -83,6 +81,7 @@ function getMongoQuery(req) {
 function quotedString(s) {
   return s;
 };
+*/ 
 
 function connectDb(callback) {
   if(mongodb) {
@@ -109,7 +108,7 @@ function connect() {
       });
     });
 };
-
+ /* 
 function sendDoc(res,code,doc) {
   // delete internal mongo _id from all documents
   if(Array.isArray(doc)) {
@@ -130,6 +129,6 @@ function sendDoc(res,code,doc) {
   res.end(JSON.stringify(doc));
 }
 
-
-module.exports = { connect, connectDb, getMongoQuery, sendDoc };
+*/
+module.exports = { connect, connectDb };
 

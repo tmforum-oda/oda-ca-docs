@@ -41,6 +41,7 @@ exports.createPartyRole = function(req, res, next) {
 
   console.log('createPartyRole :: ' + req.method + ' ' + req.url + ' ' + req.headers.host);
 
+
   /* matching isRestfulCreate - argument partyRole */
   
   const resourceType = getResponseType(req);
@@ -164,7 +165,7 @@ exports.listPartyRole = function(req, res, next) {
   console.log('listPartyRole :: ' + req.method + ' ' + req.url + ' ' + req.headers.host);
 
   /* matching isRestfulIndex */
- 
+
   var query = mongoUtils.getMongoQuery(req);
 
   query = swaggerUtils.updateQueryServiceType(query, req,'');

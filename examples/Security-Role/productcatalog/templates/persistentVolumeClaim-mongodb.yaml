@@ -5,7 +5,7 @@ metadata:
   labels:
     oda.tmforum.org/componentName: {{.Release.Name}}-{{.Values.component.type}}
 spec:
-#  storageClassName: default-st1
+  storageClassName: {{.Values.component.storageClassName}}
   accessModes:
   - ReadWriteOnce
   resources:

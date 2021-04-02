@@ -6,4 +6,6 @@
 component:
   # Specifies whether a service account should be created
   type: productcatalog
+  storageClassName: default
+  
 
