@@ -20,9 +20,13 @@ Request access to the [ODA-CA Confluence space](https://projects.tmforum.org/wik
 
 Check out the [ODA-CA briefing presentation here](https://projects.tmforum.org/wiki/x/jY6UCQ)
 
-**Step 6: Watch the 'Show & Tell' from the first Sprint (Feb 2021)**
+**Step 6: Watch the 'Show & Tell' videos from the end of each sprint**
 
-The session (with [notes here](https://projects.tmforum.org/wiki/x/bfowCQ), including presentations and a [video recording](https://video.ibm.com/channel/24077591/video/lf09c2) of the Show & Tell session at Virtual Action Week 2021) covers the Open Digital Lab environment and an initial proof-of-concept for automated ODA compliance validation of ‘black box’ and ‘glass box’ commercial products.  There's also a more detailed walkthrough for developers [here](https://projects.tmforum.org/wiki/x/efowCQ).  You need to [join the ODA Project](https://engage.tmforum.org/projects/volunteer-opportunity-details?VolunteerOpportunityKey=603731cf-09c5-4229-8730-c900c157c07b&CommunityKey=0430eebd-2dac-41b6-bd1b-fba7ebcfe7d7&_ga=2.154545981.400866836.1614620569-367684471.1602091309) before you can access these resources (see above).
+* Sprint 1: [video recording](https://video.ibm.com/channel/24077591/video/lf09c2) and [notes including presentations](https://projects.tmforum.org/wiki/x/bfowCQ). Covers the Open Digital Lab environment and an initial proof-of-concept for automated ODA compliance validation of ‘black box’ and ‘glass box’ commercial products.
+
+* Sprint 2: [video recording](https://us02web.zoom.us/rec/share/J3JyQ4q7ZpBGtoG2MOdlM9hYAKrVXdis09rmzoPcEnopvUy4S3-yCphydlpYDx8K.Je5BAFFXOLUmrqEo) and [notes including presentations](https://projects.tmforum.org/wiki/pages/viewpage.action?pageId=168397244&preview=%2F168397244%2F168397695%2F2021.04.06+ODA-CA+Show+%26+Tell.pdf). Covers Security Validation of ODA Components, an API Operator for Whale Cloud API Gateway and Oracle Proxy Components. Includes proposed roadmap for next sprints.
+
+
 
 **Step 7: Watch the Sprint 2 demo of Security Validation (Mar 2021)**
 
