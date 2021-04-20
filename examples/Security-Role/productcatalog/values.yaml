@@ -8,4 +8,5 @@ component:
   type: productcatalog
   storageClassName: default
   
-
+security:
+  controllerRole: Admin

@@ -38,6 +38,7 @@ spec:
     subscribedEvents: []
   management: []
   security:
+    controllerRole: {{ .Values.security.controllerRole }}
     securitySchemes:
       bearerAuth:
         type: http
