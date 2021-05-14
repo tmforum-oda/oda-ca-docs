@@ -13,7 +13,7 @@ Open Digital Architecture - Component Accelerator
    :maxdepth: 1
    :caption: About the project (Playbook):
 
-   caDocs/README.md
+   caDocs/Playbook.md
 
 .. toctree::
    :maxdepth: 2
@@ -28,6 +28,7 @@ Open Digital Architecture - Component Accelerator
 
    caDocs/ODAComponentDesignGuidelines.md
 
+
 .. toctree::
    :maxdepth: 2
    :caption: Canvas Helm Charts:
@@ -39,7 +40,14 @@ Open Digital Architecture - Component Accelerator
    :maxdepth: 2
    :caption: Canvas Operators:
 
-   caSource/controllers/index.rst      
+   caSource/controllers/index.rst        
+
+   
+.. toctree::
+   :maxdepth: 2
+   :caption: Compliance Test Kit (CTK):
+
+   ctk/README.md
 
 
 .. toctree::
@@ -47,6 +55,7 @@ Open Digital Architecture - Component Accelerator
    :caption: Contributions Guide:
 
    caDocs/ContributionsGuide.md
+   caDocs/DocumentationProcess.md
 
 
 

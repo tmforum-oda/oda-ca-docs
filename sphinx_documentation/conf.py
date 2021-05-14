@@ -68,7 +68,8 @@ shutil.copy2('../../oda-ca/controllers/apiOperatorSimpleIngress/sequenceDiagrams
 shutil.copy2('../../oda-ca/controllers/securityController/README.md', './caSource/controllers/securityController') 
 shutil.copy2('../../oda-ca/controllers/securityController/sequenceDiagrams/securitySequenceKeycloak.png', './caSource/controllers/securityController/sequenceDiagrams') 
 shutil.copy2('../../oda-ca/controllers/securityController/sequenceDiagrams/securitySequenceKeycloakDetailed.png', './caSource/controllers/securityController/sequenceDiagrams') 
-shutil.copy2('../../oda-ca-docs/README.md', './caDocs') 
+shutil.copy2('../../oda-ca-docs/DocumentationProcess.md', './caDocs') 
+shutil.copy2('../../oda-ca-docs/Playbook.md', './caDocs') 
 shutil.copy2('../../oda-ca-docs/ContributionsGuide.md', './caDocs') 
 shutil.copy2('../../oda-ca-docs/.github/Issues.PNG', './caDocs/.github') 
 shutil.copy2('../../oda-ca-docs/ODAComponentDesignGuidelines.md', './caDocs') 
@@ -83,6 +84,12 @@ shutil.copy2('../../oda-ca-docs/ODA-Component-Tutorial/images/Rancher.png', './c
 shutil.copy2('../../oda-ca-docs/ODA-Component-Tutorial/images/Reference-Implementation.png', './caDocs/ODAComponentTutorial/images') 
 shutil.copy2('../../oda-ca-docs/ODA-Component-Tutorial/images/swagger-ui.png', './caDocs/ODAComponentTutorial/images') 
 shutil.copy2('../../oda-canvas-charts/README.md', './canvasCharts') 
+shutil.copy2('../../oda-component-ctk/README.md', './ctk') 
+shutil.copy2('../../oda-component-ctk/sampleOutput-L1-dynamic.png', './ctk') 
+shutil.copy2('../../oda-component-ctk/sampleOutput-L1-static.png', './ctk') 
+shutil.copy2('../../oda-component-ctk/sampleOutput-L2-dynamic.png', './ctk') 
+shutil.copy2('../../oda-component-ctk/sampleOutput-L2-static.png', './ctk') 
+shutil.copy2('../../oda-component-ctk/StagedClusters.png', './ctk') 
 
 
 #mike cartwright
