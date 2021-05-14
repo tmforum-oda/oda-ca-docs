@@ -5,7 +5,9 @@
 
 component:
   # Specifies whether a service account should be created
-  type: productcatalog
+  type: TMFC001-productcatalogmanagement
+  name: productcatalog
+  version: "0.0.1"
   storageClassName: default
   
 security:

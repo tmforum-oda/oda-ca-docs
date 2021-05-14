@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: {{.Release.Name}}-prodcatapi
   labels:
-    oda.tmforum.org/componentName: {{.Release.Name}}-{{.Values.component.type}}
+    oda.tmforum.org/componentName: {{.Release.Name}}-{{.Values.component.name}}
 spec:
   replicas: 1
   selector:
@@ -21,7 +21,7 @@ spec:
         - name: RELEASE_NAME
           value: {{.Release.Name}}           
         - name: COMPONENT_NAME
-          value: {{.Release.Name}}-{{.Values.component.type}}           
+          value: {{.Release.Name}}-{{.Values.component.name}}           
         imagePullPolicy: Always
         ports:
         - name: {{.Release.Name}}-pcapi

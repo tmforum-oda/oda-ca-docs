@@ -4,7 +4,7 @@ metadata:
   name: {{.Release.Name}}-prodcatapi
   labels:
     app: {{.Release.Name}}-prodcatapi
-    oda.tmforum.org/componentName: {{.Release.Name}}-{{.Values.component.type}}
+    oda.tmforum.org/componentName: {{.Release.Name}}-{{.Values.component.name}}
 spec:
   ports:
   - port: 8080

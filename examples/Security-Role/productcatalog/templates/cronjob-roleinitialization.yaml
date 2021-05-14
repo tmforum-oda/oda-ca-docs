@@ -3,7 +3,7 @@ kind: Job
 metadata:
   name: {{.Release.Name}}-roleinitialization
   labels:
-    oda.tmforum.org/componentName: {{.Release.Name}}-{{.Values.component.type}}
+    oda.tmforum.org/componentName: {{.Release.Name}}-{{.Values.component.name}}
 spec:
   template:
     metadata:
@@ -17,7 +17,7 @@ spec:
         - name: RELEASE_NAME
           value: {{.Release.Name}}           
         - name: COMPONENT_NAME
-          value: {{.Release.Name}}-{{.Values.component.type}}           
+          value: {{.Release.Name}}-{{.Values.component.name}}           
         imagePullPolicy: Always
       restartPolicy: OnFailure
   backoffLimit: 10
