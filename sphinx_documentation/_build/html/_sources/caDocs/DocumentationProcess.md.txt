@@ -2,7 +2,7 @@
 
 There is a video overview of the Documentation Process at:
 
- [![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/C_1WW0o0Z5o/0.jpg)](https://www.youtube.com/watch?v=C_1WW0o0Z5o)
+ [![Documentation Process](https://img.youtube.com/vi/C_1WW0o0Z5o/0.jpg)](https://www.youtube.com/watch?v=C_1WW0o0Z5o)
 
 
 The published home of the documentation is [https://tmforum-oda.github.io/oda-ca-docs/](https://tmforum-oda.github.io/oda-ca-docs/)
