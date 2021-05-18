@@ -1,28 +1,23 @@
-apiVersion: apps/v1
-kind: Deployment
+apiVersion: batch/v1
+kind: Job
 metadata:
-  name: {{.Release.Name}}-prodcatapi
+  name: {{.Release.Name}}-roleinitialization
   labels:
     oda.tmforum.org/componentName: {{.Release.Name}}-{{.Values.component.name}}
 spec:
-  replicas: 1
-  selector:
-    matchLabels:
-      app: {{.Release.Name}}-prodcatapi
   template:
     metadata:
       labels:
-        app: {{.Release.Name}}-prodcatapi
+        app: {{.Release.Name}}-roleinitialization
     spec:
       containers:
-      - name: {{.Release.Name}}-prodcatapi
-        image: lesterthomas/productcatalogapi:latest
+      - name: {{.Release.Name}}-roleinitialization
+        image: lesterthomas/roleinitialization:latest
         env:
         - name: RELEASE_NAME
           value: {{.Release.Name}}           
         - name: COMPONENT_NAME
           value: {{.Release.Name}}-{{.Values.component.name}}           
         imagePullPolicy: Always
-        ports:
-        - name: {{.Release.Name}}-pcapi
-          containerPort: 8080
+      restartPolicy: OnFailure
+  backoffLimit: 10

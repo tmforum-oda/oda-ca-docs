@@ -4,7 +4,7 @@ kind: Service
 metadata:
   name: {{.Release.Name}}-mongodb
   labels:
-    oda.tmforum.org/componentName: {{.Release.Name}}-{{.Values.component.type}}
+    oda.tmforum.org/componentName: {{.Release.Name}}-{{.Values.component.name}}
     app: {{.Release.Name}}-mongodb
 spec:
   ports:

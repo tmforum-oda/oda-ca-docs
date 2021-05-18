@@ -3,9 +3,9 @@ apiVersion: v1
 metadata:
   name: {{.Release.Name}}-mongodb-pv-claim
   labels:
-    oda.tmforum.org/componentName: {{.Release.Name}}-{{.Values.component.type}}
+    oda.tmforum.org/componentName: {{.Release.Name}}-{{.Values.component.name}}
 spec:
-#  storageClassName: default-st1
+  storageClassName: {{.Values.component.storageClassName}}
   accessModes:
   - ReadWriteOnce
   resources:
