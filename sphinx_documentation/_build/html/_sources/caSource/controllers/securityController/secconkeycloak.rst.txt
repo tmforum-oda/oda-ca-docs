@@ -1,7 +1,7 @@
 Keycloak integration Class
 ==========================
 
-.. automodule:: securityController.secconkeycloak
+.. automodule:: secconkeycloak
    :members:
    :undoc-members:
    :show-inheritance:

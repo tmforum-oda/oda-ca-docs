@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>apiOperatorSimpleIngress module &mdash; ODA-Component Accelerator v1alpha2 documentation</title>
+  <title>apiOperatorSimpleIngress module &mdash; ODA-Component Accelerator v1alpha3 documentation</title>
   
 
   
@@ -196,8 +196,8 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="module-apiOperatorSimpleIngress.apiOperatorSimpleIngress">
-<span id="apioperatorsimpleingress-module"></span><h1>apiOperatorSimpleIngress module<a class="headerlink" href="#module-apiOperatorSimpleIngress.apiOperatorSimpleIngress" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="module-apiOperatorSimpleIngress">
+<span id="apioperatorsimpleingress-module"></span><h1>apiOperatorSimpleIngress module<a class="headerlink" href="#module-apiOperatorSimpleIngress" title="Permalink to this headline">¶</a></h1>
 <p>Kubernetes operator for ODA API custom resources.</p>
 <p>Normally this module is deployed as part of an ODA Canvas. It uses the kopf kubernetes operator framework (<a class="reference external" href="https://kopf.readthedocs.io/">https://kopf.readthedocs.io/</a>) to build an
 operator that takes API custom resources and implements them using Kubernetes Ingress resources.</p>
@@ -209,8 +209,8 @@ that would configure an API gateway instead of an Ingress.</p>
 <li><p>For status updates in the child Ingress resources and EndPointSlice resources, so that the API status reflects a summary the Ingress and Implementation for the API. see <a class="reference external" href="#apiOperatorSimpleIngress.apiOperatorSimpleIngress.ingress_status">ingress_status</a> and <a class="reference external" href="#apiOperatorSimpleIngress.apiOperatorSimpleIngress.implementation_status">implementation_status</a></p></li>
 </ol>
 <dl class="py function">
-<dt id="apiOperatorSimpleIngress.apiOperatorSimpleIngress.apiStatus">
-<code class="sig-prename descclassname"><span class="pre">apiOperatorSimpleIngress.apiOperatorSimpleIngress.</span></code><code class="sig-name descname"><span class="pre">apiStatus</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">meta</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">spec</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">status</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">body</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">namespace</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">labels</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#apiOperatorSimpleIngress.apiOperatorSimpleIngress.apiStatus" title="Permalink to this definition">¶</a></dt>
+<dt id="apiOperatorSimpleIngress.apiStatus">
+<code class="sig-prename descclassname"><span class="pre">apiOperatorSimpleIngress.</span></code><code class="sig-name descname"><span class="pre">apiStatus</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">meta</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">spec</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">status</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">body</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">namespace</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">labels</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#apiOperatorSimpleIngress.apiStatus" title="Permalink to this definition">¶</a></dt>
 <dd><p>Handler function for new or updated APIs.</p>
 <p>Processes the spec of the API and create child Kubernetes Ingress resources. The Kubernetes Ingress will expose the API to the outside.</p>
 <dl class="simple">
@@ -232,8 +232,8 @@ that would configure an API gateway instead of an Ingress.</p>
 </dd></dl>
 
 <dl class="py function">
-<dt id="apiOperatorSimpleIngress.apiOperatorSimpleIngress.implementation_status">
-<code class="sig-prename descclassname"><span class="pre">apiOperatorSimpleIngress.apiOperatorSimpleIngress.</span></code><code class="sig-name descname"><span class="pre">implementation_status</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">meta</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">spec</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">status</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">body</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">namespace</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">labels</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#apiOperatorSimpleIngress.apiOperatorSimpleIngress.implementation_status" title="Permalink to this definition">¶</a></dt>
+<dt id="apiOperatorSimpleIngress.implementation_status">
+<code class="sig-prename descclassname"><span class="pre">apiOperatorSimpleIngress.</span></code><code class="sig-name descname"><span class="pre">implementation_status</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">meta</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">spec</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">status</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">body</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">namespace</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">labels</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#apiOperatorSimpleIngress.implementation_status" title="Permalink to this definition">¶</a></dt>
 <dd><p>Handler function to register for status changes in EndPointSlide resources.</p>
 <p>The EndPointSlide resources show the implementation of an API linked the the API implementations Service Resource. 
 When EndPointSlide updates the ready-status of the implementation, update parent API object.</p>
@@ -256,8 +256,8 @@ When EndPointSlide updates the ready-status of the implementation, update parent
 </dd></dl>
 
 <dl class="py function">
-<dt id="apiOperatorSimpleIngress.apiOperatorSimpleIngress.ingress_status">
-<code class="sig-prename descclassname"><span class="pre">apiOperatorSimpleIngress.apiOperatorSimpleIngress.</span></code><code class="sig-name descname"><span class="pre">ingress_status</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">meta</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">spec</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">status</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">body</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">namespace</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">labels</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#apiOperatorSimpleIngress.apiOperatorSimpleIngress.ingress_status" title="Permalink to this definition">¶</a></dt>
+<dt id="apiOperatorSimpleIngress.ingress_status">
+<code class="sig-prename descclassname"><span class="pre">apiOperatorSimpleIngress.</span></code><code class="sig-name descname"><span class="pre">ingress_status</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">meta</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">spec</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">status</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">body</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">namespace</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">labels</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#apiOperatorSimpleIngress.ingress_status" title="Permalink to this definition">¶</a></dt>
 <dd><p>Handler function to register for status changes in child Ingress resources.</p>
 <p>When Ingress adds IP address/dns of load balancer, update parent API object.</p>
 <dl class="simple">

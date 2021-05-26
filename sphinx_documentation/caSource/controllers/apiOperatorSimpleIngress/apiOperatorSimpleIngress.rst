@@ -1,7 +1,7 @@
 apiOperatorSimpleIngress module
 =================================
 
-.. automodule:: apiOperatorSimpleIngress.apiOperatorSimpleIngress
+.. automodule:: apiOperatorSimpleIngress
    :members:
    :undoc-members:
    :show-inheritance:

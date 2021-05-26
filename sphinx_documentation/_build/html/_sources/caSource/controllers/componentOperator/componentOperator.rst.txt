@@ -1,7 +1,7 @@
 componentOperator module
 ========================
 
-.. automodule:: componentOperator.componentOperator
+.. automodule:: componentOperator
    :members:
    :undoc-members:
    :show-inheritance:

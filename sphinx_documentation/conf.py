@@ -13,8 +13,9 @@
 import os
 import sys
 
-sys.path.insert(0, os.path.abspath('../../oda-ca/controllers/'))
-print(os.path.abspath('../../oda-ca/controllers/'))
+sys.path.insert(0, os.path.abspath('../../oda-ca/controllers/securityController'))
+sys.path.insert(0, os.path.abspath('../../oda-ca/controllers/componentOperator'))
+sys.path.insert(0, os.path.abspath('../../oda-ca/controllers/apiOperatorSimpleIngress'))
 print('********************************************')
 # -- Project information -----------------------------------------------------
 
@@ -23,7 +24,7 @@ copyright = '2021, TM Forum ODA-Component Accelerator project'
 author = 'TM Forum ODA-Component Accelerator project'
 
 # The full version, including alpha/beta/rc tags
-release = 'v1alpha2'
+release = 'v1alpha3'
 
 
 # -- General configuration ---------------------------------------------------
