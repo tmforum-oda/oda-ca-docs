@@ -1,22 +1,7 @@
 apiVersion: networking.istio.io/v1alpha3
-kind: Gateway
-metadata:
-  name: prodcat-gateway
-spec:
-  selector:
-    istio: ingressgateway # use istio default controller
-  servers:
-  - port:
-      number: 80
-      name: http
-      protocol: HTTP
-    hosts:
-    - "*"
----
-apiVersion: networking.istio.io/v1alpha3
 kind: VirtualService
 metadata:
-  name: prodcat
+  name: {{.Release.Name}}-{{.Values.component.name}}
 spec:
   hosts:
   - "*"
@@ -25,9 +10,17 @@ spec:
   http:
   - match:
     - uri:
-        prefix: /r1-productcatalog/tmf-api/productCatalogManagement/v4
+        prefix: /{{.Release.Name}}-productcatalog/tmf-api/productCatalogManagement/v4   
     route:
     - destination:
-        host: r1-prodcatapi
+        host: {{.Release.Name}}-prodcatapi
         port:
           number: 8080
+  - match:
+    - uri:
+        prefix: /{{.Release.Name}}-productcatalog/tmf-api/partyRoleManagement/v4   
+    route:
+    - destination:
+        host: {{.Release.Name}}-partyroleapi
+        port:
+          number: 8080          

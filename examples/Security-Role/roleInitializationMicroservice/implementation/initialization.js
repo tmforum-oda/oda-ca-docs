@@ -24,6 +24,13 @@ const createPartyRole = async () => {
         console.log(`Status: ${res.status}`);
         console.log('Body: ', res.data);
         complete = true;
+        
+        console.log('Telling Istio were finished');
+        const res2 = await axios.post(
+          'http://127.0.0.1:15020/quitquitquit', 
+          {},
+          {timeout: 10000});
+
         process.exit(0);
     } catch (err) {
       console.log('Initialization failed - retrying in 5 seconds');
@@ -32,3 +39,4 @@ const createPartyRole = async () => {
 };
 
 createPartyRole();
+
