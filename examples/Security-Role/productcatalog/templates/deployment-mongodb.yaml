@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
       - name: {{.Release.Name}}-mongodb
-        image: mongo:latest
+        image: mongo:4.4.7
         ports:
         - name: {{.Release.Name}}-mongodb
           containerPort: 27017
