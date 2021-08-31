@@ -2,7 +2,7 @@
 
 
 ### Getting a new certificate on an environment that has the issuer already running:
-Assuming an App called "kuard", a namespace called "app" and a domain "yourdomain.com":
+Assuming an App called "kuard", a namespace called "app" and that a domain "yourdomain.com" is pointing to the IP of the Load Balancer:
 <script src="https://gist.github.com/hrodrigues-tmforum/8374cff60d8936af973395475b4e31a7.js"></script>
 
 you can fork the above gist, change the information to match yours and apply it with:

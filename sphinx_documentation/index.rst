@@ -20,7 +20,7 @@ Open Digital Architecture - Component Accelerator
    :caption: Tutorial:
 
    caDocs/ODAComponentTutorial/README.md
-   caDocs/ODAComponentTutorial/ssl.md
+   
 
 
 .. toctree::
@@ -35,13 +35,15 @@ Open Digital Architecture - Component Accelerator
    :caption: Canvas Helm Charts:
 
    canvasCharts/README.md
+   
 
    
 .. toctree::
    :maxdepth: 2
-   :caption: Canvas Operators:
+   :caption: Canvas Environment:
 
-   caSource/controllers/index.rst        
+   caSource/controllers/index.rst
+   caDocs/SSLwithCertManager/ssl.md
 
    
 .. toctree::
