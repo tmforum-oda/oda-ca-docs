@@ -29,7 +29,7 @@ metadata:
     oda.tmforum.org/componentName: vodafone-productcatalog
 ```
 
-This is the headder information for the component, specifying the version of the CRD (Custom Resource Definition) that it is using, and providing a name and a label for the component.
+This is the header information for the component, specifying the version of the CRD (Custom Resource Definition) that it is using, and providing a name and a label for the component.
 
 ```
 spec:
@@ -52,11 +52,11 @@ spec:
       email: lester.thomas@vodafone.com  
 ```
 
-This next section starts the *spec* for the component. THe *selector* and *matchLabels* are used in the section 2 to *label the standard kubernetes resources as belonging to the component*.
+This next section starts the `spec` for the component. THe `selector` and `matchLabels` are used in the section 2 to *label the standard kubernetes resources as belonging to the component*.
 
-The *type* allows us to specify that this is an implementation of a standard type of Component. The target is for the Open-Digital Architecture Reference Implementation to define a catalog of standard component types.
+The `type` allows us to specify that this is an implementation of a standard type of Component. The target is for the Open-Digital Architecture Reference Implementation to define a catalog of standard component types.
 
-The *version* and *description*, *maintainers* and *owners* are self-descriptive.
+The `version` and `description`, `maintainers` and `owners` are self-descriptive.
 
 ```
   coreFunction:
@@ -74,15 +74,15 @@ The *version* and *description*, *maintainers* and *owners* are self-descriptive
       implementation: camunda
       path: /camunda
       port: 8080
-    dependantAPIs: 
+    dependentAPIs: 
     - name: party      
       specification: https://open-api.tmforum.org/TMF632-Party-v4.0.0.swagger.json
 ```
 
-The *coreFunction* describes the core purpose of the software component. It describes the list of APIs that the component exposes as well as the APIs it is dependant on. The definitions within the *exposedAPIs* and *dependantAPIs* are experimental at this point, and we will modify and enhance them as we build-out the ODA Canvas and assemble a representative set of ODA Components. The current definition has:
-* an *implementation* which links to the Kubernetes service that implements the API, including the *port* where the http service is exposed. 
-* The *path* shows the API resource end-point, and can be used, for example, to automatically configure any API Gateway that is included as part of the Canvas. Note that the *path* points to the root of the API (and you need to append the relavant path from the swagger document to get to an implemented API resource). 
-* The *specification* points to the swagger documentation for the API. The Component CTK (Compliance Test Kit) will look inside this swagger for the *basePath* determine which Open-API CTK to execute for that API. The *basePath* is of format `"/tmf-api/productCatalogManagement/v4/"` which shows it is a `tmf-api` for `productCatalogManagement` with major version `4`. The swagger can be one of the TM Forum published swagger files (e.g. [https://raw.githubusercontent.com/tmforum-rand/Open_API_And_Data_Model/v4.0-Sprint-2020-03/apis/TMF620_Product_Catalog/swaggers/TMF620-ProductCatalog-v4.1.0.swagger.json](https://raw.githubusercontent.com/tmforum-rand/Open_API_And_Data_Model/v4.0-Sprint-2020-03/apis/TMF620_Product_Catalog/swaggers/TMF620-ProductCatalog-v4.1.0.swagger.json?token=ACS2FQP4M3AEZBKQQEMIUQ3ABGIBM)) or can be an extension (conforming to the TMF630 Design Guidelines).
+The `coreFunction` describes the core purpose of the software component. It describes the list of APIs that the component exposes as well as the APIs it is dependant on. The definitions within the `exposedAPIs` and `dependentAPIs` are experimental at this point, and we will modify and enhance them as we build-out the ODA Canvas and assemble a representative set of ODA Components. The current definition has:
+* an `implementation` which links to the Kubernetes service that implements the API, including the `port` where the http service is exposed. 
+* The `path` shows the API resource end-point, and can be used, for example, to automatically configure any API Gateway that is included as part of the Canvas. Note that the `path` points to the root of the API (and you need to append the relavant path from the swagger document to get to an implemented API resource). 
+* The `specification` points to the swagger documentation for the API. The Component CTK (Compliance Test Kit) will look inside this swagger for the `basePath` determine which Open-API CTK to execute for that API. The `basePath` is of format `"/tmf-api/productCatalogManagement/v4/"` which shows it is a `tmf-api` for `productCatalogManagement` with major version `4`. The swagger can be one of the TM Forum published swagger files (e.g. [https://raw.githubusercontent.com/tmforum-rand/Open_API_And_Data_Model/v4.0-Sprint-2020-03/apis/TMF620_Product_Catalog/swaggers/TMF620-ProductCatalog-v4.1.0.swagger.json](https://raw.githubusercontent.com/tmforum-rand/Open_API_And_Data_Model/v4.0-Sprint-2020-03/apis/TMF620_Product_Catalog/swaggers/TMF620-ProductCatalog-v4.1.0.swagger.json?token=ACS2FQP4M3AEZBKQQEMIUQ3ABGIBM)) or can be an extension (conforming to the TMF630 Design Guidelines).
 
 ```
  eventNotification:
@@ -104,7 +104,7 @@ The *coreFunction* describes the core purpose of the software component. It desc
       href: https://schema.tmforum.org/Product/ImportJob.schema.json
 ```
 
-The *eventNotification* describes the data events that the component publishes and sub-scribes to as part of its implementation. Again, the current definitions within these sections are experimental and we will modify and enhance them as we build-out the ODA Canvas and assemble a representative set of ODA Components.
+The `eventNotification` describes the data events that the component publishes and sub-scribes to as part of its implementation. Again, the current definitions within these sections are experimental and we will modify and enhance them as we build-out the ODA Canvas and assemble a representative set of ODA Components.
 
 
 ```
@@ -119,6 +119,7 @@ The *eventNotification* describes the data events that the component publishes a
     href: https://manager.local/serviceConfiguration
     specification: https://open-api.tmforum.org/TMF640-ServiceActivationConfiguration-v4.0.0.swagger.json
   security:
+    controllerRole: secConAdmin
     securitySchemes:
       bearerAuth:
         type: http
@@ -132,7 +133,7 @@ The *eventNotification* describes the data events that the component publishes a
       port: 8080  
 ```
 
-The *management* and *security* describes management APIs the the component exposes that are part of its management (rather than part of its business function). Examples of management APIs are for self-testing, raising operational alarms, or configuring the component itself. The *security* section provides meta-data on the security mechanisms used by the component. Again, the current definitions within these sections are experimental and we will modify and enhance them as we build-out the ODA Canvas and assemble a representative set of ODA Components. As of version `v1alpha2` the security definition should include a partyrole property that describes the TMF669 PartyRole Open-API that all components must support (future versions may support multiple mechanisms for components to expose the roles they support).
+The `management` and `security` sections describe management APIs the component exposes that are part of its management (rather than part of its business function). Examples of management APIs are for self-testing, raising operational alarms, or configuring the component itself. The `security` section provides meta-data on the security mechanisms used by the component. Again, the current definitions within these sections are experimental and we will modify and enhance them as we build-out the ODA Canvas and assemble a representative set of ODA Components. As of version `v1alpha2` the security definition should include a `partyrole` property that describes the TMF669 PartyRole Open-API that all components must support (future versions may support multiple mechanisms for components to expose the roles they support). As of version `v1alpha3` the security definition must include a `controllerRole` property that gives the name of a pre-existing role in the component that the security controller can use to a) POST a listener URL to the component partyRole notification endpoint so that it can receive notifications of events against party roles and b) GET the partyrole endpoint to query roles in the component.
 
 ## Step 2: Add labels to all the standard Kubernetes resources
 
@@ -150,7 +151,7 @@ spec:
       kind: Deployment  
 ```
 
-We saw earlier that the *spec* of the ODA Component included a *selector* and *componentKinds* sections: The *selector* defines the standard label that we will use throughout the manifest to label all the standard Kubernetes resources; The *componentKinds* shows the types of resources that this component includes.
+We saw earlier that the `spec` of the ODA Component included a `selector` and `componentKinds` sections: The `selector` defines the standard label that we will use throughout the manifest to label all the standard Kubernetes resources; The `componentKinds` shows the types of resources that this component includes.
 
 In our productcatalog example component, if you look at the service definition below, it shows us adding the component label to this service.
 
@@ -173,4 +174,3 @@ spec:
 ```
 
 When this component is deployed, the [Component Operator](https://github.com/tmforum-rand/oda-component-definitions/tree/master/controllers/componentOperator) will use this information to build a parent relationship between the running instances of the component. This also means that when we delete a component using the `kubectl delete component <componentname>` comand, the Kubernetes garbage-collection will also delete all the standard resources within the component.
-

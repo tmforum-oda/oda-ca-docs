@@ -13,6 +13,8 @@
   
   <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
 
   
   
@@ -29,6 +31,7 @@
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
         <script src="../_static/jquery.js"></script>
         <script src="../_static/underscore.js"></script>
         <script src="../_static/doctools.js"></script>
@@ -84,40 +87,41 @@
               
             
             
-              <p class="caption"><span class="caption-text">About the project (Playbook):</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../caDocs/Playbook.html">Introduction to the ODA-CA</a></li>
-</ul>
-<p class="caption"><span class="caption-text">Tutorial:</span></p>
+              <p class="caption" role="heading"><span class="caption-text">Tutorial:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../caDocs/ODAComponentTutorial/README.html">Tutorial to build ODA-Component from Open-API Reference Implemenation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../caDocs/ODAComponentTutorial/ssl.html">SSL certificates on Kubernetes with Certbot</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Design Guidelines:</span></p>
+<p class="caption" role="heading"><span class="caption-text">Design Guidelines:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../caDocs/ODAComponentDesignGuidelines.html">Design Guidelines to create a new ODA Component</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Canvas Helm Charts:</span></p>
+<p class="caption" role="heading"><span class="caption-text">Canvas Helm Charts:</span></p>
 <ul class="current">
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Open Digital Architecture Canvas</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#what-is-this">What is this?</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#prerequisites">Prerequisites</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#running-locally-with-microk8s">Running locally with Microk8s</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#installing-the-canvas">Installing the Canvas</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#running-locally-with-k3s">Running locally with K3S</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#three-step-install">Three-step install</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#installing-cluster-enablers">Installing cluster enablers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#installing-reference-implementation-services">Installing Reference Implementation services</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#installing-the-canvas">Installing the Canvas</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#notes">Notes</a></li>
 </ul>
 </li>
 </ul>
 </li>
 </ul>
-<p class="caption"><span class="caption-text">Canvas Operators:</span></p>
+<p class="caption" role="heading"><span class="caption-text">Canvas Operators:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../caSource/controllers/index.html">Open Digital Architecture - Controllers/Operators</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Compliance Test Kit (CTK):</span></p>
+<p class="caption" role="heading"><span class="caption-text">Compliance Test Kit (CTK):</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../ctk/README.html">ODA Component - CTK</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Contributions Guide:</span></p>
+<p class="caption" role="heading"><span class="caption-text">Contributions Guide:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../caDocs/ContributionsGuide.html">Contribution guidance</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../caDocs/DocumentationProcess.html">Documentation Process</a></li>
@@ -215,14 +219,52 @@
 <h2>Running locally with Microk8s<a class="headerlink" href="#running-locally-with-microk8s" title="Permalink to this headline">¶</a></h2>
 <p>Install microk8s with <code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">snap</span> <span class="pre">install</span> <span class="pre">microk8s</span> <span class="pre">--classic</span></code>. Once it is installed, <code class="docutils literal notranslate"><span class="pre">microk8s</span> <span class="pre">enable</span> <span class="pre">ingress</span> <span class="pre">dns</span> <span class="pre">storage</span> <span class="pre">dashboard</span></code> is the minimum configuration for using the canvas deployment script.</p>
 </div>
+<div class="section" id="running-locally-with-k3s">
+<h2>Running locally with K3S<a class="headerlink" href="#running-locally-with-k3s" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Installation of K3s itself is documented <a class="reference external" href="https://rancher.com/docs/k3s/latest/en/">here</a>.</p></li>
+<li><p>K3s uses the <code class="docutils literal notranslate"><span class="pre">traefik</span></code> ingress instead of <code class="docutils literal notranslate"><span class="pre">nginx</span></code> therefore you will need to add <code class="docutils literal notranslate"><span class="pre">--set</span> <span class="pre">controller.deployment.ingressClass.name=traefik,controller.deployment.ingressClass.enabled=true</span></code> to the canvas base install in <code class="docutils literal notranslate"><span class="pre">install_canvas_cert-manager.sh</span></code>.</p></li>
+</ul>
+</div>
+<div class="section" id="three-step-install">
+<h2>Three-step install<a class="headerlink" href="#three-step-install" title="Permalink to this headline">¶</a></h2>
+<p>There are three stages to the installation of the full Reference Implementation before components can be deployed:</p>
+<ul class="simple">
+<li><p>Step 1: cluster enablers that allow the installation of the canvas.</p></li>
+<li><p>Step 2: Reference Implementation services that the canvas relies on.</p></li>
+<li><p>Step 3: the canvas itself.</p></li>
+</ul>
+<div class="section" id="installing-cluster-enablers">
+<h3>Installing cluster enablers<a class="headerlink" href="#installing-cluster-enablers" title="Permalink to this headline">¶</a></h3>
+<p>The only enabler at the moment is the canvas <code class="docutils literal notranslate"><span class="pre">namespace</span></code>. To install it:
+<code class="docutils literal notranslate"><span class="pre">helm</span> <span class="pre">install</span> <span class="pre">oda-ri-enablers</span> <span class="pre">clusterenablers/</span></code></p>
+</div>
+<div class="section" id="installing-reference-implementation-services">
+<h3>Installing Reference Implementation services<a class="headerlink" href="#installing-reference-implementation-services" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>Install cert-manager to handle certificate creation and signing for the webhook using:</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pushd</span> <span class="n">ReferenceImplementation</span><span class="o">/</span><span class="n">cert</span><span class="o">-</span><span class="n">manager</span>
+<span class="n">bash</span> <span class="n">install_cert</span><span class="o">-</span><span class="n">manager</span><span class="o">.</span><span class="n">sh</span>
+<span class="n">popd</span>
+</pre></div>
+</div>
+</div>
 <div class="section" id="installing-the-canvas">
-<h2>Installing the Canvas<a class="headerlink" href="#installing-the-canvas" title="Permalink to this headline">¶</a></h2>
-<p>There is an example script (<code class="docutils literal notranslate"><span class="pre">install_canvas.sh</span></code>) that will install the Canvas using the chart locally. It does the following:</p>
+<h3>Installing the Canvas<a class="headerlink" href="#installing-the-canvas" title="Permalink to this headline">¶</a></h3>
+<p>There is an example script (<code class="docutils literal notranslate"><span class="pre">install_canvas_cert-manager.sh</span></code>) that will install the Canvas using the chart locally. It does the following:</p>
 <ul class="simple">
 <li><p>Configure the correct Helm repositories</p></li>
+<li><p>Create certificates for the oda.tmforum.org CRD webhook using cert-manager</p></li>
+<li><p>Update the dependencies in subcharts (currently just for Keycloak)</p></li>
 <li><p>Install the canvas itself (CRDs, namespaces, component controller)</p></li>
-<li><p>Install the canvas-specific components in the canvas namespace</p></li>
+<li><p>Install the canvas-specific components in the canvas namespace
+You will also need to configure Keycloak as follows:</p></li>
+<li><p>Log in to the admin console. Unless you changed it manually, the default credentials we’ve set are in the <a class="reference external" href="canvas/charts/keycloak/values.yaml">Keycloak values.yaml file</a></p></li>
+<li><p><a class="reference external" href="https://www.keycloak.org/docs/latest/server_admin/#_create-realm">Create a new realm</a> called <code class="docutils literal notranslate"><span class="pre">myrealm</span></code></p></li>
+<li><p><a class="reference external" href="https://www.keycloak.org/docs/latest/server_admin/#_create-new-user">Create a user in myrealm</a> called <code class="docutils literal notranslate"><span class="pre">seccon</span></code></p></li>
 </ul>
+</div>
 <div class="section" id="notes">
 <h3>Notes<a class="headerlink" href="#notes" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">

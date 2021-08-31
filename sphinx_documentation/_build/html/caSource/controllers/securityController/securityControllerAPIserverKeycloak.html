@@ -13,6 +13,8 @@
   
   <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
 
   
   
@@ -29,6 +31,7 @@
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+        <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
         <script src="../../../_static/jquery.js"></script>
         <script src="../../../_static/underscore.js"></script>
         <script src="../../../_static/doctools.js"></script>
@@ -84,23 +87,20 @@
               
             
             
-              <p class="caption"><span class="caption-text">About the project (Playbook):</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../../../caDocs/Playbook.html">Introduction to the ODA-CA</a></li>
-</ul>
-<p class="caption"><span class="caption-text">Tutorial:</span></p>
+              <p class="caption" role="heading"><span class="caption-text">Tutorial:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../../caDocs/ODAComponentTutorial/README.html">Tutorial to build ODA-Component from Open-API Reference Implemenation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../caDocs/ODAComponentTutorial/ssl.html">SSL certificates on Kubernetes with Certbot</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Design Guidelines:</span></p>
+<p class="caption" role="heading"><span class="caption-text">Design Guidelines:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../../caDocs/ODAComponentDesignGuidelines.html">Design Guidelines to create a new ODA Component</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Canvas Helm Charts:</span></p>
+<p class="caption" role="heading"><span class="caption-text">Canvas Helm Charts:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../../canvasCharts/README.html">Open Digital Architecture Canvas</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Canvas Operators:</span></p>
+<p class="caption" role="heading"><span class="caption-text">Canvas Operators:</span></p>
 <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="../index.html">Open Digital Architecture - Controllers/Operators</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../README.html">Introduction</a></li>
@@ -119,11 +119,11 @@
 </ul>
 </li>
 </ul>
-<p class="caption"><span class="caption-text">Compliance Test Kit (CTK):</span></p>
+<p class="caption" role="heading"><span class="caption-text">Compliance Test Kit (CTK):</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../../ctk/README.html">ODA Component - CTK</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Contributions Guide:</span></p>
+<p class="caption" role="heading"><span class="caption-text">Contributions Guide:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../../caDocs/ContributionsGuide.html">Contribution guidance</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../caDocs/DocumentationProcess.html">Documentation Process</a></li>
@@ -198,19 +198,8 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="module-securityControllerAPIserverKeycloak">
-<span id="securityoperator-api-listener-module"></span><h1>securityOperator API Listener module<a class="headerlink" href="#module-securityControllerAPIserverKeycloak" title="Permalink to this headline">¶</a></h1>
-<dl class="py function">
-<dt id="securityControllerAPIserverKeycloak.format_cloud_event">
-<code class="sig-prename descclassname"><span class="pre">securityControllerAPIserverKeycloak.</span></code><code class="sig-name descname"><span class="pre">format_cloud_event</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">message</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">subject</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">str</span><a class="headerlink" href="#securityControllerAPIserverKeycloak.format_cloud_event" title="Permalink to this definition">¶</a></dt>
-<dd><p>Returns a correctly formatted CloudEvents compliant event</p>
-</dd></dl>
-
-<dl class="py function">
-<dt id="securityControllerAPIserverKeycloak.party_role_listener">
-<code class="sig-prename descclassname"><span class="pre">securityControllerAPIserverKeycloak.</span></code><code class="sig-name descname"><span class="pre">party_role_listener</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#securityControllerAPIserverKeycloak.party_role_listener" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
+  <div class="section" id="securityoperator-api-listener-module">
+<h1>securityOperator API Listener module<a class="headerlink" href="#securityoperator-api-listener-module" title="Permalink to this headline">¶</a></h1>
 </div>
 
 

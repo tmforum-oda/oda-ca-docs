@@ -13,13 +13,14 @@ Open Digital Architecture - Component Accelerator
    :maxdepth: 1
    :caption: About the project (Playbook):
 
-   caDocs/Playbook.md
+   caDocs/Playbook.md7
 
 .. toctree::
    :maxdepth: 2
    :caption: Tutorial:
 
    caDocs/ODAComponentTutorial/README.md
+   caDocs/ODAComponentTutorial/ssl.md
 
 
 .. toctree::
