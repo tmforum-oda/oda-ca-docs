@@ -4,20 +4,21 @@ metadata:
   name: {{.Release.Name}}-mongodb
   labels:
     oda.tmforum.org/componentName: {{.Release.Name}}-{{.Values.component.name}}
-    app: {{.Release.Name}}-mongodb
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: {{.Release.Name}}-mongodb
+      impl: {{.Release.Name}}-mongodb
   template:
     metadata:
       labels:
-        app: {{.Release.Name}}-mongodb
+        impl: {{.Release.Name}}-mongodb
+        app: {{.Release.Name}}-{{.Values.component.name}}
+        version: mongo-latest
     spec:
       containers:
       - name: {{.Release.Name}}-mongodb
-        image: mongo:4.4.7
+        image: mongo:5.0.1
         ports:
         - name: {{.Release.Name}}-mongodb
           containerPort: 27017

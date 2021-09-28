@@ -3,14 +3,14 @@ kind: Service
 metadata:
   name: {{.Release.Name}}-prodcatapi
   labels:
-    app: {{.Release.Name}}-prodcatapi
+    app: {{.Release.Name}}-{{.Values.component.name}}
     oda.tmforum.org/componentName: {{.Release.Name}}-{{.Values.component.name}}
 spec:
   ports:
   - port: 8080
     targetPort: {{.Release.Name}}-pcapi
-    name: {{.Release.Name}}-prodcatapi
+    name: http-{{.Release.Name}}-prodcatapi
   type: NodePort
   selector:
-    app: {{.Release.Name}}-prodcatapi
+    impl: {{.Release.Name}}-prodcatapi
 
