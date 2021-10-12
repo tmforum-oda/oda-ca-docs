@@ -110,6 +110,9 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="componentOperator/modules.html">Component Operator</a></li>
 <li class="toctree-l2"><a class="reference internal" href="apiOperatorSimpleIngress/modules.html">API Operator: SimpleIngress</a></li>
+<li class="toctree-l2"><a class="reference internal" href="apiOperatorApig/modules.html">API Operator: WhaleCloud API Gateway</a></li>
+<li class="toctree-l2"><a class="reference internal" href="apiOperatorWSO2/modules.html">API Operator: WSO2 API Gateway</a></li>
+<li class="toctree-l2"><a class="reference internal" href="apiOperatorIstio/modules.html">API Operator: Istio</a></li>
 <li class="toctree-l2"><a class="reference internal" href="securityController/modules.html">Security Operator</a></li>
 </ul>
 </li>
@@ -206,7 +209,7 @@
 <p>The KOPF controller source code is in sub-folders. At present there is a:</p>
 <ol class="simple">
 <li><p><strong>ComponentController</strong> that manages the Component CRD. This creates API CRDs for each API a component wants to expose.</p></li>
-<li><p>Two reference implementations of an <strong>API controller</strong>: You deploy one of these two options depending on your Canvas. The simplest example is the simpleIngress controller that uses a Kubernetes ingress to expose the APIs (this is only suitable for development environments as an Ingress doesn’t provide any of the standard security or throttling of a proper API Gateway). The other example is a WSO2 controller that will configure a WSO2 API gateway (that needs to be installed separately in the Canvas.</p></li>
+<li><p>Multiple reference implementations of an <strong>API controller</strong>: You deploy one of these options depending on your Canvas. The simplest example is the <code class="docutils literal notranslate"><span class="pre">apiOperatorSimpleIngress</span></code> controller that uses a Kubernetes ingress to expose the APIs (this is only suitable for development environments as an Ingress doesn’t provide any of the standard security or throttling of a proper API Gateway). There are two API operators that configure proper API Gateways: The first is for the WhaleCloud API Gateway <code class="docutils literal notranslate"><span class="pre">apiOperatorApig</span></code>, the second is for the WSO2 API gateway <code class="docutils literal notranslate"><span class="pre">apiOperatorWSO2</span></code>. (For each of these the respective API Gatways needs to be installed separately in the Canvas.). There is a final API Operator <code class="docutils literal notranslate"><span class="pre">apiOperatorIstio</span></code> that uses the Istio Service Mesh to control access to APIs. (The Istio Service Mesh needs to be installed separately on the Canvas). A production Canvas would use an API Gateway for the external exposure of APIs; It may also use a Service Mesh for greater internal control, particularly in a shared Kubernetes cluster.</p></li>
 <li><p>A <strong>SecurityController</strong> that manages the security part of the Component definition. At present the security controller configures a Keycloak identity service using roles that are defined by the component. Keycloak needs to be installed separately in the canvas.</p></li>
 </ol>
 <p>For the KOPF framework controllers, we deploy these into a single Docker image. We have two docker files that deploy:</p>

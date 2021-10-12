@@ -16,6 +16,11 @@ import sys
 sys.path.insert(0, os.path.abspath('../../oda-ca/controllers/securityController'))
 sys.path.insert(0, os.path.abspath('../../oda-ca/controllers/componentOperator'))
 sys.path.insert(0, os.path.abspath('../../oda-ca/controllers/apiOperatorSimpleIngress'))
+sys.path.insert(0, os.path.abspath('../../oda-ca/controllers/apiOperatorWSO2'))
+sys.path.insert(0, os.path.abspath('../../oda-ca/controllers/apiOperatorApig'))
+sys.path.insert(0, os.path.abspath('../../oda-ca/controllers/apiOperatorIstio'))
+sys.path.insert(0, os.path.abspath('../../oda-ca/controllers/securityController'))
+sys.path.insert(0, os.path.abspath('../../oda-ca/controllers/securityListener-keycloak'))
 print('********************************************')
 # -- Project information -----------------------------------------------------
 
@@ -66,6 +71,11 @@ shutil.copy2('../../oda-ca/controllers/componentOperator/README.md', './caSource
 shutil.copy2('../../oda-ca/controllers/componentOperator/sequenceDiagrams/componentOperator.png', './caSource/controllers/componentOperator/sequenceDiagrams') 
 shutil.copy2('../../oda-ca/controllers/apiOperatorSimpleIngress/README.md', './caSource/controllers/apiOperatorSimpleIngress') 
 shutil.copy2('../../oda-ca/controllers/apiOperatorSimpleIngress/sequenceDiagrams/apiOperatorSimpleIngress.png', './caSource/controllers/apiOperatorSimpleIngress/sequenceDiagrams') 
+shutil.copy2('../../oda-ca/controllers/apiOperatorIstio/README.md', './caSource/controllers/apiOperatorIstio') 
+shutil.copy2('../../oda-ca/controllers/apiOperatorIstio/sequenceDiagrams/apiOperatorIstio.png', './caSource/controllers/apiOperatorIstio/sequenceDiagrams') 
+shutil.copy2('../../oda-ca/controllers/apiOperatorApig/README.md', './caSource/controllers/apiOperatorApig') 
+shutil.copy2('../../oda-ca/controllers/apiOperatorApig/sequenceDiagrams/apiOperatorApig.png', './caSource/controllers/apiOperatorApig/sequenceDiagrams') 
+shutil.copy2('../../oda-ca/controllers/apiOperatorWSO2/README.md', './caSource/controllers/apiOperatorWSO2') 
 shutil.copy2('../../oda-ca/controllers/securityController/README.md', './caSource/controllers/securityController') 
 shutil.copy2('../../oda-ca/controllers/securityController/sequenceDiagrams/securitySequenceKeycloak.png', './caSource/controllers/securityController/sequenceDiagrams') 
 shutil.copy2('../../oda-ca/controllers/securityController/sequenceDiagrams/securitySequenceKeycloakDetailed.png', './caSource/controllers/securityController/sequenceDiagrams') 
