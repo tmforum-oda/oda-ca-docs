@@ -38,7 +38,7 @@
     
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
-    <link rel="next" title="Security Operator" href="../securityController/modules.html" />
+    <link rel="next" title="API Operator: WhaleCloud API Gateway" href="../apiOperatorApig/modules.html" />
     <link rel="prev" title="API Operator - Introduction" href="README.html" /> 
 </head>
 
@@ -113,6 +113,9 @@
 </li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="../apiOperatorApig/modules.html">API Operator: WhaleCloud API Gateway</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../apiOperatorWSO2/modules.html">API Operator: WSO2 API Gateway</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../apiOperatorIstio/modules.html">API Operator: Istio</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../securityController/modules.html">Security Operator</a></li>
 </ul>
 </li>
@@ -210,7 +213,7 @@ that would configure an API gateway instead of an Ingress.</p>
 </ol>
 <dl class="py function">
 <dt id="apiOperatorSimpleIngress.apiStatus">
-<code class="sig-prename descclassname"><span class="pre">apiOperatorSimpleIngress.</span></code><code class="sig-name descname"><span class="pre">apiStatus</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">meta</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">spec</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">status</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">body</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">namespace</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">labels</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#apiOperatorSimpleIngress.apiStatus" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">async</span> </em><code class="sig-prename descclassname"><span class="pre">apiOperatorSimpleIngress.</span></code><code class="sig-name descname"><span class="pre">apiStatus</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">meta</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">spec</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">status</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">body</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">namespace</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">labels</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#apiOperatorSimpleIngress.apiStatus" title="Permalink to this definition">¶</a></dt>
 <dd><p>Handler function for new or updated APIs.</p>
 <p>Processes the spec of the API and create child Kubernetes Ingress resources. The Kubernetes Ingress will expose the API to the outside.</p>
 <dl class="simple">
@@ -233,7 +236,7 @@ that would configure an API gateway instead of an Ingress.</p>
 
 <dl class="py function">
 <dt id="apiOperatorSimpleIngress.implementation_status">
-<code class="sig-prename descclassname"><span class="pre">apiOperatorSimpleIngress.</span></code><code class="sig-name descname"><span class="pre">implementation_status</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">meta</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">spec</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">status</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">body</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">namespace</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">labels</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#apiOperatorSimpleIngress.implementation_status" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">async</span> </em><code class="sig-prename descclassname"><span class="pre">apiOperatorSimpleIngress.</span></code><code class="sig-name descname"><span class="pre">implementation_status</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">meta</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">spec</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">status</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">body</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">namespace</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">labels</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#apiOperatorSimpleIngress.implementation_status" title="Permalink to this definition">¶</a></dt>
 <dd><p>Handler function to register for status changes in EndPointSlide resources.</p>
 <p>The EndPointSlide resources show the implementation of an API linked the the API implementations Service Resource. 
 When EndPointSlide updates the ready-status of the implementation, update parent API object.</p>
@@ -257,7 +260,7 @@ When EndPointSlide updates the ready-status of the implementation, update parent
 
 <dl class="py function">
 <dt id="apiOperatorSimpleIngress.ingress_status">
-<code class="sig-prename descclassname"><span class="pre">apiOperatorSimpleIngress.</span></code><code class="sig-name descname"><span class="pre">ingress_status</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">meta</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">spec</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">status</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">body</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">namespace</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">labels</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#apiOperatorSimpleIngress.ingress_status" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">async</span> </em><code class="sig-prename descclassname"><span class="pre">apiOperatorSimpleIngress.</span></code><code class="sig-name descname"><span class="pre">ingress_status</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">meta</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">spec</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">status</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">body</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">namespace</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">labels</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#apiOperatorSimpleIngress.ingress_status" title="Permalink to this definition">¶</a></dt>
 <dd><p>Handler function to register for status changes in child Ingress resources.</p>
 <p>When Ingress adds IP address/dns of load balancer, update parent API object.</p>
 <dl class="simple">
@@ -286,7 +289,7 @@ When EndPointSlide updates the ready-status of the implementation, update parent
           </div>
           <footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-        <a href="../securityController/modules.html" class="btn btn-neutral float-right" title="Security Operator" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="../apiOperatorApig/modules.html" class="btn btn-neutral float-right" title="API Operator: WhaleCloud API Gateway" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
         <a href="README.html" class="btn btn-neutral float-left" title="API Operator - Introduction" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
 

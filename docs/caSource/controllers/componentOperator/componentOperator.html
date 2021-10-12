@@ -113,6 +113,9 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../apiOperatorSimpleIngress/modules.html">API Operator: SimpleIngress</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../apiOperatorApig/modules.html">API Operator: WhaleCloud API Gateway</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../apiOperatorWSO2/modules.html">API Operator: WSO2 API Gateway</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../apiOperatorIstio/modules.html">API Operator: Istio</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../securityController/modules.html">Security Operator</a></li>
 </ul>
 </li>
@@ -204,7 +207,7 @@ It registers handler functions for:</p>
 <ol class="arabic simple">
 <li><p>New ODA Components - to create, update or delete child API custom resources. see <a class="reference external" href="#componentOperator.componentOperator.exposedAPIs">exposedAPIs</a> and <a class="reference external" href="#componentOperator.componentOperator.securityAPIs">securityAPIs</a></p></li>
 <li><p>For status updates in the child API Custom resources, so that the Component status reflects a summary of all the childrens status. see <a class="reference external" href="#componentOperator.componentOperator.updateAPIStatus">updateAPIStatus</a> and <a class="reference external" href="#componentOperator.componentOperator.updateAPIReady">updateAPIReady</a></p></li>
-<li><p>For new Services, Deployments, PersistentVolumeClaims that have a oda.tmforum.org/componentName label. These resources are updated to become children of the ODA Component resource. see <a class="reference external" href="#componentOperator.componentOperator.adopt_deployment">adopt_deployment</a> , <a class="reference external" href="#componentOperator.componentOperator.adopt_persistentvolumeclaim">adopt_persistentvolumeclaim</a> and <a class="reference external" href="#componentOperator.componentOperator.adopt_service">adopt_service</a></p></li>
+<li><p>For new Services, Deployments, PersistentVolumeClaims and Jobs that have a oda.tmforum.org/componentName label. These resources are updated to become children of the ODA Component resource. see <a class="reference external" href="#componentOperator.componentOperator.adopt_deployment">adopt_deployment</a> , <a class="reference external" href="#componentOperator.componentOperator.adopt_persistentvolumeclaim">adopt_persistentvolumeclaim</a> , <a class="reference external" href="#componentOperator.componentOperator.adopt_job">adopt_job</a> and <a class="reference external" href="#componentOperator.componentOperator.adopt_service">adopt_service</a></p></li>
 </ol>
 <dl class="py function">
 <dt id="componentOperator.adopt_deployment">
