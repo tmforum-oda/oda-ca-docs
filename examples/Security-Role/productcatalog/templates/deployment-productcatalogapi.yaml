@@ -29,7 +29,7 @@ spec:
         - name: {{.Release.Name}}-pcapi
           containerPort: 8080
       - name: {{.Release.Name}}-registerallevents
-        image: lesterthomas/registerallevents:0.1
+        image: lesterthomas/registerallevents:latest
         env:
         - name: RELEASE_NAME
           value: {{.Release.Name}}           

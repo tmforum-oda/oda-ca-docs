@@ -6,7 +6,21 @@ if (!componentName) {
   componentName = 'productcatalog'
 }
 console.log('ComponentName:'+componentName);
+
 const client = require('prom-client');
+const counter = new client.Counter({
+  name: 'product_catalog_api_counter',
+  help: 'Count of Notification Events from TMF 620 Product Catalog Management API',
+  labelNames: ['NotificationEvent']
+});
+
+/*'ProductOfferingPriceAttributeValueChangeNotification',
+          'ProductOfferingPriceCreationNotification',
+        'ProductSpecificationCreationNotification',
+        'ProductOfferingCreationNotification'
+*/
+
+/*
 const histogram = new client.Histogram({
     name: 'test_histogram',
     help: 'Example of a histogram'
@@ -31,6 +45,7 @@ setInterval(function(){
     histogram.observe(index/10);
     counter.inc(index)
 }, 10000)
+*/
 
 
 server.get('/' + componentName + '/', async function(req, res) {
@@ -42,6 +57,9 @@ server.get('/' + componentName + '/metrics', async function(req, res) {
   })
 server.post('/listener', async function(req, res) {
     console.log(req.body)
+    const eventType = req.body.eventType
+    counter.inc({ NotificationEvent: eventType })
+
     res.send({success:true})
   })
 const port = process.env.PORT || 4000;

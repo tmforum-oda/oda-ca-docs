@@ -33,7 +33,7 @@ spec:
       developerUI: /{{.Release.Name}}-{{.Values.component.name}}/tmf-api/productCatalogManagement/v4/docs
       port: 8080
     - name: metrics
-      implementation: {{.Release.Name}}-registerallevents
+      implementation: {{.Release.Name}}-{{.Values.component.name}}-sm
       path: /{{.Release.Name}}-{{.Values.component.name}}/metrics
       port: 4000    
     dependentAPIs: 
