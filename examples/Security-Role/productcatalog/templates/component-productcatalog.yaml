@@ -32,6 +32,10 @@ spec:
       path: /{{.Release.Name}}-{{.Values.component.name}}/tmf-api/productCatalogManagement/v4
       developerUI: /{{.Release.Name}}-{{.Values.component.name}}/tmf-api/productCatalogManagement/v4/docs
       port: 8080
+    - name: metrics
+      implementation: {{.Release.Name}}-registerallevents
+      path: /{{.Release.Name}}-{{.Values.component.name}}/metrics
+      port: 4000    
     dependentAPIs: 
     - name: party      
       specification: https://open-api.tmforum.org/TMF632-Party-v4.0.0.swagger.json  

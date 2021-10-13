@@ -15,8 +15,8 @@ var mongodb = null;
 /* connection helper for running MongoDb from url */
 function connectHelper(callback) {
   var releaseName = process.env.RELEASE_NAME; // Release name from Helm deployment
-  //var credentials_uri = "mongodb://" + releaseName + "-mongodb:27017/tmf";
-  var credentials_uri = "mongodb://localhost:27017/tmf";
+  var credentials_uri = "mongodb://" + releaseName + "-mongodb:27017/tmf";
+  //var credentials_uri = "mongodb://localhost:27017/tmf";
   let options = {
     useNewUrlParser: true 
   };

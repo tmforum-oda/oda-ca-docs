@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{.Release.Name}}-registerallevents
+  labels:
+    app: {{.Release.Name}}-{{.Values.component.name}}
+    oda.tmforum.org/componentName: {{.Release.Name}}-{{.Values.component.name}}
+spec:
+  ports:
+  - port: 4000
+    targetPort: {{.Release.Name}}-prapi
+    name: http-{{.Release.Name}}-registerallevents
+  type: NodePort
+  selector:
+    impl: {{.Release.Name}}-prodcatapi
+
