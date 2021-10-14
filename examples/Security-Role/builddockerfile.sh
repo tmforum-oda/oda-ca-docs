@@ -4,4 +4,6 @@ docker build -t lesterthomas/partyroleapi:0.2 -t lesterthomas/partyroleapi:lates
 docker push lesterthomas/partyroleapi --all-tags
 docker build -t lesterthomas/roleinitialization:0.3 -t lesterthomas/roleinitialization:latest -f roleinitialization-dockerfile . 
 docker push lesterthomas/roleinitialization --all-tags
+docker build -t lesterthomas/productcataloginitialization:0.1 -t lesterthomas/productcataloginitialization:latest -f productcataloginitialization-dockerfile . 
+docker push lesterthomas/productcataloginitialization --all-tags
 

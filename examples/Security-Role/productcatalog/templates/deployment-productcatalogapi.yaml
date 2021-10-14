@@ -28,6 +28,13 @@ spec:
         ports:
         - name: {{.Release.Name}}-pcapi
           containerPort: 8080
+        startupProbe:
+          httpGet:
+            path: /{{.Release.Name}}-{{.Values.component.name}}/tmf-api/productCatalogManagement/v4/catalog 
+            port: 8080
+          initialDelaySeconds: 10
+          periodSeconds: 5          
+          failureThreshold: 30 
       - name: {{.Release.Name}}-registerallevents
         image: lesterthomas/registerallevents:latest
         env:
@@ -38,4 +45,5 @@ spec:
         imagePullPolicy: Always
         ports:
         - name: {{.Release.Name}}-prapi
-          containerPort: 4000          
+          containerPort: 4000
+         
