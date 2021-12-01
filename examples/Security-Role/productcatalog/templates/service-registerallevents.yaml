@@ -3,7 +3,7 @@ kind: Service
 metadata:
   name: {{.Release.Name}}-{{.Values.component.name}}-sm
   labels:
-    smlabel: {{.Release.Name}}-{{.Values.component.name}}-sm
+    name: {{.Release.Name}}-{{.Values.component.name}}-sm
     app: {{.Release.Name}}-{{.Values.component.name}}
     oda.tmforum.org/componentName: {{.Release.Name}}-{{.Values.component.name}}
 spec:
@@ -13,21 +13,3 @@ spec:
   type: NodePort
   selector:
     impl: {{.Release.Name}}-prodcatapi
----
-apiVersion: monitoring.coreos.com/v1
-kind: ServiceMonitor
-metadata:
-  name: {{.Release.Name}}-{{.Values.component.name}}-sm
-  # Change this to the namespace the Prometheus instance is running in
-  # namespace: default
-  namespace: components
-spec:
-  selector:
-    matchLabels:
-      smlabel: {{.Release.Name}}-{{.Values.component.name}}-sm
-  endpoints:
-  - port: http-{{.Release.Name}}-{{.Values.component.name}}-sm
-    interval: 15s
-    path: {{.Release.Name}}-{{.Values.component.name}}/metrics
-    scheme: http
-    targetPort: 4000
