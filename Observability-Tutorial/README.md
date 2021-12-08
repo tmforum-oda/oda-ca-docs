@@ -126,3 +126,32 @@ You can see there is an istio-proxy container running in our Pod - this was not 
 The diagram below shows the Monitoring Architecture:
 
 ![Monitoring Architecture](./images/MonitoringArchitecture.png)
+
+You can see the targets that Prometheus scrapes by clicking on the `Monitoring` link in the Rancher Cluster Manager:
+
+![Monitoring](./images/Monitoring.png)
+
+And then clicking on the `Prometheus Targets` link. The picture below shows all the targets that Prometheus is scraping, including the istio-system/envoy.
+
+![Prometheus Targets](./images/PrometheusTargets.png)
+
+
+The Envoy Proxy controls all traffic into the pod: In the ODA-Canvas we have a `component operator` that automatically configures Istio to allow traffic where the [Component Envelope Specification](../ODAComponentDesignGuidelines.md) defines an API Endpoint. (Technically, the `component operator` creates Istio `Virtual Service` custom resources see [API Operator for Istio](https://github.com/tmforum-oda/oda-ca/tree/master/controllers/apiOperatorIstio) )
+
+
+## How do I extend this to get custom business metrics from the component?
+
+It is possible for a component to create business metrics, to allow you to see business operations that are occuring within a component. Prometheus supports a number of Metric Types:
+
+A **counter** is a cumulative metric that represents a single monotonically increasing counter whose value can only increase or be reset to zero on restart. For example, you can use a counter to represent the number of requests served, tasks completed, or errors."
+
+A **gauge** is a metric that represents a single numerical value that can arbitrarily go up and down. Gauges are typically used for measured values like [CPU] or current memory usage, but also 'counts' that can go up and down, like the number of concurrent requests."
+
+A **histogram** samples observations (usually things like request durations or response sizes) and counts them in configurable buckets. It also provides a sum of all observed values."
+
+(*there is also a summary metric that has effectively been replaced by histogram)
+
+
+To expose business metrics, a component needs to define a `/metrics` endpoint that exposes this data following the Prometheus standard. In the reference example component, we added a `Metrics microservice` that registers for changes within the Product Catalog (using the Open-API Pub/Sub mechanism) and then exposes this data as a Prometheus metrics API.
+
+![Reference Example Metrics](./images/ReferenceExampleMetrics.png)
