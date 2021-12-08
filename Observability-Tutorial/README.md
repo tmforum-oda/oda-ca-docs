@@ -139,6 +139,19 @@ And then clicking on the `Prometheus Targets` link. The picture below shows all 
 The Envoy Proxy controls all traffic into the pod: In the ODA-Canvas we have a `component operator` that automatically configures Istio to allow traffic where the [Component Envelope Specification](../ODAComponentDesignGuidelines.md) defines an API Endpoint. (Technically, the `component operator` creates Istio `Virtual Service` custom resources see [API Operator for Istio](https://github.com/tmforum-oda/oda-ca/tree/master/controllers/apiOperatorIstio) )
 
 
+I can view these metrics directly in Prometheus - it has a very simple query interface on top of its time-series database. For example, try:
+```
+rate(container_cpu_usage_seconds_total[10m])
+```
+
+or 
+
+```
+istio_requests_total {destination_service_name="r1-partyroleapi"}
+```
+
+![CPU Graph](./images/CPUGraph.png)
+
 ## How do I extend this to get custom business metrics from the component?
 
 It is possible for a component to create business metrics, to allow you to see business operations that are occuring within a component. Prometheus supports a number of Metric Types:
