@@ -1,13 +1,13 @@
 const axios = require('axios');
 
+var releaseName = process.env.RELEASE_NAME; 
+var componentName = process.env.COMPONENT_NAME; 
+
 const metricsEventListner = {
-  callback: "http://localhost:4000/listener"
+  callback: "http://" + releaseName + "-productcatalog-sm:4000/listener"
 }
 
 const delay = ms => new Promise(res => setTimeout(res, ms));
-
-var releaseName = process.env.RELEASE_NAME; 
-var componentName = process.env.COMPONENT_NAME; 
 
 const createMetricsEventListner = async () => {
   var complete = false;
@@ -16,7 +16,7 @@ const createMetricsEventListner = async () => {
     try {
         await delay(5000);  // retry every 5 seconds
         const url = 'http://' + releaseName + '-prodcatapi:8080/' + componentName + '/tmf-api/productCatalogManagement/v4/hub';
-        console.log('POSTing listner to: ', url);
+        console.log('POSTing listner with callback ',metricsEventListner, ' to: ', url);
         const res = await axios.post(
           url, 
           metricsEventListner,

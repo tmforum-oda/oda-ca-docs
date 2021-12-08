@@ -155,3 +155,29 @@ A **histogram** samples observations (usually things like request durations or
 To expose business metrics, a component needs to define a `/metrics` endpoint that exposes this data following the Prometheus standard. In the reference example component, we added a `Metrics microservice` that registers for changes within the Product Catalog (using the Open-API Pub/Sub mechanism) and then exposes this data as a Prometheus metrics API.
 
 ![Reference Example Metrics](./images/ReferenceExampleMetrics.png)
+
+The code for the reference example component can be found at: [Example metrics](https://github.com/tmforum-oda/oda-ca-docs/blob/master/examples/ProductCatalog/registerAllEventsMicroservice/index.js). This is built using nodeJS and uses the `prom-client` Prometheus client library for nodeJS (there are client libraries for most popular programming libraries).
+
+**How do you configure Prometheus to scrape this endpoint?** 
+
+To configure Prometheus to scrape this endpoint, simply add the end-point into the Component Envelope YAML file in the `Management` section.
+
+```
+  management: 
+    - name: metrics
+      apitype: prometheus
+      implementation: <reference to a Kubernetes Service for the metrics micro-service>
+      path: /<path where the metrics endopint is available>
+      port: <port where the endpoint is available>  
+```
+
+See the example at [Example Component Envelope](https://github.com/tmforum-oda/oda-ca-docs/blob/master/examples/ProductCatalog/productcatalog/templates/component-productcatalog.yaml).
+
+
+When you deploy this componet, you can check it appears in the Prometheus scraping targets: 
+
+![Prometheus Targets 2](./images/PrometheusTargets2.png)
+
+You could build a custom dashboard for these metrics using a tool such as [Grafana](https://grafana.com/). For a simple User Interface you can view the built-in Graph query in Prometheus. In the picture below we are querying the rate of the product_catalog_api_counter over a 10m period. 
+
+![Business Metric](./images/BusinessMetric.png)
