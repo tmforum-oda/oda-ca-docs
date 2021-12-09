@@ -14,6 +14,6 @@ The ODA-CA is a reference implementation of the `IG1171 Component Definition <ht
    :maxdepth: 2
    :caption: Contents:
 
-   https://github.com/tmforum-oda/oda-canvas-charts/blob/master/README.md
-   https://github.com/tmforum-oda/oda-canvas-charts/blob/master/Specification.md
-   https://github.com/tmforum-oda/oda-canvas-charts/blob/master/Installation.md
+   README.md
+   Specification.md
+   Installation.md
