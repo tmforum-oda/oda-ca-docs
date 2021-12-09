@@ -98,7 +98,7 @@
 </ul>
 <p class="caption"><span class="caption-text">Canvas Helm Charts:</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../../canvasCharts/README.html">Open Digital Architecture Canvas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../canvasCharts/index.html">Open Digital Architecture - Canvas</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Canvas Operators:</span></p>
 <ul class="current">
@@ -301,6 +301,29 @@ will delete these resources automatically if the component is deleted.</p>
 </ul>
 </dd>
 <dt>Returns:</dt><dd><p>Dict: The exposedAPIs status that is put into the component envelope status field.</p>
+</dd>
+</dl>
+<dl class="field-list simple">
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="componentOperator.managementAPIs">
+<em class="property"><span class="pre">async</span> </em><code class="sig-prename descclassname"><span class="pre">componentOperator.</span></code><code class="sig-name descname"><span class="pre">managementAPIs</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">meta</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">spec</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">status</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">body</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">namespace</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">labels</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#componentOperator.managementAPIs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Handler function for <strong>management</strong> part new or updated components.</p>
+<p>Processes the <strong>management</strong> part of the component envelope and creates the child API resources.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><ul class="simple">
+<li><p>meta (Dict): The metadata from the yaml component envelope</p></li>
+<li><p>spec (Dict): The spec from the yaml component envelope showing the intent (or desired state)</p></li>
+<li><p>status (Dict): The status from the yaml component envelope showing the actual state.</p></li>
+<li><p>body (Dict): The entire yaml component envelope</p></li>
+<li><p>namespace (String): The namespace for the component</p></li>
+<li><p>labels (Dict): The labels attached to the component. All ODA Components (and their children) should have a oda.tmforum.org/componentName label</p></li>
+<li><p>name (String): The name of the component</p></li>
+</ul>
+</dd>
+<dt>Returns:</dt><dd><p>Dict: The managementAPIs status that is put into the component envelope status field.</p>
 </dd>
 </dl>
 <dl class="field-list simple">

@@ -38,7 +38,7 @@
     
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Open Digital Architecture Canvas" href="../canvasCharts/README.html" />
+    <link rel="next" title="Open Digital Architecture - Canvas" href="../canvasCharts/index.html" />
     <link rel="prev" title="Tutorial to build ODA-Component from Open-API Reference Implemenation" href="ODAComponentTutorial/README.html" /> 
 </head>
 
@@ -102,7 +102,7 @@
 </ul>
 <p class="caption"><span class="caption-text">Canvas Helm Charts:</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../canvasCharts/README.html">Open Digital Architecture Canvas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../canvasCharts/index.html">Open Digital Architecture - Canvas</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Canvas Operators:</span></p>
 <ul>
@@ -206,7 +206,7 @@
     <span class="n">oda</span><span class="o">.</span><span class="n">tmforum</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">componentName</span><span class="p">:</span> <span class="n">vodafone</span><span class="o">-</span><span class="n">productcatalog</span>
 </pre></div>
 </div>
-<p>This is the headder information for the component, specifying the version of the CRD (Custom Resource Definition) that it is using, and providing a name and a label for the component.</p>
+<p>This is the header information for the component, specifying the version of the CRD (Custom Resource Definition) that it is using, and providing a name and a label for the component.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">spec</span><span class="p">:</span>
   <span class="n">selector</span><span class="p">:</span>
     <span class="n">matchLabels</span><span class="p">:</span>
@@ -227,9 +227,9 @@
       <span class="n">email</span><span class="p">:</span> <span class="n">lester</span><span class="o">.</span><span class="n">thomas</span><span class="nd">@vodafone</span><span class="o">.</span><span class="n">com</span>  
 </pre></div>
 </div>
-<p>This next section starts the <em>spec</em> for the component. THe <em>selector</em> and <em>matchLabels</em> are used in the section 2 to <em>label the standard kubernetes resources as belonging to the component</em>.</p>
-<p>The <em>type</em> allows us to specify that this is an implementation of a standard type of Component. The target is for the Open-Digital Architecture Reference Implementation to define a catalog of standard component types.</p>
-<p>The <em>version</em> and <em>description</em>, <em>maintainers</em> and <em>owners</em> are self-descriptive.</p>
+<p>This next section starts the <code class="docutils literal notranslate"><span class="pre">spec</span></code> for the component. THe <code class="docutils literal notranslate"><span class="pre">selector</span></code> and <code class="docutils literal notranslate"><span class="pre">matchLabels</span></code> are used in the section 2 to <em>label the standard kubernetes resources as belonging to the component</em>.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">type</span></code> allows us to specify that this is an implementation of a standard type of Component. The target is for the Open-Digital Architecture Reference Implementation to define a catalog of standard component types.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">version</span></code> and <code class="docutils literal notranslate"><span class="pre">description</span></code>, <code class="docutils literal notranslate"><span class="pre">maintainers</span></code> and <code class="docutils literal notranslate"><span class="pre">owners</span></code> are self-descriptive.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>  <span class="n">coreFunction</span><span class="p">:</span>
     <span class="n">exposedAPIs</span><span class="p">:</span> 
     <span class="o">-</span> <span class="n">name</span><span class="p">:</span> <span class="n">productCatalog</span>
@@ -245,16 +245,16 @@
       <span class="n">implementation</span><span class="p">:</span> <span class="n">camunda</span>
       <span class="n">path</span><span class="p">:</span> <span class="o">/</span><span class="n">camunda</span>
       <span class="n">port</span><span class="p">:</span> <span class="mi">8080</span>
-    <span class="n">dependantAPIs</span><span class="p">:</span> 
+    <span class="n">dependentAPIs</span><span class="p">:</span> 
     <span class="o">-</span> <span class="n">name</span><span class="p">:</span> <span class="n">party</span>      
       <span class="n">specification</span><span class="p">:</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="nb">open</span><span class="o">-</span><span class="n">api</span><span class="o">.</span><span class="n">tmforum</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">TMF632</span><span class="o">-</span><span class="n">Party</span><span class="o">-</span><span class="n">v4</span><span class="o">.</span><span class="mf">0.0</span><span class="o">.</span><span class="n">swagger</span><span class="o">.</span><span class="n">json</span>
 </pre></div>
 </div>
-<p>The <em>coreFunction</em> describes the core purpose of the software component. It describes the list of APIs that the component exposes as well as the APIs it is dependant on. The definitions within the <em>exposedAPIs</em> and <em>dependantAPIs</em> are experimental at this point, and we will modify and enhance them as we build-out the ODA Canvas and assemble a representative set of ODA Components. The current definition has:</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">coreFunction</span></code> describes the core purpose of the software component. It describes the list of APIs that the component exposes as well as the APIs it is dependant on. The definitions within the <code class="docutils literal notranslate"><span class="pre">exposedAPIs</span></code> and <code class="docutils literal notranslate"><span class="pre">dependentAPIs</span></code> are experimental at this point, and we will modify and enhance them as we build-out the ODA Canvas and assemble a representative set of ODA Components. The current definition has:</p>
 <ul class="simple">
-<li><p>an <em>implementation</em> which links to the Kubernetes service that implements the API, including the <em>port</em> where the http service is exposed.</p></li>
-<li><p>The <em>path</em> shows the API resource end-point, and can be used, for example, to automatically configure any API Gateway that is included as part of the Canvas. Note that the <em>path</em> points to the root of the API (and you need to append the relavant path from the swagger document to get to an implemented API resource).</p></li>
-<li><p>The <em>specification</em> points to the swagger documentation for the API. The Component CTK (Compliance Test Kit) will look inside this swagger for the <em>basePath</em> determine which Open-API CTK to execute for that API. The <em>basePath</em> is of format <code class="docutils literal notranslate"><span class="pre">&quot;/tmf-api/productCatalogManagement/v4/&quot;</span></code> which shows it is a <code class="docutils literal notranslate"><span class="pre">tmf-api</span></code> for <code class="docutils literal notranslate"><span class="pre">productCatalogManagement</span></code> with major version <code class="docutils literal notranslate"><span class="pre">4</span></code>. The swagger can be one of the TM Forum published swagger files (e.g. <a class="reference external" href="https://raw.githubusercontent.com/tmforum-rand/Open_API_And_Data_Model/v4.0-Sprint-2020-03/apis/TMF620_Product_Catalog/swaggers/TMF620-ProductCatalog-v4.1.0.swagger.json?token=ACS2FQP4M3AEZBKQQEMIUQ3ABGIBM">https://raw.githubusercontent.com/tmforum-rand/Open_API_And_Data_Model/v4.0-Sprint-2020-03/apis/TMF620_Product_Catalog/swaggers/TMF620-ProductCatalog-v4.1.0.swagger.json</a>) or can be an extension (conforming to the TMF630 Design Guidelines).</p></li>
+<li><p>an <code class="docutils literal notranslate"><span class="pre">implementation</span></code> which links to the Kubernetes service that implements the API, including the <code class="docutils literal notranslate"><span class="pre">port</span></code> where the http service is exposed.</p></li>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">path</span></code> shows the API resource end-point, and can be used, for example, to automatically configure any API Gateway that is included as part of the Canvas. Note that the <code class="docutils literal notranslate"><span class="pre">path</span></code> points to the root of the API (and you need to append the relavant path from the swagger document to get to an implemented API resource).</p></li>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">specification</span></code> points to the swagger documentation for the API. The Component CTK (Compliance Test Kit) will look inside this swagger for the <code class="docutils literal notranslate"><span class="pre">basePath</span></code> determine which Open-API CTK to execute for that API. The <code class="docutils literal notranslate"><span class="pre">basePath</span></code> is of format <code class="docutils literal notranslate"><span class="pre">&quot;/tmf-api/productCatalogManagement/v4/&quot;</span></code> which shows it is a <code class="docutils literal notranslate"><span class="pre">tmf-api</span></code> for <code class="docutils literal notranslate"><span class="pre">productCatalogManagement</span></code> with major version <code class="docutils literal notranslate"><span class="pre">4</span></code>. The swagger can be one of the TM Forum published swagger files (e.g. <a class="reference external" href="https://raw.githubusercontent.com/tmforum-rand/Open_API_And_Data_Model/v4.0-Sprint-2020-03/apis/TMF620_Product_Catalog/swaggers/TMF620-ProductCatalog-v4.1.0.swagger.json?token=ACS2FQP4M3AEZBKQQEMIUQ3ABGIBM">https://raw.githubusercontent.com/tmforum-rand/Open_API_And_Data_Model/v4.0-Sprint-2020-03/apis/TMF620_Product_Catalog/swaggers/TMF620-ProductCatalog-v4.1.0.swagger.json</a>) or can be an extension (conforming to the TMF630 Design Guidelines).</p></li>
 </ul>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span> <span class="n">eventNotification</span><span class="p">:</span>
     <span class="n">publishedEvents</span><span class="p">:</span>
@@ -275,7 +275,7 @@
       <span class="n">href</span><span class="p">:</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">schema</span><span class="o">.</span><span class="n">tmforum</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">Product</span><span class="o">/</span><span class="n">ImportJob</span><span class="o">.</span><span class="n">schema</span><span class="o">.</span><span class="n">json</span>
 </pre></div>
 </div>
-<p>The <em>eventNotification</em> describes the data events that the component publishes and sub-scribes to as part of its implementation. Again, the current definitions within these sections are experimental and we will modify and enhance them as we build-out the ODA Canvas and assemble a representative set of ODA Components.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">eventNotification</span></code> describes the data events that the component publishes and sub-scribes to as part of its implementation. Again, the current definitions within these sections are experimental and we will modify and enhance them as we build-out the ODA Canvas and assemble a representative set of ODA Components.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>  <span class="n">management</span><span class="p">:</span>
   <span class="o">-</span> <span class="n">name</span><span class="p">:</span> <span class="n">serviceTest</span>
     <span class="n">href</span><span class="p">:</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">manager</span><span class="o">.</span><span class="n">local</span><span class="o">/</span><span class="n">healthCheck</span>
@@ -287,6 +287,7 @@
     <span class="n">href</span><span class="p">:</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">manager</span><span class="o">.</span><span class="n">local</span><span class="o">/</span><span class="n">serviceConfiguration</span>
     <span class="n">specification</span><span class="p">:</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="nb">open</span><span class="o">-</span><span class="n">api</span><span class="o">.</span><span class="n">tmforum</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">TMF640</span><span class="o">-</span><span class="n">ServiceActivationConfiguration</span><span class="o">-</span><span class="n">v4</span><span class="o">.</span><span class="mf">0.0</span><span class="o">.</span><span class="n">swagger</span><span class="o">.</span><span class="n">json</span>
   <span class="n">security</span><span class="p">:</span>
+    <span class="n">controllerRole</span><span class="p">:</span> <span class="n">secConAdmin</span>
     <span class="n">securitySchemes</span><span class="p">:</span>
       <span class="n">bearerAuth</span><span class="p">:</span>
         <span class="nb">type</span><span class="p">:</span> <span class="n">http</span>
@@ -300,7 +301,7 @@
       <span class="n">port</span><span class="p">:</span> <span class="mi">8080</span>  
 </pre></div>
 </div>
-<p>The <em>management</em> and <em>security</em> describes management APIs the the component exposes that are part of its management (rather than part of its business function). Examples of management APIs are for self-testing, raising operational alarms, or configuring the component itself. The <em>security</em> section provides meta-data on the security mechanisms used by the component. Again, the current definitions within these sections are experimental and we will modify and enhance them as we build-out the ODA Canvas and assemble a representative set of ODA Components. As of version <code class="docutils literal notranslate"><span class="pre">v1alpha2</span></code> the security definition should include a partyrole property that describes the TMF669 PartyRole Open-API that all components must support (future versions may support multiple mechanisms for components to expose the roles they support).</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">management</span></code> and <code class="docutils literal notranslate"><span class="pre">security</span></code> sections describe management APIs the component exposes that are part of its management (rather than part of its business function). Examples of management APIs are for self-testing, raising operational alarms, or configuring the component itself. The <code class="docutils literal notranslate"><span class="pre">security</span></code> section provides meta-data on the security mechanisms used by the component. Again, the current definitions within these sections are experimental and we will modify and enhance them as we build-out the ODA Canvas and assemble a representative set of ODA Components. As of version <code class="docutils literal notranslate"><span class="pre">v1alpha2</span></code> the security definition should include a <code class="docutils literal notranslate"><span class="pre">partyrole</span></code> property that describes the TMF669 PartyRole Open-API that all components must support (future versions may support multiple mechanisms for components to expose the roles they support). As of version <code class="docutils literal notranslate"><span class="pre">v1alpha3</span></code> the security definition must include a <code class="docutils literal notranslate"><span class="pre">controllerRole</span></code> property that gives the name of a pre-existing role in the component that the security controller can use to a) POST a listener URL to the component partyRole notification endpoint so that it can receive notifications of events against party roles and b) GET the partyrole endpoint to query roles in the component.</p>
 </div>
 <div class="section" id="step-2-add-labels-to-all-the-standard-kubernetes-resources">
 <h2>Step 2: Add labels to all the standard Kubernetes resources<a class="headerlink" href="#step-2-add-labels-to-all-the-standard-kubernetes-resources" title="Permalink to this headline">¶</a></h2>
@@ -316,7 +317,7 @@
       <span class="n">kind</span><span class="p">:</span> <span class="n">Deployment</span>  
 </pre></div>
 </div>
-<p>We saw earlier that the <em>spec</em> of the ODA Component included a <em>selector</em> and <em>componentKinds</em> sections: The <em>selector</em> defines the standard label that we will use throughout the manifest to label all the standard Kubernetes resources; The <em>componentKinds</em> shows the types of resources that this component includes.</p>
+<p>We saw earlier that the <code class="docutils literal notranslate"><span class="pre">spec</span></code> of the ODA Component included a <code class="docutils literal notranslate"><span class="pre">selector</span></code> and <code class="docutils literal notranslate"><span class="pre">componentKinds</span></code> sections: The <code class="docutils literal notranslate"><span class="pre">selector</span></code> defines the standard label that we will use throughout the manifest to label all the standard Kubernetes resources; The <code class="docutils literal notranslate"><span class="pre">componentKinds</span></code> shows the types of resources that this component includes.</p>
 <p>In our productcatalog example component, if you look at the service definition below, it shows us adding the component label to this service.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">apiVersion</span><span class="p">:</span> <span class="n">v1</span>
 <span class="n">kind</span><span class="p">:</span> <span class="n">Service</span>
@@ -345,7 +346,7 @@
           </div>
           <footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-        <a href="../canvasCharts/README.html" class="btn btn-neutral float-right" title="Open Digital Architecture Canvas" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="../canvasCharts/index.html" class="btn btn-neutral float-right" title="Open Digital Architecture - Canvas" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
         <a href="ODAComponentTutorial/README.html" class="btn btn-neutral float-left" title="Tutorial to build ODA-Component from Open-API Reference Implemenation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
 
