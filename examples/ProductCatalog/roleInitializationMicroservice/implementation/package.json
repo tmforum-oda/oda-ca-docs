@@ -1,0 +1,19 @@
+{
+  "name": "party-role-initialization",
+  "version": "0.0.1",
+  "description": "Initialize roles in Party Role Mongo Database",
+  "main": "index.js",
+  "scripts": {
+    "prestart": "npm install",
+    "start": "node initialization.js"
+  },
+  "license": "Apache-2.0",
+  "private": true,
+  "dependencies": {
+    "axios": "^0.21.1"
+  },
+  "engines": {
+    "node": ">=8.10",
+    "npm": ">=6.0"
+  }
+}
