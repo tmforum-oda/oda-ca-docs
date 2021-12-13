@@ -398,12 +398,12 @@ function processMessage(db,client,message) {
     var query = JSON.parse(client._query);
 
     if(query!==undefined && query.criteria!==undefined) {
-      query.criteria.eventId = message.eventId;
+      query.criteria = {'eventId': message.eventId};  // LT Fix
     }
 
     const EVENTS = "TMPEVENTS";
-
-    db.collection(EVENTS)
+    var eventsCollection = db.collection(EVENTS)
+    eventsCollection
     .findOne(query.criteria,query.options)
     .then(doc => clean(doc))
     .then(doc => {
