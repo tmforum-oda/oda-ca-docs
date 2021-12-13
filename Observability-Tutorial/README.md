@@ -4,7 +4,7 @@ This tutorial shows the process to deploy the reference example ODA Component in
 
 The pre-requisites for this tuturial is a PC/Mac/Linux machine with `kubectl` and `helm` installed and access to the TM Forum Open Digital Lab at https://rke.tmforum.org/ 
 
-There is a video of this tutorial at: [ODA Component Tutorial Video walkthrough](https://youtu.be/XEbjc4g_usM)
+There is a video of this tutorial at: [ODA Observability Video walkthrough](https://youtu.be/XEbjc4g_usM)
 
 
 ### Reference Implementation environment with Service Mesh
