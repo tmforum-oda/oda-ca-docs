@@ -34,7 +34,8 @@ Open Digital Architecture - Component Accelerator
    :caption: Canvas Helm Charts:
 
    canvasCharts/index.rst
-
+   canvasCharts/Specification.md
+   canvasCharts/Installation.md
    
 .. toctree::
    :maxdepth: 2

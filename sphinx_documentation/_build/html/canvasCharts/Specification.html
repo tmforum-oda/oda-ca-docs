@@ -98,9 +98,8 @@
 </ul>
 <p class="caption"><span class="caption-text">Canvas Helm Charts:</span></p>
 <ul class="current">
-<li class="toctree-l1 current"><a class="reference internal" href="index.html">Open Digital Architecture - Canvas</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="README.html">Open Digital Architecture Canvas</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">ODA Reference Implementation and Environment Specification</a></li>
+<li class="toctree-l1"><a class="reference internal" href="index.html">Open Digital Architecture - Canvas</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">ODA Reference Implementation and Environment Specification</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#oda-environment-specification">ODA Environment Specification</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#kubernetes">Kubernetes</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#custom-resource-definitions">Custom Resource Definitions</a></li>
@@ -114,9 +113,9 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#oda-ri-environment-implementation">ODA-RI environment implementation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#oda-ri-specific-supplementary-services">ODA-RI specific supplementary services</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Installation.html">Installation</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="Installation.html">Installation</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Canvas Operators:</span></p>
 <ul>
@@ -210,11 +209,10 @@
 <li><p>The <em>supplemental services</em> required to emulate capabilities that are normally available in a service provider outside the ODA scope.</p></li>
 </ul>
 <p>This page documents the environment specification, reference implementation and supplemental services as we discover them through building and testing the ODA-RI.</p>
-</div>
 <div class="section" id="oda-environment-specification">
-<h1>ODA Environment Specification<a class="headerlink" href="#oda-environment-specification" title="Permalink to this headline">¶</a></h1>
+<h2>ODA Environment Specification<a class="headerlink" href="#oda-environment-specification" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="kubernetes">
-<h2>Kubernetes<a class="headerlink" href="#kubernetes" title="Permalink to this headline">¶</a></h2>
+<h3>Kubernetes<a class="headerlink" href="#kubernetes" title="Permalink to this headline">¶</a></h3>
 <p><a class="reference external" href="https://kubernetes.io">Kubernetes</a> is the base platform technology.</p>
 <ul class="simple">
 <li><p>Version 1.19 or higher (1.21 has been shown to work at the time of writing) is required</p></li>
@@ -223,7 +221,7 @@
 </ul>
 </div>
 <div class="section" id="custom-resource-definitions">
-<h2>Custom Resource Definitions<a class="headerlink" href="#custom-resource-definitions" title="Permalink to this headline">¶</a></h2>
+<h3>Custom Resource Definitions<a class="headerlink" href="#custom-resource-definitions" title="Permalink to this headline">¶</a></h3>
 <p>There are custom resource definitions for:</p>
 <ul class="simple">
 <li><p>api.oda.tmforum.org</p></li>
@@ -231,7 +229,7 @@
 </ul>
 </div>
 <div class="section" id="controllers">
-<h2>Controllers<a class="headerlink" href="#controllers" title="Permalink to this headline">¶</a></h2>
+<h3>Controllers<a class="headerlink" href="#controllers" title="Permalink to this headline">¶</a></h3>
 <p>SRE teams will need to maintain custom controllers for:</p>
 <ul class="simple">
 <li><p>Managing the configuration of components</p></li>
@@ -243,7 +241,7 @@
 </ul>
 </div>
 <div class="section" id="service-discovery">
-<h2>Service discovery<a class="headerlink" href="#service-discovery" title="Permalink to this headline">¶</a></h2>
+<h3>Service discovery<a class="headerlink" href="#service-discovery" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>Most discovery will happen either via DNS to pre-defined names or using TM Forum ODA specific custom resource definitions</p></li>
 </ul>
@@ -253,21 +251,21 @@
 </ul>
 </div>
 <div class="section" id="service-mesh">
-<h2>Service Mesh<a class="headerlink" href="#service-mesh" title="Permalink to this headline">¶</a></h2>
+<h3>Service Mesh<a class="headerlink" href="#service-mesh" title="Permalink to this headline">¶</a></h3>
 <p>Service mesh is required to provide the following functions:</p>
 <ul class="simple">
 <li><p>automatic encryption of all cluster traffic using sidecar proxies</p></li>
 </ul>
 </div>
 <div class="section" id="key-and-certificate-management">
-<h2>Key and certificate management<a class="headerlink" href="#key-and-certificate-management" title="Permalink to this headline">¶</a></h2>
+<h3>Key and certificate management<a class="headerlink" href="#key-and-certificate-management" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>The cluster requires API-driven access to a certifying authority for issuing trusted certificates for the API front end. This could be an external service, but for perfoamnce reasons it may be dsirable to provide a cluster-hosted sub-CA using technology like <a class="reference external" href="https://www.vaultproject.io/">Hashicorp Vault</a> or <a class="reference external" href="https://cert-manager.io/">cert-manager</a>.</p></li>
 <li><p>Kubernetes secrets are good, but provision should be made for this to be backed by a third party key manager like <a class="reference external" href="https://www.vaultproject.io/">Hashicorp Vault</a>.</p></li>
 </ul>
 </div>
 <div class="section" id="identity-and-access-management">
-<h2>Identity and access management<a class="headerlink" href="#identity-and-access-management" title="Permalink to this headline">¶</a></h2>
+<h3>Identity and access management<a class="headerlink" href="#identity-and-access-management" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>The ODA expects there to be an identity management in the external organisation and does not provide any identity management services.</p></li>
 <li><p>Authentication and authorisationto be provided by an external provider using any combination of OIDC, SAML, Active Directory or LDAP.</p></li>
@@ -276,14 +274,14 @@
 </ul>
 </div>
 <div class="section" id="observability">
-<h2>Observability<a class="headerlink" href="#observability" title="Permalink to this headline">¶</a></h2>
+<h3>Observability<a class="headerlink" href="#observability" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>The ODA implements a collection service for events and metrics. Custom controllers may be required to collect from components that expect different collectors.</p></li>
 </ul>
 </div>
 </div>
 <div class="section" id="oda-ri-environment-implementation">
-<h1>ODA-RI environment implementation<a class="headerlink" href="#oda-ri-environment-implementation" title="Permalink to this headline">¶</a></h1>
+<h2>ODA-RI environment implementation<a class="headerlink" href="#oda-ri-environment-implementation" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p><a class="reference external" href="https://rancher.com/">Rancher</a> is being used to manage the Kubernetes clusters.</p></li>
 <li><p><a class="reference external" href="https://istio.io/">Istio</a> has been implemented as the service mesh as it is provided with Rancher.</p></li>
@@ -294,10 +292,11 @@
 </ul>
 </div>
 <div class="section" id="oda-ri-specific-supplementary-services">
-<h1>ODA-RI specific supplementary services<a class="headerlink" href="#oda-ri-specific-supplementary-services" title="Permalink to this headline">¶</a></h1>
+<h2>ODA-RI specific supplementary services<a class="headerlink" href="#oda-ri-specific-supplementary-services" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p><a class="reference external" href="https://www.keycloak.org/">Keycloak</a> has been implemented to provide identity and access services that would normally be provided by the organisation outside the ODA architecture. So far, the ODA-RI has the capability to synchronise roles with components, but user account management, authorisation and authentication journeys are backlogged.</p></li>
 </ul>
+</div>
 </div>
 
 

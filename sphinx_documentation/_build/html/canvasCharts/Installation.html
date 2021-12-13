@@ -98,20 +98,14 @@
 </ul>
 <p class="caption"><span class="caption-text">Canvas Helm Charts:</span></p>
 <ul class="current">
-<li class="toctree-l1 current"><a class="reference internal" href="index.html">Open Digital Architecture - Canvas</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="README.html">Open Digital Architecture Canvas</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Specification.html">ODA Reference Implementation and Environment Specification</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Specification.html#oda-environment-specification">ODA Environment Specification</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Specification.html#oda-ri-environment-implementation">ODA-RI environment implementation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Specification.html#oda-ri-specific-supplementary-services">ODA-RI specific supplementary services</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Installation</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#step-1-installing-cluster-enablers">Step 1: Installing cluster enablers</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#step-2-installing-reference-implementation-services">Step 2: Installing Reference Implementation services</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#step-3-installing-the-canvas">Step 3: Installing the Canvas</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#step-4-configuring-keycloak">Step 4: Configuring Keycloak</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#notes">Notes</a></li>
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="index.html">Open Digital Architecture - Canvas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Specification.html">ODA Reference Implementation and Environment Specification</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Installation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#step-1-installing-cluster-enablers">Step 1: Installing cluster enablers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#step-2-installing-reference-implementation-services">Step 2: Installing Reference Implementation services</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#step-3-installing-the-canvas">Step 3: Installing the Canvas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#step-4-configuring-keycloak">Step 4: Configuring Keycloak</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#notes">Notes</a></li>
 </ul>
 </li>
 </ul>
@@ -235,7 +229,7 @@
 <h2>Step 4: Configuring Keycloak<a class="headerlink" href="#step-4-configuring-keycloak" title="Permalink to this headline">¶</a></h2>
 <p>Finally, you will also need to configure Keycloak as follows:</p>
 <ul class="simple">
-<li><p>Log in to the admin console. Unless you changed it manually, the default credentials we’ve set are in the <a class="reference external" href="canvas/charts/keycloak/values.yaml">Keycloak values.yaml file</a></p></li>
+<li><p>Log in to the admin console. Unless you changed it manually, the default credentials we’ve set are in the <a class="reference external" href="https://github.com/tmforum-oda/oda-canvas-charts/blob/master/canvas/charts/keycloak/values.yaml">Keycloak values.yaml file</a></p></li>
 <li><p><a class="reference external" href="https://www.keycloak.org/docs/latest/server_admin/#_create-realm">Create a new realm</a> called <code class="docutils literal notranslate"><span class="pre">myrealm</span></code></p></li>
 <li><p><a class="reference external" href="https://www.keycloak.org/docs/latest/server_admin/#_create-new-user">Create a user in myrealm</a> called <code class="docutils literal notranslate"><span class="pre">seccon</span></code></p></li>
 </ul>
