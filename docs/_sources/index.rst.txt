@@ -17,8 +17,9 @@ Open Digital Architecture - Component Accelerator
 
 .. toctree::
    :maxdepth: 2
-   :caption: Tutorial:
+   :caption: Tutorials:
 
+   caDocs/Observability-Tutorial/README.md
    caDocs/ODAComponentTutorial/README.md
 
 
