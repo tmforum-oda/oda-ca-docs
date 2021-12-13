@@ -1,24 +1,24 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{.Release.Name}}-prodcatapi
+  name: {{.Release.Name}}-metricsapi
   labels:
     oda.tmforum.org/componentName: {{.Release.Name}}-{{.Values.component.name}}
 spec:
   replicas: 1
   selector:
     matchLabels:
-      impl: {{.Release.Name}}-prodcatapi
+      impl: {{.Release.Name}}-metricsapi
   template:
     metadata:
       labels:
         app: {{.Release.Name}}-{{.Values.component.name}}
-        impl: {{.Release.Name}}-prodcatapi
-        version: lesterthomas-productcatalogapi-latest
+        impl: {{.Release.Name}}-metricsapi
+        version: lesterthomas-metricsapi-latest
     spec:
       containers:
-      - name: {{.Release.Name}}-prodcatapi
-        image: lesterthomas/productcatalogapi:latest
+      - name: {{.Release.Name}}-registerallevents
+        image: lesterthomas/registerallevents:latest
         env:
         - name: RELEASE_NAME
           value: {{.Release.Name}}           
@@ -26,5 +26,6 @@ spec:
           value: {{.Release.Name}}-{{.Values.component.name}}           
         imagePullPolicy: Always
         ports:
-        - name: {{.Release.Name}}-pcapi
-          containerPort: 8080
+        - name: {{.Release.Name}}-prapi
+          containerPort: 4000
+         

@@ -1,0 +1,15 @@
+{
+  "name": "registeralleventsmicroservice",
+  "version": "1.0.0",
+  "description": "Register for all events from Open-APIs",
+  "main": "index.js",
+  "scripts": {
+    "test": "node index.js"
+  },
+  "author": "Lester Thomas",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1",
+    "prom-client": "^14.0.0"
+  }
+}
