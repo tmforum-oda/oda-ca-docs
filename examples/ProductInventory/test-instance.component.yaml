@@ -1,0 +1,264 @@
+---
+# Source: productinventory/templates/persistentVolumeClaim-mongodb.yaml
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: test-mongodb-pv-claim
+  labels:
+    oda.tmforum.org/componentName: test-productinventory
+spec:
+  accessModes:
+  - ReadWriteOnce
+  resources:
+    requests:
+      storage: 5Gi
+---
+# Source: productinventory/templates/service-mongodb.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: test-mongodb
+  labels:
+    app: test-mongodb
+    oda.tmforum.org/componentName: test-productinventory
+spec:
+  ports:
+  - port: 27017
+    targetPort: test-mongodb
+    name: test-mongodb
+  type: NodePort
+  selector:
+    app: test-mongodb
+---
+# Source: productinventory/templates/service-partyroleapi.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: test-partyroleapi
+  labels:
+    app: test-partyroleapi
+    oda.tmforum.org/componentName: test-productinventory
+spec:
+  ports:
+  - port: 8080
+    targetPort: test-prapi
+    name: http-test-partyroleapi
+  type: NodePort
+  selector:
+    impl: test-partyroleapi
+---
+# Source: productinventory/templates/service-productinventoryapi.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: test-productinventoryapi
+  labels:
+    app: test-productinventoryapi
+    oda.tmforum.org/componentName: test-productinventory
+spec:
+  ports:
+  - port: 8080
+    targetPort: 8080
+    name: test-productinventoryapi
+  type: NodePort
+  selector:
+    app: test-productinventoryapi
+---
+# Source: productinventory/templates/deployment-mongodb.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: test-mongodb-prod
+  labels:
+    oda.tmforum.org/componentName: test-productinventory
+    app: test-mongodb
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: test-mongodb
+  template:
+    metadata:
+      labels:
+        app: test-mongodb
+    spec:
+      containers:
+      - name: test-mongodb
+        image: mongo:latest
+        ports:
+        - name: test-mongodb
+          containerPort: 27017
+        volumeMounts:
+        - name: test-mongodb-pv-storage
+          mountPath: "/data/db"
+      volumes:
+      - name: test-mongodb-pv-storage
+        persistentVolumeClaim:
+          claimName: test-mongodb-pv-claim
+---
+# Source: productinventory/templates/deployment-partyroleapi.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: test-partyroleapi
+  labels:
+    oda.tmforum.org/componentName: test-productinventory
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      impl: test-partyroleapi
+  template:
+    metadata:
+      labels:
+        app: test-productinventory
+        impl: test-partyroleapi
+        version: dominico-partyroleapi-latest
+    spec:
+      containers:
+      - name: test-partyroleapi
+        image: dominico/partyroleapi:latest
+        env:
+        - name: RELEASE_NAME
+          value: test           
+        - name: COMPONENT_NAME
+          value: test-productinventory           
+        imagePullPolicy: Always
+        ports:
+        - name: test-prapi
+          containerPort: 8080
+        startupProbe:
+          httpGet:
+            path: /test-productinventory/tmf-api/partyRoleManagement/v4/partyRole 
+            port: 8080
+          initialDelaySeconds: 10
+          periodSeconds: 5          
+          failureThreshold: 30
+---
+# Source: productinventory/templates/deployment-productinventoryapi.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: test-productinventoryapi
+  labels:
+    oda.tmforum.org/componentName: test-productinventory
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: test-productinventoryapi
+  template:
+    metadata:
+      labels:
+        app: test-productinventoryapi
+    spec:
+      containers:
+      - name: test-productinventoryapi
+        env:
+        - name: RELEASE_NAME
+          value: test           
+        - name: COMPONENT_NAME
+          value: test-productinventory           
+        image: dominico/productinventoryapi:latest
+        ports:
+        - name: test-prodinvapi
+          containerPort: 8080
+---
+# Source: productinventory/templates/cronjob-roleinitialization.yaml
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: test-roleinitialization
+  labels:
+    oda.tmforum.org/componentName: test-productinventory
+spec:
+  template:
+    metadata:
+      labels:
+        app: test-roleinitialization
+    spec:
+      containers:
+      - name: test-roleinitialization
+        image: dominico/roleinitialization:latest
+        env:
+        - name: RELEASE_NAME
+          value: test           
+        - name: COMPONENT_NAME
+          value: test-productinventory           
+        imagePullPolicy: Always
+      restartPolicy: OnFailure
+  backoffLimit: 10
+---
+# Source: productinventory/templates/component-productcinventory.yaml
+apiVersion: oda.tmforum.org/v1alpha4
+kind: component
+metadata:
+  name: test-productinventory
+  labels:
+    oda.tmforum.org/componentName: test-productinventory
+spec:
+  type: productinventory
+  selector:
+    matchLabels:
+     oda.tmforum.org/componentName: test-productinventory
+  componentKinds:
+    - group: core
+      kind: Service    
+    - group: core
+      kind: PersistentVolumeClaim
+    - group: apps
+      kind: Deployment  
+  version: "0.0.1"
+  description: "Simple Product Inventory ODA-Component from Open-API reference implementation." 
+  maintainers:
+    - name: Dominic Oyeniran
+      email: dominic.oyeniran@vodafone.com
+  owners:
+    - name: Dominic Oyeniran
+      email: dominic.oyeniran@vodafone.com     
+  coreFunction:
+    exposedAPIs: 
+    - name: productinventorymanagement
+      specification: https://raw.githubusercontent.com/tmforum-apis/TMF637_ProductInventory/master/TMF637-ProductInventory-v4.0.0.swagger.json
+      implementation: test-productinventoryapi
+      apitype: openapi
+      path: /test-productinventory/tmf-api/productInventoryManagement/v4
+      developerUI: /test-productinventory/tmf-api/productInventoryManagement/v4/docs
+      port: 8080
+    dependentAPIs: 
+    - name: party      
+      specification: https://open-api.tmforum.org/TMF632-Party-v4.0.0.swagger.json
+  eventNotification:
+    publishedEvents: []
+    subscribedEvents: []
+  management: []
+  security:
+    securitySchemes: 
+      bearerAuth:
+        type: http
+        scheme: bearer
+        bearerFormat: JWT
+  partyrole:
+      specification: https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
+      implementation: test-partyroleapi
+      apitype: openapi
+      path: /test-/tmf-api/partyRoleManagement/v4
+      developerUI: /test-/tmf-api/partyRoleManagement/v4/docs
+      port: 8080
+---
+# Source: productinventory/templates/tests/test-connection.yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: "test-productinventory-test-connection"
+  labels:
+    oda.tmforum.org/componentName: test-productinventory
+  annotations:
+    "helm.sh/hook": test
+spec:
+  containers:
+    - name: wget
+      image: busybox
+      command: ['wget']
+      args: ['test-productinventory:80']
+  restartPolicy: Never
