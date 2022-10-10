@@ -1,6 +1,6 @@
 # Contribution guidance
 
-The following outllines the process and governance for contributing to the ODA Component definitions.
+The following outlines the process and governance for contributing to the ODA Component definitions.
 
 * Contributions will include contributing new components, updates to the Custom Resource Definitions (that kubernetes uses to validate the data model of the component YAML), updates to the kubernetes controllers and updates to the CTKs. (NOTE: The combination of a CRD and Controller is often referred to as an operator).
 * Before you create a contribution, you should create an issue to describe the isuse you plan to address. You should also check that there are no open issues that may conflict with your planned contribution.
