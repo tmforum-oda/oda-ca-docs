@@ -239,7 +239,7 @@ that would configure an API gateway in front of the Service Mesh (This is the re
 
 <dl class="py function">
 <dt id="apiOperatorIstio.getIstioIngressStatus">
-<code class="sig-prename descclassname"><span class="pre">apiOperatorIstio.</span></code><code class="sig-name descname"><span class="pre">getIstioIngressStatus</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#apiOperatorIstio.getIstioIngressStatus" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname"><span class="pre">apiOperatorIstio.</span></code><code class="sig-name descname"><span class="pre">getIstioIngressStatus</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">inHandler</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">componentName</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#apiOperatorIstio.getIstioIngressStatus" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py function">
@@ -263,6 +263,25 @@ When EndPointSlide updates the ready-status of the implementation, update parent
 </dd>
 </dl>
 <dl class="field-list simple">
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="apiOperatorIstio.logWrapper">
+<code class="sig-prename descclassname"><span class="pre">apiOperatorIstio.</span></code><code class="sig-name descname"><span class="pre">logWrapper</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">logLevel</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">functionName</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">handlerName</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">resourceName</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">componentName</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">subject</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">message</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#apiOperatorIstio.logWrapper" title="Permalink to this definition">¶</a></dt>
+<dd><p>Helper function to standardise logging output.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><ul class="simple">
+<li><p>logLevel (Number): The level to log e.g. logging.INFO</p></li>
+<li><p>functionName (String): The name of the function calling the logWrapper</p></li>
+<li><p>resourceName (String): The name of the resource being logged</p></li>
+<li><p>componentName (String): The name of the component being logged</p></li>
+<li><p>subject (String): The subject of the log message</p></li>
+<li><p>message (String): The message to be logged - can contain relavant data</p></li>
+</ul>
+</dd>
+<dt>Returns:</dt><dd><p>No return value.</p>
+</dd>
 </dl>
 </dd></dl>
 
