@@ -14,7 +14,7 @@ For an introdution to the Open-Digital Architecture component model, take a look
 
 ### Step 1. Download Reference Implementation
 
-We are using one of the Reference implementaitons of the Open-APIs as a starting point. Go to the open-API Table at [https://projects.tmforum.org/wiki/display/API/Open+API+Table](https://projects.tmforum.org/wiki/display/API/Open+API+Table) and download one of the reference implmeentation `.zip` files (we are using the Product Catalog Management API, but you can choose any).
+We are using one of the Reference implementations of the Open-APIs as a starting point. Go to the open-API Table at [https://projects.tmforum.org/wiki/display/API/Open+API+Table](https://projects.tmforum.org/wiki/display/API/Open+API+Table) and download one of the reference implmentation `.zip` files (we are using the Product Catalog Management API, but you can choose any).
 
 ![<img src="https://projects.tmforum.org/wiki/display/API/Open+API+Table">](./images/Open-API-Table.png)
 
