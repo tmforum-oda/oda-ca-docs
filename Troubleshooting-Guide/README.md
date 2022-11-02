@@ -21,4 +21,4 @@ Generic Kubernetes guides
 
 These guides assume that you are connected to a Kubernetes cluster with an ODA-Canvas installed, and have Kubectl correctly configured.
 
-Please feel free to contribute to these guides (see [Contributions Guide](../ContributionsGuide.md) for details on how to contribute.
+Please feel free to contribute to these guides (see [Contributions Guide](../ContributionsGuide.md) for details on how to contribute).

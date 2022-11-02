@@ -1,6 +1,6 @@
 # CTK Troubleshooting Guide
 
-The Compliance Test Kit will perform static and dynamic tests of the component against the ODA Component standard. Static tests are jsut testing the components YAML definition; The dynamic tests will connect to the running component in an ODA Canvas and perform tests via APIs.
+The Compliance Test Kit will perform static and dynamic tests of the component against the ODA Component standard. Static tests are just testing the components YAML definition; The dynamic tests will connect to the running component in an ODA Canvas and perform tests via APIs.
 
 The Compliance Test consists of two levels: The level 1 is testing against the underlying design standards that apply to all components; The level 2 tests are testing the functionality of a specific component type against the `Golden Component` for that type.
 
