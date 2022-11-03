@@ -30,7 +30,7 @@ The reference implementation is set-up to run in IBM Cloud (bluemix). To enable 
 
 In the `utils/mongoUtils.js` file, you will need to replace the connectHelper with a helper function that uses local connection string:
 
-```
+```js
 /* connection helper for running MongoDb from url */
 function connectHelper(callback) {
 
@@ -62,7 +62,7 @@ When we depoy this nodejs code for use within Kubernetes, it will connect to Mon
 
 In the `utils/mongoUtils.js` file, you will need to update the local connection string to a url that wil work within Kubernetes (this will match the kubernetes service name for mongoDb). Note we include a release name passed as an environment variable (as we could potentially deploy multiple instances of a component in the same canvas).
 
-```
+```js
 /* connection helper for running MongoDb from url */
 function connectHelper(callback) {
   var releaseName = process.env.RELEASE_NAME; // Release name from Helm deployment
@@ -83,27 +83,36 @@ function connectHelper(callback) {
 ```
 #### 3.2 Use environment variables to allow API path to be configured externally
 
-By default the nodejs code will serve the API at the path in the swagger file, which for our example is `/tmf-api/productCatalogManagement/v4/`. We want to potentially deploy multiple component instances in the same environment, and so we add a configurable `COMPONENT_NAME` to the start of the URL. We need to do this in the `swaggerDoc` as well as in the `swagger-ui-dist/index.html` that provides the swagger user interface.
-```
+By default the nodejs code will serve the API at the path in the swagger file, which for our example is `/tmf-api/productCatalogManagement/v4/`. We want to potentially deploy multiple component instances in the same environment, and so we add a configurable `COMPONENT_NAME` to the start of the URL. We need to do this in the `swaggerDoc` as well as in the `swagger-ui-dist/index.html` that provides the swagger user interface. 
+
+Edit the `./index.js` file in the implementation root directory.
+```js
 const swaggerDoc = swaggerUtils.getSwaggerDoc();
 
 // Get Component instance name from Environment variable and put it at start of API path
-var componentName = process.env.COMPONENT_NAME; 
+var componentName = process.env.COMPONENT_NAME;
+if (!componentName) {
+  componentName = 'productinventory'
+}
 console.log('ComponentName:'+componentName);
+// end
 
-swaggerDoc.basePath = '/' + componentName + swaggerDoc.basePath
-
-// add component name to url in swagger_ui
+// add component name to url in swagger_ui - i.e. swagger-ui-dist/index.html
 fs.readFile(path.join(__dirname, './node_modules/swagger-ui-dist/index.html'), 'utf8', function (err,data) {
   if (err) {
     return console.log(err);
   }
-  var result = data.replace(/\/api-docs/g, swaggerDoc.basePath + 'api-docs' );
+  var result = data.replace(/api-docs/g, swaggerDoc.basePath + 'api-docs' );
   console.log('updating ' + path.join(__dirname, './node_modules/swagger-ui-dist/index.html'));
   fs.writeFile(path.join(__dirname, './node_modules/swagger-ui-dist/index.html'), result, 'utf8', function (err) {
       if (err) return console.log(err);
   });
 });
+
+// add component name to swaggerDoc
+swaggerDoc.basePath = '/' + componentName + swaggerDoc.basePath
+
+//end
 ```
 
 #### 3.3 Add home resource at root of the API, and also move where the docs and api-docs are hosted
@@ -116,7 +125,7 @@ You integrate this module by adding `app.use(swaggerDoc.basePath, entrypointUtil
 
 Finally, we change the path where the 'api-docs' and 'docs' are exposed. By default they are served at `/api-docs` and `/docs`. Again, we want to avoid conflicts if we have multiple components running in the same environment. We solve this by moving them to the full path of the API, so in our example, they would be at `/tmf-api/productCatalogManagement/v4/`
 
-```
+```js
   // Serve the Swagger documents and Swagger UI
   app.use(middleware.swaggerUi({   apiDocs: swaggerDoc.basePath + 'api-docs',
     swaggerUi: swaggerDoc.basePath + 'docs',
