@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>apiOperatorSimpleIngress module &mdash; ODA-Component Accelerator v1alpha3 documentation</title>
+  <title>apiOperatorSimpleIngress module &mdash; ODA-Component Accelerator v1alpha4 documentation</title>
   
 
   
@@ -242,6 +242,29 @@ that would configure an API gateway instead of an Ingress.</p>
 </dd></dl>
 
 <dl class="py function">
+<dt id="apiOperatorSimpleIngress.ingress_status">
+<em class="property"><span class="pre">async</span> </em><code class="sig-prename descclassname"><span class="pre">apiOperatorSimpleIngress.</span></code><code class="sig-name descname"><span class="pre">ingress_status</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">meta</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">spec</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">status</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">body</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">namespace</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">labels</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#apiOperatorSimpleIngress.ingress_status" title="Permalink to this definition">¶</a></dt>
+<dd><p>Handler function to register for status changes in child Ingress resources.</p>
+<p>When Ingress adds IP address/dns of load balancer, update parent API object.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><ul class="simple">
+<li><p>meta (Dict): The metadata from the Ingress Resource</p></li>
+<li><p>spec (Dict): The spec from the Ingress Resource showing the intent (or desired state)</p></li>
+<li><p>status (Dict): The status from the Ingress Resource showing the actual state.</p></li>
+<li><p>body (Dict): The entire Ingress Resource</p></li>
+<li><p>namespace (String): The namespace for the Ingress Resource</p></li>
+<li><p>labels (Dict): The labels attached to the Ingress Resource. All ODA Components (and their children) should have a oda.tmforum.org/componentName label</p></li>
+<li><p>name (String): The name of the Ingress Resource</p></li>
+</ul>
+</dd>
+<dt>Returns:</dt><dd><p>No return value.</p>
+</dd>
+</dl>
+<dl class="field-list simple">
+</dl>
+</dd></dl>
+
+<dl class="py function">
 <dt id="apiOperatorSimpleIngress.implementation_status">
 <em class="property"><span class="pre">async</span> </em><code class="sig-prename descclassname"><span class="pre">apiOperatorSimpleIngress.</span></code><code class="sig-name descname"><span class="pre">implementation_status</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">meta</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">spec</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">status</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">body</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">namespace</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">labels</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#apiOperatorSimpleIngress.implementation_status" title="Permalink to this definition">¶</a></dt>
 <dd><p>Handler function to register for status changes in EndPointSlide resources.</p>
@@ -256,29 +279,6 @@ When EndPointSlide updates the ready-status of the implementation, update parent
 <li><p>namespace (String): The namespace for the EndPointSlide Resource</p></li>
 <li><p>labels (Dict): The labels attached to the EndPointSlide Resource. All ODA Components (and their children) should have a oda.tmforum.org/componentName label</p></li>
 <li><p>name (String): The name of the EndPointSlide Resource</p></li>
-</ul>
-</dd>
-<dt>Returns:</dt><dd><p>No return value.</p>
-</dd>
-</dl>
-<dl class="field-list simple">
-</dl>
-</dd></dl>
-
-<dl class="py function">
-<dt id="apiOperatorSimpleIngress.ingress_status">
-<em class="property"><span class="pre">async</span> </em><code class="sig-prename descclassname"><span class="pre">apiOperatorSimpleIngress.</span></code><code class="sig-name descname"><span class="pre">ingress_status</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">meta</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">spec</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">status</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">body</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">namespace</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">labels</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#apiOperatorSimpleIngress.ingress_status" title="Permalink to this definition">¶</a></dt>
-<dd><p>Handler function to register for status changes in child Ingress resources.</p>
-<p>When Ingress adds IP address/dns of load balancer, update parent API object.</p>
-<dl class="simple">
-<dt>Args:</dt><dd><ul class="simple">
-<li><p>meta (Dict): The metadata from the Ingress Resource</p></li>
-<li><p>spec (Dict): The spec from the Ingress Resource showing the intent (or desired state)</p></li>
-<li><p>status (Dict): The status from the Ingress Resource showing the actual state.</p></li>
-<li><p>body (Dict): The entire Ingress Resource</p></li>
-<li><p>namespace (String): The namespace for the Ingress Resource</p></li>
-<li><p>labels (Dict): The labels attached to the Ingress Resource. All ODA Components (and their children) should have a oda.tmforum.org/componentName label</p></li>
-<li><p>name (String): The name of the Ingress Resource</p></li>
 </ul>
 </dd>
 <dt>Returns:</dt><dd><p>No return value.</p>
@@ -304,7 +304,7 @@ When EndPointSlide updates the ready-status of the implementation, update parent
 
   <div role="contentinfo">
     <p>
-        &#169; Copyright 2021, TM Forum ODA-Component Accelerator project.
+        &#169; Copyright 2022, TM Forum ODA-Component Accelerator project.
 
     </p>
   </div>
