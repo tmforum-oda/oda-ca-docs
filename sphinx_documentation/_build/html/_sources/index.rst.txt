@@ -29,6 +29,11 @@ Open Digital Architecture - Component Accelerator
 
    caDocs/ODAComponentDesignGuidelines.md
 
+.. toctree::
+   :maxdepth: 2
+   :caption: Compliance Test Kit (CTK):
+
+   ctk/README.md
 
 .. toctree::
    :maxdepth: 2
@@ -44,12 +49,12 @@ Open Digital Architecture - Component Accelerator
 
    caSource/controllers/index.rst        
 
-   
+
 .. toctree::
    :maxdepth: 2
-   :caption: Compliance Test Kit (CTK):
+   :caption: Troubleshooting Guide:
 
-   ctk/README.md
+   caDocs/TroubleshootingGuide/index.rst
 
 
 .. toctree::
@@ -58,7 +63,6 @@ Open Digital Architecture - Component Accelerator
 
    caDocs/ContributionsGuide.md
    caDocs/DocumentationProcess.md
-
 
 
 

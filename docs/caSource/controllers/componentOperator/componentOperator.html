@@ -97,6 +97,10 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../../caDocs/ODAComponentDesignGuidelines.html">Design Guidelines to create a new ODA Component</a></li>
 </ul>
+<p class="caption"><span class="caption-text">Compliance Test Kit (CTK):</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../ctk/README.html">ODA Component - CTK</a></li>
+</ul>
 <p class="caption"><span class="caption-text">Canvas Helm Charts:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../../canvasCharts/index.html">Open Digital Architecture - Canvas</a></li>
@@ -123,9 +127,9 @@
 </ul>
 </li>
 </ul>
-<p class="caption"><span class="caption-text">Compliance Test Kit (CTK):</span></p>
+<p class="caption"><span class="caption-text">Troubleshooting Guide:</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../../ctk/README.html">ODA Component - CTK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../caDocs/TroubleshootingGuide/index.html">ODA-CA Troubleshooting Guide</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Contributions Guide:</span></p>
 <ul>
@@ -293,45 +297,6 @@ will delete these resources automatically if the component is deleted.</p>
 <dd></dd></dl>
 
 <dl class="py function">
-<dt id="componentOperator.constructAPIResourcePayload">
-<code class="sig-prename descclassname"><span class="pre">componentOperator.</span></code><code class="sig-name descname"><span class="pre">constructAPIResourcePayload</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">inAPI</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#componentOperator.constructAPIResourcePayload" title="Permalink to this definition">¶</a></dt>
-<dd><p>Helper function to create payloads for API Custom objects.
-Args:</p>
-<blockquote>
-<div><ul class="simple">
-<li><p>inAPI (Dict): The API spec</p></li>
-</ul>
-</div></blockquote>
-<dl class="simple">
-<dt>Returns:</dt><dd><p>API Custom object (Dict)</p>
-</dd>
-</dl>
-<dl class="field-list simple">
-</dl>
-</dd></dl>
-
-<dl class="py function">
-<dt id="componentOperator.createAPIResource">
-<em class="property"><span class="pre">async</span> </em><code class="sig-prename descclassname"><span class="pre">componentOperator.</span></code><code class="sig-name descname"><span class="pre">createAPIResource</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">inAPI</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">namespace</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">inHandler</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#componentOperator.createAPIResource" title="Permalink to this definition">¶</a></dt>
-<dd><p>Helper function to create or update API Custom objects.
-Args:</p>
-<blockquote>
-<div><ul class="simple">
-<li><p>inAPI (Dict): The API definition</p></li>
-<li><p>namespace (String): The namespace for the Component and API</p></li>
-<li><p>name (String): The name of the API resource</p></li>
-<li><p>inHandler (String): The name of the handler calling this function</p></li>
-</ul>
-</div></blockquote>
-<dl class="simple">
-<dt>Returns:</dt><dd><p>Dict with API definition including uuid of the API resource and ready status.</p>
-</dd>
-</dl>
-<dl class="field-list simple">
-</dl>
-</dd></dl>
-
-<dl class="py function">
 <dt id="componentOperator.exposedAPIs">
 <em class="property"><span class="pre">async</span> </em><code class="sig-prename descclassname"><span class="pre">componentOperator.</span></code><code class="sig-name descname"><span class="pre">exposedAPIs</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">meta</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">spec</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">status</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">body</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">namespace</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">labels</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#componentOperator.exposedAPIs" title="Permalink to this definition">¶</a></dt>
 <dd><p>Handler function for <strong>core function</strong> part new or updated components.</p>
@@ -398,32 +363,11 @@ Args:</p>
 </dd></dl>
 
 <dl class="py function">
-<dt id="componentOperator.patchAPIResource">
-<em class="property"><span class="pre">async</span> </em><code class="sig-prename descclassname"><span class="pre">componentOperator.</span></code><code class="sig-name descname"><span class="pre">patchAPIResource</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">inAPI</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">namespace</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">inHandler</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#componentOperator.patchAPIResource" title="Permalink to this definition">¶</a></dt>
-<dd><p>Helper function to patch API Custom objects.
-Args:</p>
-<blockquote>
-<div><ul class="simple">
-<li><p>inAPI (Dict): The API definition</p></li>
-<li><p>namespace (String): The namespace for the Component and API</p></li>
-<li><p>name (String): The name of the API resource</p></li>
-<li><p>inHandler (String): The name of the handler that called this function</p></li>
-</ul>
-</div></blockquote>
-<dl class="simple">
-<dt>Returns:</dt><dd><p>Dict with updated API definition including uuid of the API resource and ready status.</p>
-</dd>
-</dl>
-<dl class="field-list simple">
-</dl>
-</dd></dl>
-
-<dl class="py function">
 <dt id="componentOperator.securityAPIs">
 <em class="property"><span class="pre">async</span> </em><code class="sig-prename descclassname"><span class="pre">componentOperator.</span></code><code class="sig-name descname"><span class="pre">securityAPIs</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">meta</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">spec</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">status</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">body</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">namespace</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">labels</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#componentOperator.securityAPIs" title="Permalink to this definition">¶</a></dt>
 <dd><p>Handler function for <strong>security</strong> part of new or updated components.</p>
 <p>Processes the <strong>security</strong> part of the component envelope and creates the child API resources.</p>
-<dl>
+<dl class="simple">
 <dt>Args:</dt><dd><ul class="simple">
 <li><p>meta (Dict): The metadata from the yaml component envelope</p></li>
 <li><p>spec (Dict): The spec from the yaml component envelope showing the intent (or desired state)</p></li>
@@ -431,9 +375,8 @@ Args:</p>
 <li><p>body (Dict): The entire yaml component envelope</p></li>
 <li><p>namespace (String): The namespace for the component</p></li>
 <li><p>labels (Dict): The labels attached to the component. All ODA Components (and their children) should have a oda.tmforum.org/componentName label</p></li>
-<li><p>name (String): The na</p></li>
+<li><p>name (String): The name of the component</p></li>
 </ul>
-<p>me of the component</p>
 </dd>
 <dt>Returns:</dt><dd><p>Dict: The securityAPIs status that is put into the component envelope status field.</p>
 </dd>
@@ -474,10 +417,9 @@ Args:</p>
 <dt id="componentOperator.updateAPIStatus">
 <em class="property"><span class="pre">async</span> </em><code class="sig-prename descclassname"><span class="pre">componentOperator.</span></code><code class="sig-name descname"><span class="pre">updateAPIStatus</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">meta</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">spec</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">status</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">body</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">namespace</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">labels</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#componentOperator.updateAPIStatus" title="Permalink to this definition">¶</a></dt>
 <dd><p>Handler function to register for status changes in child API resources.
-Processes status updates to the <em>apiStatus</em> in the child API Custom resources, so that the Component status reflects a summary of all the childrens status.
-Args:</p>
-<blockquote>
-<div><ul class="simple">
+Processes status updates to the <em>apiStatus</em> in the child API Custom resources, so that the Component status reflects a summary of all the childrens status.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><ul class="simple">
 <li><p>meta (Dict): The metadata from the API resource</p></li>
 <li><p>spec (Dict): The spec from the yaml API resource showing the intent (or desired state)</p></li>
 <li><p>status (Dict): The status from the API resource showing the actual state.</p></li>
@@ -486,8 +428,7 @@ Args:</p>
 <li><p>labels (Dict): The labels attached to the API resource. All ODA Components (and their children) should have a oda.tmforum.org/componentName label</p></li>
 <li><p>name (String): The name of the API resource</p></li>
 </ul>
-</div></blockquote>
-<dl class="simple">
+</dd>
 <dt>Returns:</dt><dd><p>No return value.</p>
 </dd>
 </dl>
