@@ -13,6 +13,8 @@
 import os
 import sys
 
+# Adding all the source code to the path. Sphinx generates documentation from
+# Docstrings in the source code.
 sys.path.insert(0, os.path.abspath('../../oda-ca/controllers/securityController'))
 sys.path.insert(0, os.path.abspath('../../oda-ca/controllers/componentOperator'))
 sys.path.insert(0, os.path.abspath('../../oda-ca/controllers/apiOperatorSimpleIngress'))
@@ -21,15 +23,15 @@ sys.path.insert(0, os.path.abspath('../../oda-ca/controllers/apiOperatorApig'))
 sys.path.insert(0, os.path.abspath('../../oda-ca/controllers/apiOperatorIstio'))
 sys.path.insert(0, os.path.abspath('../../oda-ca/controllers/securityController'))
 sys.path.insert(0, os.path.abspath('../../oda-ca/controllers/securityListener-keycloak'))
-print('********************************************')
+
 # -- Project information -----------------------------------------------------
 
 project = 'ODA-Component Accelerator'
-copyright = '2021, TM Forum ODA-Component Accelerator project'
+copyright = '2022, TM Forum ODA-Component Accelerator project'
 author = 'TM Forum ODA-Component Accelerator project'
 
 # The full version, including alpha/beta/rc tags
-release = 'v1alpha3'
+release = 'v1alpha4'
 
 
 # -- General configuration ---------------------------------------------------
@@ -66,6 +68,8 @@ master_doc = 'index'
 
 print('Copying README and image files')
 import shutil
+
+# Controllers
 shutil.copy2('../../oda-ca/controllers/README.md', './caSource/controllers') 
 shutil.copy2('../../oda-ca/controllers/componentOperator/README.md', './caSource/controllers/componentOperator') 
 shutil.copy2('../../oda-ca/controllers/componentOperator/sequenceDiagrams/componentOperator.png', './caSource/controllers/componentOperator/sequenceDiagrams') 
@@ -79,11 +83,15 @@ shutil.copy2('../../oda-ca/controllers/apiOperatorWSO2/README.md', './caSource/c
 shutil.copy2('../../oda-ca/controllers/securityController/README.md', './caSource/controllers/securityController') 
 shutil.copy2('../../oda-ca/controllers/securityController/sequenceDiagrams/securitySequenceKeycloak.png', './caSource/controllers/securityController/sequenceDiagrams') 
 shutil.copy2('../../oda-ca/controllers/securityController/sequenceDiagrams/securitySequenceKeycloakDetailed.png', './caSource/controllers/securityController/sequenceDiagrams') 
+
+# Base Documentation files
 shutil.copy2('../../oda-ca-docs/DocumentationProcess.md', './caDocs') 
 shutil.copy2('../../oda-ca-docs/Playbook.md', './caDocs') 
 shutil.copy2('../../oda-ca-docs/ContributionsGuide.md', './caDocs') 
 shutil.copy2('../../oda-ca-docs/.github/Issues.PNG', './caDocs/.github') 
 shutil.copy2('../../oda-ca-docs/ODAComponentDesignGuidelines.md', './caDocs') 
+
+# Observability tutorial
 shutil.copy2('../../oda-ca-docs/Observability-Tutorial/README.md', './caDocs/Observability-Tutorial') 
 shutil.copy2('../../oda-ca-docs/Observability-Tutorial/images/BusinessMetric.png', './caDocs/Observability-Tutorial/images') 
 shutil.copy2('../../oda-ca-docs/Observability-Tutorial/images/ClusterExplorer.png', './caDocs/Observability-Tutorial/images') 
@@ -106,6 +114,8 @@ shutil.copy2('../../oda-ca-docs/Observability-Tutorial/images/Pods.png', './caDo
 shutil.copy2('../../oda-ca-docs/Observability-Tutorial/images/PrometheusTargets.png', './caDocs/Observability-Tutorial/images') 
 shutil.copy2('../../oda-ca-docs/Observability-Tutorial/images/PrometheusTargets2.png', './caDocs/Observability-Tutorial/images') 
 shutil.copy2('../../oda-ca-docs/Observability-Tutorial/images/ReferenceExampleMetrics.png', './caDocs/Observability-Tutorial/images') 
+
+# Component build tutorial
 shutil.copy2('../../oda-ca-docs/ODA-Component-Tutorial/README.md', './caDocs/ODAComponentTutorial') 
 shutil.copy2('../../oda-ca-docs/ODA-Component-Tutorial/images/api-entrypoint.png', './caDocs/ODAComponentTutorial/images') 
 shutil.copy2('../../oda-ca-docs/ODA-Component-Tutorial/images/ctkdynamicsuccess.png', './caDocs/ODAComponentTutorial/images') 
@@ -116,9 +126,30 @@ shutil.copy2('../../oda-ca-docs/ODA-Component-Tutorial/images/Open-API-Table.png
 shutil.copy2('../../oda-ca-docs/ODA-Component-Tutorial/images/Rancher.png', './caDocs/ODAComponentTutorial/images') 
 shutil.copy2('../../oda-ca-docs/ODA-Component-Tutorial/images/Reference-Implementation.png', './caDocs/ODAComponentTutorial/images') 
 shutil.copy2('../../oda-ca-docs/ODA-Component-Tutorial/images/swagger-ui.png', './caDocs/ODAComponentTutorial/images') 
+
+# Troubleshooting guide
+shutil.copy2('../../oda-ca-docs/Troubleshooting-Guide/images/Controller-Logging.png', './caDocs/TroubleshootingGuide/images') 
+shutil.copy2('../../oda-ca-docs/Troubleshooting-Guide/images/Get-Logs.png', './caDocs/TroubleshootingGuide/images') 
+shutil.copy2('../../oda-ca-docs/Troubleshooting-Guide/images/Get-Pods.png', './caDocs/TroubleshootingGuide/images') 
+shutil.copy2('../../oda-ca-docs/Troubleshooting-Guide/images/Logging-Output.png', './caDocs/TroubleshootingGuide/images') 
+shutil.copy2('../../oda-ca-docs/Troubleshooting-Guide/images/Logging-Output-Definition.png', './caDocs/TroubleshootingGuide/images') 
+shutil.copy2('../../oda-ca-docs/Troubleshooting-Guide/images/Metadata-Spec-Status.png', './caDocs/TroubleshootingGuide/images') 
+shutil.copy2('../../oda-ca-docs/Troubleshooting-Guide/images/Metadata-Spec-Status-for-API.png', './caDocs/TroubleshootingGuide/images') 
+shutil.copy2('../../oda-ca-docs/Troubleshooting-Guide/images/Rancher-Cluster-Explorer.png', './caDocs/TroubleshootingGuide/images') 
+shutil.copy2('../../oda-ca-docs/Troubleshooting-Guide/images/Postman.png', './caDocs/TroubleshootingGuide/images') 
+shutil.copy2('../../oda-ca-docs/Troubleshooting-Guide/Controller-Logging.md', './caDocs/TroubleshootingGuide') 
+shutil.copy2('../../oda-ca-docs/Troubleshooting-Guide/CTK.md', './caDocs/TroubleshootingGuide') 
+shutil.copy2('../../oda-ca-docs/Troubleshooting-Guide/Exploring-Custom-Resources.md', './caDocs/TroubleshootingGuide') 
+shutil.copy2('../../oda-ca-docs/Troubleshooting-Guide/Internal-Kubernetes-Testing.md', './caDocs/TroubleshootingGuide') 
+shutil.copy2('../../oda-ca-docs/Troubleshooting-Guide/Microservice-Logging.md', './caDocs/TroubleshootingGuide') 
+shutil.copy2('../../oda-ca-docs/Troubleshooting-Guide/Postman-API-Tests.md', './caDocs/TroubleshootingGuide') 
+
+# Canvas helm charts
 shutil.copy2('../../oda-canvas-charts/README.md', './canvasCharts') 
 shutil.copy2('../../oda-canvas-charts/Installation.md', './canvasCharts') 
 shutil.copy2('../../oda-canvas-charts/Specification.md', './canvasCharts') 
+
+# Component compliance test kits (CTKs)
 shutil.copy2('../../oda-component-ctk/README.md', './ctk') 
 shutil.copy2('../../oda-component-ctk/sampleOutput-L1-dynamic.png', './ctk') 
 shutil.copy2('../../oda-component-ctk/sampleOutput-L1-static.png', './ctk') 
@@ -126,5 +157,3 @@ shutil.copy2('../../oda-component-ctk/sampleOutput-L2-dynamic.png', './ctk')
 shutil.copy2('../../oda-component-ctk/sampleOutput-L2-static.png', './ctk') 
 shutil.copy2('../../oda-component-ctk/StagedClusters.png', './ctk') 
 
-
-#mike cartwright
