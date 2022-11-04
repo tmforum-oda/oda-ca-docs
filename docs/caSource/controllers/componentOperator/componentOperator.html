@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>componentOperator module &mdash; ODA-Component Accelerator v1alpha3 documentation</title>
+  <title>componentOperator module &mdash; ODA-Component Accelerator v1alpha4 documentation</title>
   
 
   
@@ -217,86 +217,6 @@ It registers handler functions for:</p>
 <li><p>For new Services, Deployments, PersistentVolumeClaims and Jobs that have a oda.tmforum.org/componentName label. These resources are updated to become children of the ODA Component resource. see <a class="reference external" href="#componentOperator.componentOperator.adopt_deployment">adopt_deployment</a> , <a class="reference external" href="#componentOperator.componentOperator.adopt_persistentvolumeclaim">adopt_persistentvolumeclaim</a> , <a class="reference external" href="#componentOperator.componentOperator.adopt_job">adopt_job</a> and <a class="reference external" href="#componentOperator.componentOperator.adopt_service">adopt_service</a></p></li>
 </ol>
 <dl class="py function">
-<dt id="componentOperator.adopt_configmap">
-<em class="property"><span class="pre">async</span> </em><code class="sig-prename descclassname"><span class="pre">componentOperator.</span></code><code class="sig-name descname"><span class="pre">adopt_configmap</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">meta</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">spec</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">body</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">namespace</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">labels</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#componentOperator.adopt_configmap" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py function">
-<dt id="componentOperator.adopt_cronjob">
-<em class="property"><span class="pre">async</span> </em><code class="sig-prename descclassname"><span class="pre">componentOperator.</span></code><code class="sig-name descname"><span class="pre">adopt_cronjob</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">meta</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">spec</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">body</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">namespace</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">labels</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#componentOperator.adopt_cronjob" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py function">
-<dt id="componentOperator.adopt_deployment">
-<em class="property"><span class="pre">async</span> </em><code class="sig-prename descclassname"><span class="pre">componentOperator.</span></code><code class="sig-name descname"><span class="pre">adopt_deployment</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">meta</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">spec</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">body</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">namespace</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">labels</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#componentOperator.adopt_deployment" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py function">
-<dt id="componentOperator.adopt_job">
-<em class="property"><span class="pre">async</span> </em><code class="sig-prename descclassname"><span class="pre">componentOperator.</span></code><code class="sig-name descname"><span class="pre">adopt_job</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">meta</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">spec</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">body</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">namespace</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">labels</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#componentOperator.adopt_job" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py function">
-<dt id="componentOperator.adopt_kubernetesResource">
-<code class="sig-prename descclassname"><span class="pre">componentOperator.</span></code><code class="sig-name descname"><span class="pre">adopt_kubernetesResource</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">meta</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">spec</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">body</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">namespace</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">labels</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">resourceType</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#componentOperator.adopt_kubernetesResource" title="Permalink to this definition">¶</a></dt>
-<dd><p>Helper function for adopting any kubernetes resource</p>
-<p>If the resource has an oda.tmforum.org/componentName label, it makes the resource a child of the named component.
-This can help with navigating around the different resources that belong to the component. It also ensures that the kubernetes garbage collection
-will delete these resources automatically if the component is deleted.</p>
-<dl class="simple">
-<dt>Args:</dt><dd><ul class="simple">
-<li><p>meta (Dict): The metadata from the yaml resource definition</p></li>
-<li><p>spec (Dict): The spec from the yaml resource definition showing the intent (or desired state)</p></li>
-<li><p>body (Dict): The entire yaml resource definition</p></li>
-<li><p>namespace (String): The namespace for the resource</p></li>
-<li><p>labels (Dict): The labels attached to the resource. All ODA Components (and their children) should have a oda.tmforum.org/componentName label</p></li>
-<li><p>name (String): The name of the resource</p></li>
-<li><p>resourceType (String): The type of resource (e.g. service, deployment, persistentvolumeclaim, job, cronjob, statefulset, configmap, secret, serviceaccount, role, rolebinding)</p></li>
-</ul>
-</dd>
-<dt>Returns:</dt><dd><p>No return value.</p>
-</dd>
-</dl>
-<dl class="field-list simple">
-</dl>
-</dd></dl>
-
-<dl class="py function">
-<dt id="componentOperator.adopt_persistentvolumeclaim">
-<em class="property"><span class="pre">async</span> </em><code class="sig-prename descclassname"><span class="pre">componentOperator.</span></code><code class="sig-name descname"><span class="pre">adopt_persistentvolumeclaim</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">meta</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">spec</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">body</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">namespace</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">labels</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#componentOperator.adopt_persistentvolumeclaim" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py function">
-<dt id="componentOperator.adopt_role">
-<em class="property"><span class="pre">async</span> </em><code class="sig-prename descclassname"><span class="pre">componentOperator.</span></code><code class="sig-name descname"><span class="pre">adopt_role</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">meta</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">spec</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">body</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">namespace</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">labels</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#componentOperator.adopt_role" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py function">
-<dt id="componentOperator.adopt_rolebinding">
-<em class="property"><span class="pre">async</span> </em><code class="sig-prename descclassname"><span class="pre">componentOperator.</span></code><code class="sig-name descname"><span class="pre">adopt_rolebinding</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">meta</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">spec</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">body</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">namespace</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">labels</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#componentOperator.adopt_rolebinding" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py function">
-<dt id="componentOperator.adopt_secret">
-<em class="property"><span class="pre">async</span> </em><code class="sig-prename descclassname"><span class="pre">componentOperator.</span></code><code class="sig-name descname"><span class="pre">adopt_secret</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">meta</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">spec</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">body</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">namespace</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">labels</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#componentOperator.adopt_secret" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py function">
-<dt id="componentOperator.adopt_service">
-<em class="property"><span class="pre">async</span> </em><code class="sig-prename descclassname"><span class="pre">componentOperator.</span></code><code class="sig-name descname"><span class="pre">adopt_service</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">meta</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">spec</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">body</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">namespace</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">labels</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#componentOperator.adopt_service" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py function">
-<dt id="componentOperator.adopt_serviceaccount">
-<em class="property"><span class="pre">async</span> </em><code class="sig-prename descclassname"><span class="pre">componentOperator.</span></code><code class="sig-name descname"><span class="pre">adopt_serviceaccount</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">meta</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">spec</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">body</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">namespace</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">labels</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#componentOperator.adopt_serviceaccount" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py function">
-<dt id="componentOperator.adopt_statefulset">
-<em class="property"><span class="pre">async</span> </em><code class="sig-prename descclassname"><span class="pre">componentOperator.</span></code><code class="sig-name descname"><span class="pre">adopt_statefulset</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">meta</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">spec</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">body</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">namespace</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">labels</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#componentOperator.adopt_statefulset" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py function">
 <dt id="componentOperator.exposedAPIs">
 <em class="property"><span class="pre">async</span> </em><code class="sig-prename descclassname"><span class="pre">componentOperator.</span></code><code class="sig-name descname"><span class="pre">exposedAPIs</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">meta</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">spec</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">status</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">body</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">namespace</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">labels</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#componentOperator.exposedAPIs" title="Permalink to this definition">¶</a></dt>
 <dd><p>Handler function for <strong>core function</strong> part new or updated components.</p>
@@ -316,26 +236,6 @@ will delete these resources automatically if the component is deleted.</p>
 </dd>
 </dl>
 <dl class="field-list simple">
-</dl>
-</dd></dl>
-
-<dl class="py function">
-<dt id="componentOperator.logWrapper">
-<code class="sig-prename descclassname"><span class="pre">componentOperator.</span></code><code class="sig-name descname"><span class="pre">logWrapper</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">logLevel</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">functionName</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">handlerName</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">resourceName</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">componentName</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">subject</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">message</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#componentOperator.logWrapper" title="Permalink to this definition">¶</a></dt>
-<dd><p>Helper function to standardise logging output.</p>
-<dl class="simple">
-<dt>Args:</dt><dd><ul class="simple">
-<li><p>logLevel (Number): The level to log e.g. logging.INFO</p></li>
-<li><p>functionName (String): The name of the function calling the logWrapper</p></li>
-<li><p>handlerName (String): The name of the handler calling the logWrapper</p></li>
-<li><p>resourceName (String): The name of the resource being logged</p></li>
-<li><p>componentName (String): The name of the component being logged</p></li>
-<li><p>subject (String): The subject of the log message</p></li>
-<li><p>message (String): The message to be logged - can contain relavant data</p></li>
-</ul>
-</dd>
-<dt>Returns:</dt><dd><p>No return value.</p>
-</dd>
 </dl>
 </dd></dl>
 
@@ -386,9 +286,27 @@ will delete these resources automatically if the component is deleted.</p>
 </dd></dl>
 
 <dl class="py function">
-<dt id="componentOperator.summary">
-<em class="property"><span class="pre">async</span> </em><code class="sig-prename descclassname"><span class="pre">componentOperator.</span></code><code class="sig-name descname"><span class="pre">summary</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">meta</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">spec</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">status</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">body</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">namespace</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">labels</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#componentOperator.summary" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dt id="componentOperator.updateAPIStatus">
+<em class="property"><span class="pre">async</span> </em><code class="sig-prename descclassname"><span class="pre">componentOperator.</span></code><code class="sig-name descname"><span class="pre">updateAPIStatus</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">meta</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">spec</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">status</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">body</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">namespace</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">labels</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#componentOperator.updateAPIStatus" title="Permalink to this definition">¶</a></dt>
+<dd><p>Handler function to register for status changes in child API resources.
+Processes status updates to the <em>apiStatus</em> in the child API Custom resources, so that the Component status reflects a summary of all the childrens status.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><ul class="simple">
+<li><p>meta (Dict): The metadata from the API resource</p></li>
+<li><p>spec (Dict): The spec from the yaml API resource showing the intent (or desired state)</p></li>
+<li><p>status (Dict): The status from the API resource showing the actual state.</p></li>
+<li><p>body (Dict): The entire API resource definition</p></li>
+<li><p>namespace (String): The namespace for the API resource</p></li>
+<li><p>labels (Dict): The labels attached to the API resource. All ODA Components (and their children) should have a oda.tmforum.org/componentName label</p></li>
+<li><p>name (String): The name of the API resource</p></li>
+</ul>
+</dd>
+<dt>Returns:</dt><dd><p>No return value.</p>
+</dd>
+</dl>
+<dl class="field-list simple">
+</dl>
+</dd></dl>
 
 <dl class="py function">
 <dt id="componentOperator.updateAPIReady">
@@ -414,25 +332,107 @@ will delete these resources automatically if the component is deleted.</p>
 </dd></dl>
 
 <dl class="py function">
-<dt id="componentOperator.updateAPIStatus">
-<em class="property"><span class="pre">async</span> </em><code class="sig-prename descclassname"><span class="pre">componentOperator.</span></code><code class="sig-name descname"><span class="pre">updateAPIStatus</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">meta</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">spec</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">status</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">body</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">namespace</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">labels</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#componentOperator.updateAPIStatus" title="Permalink to this definition">¶</a></dt>
-<dd><p>Handler function to register for status changes in child API resources.
-Processes status updates to the <em>apiStatus</em> in the child API Custom resources, so that the Component status reflects a summary of all the childrens status.</p>
+<dt id="componentOperator.adopt_service">
+<em class="property"><span class="pre">async</span> </em><code class="sig-prename descclassname"><span class="pre">componentOperator.</span></code><code class="sig-name descname"><span class="pre">adopt_service</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">meta</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">spec</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">body</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">namespace</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">labels</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#componentOperator.adopt_service" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt id="componentOperator.adopt_deployment">
+<em class="property"><span class="pre">async</span> </em><code class="sig-prename descclassname"><span class="pre">componentOperator.</span></code><code class="sig-name descname"><span class="pre">adopt_deployment</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">meta</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">spec</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">body</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">namespace</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">labels</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#componentOperator.adopt_deployment" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt id="componentOperator.adopt_persistentvolumeclaim">
+<em class="property"><span class="pre">async</span> </em><code class="sig-prename descclassname"><span class="pre">componentOperator.</span></code><code class="sig-name descname"><span class="pre">adopt_persistentvolumeclaim</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">meta</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">spec</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">body</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">namespace</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">labels</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#componentOperator.adopt_persistentvolumeclaim" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt id="componentOperator.adopt_job">
+<em class="property"><span class="pre">async</span> </em><code class="sig-prename descclassname"><span class="pre">componentOperator.</span></code><code class="sig-name descname"><span class="pre">adopt_job</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">meta</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">spec</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">body</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">namespace</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">labels</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#componentOperator.adopt_job" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt id="componentOperator.adopt_cronjob">
+<em class="property"><span class="pre">async</span> </em><code class="sig-prename descclassname"><span class="pre">componentOperator.</span></code><code class="sig-name descname"><span class="pre">adopt_cronjob</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">meta</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">spec</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">body</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">namespace</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">labels</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#componentOperator.adopt_cronjob" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt id="componentOperator.adopt_statefulset">
+<em class="property"><span class="pre">async</span> </em><code class="sig-prename descclassname"><span class="pre">componentOperator.</span></code><code class="sig-name descname"><span class="pre">adopt_statefulset</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">meta</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">spec</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">body</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">namespace</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">labels</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#componentOperator.adopt_statefulset" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt id="componentOperator.adopt_configmap">
+<em class="property"><span class="pre">async</span> </em><code class="sig-prename descclassname"><span class="pre">componentOperator.</span></code><code class="sig-name descname"><span class="pre">adopt_configmap</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">meta</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">spec</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">body</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">namespace</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">labels</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#componentOperator.adopt_configmap" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt id="componentOperator.adopt_secret">
+<em class="property"><span class="pre">async</span> </em><code class="sig-prename descclassname"><span class="pre">componentOperator.</span></code><code class="sig-name descname"><span class="pre">adopt_secret</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">meta</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">spec</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">body</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">namespace</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">labels</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#componentOperator.adopt_secret" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt id="componentOperator.adopt_serviceaccount">
+<em class="property"><span class="pre">async</span> </em><code class="sig-prename descclassname"><span class="pre">componentOperator.</span></code><code class="sig-name descname"><span class="pre">adopt_serviceaccount</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">meta</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">spec</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">body</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">namespace</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">labels</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#componentOperator.adopt_serviceaccount" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt id="componentOperator.adopt_role">
+<em class="property"><span class="pre">async</span> </em><code class="sig-prename descclassname"><span class="pre">componentOperator.</span></code><code class="sig-name descname"><span class="pre">adopt_role</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">meta</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">spec</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">body</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">namespace</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">labels</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#componentOperator.adopt_role" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt id="componentOperator.adopt_rolebinding">
+<em class="property"><span class="pre">async</span> </em><code class="sig-prename descclassname"><span class="pre">componentOperator.</span></code><code class="sig-name descname"><span class="pre">adopt_rolebinding</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">meta</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">spec</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">body</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">namespace</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">labels</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#componentOperator.adopt_rolebinding" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt id="componentOperator.adopt_kubernetesResource">
+<code class="sig-prename descclassname"><span class="pre">componentOperator.</span></code><code class="sig-name descname"><span class="pre">adopt_kubernetesResource</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">meta</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">spec</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">body</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">namespace</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">labels</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">resourceType</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#componentOperator.adopt_kubernetesResource" title="Permalink to this definition">¶</a></dt>
+<dd><p>Helper function for adopting any kubernetes resource</p>
+<p>If the resource has an oda.tmforum.org/componentName label, it makes the resource a child of the named component.
+This can help with navigating around the different resources that belong to the component. It also ensures that the kubernetes garbage collection
+will delete these resources automatically if the component is deleted.</p>
 <dl class="simple">
 <dt>Args:</dt><dd><ul class="simple">
-<li><p>meta (Dict): The metadata from the API resource</p></li>
-<li><p>spec (Dict): The spec from the yaml API resource showing the intent (or desired state)</p></li>
-<li><p>status (Dict): The status from the API resource showing the actual state.</p></li>
-<li><p>body (Dict): The entire API resource definition</p></li>
-<li><p>namespace (String): The namespace for the API resource</p></li>
-<li><p>labels (Dict): The labels attached to the API resource. All ODA Components (and their children) should have a oda.tmforum.org/componentName label</p></li>
-<li><p>name (String): The name of the API resource</p></li>
+<li><p>meta (Dict): The metadata from the yaml resource definition</p></li>
+<li><p>spec (Dict): The spec from the yaml resource definition showing the intent (or desired state)</p></li>
+<li><p>body (Dict): The entire yaml resource definition</p></li>
+<li><p>namespace (String): The namespace for the resource</p></li>
+<li><p>labels (Dict): The labels attached to the resource. All ODA Components (and their children) should have a oda.tmforum.org/componentName label</p></li>
+<li><p>name (String): The name of the resource</p></li>
+<li><p>resourceType (String): The type of resource (e.g. service, deployment, persistentvolumeclaim, job, cronjob, statefulset, configmap, secret, serviceaccount, role, rolebinding)</p></li>
 </ul>
 </dd>
 <dt>Returns:</dt><dd><p>No return value.</p>
 </dd>
 </dl>
 <dl class="field-list simple">
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="componentOperator.summary">
+<em class="property"><span class="pre">async</span> </em><code class="sig-prename descclassname"><span class="pre">componentOperator.</span></code><code class="sig-name descname"><span class="pre">summary</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">meta</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">spec</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">status</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">body</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">namespace</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">labels</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#componentOperator.summary" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt id="componentOperator.logWrapper">
+<code class="sig-prename descclassname"><span class="pre">componentOperator.</span></code><code class="sig-name descname"><span class="pre">logWrapper</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">logLevel</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">functionName</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">handlerName</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">resourceName</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">componentName</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">subject</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">message</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#componentOperator.logWrapper" title="Permalink to this definition">¶</a></dt>
+<dd><p>Helper function to standardise logging output.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><ul class="simple">
+<li><p>logLevel (Number): The level to log e.g. logging.INFO</p></li>
+<li><p>functionName (String): The name of the function calling the logWrapper</p></li>
+<li><p>handlerName (String): The name of the handler calling the logWrapper</p></li>
+<li><p>resourceName (String): The name of the resource being logged</p></li>
+<li><p>componentName (String): The name of the component being logged</p></li>
+<li><p>subject (String): The subject of the log message</p></li>
+<li><p>message (String): The message to be logged - can contain relavant data</p></li>
+</ul>
+</dd>
+<dt>Returns:</dt><dd><p>No return value.</p>
+</dd>
 </dl>
 </dd></dl>
 
@@ -452,7 +452,7 @@ Processes status updates to the <em>apiStatus</em> in the child API Custom resou
 
   <div role="contentinfo">
     <p>
-        &#169; Copyright 2021, TM Forum ODA-Component Accelerator project.
+        &#169; Copyright 2022, TM Forum ODA-Component Accelerator project.
 
     </p>
   </div>
