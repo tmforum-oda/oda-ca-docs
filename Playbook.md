@@ -8,7 +8,7 @@ ODA is an enterprise architecture blueprint for modular, cloud native open digit
 
 **Check if your company is already involved in developing ODA**
 
-If your company is a TM Forum member (check [here](https://www.tmforum.org/membership/current-members/), you can join the ODA collaboration projects [here](https://myaccount.tmforum.org/joinproject) to contribute to ODA and influence its development.
+If your company is a TM Forum member (check [here](https://www.tmforum.org/membership/current-members/)), you can join the ODA collaboration projects [here](https://myaccount.tmforum.org/joinproject) to contribute to ODA and influence its development.
 
 If your company has signed the [ODA manifesto](https://www.tmforum.org/oda/open-digital-architecture-open-api-manifesto/), then it is already committed to ODA's design principles and essential standards to enable a truly ‘plug and play’ set of technology capabilities.
 
@@ -23,16 +23,20 @@ The ODA Component Accelerator (ODA-CA) is a practical project run by TM Forum me
 
 Since the project [started in December 2020](https://www.tmforum.org/press-and-news/leading-telecoms-companies-collaborating-to-build-market-for-plug-and-play-software/) we have:
 
-* Built an execution environment for ODA reference implementations based on standard Kubernetes infrastructure
-* Built a ‘click-to-deploy’ reference Canvas for TM Forum members to use
+* Built a reference ODA Canvas in our Open Digital Lab based on Kubernetes infrastructure
 * Delivered a prototype Component CTK which validates security and functional aspects of ODA Components using a 3-stage test platform in the Open Digital Lab
 * Deployed a number of commercial applications onto the reference Canvas and validated them with the prototype Component CTK
 * Demonstrated deployment patterns for security and observability use cases
+* Built a ‘click-to-deploy’ reference Canvas for TM Forum members to use
 
-**ODA-CA 'Show & Tell' videos**
+**ODA-CA demo videos**
 
-* [Video recording](https://video.ibm.com/channel/24077591/video/lf09c2) and [notes including presentations](https://projects.tmforum.org/wiki/x/bfowCQ). Covers the Open Digital Lab environment and an initial proof-of-concept for automated ODA compliance validation of ‘black box’ and ‘glass box’ commercial products.
+* Deploying ODA Components on the ODA Canvas - API exposure and discovery: [video (6 min)](https://www.youtube.com/watch?v=e63FGHMeI1M)
+* Validation of ODA Components using the prototype Component CTK: [video (3 min)](https://www.youtube.com/watch?v=RyTGzc4pv64&t=1s)
+* Implementing identity & access management with the ODA Canvas: [video (4 min)](https://www.youtube.com/watch?v=7VKT_kCYfzE)
+* Implementing observability with the ODA Canvas: [video (8 min)](https://www.youtube.com/watch?v=5De54QwrvEM&t=2s)
+* Early 2021 'Show & Tell' presentation introducing the Open Digital Lab environment and showcasing the deployment of commercial products onto the ODA reference Canvas, including the use of a 'Proxy Component' to integrate SaaS solutions: [video (1h 45 min)](https://video.ibm.com/channel/24077591/video/lf09c2)
 
-* [Video recording](https://us02web.zoom.us/rec/share/J3JyQ4q7ZpBGtoG2MOdlM9hYAKrVXdis09rmzoPcEnopvUy4S3-yCphydlpYDx8K.Je5BAFFXOLUmrqEo) and [notes including presentations](https://projects.tmforum.org/wiki/pages/viewpage.action?pageId=168397244&preview=%2F168397244%2F168397695%2F2021.04.06+ODA-CA+Show+%26+Tell.pdf). Covers Security Validation of ODA Components, an API Operator for Whale Cloud API Gateway and Oracle Proxy Components. Includes proposed roadmap for next sprints.
+**ODA-CA presentations**
 
-* The [demo here](https://projects.tmforum.org/wiki/x/oqu2CQ) explains the concepts of security / party role validation for ODA components
+* DTW presentations to be uploaded and added here
