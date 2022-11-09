@@ -1,8 +1,8 @@
 ## Tutorial to build ODA-Component from Open-API Reference Implemenation
 
-This tutorial shows the complete process to package, test and deploy an ODA-Component, using the nodejs reference implementation of the TMF620 Product Catalog Management API as the source code. You should be able to follow the process below using an existing software application as source (the process should work for simple applications - it is intended as a tutorial to get you started; For more complex applications you may have to decompose to multiple containers/micro-services and even multiple ODA-Components).
+This tutorial shows the complete process to package, test and deploy an ODA-Component, using the nodejs reference implementation of the TMF620 Product Inventory Management API as the source code. You should be able to follow the process below using an existing software application as source (the process should work for simple applications - it is intended as a tutorial to get you started; For more complex applications you may have to decompose to multiple containers/micro-services and even multiple ODA-Components).
 
-There is a video of this tutorial at: [ODA Component Tutorial Video walkthrough](https://youtu.be/wZJ8d5uQ7_8)
+There is a video of this tutorial at: [ODA Component Tutorial Video walkthrough](https://youtu.be/wZJ8d5uQ7_8) - Note: to reviewed/recorded for v4 component spec
 
 For an introdution to the Open-Digital Architecture component model, take a look at the recording from the Digital Transformation World Series conference:
 
@@ -14,7 +14,7 @@ For an introdution to the Open-Digital Architecture component model, take a look
 
 ### Step 1. Download Reference Implementation
 
-We are using one of the Reference implementations of the Open-APIs as a starting point. Go to the open-API Table at [https://projects.tmforum.org/wiki/display/API/Open+API+Table](https://projects.tmforum.org/wiki/display/API/Open+API+Table) and download one of the reference implmentation `.zip` files (we are using the Product Catalog Management API, but you can choose any).
+We are using one of the Reference implementations of the Open-APIs as a starting point. Go to the open-API Table at [https://projects.tmforum.org/wiki/display/API/Open+API+Table](https://projects.tmforum.org/wiki/display/API/Open+API+Table) and download one of the reference implmentation `.zip` files (we are using the Product Inventory Management API, but you can choose any).
 
 ![<img src="https://projects.tmforum.org/wiki/display/API/Open+API+Table">](./images/Open-API-Table.png)
 
@@ -83,7 +83,7 @@ function connectHelper(callback) {
 ```
 #### 3.2 Use environment variables to allow API path to be configured externally
 
-By default the nodejs code will serve the API at the path in the swagger file, which for our example is `/tmf-api/productCatalogManagement/v4/`. We want to potentially deploy multiple component instances in the same environment, and so we add a configurable `COMPONENT_NAME` to the start of the URL. We need to do this in the `swaggerDoc` as well as in the `swagger-ui-dist/index.html` that provides the swagger user interface. 
+By default the nodejs code will serve the API at the path in the swagger file, which for our example is `/tmf-api/tmf-api/productInventory/v4/`. We want to potentially deploy multiple component instances in the same environment, and so we add a configurable `COMPONENT_NAME` to the start of the URL. We need to do this in the `swaggerDoc` as well as in the `swagger-ui-dist/index.html` that provides the swagger user interface. 
 
 Edit the `./index.js` file in the implementation root directory.
 ```js
@@ -119,11 +119,11 @@ swaggerDoc.basePath = '/' + componentName + swaggerDoc.basePath
 
 By default, the swagger tools expose a resource at all the paths in the API (defined in the swagger.yaml file); They don't offer any response at the root of the API. This can make it harder for a developer to discover the API paths. In addition, a Kubernetes ingress will by default test the root of the API (as a liveness test). If it receives no response, it will assume the microservice is dead and will not route any traffic to it. A simple solution is to create a home resource that provides a set of links to the other API endpoints. The TM Forum Open-API design standards (TMF630) provides a good definition of this resource which is called the `home` or `entrypoint` resource.
 
-I've created a simple module in `utils/entrypoint.js` to build this entrypoint resource at run-time from the swagger.yaml. Operating at run-time also allows you to send a contextual response (that might vary depending on the role of the user, for example).
+First, we've created a simple module in `utils/entrypoint.js` to build this entrypoint resource at run-time from the swagger.yaml. Operating at run-time also provides the ability to send a contextual response (that might vary depending on the role of the user, for example).
 
-You integrate this module by adding `app.use(swaggerDoc.basePath, entrypointUtils.entrypoint);` as the last hook before starting the server.
+Next, we integrated this module by adding `app.use(swaggerDoc.basePath, entrypointUtils.entrypoint);` as the last hook before starting the server.
 
-Finally, we change the path where the 'api-docs' and 'docs' are exposed. By default they are served at `/api-docs` and `/docs`. Again, we want to avoid conflicts if we have multiple components running in the same environment. We solve this by moving them to the full path of the API, so in our example, they would be at `/tmf-api/productCatalogManagement/v4/`
+Finally, we change the path where the 'api-docs' and 'docs' are exposed. By default they are served at `/api-docs` and `/docs`. Again, we want to avoid conflicts if we have multiple components running in the same environment. We solve this by moving them to the full path of the API, so in our example, they would be at `/tmf-api/tmf-api/productInventory/v4/`
 
 ```js
   // Serve the Swagger documents and Swagger UI
@@ -133,6 +133,7 @@ Finally, we change the path where the 'api-docs' and 'docs' are exposed. By defa
 
   // create an entrypoint
   const entrypointUtils = require('./utils/entrypoint');
+  console.log('app.use entrypoint');
   app.use(swaggerDoc.basePath, entrypointUtils.entrypoint);
 
     // Start the server
@@ -198,15 +199,24 @@ npm-debug.log
 To build the docker image, we use the command:
 
 ```
-docker build -t lesterthomas/productcatalogapi:0.1 -t lesterthomas/productcatalogapi:latest -f dockerfile .
+docker build . -t dominico/productinventoryapi:0.1 -t dominico/productinventoryapi:latest
 ```
 
 Note: we use the -t to tag the image. We give the image two tags, one with a version number and the other with a `latest` tag that will overwrite any previously uploaded images.
 
-Finally we upload the docker image to a Docker repository. I'm using the default [DockerHub](https://hub.docker.com) with an account `lesterthomas` that I have created previously. If this is the first time accessing the docker repository you will need to login first with the `docker login` command.
+To check that the images are in the local repository, we use thie command:
 
 ```
-docker push lesterthomas/productcatalogapi --all-tags
+% docker images
+REPOSITORY                     TAG       IMAGE ID       CREATED             SIZE
+dominico/productinventoryapi   0.1       6f2819946f76   About an hour ago   910MB
+dominico/productinventoryapi   latest    6f2819946f76   About an hour ago   910MB
+
+```
+Finally we upload the docker image to a Docker repository. I'm using the default [DockerHub](https://hub.docker.com) with an account `dominico` that I have created previously. If this is the first time accessing the docker repository you will need to login first with the `docker login` command.
+
+```
+docker push  dominico/productinventoryapi --all-tags
 ```
 
 
@@ -220,16 +230,16 @@ We will use [Helm](https://helm.sh/) to create the component envelope as a Helm-
 The first step is to use `helm create <chartname>' which creates a boiler-plate chart:
 
 ```
-helm create productcatalog
+helm create productinventory
 ```
 
-The boiler-plate should be visible under the productcatalog folder. It contains a `Chart.yaml` (with meta-data about the chart) and a `values.yaml` (where we put any default parameters that we want to use). It also contains a `charts/` folder (empty) and a `templates/` folder (contining some boiler-plate Kubernetes templates).
+The boiler-plate should be visible under the productinventory folder. It contains a `Chart.yaml` (with meta-data about the chart) and a `values.yaml` (where we put any default parameters that we want to use). It also contains a `charts/` folder (empty) and a `templates/` folder (contining some boiler-plate Kubernetes templates).
 
 The `Chart.yaml` will look something like the code below - no changes are required.
 
 ```
 apiVersion: v2
-name: productcatalog
+name: productinventory
 description: A Helm chart for Kubernetes
 
 # A chart can be either an 'application' or a 'library' chart.
@@ -269,11 +279,11 @@ serviceaccount.yaml
 service.yaml
 ```
 
-For our Product Catalog component, we will create two deployments (one for the nodejs container that implements the API, and one for the mongoDb).
+For our Product Inventory component, we will create three deployments (one for the nodejs container that implements the core Product Inventory API, one for dependent PartyRole API, aand one for the mongoDb).
 
-Delete the the `deployment.yaml` template and create two new templates called `deployment-productcatalogapi.yaml` and the other `deployment-mongodb.yaml`.
+Delete the `deployment.yaml` template and create three new templates called `deployment-productinventoryapi.yaml`, `deployment-partyroleapi.yaml` and the last one `deployment-mongodb.yaml`.
 
-Copy the code below into  `deployment-productcatalogapi.yaml`. I've chosen to only parameterise the `component.type` field (a production heml chart would typically parameterize many more values). The file also uses the `Release.Name` which is the name given to the instance of the component when deployed by Helm (we could potenticlly deploy multiple instanaces in the same ODA-Canvas). Note that we also pass the release name and component name as environment variables into the container.
+Copy the code below into  `deployment-productinventoryapi.yaml`. I've chosen to only parameterise the `component.type` field (a production heml chart would typically parameterize many more values). The file also uses the `Release.Name` which is the name given to the instance of the component when deployed by Helm (we could potencially deploy multiple instances in the same ODA-Canvas). Note that we also pass the release name and component name as environment variables into the container.
 
 ```
 apiVersion: apps/v1
@@ -551,9 +561,10 @@ You should get a result like the image below:
 ![CTK image](./images/ctkdynamicsuccess.png)
 
 
+### Directory Structure. 
 
-
-
+The directory structure for our reference implementation is depicted below. 
+![Implementation directory image](./images/ctkdynamicsuccess.png)
 
 ### ISSUES & resolution
 
