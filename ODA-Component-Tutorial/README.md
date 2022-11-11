@@ -239,7 +239,7 @@ The boiler-plate should be visible under the productinventory folder. It contain
 
 The `Chart.yaml` will look something like the code below - no changes are required.
 
-```
+```yaml
 apiVersion: v2
 name: productinventory
 description: A Helm chart for Kubernetes
