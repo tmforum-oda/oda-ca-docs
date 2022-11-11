@@ -1,8 +1,8 @@
 ## Tutorial to build ODA-Component from Open-API Reference Implemenation
 
-This tutorial shows the complete process to package, test and deploy an ODA-Component, using the nodejs reference implementation of the TMF620 Product Inventory Management API as the source code. You should be able to follow the process below using an existing software application as source (the process should work for simple applications - it is intended as a tutorial to get you started; For more complex applications you may have to decompose to multiple containers/micro-services and even multiple ODA-Components).
+This tutorial shows the complete process to package, test and deploy an ODA-Component, using the nodejs reference implementation of the TMF637 Product Inventory Management API as the source code. You should be able to follow the process below using an existing software application as source (the process should work for simple applications - it is intended as a tutorial to get you started; For more complex applications you may have to decompose to multiple containers/micro-services and even multiple ODA-Components).
 
-There is a video of this tutorial at: [ODA Component Tutorial Video walkthrough](https://youtu.be/wZJ8d5uQ7_8) - Note: to reviewed/recorded for v4 component spec
+There is a video of this tutorial at: [ODA Component Tutorial Video walkthrough](https://youtu.be/wZJ8d5uQ7_8) - (Note: to reviewed/recorded for v4 component spec)
 
 For an introdution to the Open-Digital Architecture component model, take a look at the recording from the Digital Transformation World Series conference:
 
@@ -204,10 +204,12 @@ docker build . -t dominico/productinventoryapi:0.1 -t dominico/productinventorya
 
 Note: we use the -t to tag the image. We give the image two tags, one with a version number and the other with a `latest` tag that will overwrite any previously uploaded images.
 
-To check that the images are in the local repository, we use thie command:
+To check that the images are in the local repository, we use this command:
 
 ```
 % docker images
+
+--Result--
 REPOSITORY                     TAG       IMAGE ID       CREATED             SIZE
 dominico/productinventoryapi   0.1       6f2819946f76   About an hour ago   910MB
 dominico/productinventoryapi   latest    6f2819946f76   About an hour ago   910MB
@@ -269,57 +271,99 @@ The `values.yaml` file contains some sample parameters that are used in the temp
 
 The `Charts/` folder lets you include existing Helm charts into your new chart - for example, we could include one of the standard MongoDb Helm charts (which would support a high-availability multi-node MongoDb deployment, for example). For simplicity during this tutorial we will leave `Charts/` empty.
 
-Funally, most of the details we will create are in the `templates/` folder. Take a look inside this folder and you will see multiple sample templates:
+Finally, most of the details we will create are in the `templates/` folder. Take a look inside this folder and you will see multiple sample templates:
 
 ```
 deployment.yaml  
 hpa.yaml  
-ingress.yaml  
+ingress.yaml 
+service.yaml 
 serviceaccount.yaml  
-service.yaml
 ```
 
-For our Product Inventory component, we will create three deployments (one for the nodejs container that implements the core Product Inventory API, one for dependent PartyRole API, aand one for the mongoDb).
+For our Product Inventory component, we will create three deployments (one for the nodejs container that implements the core Product Inventory API, one for dependent PartyRole API, and one for the mongoDb).
 
 Delete the `deployment.yaml` template and create three new templates called `deployment-productinventoryapi.yaml`, `deployment-partyroleapi.yaml` and the last one `deployment-mongodb.yaml`.
 
-Copy the code below into  `deployment-productinventoryapi.yaml`. I've chosen to only parameterise the `component.type` field (a production heml chart would typically parameterize many more values). The file also uses the `Release.Name` which is the name given to the instance of the component when deployed by Helm (we could potencially deploy multiple instances in the same ODA-Canvas). Note that we also pass the release name and component name as environment variables into the container.
+Copy the code below into  `deployment-productinventoryapi.yaml`. Only the `component.type` field has been parameterised (a production heml chart would typically parameterize many more values, which are stated in the `values.yaml` file). The file also uses the `Release.Name` which is the name given to the instance of the component when deployed by Helm (we could potentially deploy multiple instances in the same ODA-Canvas). Note that we also pass the release name and component name as environment variables into the container.
 
-```
+```yaml
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{.Release.Name}}-productcatalogapi
+  name: {{.Release.Name}}-productinventoryapi
   labels:
     oda.tmforum.org/componentName: {{.Release.Name}}-{{.Values.component.type}}
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: {{.Release.Name}}-productcatalogapi
+      app: {{.Release.Name}}-productinventoryapi
   template:
     metadata:
       labels:
-        app: {{.Release.Name}}-productcatalogapi
+        app: {{.Release.Name}}-productinventoryapi
     spec:
       containers:
-      - name: {{.Release.Name}}-productcatalogapi
+      - name: {{.Release.Name}}-productinventoryapi
         env:
         - name: RELEASE_NAME
           value: {{.Release.Name}}           
         - name: COMPONENT_NAME
           value: {{.Release.Name}}-{{.Values.component.type}}           
-        image: lesterthomas/productcatalogapi:latest
+        image: dominico/productinventoryapi:latest
         ports:
-        - name: {{.Release.Name}}-productcatalogapi
+        - name: {{.Release.Name}}-prodinvapi
           containerPort: 8080
 ```
 
+Next, we need create the deployment resource for the party Role API. Copy the code below into `deployment-partyroleapi.yaml`
 
-We also need to deploy a mongoDb. We will use the standard mongoDb image from dockerhub.
 
-
+```yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{.Release.Name}}-partyroleapi
+  labels:
+    oda.tmforum.org/componentName: {{.Release.Name}}-{{.Values.component.type}}
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      impl: {{.Release.Name}}-partyroleapi
+  template:
+    metadata:
+      labels:
+        app: {{.Release.Name}}-{{.Values.component.type}}
+        impl: {{.Release.Name}}-partyroleapi
+        version: dominico-partyroleapi-latest
+    spec:
+      containers:
+      - name: {{.Release.Name}}-partyroleapi
+        image: lesterthomas/partyroleapi:latest
+        env:
+        - name: RELEASE_NAME
+          value: {{.Release.Name}}           
+        - name: COMPONENT_NAME
+          value: {{.Release.Name}}-{{.Values.component.type}}           
+        imagePullPolicy: Always
+        ports:
+        - name: {{.Release.Name}}-prapi
+          containerPort: 8080
+        startupProbe:
+          httpGet:
+            path: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/partyRoleManagement/v4/partyRole 
+            port: 8080
+          initialDelaySeconds: 10
+          periodSeconds: 5          
+          failureThreshold: 30
 ```
+
+We also need to deploy a mongoDb. We will use the standard mongoDb image from dockerhub. Copy the code below into: `deployment-partyroleapi.yaml`
+
+
+```yaml
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -355,28 +399,26 @@ spec:
 The mongoDb requires a persistentVolume and so we create a persistentVolumeClaim template `persistentVolumeClaim-mongodb.yaml`. 
 
 
-```
-kind: PersistentVolumeClaim
+```yaml
 apiVersion: v1
+kind: PersistentVolumeClaim
 metadata:
   name: {{.Release.Name}}-mongodb-pv-claim
   labels:
     oda.tmforum.org/componentName: {{.Release.Name}}-{{.Values.component.type}}
 spec:
-  storageClassName: default-st1
   accessModes:
   - ReadWriteOnce
   resources:
     requests:
-      storage: 5Gi 
-
+      storage: 5Gi
 ```
 
 
-We need to make the mongoDb available to the nodejs productcatalogapi image, so we create a Kubernetes Service resource in `service-mongodb.yaml`. Note the service matches the connection url we created in step 3.
+We need to make the mongoDb available to the nodejs productinventoryapi image, so we create a Kubernetes Service resource in `service-mongodb.yaml`. Note the service matches the connection url we created in step 3.
 
 
-```
+```yaml
 apiVersion: v1
 kind: Service
 metadata:
@@ -394,30 +436,77 @@ spec:
     app: {{.Release.Name}}-mongodb
 ```
 
-We need to expose the product catalog API using a Service as well in `service-productcatalogapi.yaml`.
+We need to expose the product inventory API using a Service as well in `service-productinventoryapi.yaml`.
 
-```
+```yaml
 apiVersion: v1
 kind: Service
 metadata:
-  name: {{.Release.Name}}-productcatalogapi
+  name: {{.Release.Name}}-productinventoryapi
   labels:
-    app: {{.Release.Name}}-productcatalogapi
+    app: {{.Release.Name}}-productinventoryapi
     oda.tmforum.org/componentName: {{.Release.Name}}-{{.Values.component.type}}
 spec:
   ports:
   - port: 8080
-    targetPort: {{.Release.Name}}-productcatalogapi
-    name: {{.Release.Name}}-productcatalogapi
+    targetPort: 8080
+    name: {{.Release.Name}}-productinventoryapi
   type: NodePort
   selector:
-    app: {{.Release.Name}}-productcatalogapi
+    app: {{.Release.Name}}-productinventoryapi
 ```
 
+The party role API needs to be exposed using a service in `service-partyroleapi.yaml`.
 
-We have created all the Kubernetes resources to deploy the mongoDb and productcatalog nodejs containers and expose as services. The final step is to add the ODA-Component meta-data. This meta-data will be used at run-time to configure the canvas services. Create the code below in `component-productcatalog.yaml`.
+```yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{.Release.Name}}-partyroleapi
+  labels:
+    app: {{.Release.Name}}-partyroleapi
+    oda.tmforum.org/componentName: {{.Release.Name}}-{{.Values.component.type}}
+spec:
+  ports:
+  - port: 8080
+    targetPort: {{.Release.Name}}-prapi
+    name: http-{{.Release.Name}}-partyroleapi
+  type: NodePort
+  selector:
+    impl: {{.Release.Name}}-partyroleapi
+```
 
-This is a relatively simple component that just exposes one API as part of its `coreFunction`. Note that we have included the release name and component name in the root of the AI path (this is a good pattern to follow so that the API doesn't conflict with any other components deployed in the same environment).
+Lastly, we create a kubernetes job resource in order to initialise a role using the party role API in `cronjob-roleinitialization.yaml`
+
+```yaml
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: {{.Release.Name}}-roleinitialization
+  labels:
+    oda.tmforum.org/componentName: {{.Release.Name}}-{{.Values.component.type}}
+spec:
+  template:
+    metadata:
+      labels:
+        app: {{.Release.Name}}-roleinitialization
+    spec:
+      containers:
+      - name: {{.Release.Name}}-roleinitialization
+        image: dominico/roleinitialization:latest
+        env:
+        - name: RELEASE_NAME
+          value: {{.Release.Name}}           
+        - name: COMPONENT_NAME
+          value: {{.Release.Name}}-{{.Values.component.type}}           
+        imagePullPolicy: Always
+      restartPolicy: OnFailure
+  backoffLimit: 10
+```
+
+We have created all the Kubernetes resources to deploy the mongoDb, party role and product inventory nodejs containers and expose them as services. The final step is to add the ODA-Component meta-data. This meta-data will be used at run-time to configure the canvas services. Create the code below in `component-productcinventory.yaml`.
+
+This is a relatively simple component that just exposes one API as part of its `coreFunction`. Note that we have included the release name and component name in the root of the API path (this is a good pattern to follow so that the API doesn't conflict with any other components deployed in the same environment).
 
 ```
 apiVersion: oda.tmforum.org/v1alpha1
