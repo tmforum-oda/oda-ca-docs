@@ -570,7 +570,7 @@ component:
 The CTK will operate against an instance of the component. We can generate a kubernetes manifest of an instance using the `helm template [instance namme] [chart]` command. We can take the output of this command into a temporary file:
 
 ```
-helm template test productcatalog > test-instance.component.yaml
+helm template test productinventory > test-instance.component.yaml
 ```
 
 If you examine the test-instance.component.yaml you will see all the kubernetes resources (deployments, services, persistentVolumeClaim) as well as a component resource. All the resources are labelled as belonging to the component. Also the component describes its core function (exposing a single API).
@@ -578,19 +578,19 @@ If you examine the test-instance.component.yaml you will see all the kubernetes 
 We can test that this component instance conforms to the ODA-Component standard by using the component CTK: Download the ODA-Component CTK from [https://github.com/tmforum-oda/oda-component-ctk/](https://github.com/tmforum-oda/oda-component-ctk/).
 
 
-Within the opa-component-ctk folder, install the ctk.
+Within the oda-component-ctk folder, install the ctk.
 
 ```
 npm install
 ```
 
-Then run the static ctk against the component envelope.
+Then run the static ctk against the component envelope, you would need to specify the correct path to the `test-instance.component.yaml` created earlier.
 
 ```
-npm static ../oda-ca-docs/ODA-Component-Tutorial/test-instance.component.yaml
+npm run L1-static ../ProductInventory/test-instance.component.yaml
 ```
 
-You shold get an output like the image below. If you receive any errors, fix the issue in the helm chart yaml file and try again.
+You should get an output like the image below. If you receive any errors, fix the issue in the helm chart yaml file and try again.
 
 ![CTK image](./images/ctksuccess.png)
 
@@ -613,10 +613,10 @@ To permanently save the namespace for all subsequent kubectl commands use:
 kubectl config set-context --current --namespace=components
 ```
 
-Install the component using Helm:
+Install the component using Helm, we call the release name `r1`:
 
 ```
-helm install test productcatalog/ 
+helm install r1 productinventory/ 
 ```
 
 You can then view the component in `kubectl`:
