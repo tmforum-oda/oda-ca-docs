@@ -1,4 +1,4 @@
-# Getting Started in the ODA Component Accelerator Project (ODA-CA)
+# Getting started checklist for new members of ODA-CA
 
 If you are joining the ODA-CA project, here's a checklist of things to get you on-boarded.
 
