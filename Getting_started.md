@@ -26,7 +26,7 @@ The ODA Technical Architecture & Components project is developing the formal spe
 **For Vendors**
 
 * Get familiar with the [ODA Component Inventory (IG1242)](https://www.tmforum.org/resources/?s=ig1242&post_type=product&tmf_filter_release_status=status-production)
-* Map your commercial products to the ODA Components and include them in the [ODA Component Directory(https://oda-directory.labs.tmforum.org/)]
+* Map your commercial products to the ODA Components and include them in the [ODA Component Directory](https://oda-directory.labs.tmforum.org/)
 * On-board your own candidate components into the Open Digital Lab ([Henrique Rodrigues](mailto:hrodrigues@tmforum.org) can help get you started)
 
 
