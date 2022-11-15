@@ -87,6 +87,7 @@ shutil.copy2('../../oda-ca/controllers/securityController/sequenceDiagrams/secur
 # Base Documentation files
 shutil.copy2('../../oda-ca-docs/DocumentationProcess.md', './caDocs') 
 shutil.copy2('../../oda-ca-docs/Playbook.md', './caDocs') 
+shutil.copy2('../../oda-ca-docs/Getting_started.md', './caDocs') 
 shutil.copy2('../../oda-ca-docs/ContributionsGuide.md', './caDocs') 
 shutil.copy2('../../oda-ca-docs/.github/Issues.PNG', './caDocs/.github') 
 shutil.copy2('../../oda-ca-docs/ODAComponentDesignGuidelines.md', './caDocs') 
