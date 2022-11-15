@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>Introduction to the ODA Component Accelerator Project (ODA-CA) &mdash; ODA-Component Accelerator v1alpha4 documentation</title>
+  <title>Getting Started in the ODA Component Accelerator Project (ODA-CA) &mdash; ODA-Component Accelerator v1alpha4 documentation</title>
   
 
   
@@ -38,8 +38,8 @@
     
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Getting Started in the ODA Component Accelerator Project (ODA-CA)" href="Getting_started.html" />
-    <link rel="prev" title="Open Digital Architecture - Component Accelerator" href="../index.html" /> 
+    <link rel="next" title="Tutorial to deploy and observe a running component" href="Observability-Tutorial/README.html" />
+    <link rel="prev" title="Introduction to the ODA Component Accelerator Project (ODA-CA)" href="Playbook.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -86,8 +86,8 @@
             
               <p class="caption"><span class="caption-text">About the project (Playbook):</span></p>
 <ul class="current">
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Introduction to the ODA Component Accelerator Project (ODA-CA)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Getting_started.html">Getting Started in the ODA Component Accelerator Project (ODA-CA)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Playbook.html">Introduction to the ODA Component Accelerator Project (ODA-CA)</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Getting Started in the ODA Component Accelerator Project (ODA-CA)</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Tutorials:</span></p>
 <ul>
@@ -168,13 +168,13 @@
     
       <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
         
-      <li>Introduction to the ODA Component Accelerator Project (ODA-CA)</li>
+      <li>Getting Started in the ODA Component Accelerator Project (ODA-CA)</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
           
-            <a href="../_sources/caDocs/Playbook.md.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/caDocs/Getting_started.md.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -187,31 +187,37 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="introduction-to-the-oda-component-accelerator-project-oda-ca">
-<h1>Introduction to the ODA Component Accelerator Project (ODA-CA)<a class="headerlink" href="#introduction-to-the-oda-component-accelerator-project-oda-ca" title="Permalink to this headline">¶</a></h1>
-<p><strong>The Open Digital Architecture</strong></p>
-<p>ODA is an enterprise architecture blueprint for modular, cloud native open digital platforms that can be orchestrated using AI.  It is being developed and maintained by members of <a class="reference external" href="https://www.tmforum.org/">TM Forum</a>.  You can start learning about ODA <a class="reference external" href="https://www.tmforum.org/oda/">here</a>.</p>
-<p><a class="reference external" href="https://www.tmforum.org/oda/implementation/technical-architecture-components/">ODA Components</a> are the standardized, reusable, microservices-based software building blocks of ODA, connected via <a class="reference external" href="https://www.tmforum.org/oda/implementation/open-apis/">Open APIs</a>. ODA Components are deployed onto an <a class="reference external" href="https://www.tmforum.org/oda/deployment-runtime/oda-canvas/">ODA Canvas</a>, which provides a standardized execution environment along with the release automation part of a CI/CD pipeline.</p>
-<p><strong>Check if your company is already involved in developing ODA</strong></p>
-<p>If your company is a TM Forum member (check <a class="reference external" href="https://www.tmforum.org/membership/current-members/">here</a>), you can join the ODA collaboration projects <a class="reference external" href="https://myaccount.tmforum.org/joinproject">here</a> to contribute to ODA and influence its development.</p>
-<p>If your company has signed the <a class="reference external" href="https://www.tmforum.org/oda/open-digital-architecture-open-api-manifesto/">ODA manifesto</a>, then it is already committed to ODA’s design principles and essential standards to enable a truly ‘plug and play’ set of technology capabilities.</p>
-<p><strong>The ODA-CA project</strong></p>
-<p>The ODA Component Accelerator (ODA-CA) is a practical project run by TM Forum member companies in our Open Digital Lab environment. The aims are:</p>
+  <div class="section" id="getting-started-in-the-oda-component-accelerator-project-oda-ca">
+<h1>Getting Started in the ODA Component Accelerator Project (ODA-CA)<a class="headerlink" href="#getting-started-in-the-oda-component-accelerator-project-oda-ca" title="Permalink to this headline">¶</a></h1>
+<p>If you are joining the ODA-CA project, here’s a checklist of things to get you on-boarded.</p>
+<p><strong>Admin and access</strong></p>
 <ul class="simple">
-<li><p>Collaborative development of the ODA Canvas and ODA Reference Implementation(s) in order to validate ODA in real world applications</p></li>
-<li><p>Building a test environment and tooling to validate vendors’ commercial products for conformance to the ODA Component specifications</p></li>
-<li><p>Developing best practices for deployment of ODA Components and the ODA Canvas</p></li>
-<li><p>Accelerating the ODA standards by contributing practical implementation experience back into the standardization process</p></li>
+<li><p>After your organization has joined the ODA-CA project and nominated you to participate, you will need to sign the <a class="reference external" href="https://info.tmforum.org/tmfcodes-individual-contributor-license-agreement.html">Individual Contributor License Agreement (ICLA)</a> and return it to <a class="reference external" href="mailto:ctaylor&#37;&#52;&#48;tmforum&#46;org">Caroline Taylor</a>.</p></li>
+<li><p>For access to the Open Digital Lab environment please send your GitHub credentials to <a class="reference external" href="mailto:ctaylor&#37;&#52;&#48;tmforum&#46;org">Caroline Taylor</a> so that we can onboard you when the ICLA is completed.</p></li>
+<li><p>You should receive an invitation to the ODA-CA Steering Committee calls and to the project’s <a class="reference external" href="https://app.slack.com/client/T01C5A3NAU9/C01CGGDDLCQ">discussion channels on Slack</a>. If you need assistance please contact <a class="reference external" href="mailto:apope&#37;&#52;&#48;tmforum&#46;org">Alan Pope</a>.</p></li>
 </ul>
-<p>Since the project <a class="reference external" href="https://www.tmforum.org/press-and-news/leading-telecoms-companies-collaborating-to-build-market-for-plug-and-play-software/">started in December 2020</a> we have:</p>
+<p><strong>Explore project’s GitHub</strong></p>
 <ul class="simple">
-<li><p>Built a reference ODA Canvas in our Open Digital Lab based on Kubernetes infrastructure</p></li>
-<li><p>Delivered a prototype Component CTK which validates security and functional aspects of ODA Components using a 3-stage test platform in the Open Digital Lab</p></li>
-<li><p>Deployed a number of commercial applications onto the reference Canvas and validated them with the prototype Component CTK</p></li>
-<li><p>Demonstrated deployment patterns for security and observability use cases</p></li>
-<li><p>Built a ‘click-to-deploy’ reference Canvas for TM Forum members to use</p></li>
+<li><p>Log into <a class="reference external" href="https://github.com/tmforum-oda">GitHub</a> using the credentials sent to you by IT Support when you joined the project</p></li>
+<li><p>Browse around to find <a class="reference external" href="https://tmforum-oda.github.io/oda-ca-docs/">documentation and demonstrations</a>: eg <a class="reference internal" href="ODAComponentDesignGuidelines.html"><span class="doc">here</span></a> is our Component Design guide with instructions on how to create a component, and <a class="reference internal" href="ContributionsGuide.html"><span class="doc">here</span></a> is the process for making contributions.</p></li>
+<li><p>Ask questions on <a class="reference external" href="https://app.slack.com/client/T01C5A3NAU9/C01CGGDDLCQ">Slack</a> - the team will be happy to help get you started.</p></li>
 </ul>
-<p><strong>ODA-CA demo videos</strong></p>
+<p><strong>Join the ODA Technical Architecture &amp; Components project</strong></p>
+<p>The ODA Technical Architecture &amp; Components project is developing the formal specifications for the ODA Components and Canvas.  It’s a regular TM Forum collaboration project which any TM Forum member can join to get access to resources in the shared collaboration space, and to TA&amp;C project meetings:</p>
+<ul class="simple">
+<li><p>Make sure you have a TM Forum account (register at https://myaccount.tmforum.org/register)</p></li>
+<li><p>Login to https://www.tmforum.org</p></li>
+<li><p>Click on Labs / Member projects</p></li>
+<li><p>Scroll down to the Technical Architecture &amp; Components project and click on JOIN THE PROJECT, accept the IPR Policy and submit the IPR form</p></li>
+<li><p>Once approved, you will see that the text on the Member projects page button will change from REQUEST SENT to VIEW PROJECT and you will be able to access the project space in Confluence by clicking on the button, or by going to Technical Architecture and Components Project Home</p></li>
+</ul>
+<p><strong>For Vendors</strong></p>
+<ul class="simple">
+<li><p>Get familiar with the <a class="reference external" href="https://www.tmforum.org/resources/?s=ig1242&amp;post_type=product&amp;tmf_filter_release_status=status-production">ODA Component Inventory (IG1242)</a></p></li>
+<li><p>Map your commercial products to the ODA Components and include them in the [ODA Component Directory(https://oda-directory.labs.tmforum.org/)]</p></li>
+<li><p>On-board your own candidate components into the Open Digital Lab (<a class="reference external" href="mailto:hrodrigues&#37;&#52;&#48;tmforum&#46;org">Henrique Rodrigues</a> can help get you started)</p></li>
+</ul>
+<p><strong>Check out the ODA-CA demo videos</strong></p>
 <ul class="simple">
 <li><p>Deploying ODA Components on the ODA Canvas - API exposure and discovery: <a class="reference external" href="https://www.youtube.com/watch?v=e63FGHMeI1M">video (6 min)</a></p></li>
 <li><p>Validation of ODA Components using the prototype Component CTK: <a class="reference external" href="https://www.youtube.com/watch?v=RyTGzc4pv64&amp;t=1s">video (3 min)</a></p></li>
@@ -227,8 +233,8 @@
           </div>
           <footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-        <a href="Getting_started.html" class="btn btn-neutral float-right" title="Getting Started in the ODA Component Accelerator Project (ODA-CA)" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
-        <a href="../index.html" class="btn btn-neutral float-left" title="Open Digital Architecture - Component Accelerator" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="Observability-Tutorial/README.html" class="btn btn-neutral float-right" title="Tutorial to deploy and observe a running component" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="Playbook.html" class="btn btn-neutral float-left" title="Introduction to the ODA Component Accelerator Project (ODA-CA)" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
 
   <hr/>
