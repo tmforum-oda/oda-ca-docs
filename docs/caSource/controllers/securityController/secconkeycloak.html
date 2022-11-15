@@ -216,18 +216,12 @@
 <em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">secconkeycloak.</span></code><code class="sig-name descname"><span class="pre">Keycloak</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">url</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#secconkeycloak.Keycloak" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 <dl class="py method">
-<dt id="secconkeycloak.Keycloak.add_role">
-<code class="sig-name descname"><span class="pre">add_role</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">role</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">client_id</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">token</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">realm</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">None</span><a class="headerlink" href="#secconkeycloak.Keycloak.add_role" title="Permalink to this definition">¶</a></dt>
-<dd><p>POST new roles to the right client in the right realm in
-Keycloak</p>
-<p>Returns nothing or raises an exception for the caller to catch</p>
-</dd></dl>
-
-<dl class="py method">
-<dt id="secconkeycloak.Keycloak.add_role_to_user">
-<code class="sig-name descname"><span class="pre">add_role_to_user</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">username</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">role</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">client</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">token</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">realm</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">None</span><a class="headerlink" href="#secconkeycloak.Keycloak.add_role_to_user" title="Permalink to this definition">¶</a></dt>
-<dd><p>POST client role assignment to user in realm in Keycloak</p>
-<p>Returns nothing or raises an exception for the caller to catch</p>
+<dt id="secconkeycloak.Keycloak.get_token">
+<code class="sig-name descname"><span class="pre">get_token</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">user</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pwd</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">str</span><a class="headerlink" href="#secconkeycloak.Keycloak.get_token" title="Permalink to this definition">¶</a></dt>
+<dd><p>Takes the admin username and password and returns a session
+token for future Bearer authentication</p>
+<p>Returns the token, or raises an exception for the caller to
+catch</p>
 </dd></dl>
 
 <dl class="py method">
@@ -246,14 +240,6 @@ a new component</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="secconkeycloak.Keycloak.del_role">
-<code class="sig-name descname"><span class="pre">del_role</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">role</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">client</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">token</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">realm</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">None</span><a class="headerlink" href="#secconkeycloak.Keycloak.del_role" title="Permalink to this definition">¶</a></dt>
-<dd><p>DELETE removed roles from the right client in the right realm
-in Keycloak</p>
-<p>Returns nothing or raises an exception for the caller to catch</p>
-</dd></dl>
-
-<dl class="py method">
 <dt id="secconkeycloak.Keycloak.get_client_list">
 <code class="sig-name descname"><span class="pre">get_client_list</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">token</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">realm</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">dict</span><a class="headerlink" href="#secconkeycloak.Keycloak.get_client_list" title="Permalink to this definition">¶</a></dt>
 <dd><p>GETs a list of clients in the realm to ensure there is a
@@ -263,12 +249,26 @@ an exception for the caller to catch</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="secconkeycloak.Keycloak.get_token">
-<code class="sig-name descname"><span class="pre">get_token</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">user</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pwd</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">str</span><a class="headerlink" href="#secconkeycloak.Keycloak.get_token" title="Permalink to this definition">¶</a></dt>
-<dd><p>Takes the admin username and password and returns a session
-token for future Bearer authentication</p>
-<p>Returns the token, or raises an exception for the caller to
-catch</p>
+<dt id="secconkeycloak.Keycloak.add_role">
+<code class="sig-name descname"><span class="pre">add_role</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">role</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">client_id</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">token</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">realm</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">None</span><a class="headerlink" href="#secconkeycloak.Keycloak.add_role" title="Permalink to this definition">¶</a></dt>
+<dd><p>POST new roles to the right client in the right realm in
+Keycloak</p>
+<p>Returns nothing or raises an exception for the caller to catch</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="secconkeycloak.Keycloak.del_role">
+<code class="sig-name descname"><span class="pre">del_role</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">role</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">client</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">token</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">realm</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">None</span><a class="headerlink" href="#secconkeycloak.Keycloak.del_role" title="Permalink to this definition">¶</a></dt>
+<dd><p>DELETE removed roles from the right client in the right realm
+in Keycloak</p>
+<p>Returns nothing or raises an exception for the caller to catch</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="secconkeycloak.Keycloak.add_role_to_user">
+<code class="sig-name descname"><span class="pre">add_role_to_user</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">username</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">role</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">client</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">token</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">realm</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">None</span><a class="headerlink" href="#secconkeycloak.Keycloak.add_role_to_user" title="Permalink to this definition">¶</a></dt>
+<dd><p>POST client role assignment to user in realm in Keycloak</p>
+<p>Returns nothing or raises an exception for the caller to catch</p>
 </dd></dl>
 
 </dd></dl>
