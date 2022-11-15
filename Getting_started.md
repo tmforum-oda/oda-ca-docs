@@ -9,7 +9,7 @@ If you are joining the ODA-CA project, here's a checklist of things to get you o
 * For access to the Open Digital Lab environment please send your GitHub credentials to [Caroline Taylor](mailto:ctaylor@tmforum.org) so that we can onboard you when the ICLA is completed.
 * You should receive an invitation to the ODA-CA Steering Committee calls and to the project's [discussion channels on Slack](https://app.slack.com/client/T01C5A3NAU9/C01CGGDDLCQ). If you need assistance please contact [Alan Pope](mailto:apope@tmforum.org).
 
-**Explore project's GitHub**
+**Explore ODA-CA GitHub**
 
 * Log into [GitHub](https://github.com/tmforum-oda) using the credentials sent to you by IT Support when you joined the project
 * Browse around to find [documentation and demonstrations](https://tmforum-oda.github.io/oda-ca-docs/): eg [here](ODAComponentDesignGuidelines.md) is our Component Design guide with instructions on how to create a component, and [here](ContributionsGuide.md) is the process for making contributions.
