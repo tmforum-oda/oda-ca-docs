@@ -37,6 +37,6 @@ Since the project [started in December 2020](https://www.tmforum.org/press-and-n
 * Implementing observability with the ODA Canvas: [video (8 min)](https://www.youtube.com/watch?v=5De54QwrvEM&t=2s)
 * Early 2021 'Show & Tell' presentation introducing the Open Digital Lab environment and showcasing the deployment of commercial products onto the ODA reference Canvas, including the use of a 'Proxy Component' to integrate SaaS solutions: [video (1h 45 min)](https://video.ibm.com/channel/24077591/video/lf09c2)
 
-**ODA-CA presentations**
+[comment]: <> (**ODA-CA presentations**)
 
-* DTW presentations to be uploaded and added here
+[comment]: <> (* DTW presentations to be uploaded and added here)
