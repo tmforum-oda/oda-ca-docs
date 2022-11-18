@@ -30,10 +30,17 @@ The ODA Technical Architecture & Components project is developing the formal spe
 * Map your commercial products to the ODA Components and include them in the [ODA Component Directory](https://oda-directory.labs.tmforum.org/)
 * On-board your own candidate components into the Open Digital Lab ([Henrique Rodrigues](mailto:hrodrigues@tmforum.org) can help get you started)
 
-**Check out the ODA-CA demo videos**
+**Join one or more of the current initiatives**
 
-* Deploying ODA Components on the ODA Canvas - API exposure and discovery: [video (6 min)](https://www.youtube.com/watch?v=e63FGHMeI1M)
-* Validation of ODA Components using the prototype Component CTK: [video (3 min)](https://www.youtube.com/watch?v=RyTGzc4pv64&t=1s)
-* Implementing identity & access management with the ODA Canvas: [video (4 min)](https://www.youtube.com/watch?v=7VKT_kCYfzE)
-* Implementing observability with the ODA Canvas: [video (8 min)](https://www.youtube.com/watch?v=5De54QwrvEM&t=2s)
-* Early 2021 'Show & Tell' presentation introducing the Open Digital Lab environment and showcasing the deployment of commercial products onto the ODA reference Canvas, including the use of a 'Proxy Component' to integrate SaaS solutions: [video (1h 45 min)](https://video.ibm.com/channel/24077591/video/lf09c2)
+* Canvas Services track (documented [here](https://github.com/tmforum-oda/oda-canvas-ctk/tree/canvasUseCasesandBDD))
+  * Create MVP of ODA Canvas use case library and BDD
+  * Add these use cases to the prototype ODA Canvas CTK
+* Components track
+  * Publish v1beta1 Component CTK aligned with the beta1 Component specification (full spec with BDD)
+  * Use the CTK to test commercial Product Catalog components, including BDD for the Canvas supporting functions
+  * Create test tooling to semi-automate the CTK validation of components deployed on the reference Canvas
+* Event Hub processing
+  * Introduce an TMFC019 Event Management component for the ODA and build an Operator using the YAML descriptor of components to set up event flows
+* Onboarding
+  * Update the onboarding playbook on GitHub for new project members and interested observers
+  * Incorporate the latest materials (eg demos and presentations from DTW 2022)
