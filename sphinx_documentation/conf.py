@@ -88,6 +88,7 @@ shutil.copy2('../../oda-ca/controllers/securityController/sequenceDiagrams/secur
 # Base Documentation files
 shutil.copy2('../../oda-ca-docs/DocumentationProcess.md', './caDocs') 
 shutil.copy2('../../oda-ca-docs/Playbook.md', './caDocs') 
+shutil.copy2('../../oda-ca-docs/Getting_started.md', './caDocs') 
 shutil.copy2('../../oda-ca-docs/ContributionsGuide.md', './caDocs') 
 shutil.copy2('../../oda-ca-docs/.github/Issues.PNG', './caDocs/.github') 
 shutil.copy2('../../oda-ca-docs/ODAComponentDesignGuidelines.md', './caDocs') 
@@ -158,3 +159,7 @@ shutil.copy2('../../oda-component-ctk/sampleOutput-L2-dynamic.png', './ctk')
 shutil.copy2('../../oda-component-ctk/sampleOutput-L2-static.png', './ctk') 
 shutil.copy2('../../oda-component-ctk/StagedClusters.png', './ctk') 
 
+# DTW presentations
+shutil.copy2('../../oda-ca-docs/DTW_Presentations/README.md', './caDocs/DTW_Presentations') 
+shutil.copy2('../../oda-ca-docs/DTW_Presentations/STL dPCC deployment with ODA Canvas for DTW-22.pptx', './caDocs/DTW_Presentations')
+shutil.copy2('../../oda-ca-docs/DTW_Presentations/Whale Cloud Multi-cloud CNF deployment with the ODA Canvas DTW-22.pptx', './caDocs/DTW_Presentations')

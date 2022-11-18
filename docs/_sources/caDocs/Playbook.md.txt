@@ -1,53 +1,42 @@
-# Introduction to the ODA-CA
+# Introduction to the ODA Component Accelerator Project (ODA-CA)
 
-**Step 1: Learn about Open Digital Architecture**
+**The Open Digital Architecture**
 
-ODA is a blueprint for modular, cloud-based, open digital platforms that can be orchestrated using AI - start with the webpage [here](https://www.tmforum.org/oda/).
+ODA is an enterprise architecture blueprint for modular, cloud native open digital platforms that can be orchestrated using AI.  It is being developed and maintained by members of [TM Forum](https://www.tmforum.org/).  You can start learning about ODA [here](https://www.tmforum.org/oda/).
 
-**Step 2: Commit to ODA's design principles and essential standards to enable a truly ‘plug and play’ set of technology capabilities**
+[ODA Components](https://www.tmforum.org/oda/implementation/technical-architecture-components/) are the standardized, reusable, microservices-based software building blocks of ODA, connected via [Open APIs](https://www.tmforum.org/oda/implementation/open-apis/). ODA Components are deployed onto an [ODA Canvas](https://www.tmforum.org/oda/deployment-runtime/oda-canvas/), which provides a standardized execution environment along with the release automation part of a CI/CD pipeline.
 
-Check your company has signed the [ODA manifesto](https://www.tmforum.org/oda/open-digital-architecture-open-api-manifesto/)
+**Check if your company is already involved in developing ODA**
 
-**Step 3: Join the ODA Project to view additional ODA documents**
+If your company is a TM Forum member (check [here](https://www.tmforum.org/membership/current-members/)), you can join the ODA collaboration projects [here](https://myaccount.tmforum.org/joinproject) to contribute to ODA and influence its development.
 
-[Join here](https://engage.tmforum.org/projects/volunteer-opportunity-details?VolunteerOpportunityKey=603731cf-09c5-4229-8730-c900c157c07b&CommunityKey=0430eebd-2dac-41b6-bd1b-fba7ebcfe7d7&_ga=2.154545981.400866836.1614620569-367684471.1602091309) (joining the Core Project provides access to 5 collaboration projects in one go, including ODA)
+If your company has signed the [ODA manifesto](https://www.tmforum.org/oda/open-digital-architecture-open-api-manifesto/), then it is already committed to ODA's design principles and essential standards to enable a truly ‘plug and play’ set of technology capabilities.
 
-**Step 4: Check that your company has joined the ODA-CA project**
+**The ODA-CA project**
  
-Request access to the [ODA-CA Confluence space](https://projects.tmforum.org/wiki/x/sk64C) and other resources ([Sue Davis](https://projects.tmforum.org/wiki/display/~sdavis@tmforum.org) can help with this).  If you have already received credentials to join Git and Slack for this project you can skip this step.
+The ODA Component Accelerator (ODA-CA) is a practical project run by TM Forum member companies in our Open Digital Lab environment. The aims are:
 
-**Step 5: Read an overview of the ODA-CA Project**
+* Collaborative development of the ODA Canvas and ODA Reference Implementation(s) in order to validate ODA in real world applications
+* Building a test environment and tooling to validate vendors' commercial products for conformance to the ODA Component specifications
+* Developing best practices for deployment of ODA Components and the ODA Canvas 
+* Accelerating the ODA standards by contributing practical implementation experience back into the standardization process
 
-Check out the [ODA-CA briefing presentation here](https://projects.tmforum.org/wiki/x/jY6UCQ)
+Since the project [started in December 2020](https://www.tmforum.org/press-and-news/leading-telecoms-companies-collaborating-to-build-market-for-plug-and-play-software/) we have:
 
-**Step 6: Watch the 'Show & Tell' videos from the end of each sprint**
+* Built a reference ODA Canvas in our Open Digital Lab based on Kubernetes infrastructure
+* Delivered a prototype Component CTK which validates security and functional aspects of ODA Components using a 3-stage test platform in the Open Digital Lab
+* Deployed a number of commercial applications onto the reference Canvas and validated them with the prototype Component CTK
+* Demonstrated deployment patterns for security and observability use cases
+* Built a ‘click-to-deploy’ reference Canvas for TM Forum members to use
 
-* Sprint 1: [video recording](https://video.ibm.com/channel/24077591/video/lf09c2) and [notes including presentations](https://projects.tmforum.org/wiki/x/bfowCQ). Covers the Open Digital Lab environment and an initial proof-of-concept for automated ODA compliance validation of ‘black box’ and ‘glass box’ commercial products.
+**ODA-CA demo videos**
 
-* Sprint 2: [video recording](https://us02web.zoom.us/rec/share/J3JyQ4q7ZpBGtoG2MOdlM9hYAKrVXdis09rmzoPcEnopvUy4S3-yCphydlpYDx8K.Je5BAFFXOLUmrqEo) and [notes including presentations](https://projects.tmforum.org/wiki/pages/viewpage.action?pageId=168397244&preview=%2F168397244%2F168397695%2F2021.04.06+ODA-CA+Show+%26+Tell.pdf). Covers Security Validation of ODA Components, an API Operator for Whale Cloud API Gateway and Oracle Proxy Components. Includes proposed roadmap for next sprints.
+* Deploying ODA Components on the ODA Canvas - API exposure and discovery: [video (6 min)](https://www.youtube.com/watch?v=e63FGHMeI1M)
+* Validation of ODA Components using the prototype Component CTK: [video (3 min)](https://www.youtube.com/watch?v=RyTGzc4pv64&t=1s)
+* Implementing identity & access management with the ODA Canvas: [video (4 min)](https://www.youtube.com/watch?v=7VKT_kCYfzE)
+* Implementing observability with the ODA Canvas: [video (8 min)](https://www.youtube.com/watch?v=5De54QwrvEM&t=2s)
+* Early 2021 'Show & Tell' presentation introducing the Open Digital Lab environment and showcasing the deployment of commercial products onto the ODA reference Canvas, including the use of a 'Proxy Component' to integrate SaaS solutions: [video (1h 45 min)](https://video.ibm.com/channel/24077591/video/lf09c2)
 
+[comment]: <> (**ODA-CA presentations**)
 
-
-**Step 7: Watch the Sprint 2 demo of Security Validation (Mar 2021)**
-
-The [demo here](https://projects.tmforum.org/wiki/x/oqu2CQ) explains the concepts of security / party role validation for ODA components
-
-**Step 8: View the inventory of ODA components to help the design and implementation of solutions that meet the architectural design requirements of ODA**
-
-[IG1242 ODA Component Inventory & Heatmap v1.0.0](https://projects.tmforum.org/wiki/x/-SC4C)
-
-**Step 9: Complete the Component Audit**
-
-Map your company's applications to the ODA Component inventory - find out more [here](https://projects.tmforum.org/wiki/x/I6kwCQ)
-
-**Step 10: Log into [GitHub](https://github.com/tmforum-oda) using the credentials sent to you by IT Support when you joined the project.**
-
-Browse around to find documentation and demonstrations: eg [here](ODAComponentDesignGuidelines.md) is our Component Design guide with instructions on how to create a component, and [here](ContributionsGuide.md) is the process for making contributions.
-
-**Step 11: Ask questions on [Slack](https://app.slack.com/client/T01C5A3NAU9/C01CGGDDLCQ)**
-
-The team will be happy to help get you started.
-
-**Step 12: On-board your own candidate components into the Open Digital Lab**
-
-[Request a call](mailto:sdavis@tmforum.org) if you want help - [Sue Davis](https://projects.tmforum.org/wiki/display/~sdavis@tmforum.org) will get you connected to the right people and resources.
+[comment]: <> (* DTW presentations to be uploaded and added here)
