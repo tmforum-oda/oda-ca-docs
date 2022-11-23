@@ -11,7 +11,7 @@ Open Digital Architecture - Component Accelerator
 
 .. toctree::
    :maxdepth: 1
-   :caption: About the project (Playbook):
+   :caption: About the project:
 
    caDocs/Playbook.md
    caDocs/Getting_started.md
