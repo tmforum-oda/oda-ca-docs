@@ -504,7 +504,7 @@ We have created all the Kubernetes resources to deploy the mongoDb, party role a
 
 This is a relatively simple component that just exposes one API as part of its `coreFunction`. Note that we have included the release name and component name in the root of the API path (this is a good pattern to follow so that the API doesn't conflict with any other components deployed in the same environment).
 
-```
+```yaml
 apiVersion: oda.tmforum.org/v1alpha4
 kind: component
 metadata:
@@ -563,10 +563,10 @@ spec:
       port: 8080
 ```
 
-Finally we have to create the parameters in the `values.yaml` file. Since we have parameterized just 1 value, our values.yaml file will look like:
+Finally we have to create the parameters in the `values.yaml` file.
 
-```
-# Default values for productcatalog.
+```yaml
+# Default values for productinventory.
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
 
@@ -598,13 +598,13 @@ We can test that this component instance conforms to the ODA-Component standard 
 
 Within the oda-component-ctk folder, install the ctk.
 
-```
+```yaml
 npm install
 ```
 
 Then run the static ctk against the component envelope, you would need to specify the correct path to the `test-instance.component.yaml` created earlier.
 
-```
+```s
 npm run L1-static ../ProductInventory/test-instance.component.yaml
 ```
 
@@ -627,7 +627,7 @@ You can test the connection using `kubectl get all --namespace components`. (You
 
 To permanently save the namespace for all subsequent kubectl commands use:
 
-```
+```s
 kubectl config set-context --current --namespace=components
 ```
 
