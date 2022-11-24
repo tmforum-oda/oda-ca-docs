@@ -604,7 +604,7 @@ npm install
 
 Then run the static ctk against the component envelope, you would need to specify the correct path to the `test-instance.component.yaml` created earlier.
 
-```s
+```yaml
 npm run L1-static ../ProductInventory/test-instance.component.yaml
 ```
 
@@ -627,7 +627,7 @@ You can test the connection using `kubectl get all --namespace components`. (You
 
 To permanently save the namespace for all subsequent kubectl commands use:
 
-```s
+```
 kubectl config set-context --current --namespace=components
 ```
 
