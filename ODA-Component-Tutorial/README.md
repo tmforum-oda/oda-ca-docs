@@ -142,45 +142,52 @@ Finally, we change the path where the 'api-docs' and 'docs' are exposed. By defa
 
 ### Step 4. Package the nodejs implementation into a docker image
 
-Create a dockerfile with the instructions to build our image. We are starting with the official [node](https://hub.docker.com/_/node) docker image.
+Create a dockerfile in the product inventory inplementation directory with the instructions to build our image. We are starting with the official [node](https://hub.docker.com/_/node) docker image.
 
+```text
+FROM node:12
 ```
-FROM node:10
+
+Define the working directory of a Docker container 
+
+```text
+WORKDIR /usr/app
 ```
 
 This image comes with Node.js and NPM already installed so the next thing we need to do is to install the app dependencies.
 
-```
-COPY implementation/package*.json .
+```text
+COPY package*.json ./
 RUN npm install
 ```
 
 Then we copy the source code.
 
-```
-COPY implementation ./
+```text
+COPY . .
 ```
 
 The app binds to port 8080 so we'll use the EXPOSE instruction to have it mapped by the docker daemon:
 
-```
+```text
 EXPOSE 8080
 ```
 
 Finally we define the command that will run the app.
 
-```
+```text
 CMD ["node", "index.js"]
 ```
 
 
 The complete dockerfile should look like:
 
-```
-FROM node:10
-COPY implementation/package*.json .
+```text
+FROM node:12
+WORKDIR /usr/app
+COPY package*.json ./
 RUN npm install
-COPY implementation ./
+COPY . .
 EXPOSE 8080
 CMD ["node", "index.js"]
 ```
@@ -213,7 +220,7 @@ dominico/productinventoryapi   latest    6f2819946f76   About an hour ago   910M
 ```
 Finally we upload the docker image to a Docker repository. I'm using the default [DockerHub](https://hub.docker.com) with an account `dominico` that I have created previously. If this is the first time accessing the docker repository you will need to login first with the `docker login` command.
 
-```
+```sh
 docker push  dominico/productinventoryapi --all-tags
 ```
 
@@ -227,7 +234,7 @@ We will use [Helm](https://helm.sh/) to create the component envelope as a Helm-
 
 The first step is to use `helm create <chartname>' which creates a boiler-plate chart:
 
-```
+```sh
 helm create productinventory
 ```
 
@@ -504,7 +511,7 @@ We have created all the Kubernetes resources to deploy the mongoDb, party role a
 
 This is a relatively simple component that just exposes one API as part of its `coreFunction`. Note that we have included the release name and component name in the root of the API path (this is a good pattern to follow so that the API doesn't conflict with any other components deployed in the same environment).
 
-```
+```yaml
 apiVersion: oda.tmforum.org/v1alpha4
 kind: component
 metadata:
@@ -563,10 +570,10 @@ spec:
       port: 8080
 ```
 
-Finally we have to create the parameters in the `values.yaml` file. Since we have parameterized just 1 value, our values.yaml file will look like:
+Finally we have to create the parameters in the `values.yaml` file.
 
-```
-# Default values for productcatalog.
+```yaml
+# Default values for productinventory.
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
 
@@ -598,13 +605,14 @@ We can test that this component instance conforms to the ODA-Component standard 
 
 Within the oda-component-ctk folder, install the ctk.
 
-```
+```sh
 npm install
 ```
 
 Then run the static ctk against the component envelope, you would need to specify the correct path to the `test-instance.component.yaml` created earlier.
 
-```
+```sh
+
 npm run L1-static ../ProductInventory/test-instance.component.yaml
 ```
 
@@ -627,19 +635,19 @@ You can test the connection using `kubectl get all --namespace components`. (You
 
 To permanently save the namespace for all subsequent kubectl commands use:
 
-```
+```sh
 kubectl config set-context --current --namespace=components
 ```
 
 Install the component using Helm, we call the release name `r1`:
 
-```
+```sh
 helm install r1 productinventory/ 
 ```
 
 You can then view the component in `kubectl`:
 
-```
+```sh
 kubectl get components
 ```
 
@@ -659,7 +667,7 @@ If you navigate to the developer-ui, you shold see the swagger-ui tool:
 
 Finally, you can run the dynamic ctk against the component envelope.
 
-```
+```sh
 npm dynamic ../oda-ca-docs/ODA-Component-Tutorial/test-instance.component.yaml
 ```
 
