@@ -142,7 +142,7 @@ Finally, we change the path where the 'api-docs' and 'docs' are exposed. By defa
 
 ### Step 4. Package the nodejs implementation into a docker image
 
-Create a dockerfile with the instructions to build our image. We are starting with the official [node](https://hub.docker.com/_/node) docker image.
+Create a dockerfile in the product inventory inplementation directory with the instructions to build our image. We are starting with the official [node](https://hub.docker.com/_/node) docker image.
 
 ```text
 FROM node:12
