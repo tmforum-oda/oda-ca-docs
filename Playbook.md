@@ -37,6 +37,9 @@ Since the project [started in December 2020](https://www.tmforum.org/press-and-n
 * Implementing observability with the ODA Canvas: [video (8 min)](https://www.youtube.com/watch?v=5De54QwrvEM&t=2s)
 * Early 2021 'Show & Tell' presentation introducing the Open Digital Lab environment and showcasing the deployment of commercial products onto the ODA reference Canvas, including the use of a 'Proxy Component' to integrate SaaS solutions: [video (1h 45 min)](https://video.ibm.com/channel/24077591/video/lf09c2)
 
-[comment]: <> (**ODA-CA presentations**)
+**Deploying Cloud Native Network Functions onto the ODA Canvas**
 
-[comment]: <> (* DTW presentations to be uploaded and added here)
+* [Deployment of a CNF to an ODA Canvas running on two different cloud environments](./DTW_Presentations/Whale%20Cloud%20Multi-cloud%20CNF%20deployment%20with%20the%20ODA%20Canvas%20DTW-22.pptx). The Canvas standardizes the environment to enable plug-and-play deployment on different cloud platforms. (Whale Cloud)
+* [Deployment of PCRF (4G) and PCF (5G) onto the same ODA Canvas](./DTW_Presentations/STL%20dPCC%20deployment%20with%20ODA%20Canvas%20for%20DTW-22.pptx), making 4G->5G upgrades and other use cases easy to achieve (Sterlite)
+
+[comment]: <> (**ODA-CA presentations**)
