@@ -39,7 +39,7 @@ Since the project [started in December 2020](https://www.tmforum.org/press-and-n
 
 **Deploying Cloud Native Network Functions onto the ODA Canvas**
 
-* [Deployment of a CNF to an ODA Canvas running on two different cloud environments](./DTW_Presentations/Whale%20Cloud%20Multi-cloud%20CNF%20deployment%20with%20the%20ODA%20Canvas%20DTW-22.pptx). The Canvas standardizes the environment to enable plug-and-play deployment on different cloud platforms. (Whale Cloud)
-* [Deployment of PCRF (4G) and PCF (5G) onto the same ODA Canvas](./DTW_Presentations/STL%20dPCC%20deployment%20with%20ODA%20Canvas%20for%20DTW-22.pptx), making 4G->5G upgrades and other use cases easy to achieve (Sterlite)
+* [Deployment of a CNF to an ODA Canvas running on two different cloud environments](./DTW_Presentations/Whale%20Cloud%20Multi-cloud%20CNF%20deployment%20with%20the%20ODA%20Canvas%20DTW-22.pptx?raw=true). The Canvas standardizes the environment to enable plug-and-play deployment on different cloud platforms. (By Whale Cloud)
+* [Deployment of PCRF (4G) and PCF (5G) onto the same ODA Canvas](./DTW_Presentations/STL%20dPCC%20deployment%20with%20ODA%20Canvas%20for%20DTW-22.pptx?raw=true), making 4G->5G upgrades and other use cases easy to achieve (By Sterlite)
 
 [comment]: <> (**ODA-CA presentations**)
