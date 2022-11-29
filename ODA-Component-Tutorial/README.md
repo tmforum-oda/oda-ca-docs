@@ -633,7 +633,6 @@ You should get an output like the image below. If you receive any errors, fix th
 
 ### Step 8. Deploy the component envelope into Open Digital Lab canvas
 
-
 Connect to the Open Digital Lab: Get the kubectl config from the rancher environment at https://rke.tmforum.org/c/c-85kcq/monitoring - click the Kubeconfig File button in the top right:
 
 ![Rancher](./images/Rancher.png)
