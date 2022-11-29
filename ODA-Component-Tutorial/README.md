@@ -224,8 +224,17 @@ Finally we upload the docker image to a Docker repository. I'm using the default
 docker push  dominico/productinventoryapi --all-tags
 ```
 
+### Step 5. Create PartyRole Implementation
 
-### Step 5. Create Component Envelope 
+Product Inventory component requires a Party Role Microservice that implements the TMF669 Party Role Management API (based on the NodeJs reference implementation). Party Role provides security supporting function and canvas service to the Product Inventory Component. 
+
+Follow the previous steps 1-4 to create the Party Role implementation.  
+
+### Step 6. Create PartyRole Initialisation Implementation
+
+Next we create a party role initialisation service which  initialises party roles in the mongo db database.
+
+### Step 7. Create Component Envelope 
 
 The Component Envelope contains the meta-data required to automatically deploy and manage the component in an ODA-Canvas environment. The envelope will contain meta-data about the standard Kubernetes resources, as well as the TM Forum ODA extensions. There is a detailed breakdown of the Component Envelope in [ODAComponentDesignGuidelines](https://github.com/tmforum-oda/oda-ca-docs/blob/master/ODAComponentDesignGuidelines.md).
 
@@ -622,7 +631,7 @@ You should get an output like the image below. If you receive any errors, fix th
 
 
 
-### Step 7. Deploy the component envelope into Open Digital Lab canvas
+### Step 8. Deploy the component envelope into Open Digital Lab canvas
 
 
 Connect to the Open Digital Lab: Get the kubectl config from the rancher environment at https://rke.tmforum.org/c/c-85kcq/monitoring - click the Kubeconfig File button in the top right:
