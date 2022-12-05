@@ -29,7 +29,7 @@ Since the project [started in December 2020](https://www.tmforum.org/press-and-n
 * Demonstrated deployment patterns for security and observability use cases
 * Built a ‘click-to-deploy’ reference Canvas for TM Forum members to use
 
-Read [this presentation](https://github.com/tmforum-oda/oda-ca-docs/blob/master/Presentations/TM%20Forum%20ODA%20Component%20Accelerator%20Briefing%20v29.pptx?raw=true) (updated Nov 2022) for more details about the ODA-CA project.  If you're interested in joining, please email accelerator@tmforum.org.
+Read [this presentation](https://github.com/tmforum-oda/oda-ca-docs/blob/master/Presentations/TM%20Forum%20ODA%20Component%20Accelerator%20Briefing%20v29.pptx?raw=true) (updated Nov 2022) for more details about the ODA-CA project.  If you're interested in joining, please email [accelerator@tmforum.org](mailto:accelerator@tmforum.org).
 
 **ODA-CA demo videos**
 
