@@ -5,7 +5,7 @@ If you are joining the ODA-CA project, here's a checklist of things to get you o
 **Admin and access**
 
 * Make sure you have a TM Forum account (register [here](https://myaccount.tmforum.org/register))
-* After your organization has joined the ODA-CA project and nominated you to participate, you will need to sign the [Individual Contributor License Agreement (ICLA)](https://info.tmforum.org/tmfcodes-individual-contributor-license-agreement.html) and return it to [Caroline Taylor](mailto:ctaylor@tmforum.org).
+* After your organization has joined the ODA-CA project and nominated you to participate, you will need to sign the [Individual Contributor License Agreement (ICLA)](https://info.tmforum.org/tmfcodes-individual-contributor-license-agreement.html) and return it to [Caroline Taylor](mailto:ctaylor@tmforum.org). (**Please do this only if your company has formally joined the ODA-CA project and nominated you to contribute.**)
 * For access to the Open Digital Lab environment please send your GitHub credentials to [Caroline Taylor](mailto:ctaylor@tmforum.org) so that we can onboard you when the ICLA is completed.
 * You should receive an invitation to the ODA-CA Steering Committee calls and to the project's [discussion channels on Slack](https://app.slack.com/client/T01C5A3NAU9/C01CGGDDLCQ). If you need assistance please contact [Alan Pope](mailto:apope@tmforum.org).
 
