@@ -44,4 +44,8 @@ Read [this presentation](https://github.com/tmforum-oda/oda-ca-docs/blob/master/
 * [Deployment of a CNF to an ODA Canvas running on two different cloud environments](https://github.com/tmforum-oda/oda-ca-docs/blob/master/DTW_Presentations/Whale%20Cloud%20Multi-cloud%20CNF%20deployment%20with%20the%20ODA%20Canvas%20DTW-22.pptx?raw=true). The Canvas standardizes the environment to enable plug-and-play deployment on different cloud platforms (by Whale Cloud)
 * [Deployment of PCRF (4G) and PCF (5G) onto the same ODA Canvas](https://github.com/tmforum-oda/oda-ca-docs/blob/master/DTW_Presentations/STL%20dPCC%20deployment%20with%20ODA%20Canvas%20for%20DTW-22.pptx?raw=true), making 4G->5G upgrades and other use cases easy to achieve (by Sterlite)
 
+**Current ODA-CA project members**
+
+alvatross by SATEC, Axiata Digital Labs, Bruhati Solutions, China Mobile, Ericsson, Global Wavenet, Hansen Technologies, Inetum, Oracle, Orange, OryxGateway, Software AG, Sterlite Technologies Limited, Sysbiz Technologies, Vodafone, Whale Cloud.
+
 [comment]: <> (**ODA-CA presentations**)
