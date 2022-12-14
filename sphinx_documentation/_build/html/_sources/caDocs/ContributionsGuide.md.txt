@@ -44,7 +44,7 @@ Add envelope for Sigscale OCS component (https://github.com/sigscale/ocs-k8s)
 fixes #6
 ```
 
-* Finally, once a feature-branch is complete and tested, issue a pull-request to merge the feature-branch into the main branch. The pull request should mention the issues it addresses by including `closes #<issue_number>` in the pull request body.
+* Finally, once a feature-branch is complete and tested, issue a pull-request to merge the feature-branch into the main branch. The pull request should mention the issues it addresses by including `closes #<issue_number>` in the pull request body (You have to hit the <return> key after the issue number to create the link). This will link and then automatically close the issue (if you want to link without closing an issue, include `references #<issue_number>`.)  
 
 The `github-actions bot` will analyse the pull request and automatically merge if the pull request relates to `documentation`, `bug-fix` or `refactor`. For `feature` pull requests, we will review and approve as part of the weekly ODA-CA governance meeting.
 

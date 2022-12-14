@@ -1,0 +1,3291 @@
+basePath: /tmf-api/partyRoleManagement/v4/
+consumes:
+- application/json;charset=utf-8
+definitions:
+  AccountRef:
+    description: Account reference. A account may be a party account or a financial
+      account.
+    example:
+      '@baseType': '@baseType'
+      '@referredType': '@referredType'
+      '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
+      '@type': '@type'
+      description: description
+      href: href
+      id: id
+      name: name
+    properties:
+      '@baseType':
+        description: When sub-classing, this defines the super-class
+        type: string
+      '@referredType':
+        description: The actual type of the target instance when needed for disambiguation.
+        type: string
+      '@schemaLocation':
+        description: A URI to a JSON-Schema file that defines additional attributes
+          and relationships
+        format: uri
+        type: string
+      '@type':
+        description: When sub-classing, this defines the sub-class entity name
+        type: string
+      description:
+        description: Detailed description of the account
+        type: string
+      href:
+        description: Reference of the account
+        type: string
+      id:
+        description: Unique identifier of the account
+        type: string
+      name:
+        description: Name of the account
+        type: string
+    required:
+    - name
+    type: object
+  AgreementRef:
+    description: Agreement reference. An agreement represents a contract or arrangement,
+      either written or verbal and sometimes enforceable by law, such as a service
+      level agreement or a customer price agreement. An agreement involves a number
+      of other business entities, such as products, services, and resources and/or
+      their specifications.
+    example:
+      '@baseType': '@baseType'
+      '@referredType': '@referredType'
+      '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
+      '@type': '@type'
+      href: href
+      id: id
+      name: name
+    properties:
+      '@baseType':
+        description: When sub-classing, this defines the super-class
+        type: string
+      '@referredType':
+        description: The actual type of the target instance when needed for disambiguation.
+        type: string
+      '@schemaLocation':
+        description: A URI to a JSON-Schema file that defines additional attributes
+          and relationships
+        format: uri
+        type: string
+      '@type':
+        description: When sub-classing, this defines the sub-class entity name
+        type: string
+      href:
+        description: Reference of the related entity.
+        type: string
+      id:
+        description: Unique identifier of a related entity.
+        type: string
+      name:
+        description: Name of the agreement
+        type: string
+    required:
+    - id
+    type: object
+  Any: {}
+  Characteristic:
+    description: Describes a given characteristic of an object or entity through a
+      name/value pair.
+    example:
+      '@baseType': '@baseType'
+      '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
+      '@type': '@type'
+      name: name
+      value: {}
+      valueType: valueType
+    properties:
+      '@baseType':
+        description: When sub-classing, this defines the super-class
+        type: string
+      '@schemaLocation':
+        description: A URI to a JSON-Schema file that defines additional attributes
+          and relationships
+        format: uri
+        type: string
+      '@type':
+        description: When sub-classing, this defines the sub-class entity name
+        type: string
+      name:
+        description: Name of the characteristic
+        type: string
+      value:
+        $ref: '#/definitions/Any'
+        description: The value of the characteristic
+      valueType:
+        description: Data type of the value of the characteristic
+        type: string
+    required:
+    - name
+    - value
+    type: object
+  ContactMedium:
+    description: Indicates the contact medium that could be used to contact the party.
+    example:
+      '@baseType': '@baseType'
+      '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
+      '@type': '@type'
+      characteristic:
+        '@baseType': '@baseType'
+        '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
+        '@type': '@type'
+        city: city
+        contactType: contactType
+        country: country
+        emailAddress: emailAddress
+        faxNumber: faxNumber
+        phoneNumber: phoneNumber
+        postCode: postCode
+        socialNetworkId: socialNetworkId
+        stateOrProvince: stateOrProvince
+        street1: street1
+        street2: street2
+      mediumType: mediumType
+      preferred: true
+      validFor:
+        endDateTime: '2000-01-23T04:56:07.000+00:00'
+        startDateTime: '2000-01-23T04:56:07.000+00:00'
+    properties:
+      '@baseType':
+        description: When sub-classing, this defines the super-class
+        type: string
+      '@schemaLocation':
+        description: A URI to a JSON-Schema file that defines additional attributes
+          and relationships
+        format: uri
+        type: string
+      '@type':
+        description: When sub-classing, this defines the sub-class entity name
+        type: string
+      characteristic:
+        $ref: '#/definitions/MediumCharacteristic'
+        description: Any additional characteristic(s) of this contact medium
+      mediumType:
+        description: 'Type of the contact medium, such as: email address, telephone
+          number, postal address'
+        type: string
+      preferred:
+        description: If true, indicates that is the preferred contact medium
+        type: boolean
+      validFor:
+        $ref: '#/definitions/TimePeriod'
+        description: The time period that the contact medium is valid for
+    required:
+    - characteristic
+    - mediumType
+    type: object
+  CreditProfile:
+    description: Credit profile for the party (containing credit scoring, ...). By
+      default only the current credit profile  is retrieved. It can be used as a list
+      to give the party credit profiles history, the first one in the list will be
+      the current one.
+    example:
+      '@baseType': '@baseType'
+      '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
+      '@type': '@type'
+      creditProfileDate: '2000-01-23T04:56:07.000+00:00'
+      creditRiskRating: 0
+      creditScore: 6
+      validFor:
+        endDateTime: '2000-01-23T04:56:07.000+00:00'
+        startDateTime: '2000-01-23T04:56:07.000+00:00'
+    properties:
+      '@baseType':
+        description: When sub-classing, this defines the super-class
+        type: string
+      '@schemaLocation':
+        description: A URI to a JSON-Schema file that defines additional attributes
+          and relationships
+        format: uri
+        type: string
+      '@type':
+        description: When sub-classing, this defines the sub-class entity name
+        type: string
+      creditProfileDate:
+        description: The date the profile was established
+        format: date-time
+        type: string
+      creditRiskRating:
+        description: This is an integer whose value is used to rate the risk
+        type: integer
+      creditScore:
+        description: A measure of a person or organizations creditworthiness calculated
+          on the basis of a combination of factors such as their income and credit
+          history
+        type: integer
+      validFor:
+        $ref: '#/definitions/TimePeriod'
+        description: The period for which the profile is valid
+    required:
+    - creditProfileDate
+    - validFor
+    type: object
+  EntityRef:
+    description: Entity reference schema to be use for all entityRef class.
+    properties:
+      '@baseType':
+        description: When sub-classing, this defines the super-class
+        type: string
+      '@referredType':
+        description: The actual type of the target instance when needed for disambiguation.
+        type: string
+      '@schemaLocation':
+        description: A URI to a JSON-Schema file that defines additional attributes
+          and relationships
+        format: uri
+        type: string
+      '@type':
+        description: When sub-classing, this defines the sub-class entity name
+        type: string
+      href:
+        description: Reference of the related entity.
+        type: string
+      id:
+        description: Unique identifier of a related entity.
+        type: string
+      name:
+        description: Name of the related entity.
+        type: string
+    required:
+    - id
+    type: object
+  Error:
+    description: Used when an API throws an Error, typically with a HTTP error response-code
+      (3xx, 4xx, 5xx)
+    properties:
+      '@baseType':
+        description: When sub-classing, this defines the super-class.
+        type: string
+      '@schemaLocation':
+        description: A URI to a JSON-Schema file that defines additional attributes
+          and relationships
+        format: uri
+        type: string
+      '@type':
+        description: When sub-classing, this defines the sub-class entity name.
+        type: string
+      code:
+        description: Application relevant detail, defined in the API or a common list.
+        type: string
+      message:
+        description: More details and corrective actions related to the error which
+          can be shown to a client user.
+        type: string
+      reason:
+        description: Explanation of the reason for the error which can be shown to
+          a client user.
+        type: string
+      referenceError:
+        description: URI of documentation describing the error.
+        format: uri
+        type: string
+      status:
+        description: HTTP Error code extension
+        type: string
+    required:
+    - code
+    - reason
+    type: object
+  EventSubscription:
+    description: Sets the communication endpoint address the service instance must
+      use to deliver notification information
+    example:
+      callback: callback
+      id: id
+      query: query
+    properties:
+      callback:
+        description: The callback being registered.
+        type: string
+      id:
+        description: Id of the listener
+        type: string
+      query:
+        description: additional data to be passed
+        type: string
+    required:
+    - callback
+    - id
+    type: object
+  EventSubscriptionInput:
+    description: Sets the communication endpoint address the service instance must
+      use to deliver notification information
+    example:
+      callback: callback
+      query: query
+    properties:
+      callback:
+        description: The callback being registered.
+        type: string
+      query:
+        description: additional data to be passed
+        type: string
+    required:
+    - callback
+    type: object
+  MediumCharacteristic:
+    description: Describes the contact medium characteristics that could be used to
+      contact a party (an individual or an organization)
+    example:
+      '@baseType': '@baseType'
+      '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
+      '@type': '@type'
+      city: city
+      contactType: contactType
+      country: country
+      emailAddress: emailAddress
+      faxNumber: faxNumber
+      phoneNumber: phoneNumber
+      postCode: postCode
+      socialNetworkId: socialNetworkId
+      stateOrProvince: stateOrProvince
+      street1: street1
+      street2: street2
+    properties:
+      '@baseType':
+        description: When sub-classing, this defines the super-class
+        type: string
+      '@schemaLocation':
+        description: A URI to a JSON-Schema file that defines additional attributes
+          and relationships
+        format: uri
+        type: string
+      '@type':
+        description: When sub-classing, this defines the sub-class entity name
+        type: string
+      city:
+        description: The city
+        type: string
+      contactType:
+        description: "The type of contact, for example: phone number such as mobile,\
+          \ fixed home, fixed office. postal address such as shipping instalation\u2026"
+        type: string
+      country:
+        description: The country
+        type: string
+      emailAddress:
+        description: Full email address in standard format
+        type: string
+      faxNumber:
+        description: The fax number of the contact
+        type: string
+      phoneNumber:
+        description: The primary phone number of the contact
+        type: string
+      postCode:
+        description: Postcode
+        type: string
+      socialNetworkId:
+        description: Identifier as a member of a social network
+        type: string
+      stateOrProvince:
+        description: State or province
+        type: string
+      street1:
+        description: Describes the street
+        type: string
+      street2:
+        description: Complementary street description
+        type: string
+    type: object
+  PartyRole:
+    description: The part played by a party in a given context.
+    example:
+      '@baseType': '@baseType'
+      '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
+      '@type': '@type'
+      account:
+      - '@baseType': '@baseType'
+        '@referredType': '@referredType'
+        '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
+        '@type': '@type'
+        description: description
+        href: href
+        id: id
+        name: name
+      - '@baseType': '@baseType'
+        '@referredType': '@referredType'
+        '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
+        '@type': '@type'
+        description: description
+        href: href
+        id: id
+        name: name
+      agreement:
+      - '@baseType': '@baseType'
+        '@referredType': '@referredType'
+        '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
+        '@type': '@type'
+        href: href
+        id: id
+        name: name
+      - '@baseType': '@baseType'
+        '@referredType': '@referredType'
+        '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
+        '@type': '@type'
+        href: href
+        id: id
+        name: name
+      characteristic:
+      - '@baseType': '@baseType'
+        '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
+        '@type': '@type'
+        name: name
+        value: {}
+        valueType: valueType
+      - '@baseType': '@baseType'
+        '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
+        '@type': '@type'
+        name: name
+        value: {}
+        valueType: valueType
+      contactMedium:
+      - '@baseType': '@baseType'
+        '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
+        '@type': '@type'
+        characteristic:
+          '@baseType': '@baseType'
+          '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
+          '@type': '@type'
+          city: city
+          contactType: contactType
+          country: country
+          emailAddress: emailAddress
+          faxNumber: faxNumber
+          phoneNumber: phoneNumber
+          postCode: postCode
+          socialNetworkId: socialNetworkId
+          stateOrProvince: stateOrProvince
+          street1: street1
+          street2: street2
+        mediumType: mediumType
+        preferred: true
+        validFor:
+          endDateTime: '2000-01-23T04:56:07.000+00:00'
+          startDateTime: '2000-01-23T04:56:07.000+00:00'
+      - '@baseType': '@baseType'
+        '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
+        '@type': '@type'
+        characteristic:
+          '@baseType': '@baseType'
+          '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
+          '@type': '@type'
+          city: city
+          contactType: contactType
+          country: country
+          emailAddress: emailAddress
+          faxNumber: faxNumber
+          phoneNumber: phoneNumber
+          postCode: postCode
+          socialNetworkId: socialNetworkId
+          stateOrProvince: stateOrProvince
+          street1: street1
+          street2: street2
+        mediumType: mediumType
+        preferred: true
+        validFor:
+          endDateTime: '2000-01-23T04:56:07.000+00:00'
+          startDateTime: '2000-01-23T04:56:07.000+00:00'
+      creditProfile:
+      - '@baseType': '@baseType'
+        '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
+        '@type': '@type'
+        creditProfileDate: '2000-01-23T04:56:07.000+00:00'
+        creditRiskRating: 0
+        creditScore: 6
+        validFor:
+          endDateTime: '2000-01-23T04:56:07.000+00:00'
+          startDateTime: '2000-01-23T04:56:07.000+00:00'
+      - '@baseType': '@baseType'
+        '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
+        '@type': '@type'
+        creditProfileDate: '2000-01-23T04:56:07.000+00:00'
+        creditRiskRating: 0
+        creditScore: 6
+        validFor:
+          endDateTime: '2000-01-23T04:56:07.000+00:00'
+          startDateTime: '2000-01-23T04:56:07.000+00:00'
+      engagedParty:
+        '@baseType': '@baseType'
+        '@referredType': '@referredType'
+        '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
+        '@type': '@type'
+        href: href
+        id: id
+        name: name
+        role: role
+      href: href
+      id: id
+      name: name
+      paymentMethod:
+      - '@baseType': '@baseType'
+        '@referredType': '@referredType'
+        '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
+        '@type': '@type'
+        href: href
+        id: id
+        name: name
+      - '@baseType': '@baseType'
+        '@referredType': '@referredType'
+        '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
+        '@type': '@type'
+        href: href
+        id: id
+        name: name
+      relatedParty:
+      - '@baseType': '@baseType'
+        '@referredType': '@referredType'
+        '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
+        '@type': '@type'
+        href: href
+        id: id
+        name: name
+        role: role
+      - '@baseType': '@baseType'
+        '@referredType': '@referredType'
+        '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
+        '@type': '@type'
+        href: href
+        id: id
+        name: name
+        role: role
+      status: status
+      statusReason: statusReason
+      validFor:
+        endDateTime: '2000-01-23T04:56:07.000+00:00'
+        startDateTime: '2000-01-23T04:56:07.000+00:00'
+    properties:
+      '@baseType':
+        description: When sub-classing, this defines the super-class
+        type: string
+      '@schemaLocation':
+        description: A URI to a JSON-Schema file that defines additional attributes
+          and relationships
+        format: uri
+        type: string
+      '@type':
+        description: When sub-classing, this defines the sub-class entity name
+        type: string
+      account:
+        items:
+          $ref: '#/definitions/AccountRef'
+        type: array
+      agreement:
+        items:
+          $ref: '#/definitions/AgreementRef'
+        type: array
+      characteristic:
+        description: Describes the characteristic of a party role.
+        items:
+          $ref: '#/definitions/Characteristic'
+        type: array
+      contactMedium:
+        items:
+          $ref: '#/definitions/ContactMedium'
+        type: array
+      creditProfile:
+        items:
+          $ref: '#/definitions/CreditProfile'
+        type: array
+      engagedParty:
+        $ref: '#/definitions/RelatedParty'
+      href:
+        description: Url used to reference the party role.
+        type: string
+      id:
+        description: Unique identifier for PartyRoles
+        type: string
+      name:
+        description: A word, term, or phrase by which the PartyRole is known and distinguished
+          from other PartyRoles.
+        type: string
+      paymentMethod:
+        items:
+          $ref: '#/definitions/PaymentMethodRef'
+        type: array
+      relatedParty:
+        items:
+          $ref: '#/definitions/RelatedParty'
+        type: array
+      status:
+        description: Used to track the lifecycle status of the party role.
+        type: string
+      statusReason:
+        description: A string providing an explanation on the value of the status
+          lifecycle. For instance if the status is Rejected, statusReason will provide
+          the reason for rejection.
+        type: string
+      validFor:
+        $ref: '#/definitions/TimePeriod'
+        description: The time period that the PartyRole is valid for.
+    type: object
+  PartyRoleAttributeValueChangeEvent:
+    description: The notification data structure
+    example:
+      correlationId: correlationId
+      description: description
+      domain: domain
+      event:
+        partyRole:
+          '@baseType': '@baseType'
+          '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
+          '@type': '@type'
+          account:
+          - '@baseType': '@baseType'
+            '@referredType': '@referredType'
+            '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
+            '@type': '@type'
+            description: description
+            href: href
+            id: id
+            name: name
+          - '@baseType': '@baseType'
+            '@referredType': '@referredType'
+            '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
+            '@type': '@type'
+            description: description
+            href: href
+            id: id
+            name: name
+          agreement:
+          - '@baseType': '@baseType'
+            '@referredType': '@referredType'
+            '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
+            '@type': '@type'
+            href: href
+            id: id
+            name: name
+          - '@baseType': '@baseType'
+            '@referredType': '@referredType'
+            '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
+            '@type': '@type'
+            href: href
+            id: id
+            name: name
+          characteristic:
+          - '@baseType': '@baseType'
+            '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
+            '@type': '@type'
+            name: name
+            value: {}
+            valueType: valueType
+          - '@baseType': '@baseType'
+            '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
+            '@type': '@type'
+            name: name
+            value: {}
+            valueType: valueType
+          contactMedium:
+          - '@baseType': '@baseType'
+            '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
+            '@type': '@type'
+            characteristic:
+              '@baseType': '@baseType'
+              '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
+              '@type': '@type'
+              city: city
+              contactType: contactType
+              country: country
+              emailAddress: emailAddress
+              faxNumber: faxNumber
+              phoneNumber: phoneNumber
+              postCode: postCode
+              socialNetworkId: socialNetworkId
+              stateOrProvince: stateOrProvince
+              street1: street1
+              street2: street2
+            mediumType: mediumType
+            preferred: true
+            validFor:
+              endDateTime: '2000-01-23T04:56:07.000+00:00'
+              startDateTime: '2000-01-23T04:56:07.000+00:00'
+          - '@baseType': '@baseType'
+            '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
+            '@type': '@type'
+            characteristic:
+              '@baseType': '@baseType'
+              '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
+              '@type': '@type'
+              city: city
+              contactType: contactType
+              country: country
+              emailAddress: emailAddress
+              faxNumber: faxNumber
+              phoneNumber: phoneNumber
+              postCode: postCode
+              socialNetworkId: socialNetworkId
+              stateOrProvince: stateOrProvince
+              street1: street1
+              street2: street2
+            mediumType: mediumType
+            preferred: true
+            validFor:
+              endDateTime: '2000-01-23T04:56:07.000+00:00'
+              startDateTime: '2000-01-23T04:56:07.000+00:00'
+          creditProfile:
+          - '@baseType': '@baseType'
+            '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
+            '@type': '@type'
+            creditProfileDate: '2000-01-23T04:56:07.000+00:00'
+            creditRiskRating: 0
+            creditScore: 6
+            validFor:
+              endDateTime: '2000-01-23T04:56:07.000+00:00'
+              startDateTime: '2000-01-23T04:56:07.000+00:00'
+          - '@baseType': '@baseType'
+            '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
+            '@type': '@type'
+            creditProfileDate: '2000-01-23T04:56:07.000+00:00'
+            creditRiskRating: 0
+            creditScore: 6
+            validFor:
+              endDateTime: '2000-01-23T04:56:07.000+00:00'
+              startDateTime: '2000-01-23T04:56:07.000+00:00'
+          engagedParty:
+            '@baseType': '@baseType'
+            '@referredType': '@referredType'
+            '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
+            '@type': '@type'
+            href: href
+            id: id
+            name: name
+            role: role
+          href: href
+          id: id
+          name: name
+          paymentMethod:
+          - '@baseType': '@baseType'
+            '@referredType': '@referredType'
+            '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
+            '@type': '@type'
+            href: href
+            id: id
+            name: name
+          - '@baseType': '@baseType'
+            '@referredType': '@referredType'
+            '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
+            '@type': '@type'
+            href: href
+            id: id
+            name: name
+          relatedParty:
+          - '@baseType': '@baseType'
+            '@referredType': '@referredType'
+            '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
+            '@type': '@type'
+            href: href
+            id: id
+            name: name
+            role: role
+          - '@baseType': '@baseType'
+            '@referredType': '@referredType'
+            '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
+            '@type': '@type'
+            href: href
+            id: id
+            name: name
+            role: role
+          status: status
+          statusReason: statusReason
+          validFor:
+            endDateTime: '2000-01-23T04:56:07.000+00:00'
+            startDateTime: '2000-01-23T04:56:07.000+00:00'
+      eventId: eventId
+      eventTime: '2000-01-23T04:56:07.000+00:00'
+      eventType: eventType
+      fieldPath: fieldPath
+      priority: priority
+      timeOcurred: '2000-01-23T04:56:07.000+00:00'
+      title: title
+    properties:
+      correlationId:
+        description: The correlation id for this event.
+        type: string
+      description:
+        description: An explanatory of the event.
+        type: string
+      domain:
+        description: The domain of the event.
+        type: string
+      event:
+        $ref: '#/definitions/PartyRoleAttributeValueChangeEventPayload'
+        description: The event payload linked to the involved resource object
+      eventId:
+        description: The identifier of the notification.
+        type: string
+      eventTime:
+        description: Time of the event occurrence.
+        format: date-time
+        type: string
+      eventType:
+        description: The type of the notification.
+        type: string
+      fieldPath:
+        description: The path identifying the object field concerned by this notification.
+        type: string
+      priority:
+        description: A priority.
+        type: string
+      timeOcurred:
+        description: The time the event occured.
+        format: date-time
+        type: string
+      title:
+        description: The title of the event.
+        type: string
+    type: object
+  PartyRoleAttributeValueChangeEventPayload:
+    description: The event data structure
+    example:
+      partyRole:
+        '@baseType': '@baseType'
+        '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
+        '@type': '@type'
+        account:
+        - '@baseType': '@baseType'
+          '@referredType': '@referredType'
+          '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
+          '@type': '@type'
+          description: description
+          href: href
+          id: id
+          name: name
+        - '@baseType': '@baseType'
+          '@referredType': '@referredType'
+          '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
+          '@type': '@type'
+          description: description
+          href: href
+          id: id
+          name: name
+        agreement:
+        - '@baseType': '@baseType'
+          '@referredType': '@referredType'
+          '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
+          '@type': '@type'
+          href: href
+          id: id
+          name: name
+        - '@baseType': '@baseType'
+          '@referredType': '@referredType'
+          '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
+          '@type': '@type'
+          href: href
+          id: id
+          name: name
+        characteristic:
+        - '@baseType': '@baseType'
+          '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
+          '@type': '@type'
+          name: name
+          value: {}
+          valueType: valueType
+        - '@baseType': '@baseType'
+          '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
+          '@type': '@type'
+          name: name
+          value: {}
+          valueType: valueType
+        contactMedium:
+        - '@baseType': '@baseType'
+          '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
+          '@type': '@type'
+          characteristic:
+            '@baseType': '@baseType'
+            '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
+            '@type': '@type'
+            city: city
+            contactType: contactType
+            country: country
+            emailAddress: emailAddress
+            faxNumber: faxNumber
+            phoneNumber: phoneNumber
+            postCode: postCode
+            socialNetworkId: socialNetworkId
+            stateOrProvince: stateOrProvince
+            street1: street1
+            street2: street2
+          mediumType: mediumType
+          preferred: true
+          validFor:
+            endDateTime: '2000-01-23T04:56:07.000+00:00'
+            startDateTime: '2000-01-23T04:56:07.000+00:00'
+        - '@baseType': '@baseType'
+          '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
+          '@type': '@type'
+          characteristic:
+            '@baseType': '@baseType'
+            '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
+            '@type': '@type'
+            city: city
+            contactType: contactType
+            country: country
+            emailAddress: emailAddress
+            faxNumber: faxNumber
+            phoneNumber: phoneNumber
+            postCode: postCode
+            socialNetworkId: socialNetworkId
+            stateOrProvince: stateOrProvince
+            street1: street1
+            street2: street2
+          mediumType: mediumType
+          preferred: true
+          validFor:
+            endDateTime: '2000-01-23T04:56:07.000+00:00'
+            startDateTime: '2000-01-23T04:56:07.000+00:00'
+        creditProfile:
+        - '@baseType': '@baseType'
+          '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
+          '@type': '@type'
+          creditProfileDate: '2000-01-23T04:56:07.000+00:00'
+          creditRiskRating: 0
+          creditScore: 6
+          validFor:
+            endDateTime: '2000-01-23T04:56:07.000+00:00'
+            startDateTime: '2000-01-23T04:56:07.000+00:00'
+        - '@baseType': '@baseType'
+          '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
+          '@type': '@type'
+          creditProfileDate: '2000-01-23T04:56:07.000+00:00'
+          creditRiskRating: 0
+          creditScore: 6
+          validFor:
+            endDateTime: '2000-01-23T04:56:07.000+00:00'
+            startDateTime: '2000-01-23T04:56:07.000+00:00'
+        engagedParty:
+          '@baseType': '@baseType'
+          '@referredType': '@referredType'
+          '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
+          '@type': '@type'
+          href: href
+          id: id
+          name: name
+          role: role
+        href: href
+        id: id
+        name: name
+        paymentMethod:
+        - '@baseType': '@baseType'
+          '@referredType': '@referredType'
+          '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
+          '@type': '@type'
+          href: href
+          id: id
+          name: name
+        - '@baseType': '@baseType'
+          '@referredType': '@referredType'
+          '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
+          '@type': '@type'
+          href: href
+          id: id
+          name: name
+        relatedParty:
+        - '@baseType': '@baseType'
+          '@referredType': '@referredType'
+          '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
+          '@type': '@type'
+          href: href
+          id: id
+          name: name
+          role: role
+        - '@baseType': '@baseType'
+          '@referredType': '@referredType'
+          '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
+          '@type': '@type'
+          href: href
+          id: id
+          name: name
+          role: role
+        status: status
+        statusReason: statusReason
+        validFor:
+          endDateTime: '2000-01-23T04:56:07.000+00:00'
+          startDateTime: '2000-01-23T04:56:07.000+00:00'
+    properties:
+      partyRole:
+        $ref: '#/definitions/PartyRole'
+        description: The involved resource data for the event
+    type: object
+  PartyRoleCreateEvent:
+    description: The notification data structure
+    example:
+      correlationId: correlationId
+      description: description
+      domain: domain
+      event:
+        partyRole:
+          '@baseType': '@baseType'
+          '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
+          '@type': '@type'
+          account:
+          - '@baseType': '@baseType'
+            '@referredType': '@referredType'
+            '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
+            '@type': '@type'
+            description: description
+            href: href
+            id: id
+            name: name
+          - '@baseType': '@baseType'
+            '@referredType': '@referredType'
+            '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
+            '@type': '@type'
+            description: description
+            href: href
+            id: id
+            name: name
+          agreement:
+          - '@baseType': '@baseType'
+            '@referredType': '@referredType'
+            '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
+            '@type': '@type'
+            href: href
+            id: id
+            name: name
+          - '@baseType': '@baseType'
+            '@referredType': '@referredType'
+            '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
+            '@type': '@type'
+            href: href
+            id: id
+            name: name
+          characteristic:
+          - '@baseType': '@baseType'
+            '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
+            '@type': '@type'
+            name: name
+            value: {}
+            valueType: valueType
+          - '@baseType': '@baseType'
+            '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
+            '@type': '@type'
+            name: name
+            value: {}
+            valueType: valueType
+          contactMedium:
+          - '@baseType': '@baseType'
+            '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
+            '@type': '@type'
+            characteristic:
+              '@baseType': '@baseType'
+              '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
+              '@type': '@type'
+              city: city
+              contactType: contactType
+              country: country
+              emailAddress: emailAddress
+              faxNumber: faxNumber
+              phoneNumber: phoneNumber
+              postCode: postCode
+              socialNetworkId: socialNetworkId
+              stateOrProvince: stateOrProvince
+              street1: street1
+              street2: street2
+            mediumType: mediumType
+            preferred: true
+            validFor:
+              endDateTime: '2000-01-23T04:56:07.000+00:00'
+              startDateTime: '2000-01-23T04:56:07.000+00:00'
+          - '@baseType': '@baseType'
+            '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
+            '@type': '@type'
+            characteristic:
+              '@baseType': '@baseType'
+              '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
+              '@type': '@type'
+              city: city
+              contactType: contactType
+              country: country
+              emailAddress: emailAddress
+              faxNumber: faxNumber
+              phoneNumber: phoneNumber
+              postCode: postCode
+              socialNetworkId: socialNetworkId
+              stateOrProvince: stateOrProvince
+              street1: street1
+              street2: street2
+            mediumType: mediumType
+            preferred: true
+            validFor:
+              endDateTime: '2000-01-23T04:56:07.000+00:00'
+              startDateTime: '2000-01-23T04:56:07.000+00:00'
+          creditProfile:
+          - '@baseType': '@baseType'
+            '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
+            '@type': '@type'
+            creditProfileDate: '2000-01-23T04:56:07.000+00:00'
+            creditRiskRating: 0
+            creditScore: 6
+            validFor:
+              endDateTime: '2000-01-23T04:56:07.000+00:00'
+              startDateTime: '2000-01-23T04:56:07.000+00:00'
+          - '@baseType': '@baseType'
+            '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
+            '@type': '@type'
+            creditProfileDate: '2000-01-23T04:56:07.000+00:00'
+            creditRiskRating: 0
+            creditScore: 6
+            validFor:
+              endDateTime: '2000-01-23T04:56:07.000+00:00'
+              startDateTime: '2000-01-23T04:56:07.000+00:00'
+          engagedParty:
+            '@baseType': '@baseType'
+            '@referredType': '@referredType'
+            '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
+            '@type': '@type'
+            href: href
+            id: id
+            name: name
+            role: role
+          href: href
+          id: id
+          name: name
+          paymentMethod:
+          - '@baseType': '@baseType'
+            '@referredType': '@referredType'
+            '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
+            '@type': '@type'
+            href: href
+            id: id
+            name: name
+          - '@baseType': '@baseType'
+            '@referredType': '@referredType'
+            '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
+            '@type': '@type'
+            href: href
+            id: id
+            name: name
+          relatedParty:
+          - '@baseType': '@baseType'
+            '@referredType': '@referredType'
+            '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
+            '@type': '@type'
+            href: href
+            id: id
+            name: name
+            role: role
+          - '@baseType': '@baseType'
+            '@referredType': '@referredType'
+            '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
+            '@type': '@type'
+            href: href
+            id: id
+            name: name
+            role: role
+          status: status
+          statusReason: statusReason
+          validFor:
+            endDateTime: '2000-01-23T04:56:07.000+00:00'
+            startDateTime: '2000-01-23T04:56:07.000+00:00'
+      eventId: eventId
+      eventTime: '2000-01-23T04:56:07.000+00:00'
+      eventType: eventType
+      href: href
+      id: id
+      priority: priority
+      timeOcurred: '2000-01-23T04:56:07.000+00:00'
+      title: title
+    properties:
+      correlationId:
+        description: The correlation id for this event.
+        type: string
+      description:
+        description: An explanatory of the event.
+        type: string
+      domain:
+        description: The domain of the event.
+        type: string
+      event:
+        $ref: '#/definitions/PartyRoleCreateEventPayload'
+        description: The event payload linked to the involved resource object
+      eventId:
+        description: The identifier of the notification.
+        type: string
+      eventTime:
+        description: Time of the event occurrence.
+        format: date-time
+        type: string
+      eventType:
+        description: The type of the notification.
+        type: string
+      href:
+        description: Reference of the resource involved in the event
+        type: string
+      id:
+        description: Identifier of the resource involved in the event
+        type: string
+      priority:
+        description: A priority.
+        type: string
+      timeOcurred:
+        description: The time the event occured.
+        format: date-time
+        type: string
+      title:
+        description: The title of the event.
+        type: string
+    type: object
+  PartyRoleCreateEventPayload:
+    description: The event data structure
+    example:
+      partyRole:
+        '@baseType': '@baseType'
+        '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
+        '@type': '@type'
+        account:
+        - '@baseType': '@baseType'
+          '@referredType': '@referredType'
+          '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
+          '@type': '@type'
+          description: description
+          href: href
+          id: id
+          name: name
+        - '@baseType': '@baseType'
+          '@referredType': '@referredType'
+          '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
+          '@type': '@type'
+          description: description
+          href: href
+          id: id
+          name: name
+        agreement:
+        - '@baseType': '@baseType'
+          '@referredType': '@referredType'
+          '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
+          '@type': '@type'
+          href: href
+          id: id
+          name: name
+        - '@baseType': '@baseType'
+          '@referredType': '@referredType'
+          '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
+          '@type': '@type'
+          href: href
+          id: id
+          name: name
+        characteristic:
+        - '@baseType': '@baseType'
+          '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
+          '@type': '@type'
+          name: name
+          value: {}
+          valueType: valueType
+        - '@baseType': '@baseType'
+          '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
+          '@type': '@type'
+          name: name
+          value: {}
+          valueType: valueType
+        contactMedium:
+        - '@baseType': '@baseType'
+          '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
+          '@type': '@type'
+          characteristic:
+            '@baseType': '@baseType'
+            '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
+            '@type': '@type'
+            city: city
+            contactType: contactType
+            country: country
+            emailAddress: emailAddress
+            faxNumber: faxNumber
+            phoneNumber: phoneNumber
+            postCode: postCode
+            socialNetworkId: socialNetworkId
+            stateOrProvince: stateOrProvince
+            street1: street1
+            street2: street2
+          mediumType: mediumType
+          preferred: true
+          validFor:
+            endDateTime: '2000-01-23T04:56:07.000+00:00'
+            startDateTime: '2000-01-23T04:56:07.000+00:00'
+        - '@baseType': '@baseType'
+          '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
+          '@type': '@type'
+          characteristic:
+            '@baseType': '@baseType'
+            '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
+            '@type': '@type'
+            city: city
+            contactType: contactType
+            country: country
+            emailAddress: emailAddress
+            faxNumber: faxNumber
+            phoneNumber: phoneNumber
+            postCode: postCode
+            socialNetworkId: socialNetworkId
+            stateOrProvince: stateOrProvince
+            street1: street1
+            street2: street2
+          mediumType: mediumType
+          preferred: true
+          validFor:
+            endDateTime: '2000-01-23T04:56:07.000+00:00'
+            startDateTime: '2000-01-23T04:56:07.000+00:00'
+        creditProfile:
+        - '@baseType': '@baseType'
+          '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
+          '@type': '@type'
+          creditProfileDate: '2000-01-23T04:56:07.000+00:00'
+          creditRiskRating: 0
+          creditScore: 6
+          validFor:
+            endDateTime: '2000-01-23T04:56:07.000+00:00'
+            startDateTime: '2000-01-23T04:56:07.000+00:00'
+        - '@baseType': '@baseType'
+          '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
+          '@type': '@type'
+          creditProfileDate: '2000-01-23T04:56:07.000+00:00'
+          creditRiskRating: 0
+          creditScore: 6
+          validFor:
+            endDateTime: '2000-01-23T04:56:07.000+00:00'
+            startDateTime: '2000-01-23T04:56:07.000+00:00'
+        engagedParty:
+          '@baseType': '@baseType'
+          '@referredType': '@referredType'
+          '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
+          '@type': '@type'
+          href: href
+          id: id
+          name: name
+          role: role
+        href: href
+        id: id
+        name: name
+        paymentMethod:
+        - '@baseType': '@baseType'
+          '@referredType': '@referredType'
+          '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
+          '@type': '@type'
+          href: href
+          id: id
+          name: name
+        - '@baseType': '@baseType'
+          '@referredType': '@referredType'
+          '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
+          '@type': '@type'
+          href: href
+          id: id
+          name: name
+        relatedParty:
+        - '@baseType': '@baseType'
+          '@referredType': '@referredType'
+          '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
+          '@type': '@type'
+          href: href
+          id: id
+          name: name
+          role: role
+        - '@baseType': '@baseType'
+          '@referredType': '@referredType'
+          '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
+          '@type': '@type'
+          href: href
+          id: id
+          name: name
+          role: role
+        status: status
+        statusReason: statusReason
+        validFor:
+          endDateTime: '2000-01-23T04:56:07.000+00:00'
+          startDateTime: '2000-01-23T04:56:07.000+00:00'
+    properties:
+      partyRole:
+        $ref: '#/definitions/PartyRole'
+        description: The involved resource data for the event
+    type: object
+  PartyRoleDeleteEvent:
+    description: The notification data structure
+    example:
+      correlationId: correlationId
+      description: description
+      domain: domain
+      event:
+        partyRole:
+          '@baseType': '@baseType'
+          '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
+          '@type': '@type'
+          account:
+          - '@baseType': '@baseType'
+            '@referredType': '@referredType'
+            '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
+            '@type': '@type'
+            description: description
+            href: href
+            id: id
+            name: name
+          - '@baseType': '@baseType'
+            '@referredType': '@referredType'
+            '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
+            '@type': '@type'
+            description: description
+            href: href
+            id: id
+            name: name
+          agreement:
+          - '@baseType': '@baseType'
+            '@referredType': '@referredType'
+            '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
+            '@type': '@type'
+            href: href
+            id: id
+            name: name
+          - '@baseType': '@baseType'
+            '@referredType': '@referredType'
+            '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
+            '@type': '@type'
+            href: href
+            id: id
+            name: name
+          characteristic:
+          - '@baseType': '@baseType'
+            '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
+            '@type': '@type'
+            name: name
+            value: {}
+            valueType: valueType
+          - '@baseType': '@baseType'
+            '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
+            '@type': '@type'
+            name: name
+            value: {}
+            valueType: valueType
+          contactMedium:
+          - '@baseType': '@baseType'
+            '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
+            '@type': '@type'
+            characteristic:
+              '@baseType': '@baseType'
+              '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
+              '@type': '@type'
+              city: city
+              contactType: contactType
+              country: country
+              emailAddress: emailAddress
+              faxNumber: faxNumber
+              phoneNumber: phoneNumber
+              postCode: postCode
+              socialNetworkId: socialNetworkId
+              stateOrProvince: stateOrProvince
+              street1: street1
+              street2: street2
+            mediumType: mediumType
+            preferred: true
+            validFor:
+              endDateTime: '2000-01-23T04:56:07.000+00:00'
+              startDateTime: '2000-01-23T04:56:07.000+00:00'
+          - '@baseType': '@baseType'
+            '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
+            '@type': '@type'
+            characteristic:
+              '@baseType': '@baseType'
+              '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
+              '@type': '@type'
+              city: city
+              contactType: contactType
+              country: country
+              emailAddress: emailAddress
+              faxNumber: faxNumber
+              phoneNumber: phoneNumber
+              postCode: postCode
+              socialNetworkId: socialNetworkId
+              stateOrProvince: stateOrProvince
+              street1: street1
+              street2: street2
+            mediumType: mediumType
+            preferred: true
+            validFor:
+              endDateTime: '2000-01-23T04:56:07.000+00:00'
+              startDateTime: '2000-01-23T04:56:07.000+00:00'
+          creditProfile:
+          - '@baseType': '@baseType'
+            '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
+            '@type': '@type'
+            creditProfileDate: '2000-01-23T04:56:07.000+00:00'
+            creditRiskRating: 0
+            creditScore: 6
+            validFor:
+              endDateTime: '2000-01-23T04:56:07.000+00:00'
+              startDateTime: '2000-01-23T04:56:07.000+00:00'
+          - '@baseType': '@baseType'
+            '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
+            '@type': '@type'
+            creditProfileDate: '2000-01-23T04:56:07.000+00:00'
+            creditRiskRating: 0
+            creditScore: 6
+            validFor:
+              endDateTime: '2000-01-23T04:56:07.000+00:00'
+              startDateTime: '2000-01-23T04:56:07.000+00:00'
+          engagedParty:
+            '@baseType': '@baseType'
+            '@referredType': '@referredType'
+            '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
+            '@type': '@type'
+            href: href
+            id: id
+            name: name
+            role: role
+          href: href
+          id: id
+          name: name
+          paymentMethod:
+          - '@baseType': '@baseType'
+            '@referredType': '@referredType'
+            '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
+            '@type': '@type'
+            href: href
+            id: id
+            name: name
+          - '@baseType': '@baseType'
+            '@referredType': '@referredType'
+            '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
+            '@type': '@type'
+            href: href
+            id: id
+            name: name
+          relatedParty:
+          - '@baseType': '@baseType'
+            '@referredType': '@referredType'
+            '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
+            '@type': '@type'
+            href: href
+            id: id
+            name: name
+            role: role
+          - '@baseType': '@baseType'
+            '@referredType': '@referredType'
+            '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
+            '@type': '@type'
+            href: href
+            id: id
+            name: name
+            role: role
+          status: status
+          statusReason: statusReason
+          validFor:
+            endDateTime: '2000-01-23T04:56:07.000+00:00'
+            startDateTime: '2000-01-23T04:56:07.000+00:00'
+      eventId: eventId
+      eventTime: '2000-01-23T04:56:07.000+00:00'
+      eventType: eventType
+      href: href
+      id: id
+      priority: priority
+      timeOcurred: '2000-01-23T04:56:07.000+00:00'
+      title: title
+    properties:
+      correlationId:
+        description: The correlation id for this event.
+        type: string
+      description:
+        description: An explanatory of the event.
+        type: string
+      domain:
+        description: The domain of the event.
+        type: string
+      event:
+        $ref: '#/definitions/PartyRoleDeleteEventPayload'
+        description: The event payload linked to the involved resource object
+      eventId:
+        description: The identifier of the notification.
+        type: string
+      eventTime:
+        description: Time of the event occurrence.
+        format: date-time
+        type: string
+      eventType:
+        description: The type of the notification.
+        type: string
+      href:
+        description: Reference of the resource involved in the event
+        type: string
+      id:
+        description: Identifier of the resource involved in the event
+        type: string
+      priority:
+        description: A priority.
+        type: string
+      timeOcurred:
+        description: The time the event occured.
+        format: date-time
+        type: string
+      title:
+        description: The title of the event.
+        type: string
+    type: object
+  PartyRoleDeleteEventPayload:
+    description: The event data structure
+    example:
+      partyRole:
+        '@baseType': '@baseType'
+        '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
+        '@type': '@type'
+        account:
+        - '@baseType': '@baseType'
+          '@referredType': '@referredType'
+          '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
+          '@type': '@type'
+          description: description
+          href: href
+          id: id
+          name: name
+        - '@baseType': '@baseType'
+          '@referredType': '@referredType'
+          '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
+          '@type': '@type'
+          description: description
+          href: href
+          id: id
+          name: name
+        agreement:
+        - '@baseType': '@baseType'
+          '@referredType': '@referredType'
+          '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
+          '@type': '@type'
+          href: href
+          id: id
+          name: name
+        - '@baseType': '@baseType'
+          '@referredType': '@referredType'
+          '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
+          '@type': '@type'
+          href: href
+          id: id
+          name: name
+        characteristic:
+        - '@baseType': '@baseType'
+          '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
+          '@type': '@type'
+          name: name
+          value: {}
+          valueType: valueType
+        - '@baseType': '@baseType'
+          '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
+          '@type': '@type'
+          name: name
+          value: {}
+          valueType: valueType
+        contactMedium:
+        - '@baseType': '@baseType'
+          '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
+          '@type': '@type'
+          characteristic:
+            '@baseType': '@baseType'
+            '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
+            '@type': '@type'
+            city: city
+            contactType: contactType
+            country: country
+            emailAddress: emailAddress
+            faxNumber: faxNumber
+            phoneNumber: phoneNumber
+            postCode: postCode
+            socialNetworkId: socialNetworkId
+            stateOrProvince: stateOrProvince
+            street1: street1
+            street2: street2
+          mediumType: mediumType
+          preferred: true
+          validFor:
+            endDateTime: '2000-01-23T04:56:07.000+00:00'
+            startDateTime: '2000-01-23T04:56:07.000+00:00'
+        - '@baseType': '@baseType'
+          '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
+          '@type': '@type'
+          characteristic:
+            '@baseType': '@baseType'
+            '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
+            '@type': '@type'
+            city: city
+            contactType: contactType
+            country: country
+            emailAddress: emailAddress
+            faxNumber: faxNumber
+            phoneNumber: phoneNumber
+            postCode: postCode
+            socialNetworkId: socialNetworkId
+            stateOrProvince: stateOrProvince
+            street1: street1
+            street2: street2
+          mediumType: mediumType
+          preferred: true
+          validFor:
+            endDateTime: '2000-01-23T04:56:07.000+00:00'
+            startDateTime: '2000-01-23T04:56:07.000+00:00'
+        creditProfile:
+        - '@baseType': '@baseType'
+          '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
+          '@type': '@type'
+          creditProfileDate: '2000-01-23T04:56:07.000+00:00'
+          creditRiskRating: 0
+          creditScore: 6
+          validFor:
+            endDateTime: '2000-01-23T04:56:07.000+00:00'
+            startDateTime: '2000-01-23T04:56:07.000+00:00'
+        - '@baseType': '@baseType'
+          '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
+          '@type': '@type'
+          creditProfileDate: '2000-01-23T04:56:07.000+00:00'
+          creditRiskRating: 0
+          creditScore: 6
+          validFor:
+            endDateTime: '2000-01-23T04:56:07.000+00:00'
+            startDateTime: '2000-01-23T04:56:07.000+00:00'
+        engagedParty:
+          '@baseType': '@baseType'
+          '@referredType': '@referredType'
+          '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
+          '@type': '@type'
+          href: href
+          id: id
+          name: name
+          role: role
+        href: href
+        id: id
+        name: name
+        paymentMethod:
+        - '@baseType': '@baseType'
+          '@referredType': '@referredType'
+          '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
+          '@type': '@type'
+          href: href
+          id: id
+          name: name
+        - '@baseType': '@baseType'
+          '@referredType': '@referredType'
+          '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
+          '@type': '@type'
+          href: href
+          id: id
+          name: name
+        relatedParty:
+        - '@baseType': '@baseType'
+          '@referredType': '@referredType'
+          '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
+          '@type': '@type'
+          href: href
+          id: id
+          name: name
+          role: role
+        - '@baseType': '@baseType'
+          '@referredType': '@referredType'
+          '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
+          '@type': '@type'
+          href: href
+          id: id
+          name: name
+          role: role
+        status: status
+        statusReason: statusReason
+        validFor:
+          endDateTime: '2000-01-23T04:56:07.000+00:00'
+          startDateTime: '2000-01-23T04:56:07.000+00:00'
+    properties:
+      partyRole:
+        $ref: '#/definitions/PartyRole'
+        description: The involved resource data for the event
+    type: object
+  PartyRoleStateChangeEvent:
+    description: The notification data structure
+    example:
+      correlationId: correlationId
+      description: description
+      domain: domain
+      event:
+        partyRole:
+          '@baseType': '@baseType'
+          '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
+          '@type': '@type'
+          account:
+          - '@baseType': '@baseType'
+            '@referredType': '@referredType'
+            '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
+            '@type': '@type'
+            description: description
+            href: href
+            id: id
+            name: name
+          - '@baseType': '@baseType'
+            '@referredType': '@referredType'
+            '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
+            '@type': '@type'
+            description: description
+            href: href
+            id: id
+            name: name
+          agreement:
+          - '@baseType': '@baseType'
+            '@referredType': '@referredType'
+            '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
+            '@type': '@type'
+            href: href
+            id: id
+            name: name
+          - '@baseType': '@baseType'
+            '@referredType': '@referredType'
+            '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
+            '@type': '@type'
+            href: href
+            id: id
+            name: name
+          characteristic:
+          - '@baseType': '@baseType'
+            '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
+            '@type': '@type'
+            name: name
+            value: {}
+            valueType: valueType
+          - '@baseType': '@baseType'
+            '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
+            '@type': '@type'
+            name: name
+            value: {}
+            valueType: valueType
+          contactMedium:
+          - '@baseType': '@baseType'
+            '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
+            '@type': '@type'
+            characteristic:
+              '@baseType': '@baseType'
+              '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
+              '@type': '@type'
+              city: city
+              contactType: contactType
+              country: country
+              emailAddress: emailAddress
+              faxNumber: faxNumber
+              phoneNumber: phoneNumber
+              postCode: postCode
+              socialNetworkId: socialNetworkId
+              stateOrProvince: stateOrProvince
+              street1: street1
+              street2: street2
+            mediumType: mediumType
+            preferred: true
+            validFor:
+              endDateTime: '2000-01-23T04:56:07.000+00:00'
+              startDateTime: '2000-01-23T04:56:07.000+00:00'
+          - '@baseType': '@baseType'
+            '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
+            '@type': '@type'
+            characteristic:
+              '@baseType': '@baseType'
+              '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
+              '@type': '@type'
+              city: city
+              contactType: contactType
+              country: country
+              emailAddress: emailAddress
+              faxNumber: faxNumber
+              phoneNumber: phoneNumber
+              postCode: postCode
+              socialNetworkId: socialNetworkId
+              stateOrProvince: stateOrProvince
+              street1: street1
+              street2: street2
+            mediumType: mediumType
+            preferred: true
+            validFor:
+              endDateTime: '2000-01-23T04:56:07.000+00:00'
+              startDateTime: '2000-01-23T04:56:07.000+00:00'
+          creditProfile:
+          - '@baseType': '@baseType'
+            '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
+            '@type': '@type'
+            creditProfileDate: '2000-01-23T04:56:07.000+00:00'
+            creditRiskRating: 0
+            creditScore: 6
+            validFor:
+              endDateTime: '2000-01-23T04:56:07.000+00:00'
+              startDateTime: '2000-01-23T04:56:07.000+00:00'
+          - '@baseType': '@baseType'
+            '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
+            '@type': '@type'
+            creditProfileDate: '2000-01-23T04:56:07.000+00:00'
+            creditRiskRating: 0
+            creditScore: 6
+            validFor:
+              endDateTime: '2000-01-23T04:56:07.000+00:00'
+              startDateTime: '2000-01-23T04:56:07.000+00:00'
+          engagedParty:
+            '@baseType': '@baseType'
+            '@referredType': '@referredType'
+            '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
+            '@type': '@type'
+            href: href
+            id: id
+            name: name
+            role: role
+          href: href
+          id: id
+          name: name
+          paymentMethod:
+          - '@baseType': '@baseType'
+            '@referredType': '@referredType'
+            '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
+            '@type': '@type'
+            href: href
+            id: id
+            name: name
+          - '@baseType': '@baseType'
+            '@referredType': '@referredType'
+            '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
+            '@type': '@type'
+            href: href
+            id: id
+            name: name
+          relatedParty:
+          - '@baseType': '@baseType'
+            '@referredType': '@referredType'
+            '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
+            '@type': '@type'
+            href: href
+            id: id
+            name: name
+            role: role
+          - '@baseType': '@baseType'
+            '@referredType': '@referredType'
+            '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
+            '@type': '@type'
+            href: href
+            id: id
+            name: name
+            role: role
+          status: status
+          statusReason: statusReason
+          validFor:
+            endDateTime: '2000-01-23T04:56:07.000+00:00'
+            startDateTime: '2000-01-23T04:56:07.000+00:00'
+      eventId: eventId
+      eventTime: '2000-01-23T04:56:07.000+00:00'
+      eventType: eventType
+      href: href
+      id: id
+      priority: priority
+      timeOcurred: '2000-01-23T04:56:07.000+00:00'
+      title: title
+    properties:
+      correlationId:
+        description: The correlation id for this event.
+        type: string
+      description:
+        description: An explanatory of the event.
+        type: string
+      domain:
+        description: The domain of the event.
+        type: string
+      event:
+        $ref: '#/definitions/PartyRoleStateChangeEventPayload'
+        description: The event payload linked to the involved resource object
+      eventId:
+        description: The identifier of the notification.
+        type: string
+      eventTime:
+        description: Time of the event occurrence.
+        format: date-time
+        type: string
+      eventType:
+        description: The type of the notification.
+        type: string
+      href:
+        description: Reference of the resource involved in the event
+        type: string
+      id:
+        description: Identifier of the resource involved in the event
+        type: string
+      priority:
+        description: A priority.
+        type: string
+      timeOcurred:
+        description: The time the event occured.
+        format: date-time
+        type: string
+      title:
+        description: The title of the event.
+        type: string
+    type: object
+  PartyRoleStateChangeEventPayload:
+    description: The event data structure
+    example:
+      partyRole:
+        '@baseType': '@baseType'
+        '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
+        '@type': '@type'
+        account:
+        - '@baseType': '@baseType'
+          '@referredType': '@referredType'
+          '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
+          '@type': '@type'
+          description: description
+          href: href
+          id: id
+          name: name
+        - '@baseType': '@baseType'
+          '@referredType': '@referredType'
+          '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
+          '@type': '@type'
+          description: description
+          href: href
+          id: id
+          name: name
+        agreement:
+        - '@baseType': '@baseType'
+          '@referredType': '@referredType'
+          '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
+          '@type': '@type'
+          href: href
+          id: id
+          name: name
+        - '@baseType': '@baseType'
+          '@referredType': '@referredType'
+          '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
+          '@type': '@type'
+          href: href
+          id: id
+          name: name
+        characteristic:
+        - '@baseType': '@baseType'
+          '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
+          '@type': '@type'
+          name: name
+          value: {}
+          valueType: valueType
+        - '@baseType': '@baseType'
+          '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
+          '@type': '@type'
+          name: name
+          value: {}
+          valueType: valueType
+        contactMedium:
+        - '@baseType': '@baseType'
+          '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
+          '@type': '@type'
+          characteristic:
+            '@baseType': '@baseType'
+            '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
+            '@type': '@type'
+            city: city
+            contactType: contactType
+            country: country
+            emailAddress: emailAddress
+            faxNumber: faxNumber
+            phoneNumber: phoneNumber
+            postCode: postCode
+            socialNetworkId: socialNetworkId
+            stateOrProvince: stateOrProvince
+            street1: street1
+            street2: street2
+          mediumType: mediumType
+          preferred: true
+          validFor:
+            endDateTime: '2000-01-23T04:56:07.000+00:00'
+            startDateTime: '2000-01-23T04:56:07.000+00:00'
+        - '@baseType': '@baseType'
+          '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
+          '@type': '@type'
+          characteristic:
+            '@baseType': '@baseType'
+            '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
+            '@type': '@type'
+            city: city
+            contactType: contactType
+            country: country
+            emailAddress: emailAddress
+            faxNumber: faxNumber
+            phoneNumber: phoneNumber
+            postCode: postCode
+            socialNetworkId: socialNetworkId
+            stateOrProvince: stateOrProvince
+            street1: street1
+            street2: street2
+          mediumType: mediumType
+          preferred: true
+          validFor:
+            endDateTime: '2000-01-23T04:56:07.000+00:00'
+            startDateTime: '2000-01-23T04:56:07.000+00:00'
+        creditProfile:
+        - '@baseType': '@baseType'
+          '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
+          '@type': '@type'
+          creditProfileDate: '2000-01-23T04:56:07.000+00:00'
+          creditRiskRating: 0
+          creditScore: 6
+          validFor:
+            endDateTime: '2000-01-23T04:56:07.000+00:00'
+            startDateTime: '2000-01-23T04:56:07.000+00:00'
+        - '@baseType': '@baseType'
+          '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
+          '@type': '@type'
+          creditProfileDate: '2000-01-23T04:56:07.000+00:00'
+          creditRiskRating: 0
+          creditScore: 6
+          validFor:
+            endDateTime: '2000-01-23T04:56:07.000+00:00'
+            startDateTime: '2000-01-23T04:56:07.000+00:00'
+        engagedParty:
+          '@baseType': '@baseType'
+          '@referredType': '@referredType'
+          '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
+          '@type': '@type'
+          href: href
+          id: id
+          name: name
+          role: role
+        href: href
+        id: id
+        name: name
+        paymentMethod:
+        - '@baseType': '@baseType'
+          '@referredType': '@referredType'
+          '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
+          '@type': '@type'
+          href: href
+          id: id
+          name: name
+        - '@baseType': '@baseType'
+          '@referredType': '@referredType'
+          '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
+          '@type': '@type'
+          href: href
+          id: id
+          name: name
+        relatedParty:
+        - '@baseType': '@baseType'
+          '@referredType': '@referredType'
+          '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
+          '@type': '@type'
+          href: href
+          id: id
+          name: name
+          role: role
+        - '@baseType': '@baseType'
+          '@referredType': '@referredType'
+          '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
+          '@type': '@type'
+          href: href
+          id: id
+          name: name
+          role: role
+        status: status
+        statusReason: statusReason
+        validFor:
+          endDateTime: '2000-01-23T04:56:07.000+00:00'
+          startDateTime: '2000-01-23T04:56:07.000+00:00'
+    properties:
+      partyRole:
+        $ref: '#/definitions/PartyRole'
+        description: The involved resource data for the event
+    type: object
+  PartyRole_Create:
+    description: 'The part played by a party in a given context.
+
+      Skipped properties: id,href'
+    example:
+      '@baseType': '@baseType'
+      '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
+      '@type': '@type'
+      account:
+      - '@baseType': '@baseType'
+        '@referredType': '@referredType'
+        '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
+        '@type': '@type'
+        description: description
+        href: href
+        id: id
+        name: name
+      - '@baseType': '@baseType'
+        '@referredType': '@referredType'
+        '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
+        '@type': '@type'
+        description: description
+        href: href
+        id: id
+        name: name
+      agreement:
+      - '@baseType': '@baseType'
+        '@referredType': '@referredType'
+        '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
+        '@type': '@type'
+        href: href
+        id: id
+        name: name
+      - '@baseType': '@baseType'
+        '@referredType': '@referredType'
+        '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
+        '@type': '@type'
+        href: href
+        id: id
+        name: name
+      characteristic:
+      - '@baseType': '@baseType'
+        '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
+        '@type': '@type'
+        name: name
+        value: {}
+        valueType: valueType
+      - '@baseType': '@baseType'
+        '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
+        '@type': '@type'
+        name: name
+        value: {}
+        valueType: valueType
+      contactMedium:
+      - '@baseType': '@baseType'
+        '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
+        '@type': '@type'
+        characteristic:
+          '@baseType': '@baseType'
+          '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
+          '@type': '@type'
+          city: city
+          contactType: contactType
+          country: country
+          emailAddress: emailAddress
+          faxNumber: faxNumber
+          phoneNumber: phoneNumber
+          postCode: postCode
+          socialNetworkId: socialNetworkId
+          stateOrProvince: stateOrProvince
+          street1: street1
+          street2: street2
+        mediumType: mediumType
+        preferred: true
+        validFor:
+          endDateTime: '2000-01-23T04:56:07.000+00:00'
+          startDateTime: '2000-01-23T04:56:07.000+00:00'
+      - '@baseType': '@baseType'
+        '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
+        '@type': '@type'
+        characteristic:
+          '@baseType': '@baseType'
+          '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
+          '@type': '@type'
+          city: city
+          contactType: contactType
+          country: country
+          emailAddress: emailAddress
+          faxNumber: faxNumber
+          phoneNumber: phoneNumber
+          postCode: postCode
+          socialNetworkId: socialNetworkId
+          stateOrProvince: stateOrProvince
+          street1: street1
+          street2: street2
+        mediumType: mediumType
+        preferred: true
+        validFor:
+          endDateTime: '2000-01-23T04:56:07.000+00:00'
+          startDateTime: '2000-01-23T04:56:07.000+00:00'
+      creditProfile:
+      - '@baseType': '@baseType'
+        '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
+        '@type': '@type'
+        creditProfileDate: '2000-01-23T04:56:07.000+00:00'
+        creditRiskRating: 0
+        creditScore: 6
+        validFor:
+          endDateTime: '2000-01-23T04:56:07.000+00:00'
+          startDateTime: '2000-01-23T04:56:07.000+00:00'
+      - '@baseType': '@baseType'
+        '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
+        '@type': '@type'
+        creditProfileDate: '2000-01-23T04:56:07.000+00:00'
+        creditRiskRating: 0
+        creditScore: 6
+        validFor:
+          endDateTime: '2000-01-23T04:56:07.000+00:00'
+          startDateTime: '2000-01-23T04:56:07.000+00:00'
+      engagedParty:
+        '@baseType': '@baseType'
+        '@referredType': '@referredType'
+        '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
+        '@type': '@type'
+        href: href
+        id: id
+        name: name
+        role: role
+      name: name
+      paymentMethod:
+      - '@baseType': '@baseType'
+        '@referredType': '@referredType'
+        '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
+        '@type': '@type'
+        href: href
+        id: id
+        name: name
+      - '@baseType': '@baseType'
+        '@referredType': '@referredType'
+        '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
+        '@type': '@type'
+        href: href
+        id: id
+        name: name
+      relatedParty:
+      - '@baseType': '@baseType'
+        '@referredType': '@referredType'
+        '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
+        '@type': '@type'
+        href: href
+        id: id
+        name: name
+        role: role
+      - '@baseType': '@baseType'
+        '@referredType': '@referredType'
+        '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
+        '@type': '@type'
+        href: href
+        id: id
+        name: name
+        role: role
+      status: status
+      statusReason: statusReason
+      validFor:
+        endDateTime: '2000-01-23T04:56:07.000+00:00'
+        startDateTime: '2000-01-23T04:56:07.000+00:00'
+    properties:
+      '@baseType':
+        description: When sub-classing, this defines the super-class
+        type: string
+      '@schemaLocation':
+        description: A URI to a JSON-Schema file that defines additional attributes
+          and relationships
+        format: uri
+        type: string
+      '@type':
+        description: When sub-classing, this defines the sub-class entity name
+        type: string
+      account:
+        items:
+          $ref: '#/definitions/AccountRef'
+        type: array
+      agreement:
+        items:
+          $ref: '#/definitions/AgreementRef'
+        type: array
+      characteristic:
+        description: Describes the characteristic of a party role.
+        items:
+          $ref: '#/definitions/Characteristic'
+        type: array
+      contactMedium:
+        items:
+          $ref: '#/definitions/ContactMedium'
+        type: array
+      creditProfile:
+        items:
+          $ref: '#/definitions/CreditProfile'
+        type: array
+      engagedParty:
+        $ref: '#/definitions/RelatedParty'
+      name:
+        description: A word, term, or phrase by which the PartyRole is known and distinguished
+          from other PartyRoles.
+        type: string
+      paymentMethod:
+        items:
+          $ref: '#/definitions/PaymentMethodRef'
+        type: array
+      relatedParty:
+        items:
+          $ref: '#/definitions/RelatedParty'
+        type: array
+      status:
+        description: Used to track the lifecycle status of the party role.
+        type: string
+      statusReason:
+        description: A string providing an explanation on the value of the status
+          lifecycle. For instance if the status is Rejected, statusReason will provide
+          the reason for rejection.
+        type: string
+      validFor:
+        $ref: '#/definitions/TimePeriod'
+        description: The time period that the PartyRole is valid for.
+    required:
+    - name
+    type: object
+  PartyRole_Update:
+    description: 'The part played by a party in a given context.
+
+      Skipped properties: id,href'
+    example:
+      '@baseType': '@baseType'
+      '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
+      '@type': '@type'
+      account:
+      - '@baseType': '@baseType'
+        '@referredType': '@referredType'
+        '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
+        '@type': '@type'
+        description: description
+        href: href
+        id: id
+        name: name
+      - '@baseType': '@baseType'
+        '@referredType': '@referredType'
+        '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
+        '@type': '@type'
+        description: description
+        href: href
+        id: id
+        name: name
+      agreement:
+      - '@baseType': '@baseType'
+        '@referredType': '@referredType'
+        '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
+        '@type': '@type'
+        href: href
+        id: id
+        name: name
+      - '@baseType': '@baseType'
+        '@referredType': '@referredType'
+        '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
+        '@type': '@type'
+        href: href
+        id: id
+        name: name
+      characteristic:
+      - '@baseType': '@baseType'
+        '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
+        '@type': '@type'
+        name: name
+        value: {}
+        valueType: valueType
+      - '@baseType': '@baseType'
+        '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
+        '@type': '@type'
+        name: name
+        value: {}
+        valueType: valueType
+      contactMedium:
+      - '@baseType': '@baseType'
+        '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
+        '@type': '@type'
+        characteristic:
+          '@baseType': '@baseType'
+          '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
+          '@type': '@type'
+          city: city
+          contactType: contactType
+          country: country
+          emailAddress: emailAddress
+          faxNumber: faxNumber
+          phoneNumber: phoneNumber
+          postCode: postCode
+          socialNetworkId: socialNetworkId
+          stateOrProvince: stateOrProvince
+          street1: street1
+          street2: street2
+        mediumType: mediumType
+        preferred: true
+        validFor:
+          endDateTime: '2000-01-23T04:56:07.000+00:00'
+          startDateTime: '2000-01-23T04:56:07.000+00:00'
+      - '@baseType': '@baseType'
+        '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
+        '@type': '@type'
+        characteristic:
+          '@baseType': '@baseType'
+          '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
+          '@type': '@type'
+          city: city
+          contactType: contactType
+          country: country
+          emailAddress: emailAddress
+          faxNumber: faxNumber
+          phoneNumber: phoneNumber
+          postCode: postCode
+          socialNetworkId: socialNetworkId
+          stateOrProvince: stateOrProvince
+          street1: street1
+          street2: street2
+        mediumType: mediumType
+        preferred: true
+        validFor:
+          endDateTime: '2000-01-23T04:56:07.000+00:00'
+          startDateTime: '2000-01-23T04:56:07.000+00:00'
+      creditProfile:
+      - '@baseType': '@baseType'
+        '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
+        '@type': '@type'
+        creditProfileDate: '2000-01-23T04:56:07.000+00:00'
+        creditRiskRating: 0
+        creditScore: 6
+        validFor:
+          endDateTime: '2000-01-23T04:56:07.000+00:00'
+          startDateTime: '2000-01-23T04:56:07.000+00:00'
+      - '@baseType': '@baseType'
+        '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
+        '@type': '@type'
+        creditProfileDate: '2000-01-23T04:56:07.000+00:00'
+        creditRiskRating: 0
+        creditScore: 6
+        validFor:
+          endDateTime: '2000-01-23T04:56:07.000+00:00'
+          startDateTime: '2000-01-23T04:56:07.000+00:00'
+      engagedParty:
+        '@baseType': '@baseType'
+        '@referredType': '@referredType'
+        '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
+        '@type': '@type'
+        href: href
+        id: id
+        name: name
+        role: role
+      name: name
+      paymentMethod:
+      - '@baseType': '@baseType'
+        '@referredType': '@referredType'
+        '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
+        '@type': '@type'
+        href: href
+        id: id
+        name: name
+      - '@baseType': '@baseType'
+        '@referredType': '@referredType'
+        '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
+        '@type': '@type'
+        href: href
+        id: id
+        name: name
+      relatedParty:
+      - '@baseType': '@baseType'
+        '@referredType': '@referredType'
+        '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
+        '@type': '@type'
+        href: href
+        id: id
+        name: name
+        role: role
+      - '@baseType': '@baseType'
+        '@referredType': '@referredType'
+        '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
+        '@type': '@type'
+        href: href
+        id: id
+        name: name
+        role: role
+      status: status
+      statusReason: statusReason
+      validFor:
+        endDateTime: '2000-01-23T04:56:07.000+00:00'
+        startDateTime: '2000-01-23T04:56:07.000+00:00'
+    properties:
+      '@baseType':
+        description: When sub-classing, this defines the super-class
+        type: string
+      '@schemaLocation':
+        description: A URI to a JSON-Schema file that defines additional attributes
+          and relationships
+        format: uri
+        type: string
+      '@type':
+        description: When sub-classing, this defines the sub-class entity name
+        type: string
+      account:
+        items:
+          $ref: '#/definitions/AccountRef'
+        type: array
+      agreement:
+        items:
+          $ref: '#/definitions/AgreementRef'
+        type: array
+      characteristic:
+        description: Describes the characteristic of a party role.
+        items:
+          $ref: '#/definitions/Characteristic'
+        type: array
+      contactMedium:
+        items:
+          $ref: '#/definitions/ContactMedium'
+        type: array
+      creditProfile:
+        items:
+          $ref: '#/definitions/CreditProfile'
+        type: array
+      engagedParty:
+        $ref: '#/definitions/RelatedParty'
+      name:
+        description: A word, term, or phrase by which the PartyRole is known and distinguished
+          from other PartyRoles.
+        type: string
+      paymentMethod:
+        items:
+          $ref: '#/definitions/PaymentMethodRef'
+        type: array
+      relatedParty:
+        items:
+          $ref: '#/definitions/RelatedParty'
+        type: array
+      status:
+        description: Used to track the lifecycle status of the party role.
+        type: string
+      statusReason:
+        description: A string providing an explanation on the value of the status
+          lifecycle. For instance if the status is Rejected, statusReason will provide
+          the reason for rejection.
+        type: string
+      validFor:
+        $ref: '#/definitions/TimePeriod'
+        description: The time period that the PartyRole is valid for.
+    type: object
+  PaymentMethodRef:
+    description: PaymentMethod reference. A payment method defines a specific mean
+      of payment (e.g direct debit).
+    example:
+      '@baseType': '@baseType'
+      '@referredType': '@referredType'
+      '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
+      '@type': '@type'
+      href: href
+      id: id
+      name: name
+    properties:
+      '@baseType':
+        description: When sub-classing, this defines the super-class
+        type: string
+      '@referredType':
+        description: The actual type of the target instance when needed for disambiguation.
+        type: string
+      '@schemaLocation':
+        description: A URI to a JSON-Schema file that defines additional attributes
+          and relationships
+        format: uri
+        type: string
+      '@type':
+        description: When sub-classing, this defines the sub-class entity name
+        type: string
+      href:
+        description: Reference of the payment mean
+        type: string
+      id:
+        description: Unique identifier of the payment mean
+        type: string
+      name:
+        description: Name of the payment mean
+        type: string
+    required:
+    - id
+    type: object
+  RelatedParty:
+    description: Related Entity reference. A related party defines party or party
+      role linked to a specific entity.
+    example:
+      '@baseType': '@baseType'
+      '@referredType': '@referredType'
+      '@schemaLocation': https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
+      '@type': '@type'
+      href: href
+      id: id
+      name: name
+      role: role
+    properties:
+      '@baseType':
+        description: When sub-classing, this defines the super-class
+        type: string
+      '@referredType':
+        description: The actual type of the target instance when needed for disambiguation.
+        type: string
+      '@schemaLocation':
+        description: A URI to a JSON-Schema file that defines additional attributes
+          and relationships
+        format: uri
+        type: string
+      '@type':
+        description: When sub-classing, this defines the sub-class entity name
+        type: string
+      href:
+        description: Reference of the related entity.
+        type: string
+      id:
+        description: Unique identifier of a related entity.
+        type: string
+      name:
+        description: Name of the related entity.
+        type: string
+      role:
+        description: Role played by the related party
+        type: string
+    required:
+    - '@referredType'
+    - id
+    type: object
+  TimePeriod:
+    description: A period of time, either as a deadline (endDateTime only) a startDateTime
+      only, or both
+    example:
+      endDateTime: '2000-01-23T04:56:07.000+00:00'
+      startDateTime: '2000-01-23T04:56:07.000+00:00'
+    properties:
+      endDateTime:
+        description: End of the time period, using IETC-RFC-3339 format
+        format: date-time
+        type: string
+      startDateTime:
+        description: Start of the time period, using IETC-RFC-3339 format. If you
+          define a start, you must also define an end
+        format: date-time
+        type: string
+    type: object
+info:
+  description: This is Swagger UI environment generated for the TMF Party Role Management
+    specification
+  title: Party Role Management
+  version: '4.0'
+paths:
+  /hub:
+    post:
+      description: Sets the communication endpoint address the service instance must
+        use to deliver information about its health state, execution state, failures
+        and metrics.
+      operationId: registerListener
+      parameters:
+      - description: Data containing the callback endpoint to deliver the information
+        in: body
+        name: data
+        required: true
+        schema:
+          $ref: '#/definitions/EventSubscriptionInput'
+      responses:
+        201:
+          description: Subscribed
+          schema:
+            $ref: '#/definitions/EventSubscription'
+        400:
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/Error'
+        401:
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/Error'
+        403:
+          description: Forbidden
+          schema:
+            $ref: '#/definitions/Error'
+        404:
+          description: Not Found
+          schema:
+            $ref: '#/definitions/Error'
+        405:
+          description: Method Not allowed
+          schema:
+            $ref: '#/definitions/Error'
+        409:
+          description: Conflict
+          schema:
+            $ref: '#/definitions/Error'
+        500:
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/Error'
+      summary: Register a listener
+      tags:
+      - events subscription
+      x-swagger-router-controller: EventsSubscription
+  /hub/{id}:
+    delete:
+      description: Resets the communication endpoint address the service instance
+        must use to deliver information about its health state, execution state, failures
+        and metrics.
+      operationId: unregisterListener
+      parameters:
+      - description: The id of the registered listener
+        in: path
+        name: id
+        required: true
+        type: string
+      responses:
+        204:
+          description: Deleted
+        400:
+          description: Bad request
+          schema:
+            $ref: '#/definitions/Error'
+        401:
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/Error'
+        403:
+          description: Forbidden
+          schema:
+            $ref: '#/definitions/Error'
+        404:
+          description: Not Found
+          schema:
+            $ref: '#/definitions/Error'
+        405:
+          description: Method not allowed
+          schema:
+            $ref: '#/definitions/Error'
+        500:
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/Error'
+      summary: Unregister a listener
+      tags:
+      - events subscription
+      x-swagger-router-controller: EventsSubscription
+  /listener/partyRoleAttributeValueChangeEvent:
+    post:
+      description: Example of a client listener for receiving the notification PartyRoleAttributeValueChangeEvent
+      operationId: listenToPartyRoleAttributeValueChangeEvent
+      parameters:
+      - description: The event data
+        in: body
+        name: data
+        required: true
+        schema:
+          $ref: '#/definitions/PartyRoleAttributeValueChangeEvent'
+      responses:
+        201:
+          description: Notified
+          schema:
+            $ref: '#/definitions/EventSubscription'
+        400:
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/Error'
+        401:
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/Error'
+        403:
+          description: Forbidden
+          schema:
+            $ref: '#/definitions/Error'
+        404:
+          description: Not Found
+          schema:
+            $ref: '#/definitions/Error'
+        405:
+          description: Method Not allowed
+          schema:
+            $ref: '#/definitions/Error'
+        409:
+          description: Conflict
+          schema:
+            $ref: '#/definitions/Error'
+        500:
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/Error'
+      summary: Client listener for entity PartyRoleAttributeValueChangeEvent
+      tags:
+      - notification listeners (client side)
+      x-swagger-router-controller: NotificationListenersClientSide
+  /listener/partyRoleCreateEvent:
+    post:
+      description: Example of a client listener for receiving the notification PartyRoleCreateEvent
+      operationId: listenToPartyRoleCreateEvent
+      parameters:
+      - description: The event data
+        in: body
+        name: data
+        required: true
+        schema:
+          $ref: '#/definitions/PartyRoleCreateEvent'
+      responses:
+        201:
+          description: Notified
+          schema:
+            $ref: '#/definitions/EventSubscription'
+        400:
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/Error'
+        401:
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/Error'
+        403:
+          description: Forbidden
+          schema:
+            $ref: '#/definitions/Error'
+        404:
+          description: Not Found
+          schema:
+            $ref: '#/definitions/Error'
+        405:
+          description: Method Not allowed
+          schema:
+            $ref: '#/definitions/Error'
+        409:
+          description: Conflict
+          schema:
+            $ref: '#/definitions/Error'
+        500:
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/Error'
+      summary: Client listener for entity PartyRoleCreateEvent
+      tags:
+      - notification listeners (client side)
+      x-swagger-router-controller: NotificationListenersClientSide
+  /listener/partyRoleDeleteEvent:
+    post:
+      description: Example of a client listener for receiving the notification PartyRoleDeleteEvent
+      operationId: listenToPartyRoleDeleteEvent
+      parameters:
+      - description: The event data
+        in: body
+        name: data
+        required: true
+        schema:
+          $ref: '#/definitions/PartyRoleDeleteEvent'
+      responses:
+        201:
+          description: Notified
+          schema:
+            $ref: '#/definitions/EventSubscription'
+        400:
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/Error'
+        401:
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/Error'
+        403:
+          description: Forbidden
+          schema:
+            $ref: '#/definitions/Error'
+        404:
+          description: Not Found
+          schema:
+            $ref: '#/definitions/Error'
+        405:
+          description: Method Not allowed
+          schema:
+            $ref: '#/definitions/Error'
+        409:
+          description: Conflict
+          schema:
+            $ref: '#/definitions/Error'
+        500:
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/Error'
+      summary: Client listener for entity PartyRoleDeleteEvent
+      tags:
+      - notification listeners (client side)
+      x-swagger-router-controller: NotificationListenersClientSide
+  /listener/partyRoleStateChangeEvent:
+    post:
+      description: Example of a client listener for receiving the notification PartyRoleStateChangeEvent
+      operationId: listenToPartyRoleStateChangeEvent
+      parameters:
+      - description: The event data
+        in: body
+        name: data
+        required: true
+        schema:
+          $ref: '#/definitions/PartyRoleStateChangeEvent'
+      responses:
+        201:
+          description: Notified
+          schema:
+            $ref: '#/definitions/EventSubscription'
+        400:
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/Error'
+        401:
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/Error'
+        403:
+          description: Forbidden
+          schema:
+            $ref: '#/definitions/Error'
+        404:
+          description: Not Found
+          schema:
+            $ref: '#/definitions/Error'
+        405:
+          description: Method Not allowed
+          schema:
+            $ref: '#/definitions/Error'
+        409:
+          description: Conflict
+          schema:
+            $ref: '#/definitions/Error'
+        500:
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/Error'
+      summary: Client listener for entity PartyRoleStateChangeEvent
+      tags:
+      - notification listeners (client side)
+      x-swagger-router-controller: NotificationListenersClientSide
+  /partyRole:
+    get:
+      description: This operation list or find PartyRole entities
+      operationId: listPartyRole
+      parameters:
+      - description: Comma-separated properties to be provided in response
+        in: query
+        name: fields
+        required: false
+        type: string
+      - description: Requested index for start of resources to be provided in response
+        in: query
+        name: offset
+        required: false
+        type: integer
+      - description: Requested number of resources to be provided in response
+        in: query
+        name: limit
+        required: false
+        type: integer
+      responses:
+        200:
+          description: Success
+          headers:
+            X-Result-Count:
+              description: Actual number of items returned in the response body
+              type: integer
+            X-Total-Count:
+              description: Total number of items matching criteria
+              type: integer
+          schema:
+            items:
+              $ref: '#/definitions/PartyRole'
+            type: array
+        400:
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/Error'
+        401:
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/Error'
+        403:
+          description: Forbidden
+          schema:
+            $ref: '#/definitions/Error'
+        404:
+          description: Not Found
+          schema:
+            $ref: '#/definitions/Error'
+        405:
+          description: Method Not allowed
+          schema:
+            $ref: '#/definitions/Error'
+        409:
+          description: Conflict
+          schema:
+            $ref: '#/definitions/Error'
+        500:
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/Error'
+      summary: List or find PartyRole objects
+      tags:
+      - partyRole
+      x-swagger-router-controller: PartyRole
+    post:
+      description: This operation creates a PartyRole entity.
+      operationId: createPartyRole
+      parameters:
+      - description: The PartyRole to be created
+        in: body
+        name: partyRole
+        required: true
+        schema:
+          $ref: '#/definitions/PartyRole_Create'
+      responses:
+        201:
+          description: Created
+          schema:
+            $ref: '#/definitions/PartyRole'
+        400:
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/Error'
+        401:
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/Error'
+        403:
+          description: Forbidden
+          schema:
+            $ref: '#/definitions/Error'
+        405:
+          description: Method Not allowed
+          schema:
+            $ref: '#/definitions/Error'
+        409:
+          description: Conflict
+          schema:
+            $ref: '#/definitions/Error'
+        500:
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/Error'
+      summary: Creates a PartyRole
+      tags:
+      - partyRole
+      x-swagger-router-controller: PartyRole
+  /partyRole/{id}:
+    delete:
+      description: This operation deletes a PartyRole entity.
+      operationId: deletePartyRole
+      parameters:
+      - description: Identifier of the PartyRole
+        in: path
+        name: id
+        required: true
+        type: string
+      responses:
+        204:
+          description: Deleted
+        400:
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/Error'
+        401:
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/Error'
+        403:
+          description: Forbidden
+          schema:
+            $ref: '#/definitions/Error'
+        404:
+          description: Not Found
+          schema:
+            $ref: '#/definitions/Error'
+        405:
+          description: Method Not allowed
+          schema:
+            $ref: '#/definitions/Error'
+        409:
+          description: Conflict
+          schema:
+            $ref: '#/definitions/Error'
+        500:
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/Error'
+      summary: Deletes a PartyRole
+      tags:
+      - partyRole
+      x-swagger-router-controller: PartyRole
+    get:
+      description: This operation retrieves a PartyRole entity. Attribute selection
+        is enabled for all first level attributes.
+      operationId: retrievePartyRole
+      parameters:
+      - description: Identifier of the PartyRole
+        in: path
+        name: id
+        required: true
+        type: string
+      - description: Comma-separated properties to provide in response
+        in: query
+        name: fields
+        required: false
+        type: string
+      responses:
+        200:
+          description: Success
+          schema:
+            $ref: '#/definitions/PartyRole'
+        400:
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/Error'
+        401:
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/Error'
+        403:
+          description: Forbidden
+          schema:
+            $ref: '#/definitions/Error'
+        404:
+          description: Not Found
+          schema:
+            $ref: '#/definitions/Error'
+        405:
+          description: Method Not allowed
+          schema:
+            $ref: '#/definitions/Error'
+        409:
+          description: Conflict
+          schema:
+            $ref: '#/definitions/Error'
+        500:
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/Error'
+      summary: Retrieves a PartyRole by ID
+      tags:
+      - partyRole
+      x-swagger-router-controller: PartyRole
+    patch:
+      description: This operation updates partially a PartyRole entity.
+      operationId: patchPartyRole
+      parameters:
+      - description: Identifier of the PartyRole
+        in: path
+        name: id
+        required: true
+        type: string
+      - description: The PartyRole to be updated
+        in: body
+        name: partyRole
+        required: true
+        schema:
+          $ref: '#/definitions/PartyRole_Update'
+      responses:
+        200:
+          description: Updated
+          schema:
+            $ref: '#/definitions/PartyRole'
+        400:
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/Error'
+        401:
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/Error'
+        403:
+          description: Forbidden
+          schema:
+            $ref: '#/definitions/Error'
+        404:
+          description: Not Found
+          schema:
+            $ref: '#/definitions/Error'
+        405:
+          description: Method Not allowed
+          schema:
+            $ref: '#/definitions/Error'
+        409:
+          description: Conflict
+          schema:
+            $ref: '#/definitions/Error'
+        500:
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/Error'
+      summary: Updates partially a PartyRole
+      tags:
+      - partyRole
+      x-swagger-router-controller: PartyRole
+produces:
+- application/json;charset=utf-8
+schemes:
+- http
+swagger: '2.0'
+tags:
+- name: partyRole
+- name: notification listeners (client side)
+- name: events subscription

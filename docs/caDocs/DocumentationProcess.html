@@ -118,7 +118,11 @@
 <p class="caption"><span class="caption-text">Contributions Guide:</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="ContributionsGuide.html">Contribution guidance</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Documentation Process</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Documentation Process</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#basic-process">Basic Process</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#full-process">Full process</a></li>
+</ul>
+</li>
 </ul>
 
             
@@ -188,10 +192,18 @@
             
   <div class="section" id="documentation-process">
 <h1>Documentation Process<a class="headerlink" href="#documentation-process" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="basic-process">
+<h2>Basic Process<a class="headerlink" href="#basic-process" title="Permalink to this headline">¶</a></h2>
+<p>The documentation (published at <a class="reference external" href="https://tmforum-oda.github.io/oda-ca-docs/">https://tmforum-oda.github.io/oda-ca-docs/</a>) is generated from the README (and other markdown files), images, and code (including <a class="reference external" href="https://en.wikipedia.org/wiki/Docstring">DocStrings</a>). All a normal contributor has to do is to ensure the code and other assets are documented in README files and code comments.</p>
+<p>If you want to change the menu structure (e.g. to add a new section to the documentation), you need to follow the full process below which includes using Sphinx and .rst files (reStructuredText markup language). Feel free to ask for help in the slack channel if this is your first time!</p>
+</div>
+<div class="section" id="full-process">
+<h2>Full process<a class="headerlink" href="#full-process" title="Permalink to this headline">¶</a></h2>
 <p>There is a video overview of the Documentation Process at:</p>
 <p><a class="reference external" href="https://www.youtube.com/watch?v=C_1WW0o0Z5o"><img alt="Documentation Process" src="https://img.youtube.com/vi/C_1WW0o0Z5o/0.jpg" /></a></p>
 <p>The published home of the documentation is <a class="reference external" href="https://tmforum-oda.github.io/oda-ca-docs/">https://tmforum-oda.github.io/oda-ca-docs/</a></p>
 <p>The documentation is published as GitHub pages from the <a class="reference external" href="https://github.com/tmforum-oda/oda-ca-docs/tree/master/docs">/docs</a> folder. The documentation content is maintained as README and other content files in each of the TM Forum ODA repositories. The structure to the documentation uses the Sphinx framework (https://www.sphinx-doc.org/). The structure is maintained in the <a class="reference external" href="https://github.com/tmforum-oda/oda-ca-docs/tree/master/sphinx_documentation">/sphinx_documentation</a> folder. Within this folder there is a <code class="docutils literal notranslate"><span class="pre">buildClean.bat</span></code> file that will re-build the documentation from the source.</p>
+</div>
 </div>
 
 
