@@ -29,6 +29,7 @@ Open Digital Architecture - Component Accelerator
    :caption: Design Guidelines:
 
    caDocs/ODAComponentDesignGuidelines.md
+   caDocs/ODACanvasDesignGuidelines.md
 
 .. toctree::
    :maxdepth: 2
