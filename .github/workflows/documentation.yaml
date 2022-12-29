@@ -4,19 +4,39 @@ jobs:
   docs:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - name: checkout-oda-ca-docs
+        uses: actions/checkout@v2
+        with:
+          path: oda-ca-docs
+      - name: checkout-oda-ca
+        uses: actions/checkout@v2
+        with:
+          repository: tmforum-oda/oda-ca
+          path: oda-ca
+      - name: checkout-oda-canvas-charts
+        uses: actions/checkout@v2
+        with:
+          repository: tmforum-oda/oda-canvas-charts
+          path: oda-canvas-charts
+      - name: checkout-oda-component-ctk
+        uses: actions/checkout@v2
+        with:
+           repository: tmforum-oda/oda-component-ctk
+           path: oda-component-ctk
       - uses: actions/setup-python@v2
       - name: Install dependencies
+        working-directory: oda-ca-docs/doc
         run: |
-          pip install sphinx sphinx_rtd_theme
+          pip install -r requirements.txt
       - name: Sphinx build
+        working-directory: oda-ca-docs/doc
         run: |
-          sphinx-build doc _build
+          sphinx-build . _build
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
         if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/master' }}
         with:
           publish_branch: gh-pages
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: _build/
+          publish_dir: oda-ca-docs/doc/_build/
           force_orphan: true
