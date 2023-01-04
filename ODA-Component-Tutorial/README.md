@@ -8,8 +8,7 @@ For an introdution to the Open-Digital Architecture component model, take a look
 
 ![https://www.youtube.com/watch?v=e_m-nnKvWIs](./images/DTW-Video.png)
 
-[DTW World Series Masterclass](https://www.youtube.com/watch?v=e_m-nnKvWIs)
-
+[DTW World Series Masterclass:Leveraging ODA and Open APIs to achieve digital transformation](https://www.youtube.com/watch?v=e_m-nnKvWIs)
 
 
 ### Step 1. Download Reference Implementation
@@ -647,7 +646,7 @@ To permanently save the namespace for all subsequent kubectl commands use:
 kubectl config set-context --current --namespace=components
 ```
 
-Install the component using Helm, we call the release name `r1`:
+Install the component using Helm, we call the release name `r1` . Ensure the release name is not in conflict with release name already assigned to other components in the open digital lab:
 
 ```sh
 helm install r1 productinventory/ 
@@ -691,15 +690,13 @@ The directory structure for our reference implementation is depicted below.
 
 ### ISSUES & resolution
 
-1. Kubernetes ingress expect a 200 response at the root of the API. Without this, they do not create an ingress and instead return a 503 error. I've created an additional 'entrypoint' middleware hook in the index.js. This returns an entrypoint (or homepage) response for the API (following the TMF630 Design Guidelines).
+1. Kubernetes ingress expect a 200 response at the root of the API. Without this, they do not create an ingress and instead return a 503 error.  An additional 'entrypoint' middleware hook in the index.js has been created to resolve this. This returns an entrypoint (or homepage) response for the API (following the TMF630 Design Guidelines).
 
-```
+```js
   // create an entrypoint
   console.log('app.use entrypoint');
   app.use(swaggerDoc.basePath, entrypointUtils.entrypoint);
 ```
-
-2. Due to a node version issue (i think!) the generated API RI does not work on the latest v15 of node. I have created container based on node v10. The issue is with the fs.copyFileSync function: The v15 expects the third parameter to be an optional `mode` whilst the current implementation has a call-back error function.
-3. api-docs are exposed at /api-docs which means that you cant host multiple apis on the same server. I've moved to host them at /tmf-api/productCatalogManagement/v4/api-docs instead (and the swagger-ui at /tmf-api/productCatalogManagement/v4/docs).
-4. MongoDb url in productcatalogapi image needs to include the Release Name (for the instance of the component) - pass this as an Environment variable.
-5. I've included the component name in the root of the API (so that you can deploy multiple instances of the API in the same server). For a Helm install with release name test, the api is deployed at: /test-productcatalog/tmf-api/productCatalogManagement/v4/
+2. Due to a node version issue (i think!) the generated API RI does not work on the latest v15 of node. I have created container based on node v12. The issue is with the fs.copyFileSync function: The v15 expects the third parameter to be an optional `mode` whilst the current implementation has a call-back error function.
+3. Api-docs are exposed at /api-docs which means that you can't host multiple apis on the same server. Therefore, it is hosted at `tmf-api/productInventory/v4/api-docs` instead (and the swagger-ui at `tmf-api/productInventory/v4/docs`).
+4. The component name has been included in the root of the API (so that multiple instances of the API can be deployed in the same server). For a Helm install with release name `test`, the api is deployed at: `/test-productinventory/tmf-api/productInventory/v4/` and with a Helm install with release name `r1`, the api is deployed at: `/test-productinventory/tmf-api/productInventory/v4/` . Component release name must be unique and cannot be reused. 
