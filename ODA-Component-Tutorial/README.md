@@ -658,9 +658,19 @@ You can then view the component in `kubectl`:
 kubectl get components
 ```
 
-The `kubectl get components` will show all the deployed components including the details of exposed apis and a developer-ui (if supplied). Initially these details will be blank - the component may take a few seconds to fully deploy. Once deployed, it should look like:
+The `kubectl get components` will show all the deployed components and the deployment status. Initially these details will be blank - the component may take a few seconds to fully deploy. Once deployed, it should look like:
 
 ![get components](./images/kubectl-get-components.png)
+
+You can also view the component API endpoint in `kubectl`:
+
+```sh
+kubectl get apis
+```
+
+The `kubectl get apis` command shows details of exposed apis and a developer-ui (if supplied). Initially these details will be blank - the component may take a few seconds to fully deploy. Once deployed, it should look like:
+
+![get apis](./images/kubectl-get-apis.png)
 
 If you navigate to the root or the API (in a web browser or in postman), you should see the entrypoint of the API:
 
