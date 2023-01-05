@@ -231,7 +231,57 @@ Follow the previous steps 1-4 to create the Party Role implementation.
 
 ### Step 6. Create PartyRole Initialisation Implementation
 
-Next we create a party role initialisation service which  initialises party roles in the mongo db database.
+Next we create a party role initialisation node js service (`initialization.js`) which  initialises party roles in the mongo db database. 
+Excerpts from `<roleinti-implementation-directory>/initialization.js` as below:
+
+```js
+const axios = require('axios');
+//create a Admin Party role
+const initialPartyRole = {
+  name: "Admin"
+}
+
+// Get Component instance name from Environment variable and put it at start of API path
+var releaseName = process.env.RELEASE_NAME; 
+var componentName = process.env.COMPONENT_NAME; 
+
+const createPartyRole = async () => {
+  var complete = false;
+
+  while (complete == false) {
+    try {
+        await delay(5000);  // retry every 5 seconds
+        const url = 'http://' + releaseName + '-partyroleapi:8080/' + componentName + '/tmf-api/partyRoleManagement/v4/partyRole';
+        console.log('POSTing partyRole to: ', url);
+        const res = await axios.post(
+          url, 
+          initialPartyRole,
+          {timeout: 10000});
+        console.log(`Status: ${res.status}`);
+        console.log('Body: ', res.data);
+        complete = true;
+        .... 
+
+        process.exit(0);
+    } catch (err) {
+      console.log('Initialization failed - retrying in 5 seconds');
+    }
+  }
+};
+...
+```
+#### Step 6.1 Package the nodejs implementation into a docker image following step 4 above.
+
+The role initialisation dockerfile file:
+
+```text
+FROM node:12
+WORKDIR /src
+COPY package*.json ./
+RUN npm install
+COPY . .
+CMD ["node", "initialization.js"]
+```
 
 ### Step 7. Create Component Envelope 
 
