@@ -8,8 +8,7 @@ For an introdution to the Open-Digital Architecture component model, take a look
 
 ![https://www.youtube.com/watch?v=e_m-nnKvWIs](./images/DTW-Video.png)
 
-[DTW World Series Masterclass](https://www.youtube.com/watch?v=e_m-nnKvWIs)
-
+[DTW World Series Masterclass:Leveraging ODA and Open APIs to achieve digital transformation](https://www.youtube.com/watch?v=e_m-nnKvWIs)
 
 
 ### Step 1. Download Reference Implementation
@@ -232,7 +231,57 @@ Follow the previous steps 1-4 to create the Party Role implementation.
 
 ### Step 6. Create PartyRole Initialisation Implementation
 
-Next we create a party role initialisation service which  initialises party roles in the mongo db database.
+Next we create a party role initialisation node js service (`initialization.js`) which  initialises party roles in the mongo db database. 
+Excerpts from `<roleinti-implementation-directory>/initialization.js` as below:
+
+```js
+const axios = require('axios');
+//create a Admin Party role
+const initialPartyRole = {
+  name: "Admin"
+}
+
+// Get Component instance name from Environment variable and put it at start of API path
+var releaseName = process.env.RELEASE_NAME; 
+var componentName = process.env.COMPONENT_NAME; 
+
+const createPartyRole = async () => {
+  var complete = false;
+
+  while (complete == false) {
+    try {
+        await delay(5000);  // retry every 5 seconds
+        const url = 'http://' + releaseName + '-partyroleapi:8080/' + componentName + '/tmf-api/partyRoleManagement/v4/partyRole';
+        console.log('POSTing partyRole to: ', url);
+        const res = await axios.post(
+          url, 
+          initialPartyRole,
+          {timeout: 10000});
+        console.log(`Status: ${res.status}`);
+        console.log('Body: ', res.data);
+        complete = true;
+        .... 
+
+        process.exit(0);
+    } catch (err) {
+      console.log('Initialization failed - retrying in 5 seconds');
+    }
+  }
+};
+...
+```
+#### Step 6.1 Package the nodejs implementation into a docker image following step 4 above.
+
+The role initialisation dockerfile file:
+
+```text
+FROM node:12
+WORKDIR /src
+COPY package*.json ./
+RUN npm install
+COPY . .
+CMD ["node", "initialization.js"]
+```
 
 ### Step 7. Create Component Envelope 
 
@@ -647,7 +696,7 @@ To permanently save the namespace for all subsequent kubectl commands use:
 kubectl config set-context --current --namespace=components
 ```
 
-Install the component using Helm, we call the release name `r1`:
+Install the component using Helm, we call the release name `r1` . Ensure the release name is not in conflict with release name already assigned to other components in the open digital lab:
 
 ```sh
 helm install r1 productinventory/ 
@@ -659,9 +708,19 @@ You can then view the component in `kubectl`:
 kubectl get components
 ```
 
-The `kubectl get components` will show all the deployed components including the details of exposed apis and a developer-ui (if supplied). Initially these details will be blank - the component may take a few seconds to fully deploy. Once deployed, it should look like:
+The `kubectl get components` will show all the deployed components and the deployment status. Initially these details will be blank - the component may take a few seconds to fully deploy. Once deployed, it should look like:
 
 ![get components](./images/kubectl-get-components.png)
+
+You can also view the component API endpoint in `kubectl`:
+
+```sh
+kubectl get apis
+```
+
+The `kubectl get apis` command shows details of exposed apis and a developer-ui (if supplied). Initially these details will be blank - the component may take a few seconds to fully deploy. Once deployed, it should look like:
+
+![get apis](./images/kubectl-get-apis.png)
 
 If you navigate to the root or the API (in a web browser or in postman), you should see the entrypoint of the API:
 
@@ -684,22 +743,24 @@ You should get a result like the image below:
 ![CTK image](./images/ctkdynamicsuccess.png)
 
 
-### Directory Structure. 
+### Directory Structure
 
-The directory structure for our reference implementation is depicted below. 
-![Implementation directory image](./images/ctkdynamicsuccess.png)
+The high level directory structure for our reference implementation is depicted below. 
+
+![Implementation directory image](./images/folderstructure.png)
+
+Also, the reference implementation sourcecode is available on the [ODA-Component-Tutorial Git Hub Repo](https://github.com/tmforum-oda/oda-ca-docs/tree/master/ODA-Component-Tutorial/ProductInventory)
+
 
 ### ISSUES & resolution
 
-1. Kubernetes ingress expect a 200 response at the root of the API. Without this, they do not create an ingress and instead return a 503 error. I've created an additional 'entrypoint' middleware hook in the index.js. This returns an entrypoint (or homepage) response for the API (following the TMF630 Design Guidelines).
+1. Kubernetes ingress expect a 200 response at the root of the API. Without this, they do not create an ingress and instead return a 503 error.  An additional 'entrypoint' middleware hook in the index.js has been created to resolve this. This returns an entrypoint (or homepage) response for the API (following the TMF630 Design Guidelines).
 
-```
+```js
   // create an entrypoint
   console.log('app.use entrypoint');
   app.use(swaggerDoc.basePath, entrypointUtils.entrypoint);
 ```
-
-2. Due to a node version issue (i think!) the generated API RI does not work on the latest v15 of node. I have created container based on node v10. The issue is with the fs.copyFileSync function: The v15 expects the third parameter to be an optional `mode` whilst the current implementation has a call-back error function.
-3. api-docs are exposed at /api-docs which means that you cant host multiple apis on the same server. I've moved to host them at /tmf-api/productCatalogManagement/v4/api-docs instead (and the swagger-ui at /tmf-api/productCatalogManagement/v4/docs).
-4. MongoDb url in productcatalogapi image needs to include the Release Name (for the instance of the component) - pass this as an Environment variable.
-5. I've included the component name in the root of the API (so that you can deploy multiple instances of the API in the same server). For a Helm install with release name test, the api is deployed at: /test-productcatalog/tmf-api/productCatalogManagement/v4/
+2. Due to a node version issue (i think!) the generated API RI does not work on the latest v15 of node. I have created container based on node v12. The issue is with the fs.copyFileSync function: The v15 expects the third parameter to be an optional `mode` whilst the current implementation has a call-back error function.
+3. Api-docs are exposed at /api-docs which means that you can't host multiple apis on the same server. Therefore, it is hosted at `tmf-api/productInventory/v4/api-docs` instead (and the swagger-ui at `tmf-api/productInventory/v4/docs`).
+4. The component name has been included in the root of the API (so that multiple instances of the API can be deployed in the same server). For a Helm install with release name `test`, the api is deployed at: `/test-productinventory/tmf-api/productInventory/v4/` and with a Helm install with release name `r1`, the api is deployed at: `/test-productinventory/tmf-api/productInventory/v4/` . Component release name must be unique and cannot be reused. 
