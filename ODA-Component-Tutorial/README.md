@@ -693,11 +693,12 @@ You should get a result like the image below:
 ![CTK image](./images/ctkdynamicsuccess.png)
 
 
-### Directory Structure. 
+### Directory Structure
 
-The directory structure for our reference implementation is depicted below. 
+The high level directory structure for our reference implementation is depicted below. 
 
 ![Implementation directory image](./images/folderstructure.png)
+
 Also, the reference implementation sourcecode is available on the [ODA-Component-Tutorial Git Hub Repo](https://github.com/tmforum-oda/oda-ca-docs/tree/master/ODA-Component-Tutorial/ProductInventory)
 
 
