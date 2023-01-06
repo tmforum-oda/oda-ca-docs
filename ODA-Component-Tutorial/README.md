@@ -1,6 +1,6 @@
-## Tutorial to build ODA-Component from Open-API Reference Implemenation
+## Tutorial to build ODA-Component from Open-API Reference Implementation
 
-This tutorial shows the complete process to package, test and deploy an ODA-Component, using the nodejs reference implementation of the TMF637 Product Inventory Management API as the source code. You should be able to follow the process below using an existing software application as source (the process should work for simple applications - it is intended as a tutorial to get you started; For more complex applications you may have to decompose to multiple containers/micro-services and even multiple ODA-Components).
+This tutorial shows the complete process to package, test and deploy an ODA-Component, using the nodejs reference implementation of the _TMF637 Product Inventory Management API_ as the source code. You should be able to follow the process below using an existing software application as source (the process should work for simple applications - it is intended as a tutorial to get you started; For more complex applications you may have to decompose to multiple containers/micro-services and even multiple ODA-Components).
 
 There is a video of this tutorial at: [ODA Component Tutorial Video walkthrough](https://youtu.be/wZJ8d5uQ7_8)
 
@@ -763,4 +763,4 @@ Also, the reference implementation sourcecode is available on the [ODA-Component
 ```
 2. Due to a node version issue (i think!) the generated API RI does not work on the latest v15 of node. I have created container based on node v12. The issue is with the fs.copyFileSync function: The v15 expects the third parameter to be an optional `mode` whilst the current implementation has a call-back error function.
 3. Api-docs are exposed at /api-docs which means that you can't host multiple apis on the same server. Therefore, it is hosted at `tmf-api/productInventory/v4/api-docs` instead (and the swagger-ui at `tmf-api/productInventory/v4/docs`).
-4. The component name has been included in the root of the API (so that multiple instances of the API can be deployed in the same server). For a Helm install with release name `test`, the api is deployed at: `/test-productinventory/tmf-api/productInventory/v4/` and with a Helm install with release name `r1`, the api is deployed at: `/test-productinventory/tmf-api/productInventory/v4/` . Component release name must be unique and cannot be reused. 
+4. The component name has been included in the root of the API (so that multiple instances of the API can be deployed in the same server). For a Helm install with release name `test`, the api is deployed at: `/test-productinventory/tmf-api/productInventory/v4/` and with a Helm install with release name `r1`, the api is deployed at: `/r1-productinventory/tmf-api/productInventory/v4/` . Component release name must be unique and cannot be reused. 
