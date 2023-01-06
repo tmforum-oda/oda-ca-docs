@@ -70,6 +70,7 @@ autodoc_member_order = 'bysource'
 print('Copying README and image files')
 import shutil
 
+
 # Controllers
 shutil.copy2('../../oda-ca/controllers/readme.md', './caSource/controllers') 
 shutil.copy2('../../oda-ca/controllers/componentOperator/README.md', './caSource/controllers/componentOperator') 
