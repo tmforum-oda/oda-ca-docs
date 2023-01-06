@@ -93,11 +93,17 @@ def copyImagesAndMarkdown(src_dir, dest_dir):
 
 # Controllers
 copyImagesAndMarkdown('../../oda-ca/controllers', './caSource/controllers')
+copyImagesAndMarkdown('../../oda-ca/controllers/componentOperator', './caSource/controllers/componentOperator')
 copyImagesAndMarkdown('../../oda-ca/controllers/apiOperatorSimpleIngress', './caSource/controllers/apiOperatorSimpleIngress')
 copyImagesAndMarkdown('../../oda-ca/controllers/apiOperatorIstio', './caSource/controllers/apiOperatorIstio')
 copyImagesAndMarkdown('../../oda-ca/controllers/apiOperatorApig', './caSource/controllers/apiOperatorApig')
 copyImagesAndMarkdown('../../oda-ca/controllers/apiOperatorWSO2', './caSource/controllers/apiOperatorWSO2')
 copyImagesAndMarkdown('../../oda-ca/controllers/securityController', './caSource/controllers/securityController')
+copyImagesAndMarkdown('../../oda-ca/controllers/componentOperator/sequenceDiagrams', './caSource/controllers/componentOperator/sequenceDiagrams')
+copyImagesAndMarkdown('../../oda-ca/controllers/apiOperatorSimpleIngress/sequenceDiagrams', './caSource/controllers/apiOperatorSimpleIngress/sequenceDiagrams')
+copyImagesAndMarkdown('../../oda-ca/controllers/apiOperatorIstio/sequenceDiagrams', './caSource/controllers/apiOperatorIstio/sequenceDiagrams')
+copyImagesAndMarkdown('../../oda-ca/controllers/apiOperatorApig/sequenceDiagrams', './caSource/controllers/apiOperatorApig/sequenceDiagrams')
+copyImagesAndMarkdown('../../oda-ca/controllers/securityController/sequenceDiagrams', './caSource/controllers/securityController/sequenceDiagrams')
 
 # Base Documentation files
 copyImagesAndMarkdown('../', './caDocs')
