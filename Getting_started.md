@@ -43,4 +43,4 @@ The ODA Technical Architecture & Components project is developing the formal spe
   * Introduce an TMFC019 Event Management component for the ODA and build an Operator using the YAML descriptor of components to set up event flows
 * Onboarding
   * Update the onboarding playbook on GitHub for new project members and interested observers
-  * Incorporate the latest materials eg demos and presentations from DTW 2022: [Whale Cloud Multi-cloud CNF deployment with the ODA Canvas](https://github.com/tmforum-oda/oda-ca-docs/blob/master/DTW_Presentations/Whale%20Cloud%20Multi-cloud%20CNF%20deployment%20with%20the%20ODA%20Canvas%20DTW-22.pptx?raw=true), [STL dPCC deployment with ODA Canvas](https://github.com/tmforum-oda/oda-ca-docs/blob/master/DTW_Presentations/STL%20dPCC%20deployment%20with%20ODA%20Canvas%20for%20DTW-22.pptx?raw=true)
+  * Incorporate the latest materials eg demos and presentations from DTW 2022
