@@ -41,7 +41,7 @@ Read [this presentation](https://github.com/tmforum-oda/oda-ca-docs/blob/master/
 
 **Deploying Cloud Native Network Functions onto the ODA Canvas**
 
-* [Deployment of a CNF to an ODA Canvas running on two different cloud environments](https://github.com/tmforum-oda/oda-ca-docs/blob/master/DTW_Presentations/Whale%20Cloud%20Multi-cloud%20CNF%20deployment%20with%20the%20ODA%20Canvas%20DTW-22.pptx?raw=true). The Canvas standardizes the environment to enable plug-and-play deployment on different cloud platforms (by Whale Cloud, [5 min demo video here](https://iframe.dacast.com/vod/9292f2e21c51139fb9b2ffd6080ab1d6/ecb75692-55a4-2796-7f0a-710ad118b190))
+* [Deployment of a CNF to an ODA Canvas running on two different cloud environments](https://github.com/tmforum-oda/oda-ca-docs/blob/master/DTW_Presentations/Whale%20Cloud%20Multi-cloud%20CNF%20deployment%20with%20the%20ODA%20Canvas%20DTW-22.pptx?raw=true). The Canvas standardizes the environment to enable plug-and-play deployment on different cloud platforms (by Whale Cloud, [3 min demo video here](https://iframe.dacast.com/vod/9292f2e21c51139fb9b2ffd6080ab1d6/ecb75692-55a4-2796-7f0a-710ad118b190))
 * [Deployment of PCRF (4G) and PCF (5G) onto the same ODA Canvas](https://github.com/tmforum-oda/oda-ca-docs/blob/master/DTW_Presentations/STL_Digital_BSS_Components_Architecture_with_ODA_Canvas.pdf?raw=true), making 4G->5G upgrades and other use cases easy to achieve (by Sterlite, [5 min demo video here)](https://www.tmforum.org/stl-oda-components/))
 
 **Current ODA-CA project members**
