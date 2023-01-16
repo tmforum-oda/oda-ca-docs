@@ -1,0 +1,7 @@
+div.section ul {
+  list-style-type: disc !important;
+}
+div.section ul li {
+  display: list-item !important;
+  list-style: disc !important;
+}

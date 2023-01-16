@@ -66,7 +66,9 @@ html_theme = 'sphinx_rtd_theme'
 html_static_path = ['_static']
 master_doc = 'index'
 autodoc_member_order = 'bysource'
-
+html_css_files = [
+    'css/custom.css'
+]
 print('Copying README and image files')
 import shutil
 import os
