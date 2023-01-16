@@ -1,7 +1,20 @@
-div.section ul {
-  list-style-type: disc !important;
+ul {
+  list-style-type: disc;
 }
-div.section ul li {
-  display: list-item !important;
-  list-style: disc !important;
+ul li {
+  display: list-item;
+  list-style: disc;
+}
+
+dl,
+ol,
+div.wy-menu ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    list-style-image: none
+}
+
+div.wy-menu ul li {
+    list-style: none
 }
