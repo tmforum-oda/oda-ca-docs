@@ -1,5 +1,6 @@
 ul {
   list-style-type: disc;
+  margin-left: 1em;
 }
 ul li {
   display: list-item;
@@ -9,8 +10,6 @@ ul li {
 dl,
 ol,
 div.wy-menu ul {
-    margin: 0;
-    padding: 0;
     list-style: none;
     list-style-image: none
 }
