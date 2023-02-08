@@ -43,8 +43,8 @@ spec:
   - name: Lester Thomas
     email: lester.thomas@vodafone.com
   owners:
-    - name: Lester Thomas
-      email: lester.thomas@vodafone.com  
+  - name: Lester Thomas
+    email: lester.thomas@vodafone.com  
 ```
 
 This next section starts the `spec` for the component.
@@ -84,9 +84,9 @@ The `description`, `maintainers` and `owners` are self-descriptive.
       filter: CatalogStateChangeEvent&status=active
 ```
 
-The `coreFunction` describes the core purpose of the software component. It describes the list of APIs and/or events that the component exposes as well as the APIs and/or events that it is dependant on. The definitions within the `publishedEvents` and `depsubscribedEvents` are experimental at this point, and we will modify and enhance them as we build-out the ODA Canvas and assemble a representative set of ODA Components. The current definition has:
+The `coreFunction` describes the core purpose of the software component. It describes the list of APIs and/or events that the component exposes as well as the APIs and/or events that it is dependant on. The definitions within the `publishedEvents` and `subscribedEvents` are experimental at this point, and we will modify and enhance them as we build-out the ODA Canvas and assemble a representative set of ODA Components. The current definition has:
 * an `implementation` which links to the Kubernetes service that implements the API or event, including the `port` where the http service is exposed. 
-* The `path` shows the API resource end-point, and can be used, for example, to automatically configure any API Gateway that is included as part of the Canvas. Note that the `path` points to the root of the API (and you need to append the relavant path from the swagger document to get to an implemented API resource). 
+* The `path` shows the API resource end-point, and can be used, for example, to automatically configure any API Gateway that is included as part of the Canvas. Note that the `path` points to the root of the API (and you need to append the relevant path from the swagger document to get to an implemented API resource). 
 * The `specification` points to the swagger documentation for the API. The Component CTK (Compliance Test Kit) will look inside this swagger for the `basePath` determine which Open-API CTK to execute for that API. The `basePath` is of format `"/tmf-api/productCatalogManagement/v4/"` which shows it is a `tmf-api` for `productCatalogManagement` with major version `4`. The swagger can be one of the TM Forum published swagger files (e.g. [https://raw.githubusercontent.com/tmforum-rand/Open_API_And_Data_Model/v4.0-Sprint-2020-03/apis/TMF620_Product_Catalog/swaggers/TMF620-ProductCatalog-v4.1.0.swagger.json](https://raw.githubusercontent.com/tmforum-rand/Open_API_And_Data_Model/v4.0-Sprint-2020-03/apis/TMF620_Product_Catalog/swaggers/TMF620-ProductCatalog-v4.1.0.swagger.json?token=ACS2FQP4M3AEZBKQQEMIUQ3ABGIBM)) or can be an extension (conforming to the TMF630 Design Guidelines).
 * The `hub` represents the path for configuring the destination for the events.
 * The `call-back` represents the path to the call-back end-point for these events.
@@ -113,12 +113,15 @@ The `coreFunction` describes the core purpose of the software component. It desc
     subscribedEvents: []
   security:
     controllerRole: secConAdmin
-    partyrole:
+    exposedAPIs:
+    - name: partyrole
       specification: https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
-      implementation: r1-partyroleapi
-      path: /r1-productcatalog/tmf-api/partyRoleManagement/v4
-      developerUI: /r1-productcatalog/tmf-api/partyRoleManagement/v4/docs
-      port: 8080  
+      implementation: {{.Release.Name}}-partyroleapi
+      apitype: openapi
+      path: /{{.Release.Name}}-{{.Values.component.name}}/tmf-api/partyRoleManagement/v4
+      developerUI: /{{.Release.Name}}-{{.Values.component.name}}/tmf-api/partyRoleManagement/v4/docs
+      port: 8080 
+    dependantAPIs: []
 ```
 
 The `management` and `security` sections describe management and security APIs the component exposes that are part of its management or security (rather than part of its core business function). Examples of management APIs are for self-testing, raising operational alarms, or configuring the component itself. The `security` section provides meta-data on the security mechanisms used by the component, for example, exposing the roles the component requires to be configured in the Identity Management service. Again, the current definitions within these sections are experimental and we will modify and enhance them as we build-out the ODA Canvas and assemble a representative set of ODA Components. As of version `v1alpha2` and later, the security definition should include a `partyrole` property that describes the TMF669 PartyRole Open-API that all components must support (future versions may support multiple mechanisms for components to expose the roles they support). As of version `v1alpha3` and layer, the security definition must include a `controllerRole` property that gives the name of a pre-existing role in the component that the security controller can use to a) POST a listener URL to the component partyRole notification endpoint so that it can receive notifications of events against party roles and b) GET the partyrole endpoint to query roles in the component.
