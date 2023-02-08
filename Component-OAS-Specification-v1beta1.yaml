@@ -62,8 +62,8 @@ spec:
                 description: url to the specification of the API, if required. e.g. url to the swagger file for Open API.
               apitype:
                 type: string
-                enum: [openapi, prometheus]
-                description: The type of API specification. Currently only OpenAPI (swagger) and Prometheus (metrics) APIs are supported.
+                enum: [openapi, open-metrics]
+                description: The type of API specification. Currently only OpenAPI (swagger) and open-metrics (metrics) APIs are supported.
               implementation:
                 type: string
                 description: The name of the service where the implementation of the API is found
@@ -98,11 +98,8 @@ spec:
               apitype:
                 type: string
                 required: true
-                enum: [openapi, prometheus]
-                description: The type of API specification. Currently only OpenAPI (swagger) and Prometheus (metrics) APIs are supported.
-    eventNotification:
-      type: object  
-      properties:  
+                enum: [openapi]
+                description: The type of API specification. Currently only OpenAPI (swagger) and open-metrics (metrics) APIs are supported.
         publishedEvents: 
           type: array
           items:
@@ -110,8 +107,17 @@ spec:
             properties:
               name:
                 type: string
-              href:
+                description: Name of the published event
+              specification:
                 type: string
+                format: url
+                description: Url of the specification of the event
+              hub:
+                type: string
+                description: The path for configuring the destination for the events
+              port:
+                type: integer
+                description: The port where the hub is exposed 
         subscribedEvents: 
           type: array
           items:
@@ -119,8 +125,21 @@ spec:
             properties:
               name:
                 type: string
-              href:
+                description: Name of the subscribed events that this component want to subscribe to.
+              specification:
                 type: string
+                format: url
+                description: Url of the specification of the event
+              call-back:
+                type: string
+                description: The path to call-back end-point for these events
+              filter:
+                type: string
+                description: The filter to use for this subscription
+                example: CatalogStateChangeEvent&status=active
+              port:
+                type: integer
+                description: The port where the call-back is exposed 
     management:
       type: object  
       properties:  
@@ -140,8 +159,8 @@ spec:
               apitype:
                 type: string
                 required: true
-                enum: [openapi, prometheus]
-                description: The type of API specification. Currently only OpenAPI (swagger) and Prometheus (metrics) APIs are supported.
+                enum: [openapi, open-metrics]
+                description: The type of API specification. Currently only OpenAPI (swagger) and open-metrics (metrics) APIs are supported.
               implementation:
                 type: string
                 required: true
@@ -179,8 +198,8 @@ spec:
               apitype:
                 type: string
                 required: true
-                enum: [openapi, prometheus]
-                description: The type of API specification. Currently only OpenAPI (swagger) and Prometheus APIs are supported.
+                enum: [openapi, open-metrics]
+                description: The type of API specification. Currently only OpenAPI (swagger) and open-metrics APIs are supported.
     security:
       type: object  
       properties:  
@@ -200,8 +219,8 @@ spec:
               apitype:
                 type: string
                 required: true
-                enum: [openapi, prometheus]
-                description: The type of API specification. Currently only OpenAPI (swagger) and Prometheus APIs are supported.
+                enum: [openapi]
+                description: The type of API specification. Currently only OpenAPI (swagger) and open-metrics APIs are supported.
               implementation:
                 type: string
                 required: true
@@ -239,8 +258,8 @@ spec:
               apitype:
                 type: string
                 required: true
-                enum: [openapi, prometheus]
-                description: The type of API specification. Currently only OpenAPI (swagger) and Prometheus APIs are supported.
+                enum: [openapi, open-metrics]
+                description: The type of API specification. Currently only OpenAPI (swagger) and open-metrics APIs are supported.
         controllerRole:
           description: This is the name of the role that the Canvas controllers will use to interact with the component's APIs.
             It must exist in the roles exposed by the partyRole API.
