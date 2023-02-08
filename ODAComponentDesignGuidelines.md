@@ -22,7 +22,7 @@ The meta-data is defined using a Kubernetes [CustomResourceDefinition](https://k
 
 There is an example of the metadata for the [productcatalog example component](https://github.com/tmforum-oda/oda-ca-docs/blob/master/examples/ProductCatalog/productcatalog/templates/component-productcatalog.yaml) broken-down into sections below:
 
-```
+```yaml
 apiVersion: oda.tmforum.org/v1beta1
 kind: component
 metadata:
@@ -34,7 +34,7 @@ metadata:
 
 This is the header information for the component, specifying the version of the CRD (Custom Resource Definition) that it is using, and providing a name and a label for the component and a label describing which functional block the component belongs to.
 
-```
+```yaml
 spec:
   type: TMFC001-productcatalogmanagement
   version: 0.0.3
@@ -53,7 +53,7 @@ The `type` allows us to specify that this is an implementation of a standard typ
 
 The `description`, `maintainers` and `owners` are self-descriptive.
 
-```
+```yaml
   coreFunction:
     exposedAPIs:
     - name: productcatalogmanagement
@@ -94,7 +94,7 @@ The `coreFunction` describes the core purpose of the software component. It desc
 
 
 
-```
+```yaml
   management:
     exposedAPIs:
     - name: metrics
@@ -132,7 +132,7 @@ By default, when you deploy a kubernetes manifest containing a number of differe
 
 In our productcatalog example component, if you look at the service definition below, it shows us adding the component label to this service.
 
-```
+```yaml
 apiVersion: v1
 kind: Service
 metadata:
