@@ -14,69 +14,59 @@ The ODA Component concept builds on top of open standards like Docker and Kubern
 
 ## Step 1: ODA-Component Metadata
 
+This guide has been updated to conform to the [v1beta1 component specification](Component-OAS-Specification-v1beta1.yaml).
+
 The ODA-Component metadata contains all the Telco-domain knowledge that makes the component a self-describing deployable software module. From [IG1171 ODA Component Definition](https://projects.tmforum.org/wiki/display/PUB/IG1171%20ODA%20Component%20Definition%20R19.0.1), this meta-data describes the Open-APIs, event data schemas as well as security and management & operations for the component. 
 
-The meta-data is defined using a Kubernetes [CustomResourceDefinition](https://kubernetes.io/docs/tasks/access-kubernetes-api/custom-resources/custom-resource-definitions/). This allows us to extend the Kubernetes API with our custom-defined schema for Telco meta-data. The CustomResourceDefinition schema is in the [github.com/tmforum-rand/oda-component-definitions](https://github.com/tmforum-rand/oda-component-definitions/tree/master/custom-resource-definitions) folder.
+The meta-data is defined using a Kubernetes [CustomResourceDefinition](https://kubernetes.io/docs/tasks/access-kubernetes-api/custom-resources/custom-resource-definitions/). This allows us to extend the Kubernetes API with our custom-defined schema for Telco meta-data. The CustomResourceDefinition schema is in the [github.com/tmforum-oda/oda-canvas-charts](https://github.com/tmforum-oda/oda-canvas-charts/blob/master/canvas/charts/crds/templates) repository.
 
-There is an example of the metadata for the productcatalog example component broken-down into sections below:
+There is an example of the metadata for the [productcatalog example component](https://github.com/tmforum-oda/oda-ca-docs/blob/master/examples/ProductCatalog/productcatalog/templates/component-productcatalog.yaml) broken-down into sections below:
 
 ```
-apiVersion: oda.tmforum.org/v1alpha2
+apiVersion: oda.tmforum.org/v1beta1
 kind: component
 metadata:
   name: vodafone-productcatalog
   labels:
     oda.tmforum.org/componentName: vodafone-productcatalog
+    oda.tmforum.org/funtionalBlockName: CoreCommerce
 ```
 
-This is the header information for the component, specifying the version of the CRD (Custom Resource Definition) that it is using, and providing a name and a label for the component.
+This is the header information for the component, specifying the version of the CRD (Custom Resource Definition) that it is using, and providing a name and a label for the component and a label describing which functional block the component belongs to.
 
 ```
 spec:
-  selector:
-    matchLabels:
-     oda.tmforum.org/componentName: vodafone-productcatalog
-  componentKinds:
-    - group: core
-      kind: Service
-    - group: apps
-      kind: Deployment  
-  type: productcatalog  
-  version: "0.0.1"
-  description: "Vodafone simple reference implementation of ODA Product Catalog." 
+  type: TMFC001-productcatalogmanagement
+  version: 0.0.3
+  description: "Simple Product Catalog ODA-Component from Open-API reference implementation." 
   maintainers:
-    - name: Lester Thomas
-      email: lester.thomas@vodafone.com
+  - name: Lester Thomas
+    email: lester.thomas@vodafone.com
   owners:
     - name: Lester Thomas
       email: lester.thomas@vodafone.com  
 ```
 
-This next section starts the `spec` for the component. THe `selector` and `matchLabels` are used in the section 2 to *label the standard kubernetes resources as belonging to the component*.
+This next section starts the `spec` for the component.
 
-The `type` allows us to specify that this is an implementation of a standard type of Component. The target is for the Open-Digital Architecture Reference Implementation to define a catalog of standard component types.
+The `type` allows us to specify that this is an implementation of a standard type of Component. If the `type` and `version` match one of the **Golden Components** then the Component CTK will test that the functional capability matches the requirements from that **Golden Component**. For a full list of all the standard ODA Components, see the [ODA Component Directory](https://oda-directory.labs.tmforum.org/)
 
-The `version` and `description`, `maintainers` and `owners` are self-descriptive.
+The `description`, `maintainers` and `owners` are self-descriptive.
 
 ```
   coreFunction:
-    exposedAPIs: 
-    - name: productCatalog
-      specification: https://open-api.tmforum.org/TMF620-ProductCatalog-v4.0.0.swagger.json
-      implementation: productcatalog
-      path: /admin/productCatalogManagement/v2/catalog
+    exposedAPIs:
+    - name: productcatalogmanagement
+      specification: https://raw.githubusercontent.com/tmforum-apis/TMF620_ProductCatalog/master/TMF620-ProductCatalog-v4.0.0.swagger.json
+      implementation: {{.Release.Name}}-prodcatapi
+      apitype: openapi
+      path: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/productCatalogManagement/v4
+      developerUI: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/productCatalogManagement/v4/docs
       port: 8080
-      scopes:
-      - name: admin
-      - name: regular
-    - name: processFlow
-      specification: https://open-api.tmforum.org/TMF701-ProcessFlow-v4.0.0.swagger.json
-      implementation: camunda
-      path: /camunda
-      port: 8080
-    dependentAPIs: 
-    - name: party      
-      specification: https://open-api.tmforum.org/TMF632-Party-v4.0.0.swagger.json
+    dependantAPIs:
+    - name: party 
+      apitype: openapi     
+      specification: https://open-api.tmforum.org/TMF632-Party-v4.0.0.swagger.json       
 ```
 
 The `coreFunction` describes the core purpose of the software component. It describes the list of APIs that the component exposes as well as the APIs it is dependant on. The definitions within the `exposedAPIs` and `dependentAPIs` are experimental at this point, and we will modify and enhance them as we build-out the ODA Canvas and assemble a representative set of ODA Components. The current definition has:
