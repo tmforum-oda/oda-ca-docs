@@ -1,0 +1,665 @@
+{
+	"info": {
+		"_postman_id": "f13a63fe-1327-4bad-9ef7-44d19304b4aa",
+		"name": "ComponentAutoTests",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "314044"
+	},
+	"item": [
+		{
+			"name": "Get partyRole list",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"pm.test(\"Response is an Array\", function () {\r",
+							"    pm.expect(pm.response.json()).to.be.an('array').but.not.an('object')\r",
+							"});\r",
+							"pm.test(\"Response time is less than 2000ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(2000);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://{{Hostname}}/r1-productcatalog/tmf-api/partyRoleManagement/v4/partyRole",
+					"protocol": "http",
+					"host": [
+						"{{Hostname}}"
+					],
+					"path": [
+						"r1-productcatalog",
+						"tmf-api",
+						"partyRoleManagement",
+						"v4",
+						"partyRole"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create partyRole",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"MVNO Admin\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://{{Hostname}}/r1-productcatalog/tmf-api/partyRoleManagement/v4/partyRole",
+					"protocol": "http",
+					"host": [
+						"{{Hostname}}"
+					],
+					"path": [
+						"r1-productcatalog",
+						"tmf-api",
+						"partyRoleManagement",
+						"v4",
+						"partyRole"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create productSpecification",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 201\", function () {\r",
+							"    pm.response.to.have.status(201);\r",
+							"});\r",
+							"pm.test(\"Response is an Object\", function () {\r",
+							"    pm.expect(pm.response.json()).to.be.an('object')\r",
+							"});\r",
+							"pm.test(\"Response time is less than 2000ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(2000);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Acme Firewall\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://{{Hostname}}/r1-productcatalog/tmf-api/productCatalogManagement/v4/productSpecification",
+					"protocol": "http",
+					"host": [
+						"{{Hostname}}"
+					],
+					"path": [
+						"r1-productcatalog",
+						"tmf-api",
+						"productCatalogManagement",
+						"v4",
+						"productSpecification"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET productSpecification",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response time is less than 2000ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(2000);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://{{Hostname}}/r1-productcatalog/tmf-api/productCatalogManagement/v4/productSpecification",
+					"protocol": "http",
+					"host": [
+						"{{Hostname}}"
+					],
+					"path": [
+						"r1-productcatalog",
+						"tmf-api",
+						"productCatalogManagement",
+						"v4",
+						"productSpecification"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Register event listener",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 201\", function () {\r",
+							"    pm.response.to.have.status(201);\r",
+							"});\r",
+							"pm.test(\"Response is an Object\", function () {\r",
+							"    pm.expect(pm.response.json()).to.be.an('object')\r",
+							"});\r",
+							"pm.test(\"Response time is less than 2000ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(2000);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"callback\": \"http://r1-productcatalog-sm:4000/listener\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://{{Hostname}}/r1-productcatalog/tmf-api/productCatalogManagement/v4/hub",
+					"protocol": "http",
+					"host": [
+						"{{Hostname}}"
+					],
+					"path": [
+						"r1-productcatalog",
+						"tmf-api",
+						"productCatalogManagement",
+						"v4",
+						"hub"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create category 1",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 201\", function () {\r",
+							"    pm.response.to.have.status(201);\r",
+							"});\r",
+							"pm.test(\"Response is an Object\", function () {\r",
+							"    pm.expect(pm.response.json()).to.be.an('object')\r",
+							"});\r",
+							"pm.test(\"Response time is less than 2000ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(2000);\r",
+							"});\r",
+							"\r",
+							"var jsonData = JSON.parse(responseBody);\r",
+							"var id = jsonData.id\r",
+							"postman.setEnvironmentVariable(\"categoryOneId\", id);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Internet line of product\",\r\n    \"description\": \"Fiber and ADSL broadband products\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://{{Hostname}}/r1-productcatalog/tmf-api/productCatalogManagement/v4/category",
+					"protocol": "http",
+					"host": [
+						"{{Hostname}}"
+					],
+					"path": [
+						"r1-productcatalog",
+						"tmf-api",
+						"productCatalogManagement",
+						"v4",
+						"category"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create category 2",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 201\", function () {\r",
+							"    pm.response.to.have.status(201);\r",
+							"});\r",
+							"pm.test(\"Response is an Object\", function () {\r",
+							"    pm.expect(pm.response.json()).to.be.an('object')\r",
+							"});\r",
+							"pm.test(\"Response time is less than 2000ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(2000);\r",
+							"});\r",
+							"\r",
+							"var jsonData = JSON.parse(responseBody);\r",
+							"var id=jsonData.id\r",
+							"postman.setEnvironmentVariable(\"categoryTwoId\", id);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"IoT line of product\",\r\n    \"description\": \"IoT devices and solutions\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://{{Hostname}}/r1-productcatalog/tmf-api/productCatalogManagement/v4/category",
+					"protocol": "http",
+					"host": [
+						"{{Hostname}}"
+					],
+					"path": [
+						"r1-productcatalog",
+						"tmf-api",
+						"productCatalogManagement",
+						"v4",
+						"category"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET categories",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"pm.test(\"Response is an Array\", function () {\r",
+							"    pm.expect(pm.response.json()).to.be.an('array').but.not.an('object')\r",
+							"});\r",
+							"pm.test(\"Response time is less than 2000ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(2000);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://{{Hostname}}/r1-productcatalog/tmf-api/productCatalogManagement/v4/category",
+					"protocol": "http",
+					"host": [
+						"{{Hostname}}"
+					],
+					"path": [
+						"r1-productcatalog",
+						"tmf-api",
+						"productCatalogManagement",
+						"v4",
+						"category"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET categories filtered",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"pm.test(\"Response is an Array\", function () {\r",
+							"    pm.expect(pm.response.json()).to.be.an('array').but.not.an('object')\r",
+							"});\r",
+							"pm.test(\"Response time is less than 2000ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(2000);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://{{Hostname}}/r1-productcatalog/tmf-api/productCatalogManagement/v4/category?name=IoT line of product",
+					"protocol": "http",
+					"host": [
+						"{{Hostname}}"
+					],
+					"path": [
+						"r1-productcatalog",
+						"tmf-api",
+						"productCatalogManagement",
+						"v4",
+						"category"
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": "IoT line of product"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create productoffering 1",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 201\", function () {\r",
+							"    pm.response.to.have.status(201);\r",
+							"});\r",
+							"pm.test(\"Response is an Object\", function () {\r",
+							"    pm.expect(pm.response.json()).to.be.an('object')\r",
+							"});\r",
+							"pm.test(\"Response time is less than 2000ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(2000);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Fiber Offering 1\",\r\n    \"description\": \"50 Mbps Fiber broadband\",\r\n    \"category\": [\r\n        {\r\n            \"name\": \"Internet line of product\",\r\n            \"id\": \"{{categoryOneId}}\",\r\n            \"href\": \"https://a576e999356a44e898169adcf3aaf879-368993360.eu-west-1.elb.amazonaws.com/r1-productcatalog/tmf-api/productCatalogManagement/v4/category/{{categoryOneId}}\",\r\n            \"@referredType\": \"Category\"\r\n        }        \r\n    ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://{{Hostname}}/r1-productcatalog/tmf-api/productCatalogManagement/v4/productoffering",
+					"protocol": "http",
+					"host": [
+						"{{Hostname}}"
+					],
+					"path": [
+						"r1-productcatalog",
+						"tmf-api",
+						"productCatalogManagement",
+						"v4",
+						"productoffering"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create productoffering 2",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 201\", function () {\r",
+							"    pm.response.to.have.status(201);\r",
+							"});\r",
+							"pm.test(\"Response is an Object\", function () {\r",
+							"    pm.expect(pm.response.json()).to.be.an('object')\r",
+							"});\r",
+							"pm.test(\"Response time is less than 2000ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(2000);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"IoT Dongle\",\r\n    \"description\": \"Dongle with 5 Mbps broadband service\",\r\n    \"category\": [\r\n        {\r\n            \"name\": \"IoT line of product\",\r\n            \"id\": \"{{categoryTwoId}}\",\r\n            \"href\": \"https://a576e999356a44e898169adcf3aaf879-368993360.eu-west-1.elb.amazonaws.com/r1-productcatalog/tmf-api/productCatalogManagement/v4/category/{{categoryTwoId}}\",\r\n            \"@referredType\": \"Category\"\r\n        }        \r\n    ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://{{Hostname}}/r1-productcatalog/tmf-api/productCatalogManagement/v4/productoffering",
+					"protocol": "http",
+					"host": [
+						"{{Hostname}}"
+					],
+					"path": [
+						"r1-productcatalog",
+						"tmf-api",
+						"productCatalogManagement",
+						"v4",
+						"productoffering"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET productofferings",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"pm.test(\"Response is an Array\", function () {\r",
+							"    pm.expect(pm.response.json()).to.be.an('array').but.not.an('object')\r",
+							"});\r",
+							"pm.test(\"Response time is less than 2000ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(2000);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://{{Hostname}}/r1-productcatalog/tmf-api/productCatalogManagement/v4/productoffering",
+					"protocol": "http",
+					"host": [
+						"{{Hostname}}"
+					],
+					"path": [
+						"r1-productcatalog",
+						"tmf-api",
+						"productCatalogManagement",
+						"v4",
+						"productoffering"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET productofferings filtered",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"pm.test(\"Response is an Array\", function () {\r",
+							"    pm.expect(pm.response.json()).to.be.an('array').but.not.an('object')\r",
+							"});\r",
+							"pm.test(\"Response time is less than 2000ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(2000);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://{{Hostname}}/r1-productcatalog/tmf-api/productCatalogManagement/v4/productoffering?category.name=Internet line of product",
+					"protocol": "http",
+					"host": [
+						"{{Hostname}}"
+					],
+					"path": [
+						"r1-productcatalog",
+						"tmf-api",
+						"productCatalogManagement",
+						"v4",
+						"productoffering"
+					],
+					"query": [
+						{
+							"key": "category.name",
+							"value": "Internet line of product"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
