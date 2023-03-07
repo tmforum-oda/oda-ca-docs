@@ -46,6 +46,6 @@ Read [this presentation](https://github.com/tmforum-oda/oda-ca-docs/blob/master/
 
 **Current ODA-CA project members**
 
-alvatross by SATEC, Axiata Digital Labs, Bruhati Solutions, China Mobile, Ericsson, Global Wavenet, Hansen Technologies, Inetum, Oracle, Orange, OryxGateway, Software AG, Sterlite Technologies Limited, Sysbiz Technologies, Vodafone, Whale Cloud.
+alvatross by SATEC, Axiata Digital Labs, Bruhati Solutions, China Mobile, Ericsson, Global Wavenet, Hansen Technologies, Inetum, Microsoft, Oracle, Orange, OryxGateway, Software AG, Sterlite Technologies Limited, Sysbiz Technologies, Vodafone, Whale Cloud.
 
 [comment]: <> (**ODA-CA presentations**)
