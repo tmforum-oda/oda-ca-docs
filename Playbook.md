@@ -36,8 +36,8 @@ Read [this presentation](https://github.com/tmforum-oda/oda-ca-docs/blob/master/
 * Deploying ODA Components on the ODA Canvas - API exposure and discovery: [video (6 min)](https://www.youtube.com/watch?v=e63FGHMeI1M)
 * Validation of ODA Components using the prototype Component CTK: [video (3 min)](https://www.youtube.com/watch?v=RyTGzc4pv64&t=1s)
 * Implementing identity & access management with the ODA Canvas: [video (4 min)](https://www.youtube.com/watch?v=7VKT_kCYfzE)
+* Using an ODA Proxy Component for SaaS integration and other use cases: [video (8 min)]([https://www.youtube.com/watch?v=5De54QwrvEM&t=2s](https://iframe.dacast.com/vod/9292f2e21c51139fb9b2ffd6080ab1d6/da785452-1aea-4e56-b9f6-39cfd2deb717))
 * Implementing observability with the ODA Canvas: [video (8 min)](https://www.youtube.com/watch?v=5De54QwrvEM&t=2s)
-* Early 2021 'Show & Tell' presentation introducing the Open Digital Lab environment and showcasing the deployment of commercial products onto the ODA reference Canvas, including the use of a 'Proxy Component' to integrate SaaS solutions: [video (1h 45 min)](https://video.ibm.com/channel/24077591/video/lf09c2)
 
 **Deploying Cloud Native Network Functions onto the ODA Canvas**
 
