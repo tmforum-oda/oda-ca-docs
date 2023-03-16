@@ -104,11 +104,14 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../../ctk/README.html">ODA Component - CTK</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Canvas Helm Charts:</span></p>
+<p class="caption"><span class="caption-text">Canvas Installation:</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../index.html">Open Digital Architecture - Canvas</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../Specification.html">ODA Reference Implementation and Environment Specification</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../Installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../installation/README.html">ODA Canvas installation</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Canvas Usecase library:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../usecase-library/README.html">ODA Canvas - use-case library</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../usecase-library/index.html">ODA-Canvas - Usecase list</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Canvas Operators:</span></p>
 <ul class="current">
@@ -211,16 +214,44 @@
 <div class="section" id="list-of-operators">
 <h2>List of Operators<a class="headerlink" href="#list-of-operators" title="Permalink to this headline">¶</a></h2>
 <p>This is the target list of the Canvas operators. Some are still in development and others are not yet defined. The list is subject to change as the Canvas evolves.</p>
-<p>| Operator            | Description                     |
-| ——————- | ——————————- |
-| Component Management | The Component operator manages the de-composition of an ODA component into APIs and Events (that are processed by their corresponding operators). |
-| API Exposure | Configures the Service Providers API Gateway and/or Service Mesh to provide security, throttling and other non-functional services to allow API endpoints to be exposed to external consumers |
-| API Discovery [TBD] | Provides discovery for APIs where a component has declared a dependency. Internally it uses the Service Providers discovery capabilities to identify and give access to the appropriate API to fill a dependency. The component us updated via a ServiceActivationConfiguration Open-API call |
-| License Manager [TBD] | Audits compliance of component usage against licensing agreements |
-| Identity | Provides identity management to grant system and user access to components. |
-| Observability (Implemented as part of API Operator) | Captures observability data and allows alarming, tracing and root-cause analysis of issues. |
-| Event Hub [In progress] | Enables components to publish and subscribe to asynchronous events |</p>
-<p>The ODA Reference implemantation contains Operators that can manage the <strong>ODA Component</strong>, <strong>ODA API</strong> and other resources. The <a class="reference external" href="https://kubernetes.io/docs/concepts/extend-kubernetes/api-extension/custom-resources/">Custom Resource Definitions</a> (CRDs) that these operators manage are installed as part of the <a class="reference internal" href="../../installation/README.html"><span class="doc">canvas installation</span></a>.</p>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>Operator</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Component Management</td>
+<td>The Component operator manages the de-composition of an ODA component into APIs and Events (that are processed by their corresponding operators).</td>
+</tr>
+<tr>
+<td>API Exposure</td>
+<td>Configures the Service Providers API Gateway and/or Service Mesh to provide security, throttling and other non-functional services to allow API endpoints to be exposed to external consumers</td>
+</tr>
+<tr>
+<td>API Discovery [TBD]</td>
+<td>Provides discovery for APIs where a component has declared a dependency. Internally it uses the Service Providers discovery capabilities to identify and give access to the appropriate API to fill a dependency. The component us updated via a ServiceActivationConfiguration Open-API call</td>
+</tr>
+<tr>
+<td>License Manager [TBD]</td>
+<td>Audits compliance of component usage against licensing agreements</td>
+</tr>
+<tr>
+<td>Identity</td>
+<td>Provides identity management to grant system and user access to components.</td>
+</tr>
+<tr>
+<td>Observability (Implemented as part of API Operator)</td>
+<td>Captures observability data and allows alarming, tracing and root-cause analysis of issues.</td>
+</tr>
+<tr>
+<td>Event Hub [In progress]</td>
+<td>Enables components to publish and subscribe to asynchronous events</td>
+</tr>
+</tbody>
+</table><p>The ODA Reference implemantation contains Operators that can manage the <strong>ODA Component</strong>, <strong>ODA API</strong> and other resources. The <a class="reference external" href="https://kubernetes.io/docs/concepts/extend-kubernetes/api-extension/custom-resources/">Custom Resource Definitions</a> (CRDs) that these operators manage are installed as part of the <a class="reference internal" href="../../installation/README.html"><span class="doc">canvas installation</span></a>.</p>
 <p>The ODA Component YAML files are created by following the instructions in <a class="reference external" href="https://github.com/tmforum-oda/oda-ca-docs/tree/master/ODAComponentDesignGuidelines.md">tmforum-oda/oda-ca-docs/ODAComponentDesignGuidelines</a>.</p>
 <p>The Reference Implementaiton Controllers are created using the KOPF (Kubernetes Operator Pythonic Framework - <a class="reference external" href="https://github.com/zalando-incubator/kopf">https://github.com/zalando-incubator/kopf</a>). This provides a simple framework in python for creating Operators. The Canvas can support operators created in other languages (e.g. Java) as long as support the Kubernetes Operator pattern.</p>
 </div>

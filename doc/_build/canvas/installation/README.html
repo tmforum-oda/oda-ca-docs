@@ -38,7 +38,9 @@
 
     
     <link rel="index" title="Index" href="../../genindex.html" />
-    <link rel="search" title="Search" href="../../search.html" /> 
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="ODA Canvas - use-case library" href="../usecase-library/README.html" />
+    <link rel="prev" title="ODA Component - CTK" href="../../ctk/README.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -102,11 +104,31 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../ctk/README.html">ODA Component - CTK</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Canvas Helm Charts:</span></p>
+<p class="caption"><span class="caption-text">Canvas Installation:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">ODA Canvas installation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#software-versions">Software Versions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#changes">Changes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#configuration-values">Configuration values</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#environment-installation">Environment installation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#kubernetes-distribution">1. Kubernetes distribution</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#helm">2. Helm</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#istio">3. Istio</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#reference-implementation">4. Reference implementation</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#troubleshooting">Troubleshooting</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#error-instaling-backofflimitexceeded">Error instaling: BackoffLimitExceeded</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#error-installing-failed-post-install">Error installing : Failed post-install</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Canvas Usecase library:</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../index.html">Open Digital Architecture - Canvas</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../Specification.html">ODA Reference Implementation and Environment Specification</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../Installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../usecase-library/README.html">ODA Canvas - use-case library</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../usecase-library/index.html">ODA-Canvas - Usecase list</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Canvas Operators:</span></p>
 <ul>
@@ -193,32 +215,105 @@
 <div class="section" id="software-versions">
 <h2>Software Versions<a class="headerlink" href="#software-versions" title="Permalink to this headline">¶</a></h2>
 <p>For each release, we will support a min and max Kubernetes version.</p>
-<p>| ODA Component version | Min Kubernetes version | Max Kubernetes version  |
-| ——————— | ———————- | ———————– |
-| v1alpha4              | 1.20                   | 1.22                    |
-| v1beta1               | 1.22                   | 1.25                    |</p>
-<p>We will test the Reference Implementation Canvas against a range of kubernetes versions and on a number of different deployments.</p>
-<p>| Kubernetes deployment     | Tested | Notes             |
-| ————————- | —— | —————– |
-| Rancher on AWS            |        | [Open Digital Lab environment]                   |
-| Azure AKS                 |        |                   |
-| Microk8s                  |        |                   |
-| MiniKube                  |        |                   |
-| Docker Desktop            |        |                   |
-| Kind                      |        | Using <a class="reference external" href="canvas-in-a-bottle/README">Canvas-in-a-bottle</a> |
-| K3s                       |        |                   |<br />| (other)                   |        | To suggest additional environments please add to this <a class="reference external" href="https://github.com/tmforum-oda/oda-canvas-charts/issues/52">issue</a>                  |</p>
-<p>The environment where the chart has been tested has the following
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>ODA Component version</th>
+<th>Min Kubernetes version</th>
+<th>Max Kubernetes version</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>v1alpha4</td>
+<td>1.20</td>
+<td>1.22</td>
+</tr>
+<tr>
+<td>v1beta1</td>
+<td>1.22</td>
+<td>1.25</td>
+</tr>
+</tbody>
+</table><p>We will test the Reference Implementation Canvas against a range of kubernetes versions and on a number of different deployments.</p>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>Kubernetes deployment</th>
+<th>Tested</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Rancher on AWS</td>
+<td></td>
+<td>[Open Digital Lab environment]</td>
+</tr>
+<tr>
+<td>Azure AKS</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Microk8s</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>MiniKube</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Docker Desktop</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Kind</td>
+<td></td>
+<td>Using <a href="canvas-in-a-bottle/README.md">Canvas-in-a-bottle</a></td>
+</tr>
+<tr>
+<td>K3s</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>(other)</td>
+<td></td>
+<td>To suggest additional environments please add to this <a href="https://github.com/tmforum-oda/oda-canvas-charts/issues/52">issue</a></td>
+</tr>
+</tbody>
+</table><p>The environment where the chart has been tested has the following
 |Software|Version  |
 |–|–|
 |Istio  | 1.16.1  |
 |Helm | 3.10 |</p>
 <p>The helm chart installs the following updated versions of third party to</p>
-<p>|Software|Version  |
-|–|–|
-|Cert-Manager  |1.20  |
-|Keycloak  |  20.0.3|
-|Postgress| 15.0.1 |</p>
-</div>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>Software</th>
+<th>Version</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Cert-Manager</td>
+<td>1.20</td>
+</tr>
+<tr>
+<td>Keycloak</td>
+<td>20.0.3</td>
+</tr>
+<tr>
+<td>Postgress</td>
+<td>15.0.1</td>
+</tr>
+</tbody>
+</table></div>
 <div class="section" id="changes">
 <h2>Changes<a class="headerlink" href="#changes" title="Permalink to this headline">¶</a></h2>
 <p>The Helm chart has been refactored to move all the different subcharts to the same level to improve rreadabilityA new chart, oda-ca has been create as an umbrella for others allowing to have a centralised configuration
@@ -411,6 +506,10 @@ Uninstall the chart and reinstall it with the new time.</p>
            
           </div>
           <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="../usecase-library/README.html" class="btn btn-neutral float-right" title="ODA Canvas - use-case library" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="../../ctk/README.html" class="btn btn-neutral float-left" title="ODA Component - CTK" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
 
   <hr/>
 

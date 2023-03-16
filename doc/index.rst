@@ -39,11 +39,17 @@ Open Digital Architecture - Component Accelerator
 
 .. toctree::
    :maxdepth: 2
-   :caption: Canvas Helm Charts:
+   :caption: Canvas Installation:
 
-   canvas/index.rst
-   canvas/Specification.md
-   canvas/Installation.md
+   canvas/installation/README.md
+
+.. toctree::
+   :maxdepth: 2
+   :caption: Canvas Usecase library:
+   
+   canvas/usecase-library/README.md
+   canvas/usecase-library/index.rst
+
    
 .. toctree::
    :maxdepth: 2

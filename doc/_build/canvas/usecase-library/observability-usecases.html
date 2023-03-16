@@ -102,11 +102,14 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../ctk/README.html">ODA Component - CTK</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Canvas Helm Charts:</span></p>
+<p class="caption"><span class="caption-text">Canvas Installation:</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../index.html">Open Digital Architecture - Canvas</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../Specification.html">ODA Reference Implementation and Environment Specification</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../Installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../installation/README.html">ODA Canvas installation</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Canvas Usecase library:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="README.html">ODA Canvas - use-case library</a></li>
+<li class="toctree-l1"><a class="reference internal" href="index.html">ODA-Canvas - Usecase list</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Canvas Operators:</span></p>
 <ul>
@@ -214,17 +217,48 @@
 <li><p>So that no degradation in performance of the ODA component (e.g. TMFC001 Product Catalog Management) functionality is observed as the number of user requests grow.</p></li>
 </ul>
 <p><strong>BDD</strong> (using Gherkin Syntax) describing component to Canvas interaction</p>
-<p>| <strong>Feature</strong> | Allow a Site Reliability Engineer to see a scalable ODA component such that with additional load of user request more nodes are automatically added |
-| — | — |
-| <strong>Scenario</strong> | See nodes added to a running ODA component. |
-| <strong>Precondition</strong> | <strong>Given</strong>  that an ODA component has been deployed into a scalable infrastructure|
-| <strong>Action</strong> |  <strong>when</strong>  the number of user requests increases|
-|            | <strong>and</strong> the Site Reliability Engineer selects the running ODA components view|
-| <strong>Outcome</strong> | <strong>then</strong>  additional nodes are deployed|
-|  | <strong>and</strong> the running nodes are visible|
-|  | <strong>and</strong>  the component is observed to have higher throughput|
-|  | <strong>and</strong> health status of each nodes should be visible as well. (move to another BDD)|</p>
-</div>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th><strong>Feature</strong></th>
+<th>Allow a Site Reliability Engineer to see a scalable ODA component such that with additional load of user request more nodes are automatically added</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Scenario</strong></td>
+<td>See nodes added to a running ODA component.</td>
+</tr>
+<tr>
+<td><strong>Precondition</strong></td>
+<td><strong>Given</strong>  that an ODA component has been deployed into a scalable infrastructure</td>
+</tr>
+<tr>
+<td><strong>Action</strong></td>
+<td><strong>when</strong>  the number of user requests increases</td>
+</tr>
+<tr>
+<td></td>
+<td><strong>and</strong> the Site Reliability Engineer selects the running ODA components view</td>
+</tr>
+<tr>
+<td><strong>Outcome</strong></td>
+<td><strong>then</strong>  additional nodes are deployed</td>
+</tr>
+<tr>
+<td></td>
+<td><strong>and</strong> the running nodes are visible</td>
+</tr>
+<tr>
+<td></td>
+<td><strong>and</strong>  the component is observed to have higher throughput</td>
+</tr>
+<tr>
+<td></td>
+<td><strong>and</strong> health status of each nodes should be visible as well. (move to another BDD)</td>
+</tr>
+</tbody>
+</table></div>
 <div class="section" id="type-monitoring-and-observability">
 <h2>2.2 Type: Monitoring and observability<a class="headerlink" href="#type-monitoring-and-observability" title="Permalink to this headline">¶</a></h2>
 <p><strong>User Story</strong></p>
@@ -234,13 +268,32 @@
 <li><p>So that no performance issues such as long load and save times are observed and that application shut down can be prevented.</p></li>
 </ul>
 <p><strong>BDD</strong> (using Gherkin Syntax) describing component to Canvas interaction</p>
-<p>| <strong>Feature</strong> | Allow a Site Reliability Engineer receive notifications whenever a running ODA component has resource exhaustion issues such as lack of memory or when the CPU utilisation rate is too high. |
-| — | — |
-| <strong>Scenario</strong> | Receiving a notification via appropriate channels, in order to carry out remedial actions on a running ODA component. |
-| <strong>Precondition</strong> |  <strong>Given</strong>  that an ODA component has been deployed into a scalable infrastructure|
-| <strong>Action</strong> | <strong>when</strong>  the ODA component system experiences resource exhaustion issues such as lack of memory or high CPU utilisation rate|
-| <strong>Outcome</strong> | <strong>then</strong>  a notification is sent to the site reliability engineer indicating the system is lacking in memory or having high rate of CPU utilisation.|</p>
-</div>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th><strong>Feature</strong></th>
+<th>Allow a Site Reliability Engineer receive notifications whenever a running ODA component has resource exhaustion issues such as lack of memory or when the CPU utilisation rate is too high.</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Scenario</strong></td>
+<td>Receiving a notification via appropriate channels, in order to carry out remedial actions on a running ODA component.</td>
+</tr>
+<tr>
+<td><strong>Precondition</strong></td>
+<td><strong>Given</strong>  that an ODA component has been deployed into a scalable infrastructure</td>
+</tr>
+<tr>
+<td><strong>Action</strong></td>
+<td><strong>when</strong>  the ODA component system experiences resource exhaustion issues such as lack of memory or high CPU utilisation rate</td>
+</tr>
+<tr>
+<td><strong>Outcome</strong></td>
+<td><strong>then</strong>  a notification is sent to the site reliability engineer indicating the system is lacking in memory or having high rate of CPU utilisation.</td>
+</tr>
+</tbody>
+</table></div>
 <div class="section" id="type-management-observability-the-baseline-example">
 <h2>2.3 Type: Management &amp; Observability (the baseline example)<a class="headerlink" href="#type-management-observability-the-baseline-example" title="Permalink to this headline">¶</a></h2>
 <p><strong>User Story</strong></p>
@@ -250,15 +303,40 @@
 <li><p>So that when an ODA Component is deployed, updated or deleted its health status, performance, and availability can be monitored.</p></li>
 </ul>
 <p><strong>BDD</strong> (using Gherkin Syntax) describing component to Canvas interaction</p>
-<p>| <strong>Feature</strong> | Allow a Site Reliability Engineer to declaratively configure an observability service such that when an ODA component is deployed, updated or deleted, its observability metrics can be monitored and observed. |
-| — | — |
-| <strong>Scenario</strong> | See and examine an observability service running on an operational canvas |
-| <strong>Precondition</strong> | <strong>Given</strong>  that an ODA component has been deployed|
-| <strong>Action</strong> | <strong>when</strong>  the Site Reliability Engineer access the observability service management console|
-| <strong>Outcome</strong> | <strong>then</strong>  the ODA component is visible in the management interface|
-|  |- <strong>and</strong> the number of HTTP requests/second is displayed|
-|  |- <strong>and</strong> the response time in milliseconds is visible|</p>
-<div class="section" id="canvas-to-component-conversation-flow">
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th><strong>Feature</strong></th>
+<th>Allow a Site Reliability Engineer to declaratively configure an observability service such that when an ODA component is deployed, updated or deleted, its observability metrics can be monitored and observed.</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Scenario</strong></td>
+<td>See and examine an observability service running on an operational canvas</td>
+</tr>
+<tr>
+<td><strong>Precondition</strong></td>
+<td><strong>Given</strong>  that an ODA component has been deployed</td>
+</tr>
+<tr>
+<td><strong>Action</strong></td>
+<td><strong>when</strong>  the Site Reliability Engineer access the observability service management console</td>
+</tr>
+<tr>
+<td><strong>Outcome</strong></td>
+<td><strong>then</strong>  the ODA component is visible in the management interface</td>
+</tr>
+<tr>
+<td></td>
+<td>- <strong>and</strong> the number of HTTP requests/second is displayed</td>
+</tr>
+<tr>
+<td></td>
+<td>- <strong>and</strong> the response time in milliseconds is visible</td>
+</tr>
+</tbody>
+</table><div class="section" id="canvas-to-component-conversation-flow">
 <h3>2.3.1 Canvas to Component Conversation Flow<a class="headerlink" href="#canvas-to-component-conversation-flow" title="Permalink to this headline">¶</a></h3>
 <p><img alt="Baseline observability" src="canvas/images/baseline-observability.png" /></p>
 </div>
