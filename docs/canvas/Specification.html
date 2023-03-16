@@ -1,0 +1,358 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>ODA Reference Implementation and Environment Specification &mdash; ODA-Component Accelerator v1beta1 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Installation" href="Installation.html" />
+    <link rel="prev" title="Open Digital Architecture Canvas" href="README.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> ODA-Component Accelerator
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">About the project:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../docs/Playbook.html">Introduction to the ODA Component Accelerator Project (ODA-CA)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../docs/Getting_started.html">Getting started checklist for new members of ODA-CA</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Tutorials:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../docs/Observability-Tutorial/README.html">Tutorial to deploy and observe a running component</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../docs/ODAComponentTutorial/README.html">Tutorial to build ODA-Component from Open-API Reference Implemenation</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Design Guidelines:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../docs/ODAComponentDesignGuidelines.html">Design Guidelines to create a new ODA Component</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../docs/ODACanvasDesignGuidelines.html">Design Guidelines to design an ODA Canvas</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Compliance Test Kit (CTK):</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../ctk/README.html">ODA Component - CTK</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Canvas Helm Charts:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="index.html">Open Digital Architecture - Canvas</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">ODA Reference Implementation and Environment Specification</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#oda-environment-specification">ODA Environment Specification</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#kubernetes">Kubernetes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#custom-resource-definitions">Custom Resource Definitions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#controllers">Controllers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#service-discovery">Service discovery</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#service-mesh">Service Mesh</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#key-and-certificate-management">Key and certificate management</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#identity-and-access-management">Identity and access management</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#observability">Observability</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#oda-ri-environment-implementation">ODA-RI environment implementation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#oda-ri-specific-supplementary-services">ODA-RI specific supplementary services</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Installation.html">Installation</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Canvas Operators:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="source/operators/index.html">Open Digital Architecture - Controllers/Operators</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Troubleshooting Guide:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../docs/TroubleshootingGuide/index.html">ODA-CA Troubleshooting Guide</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Contributions Guide:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../docs/ContributionsGuide.html">Contribution guidance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../docs/DocumentationProcess.html">Documentation Process</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">ODA-Component Accelerator</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="index.html">Open Digital Architecture - Canvas</a> &raquo;</li>
+        
+      <li>ODA Reference Implementation and Environment Specification</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../_sources/canvas/Specification.md.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="oda-reference-implementation-and-environment-specification">
+<h1>ODA Reference Implementation and Environment Specification<a class="headerlink" href="#oda-reference-implementation-and-environment-specification" title="Permalink to this headline">¶</a></h1>
+<p>The ODA Reference Implementation (ODA-RI) is the proving ground for building a common environment for TM Forum ODA Components. The five levels of specifications and implementation details in this process are:</p>
+<ul class="simple">
+<li><p>The set of <em>core component specifications</em>, which define the core functions exposed by each individual component</p></li>
+<li><p>The component <em>generic specification</em>, which defines the common characteristics shared by every ODA component</p></li>
+<li><p>The <em>environment specification</em>, which defines the underlying platform required to support the components</p></li>
+<li><p>The <em>ODA Reference Implementation</em>, which is a practical implementation of the environment specification</p></li>
+<li><p>The <em>supplemental services</em> required to emulate capabilities that are normally available in a service provider outside the ODA scope.</p></li>
+</ul>
+<p>This page documents the environment specification, reference implementation and supplemental services as we discover them through building and testing the ODA-RI.</p>
+<div class="section" id="oda-environment-specification">
+<h2>ODA Environment Specification<a class="headerlink" href="#oda-environment-specification" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="kubernetes">
+<h3>Kubernetes<a class="headerlink" href="#kubernetes" title="Permalink to this headline">¶</a></h3>
+<p><a class="reference external" href="https://kubernetes.io">Kubernetes</a> is the base platform technology.</p>
+<ul class="simple">
+<li><p>Version 1.19 or higher (1.21 has been shown to work at the time of writing) is required</p></li>
+<li><p>Cluster DNS is required</p></li>
+<li><p>The cloud provider is not important as long as the Kubernetes API is exposed.</p></li>
+</ul>
+</div>
+<div class="section" id="custom-resource-definitions">
+<h3>Custom Resource Definitions<a class="headerlink" href="#custom-resource-definitions" title="Permalink to this headline">¶</a></h3>
+<p>There are custom resource definitions for:</p>
+<ul class="simple">
+<li><p>api.oda.tmforum.org</p></li>
+<li><p>components.oda.tmforum.org</p></li>
+</ul>
+</div>
+<div class="section" id="controllers">
+<h3>Controllers<a class="headerlink" href="#controllers" title="Permalink to this headline">¶</a></h3>
+<p>SRE teams will need to maintain custom controllers for:</p>
+<ul class="simple">
+<li><p>Managing the configuration of components</p></li>
+<li><p>Managing ingress and API gateways for APIs</p></li>
+<li><p>The CRD webhook controller</p></li>
+<li><p>Bootstrapping and integrating with identiy and access management</p></li>
+<li><p>Integrating service discovery and service mesh</p></li>
+<li><p>Managing certificates</p></li>
+</ul>
+</div>
+<div class="section" id="service-discovery">
+<h3>Service discovery<a class="headerlink" href="#service-discovery" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>Most discovery will happen either via DNS to pre-defined names or using TM Forum ODA specific custom resource definitions</p></li>
+</ul>
+<p>Default DNS entries are required for:</p>
+<ul class="simple">
+<li><p>Service discovery itself</p></li>
+</ul>
+</div>
+<div class="section" id="service-mesh">
+<h3>Service Mesh<a class="headerlink" href="#service-mesh" title="Permalink to this headline">¶</a></h3>
+<p>Service mesh is required to provide the following functions:</p>
+<ul class="simple">
+<li><p>automatic encryption of all cluster traffic using sidecar proxies</p></li>
+</ul>
+</div>
+<div class="section" id="key-and-certificate-management">
+<h3>Key and certificate management<a class="headerlink" href="#key-and-certificate-management" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>The cluster requires API-driven access to a certifying authority for issuing trusted certificates for the API front end. This could be an external service, but for perfoamnce reasons it may be dsirable to provide a cluster-hosted sub-CA using technology like <a class="reference external" href="https://www.vaultproject.io/">Hashicorp Vault</a> or <a class="reference external" href="https://cert-manager.io/">cert-manager</a>.</p></li>
+<li><p>Kubernetes secrets are good, but provision should be made for this to be backed by a third party key manager like <a class="reference external" href="https://www.vaultproject.io/">Hashicorp Vault</a>.</p></li>
+</ul>
+</div>
+<div class="section" id="identity-and-access-management">
+<h3>Identity and access management<a class="headerlink" href="#identity-and-access-management" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>The ODA expects there to be an identity management in the external organisation and does not provide any identity management services.</p></li>
+<li><p>Authentication and authorisationto be provided by an external provider using any combination of OIDC, SAML, Active Directory or LDAP.</p></li>
+<li><p>The ODA expects exchange of identity information using SCIM, with TM-Forum APIs as fallback.</p></li>
+<li><p>Bootstrapping identity between components and the underlying environment relies on the identity and access integration being provided and components supporting TMF669 Party role Management being exposed into the canvas environment (i.e. within the cluster).</p></li>
+</ul>
+</div>
+<div class="section" id="observability">
+<h3>Observability<a class="headerlink" href="#observability" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>The ODA implements a collection service for events and metrics. Custom controllers may be required to collect from components that expect different collectors.</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="oda-ri-environment-implementation">
+<h2>ODA-RI environment implementation<a class="headerlink" href="#oda-ri-environment-implementation" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="https://rancher.com/">Rancher</a> is being used to manage the Kubernetes clusters.</p></li>
+<li><p><a class="reference external" href="https://istio.io/">Istio</a> has been implemented as the service mesh as it is provided with Rancher.</p></li>
+<li><p>[Prometheus] is the default metric collector.</p></li>
+<li><p>No default log/event collector has been implemented yet.</p></li>
+<li><p>For minimal (non-service-mesh) implementations, <a class="reference external" href="https://cert-manager.io/">cert-manager</a> is also an available option for providing certifiactes for securing the CRD webhook.</p></li>
+<li><p>A full suite of example controllers is provided.</p></li>
+</ul>
+</div>
+<div class="section" id="oda-ri-specific-supplementary-services">
+<h2>ODA-RI specific supplementary services<a class="headerlink" href="#oda-ri-specific-supplementary-services" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="https://www.keycloak.org/">Keycloak</a> has been implemented to provide identity and access services that would normally be provided by the organisation outside the ODA architecture. So far, the ODA-RI has the capability to synchronise roles with components, but user account management, authorisation and authentication journeys are backlogged.</p></li>
+</ul>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="Installation.html" class="btn btn-neutral float-right" title="Installation" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="README.html" class="btn btn-neutral float-left" title="Open Digital Architecture Canvas" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2023, TM Forum ODA-Component Accelerator project.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

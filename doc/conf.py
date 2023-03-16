@@ -96,6 +96,7 @@ def copyImagesAndMarkdown(src_dir, dest_dir):
 
 
 # Controllers
+copyImagesAndMarkdown('../../oda-canvas/source', './canvas/source')
 copyImagesAndMarkdown('../../oda-canvas/source/operators', './canvas/source/operators')
 copyImagesAndMarkdown('../../oda-canvas/source/operators/componentOperator', './canvas/source/operators/componentOperator')
 copyImagesAndMarkdown('../../oda-canvas/source/operators/apiOperatorSimpleIngress', './canvas/source/operators/apiOperatorSimpleIngress')

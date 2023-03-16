@@ -1,0 +1,453 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>ODA Canvas installation &mdash; ODA-Component Accelerator v1beta1 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/css/custom.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> ODA-Component Accelerator
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">About the project:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../docs/Playbook.html">Introduction to the ODA Component Accelerator Project (ODA-CA)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../docs/Getting_started.html">Getting started checklist for new members of ODA-CA</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Tutorials:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../docs/Observability-Tutorial/README.html">Tutorial to deploy and observe a running component</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../docs/ODAComponentTutorial/README.html">Tutorial to build ODA-Component from Open-API Reference Implemenation</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Design Guidelines:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../docs/ODAComponentDesignGuidelines.html">Design Guidelines to create a new ODA Component</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../docs/ODACanvasDesignGuidelines.html">Design Guidelines to design an ODA Canvas</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Compliance Test Kit (CTK):</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../ctk/README.html">ODA Component - CTK</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Canvas Helm Charts:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Open Digital Architecture - Canvas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Specification.html">ODA Reference Implementation and Environment Specification</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Installation.html">Installation</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Canvas Operators:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../source/operators/index.html">Open Digital Architecture - Controllers/Operators</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Troubleshooting Guide:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../docs/TroubleshootingGuide/index.html">ODA-CA Troubleshooting Guide</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Contributions Guide:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../docs/ContributionsGuide.html">Contribution guidance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../docs/DocumentationProcess.html">Documentation Process</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">ODA-Component Accelerator</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>ODA Canvas installation</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../../_sources/canvas/installation/README.md.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="oda-canvas-installation">
+<h1>ODA Canvas installation<a class="headerlink" href="#oda-canvas-installation" title="Permalink to this headline">¶</a></h1>
+<p>The Reference Implementation of the ODA Canvas is a set of Helm charts that can be used to install and configure a fully working Canvas. The Reference Implementation is built on top of Kubernetes and Istio.</p>
+<div class="section" id="software-versions">
+<h2>Software Versions<a class="headerlink" href="#software-versions" title="Permalink to this headline">¶</a></h2>
+<p>For each release, we will support a min and max Kubernetes version.</p>
+<p>| ODA Component version | Min Kubernetes version | Max Kubernetes version  |
+| ——————— | ———————- | ———————– |
+| v1alpha4              | 1.20                   | 1.22                    |
+| v1beta1               | 1.22                   | 1.25                    |</p>
+<p>We will test the Reference Implementation Canvas against a range of kubernetes versions and on a number of different deployments.</p>
+<p>| Kubernetes deployment     | Tested | Notes             |
+| ————————- | —— | —————– |
+| Rancher on AWS            |        | [Open Digital Lab environment]                   |
+| Azure AKS                 |        |                   |
+| Microk8s                  |        |                   |
+| MiniKube                  |        |                   |
+| Docker Desktop            |        |                   |
+| Kind                      |        | Using <a class="reference external" href="canvas-in-a-bottle/README">Canvas-in-a-bottle</a> |
+| K3s                       |        |                   |<br />| (other)                   |        | To suggest additional environments please add to this <a class="reference external" href="https://github.com/tmforum-oda/oda-canvas-charts/issues/52">issue</a>                  |</p>
+<p>The environment where the chart has been tested has the following
+|Software|Version  |
+|–|–|
+|Istio  | 1.16.1  |
+|Helm | 3.10 |</p>
+<p>The helm chart installs the following updated versions of third party to</p>
+<p>|Software|Version  |
+|–|–|
+|Cert-Manager  |1.20  |
+|Keycloak  |  20.0.3|
+|Postgress| 15.0.1 |</p>
+</div>
+<div class="section" id="changes">
+<h2>Changes<a class="headerlink" href="#changes" title="Permalink to this headline">¶</a></h2>
+<p>The Helm chart has been refactored to move all the different subcharts to the same level to improve rreadabilityA new chart, oda-ca has been create as an umbrella for others allowing to have a centralised configuration
+|OLD| NEW | DESCRIPTION
+|–|–|–|
+| shell script  | oda-ca  | Chart of chart.
+| shell script | cert-manager-init  | Install cert-manager Deploy Issuer and generate Certificate used by CRD webhook
+| canvas/chart/keycloak | Bitnami/keycloak  | Direct remote dependency  on oda-ca
+| canvas/| canvas-namespaces  | Namespaces
+| canvas/chart/controller| controller  | ODA ingress controller
+| canvas/chart/crds| oda-crds| ODA crds
+| canvas/chart/weebhooks | oda-webhook| ODA mutating webhook to handle conversion among versions</p>
+</div>
+<div class="section" id="configuration-values">
+<h2>Configuration values<a class="headerlink" href="#configuration-values" title="Permalink to this headline">¶</a></h2>
+<p>The values used <a class="reference external" href="canvas-oda/README">here</a></p>
+</div>
+<div class="section" id="environment-installation">
+<h2>Environment installation<a class="headerlink" href="#environment-installation" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="kubernetes-distribution">
+<h3>1. Kubernetes distribution<a class="headerlink" href="#kubernetes-distribution" title="Permalink to this headline">¶</a></h3>
+<p><strong>Prerequisites</strong>: a running K8S distribution.
+The procedure has been tested</p>
+<ul class="simple">
+<li><p>local k3s distribution, rancher desktop or similar</p></li>
+<li><p>AWS <a class="reference external" href="https://kops.sigs.k8s.io/">Kops</a> with AmazonVPC as network and with and without cert-manager managed by kops
+We assume</p></li>
+<li><p>There is a <code class="docutils literal notranslate"><span class="pre">kubeconfig</span></code> file available with adequate permissions on the K8s cluster to:</p></li>
+<li><p>Manage namespaces</p></li>
+<li><p>Install <a class="reference external" href="https://kubernetes.io/docs/concepts/extend-kubernetes/api-extension/custom-resources/">CRDs</a></p></li>
+<li><p>Manage resources in namespaces</p></li>
+</ul>
+</div>
+<div class="section" id="helm">
+<h3>2. Helm<a class="headerlink" href="#helm" title="Permalink to this headline">¶</a></h3>
+<p>A Helm 3.0+ installation is needed. Depending on your
+<a class="reference external" href="https://helm.sh/docs/intro/install/#through-package-managers">https://helm.sh/docs/intro/install/#through-package-managers</a></p>
+<p>Helm currently has an issue with the dependencies declared, the <strong>helm dependency update</strong> command only takes care of the dependencies at the first level preventing the correct installation. It supposes to be addressed in a future (May’23) 3.12 version</p>
+<p>Until that version is released, we can use a plugin to sort it out this
+<a class="reference external" href="https://github.com/Noksa/helm-resolve-deps">https://github.com/Noksa/helm-resolve-deps</a></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>helm plugin install --version <span class="s2">&quot;main&quot;</span> https://github.com/Noksa/helm-resolve-deps.git
+</pre></div>
+</div>
+<p>The charts used need the following repositories</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">helm</span> <span class="n">repo</span> <span class="n">add</span> <span class="n">jetstack</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">charts</span><span class="o">.</span><span class="n">jetstack</span><span class="o">.</span><span class="n">io</span>
+<span class="n">helm</span> <span class="n">repo</span> <span class="n">add</span> <span class="n">bitnami</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">charts</span><span class="o">.</span><span class="n">bitnami</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">bitnami</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="istio">
+<h3>3. Istio<a class="headerlink" href="#istio" title="Permalink to this headline">¶</a></h3>
+<p>We follow the helm steps provided by <a class="reference external" href="https://istio.io/latest/docs/setup/install/helm/">Istio</a></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>helm repo add istio https://istio-release.storage.googleapis.com/charts
+helm repo update
+kubectl create namespace istio-system
+helm install istio-base istio/base -n istio-system
+helm install istiod istio/istiod -n istio-system --wait
+kubectl create namespace istio-ingress
+kubectl label namespace istio-ingress istio-injection<span class="o">=</span>enabled
+helm install istio-ingress istio/gateway -n istio-ingress --wait
+</pre></div>
+</div>
+<p>This way of installing Istio sets a <strong>istio=ingress</strong> label in the istio-ingress service.
+The  apiOperatorIsito rely on this component to have a <strong>istio=ingressgateway</strong>
+Check if it’s the case in your installation.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>kubectl get svc istio-ingress -n istio-ingress --show-labels
+NAME            TYPE           CLUSTER-IP      EXTERNAL-IP   PORT<span class="o">(</span>S<span class="o">)</span>                                      AGE     LABELS
+istio-ingress   LoadBalancer   <span class="m">10</span>.43.218.202   <span class="m">172</span>.28.58.9   <span class="m">15021</span>:31154/TCP,80:31497/TCP,443:30230/TCP   3d22h   app.kubernetes.io/managed-by<span class="o">=</span>Helm,app.kubernetes.io/name<span class="o">=</span>istio-ingress,app.kubernetes.io/version<span class="o">=</span><span class="m">1</span>.16.2,app<span class="o">=</span>istio-ingress,helm.sh/chart<span class="o">=</span>gateway-1.16.2,istio<span class="o">=</span>ingress 
+</pre></div>
+</div>
+<p>If so, execute this command to set the label to what it’s expected.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">kubectl</span> <span class="n">label</span> <span class="n">svc</span> <span class="n">istio</span><span class="o">-</span><span class="n">ingress</span> <span class="o">-</span><span class="n">n</span> <span class="n">istio</span><span class="o">-</span><span class="n">ingress</span> <span class="n">istio</span><span class="o">=</span><span class="n">ingressgateway</span> <span class="o">--</span><span class="n">overwrite</span>
+<span class="n">service</span><span class="o">/</span><span class="n">istio</span><span class="o">-</span><span class="n">ingress</span> <span class="n">labeled</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="reference-implementation">
+<h3>4. Reference implementation<a class="headerlink" href="#reference-implementation" title="Permalink to this headline">¶</a></h3>
+<ol class="simple">
+<li><p>Move to <em>canvas-oda</em></p></li>
+<li><p>Update the dependencies using the plugin installed</p></li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ helm resolve-deps
+Fetching updates from all helm repositories, attempt <span class="c1">#1 ...</span>
+  * Updates have been fetched, took <span class="m">2</span>.146s
+Resolving dependencies <span class="k">in</span> canvas-oda chart ...
+  * Dependencies have been resolved, took <span class="m">8</span>.672s
+</pre></div>
+</div>
+<p>If we prefer not to use the plugin, we have to manually update the subchart which has dependencies, in this case <em>cert-manager-init</em></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> ..<span class="se">\c</span>ert-manager-init
+helm dependency update
+</pre></div>
+</div>
+<p>and then do the same with the umbrella helm <em>canvas-oda</em></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> ..<span class="se">\c</span>anvas-oda
+helm dependency update
+</pre></div>
+</div>
+<ol class="simple">
+<li><p>Install the reference implementation</p></li>
+</ol>
+<p>Install the canvas using the following command.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>helm install canvas -n canvas --create-namespace . 
+NAME: canvas
+ Feb  <span class="m">7</span> <span class="m">09</span>:35:38 <span class="m">2023</span>
+NAMESPACE: canvas
+STATUS: deployed
+REVISION: <span class="m">1</span>
+TEST SUITE: None
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="troubleshooting">
+<h2>Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="error-instaling-backofflimitexceeded">
+<h3>Error instaling: BackoffLimitExceeded<a class="headerlink" href="#error-instaling-backofflimitexceeded" title="Permalink to this headline">¶</a></h3>
+<p>The installation can fail with an error</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>Error: INSTALLATION FAILED: failed post-install: job failed: BackoffLimitExceeded
+</pre></div>
+</div>
+<p>There are two major causes of this error</p>
+<ol class="simple">
+<li><p>An error on the Job for configuring keycloak</p></li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span> kubectl get pods -n canvas
+NAME                                        READY   STATUS      RESTARTS   AGE
+canvas-keycloak-0                           <span class="m">1</span>/1     Running     <span class="m">0</span>          4m43s
+canvas-keycloak-keycloak-config-cli-5k6h7   <span class="m">0</span>/1     Error       <span class="m">0</span>          2m50s
+canvas-keycloak-keycloak-config-cli-fq5ph   <span class="m">1</span>/1     Running     <span class="m">0</span>          30s
+canvas-postgresql-0                         <span class="m">1</span>/1     Running     <span class="m">0</span>          4m43s
+compcrdwebhook-658f4868b8-48cvx             <span class="m">1</span>/1     Running     <span class="m">0</span>          4m43s
+job-hook-postinstall-6bm99                  <span class="m">0</span>/1     Completed   <span class="m">0</span>          4m43s
+oda-controller-ingress-d5c495bbb-crt4t      <span class="m">2</span>/2     Running     <span class="m">0</span>          4m43s
+</pre></div>
+</div>
+<p>Checking the logs of the failed Job</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="m">2023</span>-02-01 <span class="m">15</span>:23:19.488  INFO <span class="m">1</span> --- <span class="o">[</span>           main<span class="o">]</span> d.a.k.config.provider.KeycloakProvider   : Wait <span class="m">120</span> seconds <span class="k">until</span> http://canvas-keycloak-headless:8083/auth/ is available ...
+<span class="m">2023</span>-02-01 <span class="m">15</span>:25:19.511 ERROR <span class="m">1</span> --- <span class="o">[</span>           main<span class="o">]</span> d.a.k.config.KeycloakConfigRunner        : Could not connect to keycloak <span class="k">in</span> <span class="m">120</span> seconds: HTTP <span class="m">403</span> Forbidden
+</pre></div>
+</div>
+<p>That means that your k8s cluster assign IPs to PODs that <a class="reference external" href="https://www.keycloak.org/docs/latest/server_admin/#_ssl_modes">Keycloak consider public ones and forced to use HTTPS</a>
+The ranges valid are the following
+<code class="docutils literal notranslate"><span class="pre">localhost</span></code>, <code class="docutils literal notranslate"><span class="pre">127.0.0.1</span></code>, <code class="docutils literal notranslate"><span class="pre">10.x.x.x</span></code>, <code class="docutils literal notranslate"><span class="pre">192.168.x.x</span></code>, and <code class="docutils literal notranslate"><span class="pre">172.16.x.x</span></code></p>
+<ol class="simple">
+<li><p>An Error in the Job but caused because the canvas-keycloak-0 that is in CrashLoopBackOff</p></li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ kubectl get pods -A
+NAMESPACE       NAME                                              READY   STATUS             RESTARTS      AGE
+canvas          canvas-keycloak-0                                 <span class="m">0</span>/1     CrashLoopBackOff   <span class="m">4</span> <span class="o">(</span>89s ago<span class="o">)</span>   6m11s
+canvas          canvas-keycloak-keycloak-config-cli-9ks9d         <span class="m">0</span>/1     Error              <span class="m">0</span>             2m28s
+canvas          canvas-keycloak-keycloak-config-cli-cd2gv         <span class="m">0</span>/1     Error              <span class="m">0</span>             4m38s
+canvas          canvas-postgresql-0                               <span class="m">1</span>/1     Running            <span class="m">0</span>             6m11s
+canvas          compcrdwebhook-658f4868b8-v9sc2                   <span class="m">1</span>/1     Running            <span class="m">0</span>             6m11s
+canvas          job-hook-postinstall-v56pt                        <span class="m">0</span>/1     Completed          <span class="m">0</span>             6m10
+</pre></div>
+</div>
+<p>Checking the logs <code class="docutils literal notranslate"><span class="pre">kubectl</span> <span class="pre">logs</span> <span class="pre">-n</span> <span class="pre">canvas</span> <span class="pre">sts/canvas-postgresql</span></code>  we can see an error</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span> FATAL:  password authentication failed <span class="k">for</span> user <span class="s2">&quot;bn_keycloak&quot;</span>
+</pre></div>
+</div>
+<p>In that case, a previous installation left a PVC reused by the Postgress
+To solve that issue</p>
+<ul class="simple">
+<li><p>Uninstall the helm chart</p></li>
+<li><p>Delete the PVC with <code class="docutils literal notranslate"><span class="pre">kubectl</span> <span class="pre">delete</span> <span class="pre">pvc</span> <span class="pre">-n</span> <span class="pre">canvas</span> <span class="pre">data-canvas-postgresql-0</span></code></p></li>
+<li><p>reinstall the canvas</p></li>
+</ul>
+</div>
+<div class="section" id="error-installing-failed-post-install">
+<h3>Error installing : Failed post-install<a class="headerlink" href="#error-installing-failed-post-install" title="Permalink to this headline">¶</a></h3>
+<p>The installation could fail with this error</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>failed post-install: warning: Hook post-install canvas-oda/charts/cert-manager-init/templates/issuer.yaml failed: Internal error occurred:
+failed calling webhook <span class="s2">&quot;webhook.cert-manager.io&quot;</span>: failed to call webhook: Post <span class="s2">&quot;https://canvas-cert-manager-webhook.cert-manager.svc:443/mutate?timeout=10s&quot;</span>:
+x509: certificate signed by unknown authority
+</pre></div>
+</div>
+<p>That error arises when Cert-Manager is not ready to accept Issuers
+The installation has a configurable wait time
+<em>cert-manager.leaseWaitTimeonStartup</em>
+Increase the time over 70s if it fails
+Uninstall the chart and reinstall it with the new time.</p>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2023, TM Forum ODA-Component Accelerator project.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

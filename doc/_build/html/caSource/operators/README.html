@@ -1,0 +1,292 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>ODA Canvas Operators &mdash; ODA-Component Accelerator v1beta1 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/css/custom.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Component Operator" href="componentOperator/modules.html" />
+    <link rel="prev" title="Open Digital Architecture - Controllers/Operators" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> ODA-Component Accelerator
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">About the project:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../caDocs/Playbook.html">Introduction to the ODA Component Accelerator Project (ODA-CA)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../caDocs/Getting_started.html">Getting started checklist for new members of ODA-CA</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Tutorials:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../caDocs/Observability-Tutorial/README.html">Tutorial to deploy and observe a running component</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../caDocs/ODAComponentTutorial/README.html">Tutorial to build ODA-Component from Open-API Reference Implemenation</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Design Guidelines:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../caDocs/ODAComponentDesignGuidelines.html">Design Guidelines to create a new ODA Component</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../caDocs/ODACanvasDesignGuidelines.html">Design Guidelines to design an ODA Canvas</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Compliance Test Kit (CTK):</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../ctk/README.html">ODA Component - CTK</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Canvas Helm Charts:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../canvasCharts/index.html">Open Digital Architecture - Canvas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../canvasCharts/Specification.html">ODA Reference Implementation and Environment Specification</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../canvasCharts/Installation.html">Installation</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Canvas Operators:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Open Digital Architecture - Controllers/Operators</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">ODA Canvas Operators</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#list-of-operators">List of Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#docker-images">Docker Images</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="componentOperator/modules.html">Component Operator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="apiOperatorSimpleIngress/modules.html">API Operator: SimpleIngress</a></li>
+<li class="toctree-l2"><a class="reference internal" href="apiOperatorApig/modules.html">API Operator: WhaleCloud API Gateway</a></li>
+<li class="toctree-l2"><a class="reference internal" href="apiOperatorWSO2/modules.html">API Operator: WSO2 API Gateway</a></li>
+<li class="toctree-l2"><a class="reference internal" href="apiOperatorIstio/modules.html">API Operator: Istio</a></li>
+<li class="toctree-l2"><a class="reference internal" href="securityController/modules.html">Security Operator</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Troubleshooting Guide:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../caDocs/TroubleshootingGuide/index.html">ODA-CA Troubleshooting Guide</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Contributions Guide:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../caDocs/ContributionsGuide.html">Contribution guidance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../caDocs/DocumentationProcess.html">Documentation Process</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">ODA-Component Accelerator</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="index.html">Open Digital Architecture - Controllers/Operators</a> &raquo;</li>
+        
+      <li>ODA Canvas Operators</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../../_sources/caSource/operators/README.md.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="oda-canvas-operators">
+<h1>ODA Canvas Operators<a class="headerlink" href="#oda-canvas-operators" title="Permalink to this headline">¶</a></h1>
+<p>Software Operators are a key concept in the ODA Canvas. For more information, see the 2016 CoreOS blog post that introduced the concept: <a class="reference external" href="https://web.archive.org/web/20170129131616/https://coreos.com/blog/introducing-operators.html">Introducing Operators: Putting Operational Knowledge into Software</a>. There is a good definition of software operators at: <a class="reference external" href="https://operatorhub.io/what-is-an-operator">operatorhub.io/what-is-an-operator</a>.</p>
+<p>The ODA canvas is itself a modular and extensible platform. The list below shows the operators that appear in the Canvas use-case inventory. The ODA-Component Accelerator is building a reference implementation of an ODA Canvas with a range of operators that are open-source and freely available for organizations to re-use, extend or replace with their own implementations. We expect a typical production implementation will use a combination of standard operators and custom operators that can implement that organizations specific operational policies.</p>
+<div class="section" id="list-of-operators">
+<h2>List of Operators<a class="headerlink" href="#list-of-operators" title="Permalink to this headline">¶</a></h2>
+<p>This is the target list of the Canvas operators. Some are still in development and others are not yet defined. The list is subject to change as the Canvas evolves.</p>
+<p>| Operator            | Description                     |
+| ——————- | ——————————- |
+| Component Management | The Component operator manages the de-composition of an ODA component into APIs and Events (that are processed by their corresponding operators). |
+| API Exposure | Configures the Service Providers API Gateway and/or Service Mesh to provide security, throttling and other non-functional services to allow API endpoints to be exposed to external consumers |
+| API Discovery [TBD] | Provides discovery for APIs where a component has declared a dependency. Internally it uses the Service Providers discovery capabilities to identify and give access to the appropriate API to fill a dependency. The component us updated via a ServiceActivationConfiguration Open-API call |
+| License Manager [TBD] | Audits compliance of component usage against licensing agreements |
+| Identity | Provides identity management to grant system and user access to components. |
+| Observability (Implemented as part of API Operator) | Captures observability data and allows alarming, tracing and root-cause analysis of issues. |
+| Event Hub [In progress] | Enables components to publish and subscribe to asynchronous events |</p>
+<p>The ODA Reference implemantation contains Operators that can manage the <strong>ODA Component</strong>, <strong>ODA API</strong> and other resources. The <a class="reference external" href="https://kubernetes.io/docs/concepts/extend-kubernetes/api-extension/custom-resources/">Custom Resource Definitions</a> (CRDs) that these operators manage are installed as part of the <a class="reference external" href="../../installation/README">canvas installation</a>.</p>
+<p>The ODA Component YAML files are created by following the instructions in <a class="reference external" href="https://github.com/tmforum-oda/oda-ca-docs/tree/master/ODAComponentDesignGuidelines.md">tmforum-oda/oda-ca-docs/ODAComponentDesignGuidelines</a>.</p>
+<p>The Reference Implementaiton Controllers are created using the KOPF (Kubernetes Operator Pythonic Framework - <a class="reference external" href="https://github.com/zalando-incubator/kopf">https://github.com/zalando-incubator/kopf</a>). This provides a simple framework in python for creating Operators. The Canvas can support operators created in other languages (e.g. Java) as long as support the Kubernetes Operator pattern.</p>
+</div>
+<div class="section" id="docker-images">
+<h2>Docker Images<a class="headerlink" href="#docker-images" title="Permalink to this headline">¶</a></h2>
+<p>The operator source code is in sub-folders. At present there is a:</p>
+<ol class="simple">
+<li><p><strong>ComponentController</strong> that manages the Component CRD. This creates API CRDs for each API a component wants to expose.</p></li>
+<li><p>Multiple reference implementations of an <strong>API controller</strong>: You deploy one of these options depending on your Canvas. The simplest example is the <code class="docutils literal notranslate"><span class="pre">apiOperatorSimpleIngress</span></code> controller that uses a Kubernetes ingress to expose the APIs (this is only suitable for development environments as an Ingress doesn’t provide any of the standard security or throttling of a proper API Gateway). There are two API operators that configure proper API Gateways: The first is for the WhaleCloud API Gateway <code class="docutils literal notranslate"><span class="pre">apiOperatorApig</span></code>, the second is for the WSO2 API gateway <code class="docutils literal notranslate"><span class="pre">apiOperatorWSO2</span></code>. (For each of these the respective API Gatways needs to be installed separately in the Canvas.). There is a final API Operator <code class="docutils literal notranslate"><span class="pre">apiOperatorIstio</span></code> that uses the Istio Service Mesh to control access to APIs. (The Istio Service Mesh needs to be installed separately on the Canvas). A production Canvas would use an API Gateway for the external exposure of APIs; It may also use a Service Mesh for greater internal control, particularly in a shared Kubernetes cluster.</p></li>
+<li><p>A <strong>SecurityController</strong> (should be renamed to identity operator) that manages the identity and role management part of the Component definition. At present the security controller configures a Keycloak identity service using roles that are defined by the component. Keycloak needs to be installed separately in the canvas.</p></li>
+</ol>
+<p>For the KOPF framework controllers, we deploy these into a single Docker image. We have two docker files that deploy:</p>
+<ul class="simple">
+<li><p>The component controller, simpleIngress API controller and security controller into a single docker image;</p></li>
+<li><p>The component controller, WSO2 API controller and security controller into a single docker image.</p></li>
+</ul>
+<p>The security controller also includes a separate API Listener image (that listens to partyrole events from each component). In the Canvas Helm charts the KOPF doker image and the API Listener image are deployed into a single Pod.</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="componentOperator/modules.html" class="btn btn-neutral float-right" title="Component Operator" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="index.html" class="btn btn-neutral float-left" title="Open Digital Architecture - Controllers/Operators" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2023, TM Forum ODA-Component Accelerator project.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
