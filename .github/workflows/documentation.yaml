@@ -17,16 +17,11 @@ jobs:
         uses: actions/checkout@v2
         with:
           path: oda-ca-docs
-      - name: checkout-oda-ca
+      - name: checkout-oda-canvas
         uses: actions/checkout@v2
         with:
-          repository: tmforum-oda/oda-ca
-          path: oda-ca
-      - name: checkout-oda-canvas-charts
-        uses: actions/checkout@v2
-        with:
-          repository: tmforum-oda/oda-canvas-charts
-          path: oda-canvas-charts
+          repository: tmforum-oda/oda-canvas
+          path: oda-canvas
       - name: checkout-oda-component-ctk
         uses: actions/checkout@v2
         with:
