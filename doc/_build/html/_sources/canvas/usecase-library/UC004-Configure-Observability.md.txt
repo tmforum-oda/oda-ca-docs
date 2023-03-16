@@ -1,1 +1,0 @@
-# Configure Observability use-case
