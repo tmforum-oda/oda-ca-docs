@@ -1,0 +1,358 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>ODA Canvas &amp; Component Interaction - NonFunctional Use-Case Library &amp; Specification &mdash; ODA-Component Accelerator v1beta1 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/css/custom.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> ODA-Component Accelerator
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">About the project:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../docs/Playbook.html">Introduction to the ODA Component Accelerator Project (ODA-CA)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../docs/Getting_started.html">Getting started checklist for new members of ODA-CA</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Tutorials:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../docs/Observability-Tutorial/README.html">Tutorial to deploy and observe a running component</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../docs/ODAComponentTutorial/README.html">Tutorial to build ODA-Component from Open-API Reference Implemenation</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Design Guidelines:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../docs/ODAComponentDesignGuidelines.html">Design Guidelines to create a new ODA Component</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../docs/ODACanvasDesignGuidelines.html">Design Guidelines to design an ODA Canvas</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Compliance Test Kit (CTK):</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../ctk/README.html">ODA Component - CTK</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Canvas Helm Charts:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Open Digital Architecture - Canvas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Specification.html">ODA Reference Implementation and Environment Specification</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Installation.html">Installation</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Canvas Operators:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../source/operators/index.html">Open Digital Architecture - Controllers/Operators</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Troubleshooting Guide:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../docs/TroubleshootingGuide/index.html">ODA-CA Troubleshooting Guide</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Contributions Guide:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../docs/ContributionsGuide.html">Contribution guidance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../docs/DocumentationProcess.html">Documentation Process</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">ODA-Component Accelerator</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li><strong>ODA Canvas &amp; Component Interaction - NonFunctional Use-Case Library &amp; Specification</strong></li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../../_sources/canvas/usecase-library/observability-usecases.md.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="oda-canvas-component-interaction-nonfunctional-use-case-library-specification">
+<h1><strong>ODA Canvas &amp; Component Interaction - NonFunctional Use-Case Library &amp; Specification</strong><a class="headerlink" href="#oda-canvas-component-interaction-nonfunctional-use-case-library-specification" title="Permalink to this headline">¶</a></h1>
+</div>
+<div class="section" id="observability-and-monitoring">
+<h1>1. Observability and Monitoring<a class="headerlink" href="#observability-and-monitoring" title="Permalink to this headline">¶</a></h1>
+<p>Observability and monitoring provides insight into the health, performance, and availability of ODA Components and the Canvas. Observability is essential for root cause analysis while monitoring provides alerts.</p>
+<p>Observability Tools must provide:</p>
+<ul class="simple">
+<li><p>metrics, logs and traces e.g. traffic, performance, response time, CPU Usage and</p></li>
+<li><p>other business metrics: using counters for number of errors, number of requests served by the ODA component as well as using gauges for CPU usage, memory usage, number of concurrent requests amongst others.</p></li>
+</ul>
+<p>Observability can be categorised into two broad areas based on the type of metrics scrapped, stored and processed.
+<strong>ODA Baseline Observability:</strong> is where the focus is on the technical metrics involved in an ODA Component to Canvas interaction such as monitoring success and failure traffic (HTTP request and response), CPU usage etc</p>
+<p><strong>Custom Observability:</strong> Custom business metrics involved in an ODA Component to Canvas interaction is, a custom metrics microservice needs to be implemented exposing a /metrics endpoint following an observability and monitoring solution e.g. the Prometheus operator standard. The microservice registers for component’s events leveraging the Open-API publish/subscribe event notification pattern and generates the appropriate metrics to be observed.</p>
+</div>
+<div class="section" id="sample-usecases">
+<h1>2. Sample UseCases<a class="headerlink" href="#sample-usecases" title="Permalink to this headline">¶</a></h1>
+<p>The following use cases have been derived based on a Vodafone NFR Assessment and requirements elucidated from across the business.</p>
+<div class="section" id="type-scalability-performance">
+<h2>2.1 Type: Scalability &amp; Performance<a class="headerlink" href="#type-scalability-performance" title="Permalink to this headline">¶</a></h2>
+<p><strong>User Story</strong></p>
+<ul class="simple">
+<li><p>As a Site Reliability Engineer,</p></li>
+<li><p>I want to have a scalable ODA component such that more nodes can be added automatically to accommodate additional user requests.</p></li>
+<li><p>So that no degradation in performance of the ODA component (e.g. TMFC001 Product Catalog Management) functionality is observed as the number of user requests grow.</p></li>
+</ul>
+<p><strong>BDD</strong> (using Gherkin Syntax) describing component to Canvas interaction</p>
+<p>| <strong>Feature</strong> | Allow a Site Reliability Engineer to see a scalable ODA component such that with additional load of user request more nodes are automatically added |
+| — | — |
+| <strong>Scenario</strong> | See nodes added to a running ODA component. |
+| <strong>Precondition</strong> | <strong>Given</strong>  that an ODA component has been deployed into a scalable infrastructure|
+| <strong>Action</strong> |  <strong>when</strong>  the number of user requests increases|
+|            | <strong>and</strong> the Site Reliability Engineer selects the running ODA components view|
+| <strong>Outcome</strong> | <strong>then</strong>  additional nodes are deployed|
+|  | <strong>and</strong> the running nodes are visible|
+|  | <strong>and</strong>  the component is observed to have higher throughput|
+|  | <strong>and</strong> health status of each nodes should be visible as well. (move to another BDD)|</p>
+</div>
+<div class="section" id="type-monitoring-and-observability">
+<h2>2.2 Type: Monitoring and observability<a class="headerlink" href="#type-monitoring-and-observability" title="Permalink to this headline">¶</a></h2>
+<p><strong>User Story</strong></p>
+<ul class="simple">
+<li><p>As Site Reliability Engineer,</p></li>
+<li><p>I want the ability to be notified when system running an ODA component has resource exhaustion issues such as lack of memory or when the CPU utilisation rate is too high</p></li>
+<li><p>So that no performance issues such as long load and save times are observed and that application shut down can be prevented.</p></li>
+</ul>
+<p><strong>BDD</strong> (using Gherkin Syntax) describing component to Canvas interaction</p>
+<p>| <strong>Feature</strong> | Allow a Site Reliability Engineer receive notifications whenever a running ODA component has resource exhaustion issues such as lack of memory or when the CPU utilisation rate is too high. |
+| — | — |
+| <strong>Scenario</strong> | Receiving a notification via appropriate channels, in order to carry out remedial actions on a running ODA component. |
+| <strong>Precondition</strong> |  <strong>Given</strong>  that an ODA component has been deployed into a scalable infrastructure|
+| <strong>Action</strong> | <strong>when</strong>  the ODA component system experiences resource exhaustion issues such as lack of memory or high CPU utilisation rate|
+| <strong>Outcome</strong> | <strong>then</strong>  a notification is sent to the site reliability engineer indicating the system is lacking in memory or having high rate of CPU utilisation.|</p>
+</div>
+<div class="section" id="type-management-observability-the-baseline-example">
+<h2>2.3 Type: Management &amp; Observability (the baseline example)<a class="headerlink" href="#type-management-observability-the-baseline-example" title="Permalink to this headline">¶</a></h2>
+<p><strong>User Story</strong></p>
+<ul class="simple">
+<li><p>As a s Site Reliability Engineer.</p></li>
+<li><p>I want to configure an observability service in the operation canvas</p></li>
+<li><p>So that when an ODA Component is deployed, updated or deleted its health status, performance, and availability can be monitored.</p></li>
+</ul>
+<p><strong>BDD</strong> (using Gherkin Syntax) describing component to Canvas interaction</p>
+<p>| <strong>Feature</strong> | Allow a Site Reliability Engineer to declaratively configure an observability service such that when an ODA component is deployed, updated or deleted, its observability metrics can be monitored and observed. |
+| — | — |
+| <strong>Scenario</strong> | See and examine an observability service running on an operational canvas |
+| <strong>Precondition</strong> | <strong>Given</strong>  that an ODA component has been deployed|
+| <strong>Action</strong> | <strong>when</strong>  the Site Reliability Engineer access the observability service management console|
+| <strong>Outcome</strong> | <strong>then</strong>  the ODA component is visible in the management interface|
+|  |- <strong>and</strong> the number of HTTP requests/second is displayed|
+|  |- <strong>and</strong> the response time in milliseconds is visible|</p>
+<div class="section" id="canvas-to-component-conversation-flow">
+<h3>2.3.1 Canvas to Component Conversation Flow<a class="headerlink" href="#canvas-to-component-conversation-flow" title="Permalink to this headline">¶</a></h3>
+<p><img alt="Baseline observability" src="canvas/images/baseline-observability.png" /></p>
+</div>
+</div>
+<div class="section" id="type-logging">
+<h2>2.4 Type: Logging<a class="headerlink" href="#type-logging" title="Permalink to this headline">¶</a></h2>
+<p><strong>{V-ODA L3:</strong> Log Recording, Log Collection, Log Analysis, Alerting, Log Search, Log Aggregation, Monitoring}</p>
+<p><strong>User Story</strong></p>
+<ul class="simple">
+<li><p>As an Operations Support Engineer,</p></li>
+<li><p>I want the application logs and audit logs to be captured and stored separately in order to be able to limit the size of the logs produced by system</p></li>
+<li><p>So that</p></li>
+</ul>
+</div>
+<div class="section" id="type-manageability">
+<h2>2.5 Type: Manageability<a class="headerlink" href="#type-manageability" title="Permalink to this headline">¶</a></h2>
+<p><strong>User Story</strong></p>
+<ul class="simple">
+<li><p>As a Release Manager.</p></li>
+<li><p>I want the ability to ‘back out’ changes on the production environment, reverting to the previous version, as a simple operation without the need to rerelease the previous version</p></li>
+<li><p>So that</p></li>
+</ul>
+</div>
+<div class="section" id="type-response-time">
+<h2>2.6 Type: Response Time<a class="headerlink" href="#type-response-time" title="Permalink to this headline">¶</a></h2>
+<p><strong>User Story</strong></p>
+<ul class="simple">
+<li><p>As the product owner,</p></li>
+<li><p>I want every customer search or filtering of the product catalogue to complete the search and return result in 5secs max</p></li>
+<li><p>So that no performance issues such as long load and save times are observed and application shut down can be prevented.</p></li>
+</ul>
+</div>
+<div class="section" id="id1">
+<h2>2.7 Type: Monitoring and observability<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<p><strong>User Story</strong></p>
+<ul class="simple">
+<li><p>As a s Site Reliability Engineer.</p></li>
+<li><p>I want the ability to check the status of all the running processes for and supporting an ODA component</p></li>
+<li><p>So that</p></li>
+</ul>
+</div>
+<div class="section" id="id2">
+<h2>2.8.Type: Monitoring and observability<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<p><strong>User Story</strong></p>
+<ul class="simple">
+<li><p>As a s Site Reliability Engineer.</p></li>
+<li><p>I want the ability to pass in support team names in a system monitoring message specification</p></li>
+<li><p>So that PagerDuty call out can be made to a specific team.</p></li>
+</ul>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2023, TM Forum ODA-Component Accelerator project.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

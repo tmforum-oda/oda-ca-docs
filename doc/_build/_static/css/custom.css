@@ -1,0 +1,7 @@
+ul {
+  list-style-type: disc !important;
+}
+li {
+  display: list-item !important;
+  list-style: disc !important;
+}

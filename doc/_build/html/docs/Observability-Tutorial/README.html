@@ -1,0 +1,372 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Tutorial to deploy and observe a running component &mdash; ODA-Component Accelerator v1beta1 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/css/custom.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Tutorial to build ODA-Component from Open-API Reference Implemenation" href="../ODAComponentTutorial/README.html" />
+    <link rel="prev" title="Getting started checklist for new members of ODA-CA" href="../Getting_started.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> ODA-Component Accelerator
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">About the project:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../Playbook.html">Introduction to the ODA Component Accelerator Project (ODA-CA)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Getting_started.html">Getting started checklist for new members of ODA-CA</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Tutorials:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Tutorial to deploy and observe a running component</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#reference-implementation-environment-with-service-mesh">Reference Implementation environment with Service Mesh</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#deploying-the-component">Deploying the component</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#how-does-this-work">How does this work?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#how-do-i-extend-this-to-get-custom-business-metrics-from-the-component">How do I extend this to get custom business metrics from the component?</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../ODAComponentTutorial/README.html">Tutorial to build ODA-Component from Open-API Reference Implemenation</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Design Guidelines:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../ODAComponentDesignGuidelines.html">Design Guidelines to create a new ODA Component</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ODACanvasDesignGuidelines.html">Design Guidelines to design an ODA Canvas</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Compliance Test Kit (CTK):</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../ctk/README.html">ODA Component - CTK</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Canvas Helm Charts:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../canvas/index.html">Open Digital Architecture - Canvas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../canvas/Specification.html">ODA Reference Implementation and Environment Specification</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../canvas/Installation.html">Installation</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Canvas Operators:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../canvas/source/operators/index.html">Open Digital Architecture - Controllers/Operators</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Troubleshooting Guide:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../TroubleshootingGuide/index.html">ODA-CA Troubleshooting Guide</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Contributions Guide:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../ContributionsGuide.html">Contribution guidance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../DocumentationProcess.html">Documentation Process</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">ODA-Component Accelerator</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>Tutorial to deploy and observe a running component</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../../_sources/docs/Observability-Tutorial/README.md.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="tutorial-to-deploy-and-observe-a-running-component">
+<h1>Tutorial to deploy and observe a running component<a class="headerlink" href="#tutorial-to-deploy-and-observe-a-running-component" title="Permalink to this headline">¶</a></h1>
+<p>This tutorial shows the process to deploy the reference example ODA Component into the TM Forum Open Digital Lab environment and observe the traffic, performance and business metrics.</p>
+<p>The pre-requisites for this tuturial is a PC/Mac/Linux machine with <code class="docutils literal notranslate"><span class="pre">kubectl</span></code> and <code class="docutils literal notranslate"><span class="pre">helm</span></code> installed and access to the TM Forum Open Digital Lab at <a class="reference external" href="https://rke.tmforum.org/">https://rke.tmforum.org/</a></p>
+<p>There is a video of this tutorial at: <a class="reference external" href="https://youtu.be/XEbjc4g_usM">ODA Observability Video walkthrough</a></p>
+<div class="section" id="reference-implementation-environment-with-service-mesh">
+<h2>Reference Implementation environment with Service Mesh<a class="headerlink" href="#reference-implementation-environment-with-service-mesh" title="Permalink to this headline">¶</a></h2>
+<p>We will be using the TM Forum Open Digital Lab Reference Implementation (see below).</p>
+<p><img alt="Open-API Reference Implementation" src="../../_images/ODA-RI.png" /></p>
+<p>The foundation of the Reference Implementation is a Kubernetes Cluster (system). On top of this the ODA-Component Accelerator team has deployed a set of non-functional Canvas services. During this tutorial we will deploy the example functional component and use the canvas services to observe the traffic, performance and business metrics for this component.</p>
+<p>The diagram below is a zoomed-in picture of the Cavvas services.</p>
+<p><img alt="Open-API Reference Implementation - Canvas" src="../../_images/ODA-RI-Canvas.png" /></p>
+<p>The observability is provided by a Service Mesh, which creates a control-plane over the top of Kubernetes and allows you to trace and monitor all traffic into and out of the running services. In the Reference Implementation we are using the Istio Service Mesh, but other canvas deployments could use alternative Service Meshes (with a corresponding controller).</p>
+<p>To visualise the data provided by the Service Mesh, we will use Kiali which is a management console for Istio. Again, other Canvas deployments could use alternative tools.</p>
+</div>
+<div class="section" id="deploying-the-component">
+<h2>Deploying the component<a class="headerlink" href="#deploying-the-component" title="Permalink to this headline">¶</a></h2>
+<p>We will be using the reference example component provided as part of the Reference Implementation. It is available at <code class="docutils literal notranslate"><span class="pre">https://github.com/tmforum-oda/oda-ca-docs/example/ProductCatalog</span></code>.</p>
+<ul class="simple">
+<li><p>Step 1. Clone the <code class="docutils literal notranslate"><span class="pre">https://github.com/tmforum-oda/oda-ca-docs</span></code> repository and navigate to the <code class="docutils literal notranslate"><span class="pre">/examples/ProductCatalog</span></code> folder.</p></li>
+<li><p>Step 2. Configure <code class="docutils literal notranslate"><span class="pre">kubectl</span></code> for the <code class="docutils literal notranslate"><span class="pre">oda-ca-cluster2</span></code>: Navigate to the Rancher environment at https://rke.tmforum.org/, select the <code class="docutils literal notranslate"><span class="pre">oda-ca-cluster2</span></code> and use the Kubeconfig file in the top-right.</p></li>
+</ul>
+<p><img alt="Open-API Reference Implementation - Canvas" src="../../_images/Kubeconfig.png" /></p>
+<ul class="simple">
+<li><p>Step 3. Deploy the reference implementation example component using helm:</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">helm</span> <span class="n">install</span> <span class="n">r1</span> <span class="o">.</span>\<span class="n">productcatalog</span>\ <span class="o">-</span><span class="n">n</span> <span class="n">components</span>
+</pre></div>
+</div>
+<p>This will install the <code class="docutils literal notranslate"><span class="pre">productcatalog</span></code> example component in the <code class="docutils literal notranslate"><span class="pre">components</span></code> namespace.</p>
+<ul class="simple">
+<li><p>Step 4: View the component in Kiali</p></li>
+</ul>
+<p>To navigate to the Kiali management console, click the <code class="docutils literal notranslate"><span class="pre">Cluster</span> <span class="pre">Explorer</span></code> button at the top of the Rancher console: This opens-up the new Rancher User Interface.</p>
+<p><img alt="Rancher - Cluster Explorer" src="../../_images/ClusterExplorer.png" /></p>
+<p>Then navigate to Istio by clicking the <code class="docutils literal notranslate"><span class="pre">Cluster</span> <span class="pre">Explorer</span></code> drop-down in the top-left and click on <code class="docutils literal notranslate"><span class="pre">Istio</span></code>.</p>
+<p><img alt="Istio" src="../../_images/Istio.png" /></p>
+<p>Finally, click on the <code class="docutils literal notranslate"><span class="pre">Kiali</span></code> link</p>
+<p><img alt="Kiali" src="../../_images/Kiali.png" /></p>
+<p>This should show the Kiali Management Console. Click the <code class="docutils literal notranslate"><span class="pre">Graph</span></code> link on the left-hand-side.</p>
+<p><img alt="Graph" src="../../_images/Graph.png" /></p>
+<p>You should be able to see the <code class="docutils literal notranslate"><span class="pre">r1-productcatalog</span></code> component in the Kiali interface:</p>
+<p><img alt="Component In Kiali" src="../../_images/ComponentInKiali.png" /></p>
+<p>This view shows what is going on inside the Kubernetes cluster. If you click on any of the links, you can observe the traffic patterns. For HTTP traffic, you can see whether the response was OK (2xx), Redirect (3xx), Client errors (4xx) or server errors (5xx).</p>
+<p>So far, we haven’t sent any traffic to this component - the data you are seeing was generated as part of the initialization of the component.</p>
+<p>To generate some traffic, you could use tools such as <a class="reference external" href="https://www.postman.com/">Postman</a>  or <a class="reference external" href="https://curl.se/">Curl</a>. We can query the URL of the API endpoints by using <code class="docutils literal notranslate"><span class="pre">kubectl</span></code> and querying the API custom resource (api.oda.tmforum.org) that is part of the Canvas:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">kubectl</span> <span class="n">get</span> <span class="n">api</span> <span class="o">-</span><span class="n">n</span> <span class="n">components</span>
+</pre></div>
+</div>
+<p>If we take the Endpoint for the party-role API and for the product-catalog API, we can generate some traffic using CURL:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">CURL</span> <span class="s2">&quot;http://a576e999356a44e898169adcf3aaf879-368993360.eu-west-1.elb.amazonaws.com/r1-productcatalog/tmf-api/partyRoleManagement/v4/partyRole&quot;</span>
+
+<span class="n">CURL</span> <span class="s2">&quot;http://a576e999356a44e898169adcf3aaf879-368993360.eu-west-1.elb.amazonaws.com/r1-productcatalog/tmf-api/productCatalogManagement/v4/catalog&quot;</span>
+</pre></div>
+</div>
+<p>The Kiali interface will change, since new traffic flows are being exercised. (For now, ignore the traffic from ‘Unknown’ - this is the monitoring system itself creating traffice - we will cover this later.)</p>
+<p><img alt="Component In Kiali 2" src="../../_images/ComponentInKiali2.png" /></p>
+<p>I will use Postman to run a large number of calls to the product catalog API. The Kiali interface will show some graphs of traffic requests/min and HTTP response time. (It also shows a 100% success rate).</p>
+<p><img alt="Component Performance" src="../../_images/ComponentPerformance.png" /></p>
+<p>It can show the success or failure of the HTTP requests. To test this, I’ll intentionally send a request for a resource that does not exist:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">CURL</span> <span class="s2">&quot;http://a576e999356a44e898169adcf3aaf879-368993360.eu-west-1.elb.amazonaws.com/r1-productcatalog/tmf-api/productCatalogManagement/v4/catalog/xxxxxxx&quot;</span>
+</pre></div>
+</div>
+<p>The Kiali interface will show the HTTP response, with some 4xx (client error) responses.</p>
+<p><img alt="Component Performance - failure" src="../../_images/ComponentPerformance2.png" /></p>
+<p>We have so far shown the ‘out-of-the-box’ observability we get from the Service Mesh that is part of the ODA-Canvas. The question is, <strong>how does this work?</strong> and <strong>can I extend this to get more custom business metrics from the component?</strong>.</p>
+</div>
+<div class="section" id="how-does-this-work">
+<h2>How does this work?<a class="headerlink" href="#how-does-this-work" title="Permalink to this headline">¶</a></h2>
+<p>The Service Mesh works by ‘injecting’ an <a class="reference external" href="https://www.envoyproxy.io/">Envoy proxy</a> container into every pod in the monitored namespace. For the Istio Service Mesh, you indicate which namespaces you want it to manage by adding the <code class="docutils literal notranslate"><span class="pre">istio-injection:</span> <span class="pre">enabled</span></code> label to the namespace. The Envoy container will proxy all traffic into and out of the pod; It allows you to set policy rules to control the traffic. It also measures all the traffic and puts this data into a <a class="reference external" href="https://prometheus.io/">Prometheus</a> time-series database. (Technically, the Prometheus database ‘scrapes’ the metrics data from Envoy).</p>
+<p>We can see the running <code class="docutils literal notranslate"><span class="pre">pods</span></code> in the <code class="docutils literal notranslate"><span class="pre">components</span></code> namespace with the command:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">kubectl</span> <span class="n">get</span> <span class="n">pods</span> <span class="o">-</span><span class="n">n</span> <span class="n">components</span>
+</pre></div>
+</div>
+<p><img alt="View running Pods" src="../../_images/Pods.png" /></p>
+<p>We can see the containers running in a particular pod with the command:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">kubectl</span> <span class="n">get</span> <span class="n">pods</span> <span class="p">[</span><span class="n">insert</span> <span class="n">pod</span> <span class="n">name</span> <span class="kn">from</span> <span class="nn">query</span> <span class="n">above</span><span class="p">]</span> <span class="o">-</span><span class="n">o</span> <span class="n">jsonpath</span><span class="o">=</span><span class="s1">&#39;{.spec.containers[*].name}&#39;</span>
+</pre></div>
+</div>
+<p><img alt="View running Containers" src="../../_images/Containers.png" /></p>
+<p>You can see there is an istio-proxy container running in our Pod - this was not part of our Component deployment, but was ‘injected’ by Istio automatically.</p>
+<p>The diagram below shows the Monitoring Architecture:</p>
+<p><img alt="Monitoring Architecture" src="../../_images/MonitoringArchitecture.png" /></p>
+<p>You can see the targets that Prometheus scrapes by clicking on the <code class="docutils literal notranslate"><span class="pre">Monitoring</span></code> link in the Rancher Cluster Manager:</p>
+<p><img alt="Monitoring" src="../../_images/Monitoring.png" /></p>
+<p>And then clicking on the <code class="docutils literal notranslate"><span class="pre">Prometheus</span> <span class="pre">Targets</span></code> link. The picture below shows all the targets that Prometheus is scraping, including the istio-system/envoy.</p>
+<p><img alt="Prometheus Targets" src="../../_images/PrometheusTargets.png" /></p>
+<p>The Envoy Proxy controls all traffic into the pod: In the ODA-Canvas we have a <code class="docutils literal notranslate"><span class="pre">component</span> <span class="pre">operator</span></code> that automatically configures Istio to allow traffic where the <a class="reference internal" href="../ODAComponentDesignGuidelines.html"><span class="doc">Component Envelope Specification</span></a> defines an API Endpoint. (Technically, the <code class="docutils literal notranslate"><span class="pre">component</span> <span class="pre">operator</span></code> creates Istio <code class="docutils literal notranslate"><span class="pre">Virtual</span> <span class="pre">Service</span></code> custom resources see <a class="reference external" href="https://github.com/tmforum-oda/oda-ca/tree/master/controllers/apiOperatorIstio">API Operator for Istio</a> )</p>
+<p>I can view these metrics directly in Prometheus - it has a very simple query interface on top of its time-series database. For example, try:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">rate</span><span class="p">(</span><span class="n">container_cpu_usage_seconds_total</span><span class="p">[</span><span class="mi">10</span><span class="n">m</span><span class="p">])</span>
+</pre></div>
+</div>
+<p>or</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">istio_requests_total</span> <span class="p">{</span><span class="n">destination_service_name</span><span class="o">=</span><span class="s2">&quot;r1-partyroleapi&quot;</span><span class="p">}</span>
+</pre></div>
+</div>
+<p><img alt="CPU Graph" src="../../_images/CPUGraph.png" /></p>
+</div>
+<div class="section" id="how-do-i-extend-this-to-get-custom-business-metrics-from-the-component">
+<h2>How do I extend this to get custom business metrics from the component?<a class="headerlink" href="#how-do-i-extend-this-to-get-custom-business-metrics-from-the-component" title="Permalink to this headline">¶</a></h2>
+<p>It is possible for a component to create business metrics, to allow you to see business operations that are occuring within a component. Prometheus supports a number of Metric Types:</p>
+<p>A <strong>counter</strong> is a cumulative metric that represents a single monotonically increasing counter whose value can only increase or be reset to zero on restart. For example, you can use a counter to represent the number of requests served, tasks completed, or errors.”</p>
+<p>A <strong>gauge</strong> is a metric that represents a single numerical value that can arbitrarily go up and down. Gauges are typically used for measured values like [CPU] or current memory usage, but also ‘counts’ that can go up and down, like the number of concurrent requests.”</p>
+<p>A <strong>histogram</strong> samples observations (usually things like request durations or response sizes) and counts them in configurable buckets. It also provides a sum of all observed values.”</p>
+<p>(*there is also a summary metric that has effectively been replaced by histogram)</p>
+<p>To expose business metrics, a component needs to define a <code class="docutils literal notranslate"><span class="pre">/metrics</span></code> endpoint that exposes this data following the Prometheus standard. In the reference example component, we added a <code class="docutils literal notranslate"><span class="pre">Metrics</span> <span class="pre">microservice</span></code> that registers for changes within the Product Catalog (using the Open-API Pub/Sub mechanism) and then exposes this data as a Prometheus metrics API.</p>
+<p><img alt="Reference Example Metrics" src="../../_images/ReferenceExampleMetrics.png" /></p>
+<p>The code for the reference example component can be found at: <a class="reference external" href="https://github.com/tmforum-oda/oda-ca-docs/blob/master/examples/ProductCatalog/registerAllEventsMicroservice/index.js">Example metrics</a>. This is built using nodeJS and uses the <code class="docutils literal notranslate"><span class="pre">prom-client</span></code> Prometheus client library for nodeJS (there are client libraries for most popular programming libraries).</p>
+<p><strong>How do you configure Prometheus to scrape this endpoint?</strong></p>
+<p>To configure Prometheus to scrape this endpoint, simply add the end-point into the Component Envelope YAML file in the <code class="docutils literal notranslate"><span class="pre">Management</span></code> section.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>  <span class="n">management</span><span class="p">:</span> 
+    <span class="o">-</span> <span class="n">name</span><span class="p">:</span> <span class="n">metrics</span>
+      <span class="n">apitype</span><span class="p">:</span> <span class="n">prometheus</span>
+      <span class="n">implementation</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">reference</span> <span class="n">to</span> <span class="n">a</span> <span class="n">Kubernetes</span> <span class="n">Service</span> <span class="k">for</span> <span class="n">the</span> <span class="n">metrics</span> <span class="n">micro</span><span class="o">-</span><span class="n">service</span><span class="o">&gt;</span>
+      <span class="n">path</span><span class="p">:</span> <span class="o">/&lt;</span><span class="n">path</span> <span class="n">where</span> <span class="n">the</span> <span class="n">metrics</span> <span class="n">endopint</span> <span class="ow">is</span> <span class="n">available</span><span class="o">&gt;</span>
+      <span class="n">port</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">port</span> <span class="n">where</span> <span class="n">the</span> <span class="n">endpoint</span> <span class="ow">is</span> <span class="n">available</span><span class="o">&gt;</span>  
+</pre></div>
+</div>
+<p>See the example at <a class="reference external" href="https://github.com/tmforum-oda/oda-ca-docs/blob/master/examples/ProductCatalog/productcatalog/templates/component-productcatalog.yaml">Example Component Envelope</a>.</p>
+<p>When you deploy this componet, you can check it appears in the Prometheus scraping targets:</p>
+<p><img alt="Prometheus Targets 2" src="../../_images/PrometheusTargets2.png" /></p>
+<p>You could build a custom dashboard for these metrics using a tool such as <a class="reference external" href="https://grafana.com/">Grafana</a>. For a simple User Interface you can view the built-in Graph query in Prometheus. In the picture below we are querying the rate of the product_catalog_api_counter over a 10m period.</p>
+<p><img alt="Business Metric" src="../../_images/BusinessMetric.png" /></p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="../ODAComponentTutorial/README.html" class="btn btn-neutral float-right" title="Tutorial to build ODA-Component from Open-API Reference Implemenation" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="../Getting_started.html" class="btn btn-neutral float-left" title="Getting started checklist for new members of ODA-CA" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2023, TM Forum ODA-Component Accelerator project.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

@@ -1,0 +1,275 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>ODA Canvas - use-case library &mdash; ODA-Component Accelerator v1beta1 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/css/custom.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> ODA-Component Accelerator
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">About the project:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../docs/Playbook.html">Introduction to the ODA Component Accelerator Project (ODA-CA)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../docs/Getting_started.html">Getting started checklist for new members of ODA-CA</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Tutorials:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../docs/Observability-Tutorial/README.html">Tutorial to deploy and observe a running component</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../docs/ODAComponentTutorial/README.html">Tutorial to build ODA-Component from Open-API Reference Implemenation</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Design Guidelines:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../docs/ODAComponentDesignGuidelines.html">Design Guidelines to create a new ODA Component</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../docs/ODACanvasDesignGuidelines.html">Design Guidelines to design an ODA Canvas</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Compliance Test Kit (CTK):</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../ctk/README.html">ODA Component - CTK</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Canvas Helm Charts:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Open Digital Architecture - Canvas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Specification.html">ODA Reference Implementation and Environment Specification</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Installation.html">Installation</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Canvas Operators:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../source/operators/index.html">Open Digital Architecture - Controllers/Operators</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Troubleshooting Guide:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../docs/TroubleshootingGuide/index.html">ODA-CA Troubleshooting Guide</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Contributions Guide:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../docs/ContributionsGuide.html">Contribution guidance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../docs/DocumentationProcess.html">Documentation Process</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">ODA-Component Accelerator</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>ODA Canvas - use-case library</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../../_sources/canvas/usecase-library/README.md.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="oda-canvas-use-case-library">
+<h1>ODA Canvas - use-case library<a class="headerlink" href="#oda-canvas-use-case-library" title="Permalink to this headline">¶</a></h1>
+<p>This use-case library defines the interactions between a generic <strong>ODA Component</strong> and the <strong>ODA Canvas</strong>. The ODA Canvas provides access to a range of common services (for identity management, authentication, observability etc) and has a set of <strong>Software Operators</strong> that automatically configure these services based on requirements defined in the ODA Component YAML specification.</p>
+<p>Software Operators are a key concept in the ODA Canvas. For more information, see the 2016 CoreOS blog post that introduced the concept: <a class="reference external" href="https://web.archive.org/web/20170129131616/https://coreos.com/blog/introducing-operators.html">Introducing Operators: Putting Operational Knowledge into Software</a>. There is a good definition of software operators at: <a class="reference external" href="https://operatorhub.io/what-is-an-operator">operatorhub.io/what-is-an-operator</a>.</p>
+<p>The ODA canvas is itself a modular and extensible platform. The list below shows the operators that appear in the Canvas use-case inventory. The ODA-Component Accelerator is building a reference implementation of an ODA Canvas with a range of operators that are open-source and freely available for organizations to re-use, extend or replace with their own implementations. We expect a typical production implementation will use a combination of standard operators and custom operators that can implement that organizations specific operational policies.</p>
+<div class="section" id="oda-software-operators">
+<h2>ODA Software Operators<a class="headerlink" href="#oda-software-operators" title="Permalink to this headline">¶</a></h2>
+<p>This is a list of the Canvas operators (including status of whether this has been tested in the Canvas referernce implementation).</p>
+<p>| Operator            | Description                     |
+| ——————- | ——————————- |
+| Component Management | The Component operator manages the de-composition of an ODA component into APIs and Events (that are processed by their corresponding operators). |
+| API Exposure | Configures the Service Providers API Gateway and/or Service Mesh to provide security, throttling and other non-functional services to allow API endpoints to be exposed to external consumers |
+| API Discovery | Provides discovery for APIs where a component has declared a dependency. Internally it uses the Service Providers discovery capabilities to identify and give access to the appropriate API to fill a dependency. The component us updated via a ServiceActivationConfiguration Open-API call |
+| License Manager | Audits compliance of component usage against licensing agreements |
+| Identity | Provides identity management to grant system and user access to components. |
+| Observability | Captures observability data and allows alarming, tracing and root-cause analysis of issues. |
+| Event Hub | Enables components to publish and subscribe to asynchronous events |</p>
+</div>
+<div class="section" id="use-case-list">
+<h2>Use-case list<a class="headerlink" href="#use-case-list" title="Permalink to this headline">¶</a></h2>
+<p>| ID  |   use-case          | Description           |
+| — | ——————- | ——————— |
+| UC001 | <a class="reference internal" href="UC001-Bootstrap-role-for-component.html"><span class="doc">Bootstrap role for component</span></a> | When a new instance of a component is deployed or deleted, integrate with the Canvas Identity service and bootstrap the initial role and clean-up the bootstraped role. |
+| UC002 | <a class="reference internal" href="UC002-Expose-APIs-for-Component.html"><span class="doc">Expose APIs for Component</span></a> | When a component is deployed, updated or deleted, integrate with the Service Mesh and/or API Gateway to configure and expose the API Endpoints |
+| UC003 | <a class="reference internal" href="UC003-Discover-dependent-APIs-for-Component.html"><span class="doc">Discover dependent APIs for Component</span></a> | When a component is deployed, updated or deleted, search for any declared dependent APIs and update the component via a ServiceActivationConfiguration Open-API call |
+| UC004 | <a class="reference internal" href="UC004-Configure-Observability.html"><span class="doc">Configure Observability</span></a> | When a component is deployed, updated or deleted, configure the observability service. || Authentication | When an external consumer calls an exposed API for a component, manage the authenticate the consumer and pass the authenticated request (including authentication token) to the component. |
+| UC005 | <a class="reference internal" href="UC005-View-Baseline-Observability.html"><span class="doc">View Baseline Observability</span></a> | When a component is deployed, view the baseline metrics such as HTTP Requests per second etc using the observability service management dashboard.|
+| UC006 | <a class="reference internal" href="UC006-View-Custom-Observability.html"><span class="doc">View Custom Observability</span></a> | When a component is deployed, view the custom business metrics such creation,status events etc using the observability service management dashboard.|
+| UC007 | <a class="reference internal" href="UC007-Authentication-external.html"><span class="doc">Authentication - external</span></a> | When an external client wants to call an API exposed by a Component, how they Authenticate and get a token. |
+| UC008 | <a class="reference internal" href="UC008-Authentication-internal.html"><span class="doc">Authentication - internal</span></a> | When an internal client wants to call an API exposed by a Component, how they Authenticate and get a token. |
+| UC009 | <a class="reference internal" href="UC009-Authorization.html"><span class="doc">Authorization</span></a> | After a client has been authenticated, verify their authorization for the specific API and data.|
+| UC010 | <a class="reference internal" href="UC010-Token-Refresh.html"><span class="doc">Token Refresh</span></a> | After a client token expires, refresh the token and resubmit API request.|
+| UC011 | <a class="reference internal" href="UC011-License-Metrics-Observability.html"><span class="doc">License Metrics Observability</span></a> | Capture a tamper-proof stream of metrics that can drive the commercial license agreements with Component Vendors.|
+| UC012 | <a class="reference internal" href="UC012-Enable-Event-Publishing.html"><span class="doc">Enable event publishing</span></a>      | When a component is deployed, configure the Component so that it can publish events |
+| UC013 | <a class="reference internal" href="UC013-Enable-Event-Subscription.html"><span class="doc">Enable event subscription</span></a>  | When a component is deployed, configure the subscription on the event hub|
+| UC014 | <a class="reference internal" href="UC014-Create-Topic.html"><span class="doc">Create Topic</span></a>                            | When a Topic is created, configure security, Publishers and Subscribers|
+| UC015 | <a class="reference internal" href="UC015-Delete-Topic.html"><span class="doc">Delete Topic</span></a>                            | When a Topic is deleted, unconfigure security, Publishers and Subscribers|</p>
+<p>The corresponding Behavour Driven Design (BDD) features and scenarious can be found here: <a class="reference external" href="../compliance-test-kit/BDD-and-TDD/README">BDD Features and Scenarios</a></p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2023, TM Forum ODA-Component Accelerator project.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
