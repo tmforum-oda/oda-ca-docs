@@ -39,7 +39,7 @@ release = 'v1beta1'
 # Add any Sphinx extension module names here, as strings. They can be
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
 # ones.
-extensions = ['sphinx.ext.autodoc', 'recommonmark']
+extensions = ['sphinx.ext.autodoc', 'recommonmark','sphinx_markdown_tables']
 source_suffix = {
     '.rst': 'restructuredtext',
     '.md': 'markdown'
@@ -109,8 +109,9 @@ copyImagesAndMarkdown('../../oda-canvas/source/operators/apiOperatorSimpleIngres
 copyImagesAndMarkdown('../../oda-canvas/source/operators/apiOperatorIstio/sequenceDiagrams', './canvas/source/operators/apiOperatorIstio/sequenceDiagrams')
 copyImagesAndMarkdown('../../oda-canvas/source/operators/apiOperatorApig/sequenceDiagrams', './canvas/source/operators/apiOperatorApig/sequenceDiagrams')
 copyImagesAndMarkdown('../../oda-canvas/source/operators/securityController/sequenceDiagrams', './canvas/source/operators/securityController/sequenceDiagrams')
-copyImagesAndMarkdown('../../oda-canvas/usecase-library', './canvas/usecase-library')
+# issue with links copyImagesAndMarkdown('../../oda-canvas/usecase-library', './canvas/usecase-library')
 copyImagesAndMarkdown('../../oda-canvas/compliance-test-kit', './canvas/compliance-test-kit')
+copyImagesAndMarkdown('../../oda-canvas/compliance-test-kit/images', './canvas/compliance-test-kit/images')
 copyImagesAndMarkdown('../../oda-canvas/installation', './canvas/installation')
 
 # Base Documentation files

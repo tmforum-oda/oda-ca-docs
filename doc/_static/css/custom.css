@@ -17,3 +17,7 @@ div.wy-menu ul {
 div.wy-menu ul li {
     list-style: none
 }
+
+.wy-nav-content {
+  max-width: 1200px !important;
+}
