@@ -13,23 +13,23 @@ Open Digital Architecture - Component Accelerator
    :maxdepth: 1
    :caption: About the project:
 
-   caDocs/Playbook.md
-   caDocs/Getting_started.md
+   docs/Playbook.md
+   docs/Getting_started.md
 
 .. toctree::
    :maxdepth: 2
    :caption: Tutorials:
 
-   caDocs/Observability-Tutorial/README.md
-   caDocs/ODAComponentTutorial/README.md
+   docs/Observability-Tutorial/README.md
+   docs/ODAComponentTutorial/README.md
 
 
 .. toctree::
    :maxdepth: 2
    :caption: Design Guidelines:
 
-   caDocs/ODAComponentDesignGuidelines.md
-   caDocs/ODACanvasDesignGuidelines.md
+   docs/ODAComponentDesignGuidelines.md
+   docs/ODACanvasDesignGuidelines.md
 
 .. toctree::
    :maxdepth: 2
@@ -41,30 +41,30 @@ Open Digital Architecture - Component Accelerator
    :maxdepth: 2
    :caption: Canvas Helm Charts:
 
-   canvasCharts/index.rst
-   canvasCharts/Specification.md
-   canvasCharts/Installation.md
+   canvas/index.rst
+   canvas/Specification.md
+   canvas/Installation.md
    
 .. toctree::
    :maxdepth: 2
    :caption: Canvas Operators:
 
-   caSource/controllers/index.rst        
+   canvas/source/operators/index.rst        
 
 
 .. toctree::
    :maxdepth: 2
    :caption: Troubleshooting Guide:
 
-   caDocs/TroubleshootingGuide/index.rst
+   docs/TroubleshootingGuide/index.rst
 
 
 .. toctree::
    :maxdepth: 2
    :caption: Contributions Guide:
 
-   caDocs/ContributionsGuide.md
-   caDocs/DocumentationProcess.md
+   docs/ContributionsGuide.md
+   docs/DocumentationProcess.md
 
 
 
