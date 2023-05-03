@@ -4,7 +4,7 @@ Date: 2013-04-06
 
 ## Status
 
-Pending ODA-CA board approval
+Approved by ODA-CA board meeting on 2023-04-27
 
 ## Context
 
@@ -18,12 +18,12 @@ This decision 0001 is an example of an Architecture Decision Record and it also 
 
 The status can be one of:
 
-| Status               | Description                                                                                               |
-| -------------------- | --------------------------------------------------------------------------------------------------------- |
-| In progress          | The decision is being worked on to provide a recommendation to the ODA-CA working group board             | 
-| Pending ODA-CA board approval | The decision documents a recommendation that will be discussed in the ODA-CA working group board |
-| Approved by ODA-CA board | The decision is approved. All contributions should align to this decision                             |
-| Superseded          | If a later decision changes or reverses a decision, we mark as superseded (and refer to new decision)      |
+| Status                           | Description                                                                                               |
+| -------------------------------- | --------------------------------------------------------------------------------------------------------- |
+| In progress                      | The decision is being worked on to provide a recommendation to the ODA-CA working group board             | 
+| Pending ODA-CA board approval    | The decision documents a recommendation that will be discussed in the ODA-CA working group board          |
+| Approved by ODA-CA board         | The decision is approved. All contributions should align to this decision                                 |
+| Superseded                       | If a later decision changes or reverses a decision, we mark as superseded (and refer to new decision)     |
 
 ## Consequences
 
