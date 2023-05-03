@@ -3,3 +3,4 @@ node_modules/
 .vscode
 ./docs/
 ./doc/_build/
+.hypothesis/
