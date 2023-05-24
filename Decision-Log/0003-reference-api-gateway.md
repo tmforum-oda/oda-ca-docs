@@ -1,4 +1,4 @@
-# 1. Reference Implementation API Gateway
+# 3. Reference Implementation API Gateway
 
 Date: 2013-05-03
 
