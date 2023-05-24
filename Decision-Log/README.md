@@ -10,6 +10,7 @@ This folder contains a log of architectural decisions made on this project, incl
 | 003 reference API Gateway | 2023-05-03 | In progress | [0003-reference-api-gateway.md](0003-reference-api-gateway.md) |   [@lesterthomas](https://www.github.com/lesterthomas)   |
 | 004 which authentication protocol should be supported | 2023-05-24 | In progress | [0004-which-authentication-protocol-should-be-supported.md](0004-which-authentication-protocol-should-be-supported.md) |   [@lesterthomas](https://www.github.com/lesterthomas)   |
 | 005 which languages and libraries should be used | 2023-05-24 | In progress | [0005-which-languages-and-libraries-should-be-used.md](0005-which-languages-and-libraries-should-be-used.md) |   [@lesterthomas](https://www.github.com/lesterthomas)   |
+| 006 Common set of minimum mandatory JWT claims for interoperability | 2023-05-24 | In progress | [0006-common-set-of-minimum-mandatory-JWT-claims-for-interoperability.md](0006-.md) |  Authentication workshop |
 
 
 
