@@ -8,7 +8,7 @@ This folder contains a log of architectural decisions made on this project, incl
 | 001 record architecture decisions | 2023-04-06 | ODA-CA board approved | [0001-record-architecture-decisions.md](0001-record-architecture-decisions.md) |   ODA-CA board approved   |
 | 002 role vs permission | 2023-04-06 | Pending ODA-CA board approval | [0002-role-vs-permission.md](0002-role-vs-permission.md) |   [@brian-burton](https://www.github.com/brian-burton)   |
 | 003 reference API Gateway | 2023-05-03 | In progress | [0003-reference-api-gateway.md](0003-reference-api-gateway.md) |   [@lesterthomas](https://www.github.com/lesterthomas)   |
-
+| 004 which authentication protocol should be supported | 2023-05-24 | In progress | [0004-which-authentication-protocol-should-be-supported.md](0004-which-authentication-protocol-should-be-supported.md) |   [@lesterthomas](https://www.github.com/lesterthomas)   |
 
 
 
