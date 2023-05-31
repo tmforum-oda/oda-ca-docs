@@ -11,6 +11,5 @@ This folder contains a log of architectural decisions made on this project, incl
 | 004 which authentication protocol should be supported | 2023-05-24 | In progress | [0004-which-authentication-protocol-should-be-supported.md](0004-which-authentication-protocol-should-be-supported.md) |   [@lesterthomas](https://www.github.com/lesterthomas)   |
 | 005 which languages and libraries should be used | 2023-05-24 | In progress | [0005-which-languages-and-libraries-should-be-used.md](0005-which-languages-and-libraries-should-be-used.md) |   [@lesterthomas](https://www.github.com/lesterthomas)   |
 | 006 Common set of minimum mandatory JWT claims for interoperability | 2023-05-24 | In progress | [006-common-set-of-minimum-mandatory-JWT-claims-for-interoperability.md](006-common-set-of-minimum-mandatory-JWT-claims-for-interoperability.md) |  Authentication workshop |
-
-
-
+| 007 Provisioning identities across identity providers | 2023-05-24 | In progress | [007-Provisioning-identities-across-identity-providers.md](007-Provisioning-identities-across-identity-providers.md) |  Authentication workshop |
+| 008 Identity Propagation from Component to Component | 2023-05-31 | In progress | [008-Identity-Propagation.md](008-Identity-Propagation.md) |  Authentication workshop |
