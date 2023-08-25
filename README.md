@@ -11,7 +11,4 @@ This area contains:
 * [Component Design Guidelines](ODAComponentDesignGuidelines.md)
 * [Contributions Guide](ContributionsGuide.md)
 * [Documentation Process](DocumentationProcess.md)
- 
- 
-
-
+  
