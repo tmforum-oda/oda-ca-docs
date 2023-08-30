@@ -1,0 +1,311 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Installation &mdash; ODA-Component Accelerator v1beta1 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Open Digital Architecture - Controllers/Operators" href="source/operators/index.html" />
+    <link rel="prev" title="ODA Reference Implementation and Environment Specification" href="Specification.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> ODA-Component Accelerator
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">About the project:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../docs/Playbook.html">Introduction to the ODA Component Accelerator Project (ODA-CA)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../docs/Getting_started.html">Getting started checklist for new members of ODA-CA</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Tutorials:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../docs/Observability-Tutorial/README.html">Tutorial to deploy and observe a running component</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../docs/ODAComponentTutorial/README.html">Tutorial to build ODA-Component from Open-API Reference Implemenation</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Design Guidelines:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../docs/ODAComponentDesignGuidelines.html">Design Guidelines to create a new ODA Component</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../docs/ODACanvasDesignGuidelines.html">Design Guidelines to design an ODA Canvas</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Compliance Test Kit (CTK):</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../ctk/README.html">ODA Component - CTK</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Canvas Helm Charts:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="index.html">Open Digital Architecture - Canvas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Specification.html">ODA Reference Implementation and Environment Specification</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Installation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#step-1-installing-cluster-enablers">Step 1: Installing cluster enablers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#step-2-installing-reference-implementation-services">Step 2: Installing Reference Implementation services</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#step-3-installing-the-canvas">Step 3: Installing the Canvas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#step-4-configuring-keycloak">Step 4: Configuring Keycloak</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#notes">Notes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#step-5-only-if-using-istio-service-mesh">Step 5 (only if using Istio Service Mesh)</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Canvas Operators:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="source/operators/index.html">Open Digital Architecture - Controllers/Operators</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Troubleshooting Guide:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../docs/TroubleshootingGuide/index.html">ODA-CA Troubleshooting Guide</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Contributions Guide:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../docs/ContributionsGuide.html">Contribution guidance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../docs/DocumentationProcess.html">Documentation Process</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">ODA-Component Accelerator</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="index.html">Open Digital Architecture - Canvas</a> &raquo;</li>
+        
+      <li>Installation</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../_sources/canvas/Installation.md.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="installation">
+<h1>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="step-1-installing-cluster-enablers">
+<h2>Step 1: Installing cluster enablers<a class="headerlink" href="#step-1-installing-cluster-enablers" title="Permalink to this headline">¶</a></h2>
+<p>The only enabler at the moment is the canvas <code class="docutils literal notranslate"><span class="pre">namespace</span></code>.  Install it using:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">helm</span> <span class="n">install</span> <span class="n">oda</span><span class="o">-</span><span class="n">ri</span><span class="o">-</span><span class="n">enablers</span> <span class="n">clusterenablers</span><span class="o">/</span> 
+</pre></div>
+</div>
+</div>
+<div class="section" id="step-2-installing-reference-implementation-services">
+<h2>Step 2: Installing Reference Implementation services<a class="headerlink" href="#step-2-installing-reference-implementation-services" title="Permalink to this headline">¶</a></h2>
+<p>Install cert-manager to handle certificate creation and signing for the webhook using:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pushd</span> <span class="n">ReferenceImplementation</span><span class="o">/</span><span class="n">cert</span><span class="o">-</span><span class="n">manager</span>
+<span class="n">bash</span> <span class="n">install_cert</span><span class="o">-</span><span class="n">manager</span><span class="o">.</span><span class="n">sh</span>
+<span class="n">popd</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="step-3-installing-the-canvas">
+<h2>Step 3: Installing the Canvas<a class="headerlink" href="#step-3-installing-the-canvas" title="Permalink to this headline">¶</a></h2>
+<p>There is an example script (<code class="docutils literal notranslate"><span class="pre">install_canvas_cert-manager.sh</span></code>) that will install the Canvas using the chart locally. It does the following:</p>
+<ul class="simple">
+<li><p>Configure the correct Helm repositories</p></li>
+<li><p>Create certificates for the oda.tmforum.org CRD webhook using cert-manager</p></li>
+<li><p>Update the dependencies in subcharts (currently just for Keycloak)</p></li>
+<li><p>Install the canvas itself (CRDs, namespaces, component controller)</p></li>
+<li><p>Install the canvas-specific components in the canvas namespace</p></li>
+</ul>
+<p>Install it using:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">bash</span> <span class="n">install_canvas_cert</span><span class="o">-</span><span class="n">manager</span><span class="o">.</span><span class="n">sh</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="step-4-configuring-keycloak">
+<h2>Step 4: Configuring Keycloak<a class="headerlink" href="#step-4-configuring-keycloak" title="Permalink to this headline">¶</a></h2>
+<p>Finally, you will also need to configure Keycloak as follows:</p>
+<ul class="simple">
+<li><p>Log in to the admin console. Unless you changed it manually, the default credentials we’ve set are in the <a class="reference external" href="https://github.com/tmforum-oda/oda-canvas-charts/blob/master/canvas/charts/keycloak/values.yaml">Keycloak values.yaml file</a></p></li>
+<li><p><a class="reference external" href="https://www.keycloak.org/docs/latest/server_admin/#_create-realm">Create a new realm</a> called <code class="docutils literal notranslate"><span class="pre">myrealm</span></code></p></li>
+<li><p><a class="reference external" href="https://www.keycloak.org/docs/latest/server_admin/#_create-new-user">Create a user in myrealm</a> called <code class="docutils literal notranslate"><span class="pre">seccon</span></code></p></li>
+</ul>
+<div class="section" id="notes">
+<h3>Notes<a class="headerlink" href="#notes" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>It is possible to enable or disable creation of namespaces in the <code class="docutils literal notranslate"><span class="pre">values.yaml</span></code> file.</p></li>
+<li><p>Names of namespaces are set to <code class="docutils literal notranslate"><span class="pre">canvas</span></code> and <code class="docutils literal notranslate"><span class="pre">components</span></code> unless overridden.</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="step-5-only-if-using-istio-service-mesh">
+<h2>Step 5 (only if using Istio Service Mesh)<a class="headerlink" href="#step-5-only-if-using-istio-service-mesh" title="Permalink to this headline">¶</a></h2>
+<p>If you are deploying on Istio Service Mesh, you have to enable Istio injection in the namespaces where the canvas and components will be deployed. This can be done by running the following commands:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>kubectl label namespace canvas istio-injection<span class="o">=</span>enabled
+kubectl label namespace components istio-injection<span class="o">=</span>enabled
+</pre></div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="source/operators/index.html" class="btn btn-neutral float-right" title="Open Digital Architecture - Controllers/Operators" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="Specification.html" class="btn btn-neutral float-left" title="ODA Reference Implementation and Environment Specification" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2023, TM Forum ODA-Component Accelerator project.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
