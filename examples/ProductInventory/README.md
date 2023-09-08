@@ -15,5 +15,26 @@ The component envelope exposes the ProductInventory as a CoreFunction API and th
 
 The Kubernetes services adopt the Istio naming convention for the Port names.
 
+## Installation
 
+Install this component (assuming the kubectl config is connected to a Kubernetes cluster with an operational ODA Canvas) using:
+
+```
+helm install r1 .\productinventory -n components
+```
+
+You can test the component has deployed successfully using
+
+```
+kubectl get components -n components
+```
+
+You should get an output like
+
+```
+NAME                          DEPLOYMENT_STATUS
+r1-productinventory           Complete
+```
+
+(The DEPLOYMENT_STATUS will cycle through a number of interim states as part of the deployment). If the deployment fails, refer to the [Troubleshooting-Guide](https://github.com/tmforum-oda/oda-ca-docs/tree/master/Troubleshooting-Guide).
  
