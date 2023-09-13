@@ -34,7 +34,8 @@ Read [this presentation](https://github.com/tmforum-oda/oda-ca-docs/blob/master/
 **ODA-CA demo videos**
 
 * Deploying ODA Components on the ODA Canvas - API exposure and discovery: [video (6 min)](https://www.youtube.com/watch?v=e63FGHMeI1M)
-* Validation of ODA Components using the prototype Component CTK: [video (3 min)](https://www.youtube.com/watch?v=RyTGzc4pv64&t=1s)
+* Validation of an ODA Component using the prototype Component CTK: [video (3 min)](https://www.youtube.com/watch?v=RyTGzc4pv64&t=1s)
+* Validation of an ODA Canvas using the prototype Canvas CTK: [video (5 min)](https://www.youtube.com/watch?v=UofZbT26ITg)
 * Deploying and validating a Resource Inventory component on China Mobile's public cloud ODA Canvas: [video (5 min)](https://iframe.dacast.com/vod/9292f2e21c51139fb9b2ffd6080ab1d6/3d3c4c71-001f-4a8c-893d-01b3dc67e38f)
 * Deploying and validating an Ericsson Product Inventory component: [video (2 min)](https://iframe.dacast.com/vod/9292f2e21c51139fb9b2ffd6080ab1d6/65360140-2147-4f40-b8c1-bbdf3ca5181c)
 * Implementing identity & access management with the ODA Canvas: [video (4 min)](https://www.youtube.com/watch?v=7VKT_kCYfzE)
