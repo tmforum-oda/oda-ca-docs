@@ -55,4 +55,4 @@ Read [this presentation](https://github.com/tmforum-oda/oda-ca-docs/blob/master/
 
 alvatross by SATEC, Axiata Digital Labs, China Mobile, Ericsson, Global Wavenet, Hansen Technologies, Inetum, Microsoft, Oracle, Orange, OryxGateway, Sysbiz Technologies, Vodafone, Whale Cloud, Zira.
 
-[comment]: <> (**ODA-CA presentations**) 
+[comment]: <> (**ODA-CA presentations**)  
