@@ -87,7 +87,7 @@ def copyImagesAndMarkdown(src_dir, dest_dir):
   # Iterate through all the files in the source directory
   for file in os.listdir(src_dir):
     # Check if the file is an image
-    if file.endswith(".jpg") or file.endswith(".png") or file.endswith(".gif") or file.endswith(".md"):
+    if file.endswith(".jpg") or file.endswith(".png") or file.endswith(".gif") or file.endswith(".md") or file.endswith(".feature"):
       # Construct the full path to the file
       src_path = os.path.join(src_dir, file)
       dest_path = os.path.join(dest_dir, file)
@@ -111,6 +111,8 @@ copyImagesAndMarkdown('../../oda-canvas/source/operators/apiOperatorApig/sequenc
 copyImagesAndMarkdown('../../oda-canvas/source/operators/securityController/sequenceDiagrams', './canvas/source/operators/securityController/sequenceDiagrams')
 # issue with links copyImagesAndMarkdown('../../oda-canvas/usecase-library', './canvas/usecase-library')
 copyImagesAndMarkdown('../../oda-canvas/compliance-test-kit', './canvas/compliance-test-kit')
+copyImagesAndMarkdown('../../oda-canvas/compliance-test-kit/BDD-and-TDD', './canvas/compliance-test-kit/BDD-and-TDD')
+copyImagesAndMarkdown('../../oda-canvas/compliance-test-kit/BDD-and-TDD/features', './canvas/compliance-test-kit/BDD-and-TDD/features')
 copyImagesAndMarkdown('../../oda-canvas/compliance-test-kit/images', './canvas/compliance-test-kit/images')
 copyImagesAndMarkdown('../../oda-canvas/installation', './canvas/installation')
 

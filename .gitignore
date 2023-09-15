@@ -3,4 +3,8 @@ node_modules/
 .vscode
 ./docs/
 ./doc/_build/
+examples/ProductCatalog/.hypothesis/unicode_data/12.1.0/charmap.json.gz
+examples/ProductCatalog/.hypothesis/tmp/tmpfxi_gh81
+.hypothesis/unicode_data/12.1.0/charmap.json.gz
 .hypothesis/
+
