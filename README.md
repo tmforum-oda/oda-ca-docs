@@ -10,5 +10,5 @@ This area contains:
 * [Playbook](Playbook.md)
 * [Component Design Guidelines](ODAComponentDesignGuidelines.md)
 * [Contributions Guide](ContributionsGuide.md)
-* [Documentation Process](DocumentationProcess.md)
- 
+* [Documentation Process](DocumentationProcess.md) 
+      
