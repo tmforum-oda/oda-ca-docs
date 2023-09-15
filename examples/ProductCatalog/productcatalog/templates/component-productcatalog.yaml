@@ -1,13 +1,18 @@
-apiVersion: oda.tmforum.org/v1beta1
+apiVersion: oda.tmforum.org/v1beta2
 kind: component
 metadata:
   name: {{.Release.Name}}-{{.Values.component.name}}
   labels:
     oda.tmforum.org/componentName: {{.Release.Name}}-{{.Values.component.name}}
 spec:
-  type: {{.Values.component.type}}
+  id: {{.Values.component.id}}
+  name: {{.Values.component.name}}
+  functionalBlock: {{.Values.component.functionalBlock}}
+  publicationDate: {{.Values.component.publicationDate}}
+  status: specified
   version: {{.Values.component.version}}
-  description: "Simple Product Catalog ODA-Component from Open-API reference implementation." 
+  description: "Simple Product Catalog ODA-Component from Open-API reference implementation."
+
   maintainers:
   - name: Lester Thomas
     email: lester.thomas@vodafone.com
@@ -30,14 +35,14 @@ spec:
   eventNotification:
     publishedEvents: []
     subscribedEvents: []
-  management: 
+  managementFunction: 
     exposedAPIs: 
     - name: metrics
       apitype: prometheus
       implementation: {{.Release.Name}}-{{.Values.component.name}}-sm
       path: /{{.Release.Name}}-{{.Values.component.name}}/metrics
       port: 4000    
-  security:
+  securityFunction:
     controllerRole: {{ .Values.security.controllerRole }}
     exposedAPIs: 
     - name: partyrole
