@@ -1,0 +1,7 @@
+recommonmark
+sphinx
+sphinx_rtd_theme
+flask
+requests
+cloudevents
+sphinx-markdown-tables

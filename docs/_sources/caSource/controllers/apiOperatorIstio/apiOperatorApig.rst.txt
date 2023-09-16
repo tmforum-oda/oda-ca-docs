@@ -1,7 +1,0 @@
-apiOperatorSimpleIngress module
-=================================
-
-.. automodule:: apiOperatorApig
-   :members:
-   :undoc-members:
-   :show-inheritance:
