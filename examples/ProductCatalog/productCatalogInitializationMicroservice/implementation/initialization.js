@@ -4,7 +4,7 @@ var releaseName = process.env.RELEASE_NAME;
 var componentName = process.env.COMPONENT_NAME; 
 
 const metricsEventListner = {
-  callback: "http://" + releaseName + "-productcatalog-sm:4000/listener"
+  callback: "http://" + componentName + "-sm:4000/listener"
 }
 
 const delay = ms => new Promise(res => setTimeout(res, ms));
