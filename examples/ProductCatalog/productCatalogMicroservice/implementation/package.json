@@ -18,6 +18,7 @@
     "cfenv": "^1.0.3",
     "commander": "^2.6.0",
     "connect": "^3.2.0",
+    "dotenv": "^16.3.1",
     "express": "^4.15.3",
     "http-post": "^0.1.1",
     "http-proxy": "^1.8.1",

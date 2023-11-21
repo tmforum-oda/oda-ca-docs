@@ -1,4 +1,5 @@
 'use strict';
+require("dotenv").config();
 
 const fs = require('fs'),
       path = require('path'),
@@ -12,7 +13,7 @@ const {TError, TErrorEnum, sendError} = require('./utils/errorUtils');
 const app = require('connect')();
 const swaggerTools = require('swagger-tools');
 
-const serverPort = 8080;
+const serverPort = process.env.PORT || 8080;
 
 // Correct the url in swagger-ui-dist that points to some demo (like the petstore)
 // And add additional useful options\
@@ -35,7 +36,7 @@ const swaggerDoc = swaggerUtils.getSwaggerDoc();
 
 
 // Get Component instance name from Environment variable and put it at start of API path
-var componentName = process.env.COMPONENT_NAME;
+let componentName = process.env.COMPONENT_NAME;
 if (!componentName) {
   componentName = 'productcatalog'
 }
@@ -46,7 +47,7 @@ fs.readFile(path.join(__dirname, './node_modules/swagger-ui-dist/index.html'), '
   if (err) {
     return console.log(err);
   }
-  var result = data.replace(/url: \"/g, 'url: \"/' + componentName );
+  let result = data.replace(/url: \"/g, 'url: \"/' + componentName );
   console.log('updating ' + path.join(__dirname, './node_modules/swagger-ui-dist/index.html'));
   fs.writeFile(path.join(__dirname, './node_modules/swagger-ui-dist/index.html'), result, 'utf8', function (err) {
       if (err) return console.log(err);
