@@ -14,6 +14,12 @@
   "license": "Unlicense",
   "private": true,
   "dependencies": {
+    "@opentelemetry/api": "^1.7.0",
+    "@opentelemetry/auto-instrumentations-node": "^0.40.0",
+    "@opentelemetry/exporter-trace-otlp-proto": "^0.45.1",
+    "@opentelemetry/sdk-metrics": "^1.18.1",
+    "@opentelemetry/sdk-node": "^0.45.1",
+    "@opentelemetry/sdk-trace-node": "^1.18.1",
     "body-parser": "^1.15.2",
     "cfenv": "^1.0.3",
     "commander": "^2.6.0",

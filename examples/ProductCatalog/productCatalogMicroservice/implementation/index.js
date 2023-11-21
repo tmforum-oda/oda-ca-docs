@@ -146,4 +146,6 @@ function errorHandler (err, req, res, next) {
   } else {
     next(err,req,res);
   }
-};
+}
+
+require('./utils/instrumentationUtil').init();
