@@ -15,14 +15,14 @@ const swaggerTools = require('swagger-tools');
 const serverPort = 8080;
 
 // Correct the url in swagger-ui-dist that points to some demo (like the petstore)
-// And add additional useful options
-fs.copyFileSync(path.join(__dirname, './index.html_replacement'),
-  path.join(__dirname, './node_modules/swagger-ui-dist/index.html'), (err) => {
-  if(err) {
-    console.log('Unable to replace swagger-ui-dist/index.html file - something wrong with the installation ??');
-    process.exit(1);
-  }
-})
+// And add additional useful options\
+try {
+  fs.copyFileSync(path.join(__dirname, './index.html_replacement'), path.join(__dirname, './node_modules/swagger-ui-dist/index.html'))
+} catch (err) {
+  console.log('Unable to replace swagger-ui-dist/index.html file - something wrong with the installation ??');
+  process.exit(1);
+}
+
 
 // swaggerRouter configuration
 const options = {
@@ -35,7 +35,7 @@ const swaggerDoc = swaggerUtils.getSwaggerDoc();
 
 
 // Get Component instance name from Environment variable and put it at start of API path
-var componentName = process.env.COMPONENT_NAME; 
+var componentName = process.env.COMPONENT_NAME;
 if (!componentName) {
   componentName = 'productcatalog'
 }
@@ -52,7 +52,7 @@ fs.readFile(path.join(__dirname, './node_modules/swagger-ui-dist/index.html'), '
       if (err) return console.log(err);
   });
 });
-        
+
 swaggerDoc.basePath = '/' + componentName + swaggerDoc.basePath
 
 // Initialize the Swagger middleware
@@ -112,7 +112,7 @@ function errorHandler (err, req, res, next) {
   if(err) {
     if(err.failedValidation) {
 
-      // err is something like 
+      // err is something like
       // {"code":"SCHEMA_VALIDATION_FAILED",
       //       "failedValidation":true,
       //       "results":{
@@ -129,7 +129,7 @@ function errorHandler (err, req, res, next) {
       // rewrite to the TMForum error code format
 
       const message = err.results.errors.map(item => item.message).join(", ");
-      
+
       const error = new TError(TErrorEnum.INVALID_BODY, message);
       sendError(res,error);
 
