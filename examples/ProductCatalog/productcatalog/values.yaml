@@ -13,3 +13,17 @@ component:
   storageClassName: default
 security:
   controllerRole: Admin
+mongodb:
+  host: productcatalog-mongodb
+  port: 27017
+  database: tmf
+api:
+  image: csotiriou/productcatalogapi:0.5
+  otlp:
+    console:
+      enabled: true
+    protobuffCollector:
+      enabled: false
+      url: http://localhost:4318/v1/traces
+partyrole:
+  image: csotiriou/partyroleapi:0.3
