@@ -14,10 +14,7 @@ var mongodb = null;
 
 /* connection helper for running MongoDb from url */
 function connectHelper(callback) {
-  var releaseName = process.env.RELEASE_NAME; // Release name from Helm deployment
   const database = process.env.MONGODB_DATABASE;
-  // const credentials_uri = process.env.MONGODB_URI;
-  // var credentials_uri = "mongodb://" + releaseName + "-mongodb:27017/tmf";
   const credentials_uri = `mongodb://${process.env.MONGODB_HOST}:${process.env.MONGODB_PORT}/${database}`
   let options = {
     useNewUrlParser: true

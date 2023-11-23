@@ -10,15 +10,15 @@ const MongoClient = require('mongodb').MongoClient;
 
 const {getResponseType, getPayloadType, getTypeDefinition} = require('./swaggerUtils');
 
-var mongodb = null; 
+var mongodb = null;
 
 /* connection helper for running MongoDb from url */
 function connectHelper(callback) {
-  var releaseName = process.env.RELEASE_NAME; // Release name from Helm deployment
-  var credentials_uri = "mongodb://" + releaseName + "-mongodb:27017/tmf";
+  const database = process.env.MONGODB_DATABASE;
+  const credentials_uri = `mongodb://${process.env.MONGODB_HOST}:${process.env.MONGODB_PORT}/${database}`
   //var credentials_uri = "mongodb://localhost:27017/tmf";
   let options = {
-    useNewUrlParser: true 
+    useNewUrlParser: true
   };
   MongoClient.connect(credentials_uri, options, function (err, db) {
     if (err) {
