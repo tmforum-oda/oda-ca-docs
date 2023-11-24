@@ -18,7 +18,7 @@ mongodb:
   port: 27017
   database: tmf
 api:
-  image: csotiriou/productcatalogapi:0.5
+  image: csotiriou/productcatalogapi:0.6
   otlp:
     console:
       enabled: false
@@ -26,4 +26,4 @@ api:
       enabled: true
       url: http://localhost:4318/v1/traces
 partyrole:
-  image: csotiriou/partyroleapi:0.3
+  image: csotiriou/partyroleapi:0.4
