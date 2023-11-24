@@ -31,7 +31,7 @@ copyright = '2023, TM Forum ODA-Component Accelerator project'
 author = 'TM Forum ODA-Component Accelerator project'
 
 # The full version, including alpha/beta/rc tags
-release = 'v1beta1'
+release = 'v1beta2'
 
 
 # -- General configuration ---------------------------------------------------
