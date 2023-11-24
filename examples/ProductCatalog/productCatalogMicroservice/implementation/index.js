@@ -1,5 +1,7 @@
 'use strict';
 require("dotenv").config();
+require('./utils/instrumentationUtil').init();
+
 
 const fs = require('fs'),
       path = require('path'),
@@ -148,4 +150,3 @@ function errorHandler (err, req, res, next) {
   }
 }
 
-require('./utils/instrumentationUtil').init();

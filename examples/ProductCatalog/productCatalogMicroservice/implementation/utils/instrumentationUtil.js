@@ -5,10 +5,13 @@ const {OTLPTraceExporter} = require("@opentelemetry/exporter-trace-otlp-proto")
 
 function generateExporter() {
     if (process.env.OTL_EXPORTER_TRACE_PROTO_ENABLED === 'true') {
+        const collectorUrl = process.env.OTL_EXPORTER_TRACE_PROTO_COLLECTOR_URL;
+        console.log("enabling server-sent traces to " + collectorUrl)
         return new OTLPTraceExporter({
-            url: process.env.OTL_EXPORTER_TRACE_PROTO_COLLECTOR_URL,
+            url: collectorUrl,
         })
     }
+    console.log("enabling console traces")
     return new ConsoleSpanExporter()
 }
 
