@@ -25,7 +25,7 @@ spec:
         - name: COMPONENT_NAME
           value: {{.Release.Name}}-{{.Values.component.name}}
         - name: MONGODB_HOST
-          value: {{.Values.mongodb.host}}
+          value: {{.Release.Name}}-mongodb
         - name: MONGODB_PORT
           value: "{{.Values.mongodb.port}}"
         - name: MONGODB_DATABASE

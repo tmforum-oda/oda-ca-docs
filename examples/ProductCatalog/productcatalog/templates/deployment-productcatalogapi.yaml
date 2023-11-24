@@ -31,7 +31,7 @@ spec:
         - name: OTL_EXPORTER_TRACE_PROTO_COLLECTOR_URL
           value: {{.Values.api.otlp.protobuffCollector.url}}
         - name: MONGODB_HOST
-          value: {{.Values.mongodb.host}}
+          value: {{.Release.Name}}-mongodb
         - name: MONGODB_PORT
           value: "{{.Values.mongodb.port}}"
         - name: MONGODB_DATABASE

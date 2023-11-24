@@ -14,7 +14,6 @@ component:
 security:
   controllerRole: Admin
 mongodb:
-  host: productcatalog-mongodb
   port: 27017
   database: tmf
 api:
