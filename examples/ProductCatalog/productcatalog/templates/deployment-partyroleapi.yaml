@@ -27,7 +27,7 @@ spec:
         - name: MONGODB_HOST
           value: {{.Values.mongodb.host}}
         - name: MONGODB_PORT
-          value: {{.Values.mongodb.port}}
+          value: "{{.Values.mongodb.port}}"
         - name: MONGODB_DATABASE
           value: {{.Values.mongodb.database}}
         - name: NODE_ENV
