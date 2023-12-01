@@ -13,3 +13,16 @@ component:
   storageClassName: default
 security:
   controllerRole: Admin
+mongodb:
+  port: 27017
+  database: tmf
+api:
+  image: csotiriou/productcatalogapi:0.10
+  otlp:
+    console:
+      enabled: false
+    protobuffCollector:
+      enabled: true
+      url: http://datadog-agent.default.svc.cluster.local:4318/v1/traces
+partyrole:
+  image: csotiriou/partyroleapi:0.4
