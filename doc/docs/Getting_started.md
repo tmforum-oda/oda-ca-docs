@@ -32,11 +32,11 @@ The ODA Components & Canvas project is developing the formal specifications for 
 
 **Join one or more of the current initiatives**
 
-* Canvas Services track (documented [here](https://github.com/tmforum-oda/oda-canvas-ctk/tree/canvasUseCasesandBDD))
+* ODA Canvas track (documented [here](https://github.com/tmforum-oda/oda-canvas/blob/master/Canvas-design.md))
   * Create MVP of ODA Canvas use case library and BDD
   * Add these use cases to the prototype ODA Canvas CTK
 * Components track
-  * Publish v1beta1 Component CTK aligned with the beta1 Component specification (full spec with BDD)
+  * Publish v1beta1 Component CTK aligned with the beta2 Component specification (full spec with BDD)
   * Use the CTK to test commercial Product Catalog components, including BDD for the Canvas supporting functions
   * Create test tooling to semi-automate the CTK validation of components deployed on the reference Canvas
 * Event Hub processing
