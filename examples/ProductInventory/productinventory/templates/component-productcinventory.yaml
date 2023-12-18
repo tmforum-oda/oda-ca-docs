@@ -34,7 +34,8 @@ spec:
       developerUI: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/productInventory/v4/docs
       port: 8080
     dependentAPIs: 
-    - name: party      
+    - name: party
+      apitype: openapi      
       specification: https://open-api.tmforum.org/TMF632-Party-v4.0.0.swagger.json
   eventNotification:
     publishedEvents: []
