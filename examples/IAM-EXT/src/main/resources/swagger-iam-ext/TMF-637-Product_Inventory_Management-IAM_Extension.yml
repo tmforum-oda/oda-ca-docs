@@ -1,0 +1,388 @@
+openapi: 3.0.1
+info:
+  title: Product Inventory IAM Extension
+  description: |+
+    **TMF API Reference : TMF 637 - Product Inventory Management-IAM Extension**
+
+    Release : 19.0 - June 2019
+
+    Copyright © TM Forum 2019. All Rights Reserved
+
+
+  version: 4.0.0
+servers:
+- url: https://serverRoot/tmf-api/productInventory/v4/
+tags:
+paths:
+  /iam/{realm}/users:
+    post:
+      tags:
+      - iam | users
+      summary: create a new user on identity provider
+      description: Example of a create a new user on identity provider
+      operationId: createUser
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserRepresentation'
+        required: true
+      responses:
+        201:
+          description: success
+
+    parameters:
+      - in: path
+        name: realm
+        description: realm name (not id!)
+        required: true
+        schema:
+          type: string
+        style: simple
+  
+  /iam/{realm}/users/{userId}:
+    get:
+      tags:
+        - iam | users
+      summary: Get representation of the user
+      operationId: getUser
+      responses:
+        200:
+          description: success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserRepresentation'
+    put:
+      tags:
+        - iam | users
+      summary: Update the user
+      operationId: updateUser
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserRepresentation'
+        required: true
+      responses:
+        200:
+          description: success
+    delete:
+      tags:
+        - iam | users
+      summary: Delete the user
+      operationId: deleteUser
+      responses:
+        204:
+          description: success
+    parameters:
+      - in: path
+        name: realm
+        description: realm name (not id!)
+        required: true
+        schema:
+          type: string
+        style: simple
+      - in: path
+        name: userId
+        description: User id
+        required: true
+        schema:
+          type: string
+        style: simple
+  /iam/{realm}/roles:
+    post:
+      tags:
+        - iam | roles
+      summary: Create a new role for the realm or client
+      operationId: createRole
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RoleRepresentation'
+        required: true
+      responses:
+        201:
+          description: success
+    parameters:
+      - in: path
+        name: realm
+        description: realm name (not id!)
+        required: true
+        schema:
+          type: string
+        style: simple
+  /iam/{realm}/roles/{role-name}:
+    get:
+      tags:
+        - iam | roles
+      summary: Get a role by name
+      operationId: getRoleByName
+      responses:
+        200:
+          description: success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RoleRepresentation'
+    put:
+      tags:
+        - iam | roles
+      summary: Update a role by name
+      operationId: updateRoleByName
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RoleRepresentation'
+        required: true
+      responses:
+        200:
+          description: success
+    delete:
+      tags:
+        - iam | roles
+      summary: Delete a role by name
+      operationId: deleteRoleByName
+      responses:
+        204:
+          description: success
+    parameters:
+      - in: path
+        name: realm
+        description: realm name (not id!)
+        required: true
+        schema:
+          type: string
+        style: simple
+      - in: path
+        name: role-name
+        description: role’s name (not id!)
+        required: true
+        schema:
+          type: string
+        style: simple
+  /iam/{realm}/users/{id}/role-mappings/realm:
+    get:
+      tags:
+        - iam | Role Mapper
+      summary: Get realm-level role mappings
+      operationId: getUserRealmRoleMappings
+      responses:
+        200:
+          description: success
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/RoleRepresentation'
+    post:
+      tags:
+        - iam | Role Mapper
+      summary: Add realm-level role mappings to the user
+      operationId: addRealmRoleToUser
+      requestBody:
+        description: Roles to add
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/RoleRepresentation'
+        required: true
+      responses:
+        201:
+          description: success
+    delete:
+      tags:
+        - iam | Role Mapper
+      summary: Delete realm-level role mappings
+      operationId: deleteUserRealmRoleMapping
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/RoleRepresentation'
+        required: true
+      responses:
+        204:
+          description: success
+    parameters:
+      - in: path
+        name: realm
+        description: realm name (not id!)
+        required: true
+        schema:
+          type: string
+        style: simple
+      - in: path
+        name: id
+        description: User id
+        required: true
+        schema:
+          type: string
+        style: simple
+components:
+  schemas:
+    UserRepresentation:
+      type: object
+      properties:
+        access:
+          type: object
+          additionalProperties:
+            type: boolean
+        attributes:
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              type: string
+        clientConsents:
+          type: array
+          items:
+            $ref: '#/components/schemas/UserConsentRepresentation'
+        clientRoles:
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              type: string
+        createdTimestamp:
+          type: integer
+          format: int64
+        credentials:
+          type: array
+          items:
+            $ref: '#/components/schemas/CredentialRepresentation'
+        disableableCredentialTypes:
+          type: array
+          items:
+            type: string
+        email:
+          type: string
+        emailVerified:
+          type: boolean
+        enabled:
+          type: boolean
+        federatedIdentities:
+          type: array
+          items:
+            $ref: '#/components/schemas/FederatedIdentityRepresentation'
+        federationLink:
+          type: string
+        firstName:
+          type: string
+        groups:
+          type: array
+          items:
+            type: string
+        id:
+          type: string
+        lastName:
+          type: string
+        notBefore:
+          type: integer
+          format: int32
+        origin:
+          type: string
+        realmRoles:
+          type: array
+          items:
+            type: string
+        requiredActions:
+          type: array
+          items:
+            type: string
+        self:
+          type: string
+        serviceAccountClientId:
+          type: string
+        username:
+          type: string
+    UserConsentRepresentation:
+      type: object
+      properties:
+        clientId:
+          type: string
+        createdDate:
+          type: integer
+          format: int64
+        grantedClientScopes:
+          type: array
+          items:
+            type: string
+        lastUpdatedDate:
+          type: integer
+          format: int64
+    CredentialRepresentation:
+      type: object
+      properties:
+        createdDate:
+          type: integer
+          format: int64
+        credentialData:
+          type: string
+        id:
+          type: string
+        priority:
+          type: integer
+          format: int32
+        secretData:
+          type: string
+        temporary:
+          type: boolean
+        type:
+          type: string
+        userLabel:
+          type: string
+        value:
+          type: string          
+    FederatedIdentityRepresentation:
+      type: object
+      properties:
+        identityProvider:
+          type: string
+        userId:
+          type: string
+        userName:
+          type: string
+    RoleRepresentation:
+      type: object
+      properties:
+        attributes:
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              type: string
+        clientRole:
+          type: boolean
+        composite:
+          type: boolean
+        composites:
+          $ref: '#/components/schemas/RoleRepresentation-Composites'
+        containerId:
+          type: string
+        description:
+          type: string
+        id:
+          type: string
+        name:
+          type: string
+    RoleRepresentation-Composites:
+      type: object
+      properties:
+        client:
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              type: string
+        realm:
+          type: array
+          items:
+            type: string
