@@ -1,5 +1,0 @@
-applications:
-- memory: 128M
-  name: api-product-catalog-v4-0-0
-  services:
-  - tmf-compose-for-mongodb

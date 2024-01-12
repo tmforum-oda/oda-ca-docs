@@ -11,7 +11,7 @@ For each release, we will support a min and max Kubernetes version.
 | --------------------- | ---------------------- | ----------------------- |
 | v1alpha4              | 1.20                   | 1.22                    |
 | v1beta1               | 1.22                   | 1.25                    |
-| v1beta2               | 1.22                   | 1.25                    |
+| v1beta2               | 1.22                   | 1.27                    |
 
 If you are connected to an ODA Canvas, to test what version of Canvas it is, use the command:
 ```
@@ -26,7 +26,7 @@ We will test the Reference Implementation Canvas against a range of kubernetes v
 | ------------------------- | ------ | ----------------- |
 | Rancher on AWS            |   Yes  | [Open Digital Lab environment]                   | 
 | Azure AKS                 |   Yes  |                   | 
-| GCP GKE                   |   Yes  |                   |
+| GCP GKE                   |   Yes  | [Innovation Hub environment]                  |
 | Microk8s                  |   Yes  |                   | 
 | MiniKube                  |   Yes  |                   |
 | Docker Desktop            |   Yes  |                   |
@@ -57,22 +57,48 @@ The values used [here](canvas-oda/README.md)
 ### 1. Kubernetes distribution
 
 **Prerequisites**: a running K8S distribution.
+
 The procedure has been tested
 
 - local k3s distribution, rancher desktop or similar
 - AWS [Kops](https://kops.sigs.k8s.io/) with AmazonVPC as network and with and without cert-manager managed by kops
-We assume
 
-- There is a ```kubeconfig``` file available with adequate permissions on the K8s cluster to:
+  
+We assume there is a ```kubeconfig``` file available with adequate permissions on the K8s cluster to:
+
 
 - Manage namespaces
 - Install [CRDs](https://kubernetes.io/docs/concepts/extend-kubernetes/api-extension/custom-resources/)
 - Manage resources in namespaces
 
+Run the following to check that you have the required Kubernetes permissions to run the install:
+
+```bash
+kubectl auth can-i create namespaces --all-namespaces
+kubectl auth can-i create customresourcedefinitions --all-namespaces  
+kubectl auth can-i create clusterroles --all-namespaces
+kubectl auth can-i create clusterrolebindings --all-namespaces
+kubectl auth can-i create mutatingwebhookconfigurations --all-namespaces
+kubectl auth can-i create validatingwebhookconfigurations --all-namespaces
+kubectl auth can-i create clusterissuers  --all-namespaces
+kubectl auth can-i create serviceaccounts
+kubectl auth can-i create secrets
+kubectl auth can-i create configmaps
+kubectl auth can-i create roles
+kubectl auth can-i create rolebindings
+kubectl auth can-i create services
+kubectl auth can-i create deployments
+kubectl auth can-i create statefulsets
+kubectl auth can-i create gateways  
+kubectl auth can-i create jobs
+kubectl auth can-i create certificates  
+kubectl auth can-i create issuers
+```
+
+
 ### 2. Helm
 
-A Helm 3.0+ installation is needed. Depending on your
-<https://helm.sh/docs/intro/install/#through-package-managers>
+A [Helm 3.0+ installation](https://helm.sh/docs/intro/install/#through-package-managers) is needed.
 
 Helm currently has an issue with the dependencies declared, the **helm dependency update** command only takes care of the dependencies at the first level preventing the correct installation. It supposes to be addressed in a future (May'23) 3.12 version
 
@@ -107,43 +133,42 @@ helm install istio-ingress istio/gateway -n istio-ingress --set labels.app=istio
 
 ### 4. Reference implementation
 
-1. Move to *canvas-oda*
-2. Update the dependencies using the plugin installed
 
-````bash
-$ helm resolve-deps
-Fetching updates from all helm repositories, attempt #1 ...
-  * Updates have been fetched, took 2.146s
-Resolving dependencies in canvas-oda chart ...
-  * Dependencies have been resolved, took 8.672s
-````
+1. Clone oda-canvas project
+   
+   ```bash
+   git clone https://github.com/tmforum-oda/oda-canvas.git
+   cd oda-canvas
+   ```
 
-If we prefer not to use the plugin, we have to manually update the subchart which has dependencies, in this case *cert-manager-init*
+2. Move to `installation/canvas-oda`
+3. Update the dependencies using the plugin installed
 
-````bash
-cd ..\cert-manager-init
-helm dependency update
-````
+  ```bash
+  $ helm resolve-deps
+  ```
 
-and then do the same with the umbrella helm *canvas-oda*
+  If we prefer not to use the plugin, we have to manually update the subchart which has dependencies, in this case *cert-manager-init*
 
-````bash
-cd ..\canvas-oda
-helm dependency update
-````
+  ```bash
+  cd ../cert-manager-init
+  helm dependency update
+  ```
+  
+  and then do the same with the umbrella helm *canvas-oda*
+  
+  ```bash
+  cd ../canvas-oda
+  helm dependency update
+  ```
 
-3. Install the reference implementation
+4. Install the reference implementation
+
 
 Install the canvas using the following command.
 
 ````bash
 helm install canvas -n canvas --create-namespace . 
-NAME: canvas
- Feb  7 09:35:38 2023
-NAMESPACE: canvas
-STATUS: deployed
-REVISION: 1
-TEST SUITE: None
 ````
 
 ## Troubleshooting
@@ -160,8 +185,11 @@ There are two major causes of this error
 
 1. An error on the Job for configuring keycloak
 
-````bash
- kubectl get pods -n canvas
+```bash
+$ kubectl get pods -n canvas
+```
+
+```bash
 NAME                                        READY   STATUS      RESTARTS   AGE
 canvas-keycloak-0                           1/1     Running     0          4m43s
 canvas-keycloak-keycloak-config-cli-5k6h7   0/1     Error       0          2m50s
@@ -170,14 +198,14 @@ canvas-postgresql-0                         1/1     Running     0          4m43s
 compcrdwebhook-658f4868b8-48cvx             1/1     Running     0          4m43s
 job-hook-postinstall-6bm99                  0/1     Completed   0          4m43s
 oda-controller-ingress-d5c495bbb-crt4t      2/2     Running     0          4m43s
-````
+```
 
 Checking the logs of the failed Job
 
-````bash
+```bash
 2023-02-01 15:23:19.488  INFO 1 --- [           main] d.a.k.config.provider.KeycloakProvider   : Wait 120 seconds until http://canvas-keycloak-headless:8083/auth/ is available ...
 2023-02-01 15:25:19.511 ERROR 1 --- [           main] d.a.k.config.KeycloakConfigRunner        : Could not connect to keycloak in 120 seconds: HTTP 403 Forbidden
-````
+```
 
 That means that your k8s cluster assign IPs to PODs that [Keycloak consider public ones and forced to use HTTPS](https://www.keycloak.org/docs/latest/server_admin/#_ssl_modes)
 The ranges valid are the following
@@ -185,8 +213,11 @@ The ranges valid are the following
 
 2. An Error in the Job but caused because the canvas-keycloak-0 that is in CrashLoopBackOff
 
-````bash
+```bash
 $ kubectl get pods -A
+```
+
+```
 NAMESPACE       NAME                                              READY   STATUS             RESTARTS      AGE
 canvas          canvas-keycloak-0                                 0/1     CrashLoopBackOff   4 (89s ago)   6m11s
 canvas          canvas-keycloak-keycloak-config-cli-9ks9d         0/1     Error              0             2m28s
@@ -194,15 +225,16 @@ canvas          canvas-keycloak-keycloak-config-cli-cd2gv         0/1     Error 
 canvas          canvas-postgresql-0                               1/1     Running            0             6m11s
 canvas          compcrdwebhook-658f4868b8-v9sc2                   1/1     Running            0             6m11s
 canvas          job-hook-postinstall-v56pt                        0/1     Completed          0             6m10
-````
+```
 
 Checking the logs `kubectl logs -n canvas sts/canvas-postgresql`  we can see an error
 
-````bash
+```bash
  FATAL:  password authentication failed for user "bn_keycloak"
- ````
+```
 
-In that case, a previous installation left a PVC reused by the Postgress
+In that case, a previous installation left a PVC reused by the Postgres pod.
+
 To solve that issue
 
 - Uninstall the helm chart
@@ -213,33 +245,40 @@ To solve that issue
 
 The installation could fail with this error
 
-````bash
+```bash
 failed post-install: warning: Hook post-install canvas-oda/charts/cert-manager-init/templates/issuer.yaml failed: Internal error occurred:
 failed calling webhook "webhook.cert-manager.io": failed to call webhook: Post "https://canvas-cert-manager-webhook.cert-manager.svc:443/mutate?timeout=10s":
 x509: certificate signed by unknown authority
-````
+```
+
 That error arises when Cert-Manager is not ready to accept Issuers
 
 Try first to uninstall the chart
-````bash
-helm uninstall -n canvas canvas
- ````
-Delete persistence volume claim used  for Keycloak
-````bash
- kubectl delete pvc -n canvas data-canvas-postgresql-0
- ````
-Then manually delete the Lease object that causes the problem (Cert Manager relies on this object to select a leader)
-````bash
-kubectl get lease -n kube-system
- ````
-Force the release of the lease without waiting for a timeout
-````bash
- kubectl delete lease cert-manager-cainjector-leader-election -n kube-system
- ````
 
-The installation has a configurable wait time
-*cert-manager.leaseWaitTimeonStartup*
-Increase leaseWaitTimeonStartup value btw 80-100 in canvas-oda\values.yaml
+```bash
+helm uninstall -n canvas canvas
+```
+
+Delete persistence volume claim used  for Keycloak
+
+```bash
+kubectl delete pvc -n canvas data-canvas-postgresql-0
+```
+
+Then manually delete the Lease object that causes the problem (Cert Manager relies on this object to select a leader)
+
+```bash
+kubectl get lease -n kube-system
+```
+
+Force the release of the lease without waiting for a timeout
+
+```bash
+kubectl delete lease cert-manager-cainjector-leader-election -n kube-system
+```
+
+The installation has a configurable wait time *cert-manager.leaseWaitTimeonStartup*
+Increase `leaseWaitTimeonStartup` value btw 80-100 in `canvas-oda/values.yaml`
 
 Reinstall it with the new time.
 
