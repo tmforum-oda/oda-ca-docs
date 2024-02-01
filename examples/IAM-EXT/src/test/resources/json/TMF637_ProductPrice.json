@@ -1,0 +1,26 @@
+{
+      "recurringChargePeriod": "M",
+      "name": "Monthly Price",
+      "description": "Monthly Price Description",
+      "unitOfMeasure": "Band",
+      "priceType": "X",
+      "price": {
+        "dutyFreeAmount": {
+          "value": "10",
+          "unit": "EUR"
+        }
+      },
+      "productOfferingPrice": {
+        "id": "Price-10"
+      },
+      "productPriceAlteration": [
+        {
+          "price": {
+            "dutyFreeAmount": {
+              "value": "20",
+              "unit": "EUR"
+            }
+          }
+        }
+      ]
+ }

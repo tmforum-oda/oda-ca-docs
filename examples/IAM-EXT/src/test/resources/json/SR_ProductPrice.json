@@ -1,0 +1,13 @@
+{
+      "id": "974081",
+      "amount": 10.0,
+      "frequency": "M",
+      "currency": "EUR",
+      "popId": "Price-10",
+      "priceType": "X",
+      "name": "Monthly Price",
+      "unitOfMeasure": "Band",
+      "description": "Monthly Price Description",
+      "overrideAmount": 20
+}
+  
