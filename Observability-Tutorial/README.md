@@ -2,7 +2,7 @@
 
 This tutorial shows the process to deploy the reference example ODA Component into the TM Forum Open Digital Lab environment and observe the traffic, performance and business metrics.
 
-The pre-requisites for this tuturial is a PC/Mac/Linux machine with `kubectl` and `helm` installed and access to the TM Forum Open Digital Lab at [https://rke.tmforum.org/](https://rke.tmforum.org/) 
+The pre-requisites for this tutorial is a PC/Mac/Linux machine with `kubectl` and `helm` installed and access to the TM Forum Open Digital Lab at [https://rke.tmforum.org/](https://rke.tmforum.org/) 
 
 There is a video of this tutorial at: [ODA Observability Video walkthrough](https://youtu.be/XEbjc4g_usM)
 
@@ -25,21 +25,25 @@ To visualise the data provided by the Service Mesh, we will use Kiali which is a
 
 ### Deploying the component
 
-We will be using the reference example component provided as part of the Reference Implementation. It is available at `https://github.com/tmforum-oda/oda-ca-docs/example/ProductCatalog`.
+We will be using the reference example component provided as part of the Reference Implementation. Reference example ODA Components Helm Chart repository is available at `https://github.com/tmforum-oda/reference-example-components`.
 
-* Step 1. Clone the `https://github.com/tmforum-oda/oda-ca-docs` repository and navigate to the `/examples/ProductCatalog` folder.
+* Step 1. [Helm](https://helm.sh/) must be installed to use the charts.
 
-* Step 2. Configure `kubectl` for the `oda-ca-cluster2`: Navigate to the Rancher environment at https://rke.tmforum.org/, select the `oda-ca-cluster2` and use the Kubeconfig file in the top-right.
+  Once Helm has been set up correctly, add the repo as follows:
+  ```
+  helm repo add oda-components https://tmforum-oda.github.io/reference-example-components
+  ```
+  If you had already added this repo earlier, run `helm repo update` to retrieve the latest versions of the        packages. You can then run `helm search repo oda-components` to see the charts.
+
+* Step 2. To install the  `productcatalog` example component in the `components` namespace:
+  ```
+  helm install r1 oda-components/productcatalog -n components.
+  ```
+  This will install the `productcatalog` example component in the `components` namespace.
+  
+* Step 3. Configure `kubectl` for the `oda-ca-cluster2`: Navigate to the Rancher environment at https://rke.tmforum.org/, select the `oda-ca-cluster2` and use the Kubeconfig file in the top-right.
 
 ![Open-API Reference Implementation - Canvas](./images/Kubeconfig.png)
-
-* Step 3. Deploy the reference implementation example component using helm:
-
-```
-helm install r1 .\productcatalog\ -n components
-```
-
-This will install the `productcatalog` example component in the `components` namespace. 
 
 * Step 4: View the component in Kiali
 
@@ -118,7 +122,7 @@ kubectl get pods -n components
 
 We can see the containers running in a particular pod with the command:
 ```
-kubectl get pods [insert pod name from query above] -o jsonpath='{.spec.containers[*].name}'
+kubectl get pods [insert pod name from query above] -o jsonpath='{.spec.containers[*].name} -n components'
 ```
 
 ![View running Containers](./images/Containers.png)
