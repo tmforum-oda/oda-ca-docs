@@ -24,6 +24,7 @@ We will test the Reference Implementation Canvas against a range of kubernetes v
 
 | Kubernetes deployment     | Tested | Notes             |
 | ------------------------- | ------ | ----------------- |
+| AWS EKS                   |   Yes  | EKS 1.29          | 
 | Rancher on AWS            |   Yes  | [Open Digital Lab environment]                   | 
 | Azure AKS                 |   Yes  |                   | 
 | GCP GKE                   |   Yes  | [Innovation Hub environment]                  |
