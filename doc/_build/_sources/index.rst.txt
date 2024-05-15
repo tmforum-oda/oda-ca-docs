@@ -38,9 +38,6 @@ Open Digital Architecture - Component Accelerator
    canvas/installation/README.md
    canvas/Canvas-design.md
    canvas/usecase-library/README.md
-   canvas/usecase-library/index.rst
-   canvas/compliance-test-kit/index.rst
-
    canvas/source/operators/index.rst        
 
 

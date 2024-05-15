@@ -1,262 +1,184 @@
-
-
 <!DOCTYPE html>
-<html class="writer-html5" lang="en" >
+<html class="writer-html5" lang="en" data-content_root="../">
 <head>
-  <meta charset="utf-8" />
-  
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  
-  <title>Design Guidelines to create a new ODA Component &mdash; ODA-Component Accelerator v1beta1 documentation</title>
-  
-
-  
-  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
-
-  
-  
-
-  
-  
-
-  
+  <title>Design Guidelines to create a new ODA Component &mdash; ODA-Component Accelerator v1beta3 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/custom.css?v=6567dac9" />
 
   
   <!--[if lt IE 9]>
     <script src="../_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-    
-      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-        <script src="../_static/jquery.js"></script>
-        <script src="../_static/underscore.js"></script>
-        <script src="../_static/doctools.js"></script>
-    
-    <script type="text/javascript" src="../_static/js/theme.js"></script>
-
-    
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../_static/documentation_options.js?v=546c8a9f"></script>
+        <script src="../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="ODA Component - CTK" href="../ctk/README.html" />
     <link rel="prev" title="Tutorial to build ODA-Component from Open-API Reference Implemenation" href="ODAComponentTutorial/README.html" /> 
 </head>
 
-<body class="wy-body-for-nav">
-
-   
+<body class="wy-body-for-nav"> 
   <div class="wy-grid-for-nav">
-    
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-          
 
           
-            <a href="../index.html" class="icon icon-home"> ODA-Component Accelerator
           
-
-          
+          <a href="../index.html" class="icon icon-home">
+            ODA-Component Accelerator
           </a>
-
-          
-            
-            
-          
-
-          
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
 </div>
-
-          
-        </div>
-
-        
-        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
-          
-            
-            
-              
-            
-            
-              <p class="caption"><span class="caption-text">About the project:</span></p>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">About the project:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="Playbook.html">Introduction to the ODA Component Accelerator Project (ODA-CA)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Getting_started.html">Getting started checklist for new members of ODA-CA</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Tutorials:</span></p>
+<p class="caption" role="heading"><span class="caption-text">Tutorials:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="Observability-Tutorial/README.html">Tutorial to deploy and observe a running component</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ODAComponentTutorial/README.html">Tutorial to build ODA-Component from Open-API Reference Implemenation</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Component:</span></p>
+<p class="caption" role="heading"><span class="caption-text">Component:</span></p>
 <ul class="current">
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Design Guidelines to create a new ODA Component</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#step-1-oda-component-metadata">Step 1: ODA-Component Metadata</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#step-2-add-labels-to-all-the-standard-kubernetes-resources">Step 2: Add labels to all the standard Kubernetes resources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#changes-between-versions">Changes between versions</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../ctk/README.html">ODA Component - CTK</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Canvas:</span></p>
+<p class="caption" role="heading"><span class="caption-text">Canvas:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../canvas/installation/README.html">ODA Canvas installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../canvas/Canvas-design.html">ODA Canvas Design</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../canvas/usecase-library/README.html">ODA Canvas - use-case library</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../canvas/usecase-library/index.html">ODA-Canvas - Usecase list</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../canvas/compliance-test-kit/index.html">ODA-Canvas - Compliance Test Kit (CTK)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../canvas/source/operators/index.html">Open Digital Architecture - Controllers/Operators</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Troubleshooting Guide:</span></p>
+<p class="caption" role="heading"><span class="caption-text">Troubleshooting Guide:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="TroubleshootingGuide/index.html">ODA-CA Troubleshooting Guide</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Contributions Guide:</span></p>
+<p class="caption" role="heading"><span class="caption-text">Contributions Guide:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="ContributionsGuide.html">Contribution guidance</a></li>
 <li class="toctree-l1"><a class="reference internal" href="DocumentationProcess.html">Documentation Process</a></li>
 </ul>
 
-            
-          
         </div>
-        
       </div>
     </nav>
 
-    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
-
-      
-      <nav class="wy-nav-top" aria-label="top navigation">
-        
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="../index.html">ODA-Component Accelerator</a>
-        
       </nav>
 
-
       <div class="wy-nav-content">
-        
         <div class="rst-content">
-        
-          
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div role="navigation" aria-label="breadcrumbs navigation">
-
+          <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-    
-      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
-        
-      <li>Design Guidelines to create a new ODA Component</li>
-    
-    
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Design Guidelines to create a new ODA Component</li>
       <li class="wy-breadcrumbs-aside">
-        
-          
             <a href="../_sources/docs/ODAComponentDesignGuidelines.md.txt" rel="nofollow"> View page source</a>
-          
-        
       </li>
-    
   </ul>
-
-  
   <hr/>
 </div>
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
-            
-  <div class="section" id="design-guidelines-to-create-a-new-oda-component">
-<h1>Design Guidelines to create a new ODA Component<a class="headerlink" href="#design-guidelines-to-create-a-new-oda-component" title="Permalink to this headline">¶</a></h1>
+             
+  <section id="design-guidelines-to-create-a-new-oda-component">
+<h1>Design Guidelines to create a new ODA Component<a class="headerlink" href="#design-guidelines-to-create-a-new-oda-component" title="Link to this heading"></a></h1>
 <p>ODA Components are self-contained, independently deployable software modules that confirm to the <a class="reference external" href="https://tmforum.org/oda">TM Forum Open Digital Architecture</a>.</p>
 <p>The business drivers and conceptual model for ODA Components is described in <a class="reference external" href="https://projects.tmforum.org/wiki/display/PUB/IG1171%20ODA%20Component%20Definition%20R19.0.1">IG1171 ODA Component Definition</a>.</p>
 <p>The ODA Component concept builds on top of open standards like Docker and Kubernetes, and adds Telco-domain knowledge and meta-data. The starting point for building an ODA component is containerized, micro-service software described in a kubernetes manifest YAML file. To turn this into an ODA Component we will:</p>
-<ol class="simple">
-<li><p>Add meta-data to the Kubernetes manifest describing the <em>Core Function</em>, <em>Notification/Reporting</em>, <em>Security</em> and <em>Management &amp; Operation</em> of the software component.</p></li>
+<ol class="arabic simple">
+<li><p>Add meta-data to the Kubernetes manifest describing the <em>Core Function</em>, <em>Notification/Reporting</em>, <em>Security Function</em> and <em>Management Function</em> of the software component.</p></li>
 <li><p>Add labels to all the standard Kubernetes resources to label them as belonging to the component.</p></li>
 <li><p>Test the deployment of the Component in an operating platform that has the ODA Canvas installed (for example the TM FOrum Open-Digital Lab). See the <a class="reference external" href="https://github.com/tmforum-rand/oda-component-definitions#get-started">Getting Started</a> section to see how to install the ODA Canvas onto a kubernetes cluster environmnet.</p></li>
 </ol>
-<div class="section" id="step-1-oda-component-metadata">
-<h2>Step 1: ODA-Component Metadata<a class="headerlink" href="#step-1-oda-component-metadata" title="Permalink to this headline">¶</a></h2>
-<p>This guide has been updated to conform to the <a class="reference external" href="Component-OAS-Specification-v1beta1.yaml">v1beta1 component specification</a>.</p>
+<section id="step-1-oda-component-metadata">
+<h2>Step 1: ODA-Component Metadata<a class="headerlink" href="#step-1-oda-component-metadata" title="Link to this heading"></a></h2>
+<p>This guide has been updated to conform to the <a class="reference internal" href="#Component-OAS-Specification-v1beta2.yaml"><span class="xref myst">v1beta2 component specification</span></a>.</p>
 <p>The ODA-Component metadata contains all the Telco-domain knowledge that makes the component a self-describing deployable software module. From <a class="reference external" href="https://projects.tmforum.org/wiki/display/PUB/IG1171%20ODA%20Component%20Definition%20R19.0.1">IG1171 ODA Component Definition</a>, this meta-data describes the Open-APIs, event data schemas as well as security and management &amp; operations for the component.</p>
 <p>The meta-data is defined using a Kubernetes <a class="reference external" href="https://kubernetes.io/docs/tasks/access-kubernetes-api/custom-resources/custom-resource-definitions/">CustomResourceDefinition</a>. This allows us to extend the Kubernetes API with our custom-defined schema for Telco meta-data. The CustomResourceDefinition schema is in the <a class="reference external" href="https://github.com/tmforum-oda/oda-canvas-charts/blob/master/canvas/charts/crds/templates">github.com/tmforum-oda/oda-canvas-charts</a> repository.</p>
-<p>There is an example of the metadata for the <a class="reference external" href="https://github.com/tmforum-oda/oda-ca-docs/blob/master/examples/ProductCatalog/productcatalog/templates/component-productcatalog.yaml">productcatalog example component</a> broken-down into sections below:</p>
-<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">apiVersion</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">oda.tmforum.org/v1beta1</span>
-<span class="nt">kind</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">component</span>
+<p>There is an example of the metadata for the <a class="reference external" href="https://github.com/tmforum-oda/reference-example-components/blob/master/charts/ProductCatalog/templates/component-productcatalog.yaml">productcatalog example component</a> broken-down into sections below:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">oda.tmforum.org/v1beta2</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">component</span>
 <span class="nt">metadata</span><span class="p">:</span>
-  <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">vodafone-productcatalog</span>
-  <span class="nt">labels</span><span class="p">:</span>
-    <span class="nt">oda.tmforum.org/componentName</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">vodafone-productcatalog</span>
-    <span class="nt">oda.tmforum.org/funtionalBlockName</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">CoreCommerce</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">vodafone-productcatalog</span>
+<span class="w">  </span><span class="nt">labels</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">oda.tmforum.org/componentName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">vodafone-productcatalog</span>
+<span class="w">    </span><span class="nt">oda.tmforum.org/funtionalBlockName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">CoreCommerce</span>
 </pre></div>
 </div>
 <p>This is the header information for the component, specifying the version of the CRD (Custom Resource Definition) that it is using, and providing a name and a label for the component and a label describing which functional block the component belongs to.</p>
 <div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">spec</span><span class="p">:</span>
-  <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">TMFC001-productcatalogmanagement</span>
-  <span class="nt">version</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">0.0.3</span>
-  <span class="nt">description</span><span class="p">:</span> <span class="s">&quot;Simple</span><span class="nv"> </span><span class="s">Product</span><span class="nv"> </span><span class="s">Catalog</span><span class="nv"> </span><span class="s">ODA-Component</span><span class="nv"> </span><span class="s">from</span><span class="nv"> </span><span class="s">Open-API</span><span class="nv"> </span><span class="s">reference</span><span class="nv"> </span><span class="s">implementation.&quot;</span> 
-  <span class="nt">maintainers</span><span class="p">:</span>
-  <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Lester Thomas</span>
-    <span class="nt">email</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">lester.thomas@vodafone.com</span>
-  <span class="nt">owners</span><span class="p">:</span>
-  <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Lester Thomas</span>
-    <span class="nt">email</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">lester.thomas@vodafone.com</span>  
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ProductCatalogManagement</span>
+<span class="w">  </span><span class="nt">functionalBlock</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">CoreCommerce</span>
+<span class="w">  </span><span class="nt">id</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">TMFC001</span>
+<span class="w">  </span><span class="nt">status</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">specified</span>
+<span class="w">  </span><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1.2.1</span>
+<span class="w">  </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Simple</span><span class="nv"> </span><span class="s">Product</span><span class="nv"> </span><span class="s">Catalog</span><span class="nv"> </span><span class="s">ODA-Component</span><span class="nv"> </span><span class="s">from</span><span class="nv"> </span><span class="s">Open-API</span><span class="nv"> </span><span class="s">reference</span><span class="nv"> </span><span class="s">implementation.&quot;</span>
+<span class="w">  </span><span class="nt">publicationDate</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2023-08-18</span><span class="w"> </span>
+<span class="w">  </span><span class="nt">maintainers</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Lester Thomas</span>
+<span class="w">    </span><span class="nt">email</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">lester.thomas@vodafone.com</span>
+<span class="w">  </span><span class="nt">owners</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Lester Thomas</span>
+<span class="w">    </span><span class="nt">email</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">lester.thomas@vodafone.com</span><span class="w">  </span>
 </pre></div>
 </div>
 <p>This next section starts the <code class="docutils literal notranslate"><span class="pre">spec</span></code> for the component.</p>
 <p>The <code class="docutils literal notranslate"><span class="pre">type</span></code> allows us to specify that this is an implementation of a standard type of Component. If the <code class="docutils literal notranslate"><span class="pre">type</span></code> and <code class="docutils literal notranslate"><span class="pre">version</span></code> match one of the <strong>Golden Components</strong> then the Component CTK will test that the functional capability matches the requirements from that <strong>Golden Component</strong>. For a full list of all the standard ODA Components, see the <a class="reference external" href="https://oda-directory.labs.tmforum.org/">ODA Component Directory</a></p>
 <p>The <code class="docutils literal notranslate"><span class="pre">description</span></code>, <code class="docutils literal notranslate"><span class="pre">maintainers</span></code> and <code class="docutils literal notranslate"><span class="pre">owners</span></code> are self-descriptive.</p>
-<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span>  <span class="nt">coreFunction</span><span class="p">:</span>
-    <span class="nt">exposedAPIs</span><span class="p">:</span>
-    <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">productcatalogmanagement</span>
-      <span class="nt">specification</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">https://raw.githubusercontent.com/tmforum-apis/TMF620_ProductCatalog/master/TMF620-ProductCatalog-v4.0.0.swagger.json</span>
-      <span class="nt">implementation</span><span class="p">:</span> <span class="p p-Indicator">{{</span><span class="nv">.Release.Name</span><span class="p p-Indicator">}}</span><span class="l l-Scalar l-Scalar-Plain">-prodcatapi</span>
-      <span class="nt">apitype</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">openapi</span>
-      <span class="nt">path</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">/{{.Release.Name}}-{{.Values.component.type}}/tmf-api/productCatalogManagement/v4</span>
-      <span class="nt">developerUI</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">/{{.Release.Name}}-{{.Values.component.type}}/tmf-api/productCatalogManagement/v4/docs</span>
-      <span class="nt">port</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">8080</span>
-    <span class="nt">dependantAPIs</span><span class="p">:</span>
-    <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">party</span> 
-      <span class="nt">apitype</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">openapi</span>     
-      <span class="nt">specification</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">https://open-api.tmforum.org/TMF632-Party-v4.0.0.swagger.json</span>     
-    <span class="nt">publishedEvents</span><span class="p">:</span> 
-    <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">TMF620-productspecification</span>
-      <span class="nt">specification</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">https://open-api.tmforum.org/TMF620-Productcatalog-v4.0.0.swagger.json</span>
-      <span class="nt">hub</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">/{{.Release.Name}}-{{.Values.component.type}}/tmf-api/productspecification/hub</span>
-      <span class="nt">implementation</span><span class="p">:</span> <span class="p p-Indicator">{{</span><span class="nv">.Release.Name</span><span class="p p-Indicator">}}</span><span class="l l-Scalar l-Scalar-Plain">-prodspecevent</span>
-      <span class="nt">apitype</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">openapi</span>
-      <span class="nt">port</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">80</span>
-    <span class="nt">subscribedEvents</span><span class="p">:</span> 
-    <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">TMF633-servicespecification</span>
-      <span class="nt">specification</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">https://open-api.tmforum.org/TMF633-Servicecatalog-v4.0.0.swagger.json</span>
-      <span class="nt">call-back</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">/{{.Release.Name}}-{{.Values.component.type}}/tmf-api/servicepecification/call-back</span>
-      <span class="nt">port</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">80</span>
-      <span class="nt">implementation</span><span class="p">:</span> <span class="p p-Indicator">{{</span><span class="nv">.Release.Name</span><span class="p p-Indicator">}}</span><span class="l l-Scalar l-Scalar-Plain">-servicespecevent</span>
-      <span class="nt">apitype</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">openapi</span>
-      <span class="nt">filter</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">CatalogStateChangeEvent&amp;status=active</span>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="w">  </span><span class="nt">coreFunction</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">exposedAPIs</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">productcatalogmanagement</span>
+<span class="w">      </span><span class="nt">specification</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://raw.githubusercontent.com/tmforum-apis/TMF620_ProductCatalog/master/TMF620-ProductCatalog-v4.0.0.swagger.json</span>
+<span class="w">      </span><span class="nt">implementation</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{{</span><span class="nv">.Release.Name</span><span class="p p-Indicator">}}</span><span class="l l-Scalar l-Scalar-Plain">-prodcatapi</span>
+<span class="w">      </span><span class="nt">apitype</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">openapi</span>
+<span class="w">      </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/{{.Release.Name}}-{{.Values.component.type}}/tmf-api/productCatalogManagement/v4</span>
+<span class="w">      </span><span class="nt">developerUI</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/{{.Release.Name}}-{{.Values.component.type}}/tmf-api/productCatalogManagement/v4/docs</span>
+<span class="w">      </span><span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">8080</span>
+<span class="w">    </span><span class="nt">dependantAPIs</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">party</span><span class="w"> </span>
+<span class="w">      </span><span class="nt">apitype</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">openapi</span><span class="w">     </span>
+<span class="w">      </span><span class="nt">specification</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://open-api.tmforum.org/TMF632-Party-v4.0.0.swagger.json</span><span class="w">     </span>
+<span class="w">    </span><span class="nt">publishedEvents</span><span class="p">:</span><span class="w"> </span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">TMF620-productspecification</span>
+<span class="w">      </span><span class="nt">specification</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://open-api.tmforum.org/TMF620-Productcatalog-v4.0.0.swagger.json</span>
+<span class="w">      </span><span class="nt">hub</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/{{.Release.Name}}-{{.Values.component.type}}/tmf-api/productspecification/hub</span>
+<span class="w">      </span><span class="nt">implementation</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{{</span><span class="nv">.Release.Name</span><span class="p p-Indicator">}}</span><span class="l l-Scalar l-Scalar-Plain">-prodspecevent</span>
+<span class="w">      </span><span class="nt">apitype</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">openapi</span>
+<span class="w">      </span><span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">80</span>
+<span class="w">    </span><span class="nt">subscribedEvents</span><span class="p">:</span><span class="w"> </span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">TMF633-servicespecification</span>
+<span class="w">      </span><span class="nt">specification</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://open-api.tmforum.org/TMF633-Servicecatalog-v4.0.0.swagger.json</span>
+<span class="w">      </span><span class="nt">call-back</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/{{.Release.Name}}-{{.Values.component.type}}/tmf-api/servicepecification/call-back</span>
+<span class="w">      </span><span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">80</span>
+<span class="w">      </span><span class="nt">implementation</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{{</span><span class="nv">.Release.Name</span><span class="p p-Indicator">}}</span><span class="l l-Scalar l-Scalar-Plain">-servicespecevent</span>
+<span class="w">      </span><span class="nt">apitype</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">openapi</span>
+<span class="w">      </span><span class="nt">filter</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">CatalogStateChangeEvent&amp;status=active</span>
 </pre></div>
 </div>
 <p>The <code class="docutils literal notranslate"><span class="pre">coreFunction</span></code> describes the core purpose of the software component. It describes the list of APIs and/or events that the component exposes as well as the APIs and/or events that it is dependant on. The definitions within the <code class="docutils literal notranslate"><span class="pre">publishedEvents</span></code> and <code class="docutils literal notranslate"><span class="pre">subscribedEvents</span></code> are experimental at this point, and we will modify and enhance them as we build-out the ODA Canvas and assemble a representative set of ODA Components. The current definition has:</p>
@@ -268,56 +190,56 @@
 <li><p>The <code class="docutils literal notranslate"><span class="pre">call-back</span></code> represents the path to the call-back end-point for these events.</p></li>
 <li><p>The <code class="docutils literal notranslate"><span class="pre">filter</span></code> allows the component to define a filter to only subscribe to certain type of events.</p></li>
 </ul>
-<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span>  <span class="nt">management</span><span class="p">:</span>
-    <span class="nt">exposedAPIs</span><span class="p">:</span>
-    <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">metrics</span>
-      <span class="nt">apitype</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">open-metrics</span>
-      <span class="nt">implementation</span><span class="p">:</span> <span class="p p-Indicator">{{</span><span class="nv">.Release.Name</span><span class="p p-Indicator">}}</span><span class="l l-Scalar l-Scalar-Plain">-{{.Values.component.name}}-sm</span>
-      <span class="nt">path</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">/{{.Release.Name}}-{{.Values.component.name}}/metrics</span>
-      <span class="nt">port</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">4000</span>    
-    <span class="nt">dependantAPIs</span><span class="p">:</span> <span class="p p-Indicator">[]</span>
-    <span class="nt">publishedEvents</span><span class="p">:</span> 
-    <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">TMF642-alarmmanagement</span>
-      <span class="nt">specification</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">https://open-api.tmforum.org/TMF642-alarmmanagement-v4.0.0.swagger.json</span>
-      <span class="nt">hub</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">/{{.Release.Name}}-{{.Values.component.type}}/tmf-api/alarmmanagement/hub</span>
-      <span class="nt">implementation</span><span class="p">:</span> <span class="p p-Indicator">{{</span><span class="nv">.Release.Name</span><span class="p p-Indicator">}}</span><span class="l l-Scalar l-Scalar-Plain">-alarmmgtevent</span>
-      <span class="nt">apitype</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">openapi</span>
-      <span class="nt">port</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">80</span>
-    <span class="nt">subscribedEvents</span><span class="p">:</span> <span class="p p-Indicator">[]</span>
-  <span class="nt">security</span><span class="p">:</span>
-    <span class="nt">controllerRole</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">secConAdmin</span>
-    <span class="nt">exposedAPIs</span><span class="p">:</span>
-    <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">partyrole</span>
-      <span class="nt">specification</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json</span>
-      <span class="nt">implementation</span><span class="p">:</span> <span class="p p-Indicator">{{</span><span class="nv">.Release.Name</span><span class="p p-Indicator">}}</span><span class="l l-Scalar l-Scalar-Plain">-partyroleapi</span>
-      <span class="nt">apitype</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">openapi</span>
-      <span class="nt">path</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">/{{.Release.Name}}-{{.Values.component.name}}/tmf-api/partyRoleManagement/v4</span>
-      <span class="nt">developerUI</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">/{{.Release.Name}}-{{.Values.component.name}}/tmf-api/partyRoleManagement/v4/docs</span>
-      <span class="nt">port</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">8080</span> 
-    <span class="nt">dependantAPIs</span><span class="p">:</span> <span class="p p-Indicator">[]</span>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="w">  </span><span class="nt">managementFunction</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">exposedAPIs</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">metrics</span>
+<span class="w">      </span><span class="nt">apitype</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">open-metrics</span>
+<span class="w">      </span><span class="nt">implementation</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{{</span><span class="nv">.Release.Name</span><span class="p p-Indicator">}}</span><span class="l l-Scalar l-Scalar-Plain">-{{.Values.component.name}}-sm</span>
+<span class="w">      </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/{{.Release.Name}}-{{.Values.component.name}}/metrics</span>
+<span class="w">      </span><span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">4000</span><span class="w">    </span>
+<span class="w">    </span><span class="nt">dependantAPIs</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[]</span>
+<span class="w">    </span><span class="nt">publishedEvents</span><span class="p">:</span><span class="w"> </span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">TMF642-alarmmanagement</span>
+<span class="w">      </span><span class="nt">specification</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://open-api.tmforum.org/TMF642-alarmmanagement-v4.0.0.swagger.json</span>
+<span class="w">      </span><span class="nt">hub</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/{{.Release.Name}}-{{.Values.component.type}}/tmf-api/alarmmanagement/hub</span>
+<span class="w">      </span><span class="nt">implementation</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{{</span><span class="nv">.Release.Name</span><span class="p p-Indicator">}}</span><span class="l l-Scalar l-Scalar-Plain">-alarmmgtevent</span>
+<span class="w">      </span><span class="nt">apitype</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">openapi</span>
+<span class="w">      </span><span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">80</span>
+<span class="w">    </span><span class="nt">subscribedEvents</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[]</span>
+<span class="w">  </span><span class="nt">securityFunction</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">controllerRole</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">secConAdmin</span>
+<span class="w">    </span><span class="nt">exposedAPIs</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">partyrole</span>
+<span class="w">      </span><span class="nt">specification</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json</span>
+<span class="w">      </span><span class="nt">implementation</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{{</span><span class="nv">.Release.Name</span><span class="p p-Indicator">}}</span><span class="l l-Scalar l-Scalar-Plain">-partyroleapi</span>
+<span class="w">      </span><span class="nt">apitype</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">openapi</span>
+<span class="w">      </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/{{.Release.Name}}-{{.Values.component.name}}/tmf-api/partyRoleManagement/v4</span>
+<span class="w">      </span><span class="nt">developerUI</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/{{.Release.Name}}-{{.Values.component.name}}/tmf-api/partyRoleManagement/v4/docs</span>
+<span class="w">      </span><span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">8080</span><span class="w"> </span>
+<span class="w">    </span><span class="nt">dependantAPIs</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[]</span>
 </pre></div>
 </div>
-<p>The <code class="docutils literal notranslate"><span class="pre">management</span></code> and <code class="docutils literal notranslate"><span class="pre">security</span></code> sections describe management and security APIs the component exposes that are part of its management or security (rather than part of its core business function). Examples of management APIs are for self-testing, raising operational alarms, or configuring the component itself. The <code class="docutils literal notranslate"><span class="pre">security</span></code> section provides meta-data on the security mechanisms used by the component, for example, exposing the roles the component requires to be configured in the Identity Management service. Again, the current definitions within these sections are experimental and we will modify and enhance them as we build-out the ODA Canvas and assemble a representative set of ODA Components. As of version <code class="docutils literal notranslate"><span class="pre">v1alpha2</span></code> and later, the security definition should include a <code class="docutils literal notranslate"><span class="pre">partyrole</span></code> property that describes the TMF669 PartyRole Open-API that all components must support (future versions may support multiple mechanisms for components to expose the roles they support). As of version <code class="docutils literal notranslate"><span class="pre">v1alpha3</span></code> and layer, the security definition must include a <code class="docutils literal notranslate"><span class="pre">controllerRole</span></code> property that gives the name of a pre-existing role in the component that the security controller can use to a) POST a listener URL to the component partyRole notification endpoint so that it can receive notifications of events against party roles and b) GET the partyrole endpoint to query roles in the component.</p>
-</div>
-<div class="section" id="step-2-add-labels-to-all-the-standard-kubernetes-resources">
-<h2>Step 2: Add labels to all the standard Kubernetes resources<a class="headerlink" href="#step-2-add-labels-to-all-the-standard-kubernetes-resources" title="Permalink to this headline">¶</a></h2>
+<p>The <code class="docutils literal notranslate"><span class="pre">managementFunction</span></code> and <code class="docutils literal notranslate"><span class="pre">securityFunction</span></code> sections describe management and security APIs the component exposes that are part of its management or security (rather than part of its core business function). Examples of management APIs are for self-testing, raising operational alarms, or configuring the component itself. The <code class="docutils literal notranslate"><span class="pre">security</span></code> section provides meta-data on the security mechanisms used by the component, for example, exposing the roles the component requires to be configured in the Identity Management service. Again, the current definitions within these sections are experimental and we will modify and enhance them as we build-out the ODA Canvas and assemble a representative set of ODA Components. As of version <code class="docutils literal notranslate"><span class="pre">v1alpha2</span></code> and later, the security definition should include a <code class="docutils literal notranslate"><span class="pre">partyrole</span></code> property that describes the TMF669 PartyRole Open-API that all components must support (future versions may support multiple mechanisms for components to expose the roles they support). As of version <code class="docutils literal notranslate"><span class="pre">v1alpha3</span></code> and layer, the security definition must include a <code class="docutils literal notranslate"><span class="pre">controllerRole</span></code> property that gives the name of a pre-existing role in the component that the security controller can use to a) POST a listener URL to the component partyRole notification endpoint so that it can receive notifications of events against party roles and b) GET the partyrole endpoint to query roles in the component.</p>
+</section>
+<section id="step-2-add-labels-to-all-the-standard-kubernetes-resources">
+<h2>Step 2: Add labels to all the standard Kubernetes resources<a class="headerlink" href="#step-2-add-labels-to-all-the-standard-kubernetes-resources" title="Link to this heading"></a></h2>
 <p>By default, when you deploy a kubernetes manifest containing a number of different standard resources (Deployments, Pods, Services etc), they are deployed as independant resources with no reference to each-other. As part of the component standard, we add a label to every kubernetes resource to show that it belongs to a particular component.</p>
 <p>In our productcatalog example component, if you look at the service definition below, it shows us adding the component label to this service.</p>
-<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">apiVersion</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">v1</span>
-<span class="nt">kind</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Service</span>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Service</span>
 <span class="nt">metadata</span><span class="p">:</span>
-  <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">productcatalog</span>
-  <span class="nt">labels</span><span class="p">:</span>
-    <span class="nt">app</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">productcatalog</span>
-    <span class="nt">oda.tmforum.org/componentName</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">vodafone-productcatalog</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">productcatalog</span>
+<span class="w">  </span><span class="nt">labels</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">app</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">productcatalog</span>
+<span class="w">    </span><span class="nt">oda.tmforum.org/componentName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">vodafone-productcatalog</span>
 <span class="nt">spec</span><span class="p">:</span>
-  <span class="nt">ports</span><span class="p">:</span>
-  <span class="p p-Indicator">-</span> <span class="nt">port</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">8080</span>
-    <span class="nt">targetPort</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">productcatalog</span>
-    <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">productcatalog</span>
-  <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">NodePort</span>
-  <span class="nt">selector</span><span class="p">:</span>
-    <span class="nt">app</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">productcatalog</span>
+<span class="w">  </span><span class="nt">ports</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">8080</span>
+<span class="w">    </span><span class="nt">targetPort</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">productcatalog</span>
+<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">productcatalog</span>
+<span class="w">  </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">NodePort</span>
+<span class="w">  </span><span class="nt">selector</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">app</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">productcatalog</span>
 </pre></div>
 </div>
 <p>When this component is deployed, the <a class="reference external" href="https://github.com/tmforum-rand/oda-component-definitions/tree/master/controllers/componentOperator">Component Operator</a> will use this information to build a parent relationship between the running instances of the component. This also means that when we delete a component using the <code class="docutils literal notranslate"><span class="pre">kubectl</span> <span class="pre">delete</span> <span class="pre">component</span> <span class="pre">&lt;componentname&gt;</span></code> comand, the Kubernetes garbage-collection will also delete all the standard resources within the component.</p>
@@ -330,55 +252,47 @@
 <li><p>clusterrole, clusterrolebinding - a component developer should have no need for creating a clusterrole, clusterrolebinding they should be using role, rolebinding</p></li>
 </ul>
 <p>This if you include these unsupported resources in a component specification, the component CTK will issue a warning.</p>
-</div>
-</div>
+</section>
+<section id="changes-between-versions">
+<h2>Changes between versions<a class="headerlink" href="#changes-between-versions" title="Link to this heading"></a></h2>
+<p><strong>v1beta1 to v1beta2</strong></p>
+<ul class="simple">
+<li><p>There were a number of changes to align the security and management sections with the core - previously they described APIs in a slightly different structure.</p></li>
+<li><p>v1beta2 adds some additional metadata for <code class="docutils literal notranslate"><span class="pre">functionalBlock</span></code>, <code class="docutils literal notranslate"><span class="pre">version</span></code> and <code class="docutils literal notranslate"><span class="pre">status</span></code>, so that the <a class="reference external" href="https://oda-directory.labs.tmforum.org/">ODA Component Directory</a> could be created entirely from the YAML definitions in the components. The components team is now publishing all their components (against the beta2 standard) here: <a class="reference external" href="https://github.com/tmforum-rand/TMForum-ODA-Ready-for-publication/tree/v1beta2/specifications">https://github.com/tmforum-rand/TMForum-ODA-Ready-for-publication/tree/v1beta2/specifications</a>
+Finally, we renamed <code class="docutils literal notranslate"><span class="pre">security</span></code> to <code class="docutils literal notranslate"><span class="pre">securityFunction</span></code> and <code class="docutils literal notranslate"><span class="pre">management</span></code> to <code class="docutils literal notranslate"><span class="pre">managementFunction</span></code> to align with the <code class="docutils literal notranslate"><span class="pre">coreFunction</span></code> section.</p></li>
+</ul>
+</section>
+</section>
 
 
            </div>
-           
           </div>
-          <footer>
-    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-        <a href="../ctk/README.html" class="btn btn-neutral float-right" title="ODA Component - CTK" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="ODAComponentTutorial/README.html" class="btn btn-neutral float-left" title="Tutorial to build ODA-Component from Open-API Reference Implemenation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../ctk/README.html" class="btn btn-neutral float-right" title="ODA Component - CTK" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>
 
   <div role="contentinfo">
-    <p>
-        &#169; Copyright 2023, TM Forum ODA-Component Accelerator project.
-
-    </p>
+    <p>&#169; Copyright 2024, TM Forum ODA-Component Accelerator project.</p>
   </div>
-    
-    
-    
-    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
-    
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
     <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
-    
-    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
 
 </footer>
         </div>
       </div>
-
     </section>
-
   </div>
-  
-
-  <script type="text/javascript">
+  <script>
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
-  </script>
-
-  
-  
-    
-   
+  </script> 
 
 </body>
 </html>

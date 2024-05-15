@@ -118,7 +118,6 @@ copyImagesAndMarkdown('../../oda-canvas/source/operators/apiOperatorApig/sequenc
 copyImagesAndMarkdown('../../oda-canvas/source/operators/securityController/sequenceDiagrams', './canvas/source/operators/securityController/sequenceDiagrams')
 copyImagesAndMarkdown('../../oda-canvas/usecase-library', './canvas/usecase-library')
 copyImagesAndMarkdown('../../oda-canvas/feature-definition-and-test-kit', './canvas/feature-definition-and-test-kit')
-copyImagesAndMarkdown('../../oda-canvas/feature-definition-and-test-kit', './canvas/feature-definition-and-test-kit')
 copyImagesAndMarkdown('../../oda-canvas/feature-definition-and-test-kit/images', './canvas/feature-definition-and-test-kit/images')
 copyImagesAndMarkdown('../../oda-canvas/installation', './canvas/installation')
 

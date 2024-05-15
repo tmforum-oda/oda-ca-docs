@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ODA Canvas Features and Test Kit &mdash; ODA-Component Accelerator v1beta3 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/custom.css?v=6567dac9" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../_static/documentation_options.js?v=546c8a9f"></script>
+        <script src="../../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            ODA-Component Accelerator
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">About the project:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../docs/Playbook.html">Introduction to the ODA Component Accelerator Project (ODA-CA)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../docs/Getting_started.html">Getting started checklist for new members of ODA-CA</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Tutorials:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../docs/Observability-Tutorial/README.html">Tutorial to deploy and observe a running component</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../docs/ODAComponentTutorial/README.html">Tutorial to build ODA-Component from Open-API Reference Implemenation</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Component:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../docs/ODAComponentDesignGuidelines.html">Design Guidelines to create a new ODA Component</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ctk/README.html">ODA Component - CTK</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Canvas:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../installation/README.html">ODA Canvas installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Canvas-design.html">ODA Canvas Design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../usecase-library/README.html">ODA Canvas - use-case library</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../source/operators/index.html">Open Digital Architecture - Controllers/Operators</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Troubleshooting Guide:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../docs/TroubleshootingGuide/index.html">ODA-CA Troubleshooting Guide</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Contributions Guide:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../docs/ContributionsGuide.html">Contribution guidance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../docs/DocumentationProcess.html">Documentation Process</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">ODA-Component Accelerator</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">ODA Canvas Features and Test Kit</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/canvas/feature-definition-and-test-kit/README.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="oda-canvas-features-and-test-kit">
+<h1>ODA Canvas Features and Test Kit<a class="headerlink" href="#oda-canvas-features-and-test-kit" title="Link to this heading"></a></h1>
+<p>The ODA Canvas takes a Behaviour Driven Design (BDD) approch to define the features of the canvas. BDD allows you to specify the desired behavior of software through examples in plain language that both business stakeholders and technical teams can understand. These examples are written in a format known as Gherkin, which uses Given-When-Then syntax to describe test scenarios.</p>
+<ul class="simple">
+<li><p><strong>Given:</strong> This part of the syntax sets the scene for the scenario. It describes the initial context or the pre-conditions of the system before the key action is performed.
+Example: “Given the user is logged into their account”</p></li>
+<li><p><strong>When:</strong>
+This section describes the event or the action that triggers the scenario. It is the key action that the user performs or the event that occurs within the system.
+Example: “When the user clicks on the delete account button”</p></li>
+<li><p><strong>Then:</strong>
+This final part specifies the expected outcome or the post-conditions following the action described in the When section. It clearly defines what success (or sometimes failure) looks like.
+Example: “Then the user’s account is deactivated and the user is redirected to the homepage”</p></li>
+</ul>
+<p>By defining the desired behavior of the software through examples, you can then implement automated tests to verify that the software behaves as expected. This approach helps to ensure that the software meets the requirements of the business and that it continues to do so as it evolves over time. The automated tests are written in step definitions that map the plain language examples to code that interacts with the software under test.</p>
+<section id="linkage-to-use-cases">
+<h2>Linkage to use-cases<a class="headerlink" href="#linkage-to-use-cases" title="Link to this heading"></a></h2>
+<p>Each BDD feature is linked to the respective use-case in the <a class="reference internal" href="../usecase-library/README.html"><span class="std std-doc">use-case library</span></a>. The use-case provides the context and details for the feature. This linkage ensures that the features and are aligned with the overall design of the ODA Canvas and that the tests are verifying the correct behavior.</p>
+</section>
+<section id="work-breakdown">
+<h2>Work breakdown<a class="headerlink" href="#work-breakdown" title="Link to this heading"></a></h2>
+<p>For contributors contributing new features to the ODA Canvas, the expectation is that the contibuitor will define the features alongside implementing the software. Instead of having separate design, development and test teams, the approach is to separate work into different features and have the same contributor (or small team) work on the feature from design to implementation to testing. This approach is known as feature-driven development and is a key part of the agile methodology.</p>
+</section>
+</section>
+<section id="list-of-bdd-features">
+<h1>List of BDD Features<a class="headerlink" href="#list-of-bdd-features" title="Link to this heading"></a></h1>
+<p>The table below shows the list of features, together with the test status. The features are numbered depending on the use-case they describe.</p>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>Use-Case</th>
+<th>Feature</th>
+<th>Test Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="../usecase-library/UC003-Configure-Exposed-APIs.md">UC003 - Expose APIs for Component</a></td>
+<td><a href="features/UC003-F001-Expose-APIs-Create-API-Resource.feature">F001 - Create API Resource</a></td>
+<td>Complete</td>
+</tr>
+<tr>
+<td><a href="../usecase-library/UC003-Configure-Exposed-APIs.md">UC003 - Expose APIs for Component</a></td>
+<td><a href="features/UC003-F002-Expose-APIs-Publish-API-Resource-URL.feature">F002 - Publish API Resource URL</a></td>
+<td>Complete</td>
+</tr>
+<tr>
+<td><a href="../usecase-library/UC003-Configure-Exposed-APIs.md">UC003 - Expose APIs for Component</a></td>
+<td><a href="features/UC003-F003-Expose-APIs-Verify-API-implementation-is-ready.feature">F003 - Verify API implementation is ready</a></td>
+<td>Complete</td>
+</tr>
+<tr>
+<td><a href="../usecase-library/UC003-Configure-Exposed-APIs.md">UC003 - Expose APIs for Component</a></td>
+<td><a href="features/UC003-F004-Expose-APIs-Upgrade-component-with-additional-API.feature">F004 - Upgrade component with additional API</a></td>
+<td>Complete</td>
+</tr>
+<tr>
+<td><a href="../usecase-library/UC003-Configure-Exposed-APIs.md">UC003 - Expose APIs for Component</a></td>
+<td><a href="features/UC003-F005-Expose-APIs-Upgrade-component-with-removed-API.feature">F005 - Upgrade component with removed API</a></td>
+<td>Complete</td>
+</tr>
+<tr>
+<td><a href="../usecase-library/UC003-Configure-Exposed-APIs.md">UC003 - Expose APIs for Component</a></td>
+<td><a href="features/UC003-F006-Expose-APIs-Component-Specified-Rate-Limiting-and-Throttling-of-API-Requests.feature">F006 - Component Specified Rate Limiting and Throttling of API Requests</a></td>
+<td>Not started</td>
+</tr>
+<tr>
+<td><a href="../usecase-library/UC005-Configure-Users-and-Roles.md">UC005 - Configure Users and Roles</a></td>
+<td><a href="features/UC005-F001-Bootstrap-Apply-Standard-Defined-Role-to-Canvas-Admin-user.feature">F001 - Apply Standard Defined Role to Canvas Admin user</a></td>
+<td>Complete</td>
+</tr>
+<tr>
+<td><a href="../usecase-library/UC005-Configure-Users-and-Roles.md">UC005 - Configure Users and Roles</a></td>
+<td><a href="features/UC005-F002-Bootstrap-Grouping-Permission-Specification-Sets-into-Business-Roles-in-Identity-Management-Solution.feature">F002 - Grouping Permission Specification Sets-into Business Roles in Identity Management Solution</a></td>
+<td>Not started</td>
+</tr>
+<tr>
+<td><a href="../usecase-library/UC005-Configure-Users-and-Roles.md">UC005 - Configure Users and Roles</a></td>
+<td><a href="features/UC005-F003-Bootstrap-Secure-User-and-Role-Information-Communication.feature">F003 - Secure User and Role Information</a></td>
+<td>Not started</td>
+</tr>
+<tr>
+<td><a href="../usecase-library/UC005-Configure-Users-and-Roles.md">UC005 - Configure Users and Roles</a></td>
+<td><a href="features/UC005-F004-Bootstrap-Component-Exposes-Permission-Specification-Set-Towards-Canvas.feature">F004 - Component Exposes Permission Specification Set Towards Canvas</a></td>
+<td>Not started</td>
+</tr>
+<tr>
+<td><a href="../usecase-library/UC010-External-Authentication.md">UC010 - Authentication external</a></td>
+<td><a href="features/UC010-F001-External-Authentication-Logging-and-Monitoring-of-Authentication-Activity.feature">F001 - Logging and Monitoring of Authentication Activity</a></td>
+<td>Not started</td>
+</tr>
+<tr>
+<td><a href="../usecase-library/UC013-Upgrade-Canvas.md">UC013 - Seamless upgrade</a></td>
+<td><a href="features/UC013-F001-Seamless-upgrades-Installing-components-using-prev-version.feature">F001 - Installing components using prev version</a></td>
+<td>Complete</td>
+</tr>
+<tr>
+<td><a href="../usecase-library/UC013-Upgrade-Canvas.md">UC013 - Seamless upgrade</a></td>
+<td><a href="features/UC013-F002-Seamless-upgrades-Canvas-Operators-using-prev-version.feature">F002 - Canvas Operators using prev version</a></td>
+<td>Complete</td>
+</tr>
+</tbody>
+</table>
+<section id="executing-the-bdd-tests">
+<h2>Executing the BDD tests<a class="headerlink" href="#executing-the-bdd-tests" title="Link to this heading"></a></h2>
+<p>Follow the instructions in <a class="reference internal" href="Executing-tests.html"><span class="std std-doc">executing tests</span></a> to run the BDD tests.</p>
+<p>When you run the tests, the test results are reported in the console and in a HTML report. The console output is shown below:</p>
+<p><img alt="CTK Console Output" src="../../_images/CTK-console-output.png" /></p>
+<p>And the cucumber report will look like this:</p>
+<p><img alt="CTK Cucumber report" src="../../_images/CTK-cucumber-report.png" /></p>
+</section>
+<section id="oda-canvas-phase-1-mvp-ctk">
+<h2>ODA Canvas - Phase 1 (MVP) CTK<a class="headerlink" href="#oda-canvas-phase-1-mvp-ctk" title="Link to this heading"></a></h2>
+<p>For details of the work done in Phase 1 for a MVP of a Canvas test kit, see <a class="reference internal" href="#phase-1-tests/Phase-1-CTK.md"><span class="xref myst">Phase 1 MVP Canvas CTK</span></a></p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, TM Forum ODA-Component Accelerator project.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
