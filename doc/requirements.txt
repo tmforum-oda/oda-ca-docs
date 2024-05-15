@@ -1,4 +1,5 @@
 myst-parser
+linkify-it-py
 sphinx
 sphinx_rtd_theme
 flask
