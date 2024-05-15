@@ -109,12 +109,11 @@ copyImagesAndMarkdown('../../oda-canvas/source/operators/apiOperatorSimpleIngres
 copyImagesAndMarkdown('../../oda-canvas/source/operators/apiOperatorIstio/sequenceDiagrams', './canvas/source/operators/apiOperatorIstio/sequenceDiagrams')
 copyImagesAndMarkdown('../../oda-canvas/source/operators/apiOperatorApig/sequenceDiagrams', './canvas/source/operators/apiOperatorApig/sequenceDiagrams')
 copyImagesAndMarkdown('../../oda-canvas/source/operators/securityController/sequenceDiagrams', './canvas/source/operators/securityController/sequenceDiagrams')
-# issue with links copyImagesAndMarkdown('../../oda-canvas/usecase-library', './canvas/usecase-library')
-#copyImagesAndMarkdown('../../oda-canvas/compliance-test-kit', './canvas/compliance-test-kit')
-#copyImagesAndMarkdown('../../oda-canvas/compliance-test-kit/BDD-and-TDD', './canvas/compliance-test-kit/BDD-and-TDD')
-#copyImagesAndMarkdown('../../oda-canvas/compliance-test-kit/BDD-and-TDD/features', './canvas/compliance-test-kit/BDD-and-TDD/features')
-#copyImagesAndMarkdown('../../oda-canvas/compliance-test-kit/images', './canvas/compliance-test-kit/images')
-#copyImagesAndMarkdown('../../oda-canvas/installation', './canvas/installation')
+copyImagesAndMarkdown('../../oda-canvas/usecase-library', './canvas/usecase-library')
+copyImagesAndMarkdown('../../oda-canvas/feature-definition-and-test-kit', './canvas/feature-definition-and-test-kit')
+copyImagesAndMarkdown('../../oda-canvas/feature-definition-and-test-kit', './canvas/feature-definition-and-test-kit')
+copyImagesAndMarkdown('../../oda-canvas/feature-definition-and-test-kit/images', './canvas/feature-definition-and-test-kit/images')
+copyImagesAndMarkdown('../../oda-canvas/installation', './canvas/installation')
 
 # Base Documentation files
 copyImagesAndMarkdown('../', './docs')
