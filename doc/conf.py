@@ -40,6 +40,13 @@ release = 'v1beta3'
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
 # ones.
 extensions = ['sphinx.ext.autodoc', 'myst_parser','sphinx_markdown_tables']
+
+# Enable MyST extensions
+myst_enable_extensions = [
+    "linkify",   # Automatically turn URLs into links
+    "substitution"
+]
+
 source_suffix = {
     '.rst': 'restructuredtext',
     '.md': 'markdown'
