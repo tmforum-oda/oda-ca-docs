@@ -27,11 +27,11 @@ sys.path.insert(0, os.path.abspath('../../oda-canvas/source/operators/securityLi
 # -- Project information -----------------------------------------------------
 
 project = 'ODA-Component Accelerator'
-copyright = '2023, TM Forum ODA-Component Accelerator project'
+copyright = '2024, TM Forum ODA-Component Accelerator project'
 author = 'TM Forum ODA-Component Accelerator project'
 
 # The full version, including alpha/beta/rc tags
-release = 'v1beta2'
+release = 'v1beta3'
 
 
 # -- General configuration ---------------------------------------------------
@@ -39,7 +39,7 @@ release = 'v1beta2'
 # Add any Sphinx extension module names here, as strings. They can be
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
 # ones.
-extensions = ['sphinx.ext.autodoc', 'recommonmark','sphinx_markdown_tables']
+extensions = ['sphinx.ext.autodoc', 'myst_parser','sphinx_markdown_tables']
 source_suffix = {
     '.rst': 'restructuredtext',
     '.md': 'markdown'
