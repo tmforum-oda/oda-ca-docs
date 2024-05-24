@@ -4,7 +4,7 @@ metadata:
   name: {{.Release.Name}}-productinventoryapi
   labels:
     app: {{.Release.Name}}-productinventoryapi
-    oda.tmforum.org/componentName: {{.Release.Name}}-{{.Values.component.type}}
+    oda.tmforum.org/componentName: {{.Release.Name}}-{{.Values.component.name}}
 spec:
   ports:
   - port: 8080
@@ -12,4 +12,4 @@ spec:
     name: {{.Release.Name}}-productinventoryapi
   type: NodePort
   selector:
-    app: {{.Release.Name}}-productinventoryapi
+    impl: {{.Release.Name}}-productinventoryapi

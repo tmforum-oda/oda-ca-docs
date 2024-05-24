@@ -3,25 +3,36 @@ kind: Deployment
 metadata:
   name: {{.Release.Name}}-productinventoryapi
   labels:
-    oda.tmforum.org/componentName: {{.Release.Name}}-{{.Values.component.type}}
+    oda.tmforum.org/componentName: {{.Release.Name}}-{{.Values.component.name}}
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: {{.Release.Name}}-productinventoryapi
+      impl: {{.Release.Name}}-productinventoryapi
   template:
     metadata:
       labels:
-        app: {{.Release.Name}}-productinventoryapi
+        impl: {{.Release.Name}}-productinventoryapi
+        app: {{.Release.Name}}-{{.Values.component.name}}
+        version:  productinventoryapi-0.1
     spec:
       containers:
-      - name: {{.Release.Name}}-productinventoryapi
+      - name: {{.Release.Name}}-productinventoryapi         
+        image: dominico/productinventoryapi:0.1
         env:
         - name: RELEASE_NAME
           value: {{.Release.Name}}           
         - name: COMPONENT_NAME
-          value: {{.Release.Name}}-{{.Values.component.type}}           
-        image: dominico/productinventoryapi:latest
+          value: {{.Release.Name}}-{{.Values.component.name}}
+        - name: MONGODB_HOST
+          value: {{.Release.Name}}-mongodb
+        - name: MONGODB_PORT
+          value: "{{.Values.mongodb.port}}"
+        - name: MONGODB_DATABASE
+          value: {{.Values.mongodb.database}}
+        - name: NODE_ENV
+          value: production
+        imagePullPolicy: Always  
         ports:
         - name: {{.Release.Name}}-prodinvapi
           containerPort: 8080

@@ -19,16 +19,16 @@ kind: Service
 metadata:
   name: test-mongodb
   labels:
-    app: test-mongodb
     oda.tmforum.org/componentName: test-productinventory
+    app: test-productinventory
 spec:
   ports:
   - port: 27017
     targetPort: test-mongodb
-    name: test-mongodb
+    name: tcp-test-mongodb
   type: NodePort
   selector:
-    app: test-mongodb
+    impl: test-mongodb
 ---
 # Source: productinventory/templates/service-partyroleapi.yaml
 apiVersion: v1
@@ -62,7 +62,7 @@ spec:
     name: test-productinventoryapi
   type: NodePort
   selector:
-    app: test-productinventoryapi
+    impl: test-productinventoryapi
 ---
 # Source: productinventory/templates/deployment-mongodb.yaml
 apiVersion: apps/v1
@@ -71,16 +71,17 @@ metadata:
   name: test-mongodb-prod
   labels:
     oda.tmforum.org/componentName: test-productinventory
-    app: test-mongodb
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: test-mongodb
+      impl: test-mongodb
   template:
     metadata:
       labels:
-        app: test-mongodb
+        impl: test-mongodb
+        app: test-productinventory
+        version: mongo-latest
     spec:
       containers:
       - name: test-mongodb
@@ -113,16 +114,24 @@ spec:
       labels:
         app: test-productinventory
         impl: test-partyroleapi
-        version: dominico-partyroleapi-latest
+        version: partyroleapi-1.0
     spec:
       containers:
       - name: test-partyroleapi
-        image: dominico/partyroleapi:latest
+        image: lesterthomas/partyroleapi:1.0
         env:
         - name: RELEASE_NAME
           value: test           
         - name: COMPONENT_NAME
-          value: test-productinventory           
+          value: test-productinventory
+        - name: MONGODB_HOST
+          value: test-mongodb
+        - name: MONGODB_PORT
+          value: "27017"
+        - name: MONGODB_DATABASE
+          value: tmf
+        - name: NODE_ENV
+          value: production           
         imagePullPolicy: Always
         ports:
         - name: test-prapi
@@ -146,20 +155,31 @@ spec:
   replicas: 1
   selector:
     matchLabels:
-      app: test-productinventoryapi
+      impl: test-productinventoryapi
   template:
     metadata:
       labels:
-        app: test-productinventoryapi
+        impl: test-productinventoryapi
+        app: test-productinventory
+        version:  productinventoryapi-0.1
     spec:
       containers:
-      - name: test-productinventoryapi
+      - name: test-productinventoryapi         
+        image: dominico/productinventoryapi:0.1
         env:
         - name: RELEASE_NAME
           value: test           
         - name: COMPONENT_NAME
-          value: test-productinventory           
-        image: dominico/productinventoryapi:latest
+          value: test-productinventory
+        - name: MONGODB_HOST
+          value: test-mongodb
+        - name: MONGODB_PORT
+          value: "27017"
+        - name: MONGODB_DATABASE
+          value: tmf
+        - name: NODE_ENV
+          value: production
+        imagePullPolicy: Always  
         ports:
         - name: test-prodinvapi
           containerPort: 8080
@@ -189,27 +209,21 @@ spec:
       restartPolicy: OnFailure
   backoffLimit: 10
 ---
-# Source: productinventory/templates/component-productcinventory.yaml
-apiVersion: oda.tmforum.org/v1alpha4
-kind: component
+# Source: productinventory/templates/component-productinventory.yaml
+apiVersion: oda.tmforum.org/v1beta3
+kind: Component
 metadata:
   name: test-productinventory
   labels:
     oda.tmforum.org/componentName: test-productinventory
 spec:
-  type: productinventory
-  selector:
-    matchLabels:
-     oda.tmforum.org/componentName: test-productinventory
-  componentKinds:
-    - group: core
-      kind: Service    
-    - group: core
-      kind: PersistentVolumeClaim
-    - group: apps
-      kind: Deployment  
-  version: "0.0.1"
-  description: "Simple Product Inventory ODA-Component from Open-API reference implementation." 
+  id: TMFC005
+  name: productinventory
+  functionalBlock: CoreCommerce
+  publicationDate: 2023-08-22T00:00:00.000Z
+  status: specified
+  version: 1.0.1
+  description: "Simple Product Inventory ODA-Component from Open-API reference implementation."
   maintainers:
     - name: Dominic Oyeniran
       email: dominic.oyeniran@vodafone.com
@@ -219,31 +233,31 @@ spec:
   coreFunction:
     exposedAPIs: 
     - name: productinventorymanagement
-      specification: https://raw.githubusercontent.com/tmforum-apis/TMF637_ProductInventory/master/TMF637-ProductInventory-v4.0.0.swagger.json
+      specification: ["https://raw.githubusercontent.com/tmforum-apis/TMF637_ProductInventory/master/TMF637-ProductInventory-v4.0.0.swagger.json"]
       implementation: test-productinventoryapi
       apitype: openapi
-      path: /test-productinventory/tmf-api/productInventoryManagement/v4
-      developerUI: /test-productinventory/tmf-api/productInventoryManagement/v4/docs
+      path: /test-productinventory/tmf-api/productInventory/v4
+      developerUI: /test-productinventory/tmf-api/productInventory/v4/docs
       port: 8080
     dependentAPIs: 
-    - name: party      
+    - name: party
+      apitype: openapi        
       specification: https://open-api.tmforum.org/TMF632-Party-v4.0.0.swagger.json
   eventNotification:
     publishedEvents: []
     subscribedEvents: []
-  management: []
-  security:
-    securitySchemes: 
-      bearerAuth:
-        type: http
-        scheme: bearer
-        bearerFormat: JWT
-  partyrole:
-      specification: https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
+  managementFunction: 
+    exposedAPIs: []
+    dependentAPIs: []   
+  securityFunction:
+    controllerRole: Admin
+    exposedAPIs: 
+    - name: partyrole
+      specification: ["https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json"]
       implementation: test-partyroleapi
       apitype: openapi
-      path: /test-/tmf-api/partyRoleManagement/v4
-      developerUI: /test-/tmf-api/partyRoleManagement/v4/docs
+      path: /test-productinventory/tmf-api/partyRoleManagement/v4
+      developerUI: /test-productinventory/tmf-api/partyRoleManagement/v4/docs
       port: 8080
 ---
 # Source: productinventory/templates/tests/test-connection.yaml
