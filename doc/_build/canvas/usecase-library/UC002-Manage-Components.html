@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Manage Components use case &mdash; ODA-Component Accelerator v1beta3 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/custom.css?v=6567dac9" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../_static/documentation_options.js?v=546c8a9f"></script>
+        <script src="../../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            ODA-Component Accelerator
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">About the project:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../docs/Playbook.html">Introduction to the ODA Component Accelerator Project (ODA-CA)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../docs/Getting_started.html">Getting started checklist for new members of ODA-CA</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Tutorials:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../docs/Observability-Tutorial/README.html">Tutorial to deploy and observe a running component</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../docs/ODAComponentTutorial/README.html">Tutorial to build ODA-Component from Open-API Reference Implemenation</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Component:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../docs/ODAComponentDesignGuidelines.html">Design Guidelines to create a new ODA Component</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ctk/README.html">ODA Component - CTK</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Canvas:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../installation/README.html">ODA Canvas installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Canvas-design.html">ODA Canvas Design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="README.html">ODA Canvas - use-case library</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../source/operators/index.html">Open Digital Architecture - Controllers/Operators</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Troubleshooting Guide:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../docs/TroubleshootingGuide/index.html">ODA-CA Troubleshooting Guide</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Contributions Guide:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../docs/ContributionsGuide.html">Contribution guidance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../docs/DocumentationProcess.html">Documentation Process</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">ODA-Component Accelerator</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Manage Components use case</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/canvas/usecase-library/UC002-Manage-Components.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="manage-components-use-case">
+<h1>Manage Components use case<a class="headerlink" href="#manage-components-use-case" title="Link to this heading"></a></h1>
+<p>This use-case describes the initial actions that take place when an ODA Component is Installed, Updated or Uninstalled.</p>
+<p>It uses the following assumptions:</p>
+<ul class="simple">
+<li><p>The ODA Component describes the requirements (for its Core Function, Management and Security) in a machine-readible specification conforming to the <a class="reference external" href="https://github.com/tmforum-oda/oda-ca-docs/blob/master/ODAComponentDesignGuidelines.md">Component Design Guidelines</a>.</p></li>
+<li><p>The ODA Component conforms to the latest <a class="reference external" href="https://github.com/tmforum-oda/oda-canvas/blob/master/charts/oda-crds/templates/oda-component-crd.yaml">ODA Component API Specification</a> or the previous (N-1) or (N-2) version.</p></li>
+<li><p>The Component Operator decomposes the ODA Component resource into multiple sub-resources (for Exposed APIs, Dependent APIs, Published Events, Subscribed Events, Observability, Identity etc). These sub-resources are processed by their corresponding operators.</p></li>
+<li><p>The Component Operator summarises the status of the sub-resources and the overall status of the ODA Component.</p></li>
+</ul>
+<section id="install-component">
+<h2>Install component<a class="headerlink" href="#install-component" title="Link to this heading"></a></h2>
+<p><img alt="manage-components-install" src="http://www.plantuml.com/plantuml/proxy?cache=no&amp;src=https://raw.githubusercontent.com/tmforum-oda/oda-canvas/master/usecase-library/pumlFiles/manage-components-install.puml" />
+<a class="reference internal" href="#pumlFiles/manage-components-install.puml"><span class="xref myst">plantUML code</span></a></p>
+</section>
+<section id="upgrade-component">
+<h2>Upgrade component<a class="headerlink" href="#upgrade-component" title="Link to this heading"></a></h2>
+<p>The upgrade could include new, updated or deleted Exposed APIs, Dependent APIs, Published Events or Subscribed Events.
+It can also include updates to the Observability, Identity or Secrets metadata etc.</p>
+<p><img alt="manage-components-update" src="http://www.plantuml.com/plantuml/proxy?cache=no&amp;src=https://raw.githubusercontent.com/tmforum-oda/oda-canvas/master/usecase-library/pumlFiles/manage-components-update.puml" />
+<a class="reference internal" href="#pumlFiles/manage-components-update.puml"><span class="xref myst">plantUML code</span></a></p>
+</section>
+<section id="delete-component">
+<h2>Delete component<a class="headerlink" href="#delete-component" title="Link to this heading"></a></h2>
+<p>The component deletion should clean-up all the resources created during the installation of the component. If any of the clean-up processes fail, the component deletion should be cancelled.</p>
+<p><img alt="manage-components-uninstall" src="http://www.plantuml.com/plantuml/proxy?cache=no&amp;src=https://raw.githubusercontent.com/tmforum-oda/oda-canvas/master/usecase-library/pumlFiles/manage-components-uninstall.puml" />
+<a class="reference internal" href="#pumlFiles/manage-components-uninstall.puml"><span class="xref myst">plantUML code</span></a></p>
+</section>
+<section id="error-scenarios">
+<h2>Error scenarios<a class="headerlink" href="#error-scenarios" title="Link to this heading"></a></h2>
+<p>The component status should be set to one of the Error status codes (i.e. <code class="docutils literal notranslate"><span class="pre">Error-Configuring-APIs</span></code>, <code class="docutils literal notranslate"><span class="pre">Error-Configuring-Events</span></code>, <code class="docutils literal notranslate"><span class="pre">Error-Configuring-IDM</span></code>, <code class="docutils literal notranslate"><span class="pre">Error-Configuring-Observability</span></code>, <code class="docutils literal notranslate"><span class="pre">Error-Configuring-Secrets</span></code>, <code class="docutils literal notranslate"><span class="pre">Error-Configuring-Dependencies</span></code>) if any of the sub-resources fail to be created, updated or deleted. Each operator should re-try a configurable number of times before setting the relavant Error status.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, TM Forum ODA-Component Accelerator project.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

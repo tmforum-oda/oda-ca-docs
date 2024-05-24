@@ -4,7 +4,9 @@
 
 ODA is an enterprise architecture blueprint for modular, cloud native open digital platforms that can be orchestrated using AI.  It is being developed and maintained by members of [TM Forum](https://www.tmforum.org/).  You can start learning about ODA [here](https://www.tmforum.org/oda/).
 
-[ODA Components](https://www.tmforum.org/oda/implementation/technical-architecture-components/) are the standardized, reusable, microservices-based software building blocks of ODA, connected via [Open APIs](https://www.tmforum.org/oda/implementation/open-apis/). ODA Components are deployed onto an [ODA Canvas](https://www.tmforum.org/oda/deployment-runtime/oda-canvas/), which provides a standardized execution environment along with the release automation part of a CI/CD pipeline.
+![Open Digital Architecture](Open-Digital-Architecture.png)
+
+[ODA Components](https://www.tmforum.org/oda/implementation/technical-architecture-components/) are part of the *Implementation* quadrant of the ODA. They are  standardized, reusable, microservices-based software building blocks of ODA, connected via [Open APIs](https://www.tmforum.org/oda/implementation/open-apis/). ODA Components are deployed onto an [ODA Canvas](https://www.tmforum.org/oda/deployment-runtime/oda-canvas/), which is in the *Deployment & Runtime* quadrant of the ODA. The Canvas provides a standardized execution platform aligning to Site Reliability Engineering practices.
 
 **Check if your company is already involved in developing ODA**
 
@@ -30,6 +32,10 @@ Since the project [started in December 2020](https://www.tmforum.org/press-and-n
 * Built a ‘click-to-deploy’ reference Canvas for TM Forum members to use
 
 Read [this presentation](https://github.com/tmforum-oda/oda-ca-docs/blob/master/Presentations/TM%20Forum%20ODA%20Component%20Accelerator%20Briefing%20v29.pptx?raw=true) (updated Nov 2022) for more details about the ODA-CA project.  If you're interested in joining, please email [accelerator@tmforum.org](mailto:accelerator@tmforum.org).
+
+**2024 demos and videos**
+
+* ODA Canvas discussion with Vodafone, Deutsche Telekom, Oracle & TM Forum: [video (18 min)](https://inform.tmforum.org/videos/tm-forum-spec-jam-collaboration-advances-oda-canvas-flexibility)
 
 **DTW23 demos**
 

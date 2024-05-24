@@ -7,23 +7,23 @@ The business drivers and conceptual model for ODA Components is described in [IG
 
 The ODA Component concept builds on top of open standards like Docker and Kubernetes, and adds Telco-domain knowledge and meta-data. The starting point for building an ODA component is containerized, micro-service software described in a kubernetes manifest YAML file. To turn this into an ODA Component we will:
 
-1. Add meta-data to the Kubernetes manifest describing the *Core Function*, *Notification/Reporting*, *Security* and *Management & Operation* of the software component.
+1. Add meta-data to the Kubernetes manifest describing the *Core Function*, *Notification/Reporting*, *Security Function* and *Management Function* of the software component.
 2. Add labels to all the standard Kubernetes resources to label them as belonging to the component.
 3. Test the deployment of the Component in an operating platform that has the ODA Canvas installed (for example the TM FOrum Open-Digital Lab). See the [Getting Started](https://github.com/tmforum-rand/oda-component-definitions#get-started) section to see how to install the ODA Canvas onto a kubernetes cluster environmnet.
 
 
 ## Step 1: ODA-Component Metadata
 
-This guide has been updated to conform to the [v1beta1 component specification](Component-OAS-Specification-v1beta1.yaml).
+This guide has been updated to conform to the [v1beta2 component specification](Component-OAS-Specification-v1beta2.yaml).
 
 The ODA-Component metadata contains all the Telco-domain knowledge that makes the component a self-describing deployable software module. From [IG1171 ODA Component Definition](https://projects.tmforum.org/wiki/display/PUB/IG1171%20ODA%20Component%20Definition%20R19.0.1), this meta-data describes the Open-APIs, event data schemas as well as security and management & operations for the component. 
 
 The meta-data is defined using a Kubernetes [CustomResourceDefinition](https://kubernetes.io/docs/tasks/access-kubernetes-api/custom-resources/custom-resource-definitions/). This allows us to extend the Kubernetes API with our custom-defined schema for Telco meta-data. The CustomResourceDefinition schema is in the [github.com/tmforum-oda/oda-canvas-charts](https://github.com/tmforum-oda/oda-canvas-charts/blob/master/canvas/charts/crds/templates) repository.
 
-There is an example of the metadata for the [productcatalog example component](https://github.com/tmforum-oda/oda-ca-docs/blob/master/examples/ProductCatalog/productcatalog/templates/component-productcatalog.yaml) broken-down into sections below:
+There is an example of the metadata for the [productcatalog example component](https://github.com/tmforum-oda/reference-example-components/blob/master/charts/ProductCatalog/templates/component-productcatalog.yaml) broken-down into sections below:
 
 ```yaml
-apiVersion: oda.tmforum.org/v1beta1
+apiVersion: oda.tmforum.org/v1beta2
 kind: component
 metadata:
   name: vodafone-productcatalog
@@ -36,9 +36,13 @@ This is the header information for the component, specifying the version of the 
 
 ```yaml
 spec:
-  type: TMFC001-productcatalogmanagement
-  version: 0.0.3
-  description: "Simple Product Catalog ODA-Component from Open-API reference implementation." 
+  name: ProductCatalogManagement
+  functionalBlock: CoreCommerce
+  id: TMFC001
+  status: specified
+  version: 1.2.1
+  description: "Simple Product Catalog ODA-Component from Open-API reference implementation."
+  publicationDate: 2023-08-18 
   maintainers:
   - name: Lester Thomas
     email: lester.thomas@vodafone.com
@@ -95,7 +99,7 @@ The `coreFunction` describes the core purpose of the software component. It desc
 
 
 ```yaml
-  management:
+  managementFunction:
     exposedAPIs:
     - name: metrics
       apitype: open-metrics
@@ -111,7 +115,7 @@ The `coreFunction` describes the core purpose of the software component. It desc
       apitype: openapi
       port: 80
     subscribedEvents: []
-  security:
+  securityFunction:
     controllerRole: secConAdmin
     exposedAPIs:
     - name: partyrole
@@ -124,7 +128,7 @@ The `coreFunction` describes the core purpose of the software component. It desc
     dependantAPIs: []
 ```
 
-The `management` and `security` sections describe management and security APIs the component exposes that are part of its management or security (rather than part of its core business function). Examples of management APIs are for self-testing, raising operational alarms, or configuring the component itself. The `security` section provides meta-data on the security mechanisms used by the component, for example, exposing the roles the component requires to be configured in the Identity Management service. Again, the current definitions within these sections are experimental and we will modify and enhance them as we build-out the ODA Canvas and assemble a representative set of ODA Components. As of version `v1alpha2` and later, the security definition should include a `partyrole` property that describes the TMF669 PartyRole Open-API that all components must support (future versions may support multiple mechanisms for components to expose the roles they support). As of version `v1alpha3` and layer, the security definition must include a `controllerRole` property that gives the name of a pre-existing role in the component that the security controller can use to a) POST a listener URL to the component partyRole notification endpoint so that it can receive notifications of events against party roles and b) GET the partyrole endpoint to query roles in the component.
+The `managementFunction` and `securityFunction` sections describe management and security APIs the component exposes that are part of its management or security (rather than part of its core business function). Examples of management APIs are for self-testing, raising operational alarms, or configuring the component itself. The `security` section provides meta-data on the security mechanisms used by the component, for example, exposing the roles the component requires to be configured in the Identity Management service. Again, the current definitions within these sections are experimental and we will modify and enhance them as we build-out the ODA Canvas and assemble a representative set of ODA Components. As of version `v1alpha2` and later, the security definition should include a `partyrole` property that describes the TMF669 PartyRole Open-API that all components must support (future versions may support multiple mechanisms for components to expose the roles they support). As of version `v1alpha3` and layer, the security definition must include a `controllerRole` property that gives the name of a pre-existing role in the component that the security controller can use to a) POST a listener URL to the component partyRole notification endpoint so that it can receive notifications of events against party roles and b) GET the partyrole endpoint to query roles in the component.
 
 ## Step 2: Add labels to all the standard Kubernetes resources
 
@@ -162,3 +166,12 @@ We should not support certain resources:
 * clusterrole, clusterrolebinding - a component developer should have no need for creating a clusterrole, clusterrolebinding they should be using role, rolebinding
 
 This if you include these unsupported resources in a component specification, the component CTK will issue a warning.
+
+
+## Changes between versions
+
+**v1beta1 to v1beta2**
+
+* There were a number of changes to align the security and management sections with the core - previously they described APIs in a slightly different structure. 
+* v1beta2 adds some additional metadata for `functionalBlock`, `version` and `status`, so that the [ODA Component Directory](https://oda-directory.labs.tmforum.org/) could be created entirely from the YAML definitions in the components. The components team is now publishing all their components (against the beta2 standard) here: https://github.com/tmforum-rand/TMForum-ODA-Ready-for-publication/tree/v1beta2/specifications
+Finally, we renamed `security` to `securityFunction` and `management` to `managementFunction` to align with the `coreFunction` section.

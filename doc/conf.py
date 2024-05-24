@@ -27,11 +27,11 @@ sys.path.insert(0, os.path.abspath('../../oda-canvas/source/operators/securityLi
 # -- Project information -----------------------------------------------------
 
 project = 'ODA-Component Accelerator'
-copyright = '2023, TM Forum ODA-Component Accelerator project'
+copyright = '2024, TM Forum ODA-Component Accelerator project'
 author = 'TM Forum ODA-Component Accelerator project'
 
 # The full version, including alpha/beta/rc tags
-release = 'v1beta1'
+release = 'v1beta3'
 
 
 # -- General configuration ---------------------------------------------------
@@ -39,7 +39,14 @@ release = 'v1beta1'
 # Add any Sphinx extension module names here, as strings. They can be
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
 # ones.
-extensions = ['sphinx.ext.autodoc', 'recommonmark','sphinx_markdown_tables']
+extensions = ['sphinx.ext.autodoc', 'myst_parser','sphinx_markdown_tables']
+
+# Enable MyST extensions
+myst_enable_extensions = [
+    "linkify",   # Automatically turn URLs into links
+    "substitution"
+]
+
 source_suffix = {
     '.rst': 'restructuredtext',
     '.md': 'markdown'
@@ -109,11 +116,9 @@ copyImagesAndMarkdown('../../oda-canvas/source/operators/apiOperatorSimpleIngres
 copyImagesAndMarkdown('../../oda-canvas/source/operators/apiOperatorIstio/sequenceDiagrams', './canvas/source/operators/apiOperatorIstio/sequenceDiagrams')
 copyImagesAndMarkdown('../../oda-canvas/source/operators/apiOperatorApig/sequenceDiagrams', './canvas/source/operators/apiOperatorApig/sequenceDiagrams')
 copyImagesAndMarkdown('../../oda-canvas/source/operators/securityController/sequenceDiagrams', './canvas/source/operators/securityController/sequenceDiagrams')
-# issue with links copyImagesAndMarkdown('../../oda-canvas/usecase-library', './canvas/usecase-library')
-copyImagesAndMarkdown('../../oda-canvas/compliance-test-kit', './canvas/compliance-test-kit')
-copyImagesAndMarkdown('../../oda-canvas/compliance-test-kit/BDD-and-TDD', './canvas/compliance-test-kit/BDD-and-TDD')
-copyImagesAndMarkdown('../../oda-canvas/compliance-test-kit/BDD-and-TDD/features', './canvas/compliance-test-kit/BDD-and-TDD/features')
-copyImagesAndMarkdown('../../oda-canvas/compliance-test-kit/images', './canvas/compliance-test-kit/images')
+copyImagesAndMarkdown('../../oda-canvas/usecase-library', './canvas/usecase-library')
+copyImagesAndMarkdown('../../oda-canvas/feature-definition-and-test-kit', './canvas/feature-definition-and-test-kit')
+copyImagesAndMarkdown('../../oda-canvas/feature-definition-and-test-kit/images', './canvas/feature-definition-and-test-kit/images')
 copyImagesAndMarkdown('../../oda-canvas/installation', './canvas/installation')
 
 # Base Documentation files

@@ -20,7 +20,7 @@ The ODA-Component metadata contains all the Telco-domain knowledge that makes th
 
 The meta-data is defined using a Kubernetes [CustomResourceDefinition](https://kubernetes.io/docs/tasks/access-kubernetes-api/custom-resources/custom-resource-definitions/). This allows us to extend the Kubernetes API with our custom-defined schema for Telco meta-data. The CustomResourceDefinition schema is in the [github.com/tmforum-oda/oda-canvas-charts](https://github.com/tmforum-oda/oda-canvas-charts/blob/master/canvas/charts/crds/templates) repository.
 
-There is an example of the metadata for the [productcatalog example component](https://github.com/tmforum-oda/oda-ca-docs/blob/master/examples/ProductCatalog/productcatalog/templates/component-productcatalog.yaml) broken-down into sections below:
+There is an example of the metadata for the [productcatalog example component](https://github.com/tmforum-oda/reference-example-components/blob/master/charts/ProductCatalog/templates/component-productcatalog.yaml) broken-down into sections below:
 
 ```yaml
 apiVersion: oda.tmforum.org/v1beta2

@@ -1,6 +1,0 @@
-applications:
-- name: product-inventory
-  host: 
-  memory: 640M
-  services:
-    - tmf-compose-for-mongodb

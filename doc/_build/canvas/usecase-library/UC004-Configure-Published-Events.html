@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Configure Published Events use-case &mdash; ODA-Component Accelerator v1beta3 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/custom.css?v=6567dac9" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../_static/documentation_options.js?v=546c8a9f"></script>
+        <script src="../../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            ODA-Component Accelerator
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">About the project:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../docs/Playbook.html">Introduction to the ODA Component Accelerator Project (ODA-CA)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../docs/Getting_started.html">Getting started checklist for new members of ODA-CA</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Tutorials:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../docs/Observability-Tutorial/README.html">Tutorial to deploy and observe a running component</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../docs/ODAComponentTutorial/README.html">Tutorial to build ODA-Component from Open-API Reference Implemenation</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Component:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../docs/ODAComponentDesignGuidelines.html">Design Guidelines to create a new ODA Component</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ctk/README.html">ODA Component - CTK</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Canvas:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../installation/README.html">ODA Canvas installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Canvas-design.html">ODA Canvas Design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="README.html">ODA Canvas - use-case library</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../source/operators/index.html">Open Digital Architecture - Controllers/Operators</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Troubleshooting Guide:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../docs/TroubleshootingGuide/index.html">ODA-CA Troubleshooting Guide</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Contributions Guide:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../docs/ContributionsGuide.html">Contribution guidance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../docs/DocumentationProcess.html">Documentation Process</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">ODA-Component Accelerator</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Configure Published Events use-case</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/canvas/usecase-library/UC004-Configure-Published-Events.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="configure-published-events-use-case">
+<h1>Configure Published Events use-case<a class="headerlink" href="#configure-published-events-use-case" title="Link to this heading"></a></h1>
+<p>This use-case describes how a component is configured for publishing its Notifications and other Events for other components and/or clients to subscribe to.  When a component is deployed, updated or deleted, this use-case describes how the Canvas integrates with the Event Management service to configure Event Publishing on a topic. The use case uses the following assumptions:</p>
+<ul class="simple">
+<li><p>The Notifications to be published are an explicit part of the ODA Component definition. The Golden Components will include this as part of their definition and the Event Publication can also be tested by the Component CTK.</p></li>
+<li><p>The ODA Components are <strong>not</strong> given raised priveleges to publish their Notifications directly; Instead, software operators in the Canvas read the Component definition and configure the component. This model allows the component vendor to express their requirement for publishing Notification in the component definition, and allows the SRE (Site Reliability Team) for the operator to determine how the Notifications are published.</p></li>
+<li><p>Whilst the reference implementation will provide a reference <code class="docutils literal notranslate"><span class="pre">Event</span> <span class="pre">Management</span> <span class="pre">Operator</span></code>, in typical implementations this will be specific to the Operations team that is running their Canvas, and will link to their own standards and policies. It is also possible that Event Management vendors (or open-source communities) develop standard <code class="docutils literal notranslate"><span class="pre">Event</span> <span class="pre">Publishing</span> <span class="pre">Operators</span></code> for their own API Gateway.</p></li>
+</ul>
+<section id="install-component">
+<h2>Install component<a class="headerlink" href="#install-component" title="Link to this heading"></a></h2>
+<p><img alt="publish-event-create" src="http://www.plantuml.com/plantuml/proxy?cache=no&amp;src=https://raw.githubusercontent.com/tmforum-oda/oda-canvas-ctk/main/usecase-library/pumlFiles/publish-event-create.puml" />
+<a class="reference internal" href="#pumlFiles/publish-event-create.puml"><span class="xref myst">plantUML code</span></a></p>
+</section>
+<section id="upgrade-component-with-changed-publishednotifications">
+<h2>Upgrade component - with changed publishedNotifications<a class="headerlink" href="#upgrade-component-with-changed-publishednotifications" title="Link to this heading"></a></h2>
+<p>The use-case above is for the install of a new component. If you upgrade a component and change the schema of a publishedNotification, the configuration of the Topic on the Event Management system should change.</p>
+<p><img alt="publish-event-update-with-mopdify" src="http://www.plantuml.com/plantuml/proxy?cache=no&amp;src=https://raw.githubusercontent.com/tmforum-oda/oda-canvas-ctk/main/usecase-library/pumlFiles/publish-event-update-with-modify.puml" />
+<a class="reference internal" href="#pumlFiles/publish-event-update-with-modify.puml"><span class="xref myst">plantUML code</span></a></p>
+</section>
+<section id="upgrade-component-with-additional-publishednotifications">
+<h2>Upgrade component - with additional publishedNotifications<a class="headerlink" href="#upgrade-component-with-additional-publishednotifications" title="Link to this heading"></a></h2>
+<p>If you upgrade a component and the new component has a new publishedNotification, the Event Management system should be reconfigured.</p>
+<p><img alt="publish-event-update-with-add" src="http://www.plantuml.com/plantuml/proxy?cache=no&amp;src=https://raw.githubusercontent.com/tmforum-oda/oda-canvas-ctk/main/usecase-library/pumlFiles/publish-event-update-with-add.puml" />
+<a class="reference internal" href="#pumlFiles/publish-event-update-with-add.puml"><span class="xref myst">plantUML code</span></a></p>
+</section>
+<section id="upgrade-component-with-deleted-publishednotifications">
+<h2>Upgrade component - with deleted publishedNotifications<a class="headerlink" href="#upgrade-component-with-deleted-publishednotifications" title="Link to this heading"></a></h2>
+<p>If you upgrade a component and the new component has a new publishedNotification, the Event Management system should be reconfigured.</p>
+<p><img alt="publish-event-update-with-delete" src="http://www.plantuml.com/plantuml/proxy?cache=no&amp;src=https://raw.githubusercontent.com/tmforum-oda/oda-canvas-ctk/main/usecase-library/pumlFiles/publish-event-update-with-delete.puml" />
+<a class="reference internal" href="#pumlFiles/publish-event-update-with-delete.puml"><span class="xref myst">plantUML code</span></a></p>
+</section>
+<section id="delete-component">
+<h2>Delete component<a class="headerlink" href="#delete-component" title="Link to this heading"></a></h2>
+<p>If you delete a component a cleanup of the used resources is required.</p>
+<p><img alt="publish-event-delete" src="http://www.plantuml.com/plantuml/proxy?cache=no&amp;src=https://raw.githubusercontent.com/tmforum-oda/oda-canvas-ctk/main/usecase-library/pumlFiles/publish-event-delete.puml" />
+<a class="reference internal" href="#pumlFiles/publish-event-delete.puml"><span class="xref myst">plantUML code</span></a></p>
+</section>
+<section id="todo-what-if-no-event-manager-exists">
+<h2>TODO What if no event manager exists<a class="headerlink" href="#todo-what-if-no-event-manager-exists" title="Link to this heading"></a></h2>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, TM Forum ODA-Component Accelerator project.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

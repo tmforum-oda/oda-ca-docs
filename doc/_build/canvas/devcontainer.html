@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ODA Canvas Development Environment &mdash; ODA-Component Accelerator v1beta3 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/custom.css?v=6567dac9" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../_static/documentation_options.js?v=546c8a9f"></script>
+        <script src="../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            ODA-Component Accelerator
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">About the project:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../docs/Playbook.html">Introduction to the ODA Component Accelerator Project (ODA-CA)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../docs/Getting_started.html">Getting started checklist for new members of ODA-CA</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Tutorials:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../docs/Observability-Tutorial/README.html">Tutorial to deploy and observe a running component</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../docs/ODAComponentTutorial/README.html">Tutorial to build ODA-Component from Open-API Reference Implemenation</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Component:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../docs/ODAComponentDesignGuidelines.html">Design Guidelines to create a new ODA Component</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ctk/README.html">ODA Component - CTK</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Canvas:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="installation/README.html">ODA Canvas installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Canvas-design.html">ODA Canvas Design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usecase-library/README.html">ODA Canvas - use-case library</a></li>
+<li class="toctree-l1"><a class="reference internal" href="source/operators/index.html">Open Digital Architecture - Controllers/Operators</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Troubleshooting Guide:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../docs/TroubleshootingGuide/index.html">ODA-CA Troubleshooting Guide</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Contributions Guide:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../docs/ContributionsGuide.html">Contribution guidance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../docs/DocumentationProcess.html">Documentation Process</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">ODA-Component Accelerator</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">ODA Canvas Development Environment</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/canvas/devcontainer.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="oda-canvas-development-environment">
+<h1>ODA Canvas Development Environment<a class="headerlink" href="#oda-canvas-development-environment" title="Link to this heading"></a></h1>
+<p>This repository contains the development environment setup for the ODA Canvas project. The dev container definition included in this project allows you to easily run and develop the ODA Canvas, including running the compliance-test-kit.</p>
+<section id="prerequisites">
+<h2>Prerequisites<a class="headerlink" href="#prerequisites" title="Link to this heading"></a></h2>
+<p>Before you can start using the dev container, make sure you have the following prerequisites installed:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://www.docker.com/get-started">Docker</a></p></li>
+<li><p><a class="reference external" href="https://code.visualstudio.com/download">Visual Studio Code</a></p></li>
+<li><p><a class="reference external" href="https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers">Remote - Containers extension</a></p></li>
+</ul>
+<p>Open the project in Visual Studio Code with the option “Open in container”.</p>
+</section>
+<section id="getting-started">
+<h2>Getting Started<a class="headerlink" href="#getting-started" title="Link to this heading"></a></h2>
+<p>To get started with the ODA Canvas development environment, follow these steps:</p>
+<ol class="arabic">
+<li><p>Clone this repository to your local machine:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/your-username/oda-canvas.git
+</pre></div>
+</div>
+</li>
+<li><p>Open the cloned repository in Visual Studio Code:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span><span class="nb">cd</span><span class="w"> </span>oda-canvas
+$<span class="w"> </span>code<span class="w"> </span>.
+</pre></div>
+</div>
+</li>
+<li><p>Visual Studio Code will detect the dev container configuration and prompt you to reopen the project in a container. Click on “Reopen in Container” to start the development environment.</p></li>
+<li><p>Once the dev container is built and the development environment is ready, you can run the test-kit by executing the following command in the integrated terminal:</p></li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>gcloud<span class="w"> </span>auth<span class="w"> </span>login<span class="w"> </span>--no-browser
+
+You<span class="w"> </span>are<span class="w"> </span>authorizing<span class="w"> </span>gcloud<span class="w"> </span>CLI<span class="w"> </span>without<span class="w"> </span>access<span class="w"> </span>to<span class="w"> </span>a<span class="w"> </span>web<span class="w"> </span>browser.<span class="w"> </span>Please<span class="w"> </span>run<span class="w"> </span>the<span class="w"> </span>following<span class="w"> </span><span class="nb">command</span><span class="w"> </span>on<span class="w"> </span>a<span class="w"> </span>machine<span class="w"> </span>with<span class="w"> </span>a<span class="w"> </span>web<span class="w"> </span>browser<span class="w"> </span>and<span class="w"> </span>copy<span class="w"> </span>its<span class="w"> </span>output<span class="w"> </span>back<span class="w"> </span>here.<span class="w"> </span>Make<span class="w"> </span>sure<span class="w"> </span>the<span class="w"> </span>installed<span class="w"> </span>gcloud<span class="w"> </span>version<span class="w"> </span>is<span class="w"> </span><span class="m">372</span>.0.0<span class="w"> </span>or<span class="w"> </span>newer.
+
+gcloud<span class="w"> </span>auth<span class="w"> </span>login<span class="w"> </span>--remote-bootstrap<span class="o">=</span><span class="s2">&quot;https://accounts.google.com/o/oauth2/auth?response_type=code&amp;...&amp;token_usage=remote&quot;</span>
+
+
+Enter<span class="w"> </span>the<span class="w"> </span>output<span class="w"> </span>of<span class="w"> </span>the<span class="w"> </span>above<span class="w"> </span>command:<span class="w"> </span>
+</pre></div>
+</div>
+<p>Copy the <code class="docutils literal notranslate"><span class="pre">gcloud</span></code> command line into another terminal and execute it. A browser will open where you may have to select a google account and (on a further page) allow the access. The browser it than forwarded to a localhost address which will fail to load. Nevertheless you have to copy&amp;paste the url (<code class="docutils literal notranslate"><span class="pre">https://localhost:8085/...</span></code>) into terminal used before. After you are logged in and can give the project a name.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="o">(</span>link<span class="w"> </span>is<span class="w"> </span>shorten<span class="w"> </span>here<span class="o">)</span>
+
+Enter<span class="w"> </span>the<span class="w"> </span>output<span class="w"> </span>of<span class="w"> </span>the<span class="w"> </span>above<span class="w"> </span>command:<span class="w"> </span>https://localhost:8085/?state<span class="o">=</span>...<span class="p">&amp;</span><span class="nv">scope</span><span class="o">=</span>email%20openid%20https://www.googleapis.com/auth/userinfo.email%20https://www.googleapis.com/auth/cloud-platform%20https://www.googleapis.com/auth/appengine.admin%20https://www.googleapis.com/auth/sqlservice.login%20https://www.googleapis.com/auth/compute%20https://www.googleapis.com/auth/accounts.reauth<span class="p">&amp;</span><span class="nv">authuser</span><span class="o">=</span><span class="m">0</span><span class="p">&amp;</span><span class="nv">prompt</span><span class="o">=</span>consent
+
+You<span class="w"> </span>are<span class="w"> </span>now<span class="w"> </span>logged<span class="w"> </span><span class="k">in</span><span class="w"> </span>as<span class="w"> </span><span class="o">[</span>xxxxxxxxxxxxx<span class="o">]</span>.
+Your<span class="w"> </span>current<span class="w"> </span>project<span class="w"> </span>is<span class="w"> </span><span class="o">[</span>None<span class="o">]</span>.<span class="w">  </span>You<span class="w"> </span>can<span class="w"> </span>change<span class="w"> </span>this<span class="w"> </span>setting<span class="w"> </span>by<span class="w"> </span>running:
+<span class="w">  </span>$<span class="w"> </span>gcloud<span class="w"> </span>config<span class="w"> </span><span class="nb">set</span><span class="w"> </span>project<span class="w"> </span>PROJECT_ID
+
+$<span class="w"> </span>gcloud<span class="w"> </span>config<span class="w"> </span><span class="nb">set</span><span class="w"> </span>project<span class="w"> </span>tmf-ihc
+</pre></div>
+</div>
+<ol class="arabic simple" start="5">
+<li><p>Install the <code class="docutils literal notranslate"><span class="pre">google-cloud-sdk-gke-gcloud-auth-plugin</span></code> by running the following command:</p></li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>sudo<span class="w"> </span>apt-get<span class="w"> </span>update<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>sudo<span class="w"> </span>apt-get<span class="w"> </span>install<span class="w"> </span>google-cloud-sdk-gke-gcloud-auth-plugin
+</pre></div>
+</div>
+<ol class="arabic simple" start="6">
+<li><p>Generate a kubeconfig entry</p></li>
+</ol>
+<ul class="simple">
+<li><p>goto th Google Cloud console -&gt; Kubernetes Engine -&gt; Clusters -&gt; click on the cluster you want to use -&gt; click on CONNECT -&gt; copy the shown command line <code class="docutils literal notranslate"><span class="pre">gcloud</span> <span class="pre">container</span> <span class="pre">clusters</span> <span class="pre">...</span></code></p></li>
+<li><p>run the copied command line in a console/terminal outside of VSC</p></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>gcloud<span class="w"> </span>container<span class="w"> </span>clusters<span class="w"> </span>get-credentials<span class="w"> </span>innovation-hub-cluster<span class="w"> </span>--zone<span class="w"> </span>europe-west4-b<span class="w"> </span>--project<span class="w"> </span>tmforum-oda-component-cluster
+Fetching<span class="w"> </span>cluster<span class="w"> </span>endpoint<span class="w"> </span>and<span class="w"> </span>auth<span class="w"> </span>data.
+kubeconfig<span class="w"> </span>entry<span class="w"> </span>generated<span class="w"> </span><span class="k">for</span><span class="w"> </span>innovation-hub-cluster.
+
+$<span class="w"> </span>$<span class="w"> </span>kubectl<span class="w"> </span>config<span class="w"> </span>get-contexts<span class="w"> </span><span class="o">(</span>Note:<span class="w"> </span>the<span class="w"> </span>console<span class="w"> </span>output<span class="w"> </span>has<span class="w"> </span>been<span class="w"> </span>shortened<span class="o">)</span>
+CURRENT<span class="w">   </span>NAME<span class="w">                                             </span>CLUSTER<span class="w">                   </span>AUTHINFO<span class="w">                  </span>NAMESPACE
+*<span class="w">         </span>gke_tmforum-oda-comp..._innovation-hub-cluster<span class="w">   </span>gke_tmforum-oda-comp...<span class="w">   </span>gke_tmforum-oda-comp...<span class="w">   </span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="7">
+<li><p>Optionally, you can rename the context to make it easier to handle:</p></li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>kubectl<span class="w"> </span>config<span class="w"> </span>rename-context<span class="w"> </span>gke_tmforum-oda-component-cluster_europe-west4-b_innovation-hub-cluster<span class="w"> </span>tmf-ihc
+</pre></div>
+</div>
+<ol class="arabic simple" start="8">
+<li><p>Now follow the <a class="reference internal" href="#compliance-test-kit/BDD-and-TDD/README.md#how-to-run-the-tests"><span class="xref myst">CTK readme</span></a></p></li>
+</ol>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, TM Forum ODA-Component Accelerator project.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
