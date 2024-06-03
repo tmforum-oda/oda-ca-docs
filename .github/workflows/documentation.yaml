@@ -36,6 +36,7 @@ jobs:
         working-directory: oda-ca-docs/doc
         run: |
           sphinx-build . _build
+          cp ../google6235ca3ee03a50cf1.html _build
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
         if: ${{ github.ref == 'refs/heads/master' }}
