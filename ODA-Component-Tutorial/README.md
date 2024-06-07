@@ -2,7 +2,7 @@
 
 This tutorial shows the complete process to package, test and deploy an ODA-Component, using the nodejs reference implementation of the TMF637 Product Inventory Management API as the source code. You should be able to follow the process below using an existing software application as source (the process should work for simple applications - it is intended as a tutorial to get you started; For more complex applications you may have to decompose to multiple containers/micro-services and even multiple ODA-Components).
 
-There is a video of this tutorial at: [ODA Component Tutorial Video walkthrough](https://youtu.be/wZJ8d5uQ7_8)
+<!-- There is a video of this tutorial at: [ODA Component Tutorial Video walkthrough](https://youtu.be/wZJ8d5uQ7_8) --->
 
 For an introdution to the Open-Digital Architecture component model, take a look at the recording from the Digital Transformation World Series conference:
 
@@ -13,7 +13,7 @@ For an introdution to the Open-Digital Architecture component model, take a look
 
 ### Step 1. Download Reference Implementation
 
-We are using one of the Reference implementations of the Open-APIs as a starting point. Go to the open-API Table at [https://projects.tmforum.org/wiki/display/API/Open+API+Table](https://projects.tmforum.org/wiki/display/API/Open+API+Table) and download one of the reference implmentation `.zip` files (we are using the Product Inventory Management API, but you can choose any).
+We are using one of the Reference implementations of the Open-APIs as a starting point. Go to the open-API Table at [https://projects.tmforum.org/wiki/display/API/Open+API+Table](https://projects.tmforum.org/wiki/display/API/Open+API+Table) and download one of the reference implmentation `.zip` files (we are using the Product Inventory Management API version 4, but you can choose any).
 
 ![<img src="https://projects.tmforum.org/wiki/display/API/Open+API+Table">](./images/Open-API-Table.png)
 
@@ -89,23 +89,31 @@ var componentName = process.env.COMPONENT_NAME;
 if (!componentName) {
   componentName = 'productinventory'
 }
-console.log('ComponentName:'+componentName);
+// Remove leading and trailing slashes from componentName
+componentName = componentName.replace(/^\/+|\/+$/g, '');
+
 // end
+
+// Remove leading slashes from basePath and ensure it does not end with a trailing slash
+swaggerDoc.basePath = swaggerDoc.basePath.replace(/^\/+|\/+$/g, '');
+
+// add component name to swaggerDoc
+swaggerDoc.basePath = '/' + componentName + (swaggerDoc.basePath ? '/' + swaggerDoc.basePath : '');
 
 // add component name to url in swagger_ui - i.e. swagger-ui-dist/index.html
 fs.readFile(path.join(__dirname, './node_modules/swagger-ui-dist/index.html'), 'utf8', function (err,data) {
   if (err) {
-    return console.log(err);
+    return console.log('error reading the file'+ err);
   }
-  var result = data.replace(/api-docs/g, swaggerDoc.basePath + 'api-docs' );
+  // Ensure exactly one leading slash in basePath before concatenating with '/api-docs'
+  const basePathWithSingleSlash = swaggerDoc.basePath.replace(/\/+/g, '/');
+  const result = data.replace(/\/api-docs/g, basePathWithSingleSlash + '/api-docs');
+  console.log('result of replacing ', result);
   console.log('updating ' + path.join(__dirname, './node_modules/swagger-ui-dist/index.html'));
   fs.writeFile(path.join(__dirname, './node_modules/swagger-ui-dist/index.html'), result, 'utf8', function (err) {
       if (err) return console.log(err);
   });
 });
-
-// add component name to swaggerDoc
-swaggerDoc.basePath = '/' + componentName + swaggerDoc.basePath
 
 //end
 ```
@@ -137,7 +145,7 @@ Finally, we change the path where the 'api-docs' and 'docs' are exposed. By defa
     console.log('Swagger-ui is available on http://localhost:'+ serverPort  + swaggerDoc.basePath + 'docs', serverPort);
   });
 ```
-
+### Continue updating the docs from here 7/6/2024
 
 ### Step 4. Package the nodejs implementation into a docker image
 
