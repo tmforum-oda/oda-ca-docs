@@ -1,8 +1,8 @@
-## Tutorial to build ODA-Component from Open-API Reference Implemenation
+## Tutorial to build ODA-Component from Open-API Reference Implementation
 
-This tutorial shows the complete process to package, test and deploy an ODA-Component, using the nodejs reference implementation of the TMF637 Product Inventory Management API as the source code. You should be able to follow the process below using an existing software application as source. The process should work for simple applications - it is intended as a tutorial to get you started. For more complex applications you may have to decompose to multiple containers/micro-services and even multiple ODA-Components).
+This tutorial shows the complete process to package, test and deploy an ODA-Component, using the nodejs reference implementation of the TMF637 Product Inventory Management API as the source code. You should be able to follow the process below using an existing software application as source. The process should work for simple applications - it is intended as a tutorial to get you started. For more complex applications you may have to decompose to multiple containers/micro-services and even multiple ODA-Components.
 
-> **Note:** This tutorial has been updated for v1beta3 version of the ODA component speficiation.
+> **Note:** This tutorial has been updated for v1beta3 version of the ODA component speficiation
 > and should be deployed unto an ODA Canvas environment that supports this version of the specification.
 
 <!-- There is a video of this tutorial at: [ODA Component Tutorial Video walkthrough](https://youtu.be/wZJ8d5uQ7_8) --->
@@ -56,7 +56,7 @@ You can then test the API by using `npm install` and `npm start`. You should be 
 When we depoy this nodejs code for use within Kubernetes, it will connect to MongoDb using a url which is provided by a Kubernetes service. We also use environment variable to allow Kubernetes to, for example, determine the path where the API is exposed.
 
 
-#### 3.1 Configure mongoDb connection url to use within Kubernetes
+#### 3.1 Configure MongoDb connection url to use within Kubernetes
 
 In the `utils/mongoUtils.js` file, you will need to update the local connection string to a url that wil work within Kubernetes (this will match the kubernetes service name for mongoDb). Note we include a release name passed as an environment variable (as we could potentially deploy multiple instances of a component in the same canvas).
 
@@ -778,6 +778,7 @@ You should get a result like the image below:
 
 ![CTK image](./images/ctkdynamicsuccess.png)
 
+This is the last step. You would have succesffully deployed an ODA Component unto an ODA Canvas environment!
 
 ### Directory Structure
 
