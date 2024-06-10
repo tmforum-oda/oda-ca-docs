@@ -2,7 +2,8 @@
 
 This tutorial shows the complete process to package, test and deploy an ODA-Component, using the nodejs reference implementation of the TMF637 Product Inventory Management API as the source code. You should be able to follow the process below using an existing software application as source (the process should work for simple applications - it is intended as a tutorial to get you started; For more complex applications you may have to decompose to multiple containers/micro-services and even multiple ODA-Components).
 
-> **Note:** This tutorial is built for version v1beta3 of the ODA component speficiation.
+> **Note:** This tutorial is built for v1beta3 version of the ODA component speficiation.
+> and should be deployed unto an ODA Canvas environment that supports this version of the specification.
 
 <!-- There is a video of this tutorial at: [ODA Component Tutorial Video walkthrough](https://youtu.be/wZJ8d5uQ7_8) --->
 
