@@ -14,11 +14,11 @@ spec:
       labels:
         impl: {{.Release.Name}}-productinventoryapi
         app: {{.Release.Name}}-{{.Values.component.name}}
-        version:  productinventoryapi-0.1
+        version:  productinventoryapi-0.2
     spec:
       containers:
       - name: {{.Release.Name}}-productinventoryapi         
-        image: dominico/productinventoryapi:0.1
+        image: dominico/productinventoryapi:0.2
         env:
         - name: RELEASE_NAME
           value: {{.Release.Name}}           

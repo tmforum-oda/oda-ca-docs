@@ -15,5 +15,8 @@ The component envelope exposes the ProductInventory as a CoreFunction API and th
 
 The Kubernetes services adopt the Istio naming convention for the Port names.
 
+### API Path Discovery
+![API Paths Discovery](images/productinv-apipaths.png)
 
- 
+### API Docs - Swagger
+![API Docs -Swagger](images/productinventory-apidocs.png)

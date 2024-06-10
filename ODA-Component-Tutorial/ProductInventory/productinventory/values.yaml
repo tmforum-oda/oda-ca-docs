@@ -23,4 +23,4 @@ partyrole:
   versionlabel: partyroleapi-1.0
 api:
   image: dominico/productinventoryapi:latest
-  versionlabel: productinventoryapi-0.1
+  versionlabel: productinventoryapi-0.2

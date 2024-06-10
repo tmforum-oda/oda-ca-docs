@@ -161,11 +161,11 @@ spec:
       labels:
         impl: test-productinventoryapi
         app: test-productinventory
-        version:  productinventoryapi-0.1
+        version:  productinventoryapi-0.2
     spec:
       containers:
       - name: test-productinventoryapi         
-        image: dominico/productinventoryapi:0.1
+        image: dominico/productinventoryapi:0.2
         env:
         - name: RELEASE_NAME
           value: test           
