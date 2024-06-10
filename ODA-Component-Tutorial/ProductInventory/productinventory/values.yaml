@@ -1,14 +1,26 @@
-# Default values for productcatalog.
+# Default values for productinventory.
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
 
-
 component:
-  type: productinventory
-  
+  # Specifies whether a service account should be created
+  id: TMFC005
+  name: productinventory
+  functionalBlock: CoreCommerce
+  publicationDate: 2023-08-22T00:00:00.000Z
+  version: "1.0.1"
+  storageClassName: default
+security:
+  controllerRole: Admin
 service:
   type: ClusterIP
   port: 80
-
-security:
-  controllerRole: Admin
+mongodb:
+  port: 27017
+  database: tmf
+partyrole:
+  image: lesterthomas/partyroleapi:1.0
+  versionlabel: partyroleapi-1.0
+api:
+  image: dominico/productinventoryapi:latest
+  versionlabel: productinventoryapi-0.2
