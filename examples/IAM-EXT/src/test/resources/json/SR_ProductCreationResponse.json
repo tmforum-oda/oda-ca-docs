@@ -1,0 +1,64 @@
+{
+  "name": "Voice Over IP Basic instance for Jean",
+  "description": "product description",
+  "productSerialNumber": "962958551052813062573729",
+  "comprisedOf": [
+    {
+      "id": "PROD_1"
+    }
+  ],
+  "productOffering": {
+    "id": "PO-101-1"
+  },
+  "productCharacteristics": [
+    {
+      "name": "Number",
+      "value": "415 279 7439"
+    }
+  ],
+  "productPrice": [
+    {
+      "id": "974081",
+      "amount": 10.0,
+      "frequency": "M",
+      "currency": "EUR",
+      "popId": "Price-10",
+      "priceType": "X",
+      "name": "Monthly Price",
+      "unitOfMeasure": "Band",
+      "description": "Monthly Price Description",
+      "overrideAmount": 20
+    }
+  ],
+  "relatedParties": [
+    {
+      "role": "User",
+      "reference": "45hj-8888"
+    }
+  ],
+  "resources": [
+    {
+      "id": "realizingResourceId"
+    }
+  ],
+  "services": [
+    {
+      "id": "realizingServiceId"
+    }
+  ],
+  "productRelationships": [
+    {
+      "type": "ProductRel",
+      "product": {
+        "id": "PROD_2"
+      }
+    }
+  ],
+  "isBundle": false,
+  "isCustomerVisible": true,
+  "productSpecification": "PS-101",
+  "validFor": {
+    "start": "2020-06-23T03:06:00.000Z",
+    "end": "2025-06-23T06:06:00.000Z"
+  }
+}

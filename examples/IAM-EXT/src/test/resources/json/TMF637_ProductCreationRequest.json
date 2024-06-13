@@ -1,0 +1,105 @@
+{
+  "href": null,
+  "description": "product description",
+  "isBundle": false,
+  "isCustomerVisible": true,
+  "name": "Voice Over IP Basic instance for Jean",
+  "orderDate": null,
+  "productSerialNumber": "962958551052813062573729",
+  "startDate": "2020-06-23T00:06:00.000Z",
+  "terminationDate": "2025-06-23T03:06:00.000Z",
+  "agreement": null,
+  "@baseType": "Product",
+  "@schemaLocation": "https:://host:port/standardProduct.json",
+  "@type": "Product",
+  "billingAccount": null,
+  "place": null,
+  "product": [
+    {
+      "id": "PROD_1"
+    }
+  ],
+  "productCharacteristic": [
+    {
+      "name": "Number",
+      "valueType": "string",
+      "value": "415 279 7439",
+      "@baseType": null,
+      "@schemaLocation": null,
+      "@type": null
+    }
+  ],
+  "productOffering": {
+    "id": "PO-101-1",
+    "href": null,
+    "name": "Voice Over IP Basic",
+    "@baseType": null,
+    "@schemaLocation": null,
+    "@type": null,
+    "@referredType": "ProductOffering"
+  },
+  "productOrderItem": null,
+  "productPrice": [
+    {
+      "recurringChargePeriod": "M",
+      "name": "Monthly Price",
+      "description": "Monthly Price Description",
+      "unitOfMeasure": "Band",
+      "priceType": "X",
+      "price": {
+        "dutyFreeAmount": {
+          "value": "10",
+          "unit": "EUR"
+        }
+      },
+      "productOfferingPrice": {
+        "id": "Price-10"
+      },
+      "productPriceAlteration": [
+        {
+          "price": {
+            "dutyFreeAmount": {
+              "value": "20",
+              "unit": "EUR"
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "productRelationship": [
+    {
+      "relationshipType": "ProductRel",
+      "product": {
+        "id": "PROD_2"
+      }
+    }
+  ],
+  "productSpecification": {
+    "id": "PS-101"
+  },
+  "productTerm": null,
+  "realizingResource": [
+    {
+      "id": "realizingResourceId"
+    }
+  ],
+  "realizingService": [
+    {
+      "id": "realizingServiceId"
+    }
+  ],
+  "relatedParty": [
+    {
+      "id": "45hj-8888",
+      "href": null,
+      "name": "Jean",
+      "role": "User",
+      "@baseType": null,
+      "@schemaLocation": null,
+      "@type": null,
+      "@referredType": "Individual"
+    }
+  ],
+  "status": "Status"
+}

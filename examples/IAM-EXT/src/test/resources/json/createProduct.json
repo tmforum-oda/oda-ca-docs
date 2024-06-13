@@ -1,0 +1,159 @@
+{
+  "id": "43551030",
+  "href": "/eoc/productInventory/v4/product/43551030",
+  "description": "Updated product description",
+  "isBundle": false,
+  "isCustomerVisible": null,
+  "name": "Voice Over IP Basic instance for Jean",
+  "orderDate": "2020-06-23T03:06:00Z",
+  "productSerialNumber": "962958551052813062573729",
+  "startDate": "2020-06-23T03:06:00Z",
+  "terminationDate": "2025-06-23T06:06:00Z",
+  "agreement": null,
+  "@baseType": null,
+  "@schemaLocation": null,
+  "@type": null,
+  "billingAccount": null,
+  "place": null,
+  "product": [
+    {
+      "id": "PO_Catalyst_Iphone12",
+      "href": "/eoc/productInventory/v4/product/PO_Catalyst_Iphone12",
+      "description": null,
+      "isBundle": null,
+      "isCustomerVisible": null,
+      "name": null,
+      "productSerialNumber": null,
+      "agreement": null,
+      "billingAccount": null,
+      "place": null,
+      "product": null,
+      "productCharacteristic": null,
+      "productOffering": null,
+      "productOrderItem": null,
+      "productPrice": null,
+      "productRelationship": null,
+      "productSpecification": null,
+      "productTerm": null,
+      "realizingResource": null,
+      "realizingService": null,
+      "relatedParty": null,
+      "status": null,
+      "@baseType": null,
+      "@schemaLocation": null,
+      "@type": null,
+      "@referredType": null
+    }
+  ],
+  "productCharacteristic": [
+    {
+      "value": {
+        "value": "415 279 7439"
+      },
+      "name": "Number",
+      "valueType": "String",
+      "@baseType": null,
+      "@schemaLocation": null,
+      "@type": null
+    }
+  ],
+  "productOffering": {
+    "id": "PO_Catalyst_Iphone12",
+    "href": "https://eric-ecm-pobrowsing:8443/pob/discovery/v1/productOffering/PO_Catalyst_Iphone12",
+    "name": null,
+    "@baseType": null,
+    "@schemaLocation": null,
+    "@type": null,
+    "@referredType": null
+  },
+  "productOrderItem": null,
+  "productPrice": [
+    {
+      "description": "Monthly Price Description",
+      "name": "Monthly Price",
+      "priceType": "X",
+      "recurringChargePeriod": "M",
+      "unitOfMeasure": "Band",
+      "billingAccount": null,
+      "price": {
+        "percentage": null,
+        "taxRate": null,
+        "dutyFreeAmount": {
+          "unit": "EUR",
+          "value": 10.0
+        },
+        "taxIncludedAmount": null,
+        "@baseType": null,
+        "@schemaLocation": null,
+        "@type": null
+      },
+      "productOfferingPrice": {
+        "id": "Price-10",
+        "href": null,
+        "name": "Monthly Price",
+        "@baseType": null,
+        "@schemaLocation": null,
+        "@type": null,
+        "@referredType": null
+      },
+      "productPriceAlteration": [
+        {
+          "applicationDuration": null,
+          "description": null,
+          "name": null,
+          "priceType": null,
+          "priority": null,
+          "recurringChargePeriod": null,
+          "unitOfMeasure": null,
+          "price": {
+            "percentage": null,
+            "taxRate": null,
+            "dutyFreeAmount": {
+              "unit": "EUR",
+              "value": 20.0
+            },
+            "taxIncludedAmount": null,
+            "@baseType": null,
+            "@schemaLocation": null,
+            "@type": null
+          },
+          "productOfferingPrice": null,
+          "@baseType": null,
+          "@schemaLocation": null,
+          "@type": null
+        }
+      ],
+      "@baseType": null,
+      "@schemaLocation": null,
+      "@type": null
+    }
+  ],
+  "productRelationship": null,
+  "productSpecification": {
+    "id": "PS_Catalyst_Iphone12",
+    "href": "https://eric-ecm-pobrowsing:8443/pob/discovery/v1/productSpecification/PS_Catalyst_Iphone12",
+    "name": null,
+    "version": "1",
+    "targetProductSchema": null,
+    "@baseType": null,
+    "@schemaLocation": null,
+    "@type": null,
+    "@referredType": null
+  },
+  "productTerm": null,
+  "realizingResource": null,
+  "realizingService": null,
+  "relatedParty": [
+    {
+      "id": "dc9808e2-e79e-42cb-8cbe-fadafea7eaeb",
+      "href": "https://ericsson-dxp-customermgmtconn-db:443/customerManagement/v1/party/dc9808e2-e79e-42cb-8cbe-fadafea7eaeb",
+      "name": null,
+      "role": "User",
+      "@baseType": null,
+      "@schemaLocation": null,
+      "@type": null,
+      "@referredType": "PartyRole"
+    }
+  ],
+  "status": null
+}
