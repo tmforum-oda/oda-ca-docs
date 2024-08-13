@@ -1,123 +1,73 @@
-
-
 <!DOCTYPE html>
-<html class="writer-html5" lang="en" >
+<html class="writer-html5" lang="en" data-content_root="../../">
 <head>
-  <meta charset="utf-8" />
-  
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  
-  <title>Controller Logging Troubleshooting Guide &mdash; ODA-Component Accelerator v1beta1 documentation</title>
-  
-
-  
-  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="../../_static/css/custom.css" type="text/css" />
-
-  
-  
-
-  
-  
-
-  
+  <title>Controller Logging Troubleshooting Guide &mdash; ODA-Component Accelerator v1beta3 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/custom.css?v=6567dac9" />
 
   
   <!--[if lt IE 9]>
     <script src="../../_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-    
-      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
-        <script src="../../_static/jquery.js"></script>
-        <script src="../../_static/underscore.js"></script>
-        <script src="../../_static/doctools.js"></script>
-    
-    <script type="text/javascript" src="../../_static/js/theme.js"></script>
-
-    
+        <script src="../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../_static/documentation_options.js?v=546c8a9f"></script>
+        <script src="../../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="Exploring Custom Resources Troubleshooting Guide" href="Exploring-Custom-Resources.html" />
     <link rel="prev" title="CTK Troubleshooting Guide" href="CTK.html" /> 
 </head>
 
-<body class="wy-body-for-nav">
-
-   
+<body class="wy-body-for-nav"> 
   <div class="wy-grid-for-nav">
-    
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-          
 
           
-            <a href="../../index.html" class="icon icon-home"> ODA-Component Accelerator
           
-
-          
+          <a href="../../index.html" class="icon icon-home">
+            ODA-Component Accelerator
           </a>
-
-          
-            
-            
-          
-
-          
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
 </div>
-
-          
-        </div>
-
-        
-        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
-          
-            
-            
-              
-            
-            
-              <p class="caption"><span class="caption-text">About the project:</span></p>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">About the project:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../Playbook.html">Introduction to the ODA Component Accelerator Project (ODA-CA)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../Getting_started.html">Getting started checklist for new members of ODA-CA</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Tutorials:</span></p>
+<p class="caption" role="heading"><span class="caption-text">Tutorials:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../Observability-Tutorial/README.html">Tutorial to deploy and observe a running component</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../ODAComponentTutorial/README.html">Tutorial to build ODA-Component from Open-API Reference Implemenation</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Design Guidelines:</span></p>
+<p class="caption" role="heading"><span class="caption-text">Component:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../ODAComponentDesignGuidelines.html">Design Guidelines to create a new ODA Component</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../ODACanvasDesignGuidelines.html">Design Guidelines to design an ODA Canvas</a></li>
-</ul>
-<p class="caption"><span class="caption-text">Compliance Test Kit (CTK):</span></p>
-<ul>
 <li class="toctree-l1"><a class="reference internal" href="../../ctk/README.html">ODA Component - CTK</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Canvas Installation:</span></p>
+<p class="caption" role="heading"><span class="caption-text">Canvas:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../canvas/installation/README.html">ODA Canvas installation</a></li>
-</ul>
-<p class="caption"><span class="caption-text">Canvas Usecase library:</span></p>
-<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../canvas/Canvas-design.html">ODA Canvas Design</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../canvas/usecase-library/README.html">ODA Canvas - use-case library</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../canvas/usecase-library/index.html">ODA-Canvas - Usecase list</a></li>
-</ul>
-<p class="caption"><span class="caption-text">Canvas Operators:</span></p>
-<ul>
 <li class="toctree-l1"><a class="reference internal" href="../../canvas/source/operators/index.html">Open Digital Architecture - Controllers/Operators</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Troubleshooting Guide:</span></p>
+<p class="caption" role="heading"><span class="caption-text">Troubleshooting Guide:</span></p>
 <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">ODA-CA Troubleshooting Guide</a><ul class="current">
 <li class="toctree-l2 current"><a class="reference internal" href="index.html#oda-ca-specific-guides">ODA-CA Specific guides</a><ul class="current">
@@ -130,83 +80,41 @@
 </ul>
 </li>
 </ul>
-<p class="caption"><span class="caption-text">Contributions Guide:</span></p>
+<p class="caption" role="heading"><span class="caption-text">Contributions Guide:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../ContributionsGuide.html">Contribution guidance</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../DocumentationProcess.html">Documentation Process</a></li>
 </ul>
 
-            
-          
         </div>
-        
       </div>
     </nav>
 
-    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
-
-      
-      <nav class="wy-nav-top" aria-label="top navigation">
-        
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="../../index.html">ODA-Component Accelerator</a>
-        
       </nav>
 
-
       <div class="wy-nav-content">
-        
         <div class="rst-content">
-        
-          
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div role="navigation" aria-label="breadcrumbs navigation">
-
+          <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-    
-      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
-        
-          <li><a href="index.html">ODA-CA Troubleshooting Guide</a> &raquo;</li>
-        
-      <li>Controller Logging Troubleshooting Guide</li>
-    
-    
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">ODA-CA Troubleshooting Guide</a></li>
+      <li class="breadcrumb-item active">Controller Logging Troubleshooting Guide</li>
       <li class="wy-breadcrumbs-aside">
-        
-          
             <a href="../../_sources/docs/TroubleshootingGuide/Controller-Logging.md.txt" rel="nofollow"> View page source</a>
-          
-        
       </li>
-    
   </ul>
-
-  
   <hr/>
 </div>
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
-            
-  <div class="section" id="controller-logging-troubleshooting-guide">
-<h1>Controller Logging Troubleshooting Guide<a class="headerlink" href="#controller-logging-troubleshooting-guide" title="Permalink to this headline">¶</a></h1>
+             
+  <section id="controller-logging-troubleshooting-guide">
+<h1>Controller Logging Troubleshooting Guide<a class="headerlink" href="#controller-logging-troubleshooting-guide" title="Link to this heading"></a></h1>
 <p>When you deploy a component to the <code class="docutils literal notranslate"><span class="pre">components</span></code> namespace, an <code class="docutils literal notranslate"><span class="pre">ODA</span> <span class="pre">Controller</span></code> in the <code class="docutils literal notranslate"><span class="pre">canvas</span></code> namespace will trigger a set of activity to configure the component. For example, it will:</p>
-<ol class="simple">
+<ol class="arabic simple">
 <li><p>Examine any APIs described in coreFunction, management or security parts of the component definition, and create the associated <code class="docutils literal notranslate"><span class="pre">API</span></code> custom resource.</p></li>
 <li><p>The API Operator will take each <code class="docutils literal notranslate"><span class="pre">API</span></code> custom resource and configure the relavant Service Mesh, Ingress or API Gateway (depending on which API Operator is deployed).</p></li>
 <li><p>The Security Operator will set-up the integration between the component and Identity Management Solution (depending on which SecurityOperator is deployed).</p></li>
@@ -214,7 +122,7 @@
 <p>The ODA Controller will stream logging messages to Stdout for all these steps as shown in the diagram below.</p>
 <p><img alt="Controller Logging" src="../../_images/Controller-Logging.png" /></p>
 <p>You can view this log data using the command:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>kubectl logs --selector <span class="nv">app</span><span class="o">=</span>oda-controller-ingress --container<span class="o">=</span>oda-controller-ingress -n canvas -f
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>kubectl<span class="w"> </span>logs<span class="w"> </span>--selector<span class="w"> </span><span class="nv">app</span><span class="o">=</span>oda-controller-ingress<span class="w"> </span>--container<span class="o">=</span>oda-controller-ingress<span class="w"> </span>-n<span class="w"> </span>canvas<span class="w"> </span>-f
 </pre></div>
 </div>
 <p>You should get an output similar to the picture below:</p>
@@ -222,54 +130,37 @@
 <p>It is not unusual to see some Warnings in the logs (sometimes multiple processes are trying to patch the same resource and it will show a warning and retry). If the log does not lead to a <code class="docutils literal notranslate"><span class="pre">deployment</span> <span class="pre">status:</span> <span class="pre">Complete</span></code> message then examine the recent logs for that component.</p>
 <p>The definition for the fields in the logs is as follows:</p>
 <p><img alt="Logging definition" src="../../_images/Logging-Output-Definition.png" /></p>
-</div>
+</section>
 
 
            </div>
-           
           </div>
-          <footer>
-    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-        <a href="Exploring-Custom-Resources.html" class="btn btn-neutral float-right" title="Exploring Custom Resources Troubleshooting Guide" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="CTK.html" class="btn btn-neutral float-left" title="CTK Troubleshooting Guide" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="Exploring-Custom-Resources.html" class="btn btn-neutral float-right" title="Exploring Custom Resources Troubleshooting Guide" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>
 
   <div role="contentinfo">
-    <p>
-        &#169; Copyright 2023, TM Forum ODA-Component Accelerator project.
-
-    </p>
+    <p>&#169; Copyright 2024, TM Forum ODA-Component Accelerator project.</p>
   </div>
-    
-    
-    
-    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
-    
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
     <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
-    
-    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
 
 </footer>
         </div>
       </div>
-
     </section>
-
   </div>
-  
-
-  <script type="text/javascript">
+  <script>
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
-  </script>
-
-  
-  
-    
-   
+  </script> 
 
 </body>
 </html>

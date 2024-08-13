@@ -13,3 +13,4 @@ This folder contains a log of architectural decisions made on this project, incl
 | 006 Common set of minimum mandatory JWT claims for interoperability | 2023-05-24 | In progress | [006-common-set-of-minimum-mandatory-JWT-claims-for-interoperability.md](006-common-set-of-minimum-mandatory-JWT-claims-for-interoperability.md) |  Authentication workshop |
 | 007 Provisioning identities across identity providers | 2023-05-24 | In progress | [007-Provisioning-identities-across-identity-providers.md](007-Provisioning-identities-across-identity-providers.md) |  Authentication workshop |
 | 008 Identity Propagation from Component to Component | 2023-05-31 | In progress | [008-Identity-Propagation.md](008-Identity-Propagation.md) |  Authentication workshop |
+| 009 Monorepo Helm and Container versioning | 2024-05-15 | Pending ODA-CA board approval | [009-Monorepo-Helm-container-versioning.md](009-Monorepo-Helm-container-versioning.md) |  Authentication workshop |

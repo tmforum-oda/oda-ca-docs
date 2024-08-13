@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ODA Canvas Design &mdash; ODA-Component Accelerator v1beta3 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/custom.css?v=6567dac9" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../_static/documentation_options.js?v=546c8a9f"></script>
+        <script src="../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="ODA Canvas - use-case library" href="usecase-library/README.html" />
+    <link rel="prev" title="ODA Canvas installation" href="installation/README.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            ODA-Component Accelerator
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">About the project:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../docs/Playbook.html">Introduction to the ODA Component Accelerator Project (ODA-CA)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../docs/Getting_started.html">Getting started checklist for new members of ODA-CA</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Tutorials:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../docs/Observability-Tutorial/README.html">Tutorial to deploy and observe a running component</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../docs/ODAComponentTutorial/README.html">Tutorial to build ODA-Component from Open-API Reference Implemenation</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Component:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../docs/ODAComponentDesignGuidelines.html">Design Guidelines to create a new ODA Component</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ctk/README.html">ODA Component - CTK</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Canvas:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="installation/README.html">ODA Canvas installation</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">ODA Canvas Design</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#what-is-the-oda-canvas">What is the ODA Canvas?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#how-do-i-buy-or-build-a-canvas">How do I buy or build a Canvas?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#canvas-design-structure">Canvas Design structure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#interaction-with-oda-component-standard">Interaction with ODA Component standard</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#summary">Summary</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#design-epics">Design Epics</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="usecase-library/README.html">ODA Canvas - use-case library</a></li>
+<li class="toctree-l1"><a class="reference internal" href="source/operators/index.html">Open Digital Architecture - Controllers/Operators</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Troubleshooting Guide:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../docs/TroubleshootingGuide/index.html">ODA-CA Troubleshooting Guide</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Contributions Guide:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../docs/ContributionsGuide.html">Contribution guidance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../docs/DocumentationProcess.html">Documentation Process</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">ODA-Component Accelerator</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">ODA Canvas Design</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/canvas/Canvas-design.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="oda-canvas-design">
+<h1>ODA Canvas Design<a class="headerlink" href="#oda-canvas-design" title="Link to this heading"></a></h1>
+<section id="what-is-the-oda-canvas">
+<h2>What is the ODA Canvas?<a class="headerlink" href="#what-is-the-oda-canvas" title="Link to this heading"></a></h2>
+<p>The ODA Canvas is an execution environment for ODA Components and the release automation part of a CI/CD pipeline. The Canvas exists to support ODA Components and provides access to a set of cloud-native services that are required by ODA Components. For example, it provides access to an API Gateway and/or Service Mesh to enable components to expose their APIs in a standard way; it provides access to Observability services to enable components to be monitored and managed; it provides access to an Identity Management System to enable components to register the permissions they allow to be granted to users.</p>
+<p>There is not an explicit standard or specification for the Canvas: The standard is the ODA Component Specification. The Canvas is a platform that can consume ODA Components, read metadata from the component spec and then execute whatever lifecycle process is required to meet those requirements.</p>
+<p>We expect that there will be multiple implementations of the Canvas - this repository contains a Reference Implementation of a Canvas that teams can use to accelerate their own implementation. The Reference Implementation is a cloud-native application, and is designed to be deployed on Kubernetes. We do expect all Canvas implementations to exhibit a standard set of behaviours, and we have documented these behaviours at a high level in the use case library, and at a more detailed level using BDD (Behaviour-Driven Development) features and scenarios. The test kit for the Canvas will use these BDDs to create executable tests that can be used to validate a Canvas implementation.</p>
+<p><img alt="What is a Canvas" src="../_images/What-is-a-Canvas.png" /></p>
+</section>
+<section id="how-do-i-buy-or-build-a-canvas">
+<h2>How do I buy or build a Canvas?<a class="headerlink" href="#how-do-i-buy-or-build-a-canvas" title="Link to this heading"></a></h2>
+<p>There are multiple options to build or buy a Canvas:</p>
+<ul class="simple">
+<li><p>Public Cloud Offerings: Multiple Public Cloud Providers are offering a managed Canvas offering on top of their managed Kubernetes services. At DTW Copenhagen there were PoC demonstrations from AWS, Azure, China Mobile, Google Cloud and Oracle Cloud. These offerings are typically based on the Reference Implementation, but may have additional features or capabilities and will typically integrate with the Public Cloud Provider’s other services (for API Management, Observability etc.).</p></li>
+<li><p>‘Roll your own’ Canvas based on the Reference Implementation. The Reference Implementation Canvas is released as Apache 2.0 licensed assets that can be used to build your own Canvas. The Reference Implementation is designed to be extensible, and we expect that teams will add their own operators to support their own specific requirements.</p></li>
+<li><p>Infrastructure software vendors and open source projects offering operators/managers for their software. Many infrastructure software vendors and open source projects have already adopted the Kubernetes Operator Pattern to manage their software. For example, <a class="reference external" href="https://istio.io/latest/docs/setup/install/operator/">Istio</a> and <a class="reference external" href="https://docs.konghq.com/kubernetes-ingress-controller/2.0.x/deployment/kubernetes-operator/">Kong</a> both offer operators that can be used to manage their software on Kubernetes. These operators can be used as the basis for a Canvas implementation.</p></li>
+</ul>
+<p>The ODA Canvas is itself a modular architecture, so you can mix &amp; match these options to create your own Canvas.</p>
+<p><img alt="Canvas Options" src="../_images/How-do-I-build-or-buy-a-Canvas.png" /></p>
+</section>
+<section id="canvas-design-structure">
+<h2>Canvas Design structure<a class="headerlink" href="#canvas-design-structure" title="Link to this heading"></a></h2>
+<p>This is an outline of how the Canvas design is documented, and a pointer to the different design artefacts:</p>
+<ul class="simple">
+<li><p>The highest level documentation describing the services a Canvas should provide to an ODA Component is in the <a class="reference internal" href="usecase-library/README.html"><span class="std std-doc">Canvas use case library</span></a>. The use case library outlines the assumptions for each use case and sequence diagrams for the interactions between an example ODA Component and the ODA Canvas.</p></li>
+<li><p>The next level of details of the features required to be a fully compliant ODA Canvas is in the <a class="reference internal" href="feature-definition-and-test-kit/README.html"><span class="std std-doc">Test Kit</span></a>. These are documented as business-friendly pseudo-code in the form of BDD (Behaviour-Driven Development) features and scenarios. BDD Features should refer to use cases in the Canvas use case library (creating or amending them as required). There is a style guide for creating BDDs at <a class="reference external" href="https://projects.tmforum.org/jira/browse/TAC-353">TAC-353 BDD Style Guide</a>.</p></li>
+<li><p>The use cases and features are Level 2 standards and should be implementation agnostic. For the Level 3 Reference Implementation, to turn the BDD features into executable tests, there are a set of steps that define tests for each BDD scenario (embedded within each BDD). These are in the <a class="reference internal" href="feature-definition-and-test-kit/README.html"><span class="std std-doc">Test Kit</span></a>.</p></li>
+<li><p>Specific design decisions where we assess options and make a decision are documented in the <a class="reference external" href="https://github.com/tmforum-oda/oda-ca-docs/tree/master/Decision-Log/README.md">Architecture Decision Log</a>.</p></li>
+<li><p>To organise the backlog of work for the team, we use <a class="reference external" href="https://github.com/tmforum-oda/oda-canvas/issues">GitHub issues</a>. Issues may describe new features, bugs or refactoring of work. Contributors self-assign to issues to indicate who is working on what.</p></li>
+<li><p>Finally, the <a class="reference internal" href="#../source/README.md"><span class="xref myst">source code</span></a> contains the source code, helm charts and configuration files that form the reference implementation for the Canvas. Source code should embed <a class="reference external" href="https://en.wikipedia.org/wiki/Docstring">docstrings</a> so that it becomes part of the documentation of the system. The source code comprises:</p></li>
+</ul>
+<ol class="arabic simple">
+<li><p><a class="reference internal" href="#/source/operators"><span class="xref myst">Software operators</span></a> - this is the key part of the Canvas. Operators manage ODA Components by reading the Component’s requirements as metadata in the component spec and then executing whatever lifecycle process is required to meet those requirements. Operators execute the initial deployment of a Component, as well as ongoing maintenance and upgrade processes. Operators are responsible for monitoring the health of the component and taking remedial action if required. The Reference Implementation implements operators following the <a class="reference external" href="https://kubernetes.io/docs/concepts/extend-kubernetes/operator/">Kubernetes Operator Pattern</a>. Operators could be described as management-plane functions, and are the cloud-native equivalent of Network Element Managers.</p></li>
+<li><p><a class="reference internal" href="#/source/webhooks"><span class="xref myst">Webhooks</span></a> - The Reference implementation Canvas utilizes webhooks to integrate with the Kubernetes Control Plane. The initial use of this is for the Canvas to support multiple versions of the ODA Component Standard, allowing seamless upgrades of components and appropriate deprecation warnings.</p></li>
+<li><p><a class="reference internal" href="#/source/utilities"><span class="xref myst">Utilities</span></a> - The reference implementation includes some simple utilities to help with the development of the Canvas. These are not part of the Canvas itself, but are useful for development and troubleshooting. We may in the future support a command-line interface to the Canvas, similar to <a class="reference external" href="https://kubernetes.io/docs/reference/kubectl/">kubectl</a> (for Kubernetes) or <a class="reference external" href="https://istio.io/latest/docs/ops/diagnostic-tools/istioctl/">istioctl</a> (for Istio).</p></li>
+</ol>
+</section>
+<section id="interaction-with-oda-component-standard">
+<h2>Interaction with ODA Component standard<a class="headerlink" href="#interaction-with-oda-component-standard" title="Link to this heading"></a></h2>
+<p>The Canvas reads the Component requirements as metadata in the Component spec. We may need to propose changes to the Component standard to meet the Canvas requirements. The Canvas should be able to support any Component that meets the Component standard, but not every Component will necessarily use all the features of the Canvas. The Component design guidelines are documented at <a class="reference internal" href="#../oda-ca-docs/ODAComponentDesignGuidelines.md"><span class="xref myst">ODA Component Design Guidelines</span></a>.</p>
+</section>
+<section id="summary">
+<h2>Summary<a class="headerlink" href="#summary" title="Link to this heading"></a></h2>
+<p>The documentation approach for the Canvas is summarised in the diagram below:</p>
+<p><img alt="Canvas Documentation" src="../_images/CanvasDocumentation.png" /></p>
+</section>
+<section id="design-epics">
+<h2>Design Epics<a class="headerlink" href="#design-epics" title="Link to this heading"></a></h2>
+<p>The Canvas design is split into the following epics:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="Authentication-design.html"><span class="std std-doc">Epic 1: Authentication</span></a></p></li>
+<li><p><a class="reference internal" href="#Event-based-integration-design.md"><span class="xref myst">Epic 2: Event based integration</span></a></p></li>
+<li><p><a class="reference internal" href="Observability-design.html"><span class="std std-doc">Epic 3: Observability</span></a></p></li>
+</ul>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="installation/README.html" class="btn btn-neutral float-left" title="ODA Canvas installation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="usecase-library/README.html" class="btn btn-neutral float-right" title="ODA Canvas - use-case library" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, TM Forum ODA-Component Accelerator project.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

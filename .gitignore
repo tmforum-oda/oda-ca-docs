@@ -3,4 +3,6 @@ node_modules/
 .vscode
 ./docs/
 ./doc/_build/
+.hypothesis/unicode_data/12.1.0/charmap.json.gz
 .hypothesis/
+

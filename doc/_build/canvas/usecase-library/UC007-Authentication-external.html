@@ -1,223 +1,106 @@
-
-
 <!DOCTYPE html>
-<html class="writer-html5" lang="en" >
+<html class="writer-html5" lang="en" data-content_root="../../">
 <head>
-  <meta charset="utf-8" />
-  
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  
-  <title>External authentication use-case &mdash; ODA-Component Accelerator v1beta1 documentation</title>
-  
-
-  
-  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="../../_static/css/custom.css" type="text/css" />
-
-  
-  
-
-  
-  
-
-  
+  <title>External authentication use-case &mdash; ODA-Component Accelerator v1beta3 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/custom.css?v=6567dac9" />
 
   
   <!--[if lt IE 9]>
     <script src="../../_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-    
-      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
-        <script src="../../_static/jquery.js"></script>
-        <script src="../../_static/underscore.js"></script>
-        <script src="../../_static/doctools.js"></script>
-    
-    <script type="text/javascript" src="../../_static/js/theme.js"></script>
-
-    
+        <script src="../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../_static/documentation_options.js?v=546c8a9f"></script>
+        <script src="../../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
-    <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Internal authentication use-case" href="UC008-Authentication-internal.html" />
-    <link rel="prev" title="View custom business metric observability for component use-case" href="UC006-View-Custom-Observability.html" /> 
+    <link rel="search" title="Search" href="../../search.html" /> 
 </head>
 
-<body class="wy-body-for-nav">
-
-   
+<body class="wy-body-for-nav"> 
   <div class="wy-grid-for-nav">
-    
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-          
 
           
-            <a href="../../index.html" class="icon icon-home"> ODA-Component Accelerator
           
-
-          
+          <a href="../../index.html" class="icon icon-home">
+            ODA-Component Accelerator
           </a>
-
-          
-            
-            
-          
-
-          
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
 </div>
-
-          
-        </div>
-
-        
-        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
-          
-            
-            
-              
-            
-            
-              <p class="caption"><span class="caption-text">About the project:</span></p>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">About the project:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../docs/Playbook.html">Introduction to the ODA Component Accelerator Project (ODA-CA)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../docs/Getting_started.html">Getting started checklist for new members of ODA-CA</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Tutorials:</span></p>
+<p class="caption" role="heading"><span class="caption-text">Tutorials:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../docs/Observability-Tutorial/README.html">Tutorial to deploy and observe a running component</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../docs/ODAComponentTutorial/README.html">Tutorial to build ODA-Component from Open-API Reference Implemenation</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Design Guidelines:</span></p>
+<p class="caption" role="heading"><span class="caption-text">Component:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../docs/ODAComponentDesignGuidelines.html">Design Guidelines to create a new ODA Component</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../docs/ODACanvasDesignGuidelines.html">Design Guidelines to design an ODA Canvas</a></li>
-</ul>
-<p class="caption"><span class="caption-text">Compliance Test Kit (CTK):</span></p>
-<ul>
 <li class="toctree-l1"><a class="reference internal" href="../../ctk/README.html">ODA Component - CTK</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Canvas Installation:</span></p>
+<p class="caption" role="heading"><span class="caption-text">Canvas:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../installation/README.html">ODA Canvas installation</a></li>
-</ul>
-<p class="caption"><span class="caption-text">Canvas Usecase library:</span></p>
-<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../Canvas-design.html">ODA Canvas Design</a></li>
 <li class="toctree-l1"><a class="reference internal" href="README.html">ODA Canvas - use-case library</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="index.html">ODA-Canvas - Usecase list</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="UC001-Bootstrap-role-for-component.html">Bootstrap role for component use-case</a></li>
-<li class="toctree-l2"><a class="reference internal" href="UC002-Expose-APIs-for-Component.html">Expose APIs for Component use-case</a></li>
-<li class="toctree-l2"><a class="reference internal" href="UC003-Discover-dependent-APIs-for-Component.html">Discover dependent APIs for Component use-case</a></li>
-<li class="toctree-l2"><a class="reference internal" href="UC004-Configure-Observability.html">Configure Observability use-case</a></li>
-<li class="toctree-l2"><a class="reference internal" href="UC005-View-Baseline-Observability.html">View baseline observability for component use-case</a></li>
-<li class="toctree-l2"><a class="reference internal" href="UC006-View-Custom-Observability.html">View custom business metric observability for component use-case</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">External authentication use-case</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#access-management">Access Management</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#system-user-authentication">System User Authentication</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#human-user">Human user</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="UC008-Authentication-internal.html">Internal authentication use-case</a></li>
-<li class="toctree-l2"><a class="reference internal" href="UC009-Authorization.html">Authorization use-case</a></li>
-<li class="toctree-l2"><a class="reference internal" href="UC010-Token-Refresh.html">Token Refresh use-case</a></li>
-<li class="toctree-l2"><a class="reference internal" href="UC011-License-Metrics-Observability.html">License Metrics Observability use-case</a></li>
-<li class="toctree-l2"><a class="reference internal" href="UC012-Enable-Event-Publishing.html">Configure Event Publishing for Component use-case</a></li>
-<li class="toctree-l2"><a class="reference internal" href="UC013-Enable-Event-Subscription.html">Configure Event Subscription for Component use-case</a></li>
-<li class="toctree-l2"><a class="reference internal" href="UC014-Create-Topic.html">Create Topic use-case</a></li>
-<li class="toctree-l2"><a class="reference internal" href="UC015-Delete-Topic.html">Delete Topic use-case</a></li>
-</ul>
-</li>
-</ul>
-<p class="caption"><span class="caption-text">Canvas Operators:</span></p>
-<ul>
 <li class="toctree-l1"><a class="reference internal" href="../source/operators/index.html">Open Digital Architecture - Controllers/Operators</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Troubleshooting Guide:</span></p>
+<p class="caption" role="heading"><span class="caption-text">Troubleshooting Guide:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../docs/TroubleshootingGuide/index.html">ODA-CA Troubleshooting Guide</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Contributions Guide:</span></p>
+<p class="caption" role="heading"><span class="caption-text">Contributions Guide:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../docs/ContributionsGuide.html">Contribution guidance</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../docs/DocumentationProcess.html">Documentation Process</a></li>
 </ul>
 
-            
-          
         </div>
-        
       </div>
     </nav>
 
-    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
-
-      
-      <nav class="wy-nav-top" aria-label="top navigation">
-        
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="../../index.html">ODA-Component Accelerator</a>
-        
       </nav>
 
-
       <div class="wy-nav-content">
-        
         <div class="rst-content">
-        
-          
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div role="navigation" aria-label="breadcrumbs navigation">
-
+          <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-    
-      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
-        
-          <li><a href="index.html">ODA-Canvas - Usecase list</a> &raquo;</li>
-        
-      <li>External authentication use-case</li>
-    
-    
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">External authentication use-case</li>
       <li class="wy-breadcrumbs-aside">
-        
-          
             <a href="../../_sources/canvas/usecase-library/UC007-Authentication-external.md.txt" rel="nofollow"> View page source</a>
-          
-        
       </li>
-    
   </ul>
-
-  
   <hr/>
 </div>
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
-            
-  <div class="section" id="external-authentication-use-case">
-<h1>External authentication use-case<a class="headerlink" href="#external-authentication-use-case" title="Permalink to this headline">¶</a></h1>
+             
+  <section id="external-authentication-use-case">
+<h1>External authentication use-case<a class="headerlink" href="#external-authentication-use-case" title="Link to this heading"></a></h1>
 <p>When an external system client wants to call an API exposed by a Component, this use-case describes how they Authenticate and get a token*. The use case uses the following assumptions:</p>
 <ul class="simple">
 <li><p>For system users we use the Client Credentials flow within OAuth2.</p></li>
@@ -225,68 +108,48 @@
 <li><p>For system users their authorization is as the system (and not a passthrough of the actual human end-user). For example, a website displaying a catalog from a product catalog component would authorize as the website, and not as the human end-user that is browsing the website.</p></li>
 </ul>
 <p>*Refer to <a class="reference external" href="https://auth0.com/docs/get-started/authentication-and-authorization-flow/which-oauth-2-0-flow-should-i-use">Which OAuth2 flow should I use</a></p>
-<div class="section" id="access-management">
-<h2>Access Management<a class="headerlink" href="#access-management" title="Permalink to this headline">¶</a></h2>
+<section id="access-management">
+<h2>Access Management<a class="headerlink" href="#access-management" title="Link to this heading"></a></h2>
 <p><img alt="authentication-external-system" src="http://www.plantuml.com/plantuml/proxy?cache=no&amp;src=https://raw.githubusercontent.com/tmforum-oda/oda-canvas-ctk/canvasUseCasesandBDD/usecase-library/pumlFiles/access-management.puml" />
-<a class="reference external" href="pumlFiles/access-management.puml">plantUML code</a></p>
-</div>
-<div class="section" id="system-user-authentication">
-<h2>System User Authentication<a class="headerlink" href="#system-user-authentication" title="Permalink to this headline">¶</a></h2>
+<a class="reference internal" href="#pumlFiles/access-management.puml"><span class="xref myst">plantUML code</span></a></p>
+</section>
+<section id="system-user-authentication">
+<h2>System User Authentication<a class="headerlink" href="#system-user-authentication" title="Link to this heading"></a></h2>
 <p><img alt="authentication-external-system" src="http://www.plantuml.com/plantuml/proxy?cache=no&amp;src=https://raw.githubusercontent.com/tmforum-oda/oda-canvas-ctk/canvasUseCasesandBDD/usecase-library/pumlFiles/authentication-external-system.puml" />
-<a class="reference external" href="pumlFiles/authentication-external-system.puml">plantUML code</a></p>
-</div>
-<div class="section" id="human-user">
-<h2>Human user<a class="headerlink" href="#human-user" title="Permalink to this headline">¶</a></h2>
+<a class="reference internal" href="#pumlFiles/authentication-external-system.puml"><span class="xref myst">plantUML code</span></a></p>
+</section>
+<section id="human-user">
+<h2>Human user<a class="headerlink" href="#human-user" title="Link to this heading"></a></h2>
 <p>The ODA Component Accelerator follows an API-First approach - for Human users, we assume their experience is fronted by a Web/App/Chat front-end that will handle the authentication and authorization. The Web/App/Chat frontend will have a System User to authenticate as the sequence diagram above.</p>
-</div>
-</div>
+</section>
+</section>
 
 
            </div>
-           
           </div>
           <footer>
-    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-        <a href="UC008-Authentication-internal.html" class="btn btn-neutral float-right" title="Internal authentication use-case" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
-        <a href="UC006-View-Custom-Observability.html" class="btn btn-neutral float-left" title="View custom business metric observability for component use-case" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-    </div>
 
   <hr/>
 
   <div role="contentinfo">
-    <p>
-        &#169; Copyright 2023, TM Forum ODA-Component Accelerator project.
-
-    </p>
+    <p>&#169; Copyright 2024, TM Forum ODA-Component Accelerator project.</p>
   </div>
-    
-    
-    
-    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
-    
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
     <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
-    
-    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
 
 </footer>
         </div>
       </div>
-
     </section>
-
   </div>
-  
-
-  <script type="text/javascript">
+  <script>
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
-  </script>
-
-  
-  
-    
-   
+  </script> 
 
 </body>
 </html>

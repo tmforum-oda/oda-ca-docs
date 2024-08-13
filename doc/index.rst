@@ -26,35 +26,18 @@ Open Digital Architecture - Component Accelerator
 
 .. toctree::
    :maxdepth: 2
-   :caption: Design Guidelines:
+   :caption: Component:
 
    docs/ODAComponentDesignGuidelines.md
-   docs/ODACanvasDesignGuidelines.md
-
-.. toctree::
-   :maxdepth: 2
-   :caption: Compliance Test Kit (CTK):
-
    ctk/README.md
 
 .. toctree::
    :maxdepth: 2
-   :caption: Canvas Installation:
+   :caption: Canvas:
 
    canvas/installation/README.md
-
-.. toctree::
-   :maxdepth: 2
-   :caption: Canvas Usecase library:
-   
+   canvas/Canvas-design.md
    canvas/usecase-library/README.md
-   canvas/usecase-library/index.rst
-
-   
-.. toctree::
-   :maxdepth: 2
-   :caption: Canvas Operators:
-
    canvas/source/operators/index.rst        
 
 
