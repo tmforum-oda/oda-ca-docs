@@ -1,19 +1,33 @@
 @startuml
+skin rose 
 
 entity Component
 entity "Service/Deployment/PVC"
 participant componentController
 entity API
+entity SecretsManagement #00AA00
+entity DependentAPI 
+entity publishedNotification
+entity subscribedNotification
 
 Component-> componentController: Create Component
 componentController -> API: Create exposedAPIs API resources
 componentController -> API: Create securityAPIs API resources
+componentController -[#00AA00]> SecretsManagement **: <b><color:#00AA00>Create SecretsManagement resource</color></b>
+componentController -> DependentAPI **: Create DependentAPI resources
+componentController -> publishedNotification: Create publishedNotification resources
+componentController -> subscribedNotification: Create subscribedNotification resources
+
 
 "Service/Deployment/PVC"-> componentController: Create Service/Deployment/PVC
 componentController-> componentController: Make child of Component
 componentController-> "Service/Deployment/PVC": Update Service/Deployment/PVC
 
 API-> componentController: API resource updated 
+SecretsManagement-[#00AA00]> componentController : <b><color:#00AA00>SecretsManagement resource updated</color></b> 
+DependentAPI-> componentController : DependentAPI resource updated 
+publishedNotification-> componentController: publishedNotification resource updated 
+subscribedNotification-> componentController: subscribedNotification resource updated 
 componentController -> Component: Update status of Component
 
 @enduml

@@ -14,7 +14,7 @@ The ODA Component concept builds on top of open standards like Docker and Kubern
 
 ## Step 1: ODA-Component Metadata
 
-This guide has been updated to conform to the [v1beta2 component specification](Component-OAS-Specification-v1beta2.yaml).
+This guide has been updated to conform to the [v1beta2 component specification](oda-component-oas-v1beta2.yaml).
 
 The ODA-Component metadata contains all the Telco-domain knowledge that makes the component a self-describing deployable software module. From [IG1171 ODA Component Definition](https://projects.tmforum.org/wiki/display/PUB/IG1171%20ODA%20Component%20Definition%20R19.0.1), this meta-data describes the Open-APIs, event data schemas as well as security and management & operations for the component. 
 

@@ -1,4 +1,4 @@
-## Tutorial to build ODA-Component from Open-API Reference Implementation
+# Tutorial to build ODA-Component from Open-API Reference Implementation
 
 This tutorial shows the complete process to package, test and deploy an ODA-Component, using the nodejs reference implementation of the TMF637 Product Inventory Management API as the source code. You should be able to follow the process below using an existing software application as source. The process should work for simple applications - it is intended as a tutorial to get you started. For more complex applications you may have to decompose to multiple containers/micro-services and even multiple ODA-Components.
 
@@ -14,7 +14,7 @@ For an introdution to the Open-Digital Architecture component model, take a look
 [DTW World Series Masterclass:Leveraging ODA and Open APIs to achieve digital transformation](https://www.youtube.com/watch?v=e_m-nnKvWIs)
 
 
-### Step 1. Download Reference Implementation
+## Step 1. Download Reference Implementation
 
 We are using one of the Reference implementations of the Open-APIs as a starting point. Go to the open-API Table at [https://projects.tmforum.org/wiki/display/API/Open+API+Table](https://projects.tmforum.org/wiki/display/API/Open+API+Table) and download one of the reference implmentation `.zip` files (we are using the Product Inventory Management API version 4, but you can choose any).
 
@@ -24,7 +24,7 @@ We are using one of the Reference implementations of the Open-APIs as a starting
 The reference implementation provides a Nodejs API server implementation that requires a MongoDb backend. It provides a nice swagger-ui on top of a Open-API implementation stub. The reference implementation is set-up to run in IBM Cloud (bluemix). To enable it to run locally or in a docker container, we edit the /api/swagger.yaml file to remove the `host:` field (it will default to looking in the current host), and change the `schemes:` from `https` to `http`.
 
 
-### Step 2. (optionally) test locally with local MongoDb.
+## Step 2. (optionally) test locally with local MongoDb.
 
 In the `utils/mongoUtils.js` file, you will need to replace the connectHelper with a helper function that uses local connection string:
 
@@ -51,12 +51,12 @@ function connectHelper(callback) {
 You can then test the API by using `npm install` and `npm start`. You should be able to view the API in a browser by browsing to [http://localhost:8080/docs](http://localhost:8080/docs).
 
 
-### Step 3. Configure for use within Kubernetes.
+## Step 3. Configure for use within Kubernetes.
 
 When we depoy this nodejs code for use within Kubernetes, it will connect to MongoDb using a url which is provided by a Kubernetes service. We also use environment variable to allow Kubernetes to, for example, determine the path where the API is exposed.
 
 
-#### 3.1 Configure MongoDb connection url to use within Kubernetes
+## 3.1 Configure MongoDb connection url to use within Kubernetes
 
 In the `utils/mongoUtils.js` file, you will need to update the local connection string to a url that wil work within Kubernetes (this will match the kubernetes service name for mongoDb). Note we include a release name passed as an environment variable (as we could potentially deploy multiple instances of a component in the same canvas).
 
@@ -79,7 +79,7 @@ function connectHelper(callback) {
   });
 }
 ```
-#### 3.2 Use environment variables to allow API path to be configured externally
+## 3.2 Use environment variables to allow API path to be configured externally
 
 By default the nodejs code will serve the API at the path in the swagger file, which for our example is `/tmf-api/tmf-api/productInventory/v4/`. We want to potentially deploy multiple component instances in the same environment, and so we add a configurable `COMPONENT_NAME` to the start of the URL. We need to do this in the `swaggerDoc` as well as in the `swagger-ui-dist/index.html` that provides the swagger user interface. 
 
@@ -121,7 +121,7 @@ fs.readFile(path.join(__dirname, './node_modules/swagger-ui-dist/index.html'), '
 //end
 ```
 
-#### 3.3 Add home resource at root of the API, and also move where the docs and api-docs are hosted
+## 3.3 Add home resource at root of the API, and also move where the docs and api-docs are hosted
 
 By default, the swagger tools expose a resource at all the paths in the API (defined in the swagger.yaml file); They don't offer any response at the root of the API. This can make it harder for a developer to discover the API paths. In addition, a Kubernetes ingress will by default test the root of the API (as a liveness test). If it receives no response, it will assume the microservice is dead and will not route any traffic to it. A simple solution is to create a home resource that provides a set of links to the other API endpoints. The TM Forum Open-API design standards (TMF630) provides a good definition of this resource which is called the `home` or `entrypoint` resource.
 
@@ -149,7 +149,7 @@ Finally, we change the path where the 'api-docs' and 'docs' are exposed. By defa
   });
 ```
 
-### Step 4. Package the nodejs implementation into a docker image
+## Step 4. Package the nodejs implementation into a docker image
 
 Create a dockerfile in the product inventory implementation directory with the instructions to build our image. We are starting with the official [node](https://hub.docker.com/_/node) docker image.
 
@@ -233,13 +233,13 @@ Finally we upload the docker image to a Docker repository. I'm using the default
 docker push  dominico/productinventoryapi --all-tags
 ```
 
-### Step 5. Create PartyRole Implementation
+## Step 5. Create PartyRole Implementation
 
 Product Inventory component requires a Party Role Microservice that implements the TMF669 Party Role Management API (based on the NodeJs reference implementation). Party Role provides security supporting function and canvas service to the Product Inventory Component. 
 
 Follow the previous steps 1-4 to create the Party Role implementation.  
 
-### Step 6. Create PartyRole Initialisation Implementation
+## Step 6. Create PartyRole Initialisation Implementation
 
 Next we create a party role initialisation node js service (`initialization.js`) which  initialises party roles in the mongo db database. 
 Excerpts from `<roleinti-implementation-directory>/initialization.js` as below:
@@ -280,7 +280,7 @@ const createPartyRole = async () => {
 };
 ...
 ```
-#### Step 6.1 Package the nodejs implementation into a docker image following step 4 above.
+## Step 6.1 Package the nodejs implementation into a docker image following step 4 above.
 
 The role initialisation dockerfile file:
 
@@ -293,7 +293,7 @@ COPY . .
 CMD ["node", "initialization.js"]
 ```
 
-### Step 7. Create Component Envelope 
+## Step 7. Create Component Envelope 
 
 The Component Envelope contains the meta-data required to automatically deploy and manage the component in an ODA-Canvas environment. The envelope will contain meta-data about the standard Kubernetes resources, as well as the TM Forum ODA extensions. There is a detailed breakdown of the Component Envelope in [ODAComponentDesignGuidelines](https://github.com/tmforum-oda/oda-ca-docs/blob/master/ODAComponentDesignGuidelines.md).
 
@@ -683,7 +683,7 @@ api:
   versionlabel: productinventoryapi-0.2
 ```
 
-### Step 6. Test component envelope using component CTK
+## Step 6. Test component envelope using component CTK
 
 
 The CTK will operate against an instance of the component. We can generate a kubernetes manifest of an instance using the `helm template [instance namme] [chart]` command. We can take the output of this command into a temporary file:
@@ -716,7 +716,7 @@ You should get an output like the image below. If you receive any errors, fix th
 
 
 
-### Step 8. Deploy the component envelope into Open Digital Lab canvas
+## Step 8. Deploy the component envelope into Open Digital Lab canvas
 
 Connect to the Open Digital Lab: Get the kubectl config from the rancher environment at https://rke.tmforum.org/c/c-85kcq/monitoring - click the Kubeconfig File button in the top right:
 
@@ -780,7 +780,7 @@ You should get a result like the image below:
 
 This is the last step. You would have succesffully deployed an ODA Component unto an ODA Canvas environment!
 
-### Directory Structure
+## Directory Structure
 
 The high level directory structure for our reference implementation is depicted below. 
 
@@ -789,7 +789,7 @@ The high level directory structure for our reference implementation is depicted 
 Also, the reference implementation sourcecode is available on the [ODA-Component-Tutorial Git Hub Repo](https://github.com/tmforum-oda/oda-ca-docs/tree/master/ODA-Component-Tutorial/ProductInventory)
 
 
-### ISSUES & resolution
+## ISSUES & resolution
 
 1. Kubernetes ingress expect a 200 response at the root of the API. Without this, they do not create an ingress and instead return a 503 error.  An additional 'entrypoint' middleware hook in the index.js has been created to resolve this. This returns an entrypoint (or homepage) response for the API (following the TMF630 Design Guidelines).
 

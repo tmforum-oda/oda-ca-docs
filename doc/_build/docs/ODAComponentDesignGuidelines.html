@@ -23,7 +23,7 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="ODA Component - CTK" href="../ctk/README.html" />
-    <link rel="prev" title="Tutorial to build ODA-Component from Open-API Reference Implemenation" href="ODAComponentTutorial/README.html" /> 
+    <link rel="prev" title="Tutorial to build ODA-Component from Open-API Reference Implementation" href="ODAComponentTutorial/README.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -53,7 +53,7 @@
 <p class="caption" role="heading"><span class="caption-text">Tutorials:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="Observability-Tutorial/README.html">Tutorial to deploy and observe a running component</a></li>
-<li class="toctree-l1"><a class="reference internal" href="ODAComponentTutorial/README.html">Tutorial to build ODA-Component from Open-API Reference Implemenation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ODAComponentTutorial/README.html">Tutorial to build ODA-Component from Open-API Reference Implementation</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Component:</span></p>
 <ul class="current">
@@ -67,18 +67,35 @@
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Canvas:</span></p>
 <ul>
+<li class="toctree-l1"><a class="reference internal" href="../canvas/README.html">Open Digital Architecture Canvas</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../canvas/installation/README.html">ODA Canvas installation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../canvas/Canvas-design.html">ODA Canvas Design</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../canvas/usecase-library/README.html">ODA Canvas - use-case library</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../canvas/source/operators/index.html">Open Digital Architecture - Controllers/Operators</a></li>
 </ul>
-<p class="caption" role="heading"><span class="caption-text">Troubleshooting Guide:</span></p>
+<p class="caption" role="heading"><span class="caption-text">Canvas Design:</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="TroubleshootingGuide/index.html">ODA-CA Troubleshooting Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../canvas/Canvas-design.html">ODA Canvas Design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../canvas/Design-Epics.html">Design Epics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../canvas/usecase-library/README.html">ODA Canvas - use-case library</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../canvas/Usecases.html">Usecase List</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../canvas/usecase-library/use-case-naming-conventions.html">Use case naming conventions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../canvas/source/README.html">ODA Canvas source code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../canvas/source/operators/index.html">Open Digital Architecture - Controllers/Operators</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../canvas/source/webhooks-and-utilities.html">Webuooks and Utilities</a></li>
 </ul>
-<p class="caption" role="heading"><span class="caption-text">Contributions Guide:</span></p>
+<p class="caption" role="heading"><span class="caption-text">Feature Tests:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../canvas/feature-definition-and-test-kit/README.html">ODA Canvas Features and Test Kit</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../canvas/feature-definition-and-test-kit/README.html#list-of-bdd-features">List of BDD Features</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../canvas/feature-definition-and-test-kit/Executing-tests.html">Installing and executing the BDD tests</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Contributions and Troubleshooting:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="ContributionsGuide.html">Contribution guidance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TroubleshootingGuide/index.html">Troubleshooting Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="developer/work-with-dockerimages.html">Developer How-Tos: Work with Dockerimages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="developer/work-with-dockerimages.html#summary">Summary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="developer/work-with-dockerimages.html#how-to-add-a-new-dockerimage">How-To add a new Dockerimage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../canvas/devcontainer.html">ODA Canvas Development Environment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../canvas/source/operators/Installing%20KOPF%20development%20environment.html">Installing KOPF (tested in GKE)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="DocumentationProcess.html">Documentation Process</a></li>
 </ul>
 
@@ -118,7 +135,7 @@
 </ol>
 <section id="step-1-oda-component-metadata">
 <h2>Step 1: ODA-Component Metadata<a class="headerlink" href="#step-1-oda-component-metadata" title="Link to this heading"></a></h2>
-<p>This guide has been updated to conform to the <a class="reference internal" href="#Component-OAS-Specification-v1beta2.yaml"><span class="xref myst">v1beta2 component specification</span></a>.</p>
+<p>This guide has been updated to conform to the <a class="reference download internal" download="" href="../_downloads/b18721c62a3e18537fd30fe3977bbc68/oda-component-oas-v1beta2.yaml"><span class="xref download myst">v1beta2 component specification</span></a>.</p>
 <p>The ODA-Component metadata contains all the Telco-domain knowledge that makes the component a self-describing deployable software module. From <a class="reference external" href="https://projects.tmforum.org/wiki/display/PUB/IG1171%20ODA%20Component%20Definition%20R19.0.1">IG1171 ODA Component Definition</a>, this meta-data describes the Open-APIs, event data schemas as well as security and management &amp; operations for the component.</p>
 <p>The meta-data is defined using a Kubernetes <a class="reference external" href="https://kubernetes.io/docs/tasks/access-kubernetes-api/custom-resources/custom-resource-definitions/">CustomResourceDefinition</a>. This allows us to extend the Kubernetes API with our custom-defined schema for Telco meta-data. The CustomResourceDefinition schema is in the <a class="reference external" href="https://github.com/tmforum-oda/oda-canvas-charts/blob/master/canvas/charts/crds/templates">github.com/tmforum-oda/oda-canvas-charts</a> repository.</p>
 <p>There is an example of the metadata for the <a class="reference external" href="https://github.com/tmforum-oda/reference-example-components/blob/master/charts/ProductCatalog/templates/component-productcatalog.yaml">productcatalog example component</a> broken-down into sections below:</p>
@@ -268,7 +285,7 @@ Finally, we renamed <code class="docutils literal notranslate"><span class="pre"
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="ODAComponentTutorial/README.html" class="btn btn-neutral float-left" title="Tutorial to build ODA-Component from Open-API Reference Implemenation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="ODAComponentTutorial/README.html" class="btn btn-neutral float-left" title="Tutorial to build ODA-Component from Open-API Reference Implementation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
         <a href="../ctk/README.html" class="btn btn-neutral float-right" title="ODA Component - CTK" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 

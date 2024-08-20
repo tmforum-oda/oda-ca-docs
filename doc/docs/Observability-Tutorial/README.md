@@ -1,4 +1,4 @@
-## Tutorial to deploy and observe a running component
+# Tutorial to deploy and observe a running component
 
 This tutorial shows the process to deploy the reference example ODA Component into the TM Forum Open Digital Lab environment and observe the traffic, performance and business metrics.
 
@@ -7,7 +7,7 @@ The pre-requisites for this tutorial is a PC/Mac/Linux machine with `kubectl` an
 There is a video of this tutorial at: [ODA Observability Video walkthrough](https://youtu.be/XEbjc4g_usM)
 
 
-### Reference Implementation environment with Service Mesh
+## Reference Implementation environment with Service Mesh
 
 We will be using the TM Forum Open Digital Lab Reference Implementation (see below).
 
@@ -23,7 +23,7 @@ The observability is provided by a Service Mesh, which creates a control-plane o
 
 To visualise the data provided by the Service Mesh, we will use Kiali which is a management console for Istio. Again, other Canvas deployments could use alternative tools.
 
-### Deploying the component
+## Deploying the component
 
 We will be using the reference example component provided as part of the Reference Implementation. Reference example ODA Components Helm Chart repository is available at `https://github.com/tmforum-oda/reference-example-components`.
 
@@ -109,7 +109,7 @@ The Kiali interface will show the HTTP response, with some 4xx (client error) re
 
 We have so far shown the 'out-of-the-box' observability we get from the Service Mesh that is part of the ODA-Canvas. The question is, **how does this work?** and **can I extend this to get more custom business metrics from the component?**.
 
-### How does this work?
+## How does this work?
 
 The Service Mesh works by 'injecting' an [Envoy proxy](https://www.envoyproxy.io/) container into every pod in the monitored namespace. For the Istio Service Mesh, you indicate which namespaces you want it to manage by adding the `istio-injection: enabled` label to the namespace. The Envoy container will proxy all traffic into and out of the pod; It allows you to set policy rules to control the traffic. It also measures all the traffic and puts this data into a [Prometheus](https://prometheus.io/) time-series database. (Technically, the Prometheus database 'scrapes' the metrics data from Envoy).
 
@@ -158,7 +158,7 @@ istio_requests_total {destination_service_name="r1-partyroleapi"}
 
 ![CPU Graph](./images/CPUGraph.png)
 
-### How do I extend this to get custom business metrics from the component?
+## How do I extend this to get custom business metrics from the component?
 
 It is possible for a component to create business metrics, to allow you to see business operations that are occuring within a component. Prometheus supports a number of Metric Types:
 
