@@ -6,3 +6,5 @@ flask
 requests
 cloudevents
 sphinx-markdown-tables
+rst2pdf
+svglib

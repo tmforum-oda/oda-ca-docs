@@ -1,0 +1,119 @@
+@startuml
+
+actor Operations
+entity "Component\nResource" as Component
+participant "Component\nManagement\nOperator" as ComponentOperator
+entity "Exposed\nAPI\nResource" as ExposedAPI
+participant "API\nManagement\nOperator" as APIExposureOperator
+entity "Published\nNotification\nResource" as PublishedNotification
+participant "Event\nManagement\nOperator" as EventOperator
+entity "Identity\nResource" as Identity
+participant "Identity\nManagement\nOperator" as IdentityOperator
+entity "Observability\nResource" as Observability
+participant "Observability\nManagement\nOperator" as ObservabilityOperator
+entity "Secrets\nResource" as Secrets
+participant "Secrets\nManagement\nOperator" as SecretsOperator
+entity "DependentAPI\nResource" as DependentAPI
+participant "Dependency\nManagement\nOperator" as DependencyOperator
+
+
+Component <- Operations : Install
+Component -> ComponentOperator: on.update 
+Component <- ComponentOperator: set status to **In-Progress** 
+ComponentOperator -> ComponentOperator: Determine what Exposed APIs have been added, updated or deleted
+ComponentOperator -> ExposedAPI: create any added ExposedAPIs
+ComponentOperator -> ExposedAPI: update any updated ExposedAPIs
+ComponentOperator -> ExposedAPI: delete any deleted ExposedAPIs
+note right
+    A separate ExposedAPI resource is created, updated,
+    or deleted for each exposed API in the core function,
+    security and management sections
+end note
+group For each exposed API
+    ExposedAPI -> APIExposureOperator: on.update  
+    APIExposureOperator -> APIExposureOperator: Process API
+end
+
+ComponentOperator -> ComponentOperator: Determine what Published Notifications have been added, updated or deleted
+ComponentOperator -> PublishedNotification: create any added Published Notifications
+ComponentOperator -> PublishedNotification: update any updated Published Notifications
+ComponentOperator -> PublishedNotification: delete any deleted Published Notifications
+
+ComponentOperator -> PublishedNotification: update
+note right
+    A separate PublishedNotification resource is updated
+    for each Published Notification in the core function,
+    security and management sections
+end note
+group For each Published Notification
+    PublishedNotification -> EventOperator: on.update 
+    EventOperator -> EventOperator: Process Notification
+end
+
+ComponentOperator -> Identity: update
+Identity -> IdentityOperator: on.update
+IdentityOperator -> IdentityOperator: Manage roles and users
+
+ComponentOperator -> Observability: update
+Observability -> ObservabilityOperator: on.update
+ObservabilityOperator -> ObservabilityOperator: Configure Observability
+
+ComponentOperator -> Secrets: update
+Secrets -> SecretsOperator: on.update
+SecretsOperator -> SecretsOperator: Configure secrets vault
+
+ComponentOperator -> ComponentOperator: Determine what Dependent APIs have been added, updated or deleted
+ComponentOperator -> DependentAPI: create any added ExposedAPIs
+ComponentOperator -> DependentAPI: update any updated ExposedAPIs
+ComponentOperator -> DependentAPI: delete any deleted ExposedAPIs
+note right
+    A separate DependentAPI resource is created, updated,
+    or deleted for each dependent API in the core function,
+    security and management sections
+end note
+group For each dependent API
+    DependentAPI -> DependencyOperator: on.update  
+    DependencyOperator -> DependencyOperator: Process API
+end
+
+
+
+group Updates - can arrive in any order
+    group For each exposed API
+        ExposedAPI <- APIExposureOperator: update
+        ComponentOperator <- ExposedAPI: on.update
+        Component <- ComponentOperator: update 
+        Component <- ComponentOperator: If all updates complete set status to **Complete** 
+    end
+
+    group For each Published Notification
+        PublishedNotification <- EventOperator: update
+        ComponentOperator <- PublishedNotification: on.update
+        Component <- ComponentOperator: update 
+        Component <- ComponentOperator: If all updates complete set status to **Complete** 
+    end
+
+    Identity <- IdentityOperator: update
+    ComponentOperator <- Identity: on.update
+    Component <- ComponentOperator: update
+    Component <- ComponentOperator: If all updates complete set status to **Complete** 
+
+    Observability <- ObservabilityOperator: update
+    ComponentOperator <- Observability: on.update
+    Component <- ComponentOperator: update 
+    Component <- ComponentOperator: If all updates complete set status to **Complete** 
+
+    Secrets <- SecretsOperator: update
+    ComponentOperator <- Secrets: on.update
+    Component <- ComponentOperator: update 
+    Component <- ComponentOperator: If all updates complete set status to **Complete** 
+
+    group For each dependent API
+        DependentAPI <- DependencyOperator: update
+        ComponentOperator <- DependentAPI: on.update
+        Component <- ComponentOperator: update 
+        Component <- ComponentOperator: If all updates complete set status to **Complete** 
+    end
+    
+End group
+@enduml

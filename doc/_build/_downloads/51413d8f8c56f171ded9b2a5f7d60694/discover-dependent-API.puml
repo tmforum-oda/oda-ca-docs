@@ -1,0 +1,28 @@
+@startuml
+
+actor Operations
+entity Component
+participant ComponentOperator
+entity DependentAPI
+Component <- Operations : Configure dependencies
+note right
+    Configure the 'values.yaml' file with the URL
+    and role of the dependent API
+end note
+Component <- Operations : Install
+Component -> ComponentOperator: on.create 
+ComponentOperator -> DependentAPI: create
+note right
+    A separate DependentAPI resource is created
+    for each dependent API in the core function,
+    security and management sections
+end note
+group For each dependent API
+    DependentAPI -> IdentityOperator: on.create
+    IdentityOperator -> "Identity Management System" : Provision access
+    DependentAPI <- IdentityOperator: update
+    Component <- ComponentOperator: update 
+end
+
+
+@enduml

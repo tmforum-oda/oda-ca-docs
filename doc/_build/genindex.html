@@ -50,7 +50,7 @@
 <p class="caption" role="heading"><span class="caption-text">Tutorials:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="docs/Observability-Tutorial/README.html">Tutorial to deploy and observe a running component</a></li>
-<li class="toctree-l1"><a class="reference internal" href="docs/ODAComponentTutorial/README.html">Tutorial to build ODA-Component from Open-API Reference Implemenation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="docs/ODAComponentTutorial/README.html">Tutorial to build ODA-Component from Open-API Reference Implementation</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Component:</span></p>
 <ul>
@@ -59,18 +59,35 @@
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Canvas:</span></p>
 <ul>
+<li class="toctree-l1"><a class="reference internal" href="canvas/README.html">Open Digital Architecture Canvas</a></li>
 <li class="toctree-l1"><a class="reference internal" href="canvas/installation/README.html">ODA Canvas installation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="canvas/Canvas-design.html">ODA Canvas Design</a></li>
-<li class="toctree-l1"><a class="reference internal" href="canvas/usecase-library/README.html">ODA Canvas - use-case library</a></li>
-<li class="toctree-l1"><a class="reference internal" href="canvas/source/operators/index.html">Open Digital Architecture - Controllers/Operators</a></li>
 </ul>
-<p class="caption" role="heading"><span class="caption-text">Troubleshooting Guide:</span></p>
+<p class="caption" role="heading"><span class="caption-text">Canvas Design:</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="docs/TroubleshootingGuide/index.html">ODA-CA Troubleshooting Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="canvas/Canvas-design.html">ODA Canvas Design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="canvas/Design-Epics.html">Design Epics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="canvas/usecase-library/README.html">ODA Canvas - use-case library</a></li>
+<li class="toctree-l1"><a class="reference internal" href="canvas/Usecases.html">Usecase List</a></li>
+<li class="toctree-l1"><a class="reference internal" href="canvas/usecase-library/use-case-naming-conventions.html">Use case naming conventions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="canvas/source/README.html">ODA Canvas source code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="canvas/source/operators/index.html">Open Digital Architecture - Controllers/Operators</a></li>
+<li class="toctree-l1"><a class="reference internal" href="canvas/source/webhooks-and-utilities.html">Webuooks and Utilities</a></li>
 </ul>
-<p class="caption" role="heading"><span class="caption-text">Contributions Guide:</span></p>
+<p class="caption" role="heading"><span class="caption-text">Feature Tests:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="canvas/feature-definition-and-test-kit/README.html">ODA Canvas Features and Test Kit</a></li>
+<li class="toctree-l1"><a class="reference internal" href="canvas/feature-definition-and-test-kit/README.html#list-of-bdd-features">List of BDD Features</a></li>
+<li class="toctree-l1"><a class="reference internal" href="canvas/feature-definition-and-test-kit/Executing-tests.html">Installing and executing the BDD tests</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Contributions and Troubleshooting:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="docs/ContributionsGuide.html">Contribution guidance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="docs/TroubleshootingGuide/index.html">Troubleshooting Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="docs/developer/work-with-dockerimages.html">Developer How-Tos: Work with Dockerimages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="docs/developer/work-with-dockerimages.html#summary">Summary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="docs/developer/work-with-dockerimages.html#how-to-add-a-new-dockerimage">How-To add a new Dockerimage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="canvas/devcontainer.html">ODA Canvas Development Environment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="canvas/source/operators/Installing%20KOPF%20development%20environment.html">Installing KOPF (tested in GKE)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="docs/DocumentationProcess.html">Documentation Process</a></li>
 </ul>
 
@@ -104,10 +121,17 @@
  <a href="#A"><strong>A</strong></a>
  | <a href="#C"><strong>C</strong></a>
  | <a href="#D"><strong>D</strong></a>
+ | <a href="#E"><strong>E</strong></a>
+ | <a href="#F"><strong>F</strong></a>
  | <a href="#G"><strong>G</strong></a>
+ | <a href="#I"><strong>I</strong></a>
  | <a href="#K"><strong>K</strong></a>
+ | <a href="#L"><strong>L</strong></a>
  | <a href="#M"><strong>M</strong></a>
+ | <a href="#P"><strong>P</strong></a>
+ | <a href="#R"><strong>R</strong></a>
  | <a href="#S"><strong>S</strong></a>
+ | <a href="#U"><strong>U</strong></a>
  
 </div>
 <h2 id="A">A</h2>
@@ -115,9 +139,62 @@
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="canvas/source/operators/securityController/secconkeycloak.html#secconkeycloak.Keycloak.add_role">add_role() (secconkeycloak.Keycloak method)</a>
 </li>
+      <li><a href="canvas/source/operators/securityController/secconkeycloak.html#secconkeycloak.Keycloak.add_role_to_user">add_role_to_user() (secconkeycloak.Keycloak method)</a>
+</li>
+      <li><a href="canvas/source/operators/componentOperator/componentOperator.html#componentOperator.adopt_configmap">adopt_configmap() (in module componentOperator)</a>
+</li>
+      <li><a href="canvas/source/operators/componentOperator/componentOperator.html#componentOperator.adopt_cronjob">adopt_cronjob() (in module componentOperator)</a>
+</li>
+      <li><a href="canvas/source/operators/componentOperator/componentOperator.html#componentOperator.adopt_deployment">adopt_deployment() (in module componentOperator)</a>
+</li>
+      <li><a href="canvas/source/operators/componentOperator/componentOperator.html#componentOperator.adopt_job">adopt_job() (in module componentOperator)</a>
+</li>
+      <li><a href="canvas/source/operators/componentOperator/componentOperator.html#componentOperator.adopt_kubernetesResource">adopt_kubernetesResource() (in module componentOperator)</a>
+</li>
+      <li><a href="canvas/source/operators/componentOperator/componentOperator.html#componentOperator.adopt_persistentvolumeclaim">adopt_persistentvolumeclaim() (in module componentOperator)</a>
+</li>
+      <li><a href="canvas/source/operators/componentOperator/componentOperator.html#componentOperator.adopt_role">adopt_role() (in module componentOperator)</a>
+</li>
+      <li><a href="canvas/source/operators/componentOperator/componentOperator.html#componentOperator.adopt_rolebinding">adopt_rolebinding() (in module componentOperator)</a>
+</li>
+      <li><a href="canvas/source/operators/componentOperator/componentOperator.html#componentOperator.adopt_secret">adopt_secret() (in module componentOperator)</a>
+</li>
+      <li><a href="canvas/source/operators/componentOperator/componentOperator.html#componentOperator.adopt_service">adopt_service() (in module componentOperator)</a>
+</li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="canvas/source/operators/securityController/secconkeycloak.html#secconkeycloak.Keycloak.add_role_to_user">add_role_to_user() (secconkeycloak.Keycloak method)</a>
+      <li><a href="canvas/source/operators/componentOperator/componentOperator.html#componentOperator.adopt_serviceaccount">adopt_serviceaccount() (in module componentOperator)</a>
+</li>
+      <li><a href="canvas/source/operators/componentOperator/componentOperator.html#componentOperator.adopt_statefulset">adopt_statefulset() (in module componentOperator)</a>
+</li>
+      <li><a href="canvas/source/operators/apiOperatorApig/apiOperatorApig.html#apiOperatorApig.apigBind">apigBind() (in module apiOperatorApig)</a>
+</li>
+      <li><a href="canvas/source/operators/apiOperatorApig/apiOperatorApig.html#apiOperatorApig.apigUnBind">apigUnBind() (in module apiOperatorApig)</a>
+</li>
+      <li>
+    apiOperatorApig
+
+      <ul>
+        <li><a href="canvas/source/operators/apiOperatorApig/apiOperatorApig.html#module-apiOperatorApig">module</a>
+</li>
+      </ul></li>
+      <li>
+    apiOperatorIstio
+
+      <ul>
+        <li><a href="canvas/source/operators/apiOperatorIstio/apiOperatorIstio.html#module-apiOperatorIstio">module</a>
+</li>
+      </ul></li>
+      <li>
+    apiOperatorKong
+
+      <ul>
+        <li><a href="canvas/source/operators/apiOperatorApisix/apiOperatorApisix.html#module-apiOperatorKong">module</a>, <a href="canvas/source/operators/apiOperatorKong/apiOperatorKong.html#module-apiOperatorKong">[1]</a>
+</li>
+      </ul></li>
+      <li><a href="canvas/source/operators/apiOperatorIstio/apiOperatorIstio.html#apiOperatorIstio.apiStatus">apiStatus() (in module apiOperatorIstio)</a>
+</li>
+      <li><a href="canvas/source/operators/apiOperatorApisix/apiOperatorApisix.html#apiOperatorKong.apply_plugins_from_template">apply_plugins_from_template() (in module apiOperatorKong)</a>, <a href="canvas/source/operators/apiOperatorKong/apiOperatorKong.html#apiOperatorKong.apply_plugins_from_template">[1]</a>
 </li>
   </ul></td>
 </tr></table>
@@ -125,7 +202,36 @@
 <h2 id="C">C</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="canvas/source/operators/apiOperatorApisix/apiOperatorApisix.html#apiOperatorKong.check_url">check_url() (in module apiOperatorKong)</a>, <a href="canvas/source/operators/apiOperatorKong/apiOperatorKong.html#apiOperatorKong.check_url">[1]</a>
+</li>
+      <li>
+    componentOperator
+
+      <ul>
+        <li><a href="canvas/source/operators/componentOperator/componentOperator.html#module-componentOperator">module</a>
+</li>
+      </ul></li>
+      <li><a href="canvas/source/operators/componentOperator/componentOperator.html#componentOperator.configure">configure() (in module componentOperator)</a>
+</li>
+      <li><a href="canvas/source/operators/componentOperator/componentOperator.html#componentOperator.coreAPIs">coreAPIs() (in module componentOperator)</a>
+</li>
+      <li><a href="canvas/source/operators/componentOperator/componentOperator.html#componentOperator.coreDependentAPIs">coreDependentAPIs() (in module componentOperator)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="canvas/source/operators/securityController/secconkeycloak.html#secconkeycloak.Keycloak.create_client">create_client() (secconkeycloak.Keycloak method)</a>
+</li>
+      <li><a href="canvas/source/operators/apiOperatorApisix/apiOperatorApisix.html#apiOperatorKong.create_or_update_ingress">create_or_update_ingress() (in module apiOperatorKong)</a>, <a href="canvas/source/operators/apiOperatorKong/apiOperatorKong.html#apiOperatorKong.create_or_update_ingress">[1]</a>
+</li>
+      <li><a href="canvas/source/operators/apiOperatorIstio/apiOperatorIstio.html#apiOperatorIstio.createOrPatchDataDogAnnotation">createOrPatchDataDogAnnotation() (in module apiOperatorIstio)</a>
+</li>
+      <li><a href="canvas/source/operators/apiOperatorIstio/apiOperatorIstio.html#apiOperatorIstio.createOrPatchObservability">createOrPatchObservability() (in module apiOperatorIstio)</a>
+</li>
+      <li><a href="canvas/source/operators/apiOperatorIstio/apiOperatorIstio.html#apiOperatorIstio.createOrPatchPrometheusAnnotation">createOrPatchPrometheusAnnotation() (in module apiOperatorIstio)</a>
+</li>
+      <li><a href="canvas/source/operators/apiOperatorIstio/apiOperatorIstio.html#apiOperatorIstio.createOrPatchServiceMonitor">createOrPatchServiceMonitor() (in module apiOperatorIstio)</a>
+</li>
+      <li><a href="canvas/source/operators/apiOperatorIstio/apiOperatorIstio.html#apiOperatorIstio.createOrPatchVirtualService">createOrPatchVirtualService() (in module apiOperatorIstio)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -135,10 +241,40 @@
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="canvas/source/operators/securityController/secconkeycloak.html#secconkeycloak.Keycloak.del_client">del_client() (secconkeycloak.Keycloak method)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="canvas/source/operators/securityController/secconkeycloak.html#secconkeycloak.Keycloak.del_role">del_role() (secconkeycloak.Keycloak method)</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="canvas/source/operators/apiOperatorApisix/apiOperatorApisix.html#apiOperatorKong.delete_api_lifecycle">delete_api_lifecycle() (in module apiOperatorKong)</a>, <a href="canvas/source/operators/apiOperatorKong/apiOperatorKong.html#apiOperatorKong.delete_api_lifecycle">[1]</a>
+</li>
+      <li><a href="canvas/source/operators/apiOperatorApisix/apiOperatorApisix.html#apiOperatorKong.download_template">download_template() (in module apiOperatorKong)</a>, <a href="canvas/source/operators/apiOperatorKong/apiOperatorKong.html#apiOperatorKong.download_template">[1]</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="E">E</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="canvas/source/operators/componentOperator/componentOperator.html#componentOperator.entryExists">entryExists() (in module componentOperator)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="F">F</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="canvas/source/operators/componentOperator/componentOperator.html#componentOperator.find_entry_by_keyvalue">find_entry_by_keyvalue() (in module componentOperator)</a>
+</li>
+      <li><a href="canvas/source/operators/componentOperator/componentOperator.html#componentOperator.find_entry_by_name">find_entry_by_name() (in module componentOperator)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="canvas/source/operators/securityController/securityControllerAPIserverKeycloak.html#securityControllerAPIserverKeycloak.format_cloud_event">format_cloud_event() (in module securityControllerAPIserverKeycloak)</a>
+
+      <ul>
+        <li><a href="canvas/source/operators/securityController/securityControllerKeycloak.html#securityControllerKeycloak.format_cloud_event">(in module securityControllerKeycloak)</a>
+</li>
+      </ul></li>
   </ul></td>
 </tr></table>
 
@@ -151,6 +287,16 @@
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="canvas/source/operators/securityController/secconkeycloak.html#secconkeycloak.Keycloak.get_token">get_token() (secconkeycloak.Keycloak method)</a>
 </li>
+      <li><a href="canvas/source/operators/apiOperatorIstio/apiOperatorIstio.html#apiOperatorIstio.getIstioIngressStatus">getIstioIngressStatus() (in module apiOperatorIstio)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="I">I</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="canvas/source/operators/apiOperatorIstio/apiOperatorIstio.html#apiOperatorIstio.implementation_status">implementation_status() (in module apiOperatorIstio)</a>
+</li>
   </ul></td>
 </tr></table>
 
@@ -162,22 +308,84 @@
   </ul></td>
 </tr></table>
 
+<h2 id="L">L</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="canvas/source/operators/apiOperatorIstio/apiOperatorIstio.html#apiOperatorIstio.logWrapper">logWrapper() (in module apiOperatorIstio)</a>
+
+      <ul>
+        <li><a href="canvas/source/operators/componentOperator/componentOperator.html#componentOperator.logWrapper">(in module componentOperator)</a>
+</li>
+      </ul></li>
+  </ul></td>
+</tr></table>
+
 <h2 id="M">M</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="canvas/source/operators/apiOperatorApisix/apiOperatorApisix.html#apiOperatorKong.manage_api_lifecycle">manage_api_lifecycle() (in module apiOperatorKong)</a>, <a href="canvas/source/operators/apiOperatorKong/apiOperatorKong.html#apiOperatorKong.manage_api_lifecycle">[1]</a>
+</li>
+      <li><a href="canvas/source/operators/apiOperatorApisix/apiOperatorApisix.html#apiOperatorKong.manage_apiauthentication">manage_apiauthentication() (in module apiOperatorKong)</a>, <a href="canvas/source/operators/apiOperatorKong/apiOperatorKong.html#apiOperatorKong.manage_apiauthentication">[1]</a>
+</li>
+      <li><a href="canvas/source/operators/apiOperatorApisix/apiOperatorApisix.html#apiOperatorKong.manage_cors">manage_cors() (in module apiOperatorKong)</a>, <a href="canvas/source/operators/apiOperatorKong/apiOperatorKong.html#apiOperatorKong.manage_cors">[1]</a>
+</li>
+      <li><a href="canvas/source/operators/apiOperatorApisix/apiOperatorApisix.html#apiOperatorKong.manage_plugins_from_url">manage_plugins_from_url() (in module apiOperatorKong)</a>, <a href="canvas/source/operators/apiOperatorKong/apiOperatorKong.html#apiOperatorKong.manage_plugins_from_url">[1]</a>
+</li>
+      <li><a href="canvas/source/operators/apiOperatorApisix/apiOperatorApisix.html#apiOperatorKong.manage_ratelimit">manage_ratelimit() (in module apiOperatorKong)</a>, <a href="canvas/source/operators/apiOperatorKong/apiOperatorKong.html#apiOperatorKong.manage_ratelimit">[1]</a>
+</li>
+      <li><a href="canvas/source/operators/componentOperator/componentOperator.html#componentOperator.managementAPIs">managementAPIs() (in module componentOperator)</a>
+</li>
       <li>
     module
 
       <ul>
+        <li><a href="canvas/source/operators/apiOperatorApig/apiOperatorApig.html#module-apiOperatorApig">apiOperatorApig</a>
+</li>
+        <li><a href="canvas/source/operators/apiOperatorIstio/apiOperatorIstio.html#module-apiOperatorIstio">apiOperatorIstio</a>
+</li>
+        <li><a href="canvas/source/operators/apiOperatorApisix/apiOperatorApisix.html#module-apiOperatorKong">apiOperatorKong</a>, <a href="canvas/source/operators/apiOperatorKong/apiOperatorKong.html#module-apiOperatorKong">[1]</a>
+</li>
+        <li><a href="canvas/source/operators/componentOperator/componentOperator.html#module-componentOperator">componentOperator</a>
+</li>
         <li><a href="canvas/source/operators/securityController/secconkeycloak.html#module-secconkeycloak">secconkeycloak</a>
 </li>
+        <li><a href="canvas/source/operators/securityController/securityControllerAPIserverKeycloak.html#module-securityControllerAPIserverKeycloak">securityControllerAPIserverKeycloak</a>
+</li>
+        <li><a href="canvas/source/operators/securityController/securityControllerKeycloak.html#module-securityControllerKeycloak">securityControllerKeycloak</a>
+</li>
       </ul></li>
+  </ul></td>
+</tr></table>
+
+<h2 id="P">P</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="canvas/source/operators/securityController/securityControllerAPIserverKeycloak.html#securityControllerAPIserverKeycloak.party_role_listener">party_role_listener() (in module securityControllerAPIserverKeycloak)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="canvas/source/operators/componentOperator/componentOperator.html#componentOperator.publishedEvents">publishedEvents() (in module componentOperator)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="R">R</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="canvas/source/operators/securityController/securityControllerKeycloak.html#securityControllerKeycloak.register_listener">register_listener() (in module securityControllerKeycloak)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="canvas/source/operators/apiOperatorApig/apiOperatorApig.html#apiOperatorApig.restCall">restCall() (in module apiOperatorApig)</a>
+</li>
   </ul></td>
 </tr></table>
 
 <h2 id="S">S</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="canvas/source/operators/componentOperator/componentOperator.html#componentOperator.safe_get">safe_get() (in module componentOperator)</a>
+</li>
       <li>
     secconkeycloak
 
@@ -185,6 +393,48 @@
         <li><a href="canvas/source/operators/securityController/secconkeycloak.html#module-secconkeycloak">module</a>
 </li>
       </ul></li>
+      <li><a href="canvas/source/operators/securityController/securityControllerKeycloak.html#securityControllerKeycloak.security_client_add">security_client_add() (in module securityControllerKeycloak)</a>
+</li>
+      <li><a href="canvas/source/operators/securityController/securityControllerKeycloak.html#securityControllerKeycloak.security_client_delete">security_client_delete() (in module securityControllerKeycloak)</a>
+</li>
+      <li><a href="canvas/source/operators/componentOperator/componentOperator.html#componentOperator.securityAPIs">securityAPIs() (in module componentOperator)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li>
+    securityControllerAPIserverKeycloak
+
+      <ul>
+        <li><a href="canvas/source/operators/securityController/securityControllerAPIserverKeycloak.html#module-securityControllerAPIserverKeycloak">module</a>
+</li>
+      </ul></li>
+      <li>
+    securityControllerKeycloak
+
+      <ul>
+        <li><a href="canvas/source/operators/securityController/securityControllerKeycloak.html#module-securityControllerKeycloak">module</a>
+</li>
+      </ul></li>
+      <li><a href="canvas/source/operators/componentOperator/componentOperator.html#componentOperator.securitySecretsManagement">securitySecretsManagement() (in module componentOperator)</a>
+</li>
+      <li><a href="canvas/source/operators/componentOperator/componentOperator.html#componentOperator.subscribedEvents">subscribedEvents() (in module componentOperator)</a>
+</li>
+      <li><a href="canvas/source/operators/componentOperator/componentOperator.html#componentOperator.summary">summary() (in module componentOperator)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="U">U</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="canvas/source/operators/apiOperatorApisix/apiOperatorApisix.html#apiOperatorKong.update_httproute_annotations">update_httproute_annotations() (in module apiOperatorKong)</a>, <a href="canvas/source/operators/apiOperatorKong/apiOperatorKong.html#apiOperatorKong.update_httproute_annotations">[1]</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="canvas/source/operators/componentOperator/componentOperator.html#componentOperator.updateAPIReady">updateAPIReady() (in module componentOperator)</a>
+</li>
+      <li><a href="canvas/source/operators/componentOperator/componentOperator.html#componentOperator.updateAPIStatus">updateAPIStatus() (in module componentOperator)</a>
+</li>
   </ul></td>
 </tr></table>
 

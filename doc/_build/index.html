@@ -52,7 +52,7 @@
 <p class="caption" role="heading"><span class="caption-text">Tutorials:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="docs/Observability-Tutorial/README.html">Tutorial to deploy and observe a running component</a></li>
-<li class="toctree-l1"><a class="reference internal" href="docs/ODAComponentTutorial/README.html">Tutorial to build ODA-Component from Open-API Reference Implemenation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="docs/ODAComponentTutorial/README.html">Tutorial to build ODA-Component from Open-API Reference Implementation</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Component:</span></p>
 <ul>
@@ -61,18 +61,35 @@
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Canvas:</span></p>
 <ul>
+<li class="toctree-l1"><a class="reference internal" href="canvas/README.html">Open Digital Architecture Canvas</a></li>
 <li class="toctree-l1"><a class="reference internal" href="canvas/installation/README.html">ODA Canvas installation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="canvas/Canvas-design.html">ODA Canvas Design</a></li>
-<li class="toctree-l1"><a class="reference internal" href="canvas/usecase-library/README.html">ODA Canvas - use-case library</a></li>
-<li class="toctree-l1"><a class="reference internal" href="canvas/source/operators/index.html">Open Digital Architecture - Controllers/Operators</a></li>
 </ul>
-<p class="caption" role="heading"><span class="caption-text">Troubleshooting Guide:</span></p>
+<p class="caption" role="heading"><span class="caption-text">Canvas Design:</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="docs/TroubleshootingGuide/index.html">ODA-CA Troubleshooting Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="canvas/Canvas-design.html">ODA Canvas Design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="canvas/Design-Epics.html">Design Epics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="canvas/usecase-library/README.html">ODA Canvas - use-case library</a></li>
+<li class="toctree-l1"><a class="reference internal" href="canvas/Usecases.html">Usecase List</a></li>
+<li class="toctree-l1"><a class="reference internal" href="canvas/usecase-library/use-case-naming-conventions.html">Use case naming conventions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="canvas/source/README.html">ODA Canvas source code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="canvas/source/operators/index.html">Open Digital Architecture - Controllers/Operators</a></li>
+<li class="toctree-l1"><a class="reference internal" href="canvas/source/webhooks-and-utilities.html">Webuooks and Utilities</a></li>
 </ul>
-<p class="caption" role="heading"><span class="caption-text">Contributions Guide:</span></p>
+<p class="caption" role="heading"><span class="caption-text">Feature Tests:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="canvas/feature-definition-and-test-kit/README.html">ODA Canvas Features and Test Kit</a></li>
+<li class="toctree-l1"><a class="reference internal" href="canvas/feature-definition-and-test-kit/README.html#list-of-bdd-features">List of BDD Features</a></li>
+<li class="toctree-l1"><a class="reference internal" href="canvas/feature-definition-and-test-kit/Executing-tests.html">Installing and executing the BDD tests</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Contributions and Troubleshooting:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="docs/ContributionsGuide.html">Contribution guidance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="docs/TroubleshootingGuide/index.html">Troubleshooting Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="docs/developer/work-with-dockerimages.html">Developer How-Tos: Work with Dockerimages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="docs/developer/work-with-dockerimages.html#summary">Summary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="docs/developer/work-with-dockerimages.html#how-to-add-a-new-dockerimage">How-To add a new Dockerimage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="canvas/devcontainer.html">ODA Canvas Development Environment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="canvas/source/operators/Installing%20KOPF%20development%20environment.html">Installing KOPF (tested in GKE)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="docs/DocumentationProcess.html">Documentation Process</a></li>
 </ul>
 
@@ -119,13 +136,17 @@
 <li class="toctree-l2"><a class="reference internal" href="docs/Observability-Tutorial/README.html#how-do-i-extend-this-to-get-custom-business-metrics-from-the-component">How do I extend this to get custom business metrics from the component?</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="docs/ODAComponentTutorial/README.html">Tutorial to build ODA-Component from Open-API Reference Implemenation</a><ul>
+<li class="toctree-l1"><a class="reference internal" href="docs/ODAComponentTutorial/README.html">Tutorial to build ODA-Component from Open-API Reference Implementation</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="docs/ODAComponentTutorial/README.html#step-1-download-reference-implementation">Step 1. Download Reference Implementation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="docs/ODAComponentTutorial/README.html#step-2-optionally-test-locally-with-local-mongodb">Step 2. (optionally) test locally with local MongoDb.</a></li>
 <li class="toctree-l2"><a class="reference internal" href="docs/ODAComponentTutorial/README.html#step-3-configure-for-use-within-kubernetes">Step 3. Configure for use within Kubernetes.</a></li>
+<li class="toctree-l2"><a class="reference internal" href="docs/ODAComponentTutorial/README.html#configure-mongodb-connection-url-to-use-within-kubernetes">3.1 Configure MongoDb connection url to use within Kubernetes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="docs/ODAComponentTutorial/README.html#use-environment-variables-to-allow-api-path-to-be-configured-externally">3.2 Use environment variables to allow API path to be configured externally</a></li>
+<li class="toctree-l2"><a class="reference internal" href="docs/ODAComponentTutorial/README.html#add-home-resource-at-root-of-the-api-and-also-move-where-the-docs-and-api-docs-are-hosted">3.3 Add home resource at root of the API, and also move where the docs and api-docs are hosted</a></li>
 <li class="toctree-l2"><a class="reference internal" href="docs/ODAComponentTutorial/README.html#step-4-package-the-nodejs-implementation-into-a-docker-image">Step 4. Package the nodejs implementation into a docker image</a></li>
 <li class="toctree-l2"><a class="reference internal" href="docs/ODAComponentTutorial/README.html#step-5-create-partyrole-implementation">Step 5. Create PartyRole Implementation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="docs/ODAComponentTutorial/README.html#step-6-create-partyrole-initialisation-implementation">Step 6. Create PartyRole Initialisation Implementation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="docs/ODAComponentTutorial/README.html#step-6-1-package-the-nodejs-implementation-into-a-docker-image-following-step-4-above">Step 6.1 Package the nodejs implementation into a docker image following step 4 above.</a></li>
 <li class="toctree-l2"><a class="reference internal" href="docs/ODAComponentTutorial/README.html#step-7-create-component-envelope">Step 7. Create Component Envelope</a></li>
 <li class="toctree-l2"><a class="reference internal" href="docs/ODAComponentTutorial/README.html#step-6-test-component-envelope-using-component-ctk">Step 6. Test component envelope using component CTK</a></li>
 <li class="toctree-l2"><a class="reference internal" href="docs/ODAComponentTutorial/README.html#step-8-deploy-the-component-envelope-into-open-digital-lab-canvas">Step 8. Deploy the component envelope into Open Digital Lab canvas</a></li>
@@ -154,15 +175,38 @@
 <div class="toctree-wrapper compound">
 <p class="caption" role="heading"><span class="caption-text">Canvas:</span></p>
 <ul>
+<li class="toctree-l1"><a class="reference internal" href="canvas/README.html">Open Digital Architecture Canvas</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="canvas/README.html#installation">Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="canvas/README.html#oda-canvas-design">ODA Canvas Design</a></li>
+<li class="toctree-l2"><a class="reference internal" href="canvas/README.html#release-notes">Release notes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="canvas/README.html#for-developers">For Developers</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="canvas/installation/README.html">ODA Canvas installation</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="canvas/installation/README.html#software-versions">Software Versions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="canvas/installation/README.html#configuration-values">Configuration values</a></li>
-<li class="toctree-l2"><a class="reference internal" href="canvas/installation/README.html#environment-installation">Environment installation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="canvas/installation/README.html#troubleshooting">Troubleshooting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="canvas/installation/README.html#environment-installation">Environment installation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="canvas/installation/README.html#kubernetes-distribution">1. Kubernetes distribution</a></li>
+<li class="toctree-l3"><a class="reference internal" href="canvas/installation/README.html#helm">2. Helm</a></li>
+<li class="toctree-l3"><a class="reference internal" href="canvas/installation/README.html#istio">3. Istio</a></li>
+<li class="toctree-l3"><a class="reference internal" href="canvas/installation/README.html#hashicorp-vault">4. HashiCorp Vault</a></li>
+<li class="toctree-l3"><a class="reference internal" href="canvas/installation/README.html#reference-implementation">4. Reference implementation</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="canvas/installation/README.html#troubleshooting">Troubleshooting</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="canvas/installation/README.html#error-instaling-backofflimitexceeded">Error instaling: BackoffLimitExceeded</a></li>
+<li class="toctree-l3"><a class="reference internal" href="canvas/installation/README.html#error-installing-failed-post-install">Error installing : Failed post-install</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="canvas/installation/README.html#changes">Changes</a></li>
 <li class="toctree-l2"><a class="reference internal" href="canvas/installation/README.html#oda-canvas-helm-chart-uninstallation">oda-canvas helm chart uninstallation</a></li>
 </ul>
 </li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<p class="caption" role="heading"><span class="caption-text">Canvas Design:</span></p>
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="canvas/Canvas-design.html">ODA Canvas Design</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="canvas/Canvas-design.html#what-is-the-oda-canvas">What is the ODA Canvas?</a></li>
 <li class="toctree-l2"><a class="reference internal" href="canvas/Canvas-design.html#how-do-i-buy-or-build-a-canvas">How do I buy or build a Canvas?</a></li>
@@ -172,37 +216,193 @@
 <li class="toctree-l2"><a class="reference internal" href="canvas/Canvas-design.html#design-epics">Design Epics</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="canvas/Design-Epics.html">Design Epics</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="canvas/Authentication-design.html">Authentication design</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="canvas/Authentication-design.html#use-cases">Use cases</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="canvas/Observability-design.html">Observability design</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="canvas/Observability-design.html#use-cases">Use cases</a></li>
+<li class="toctree-l3"><a class="reference internal" href="canvas/Observability-design.html#bdd-features-wip">BDD Features (WIP)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="canvas/Event-based-integration-design.html">Event based integration design</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="canvas/Event-based-integration-design.html#use-cases">Use cases</a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="canvas/usecase-library/README.html">ODA Canvas - use-case library</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="canvas/usecase-library/README.html#oda-software-operators">ODA Software Operators</a></li>
 <li class="toctree-l2"><a class="reference internal" href="canvas/usecase-library/README.html#use-case-list">Use-case list</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="canvas/Usecases.html">Usecase List</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="canvas/usecase-library/UC001-Install-Canvas.html">Install Canvas use case</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="canvas/usecase-library/UC001-Install-Canvas.html#install-oda-canvas">Install ODA Canvas</a></li>
+<li class="toctree-l3"><a class="reference internal" href="canvas/usecase-library/UC001-Install-Canvas.html#upgrade-oda-canvas">Upgrade ODA Canvas</a></li>
+<li class="toctree-l3"><a class="reference internal" href="canvas/usecase-library/UC001-Install-Canvas.html#uninstall-oda-canvas">Uninstall ODA Canvas</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="canvas/usecase-library/UC002-Manage-Components.html">Manage Components use case</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="canvas/usecase-library/UC002-Manage-Components.html#install-component">Install component</a></li>
+<li class="toctree-l3"><a class="reference internal" href="canvas/usecase-library/UC002-Manage-Components.html#upgrade-component">Upgrade component</a></li>
+<li class="toctree-l3"><a class="reference internal" href="canvas/usecase-library/UC002-Manage-Components.html#delete-component">Delete component</a></li>
+<li class="toctree-l3"><a class="reference internal" href="canvas/usecase-library/UC002-Manage-Components.html#error-scenarios">Error scenarios</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="canvas/usecase-library/UC003-Configure-Exposed-APIs.html">Configure Exposed APIs use-case</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="canvas/usecase-library/UC003-Configure-Exposed-APIs.html#create-exposed-api">Create Exposed API</a></li>
+<li class="toctree-l3"><a class="reference internal" href="canvas/usecase-library/UC003-Configure-Exposed-APIs.html#update-exposed-api">Update Exposed API</a></li>
+<li class="toctree-l3"><a class="reference internal" href="canvas/usecase-library/UC003-Configure-Exposed-APIs.html#delete-exposed-api">Delete Exposed API</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="canvas/usecase-library/UC004-Configure-Published-Events.html">Configure Published Events use-case</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="canvas/usecase-library/UC004-Configure-Published-Events.html#install-component">Install component</a></li>
+<li class="toctree-l3"><a class="reference internal" href="canvas/usecase-library/UC004-Configure-Published-Events.html#upgrade-component-with-changed-publishednotifications">Upgrade component - with changed publishedNotifications</a></li>
+<li class="toctree-l3"><a class="reference internal" href="canvas/usecase-library/UC004-Configure-Published-Events.html#upgrade-component-with-additional-publishednotifications">Upgrade component - with additional publishedNotifications</a></li>
+<li class="toctree-l3"><a class="reference internal" href="canvas/usecase-library/UC004-Configure-Published-Events.html#upgrade-component-with-deleted-publishednotifications">Upgrade component - with deleted publishedNotifications</a></li>
+<li class="toctree-l3"><a class="reference internal" href="canvas/usecase-library/UC004-Configure-Published-Events.html#delete-component">Delete component</a></li>
+<li class="toctree-l3"><a class="reference internal" href="canvas/usecase-library/UC004-Configure-Published-Events.html#todo-what-if-no-event-manager-exists">TODO What if no event manager exists</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="canvas/usecase-library/UC005-Configure-Users-and-Roles.html">Configure Users and Roles use case</a></li>
+<li class="toctree-l2"><a class="reference internal" href="canvas/usecase-library/UC006-Configure-Observability.html">Configure Observability use case</a></li>
+<li class="toctree-l2"><a class="reference internal" href="canvas/usecase-library/UC007-Configure-Dependent-APIs.html">Discover dependent APIs use case</a></li>
+<li class="toctree-l2"><a class="reference internal" href="canvas/usecase-library/UC008-Configure-Subscribed-Events.html">Configure Subscribed Events use-case</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="canvas/usecase-library/UC008-Configure-Subscribed-Events.html#install-component">Install component</a></li>
+<li class="toctree-l3"><a class="reference internal" href="canvas/usecase-library/UC008-Configure-Subscribed-Events.html#upgrade-component-with-changed-api">Upgrade component - with changed API</a></li>
+<li class="toctree-l3"><a class="reference internal" href="canvas/usecase-library/UC008-Configure-Subscribed-Events.html#upgrade-component-with-additional-api">Upgrade component - with additional API</a></li>
+<li class="toctree-l3"><a class="reference internal" href="canvas/usecase-library/UC008-Configure-Subscribed-Events.html#upgrade-component-with-deleted-api">Upgrade component - with deleted API</a></li>
+<li class="toctree-l3"><a class="reference internal" href="canvas/usecase-library/UC008-Configure-Subscribed-Events.html#delete-component">Delete component</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="canvas/usecase-library/UC009-Internal-Authentication.html">Internal authentication use-case</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="canvas/usecase-library/UC009-Internal-Authentication.html#authentication">Authentication</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="canvas/usecase-library/UC010-External-Authentication.html">External authentication use-case</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="canvas/usecase-library/UC010-External-Authentication.html#access-management">Access Management</a></li>
+<li class="toctree-l3"><a class="reference internal" href="canvas/usecase-library/UC010-External-Authentication.html#system-user-authentication">System User Authentication</a></li>
+<li class="toctree-l3"><a class="reference internal" href="canvas/usecase-library/UC010-External-Authentication.html#human-user">Human user</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="canvas/usecase-library/UC011-View-Technical-Observability.html">View technical observability use-case</a></li>
+<li class="toctree-l2"><a class="reference internal" href="canvas/usecase-library/UC012-View-Business-Observability.html">View business observability use-case</a></li>
+<li class="toctree-l2"><a class="reference internal" href="canvas/usecase-library/UC013-Upgrade-Canvas.html">Upgrade Canvas use case</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="canvas/usecase-library/UC013-Upgrade-Canvas.html#support-components-of-different-versions">Support components of different versions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="canvas/usecase-library/UC013-Upgrade-Canvas.html#support-operators-using-different-versions">Support operators using different versions</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="canvas/usecase-library/UC014-Secrets-Management-JWT-based.html">Secrets Management for Component</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="canvas/usecase-library/UC014-Secrets-Management-JWT-based.html#problem">Problem</a></li>
+<li class="toctree-l3"><a class="reference internal" href="canvas/usecase-library/UC014-Secrets-Management-JWT-based.html#solution-idea">Solution Idea</a></li>
+<li class="toctree-l3"><a class="reference internal" href="canvas/usecase-library/UC014-Secrets-Management-JWT-based.html#workflow">Workflow</a></li>
+<li class="toctree-l3"><a class="reference internal" href="canvas/usecase-library/UC014-Secrets-Management-JWT-based.html#sequence-diagram">Sequence Diagram</a></li>
+<li class="toctree-l3"><a class="reference internal" href="canvas/usecase-library/UC014-Secrets-Management-JWT-based.html#technical-details">Technical Details</a></li>
+<li class="toctree-l3"><a class="reference internal" href="canvas/usecase-library/UC014-Secrets-Management-JWT-based.html#example-jwt-payload">Example JWT Payload</a></li>
+<li class="toctree-l3"><a class="reference internal" href="canvas/usecase-library/UC014-Secrets-Management-JWT-based.html#extension-of-the-component-yaml">Extension of the Component.yaml</a></li>
+<li class="toctree-l3"><a class="reference internal" href="canvas/usecase-library/UC014-Secrets-Management-JWT-based.html#limitations">Limitations</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="canvas/usecase-library/use-case-naming-conventions.html">Use case naming conventions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="canvas/source/README.html">ODA Canvas source code</a></li>
 <li class="toctree-l1"><a class="reference internal" href="canvas/source/operators/index.html">Open Digital Architecture - Controllers/Operators</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="canvas/source/operators/README.html">ODA Canvas Operators</a></li>
-<li class="toctree-l2"><a class="reference internal" href="canvas/source/operators/componentOperator/modules.html">Component Operator</a></li>
-<li class="toctree-l2"><a class="reference internal" href="canvas/source/operators/apiOperatorSimpleIngress/modules.html">API Operator: SimpleIngress</a></li>
-<li class="toctree-l2"><a class="reference internal" href="canvas/source/operators/apiOperatorApig/modules.html">API Operator: WhaleCloud API Gateway</a></li>
-<li class="toctree-l2"><a class="reference internal" href="canvas/source/operators/apiOperatorWSO2/modules.html">API Operator: WSO2 API Gateway</a></li>
-<li class="toctree-l2"><a class="reference internal" href="canvas/source/operators/apiOperatorIstio/modules.html">API Operator: Istio</a></li>
-<li class="toctree-l2"><a class="reference internal" href="canvas/source/operators/securityController/modules.html">Security Operator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="canvas/source/operators/README.html">ODA Canvas Operators</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="canvas/source/operators/README.html#list-of-operators">List of Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="canvas/source/operators/README.html#docker-images">Docker Images</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="canvas/source/operators/componentOperator/modules.html">Component Operator</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="canvas/source/operators/componentOperator/README.html">Component Operator - Introduction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="canvas/source/operators/componentOperator/README.html#buildautomation-and-versioning">Buildautomation and Versioning</a></li>
+<li class="toctree-l3"><a class="reference internal" href="canvas/source/operators/componentOperator/modules.html#python-modules">Python modules</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="canvas/source/operators/apiOperatorIstio/modules.html">API Operator: Istio</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="canvas/source/operators/apiOperatorIstio/README.html">API Operator for Istio/Prometheus - Introduction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="canvas/source/operators/apiOperatorIstio/modules.html#python-modules">Python modules</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="canvas/source/operators/apiOperatorKong/modules.html">API Operator: Kong</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="canvas/source/operators/apiOperatorKong/modules.html#python-modules">Python modules</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="canvas/source/operators/apiOperatorApisix/modules.html">API Operator: Apisix</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="canvas/source/operators/apiOperatorApisix/modules.html#python-modules">Python modules</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="canvas/source/operators/apiOperatorApig/modules.html">API Operator: WhaleCloud API Gateway</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="canvas/source/operators/apiOperatorApig/README.html">API Operator apig - Introduction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="canvas/source/operators/apiOperatorApig/modules.html#python-modules">Python modules</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="canvas/source/operators/securityController/modules.html">Security Operator</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="canvas/source/operators/securityController/README.html">Security Operator - Introduction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="canvas/source/operators/securityController/modules.html#python-modules">Python modules</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="canvas/source/webhooks-and-utilities.html">Webuooks and Utilities</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="canvas/source/webhooks/README.html">ODA Component webhooks</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="canvas/source/webhooks/README.html#unit-tests">Unit tests</a></li>
+<li class="toctree-l3"><a class="reference internal" href="canvas/source/webhooks/README.html#system-tests">System tests</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="canvas/source/utilities/README.html">ODA Canvas utilities</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="canvas/source/utilities/README.html#canvas-log-viewer-utility">Canvas Log Viewer utility</a></li>
+<li class="toctree-l3"><a class="reference internal" href="canvas/source/utilities/README.html#component-viewer-utility">Component Viewer utility</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
 </div>
 <div class="toctree-wrapper compound">
-<p class="caption" role="heading"><span class="caption-text">Troubleshooting Guide:</span></p>
+<p class="caption" role="heading"><span class="caption-text">Feature Tests:</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="docs/TroubleshootingGuide/index.html">ODA-CA Troubleshooting Guide</a><ul>
+<li class="toctree-l1"><a class="reference internal" href="canvas/feature-definition-and-test-kit/README.html">ODA Canvas Features and Test Kit</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="canvas/feature-definition-and-test-kit/README.html#linkage-to-use-cases">Linkage to use-cases</a></li>
+<li class="toctree-l2"><a class="reference internal" href="canvas/feature-definition-and-test-kit/README.html#work-breakdown">Work breakdown</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="canvas/feature-definition-and-test-kit/README.html#list-of-bdd-features">List of BDD Features</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="canvas/feature-definition-and-test-kit/README.html#executing-the-bdd-tests">Executing the BDD tests</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="canvas/feature-definition-and-test-kit/Executing-tests.html">Installing and executing the BDD tests</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="canvas/feature-definition-and-test-kit/Executing-tests.html#how-to-run-the-tests">How to run the tests</a></li>
+<li class="toctree-l2"><a class="reference internal" href="canvas/feature-definition-and-test-kit/Executing-tests.html#updating-the-master-test-status">Updating the master test status</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<p class="caption" role="heading"><span class="caption-text">Contributions and Troubleshooting:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="docs/ContributionsGuide.html">Contribution guidance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="docs/TroubleshootingGuide/index.html">Troubleshooting Guide</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="docs/TroubleshootingGuide/index.html#oda-ca-specific-guides">ODA-CA Specific guides</a></li>
 <li class="toctree-l2"><a class="reference internal" href="docs/TroubleshootingGuide/index.html#generic-kubernetes-guides">Generic Kubernetes guides</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="docs/developer/work-with-dockerimages.html">Developer How-Tos: Work with Dockerimages</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="docs/developer/work-with-dockerimages.html#global-rules">Global Rules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="docs/developer/work-with-dockerimages.html#versions-in-values-yaml">Versions in values.yaml</a></li>
+<li class="toctree-l2"><a class="reference internal" href="docs/developer/work-with-dockerimages.html#example-update-code-of-secretsmanagement-operator">Example: Update code of Secretsmanagement-Operator</a></li>
 </ul>
-</div>
-<div class="toctree-wrapper compound">
-<p class="caption" role="heading"><span class="caption-text">Contributions Guide:</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="docs/ContributionsGuide.html">Contribution guidance</a></li>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="docs/developer/work-with-dockerimages.html#summary">Summary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="docs/developer/work-with-dockerimages.html#how-to-add-a-new-dockerimage">How-To add a new Dockerimage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="canvas/devcontainer.html">ODA Canvas Development Environment</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="canvas/devcontainer.html#prerequisites">Prerequisites</a></li>
+<li class="toctree-l2"><a class="reference internal" href="canvas/devcontainer.html#getting-started">Getting Started</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="canvas/source/operators/Installing%20KOPF%20development%20environment.html">Installing KOPF (tested in GKE)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="docs/DocumentationProcess.html">Documentation Process</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="docs/DocumentationProcess.html#basic-process">Basic Process</a></li>
 <li class="toctree-l2"><a class="reference internal" href="docs/DocumentationProcess.html#full-process">Full process</a></li>
