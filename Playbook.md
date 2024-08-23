@@ -43,7 +43,7 @@ Read [this presentation](https://github.com/tmforum-oda/oda-ca-docs/blob/master/
 * Deploying and validating a Resource Inventory component on China Mobile's public cloud ODA Canvas: [video (5 min)](https://iframe.dacast.com/vod/9292f2e21c51139fb9b2ffd6080ab1d6/3d3c4c71-001f-4a8c-893d-01b3dc67e38f)
 * Validation of an ODA Canvas using the prototype Canvas CTK, showing BDD: [video (5 min)](https://www.youtube.com/watch?v=UofZbT26ITg)
 * Deploying and validating an Ericsson Product Inventory component: [video (2 min)](https://iframe.dacast.com/vod/9292f2e21c51139fb9b2ffd6080ab1d6/65360140-2147-4f40-b8c1-bbdf3ca5181c)
-* [Clickable example Component CTK report](https://oda-documents.s3.eu-west-2.amazonaws.com/report/index.html)
+* [Clickable example Component CTK report](https://oda-documents.s3.eu-west-2.amazonaws.com/2BC60979-1A50-4490-84EA-1C25F8908F45/reports/index.html)
 
 **Earlier demo videos**
 
