@@ -23,7 +23,7 @@
     <link rel="index" title="Index" href="../../../../genindex.html" />
     <link rel="search" title="Search" href="../../../../search.html" />
     <link rel="next" title="API Operator: Apisix" href="../apiOperatorApisix/modules.html" />
-    <link rel="prev" title="&lt;no title&gt;" href="README.html" /> 
+    <link rel="prev" title="Kubernetes Kong API Lifecycle Management Operator" href="README.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -78,6 +78,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../componentOperator/modules.html">Component Operator</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../apiOperatorIstio/modules.html">API Operator: Istio</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="modules.html">API Operator: Kong</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="README.html">Kubernetes Kong API Lifecycle Management Operator</a></li>
 <li class="toctree-l3 current"><a class="reference internal" href="modules.html#python-modules">Python modules</a><ul class="current">
 <li class="toctree-l4 current"><a class="current reference internal" href="#">apiOperatorIstio module</a></li>
 </ul>
@@ -141,9 +142,9 @@
 <p>This module is part of the ODA Canvas, specifically tailored for environments adopting the Kong API Gateway. It utilizes the Kopf Kubernetes operator framework (<a class="reference external" href="https://kopf.readthedocs.io/">https://kopf.readthedocs.io/</a>) to manage API custom resources. 
 The operator is designed to seamlessly integrate with the Kong API Gateway, facilitating the creation and management of HTTPRoute configurations to expose APIs.</p>
 <p>Key Features:
-- Automatically handles the lifecycle of ODA APIs including creation, update, and deletion of corresponding HTTPRoute resources to expose APIs through Kong.
-- Manages KongPlugin resources to apply and enforce various plugins and policies on APIs routed through Kong.
-- Configures an API gateway to act as a front aligning with recommended production architectures.</p>
+* Automatically handles the lifecycle of ODA APIs including creation, update, and deletion of corresponding HTTPRoute resources to expose APIs through Kong.
+* Manages KongPlugin resources to apply and enforce various plugins and policies on APIs routed through Kong.
+* Configures an API gateway to act as a front aligning with recommended production architectures.</p>
 <p>Usage:
 This operator can be deployed as part of the ODA Canvas in Kubernetes clusters where the Kong API Gateway is used to expose APIs. It simplifies the management of API exposure and security by interfacing directly with Kong, 
 providing a robust and scalable API management solution.</p>
@@ -161,7 +162,7 @@ name (str): The name of the resource triggering this handler.
 namespace (str): The Kubernetes namespace where the resource resides.
 meta (dict): Metadata dictionary containing information eg. uid which is useful for managing resources.
 logger (logging.Logger): Logger instance for logging information or errors.
-<a href="#id1"><span class="problematic" id="id2">**</span></a>kwargs: Arbitrary keyword arguments which might include additional context needed for plugins.</p>
+kwargs: Arbitrary keyword arguments which might include additional context needed for plugins.</p>
 </dd>
 <dt>Returns:</dt><dd><p>Nothing</p>
 </dd>
@@ -180,7 +181,7 @@ when the parent resource is deleted. see kopf.adopt()</p>
 name (str): The name of the resource.
 namespace (str): The namespace where the HTTPRoute will be created or updated.
 meta (dict): Metadata about the resource, used to set ownership in Kubernetes.
-<a href="#id3"><span class="problematic" id="id4">**</span></a>kwargs: Arbitrary keyword arguments, typically unused but available for future extensions.</p>
+kwargs: Arbitrary keyword arguments, typically unused but available for future extensions.</p>
 </dd>
 <dt>Returns:</dt><dd><p>True if the HTTPRoute was successfully created or updated, False otherwise.</p>
 </dd>
@@ -197,7 +198,7 @@ the plugin configuration in the specified namespace.</p>
 name (str): The name of the API resource.
 namespace (str): The Kubernetes namespace where the plugin will be configured.
 meta (dict): Metadata containing information eg. uid .
-<a href="#id5"><span class="problematic" id="id6">**</span></a>kwargs: Arbitrary keyword arguments, used for logging or other contextual operations.</p>
+kwargs: Arbitrary keyword arguments, used for logging or other contextual operations.</p>
 </dd>
 <dt>Returns:</dt><dd><p>str or None: The name of the authentication plugin on success, or None if the setup is skipped</p>
 </dd>
@@ -217,7 +218,7 @@ the Kubernetes environment.</p>
 name (str): The name of the API resource.
 namespace (str): The Kubernetes namespace where the plugin will be configured.
 meta (dict): Metadata about the resource.
-<a href="#id7"><span class="problematic" id="id8">**</span></a>kwargs: Arbitrary keyword arguments, primarily used for additional logging or context.</p>
+kwargs: Arbitrary keyword arguments, primarily used for additional logging or context.</p>
 </dd>
 <dt>Returns:</dt><dd><p>str or None: The name of the authentication plugin on success, or None if the setup is skipped.</p>
 </dd>
@@ -237,7 +238,7 @@ It checks if CORS is enabled and configures the KongPlugin accordingly, handling
 name (str): The name of the API resource.
 namespace (str): The Kubernetes namespace where the plugin will be configured.
 meta (dict): Metadata about the resource, used for managing ownership in Kubernetes.
-<a href="#id9"><span class="problematic" id="id10">**</span></a>kwargs: Arbitrary keyword arguments, primarily used for additional logging or context.</p>
+kwargs: Arbitrary keyword arguments, primarily used for additional logging or context.</p>
 </dd>
 <dt>Returns:</dt><dd><p>str or None: The name of the CORS plugin on success, or None if CORS is not enabled.</p>
 </dd>
@@ -335,7 +336,7 @@ This function logs the deletion of an ‘ExposedAPI’ resource and the expected
 <dt>Parameters:</dt><dd><p>meta (dict): Metadata about the resource, which includes details like the resource’s unique identifier.
 name (str): The name of the API resource that was deleted.
 namespace (str): The Kubernetes namespace from which the resource was deleted.
-<a href="#id11"><span class="problematic" id="id12">**</span></a>kwargs: Arbitrary keyword arguments, primarily used for additional logging or context.</p>
+kwargs: Arbitrary keyword arguments, primarily used for additional logging or context.</p>
 </dd>
 <dt>Returns:</dt><dd><p>None</p>
 </dd>
@@ -348,7 +349,7 @@ namespace (str): The Kubernetes namespace from which the resource was deleted.
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="README.html" class="btn btn-neutral float-left" title="&lt;no title&gt;" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="README.html" class="btn btn-neutral float-left" title="Kubernetes Kong API Lifecycle Management Operator" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
         <a href="../apiOperatorApisix/modules.html" class="btn btn-neutral float-right" title="API Operator: Apisix" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 

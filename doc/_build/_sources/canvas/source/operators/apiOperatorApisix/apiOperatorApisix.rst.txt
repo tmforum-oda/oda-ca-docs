@@ -1,7 +1,7 @@
 apiOperatorIstio module
 =======================
 
-.. automodule:: apiOperatorKong
+.. automodule:: apiOperatorApisix
    :members:
    :undoc-members:
    :show-inheritance:

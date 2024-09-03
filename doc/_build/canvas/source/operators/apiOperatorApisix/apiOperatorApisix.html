@@ -23,7 +23,7 @@
     <link rel="index" title="Index" href="../../../../genindex.html" />
     <link rel="search" title="Search" href="../../../../search.html" />
     <link rel="next" title="API Operator: WhaleCloud API Gateway" href="../apiOperatorApig/modules.html" />
-    <link rel="prev" title="&lt;no title&gt;" href="README.html" /> 
+    <link rel="prev" title="Kubernetes Kong API Lifecycle Management Operator" href="README.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -79,6 +79,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../apiOperatorIstio/modules.html">API Operator: Istio</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../apiOperatorKong/modules.html">API Operator: Kong</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="modules.html">API Operator: Apisix</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="README.html">Kubernetes Kong API Lifecycle Management Operator</a></li>
 <li class="toctree-l3 current"><a class="reference internal" href="modules.html#python-modules">Python modules</a><ul class="current">
 <li class="toctree-l4 current"><a class="current reference internal" href="#">apiOperatorIstio module</a></li>
 </ul>
@@ -135,211 +136,270 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="module-apiOperatorKong">
-<span id="apioperatoristio-module"></span><h1>apiOperatorIstio module<a class="headerlink" href="#module-apiOperatorKong" title="Link to this heading"></a></h1>
-<p>Kubernetes Kong API Lifecycle Management Operator for ODA API Custom Resources.</p>
-<p>This module is part of the ODA Canvas, specifically tailored for environments adopting the Kong API Gateway. It utilizes the Kopf Kubernetes operator framework (<a class="reference external" href="https://kopf.readthedocs.io/">https://kopf.readthedocs.io/</a>) to manage API custom resources. 
-The operator is designed to seamlessly integrate with the Kong API Gateway, facilitating the creation and management of HTTPRoute configurations to expose APIs.</p>
+  <section id="module-apiOperatorApisix">
+<span id="apioperatoristio-module"></span><h1>apiOperatorIstio module<a class="headerlink" href="#module-apiOperatorApisix" title="Link to this heading"></a></h1>
+<p>Kubernetes Apisix API Lifecycle Management Operator for ODA API Custom Resources.</p>
+<p>This module is part of the ODA Canvas, specifically tailored for environments adopting the Apisix API Gateway. It utilizes the Kopf Kubernetes operator framework (<a class="reference external" href="https://kopf.readthedocs.io/">https://kopf.readthedocs.io/</a>) to manage API custom resources. 
+The operator is designed to seamlessly integrate with the Apisix API Gateway, facilitating the creation and management of ApisixRoute configurations to expose APIs.</p>
 <p>Key Features:
-- Automatically handles the lifecycle of ODA APIs including creation, update, and deletion of corresponding HTTPRoute resources to expose APIs through Kong.
-- Manages KongPlugin resources to apply and enforce various plugins and policies on APIs routed through Kong.
+- Automatically handles the lifecycle of ODA APIs including creation, update, and deletion of corresponding ApisixRoute resources to expose APIs through Apisix.
+- Manages ApisixPluginConfig resources to apply and enforce various plugins and policies on APIs routed through Apisix.
 - Configures an API gateway to act as a front aligning with recommended production architectures.</p>
 <p>Usage:
-This operator can be deployed as part of the ODA Canvas in Kubernetes clusters where the Kong API Gateway is used to expose APIs. It simplifies the management of API exposure and security by interfacing directly with Kong, 
+This operator can be deployed as part of the ODA Canvas in Kubernetes clusters where the Apisix API Gateway is used to expose APIs. It simplifies the management of API exposure and security by interfacing directly with Apisix, 
 providing a robust and scalable API management solution.</p>
 <dl class="py function">
-<dt class="sig sig-object py" id="apiOperatorKong.manage_api_lifecycle">
-<span class="sig-prename descclassname"><span class="pre">apiOperatorKong.</span></span><span class="sig-name descname"><span class="pre">manage_api_lifecycle</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">spec</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">namespace</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">status</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">meta</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">logger</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#apiOperatorKong.manage_api_lifecycle" title="Link to this definition"></a></dt>
-<dd><p>Handles the lifecycle events (creation and updates) for API resources.
-This function creates or updates HTTPRoute based on the provided spec, and manages associated
-plugins like rate limiting, API key verification, and CORS settings based on their enabled status
-along with check file path if plugin are provided in form on template.
-It also updates the HTTPRoute with annotations corresponding to the plugins applied.</p>
-<dl class="simple">
-<dt>Parameters:</dt><dd><p>spec (dict): The specification dictionary containing settings like path, plugins configuration etc.
-name (str): The name of the resource triggering this handler.
-namespace (str): The Kubernetes namespace where the resource resides.
-meta (dict): Metadata dictionary containing information eg. uid which is useful for managing resources.
-logger (logging.Logger): Logger instance for logging information or errors.
-<a href="#id1"><span class="problematic" id="id2">**</span></a>kwargs: Arbitrary keyword arguments which might include additional context needed for plugins.</p>
-</dd>
-<dt>Returns:</dt><dd><p>Nothing</p>
-</dd>
-</dl>
+<dt class="sig sig-object py" id="apiOperatorApisix.manage_api_lifecycle">
+<span class="sig-prename descclassname"><span class="pre">apiOperatorApisix.</span></span><span class="sig-name descname"><span class="pre">manage_api_lifecycle</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">spec</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">namespace</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">status</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">meta</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">logger</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#apiOperatorApisix.manage_api_lifecycle" title="Link to this definition"></a></dt>
+<dd><p>Manages the lifecycle of an API by creating or updating the ApisixRoute, managing plugins, and handling error logging.</p>
+<p>Args:
+spec (dict): Contains the specification for the API lifecycle, including ingress configurations and plugin templates.
+name (str): The name of the API.
+namespace (str): The Kubernetes namespace where the API is deployed.
+status (str): The current status of the API lifecycle management.
+meta (dict): Metadata related to the API lifecycle management.
+logger (logging.Logger): Logger for logging messages about the process.
+kwargs: Arbitrary keyword arguments that may be used for additional configurations.</p>
+<p>Returns:
+None: This function does not return any value</p>
+<p>Description:
+- First, attempts to create or update an ApisixRoute based on the provided ‘spec’, ‘name’, ‘namespace’, and ‘meta’.
+- If the ApisixRoute cannot be created or updated, it logs a failure message and the function returns early.
+- Checks if a template URL is provided in ‘spec’ and verifies its validity.
+- If valid, attempts to apply plugins based on the template. Logs the success or failure of this operation.
+- If plugins are successfully applied, updates the ApisixRoute with the plugin configuration.
+- Throughout the function, various informational and error logs are generated based on the operations performed.</p>
 </dd></dl>
 
 <dl class="py function">
-<dt class="sig sig-object py" id="apiOperatorKong.create_or_update_ingress">
-<span class="sig-prename descclassname"><span class="pre">apiOperatorKong.</span></span><span class="sig-name descname"><span class="pre">create_or_update_ingress</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">spec</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">namespace</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">meta</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#apiOperatorKong.create_or_update_ingress" title="Link to this definition"></a></dt>
-<dd><p>Creates or updates an HTTPRoute for the given API resource. It configures the route based on the 
-specified path and attaches it to defined service.
-The function also manages Kubernetes ownership metadata to ensure resources are cleaned up appropriately
-when the parent resource is deleted. see kopf.adopt()</p>
-<dl class="simple">
-<dt>Parameters:</dt><dd><p>spec (dict): The specification dictionary which should contain the path and other related settings.
-name (str): The name of the resource.
-namespace (str): The namespace where the HTTPRoute will be created or updated.
-meta (dict): Metadata about the resource, used to set ownership in Kubernetes.
-<a href="#id3"><span class="problematic" id="id4">**</span></a>kwargs: Arbitrary keyword arguments, typically unused but available for future extensions.</p>
-</dd>
-<dt>Returns:</dt><dd><p>True if the HTTPRoute was successfully created or updated, False otherwise.</p>
-</dd>
-</dl>
+<dt class="sig sig-object py" id="apiOperatorApisix.create_or_update_ingress">
+<span class="sig-prename descclassname"><span class="pre">apiOperatorApisix.</span></span><span class="sig-name descname"><span class="pre">create_or_update_ingress</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">spec</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">namespace</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">meta</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#apiOperatorApisix.create_or_update_ingress" title="Link to this definition"></a></dt>
+<dd><p>Creates or updates an ApisixRoute ingress in a specified Kubernetes namespace based on the provided specifications.</p>
+<p>Args:
+spec (dict): Specifications for creating or updating the ingress, including the paths and backends.
+name (str): Name of the API for which the ingress is being managed.
+namespace (str): The initial namespace passed to the function.
+meta (dict): Metadata information used during the creation or update process.
+kwargs: Arbitrary keyword arguments for potential future use or custom extensions.</p>
+<p>Returns:
+bool: True if the ApisixRoute is successfully created or updated, False otherwise.</p>
+<p>Description:
+- Checks if the implementation status is ‘ready’. If not, logs a message and skips ingress creation or update.
+- Constructs an ApisixRoute manifests using provided ‘spec’ details like path, backend service information.
+- Tries to find an existing ApisixRoute. If found, it updates the route using the existing ‘resourceVersion’.
+- If no existing route is found and it’s a case of a missing resource, it tries to create a new ApisixRoute and logs the outcome.
+- Catches and logs any API exceptions during the process, providing feedback on the success or failure of the operation.</p>
 </dd></dl>
 
 <dl class="py function">
-<dt class="sig sig-object py" id="apiOperatorKong.manage_ratelimit">
-<span class="sig-prename descclassname"><span class="pre">apiOperatorKong.</span></span><span class="sig-name descname"><span class="pre">manage_ratelimit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">spec</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">namespace</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">meta</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#apiOperatorKong.manage_ratelimit" title="Link to this definition"></a></dt>
-<dd><p>Configures a rate limiting plugin for an API if rate limiting is enabled in the spec. It creates or updates
-the plugin configuration in the specified namespace.</p>
-<dl class="simple">
-<dt>Parameters:</dt><dd><p>spec (dict): The specification dictionary containing rate limiting configuration details.
-name (str): The name of the API resource.
-namespace (str): The Kubernetes namespace where the plugin will be configured.
-meta (dict): Metadata containing information eg. uid .
-<a href="#id5"><span class="problematic" id="id6">**</span></a>kwargs: Arbitrary keyword arguments, used for logging or other contextual operations.</p>
-</dd>
-<dt>Returns:</dt><dd><p>str or None: The name of the authentication plugin on success, or None if the setup is skipped</p>
-</dd>
-</dl>
+<dt class="sig sig-object py" id="apiOperatorApisix.create_rate_limiting_policy">
+<span class="sig-prename descclassname"><span class="pre">apiOperatorApisix.</span></span><span class="sig-name descname"><span class="pre">create_rate_limiting_policy</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">spec</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#apiOperatorApisix.create_rate_limiting_policy" title="Link to this definition"></a></dt>
+<dd><p>Constructs a rate limiting policy configuration from provided specifications.</p>
+<p>Args:
+spec (dict): Specifications containing the details of the rate limiting policy.</p>
+<p>Returns:
+dict or None: A dictionary representing the rate limiting policy if ‘enabled’ is True; otherwise, returns None.</p>
+<p>Description:
+- Extracts rate limiting configuration from the input specification.
+- If rate limiting is enabled, it configures a policy based on the specified limit and identifier.
+- Currently supports only per-second rate limiting. Ignores any interval settings and assumes rates are per second.
+- Constructs and returns a dictionary with the configuration for the rate limiting policy. The dictionary includes the rate, burst setting, key for identifying the rate limit scope, and whether to delay processing when under burst limit.
+- If rate limiting is not enabled, returns None.</p>
+<p>Note:
+- Default limit is set to 5 requests per second if not specified.
+- The default identifier is ‘remote_addr’.</p>
 </dd></dl>
 
 <dl class="py function">
-<dt class="sig sig-object py" id="apiOperatorKong.manage_apiauthentication">
-<span class="sig-prename descclassname"><span class="pre">apiOperatorKong.</span></span><span class="sig-name descname"><span class="pre">manage_apiauthentication</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">spec</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">namespace</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">meta</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#apiOperatorKong.manage_apiauthentication" title="Link to this definition"></a></dt>
-<dd><p>Configures or updates an API authentication plugin (JWT) , for the specified API resource based on its specification. This is configured and tested as per CE version of kong.
-If using paid version ,can use template option to pass authenication plugin yaml and authentication will be configured on route.</p>
-<p>This function checks if API key verification (authentication) is enabled and sets up or updates the JWT plugin
-accordingly. The function also handles the lifecycle of the plugin, ensuring it is properly adopted and managed within
-the Kubernetes environment.</p>
-<dl class="simple">
-<dt>Parameters:</dt><dd><p>spec (dict): The specification dictionary containing the API key verification settings.
-name (str): The name of the API resource.
-namespace (str): The Kubernetes namespace where the plugin will be configured.
-meta (dict): Metadata about the resource.
-<a href="#id7"><span class="problematic" id="id8">**</span></a>kwargs: Arbitrary keyword arguments, primarily used for additional logging or context.</p>
-</dd>
-<dt>Returns:</dt><dd><p>str or None: The name of the authentication plugin on success, or None if the setup is skipped.</p>
-</dd>
-<dt>Raises:</dt><dd><p>ApiException: An error from the Kubernetes API if the plugin update or creation fails.</p>
-</dd>
-</dl>
+<dt class="sig sig-object py" id="apiOperatorApisix.create_quota_policy">
+<span class="sig-prename descclassname"><span class="pre">apiOperatorApisix.</span></span><span class="sig-name descname"><span class="pre">create_quota_policy</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">spec</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#apiOperatorApisix.create_quota_policy" title="Link to this definition"></a></dt>
+<dd><p>Constructs a quota policy configuration from provided specifications.</p>
+<p>Args:
+spec (dict): Specifications containing the details of the quota policy.</p>
+<p>Returns:
+dict or None: A dictionary representing the quota policy if both ‘identifier’ and ‘limit’ are present and not empty; otherwise, returns None.</p>
+<p>Description:
+- Extracts quota configuration from the input specification.
+- Constructs a quota policy if both an identifier and a limit are defined in the specification.
+- Configures the policy with count limits, time window, identification key, and HTTP status code for rejection.
+- Constructs and returns a dictionary with the configuration for the quota policy. This includes count limits, time windows for the count, key for identifying the scope, and the rejection code.
+- Returns None if the necessary quota configuration is not completely defined.</p>
+<p>Note:
+- Default time window for the count limit is 60 seconds.
+- Default HTTP rejection code is 429.</p>
 </dd></dl>
 
 <dl class="py function">
-<dt class="sig sig-object py" id="apiOperatorKong.manage_cors">
-<span class="sig-prename descclassname"><span class="pre">apiOperatorKong.</span></span><span class="sig-name descname"><span class="pre">manage_cors</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">spec</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">namespace</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">meta</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#apiOperatorKong.manage_cors" title="Link to this definition"></a></dt>
-<dd><p>Manages the creation or update of a CORS (Cross-Origin Resource Sharing) configuration for an API.</p>
-<p>This function sets up or updates a CORS plugin based on the CORS settings specified in the API resource’s spec.
-It checks if CORS is enabled and configures the KongPlugin accordingly, handling its lifecycle within the Kubernetes environment.</p>
-<dl class="simple">
-<dt>Parameters:</dt><dd><p>spec (dict): The specification dictionary containing CORS configuration.
-name (str): The name of the API resource.
-namespace (str): The Kubernetes namespace where the plugin will be configured.
-meta (dict): Metadata about the resource, used for managing ownership in Kubernetes.
-<a href="#id9"><span class="problematic" id="id10">**</span></a>kwargs: Arbitrary keyword arguments, primarily used for additional logging or context.</p>
-</dd>
-<dt>Returns:</dt><dd><p>str or None: The name of the CORS plugin on success, or None if CORS is not enabled.</p>
-</dd>
-<dt>Raises:</dt><dd><p>ApiException: An error from the Kubernetes API if the plugin update or creation fails.</p>
-</dd>
-</dl>
+<dt class="sig sig-object py" id="apiOperatorApisix.create_oas_validation_policy">
+<span class="sig-prename descclassname"><span class="pre">apiOperatorApisix.</span></span><span class="sig-name descname"><span class="pre">create_oas_validation_policy</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">spec</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#apiOperatorApisix.create_oas_validation_policy" title="Link to this definition"></a></dt>
+<dd><p>Constructs an OpenAPI Specification (OAS) validation policy configuration based on the provided specifications.</p>
+<p>Args:
+spec (dict): Specifications containing the details for the OAS validation policy.</p>
+<p>Returns:
+dict or None: A dictionary representing the OAS validation policy if either request or response validation is enabled; otherwise, returns None.</p>
+<p>Description:
+- Extracts the OAS validation configuration from the input specification.
+- Checks if either request or response validation is explicitly enabled.
+- If either validation is enabled, prints a notice about the availability of the OAS validation policy only through API7, a commercial extension of APISIX, and does not create the policy. Refer to the official documentation for more information.
+- If the policy were to be created, it would be configured with settings for validating requests and responses, along with allowances for unspecified headers, query parameters, and cookies.
+- Returns None as the creation of the policy is not supported outside of API7, as per the function’s current implementation.</p>
+<p>Note:
+- The function currently acts to inform about the commercial availability of the feature in enterprise version and does not return a policy configuration.</p>
 </dd></dl>
 
 <dl class="py function">
-<dt class="sig sig-object py" id="apiOperatorKong.update_httproute_annotations">
-<span class="sig-prename descclassname"><span class="pre">apiOperatorKong.</span></span><span class="sig-name descname"><span class="pre">update_httproute_annotations</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">namespace</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">annotations</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#apiOperatorKong.update_httproute_annotations" title="Link to this definition"></a></dt>
-<dd><p>Updates the annotations of an HTTPRoute resource to include references to any plugins/policies applied.</p>
-<p>This function attempts to patch the existing HTTPRoute with new plugins/policies .This helps in maintaining a clear record of what plugins are
-associated with which routes.</p>
-<dl class="simple">
-<dt>Parameters:</dt><dd><p>name (str): The name of the HTTPRoute resource.
-namespace (str): The Kubernetes namespace where the HTTPRoute is located.
-annotations (dict): A dictionary containing the annotations to be added or updated on the HTTPRoute.</p>
-</dd>
-<dt>Returns:</dt><dd><p>bool: True if the update is successful, False otherwise.</p>
-</dd>
-<dt>Raises:</dt><dd><p>ApiException: Error if the update fails.</p>
-</dd>
-</dl>
+<dt class="sig sig-object py" id="apiOperatorApisix.create_cors_policy">
+<span class="sig-prename descclassname"><span class="pre">apiOperatorApisix.</span></span><span class="sig-name descname"><span class="pre">create_cors_policy</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">spec</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#apiOperatorApisix.create_cors_policy" title="Link to this definition"></a></dt>
+<dd><p>Constructs a Cross-Origin Resource Sharing (CORS) policy configuration based on the provided specifications.</p>
+<p>Args:
+spec (dict): Specifications containing the details for the CORS policy.</p>
+<p>Returns:
+dict or None: A dictionary representing the CORS policy if enabled; otherwise, returns None.</p>
+<p>Description:
+- Extracts CORS configuration from the input specification.
+- Constructs a CORS policy if CORS is enabled in the specification. This policy includes configurations such as allowed origins, credentials, and preflight request handling.
+- The preflight request handling includes settings for allowed methods, headers, and the maximum age for caching preflight responses.
+- Returns a dictionary with the complete configuration for the CORS policy.
+- If CORS is not enabled in the specification, returns None.</p>
+<p>Note:
+- Default settings include allowing all origins, a standard set of headers and methods for preflight requests, and a default max age of 3600 seconds for preflight caching.</p>
 </dd></dl>
 
 <dl class="py function">
-<dt class="sig sig-object py" id="apiOperatorKong.check_url">
-<span class="sig-prename descclassname"><span class="pre">apiOperatorKong.</span></span><span class="sig-name descname"><span class="pre">check_url</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">url</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#apiOperatorKong.check_url" title="Link to this definition"></a></dt>
-<dd><p>Checks the accessibility of a URL to ensure it is reachable.
-This function sends a HEAD request to the URL to verify if the URL is accessible without downloading the content. 
-It logs an error if the URL is not reachable or returns an unsuccessful status code.</p>
-<dl class="simple">
-<dt>Parameters:</dt><dd><p>url (str): The URL to check for its accessibility.</p>
-</dd>
-<dt>Returns:</dt><dd><p>bool: True for accessible URL else its False</p>
-</dd>
-</dl>
+<dt class="sig sig-object py" id="apiOperatorApisix.create_api_key_verification_policy">
+<span class="sig-prename descclassname"><span class="pre">apiOperatorApisix.</span></span><span class="sig-name descname"><span class="pre">create_api_key_verification_policy</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">spec</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#apiOperatorApisix.create_api_key_verification_policy" title="Link to this definition"></a></dt>
+<dd><p>Constructs an API key verification policy configuration based on the provided specifications.</p>
+<p>Args:
+spec (dict): Specifications containing the details for the API key verification policy.</p>
+<p>Returns:
+dict or None: A dictionary representing the API key verification policy if enabled; otherwise, returns None.</p>
+<p>Description:
+- Extracts API key verification configuration from the input specification.
+- Constructs an API key verification policy if API key verification is enabled in the specification.
+- Returns a dictionary with the configuration for the API key verification policy.
+- If API key verification is not enabled in the specification, returns None.</p>
+<p>Note:
+- The ‘location’ field specifies where the API key is expected to be found in the request, typically in headers.</p>
 </dd></dl>
 
 <dl class="py function">
-<dt class="sig sig-object py" id="apiOperatorKong.download_template">
-<span class="sig-prename descclassname"><span class="pre">apiOperatorKong.</span></span><span class="sig-name descname"><span class="pre">download_template</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">url</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#apiOperatorKong.download_template" title="Link to this definition"></a></dt>
-<dd><p>Downloads and parses a YAML template from a given URL.
-This function attempts to fetch content from a specified URL expecting it to be a YAML format. It parses the content
-into a list of documents. Using ‘no-cache’ headers to make sure fresh content is fetched always.</p>
-<dl class="simple">
-<dt>Parameters:</dt><dd><p>url (str): The URL from which to download the YAML template.</p>
-</dd>
-<dt>Returns:</dt><dd><p>list or None: A list of YAML documents or None if the download fails or content is invalid.</p>
-</dd>
-</dl>
+<dt class="sig sig-object py" id="apiOperatorApisix.check_url">
+<span class="sig-prename descclassname"><span class="pre">apiOperatorApisix.</span></span><span class="sig-name descname"><span class="pre">check_url</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">url</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#apiOperatorApisix.check_url" title="Link to this definition"></a></dt>
+<dd><p>Checks the accessibility of a URL by making a HEAD request.</p>
+<p>Args:
+url (str): The URL to be checked.</p>
+<p>Returns:
+bool: True if the URL is accessible, False if any error occurs.</p>
+<p>Description:
+- Attempts to make a HEAD request to the specified URL to check its accessibility.
+- Raises an HTTP error if the request returns an unsuccessful status code, indicating that the URL is not reachable or valid.
+- If an exception occurs during the request, logs an error message detailing the issue and returns False.</p>
+<p>Note:
+- This function is used to validate URLs in scenarios where URLs are required for further processing, such as downloading content or validating links in configurations.</p>
 </dd></dl>
 
 <dl class="py function">
-<dt class="sig sig-object py" id="apiOperatorKong.apply_plugins_from_template">
-<span class="sig-prename descclassname"><span class="pre">apiOperatorKong.</span></span><span class="sig-name descname"><span class="pre">apply_plugins_from_template</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">templates</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">namespace</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">owner_references</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#apiOperatorKong.apply_plugins_from_template" title="Link to this definition"></a></dt>
-<dd><p>Applies plugin configurations to the Kubernetes cluster using the provided templates.
-Each template is expected to define a Kubernetes custom object for a plugin. This function manages the lifecycle of
-these plugins, updating existing ones and creating new ones as per requirement.</p>
-<dl class="simple">
-<dt>Parameters:</dt><dd><p>templates (list): A list of dictionaries, each representing a plugin configuration in YAML format.
-namespace (str): The Kubernetes namespace in which the plugins should be managed.
-owner_references (list): A list of owner references to ensure Kubernetes garbage collection is linked to the parent resource.</p>
-</dd>
-<dt>Returns:</dt><dd><p>list: A list of names of the plugins that were successfully created or updated.</p>
-</dd>
-</dl>
+<dt class="sig sig-object py" id="apiOperatorApisix.download_and_append_plugin_names">
+<span class="sig-prename descclassname"><span class="pre">apiOperatorApisix.</span></span><span class="sig-name descname"><span class="pre">download_and_append_plugin_names</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">url</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">plugin_names</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#apiOperatorApisix.download_and_append_plugin_names" title="Link to this definition"></a></dt>
+<dd><p>Downloads plugin configurations from a specified URL and appends their names to a provided list.</p>
+<p>Args:
+url (str): The URL from where to download the plugin configurations.
+plugin_names (list): A list of plugin names to which new names will be appended.</p>
+<p>Returns:
+tuple: A tuple containing the updated list of plugin names and the downloaded plugins, or (None, None) if an error occurs.</p>
+<p>Description:
+- Makes a request to the specified URL with caching disabled to download plugin configurations.
+- Parses the response as YAML to extract plugin details.
+- Appends the names of the plugins to the provided list and prints the updated list and the combined plugin details.
+- Returns the updated list of plugin names and the list of plugins.
+- If an error occurs during the download or parsing, logs an error and returns (None, None).</p>
+<p>Note:
+- This function is useful for dynamically configuring API gateways by downloading and integrating external plugin configurations.</p>
 </dd></dl>
 
 <dl class="py function">
-<dt class="sig sig-object py" id="apiOperatorKong.manage_plugins_from_url">
-<span class="sig-prename descclassname"><span class="pre">apiOperatorKong.</span></span><span class="sig-name descname"><span class="pre">manage_plugins_from_url</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">spec</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">namespace</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">meta</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#apiOperatorKong.manage_plugins_from_url" title="Link to this definition"></a></dt>
-<dd><p>Manages the download and application of plugins from a URL specified in the API resource specification.
-This function checks if a URL is provided and reachable, downloads the corresponding templates, and applies them
-as plugins in the specified namespace. It also handles setting up ownership for automatic cleanup and logs the results.</p>
-<dl class="simple">
-<dt>Parameters:</dt><dd><p>spec (dict): The specification dictionary that may contain a ‘template’ URL.
-name (str): The name of the API resource.
-namespace (str): The Kubernetes namespace where plugins will be applied.
-meta (dict): Metadata about the resource, used for managing ownership in Kubernetes.</p>
-</dd>
-<dt>Returns:</dt><dd><p>list: A list of plugin names that were applied from the URL in template in CR.</p>
-</dd>
-</dl>
+<dt class="sig sig-object py" id="apiOperatorApisix.combine_all_policies_with_plugins">
+<span class="sig-prename descclassname"><span class="pre">apiOperatorApisix.</span></span><span class="sig-name descname"><span class="pre">combine_all_policies_with_plugins</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">spec</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">plugin_names</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">plugins</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#apiOperatorApisix.combine_all_policies_with_plugins" title="Link to this definition"></a></dt>
+<dd><p>Combines API management policies created from specifications with existing plugin configurations.</p>
+<p>Args:
+spec (dict): Specifications that may include settings for various API management policies.
+plugin_names (list): A list of plugin names initially provided or derived from another part of the system.
+plugins (list): A list of existing plugin configurations.</p>
+<p>Returns:
+tuple: A tuple containing two lists: updated plugin names and their corresponding plugin configurations.</p>
+<p>Description:
+- Initializes lists to collect names and configurations of plugins derived from custom resource definitions (CRDs).
+- Iterates over a list of policy creator functions, each designed to generate a specific type of API management policy from the given specifications.
+- For each policy, if it is successfully created, adds its name to the list of plugin names and its configuration to the list of plugins.
+- Combines these newly created policy configurations with any existing plugin names and configurations.
+- Returns the combined lists of plugin names and configurations, reflecting an integrated set of API management tools.</p>
+<p>Note:
+- The function leverages policy creators for rate limiting, quota management, OAS validation, CORS, and API key verification.
+- This function is crucial for dynamically constructing a comprehensive set of API management plugins based on both static configuration and dynamic specifications.</p>
 </dd></dl>
 
 <dl class="py function">
-<dt class="sig sig-object py" id="apiOperatorKong.delete_api_lifecycle">
-<span class="sig-prename descclassname"><span class="pre">apiOperatorKong.</span></span><span class="sig-name descname"><span class="pre">delete_api_lifecycle</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">meta</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">namespace</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#apiOperatorKong.delete_api_lifecycle" title="Link to this definition"></a></dt>
-<dd><p>Handles the deletion event of an API resource and logs the expected cascading deletions.
-This function logs the deletion of an ‘ExposedAPI’ resource and the expected automatic deletion of its associated
-‘HTTPRoute’ due to Kubernetes ownership links that were created using kopf.adopt().</p>
-<dl class="simple">
-<dt>Parameters:</dt><dd><p>meta (dict): Metadata about the resource, which includes details like the resource’s unique identifier.
-name (str): The name of the API resource that was deleted.
-namespace (str): The Kubernetes namespace from which the resource was deleted.
-<a href="#id11"><span class="problematic" id="id12">**</span></a>kwargs: Arbitrary keyword arguments, primarily used for additional logging or context.</p>
-</dd>
-<dt>Returns:</dt><dd><p>None</p>
-</dd>
-</dl>
+<dt class="sig sig-object py" id="apiOperatorApisix.apply_plugins_from_template">
+<span class="sig-prename descclassname"><span class="pre">apiOperatorApisix.</span></span><span class="sig-name descname"><span class="pre">apply_plugins_from_template</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">namespace</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">api_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">spec</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">url</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#apiOperatorApisix.apply_plugins_from_template" title="Link to this definition"></a></dt>
+<dd><p>Applies plugin configurations to an API from a specified template URL and CRD-based policies.</p>
+<p>Args:
+namespace (str): The Kubernetes namespace where the plugin configurations will be applied.
+api_name (str): The name of the API to which the plugins are being applied.
+spec (dict): Specifications for creating policy-based plugins.
+url (str, optional): The URL from which to download additional plugin configurations.</p>
+<p>Returns:
+list or None: A list containing the name of the modified plugin configuration if successful, None otherwise.</p>
+<p>Description:
+- Initializes empty lists for plugin names and plugins.
+- If a URL is provided, downloads and appends additional plugin configurations.
+- Combines these plugins with CRD-based policies using the <cite>combine_all_policies_with_plugins</cite> function.
+- Constructs an <cite>ApisixPluginConfig</cite> Kubernetes custom object and attempts to either create or update it in the specified namespace.
+- Handles Kubernetes API exceptions by logging errors and providing feedback on the success or failure of the operation.</p>
+<p>Note:
+- This function is critical for deploying combined plugin configurations to APIs, facilitating dynamic API gateway management.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="apiOperatorApisix.patch_apisixroute_with_plugin_config">
+<span class="sig-prename descclassname"><span class="pre">apiOperatorApisix.</span></span><span class="sig-name descname"><span class="pre">patch_apisixroute_with_plugin_config</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">namespace</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">apisixroute_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">plugin_config_name</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#apiOperatorApisix.patch_apisixroute_with_plugin_config" title="Link to this definition"></a></dt>
+<dd><p>Updates an existing ApisixRoute to include a specific plugin configuration.</p>
+<p>Args:
+namespace (str): The Kubernetes namespace where the ApisixRoute is located.
+apisixroute_name (str): The name of the ApisixRoute to be patched.
+plugin_config_name (str): The name of the plugin configuration to apply to the ApisixRoute.</p>
+<p>Returns:
+None: This function does not return a value but logs the outcome of the operation.</p>
+<p>Description:
+- Connects to the Kubernetes API and attempts to fetch the existing ApisixRoute specified by <cite>apisixroute_name</cite>.
+- If the route is successfully retrieved, it updates the ‘plugin_config_name’ within the ‘http’ blocks of the route’s specification.
+- Applies the updated configuration using a strategic merge patch to the existing ApisixRoute.
+- Logs informational messages regarding the successful patching of the route, or error messages if any part of the process fails.</p>
+<p>Note:
+- Uses error handling to manage and log exceptions related to fetching or patching the ApisixRoute, ensuring that all potential issues are reported.
+- The strategic merge patch method is used to ensure that changes are applied correctly without replacing the entire route configuration.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="apiOperatorApisix.delete_api_lifecycle">
+<span class="sig-prename descclassname"><span class="pre">apiOperatorApisix.</span></span><span class="sig-name descname"><span class="pre">delete_api_lifecycle</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">meta</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">namespace</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#apiOperatorApisix.delete_api_lifecycle" title="Link to this definition"></a></dt>
+<dd><p>Deletes API lifecycle resources, including ApisixRoutes and ApisixPluginConfigs, for a specified API in a Kubernetes namespace.</p>
+<p>Args:
+meta (dict): Metadata associated with the API lifecycle resources.
+name (str): The name of the API whose lifecycle resources are to be deleted.
+namespace (str): The Kubernetes namespace where the resources are located. Though provided, not directly used due to predefined ‘istio-ingress’.
+kwargs: Arbitrary keyword arguments that can be used for additional configurations or extensions.</p>
+<p>Returns:
+None: This function does not return a value but logs the outcome of the deletion operations.</p>
+<p>Description:
+- Logs the initiation of the deletion process for the API.
+- Defines the names of the resources associated with the API (ApisixRoute and ApisixPluginConfig) using a naming convention based on the API’s name.
+- Attempts to delete the ApisixRoute and ApisixPluginConfig from the ‘istio-ingress’ namespace.
+- Handles exceptions related to Kubernetes API interactions, logging errors if deletions fail.</p>
+<p>Note:
+- Once referencegrant feature becomes available than this deletion function will be removed as it will be automatically handled using kopf.adopt and garbage collection
+- All deletions are attempted within the ‘istio-ingress’ namespace, regardless of the ‘namespace’ argument provided, reflecting a typical use case in an Istio-managed environment.
+- The function uses the ‘apisix.apache.org’ group and ‘v2’ version for Kubernetes custom objects, which are common in APISIX integrations.
+- This function is vital for cleaning up resources when an API is decommissioned or when its lifecycle management needs to be reset.</p>
 </dd></dl>
 
 </section>
@@ -348,7 +408,7 @@ namespace (str): The Kubernetes namespace from which the resource was deleted.
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="README.html" class="btn btn-neutral float-left" title="&lt;no title&gt;" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="README.html" class="btn btn-neutral float-left" title="Kubernetes Kong API Lifecycle Management Operator" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
         <a href="../apiOperatorApig/modules.html" class="btn btn-neutral float-right" title="API Operator: WhaleCloud API Gateway" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
