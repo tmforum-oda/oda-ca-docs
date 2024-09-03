@@ -161,10 +161,10 @@
 </li>
       <li><a href="canvas/source/operators/componentOperator/componentOperator.html#componentOperator.adopt_service">adopt_service() (in module componentOperator)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="canvas/source/operators/componentOperator/componentOperator.html#componentOperator.adopt_serviceaccount">adopt_serviceaccount() (in module componentOperator)</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="canvas/source/operators/componentOperator/componentOperator.html#componentOperator.adopt_statefulset">adopt_statefulset() (in module componentOperator)</a>
 </li>
       <li><a href="canvas/source/operators/apiOperatorApig/apiOperatorApig.html#apiOperatorApig.apigBind">apigBind() (in module apiOperatorApig)</a>
@@ -179,6 +179,13 @@
 </li>
       </ul></li>
       <li>
+    apiOperatorApisix
+
+      <ul>
+        <li><a href="canvas/source/operators/apiOperatorApisix/apiOperatorApisix.html#module-apiOperatorApisix">module</a>
+</li>
+      </ul></li>
+      <li>
     apiOperatorIstio
 
       <ul>
@@ -189,20 +196,30 @@
     apiOperatorKong
 
       <ul>
-        <li><a href="canvas/source/operators/apiOperatorApisix/apiOperatorApisix.html#module-apiOperatorKong">module</a>, <a href="canvas/source/operators/apiOperatorKong/apiOperatorKong.html#module-apiOperatorKong">[1]</a>
+        <li><a href="canvas/source/operators/apiOperatorKong/apiOperatorKong.html#module-apiOperatorKong">module</a>
 </li>
       </ul></li>
       <li><a href="canvas/source/operators/apiOperatorIstio/apiOperatorIstio.html#apiOperatorIstio.apiStatus">apiStatus() (in module apiOperatorIstio)</a>
 </li>
-      <li><a href="canvas/source/operators/apiOperatorApisix/apiOperatorApisix.html#apiOperatorKong.apply_plugins_from_template">apply_plugins_from_template() (in module apiOperatorKong)</a>, <a href="canvas/source/operators/apiOperatorKong/apiOperatorKong.html#apiOperatorKong.apply_plugins_from_template">[1]</a>
+      <li><a href="canvas/source/operators/apiOperatorApisix/apiOperatorApisix.html#apiOperatorApisix.apply_plugins_from_template">apply_plugins_from_template() (in module apiOperatorApisix)</a>
+
+      <ul>
+        <li><a href="canvas/source/operators/apiOperatorKong/apiOperatorKong.html#apiOperatorKong.apply_plugins_from_template">(in module apiOperatorKong)</a>
 </li>
+      </ul></li>
   </ul></td>
 </tr></table>
 
 <h2 id="C">C</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="canvas/source/operators/apiOperatorApisix/apiOperatorApisix.html#apiOperatorKong.check_url">check_url() (in module apiOperatorKong)</a>, <a href="canvas/source/operators/apiOperatorKong/apiOperatorKong.html#apiOperatorKong.check_url">[1]</a>
+      <li><a href="canvas/source/operators/apiOperatorApisix/apiOperatorApisix.html#apiOperatorApisix.check_url">check_url() (in module apiOperatorApisix)</a>
+
+      <ul>
+        <li><a href="canvas/source/operators/apiOperatorKong/apiOperatorKong.html#apiOperatorKong.check_url">(in module apiOperatorKong)</a>
+</li>
+      </ul></li>
+      <li><a href="canvas/source/operators/apiOperatorApisix/apiOperatorApisix.html#apiOperatorApisix.combine_all_policies_with_plugins">combine_all_policies_with_plugins() (in module apiOperatorApisix)</a>
 </li>
       <li>
     componentOperator
@@ -217,11 +234,25 @@
 </li>
       <li><a href="canvas/source/operators/componentOperator/componentOperator.html#componentOperator.coreDependentAPIs">coreDependentAPIs() (in module componentOperator)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="canvas/source/operators/apiOperatorApisix/apiOperatorApisix.html#apiOperatorApisix.create_api_key_verification_policy">create_api_key_verification_policy() (in module apiOperatorApisix)</a>
+</li>
       <li><a href="canvas/source/operators/securityController/secconkeycloak.html#secconkeycloak.Keycloak.create_client">create_client() (secconkeycloak.Keycloak method)</a>
 </li>
-      <li><a href="canvas/source/operators/apiOperatorApisix/apiOperatorApisix.html#apiOperatorKong.create_or_update_ingress">create_or_update_ingress() (in module apiOperatorKong)</a>, <a href="canvas/source/operators/apiOperatorKong/apiOperatorKong.html#apiOperatorKong.create_or_update_ingress">[1]</a>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="canvas/source/operators/apiOperatorApisix/apiOperatorApisix.html#apiOperatorApisix.create_cors_policy">create_cors_policy() (in module apiOperatorApisix)</a>
+</li>
+      <li><a href="canvas/source/operators/apiOperatorApisix/apiOperatorApisix.html#apiOperatorApisix.create_oas_validation_policy">create_oas_validation_policy() (in module apiOperatorApisix)</a>
+</li>
+      <li><a href="canvas/source/operators/apiOperatorApisix/apiOperatorApisix.html#apiOperatorApisix.create_or_update_ingress">create_or_update_ingress() (in module apiOperatorApisix)</a>
+
+      <ul>
+        <li><a href="canvas/source/operators/apiOperatorKong/apiOperatorKong.html#apiOperatorKong.create_or_update_ingress">(in module apiOperatorKong)</a>
+</li>
+      </ul></li>
+      <li><a href="canvas/source/operators/apiOperatorApisix/apiOperatorApisix.html#apiOperatorApisix.create_quota_policy">create_quota_policy() (in module apiOperatorApisix)</a>
+</li>
+      <li><a href="canvas/source/operators/apiOperatorApisix/apiOperatorApisix.html#apiOperatorApisix.create_rate_limiting_policy">create_rate_limiting_policy() (in module apiOperatorApisix)</a>
 </li>
       <li><a href="canvas/source/operators/apiOperatorIstio/apiOperatorIstio.html#apiOperatorIstio.createOrPatchDataDogAnnotation">createOrPatchDataDogAnnotation() (in module apiOperatorIstio)</a>
 </li>
@@ -243,11 +274,17 @@
 </li>
       <li><a href="canvas/source/operators/securityController/secconkeycloak.html#secconkeycloak.Keycloak.del_role">del_role() (secconkeycloak.Keycloak method)</a>
 </li>
+      <li><a href="canvas/source/operators/apiOperatorApisix/apiOperatorApisix.html#apiOperatorApisix.delete_api_lifecycle">delete_api_lifecycle() (in module apiOperatorApisix)</a>
+
+      <ul>
+        <li><a href="canvas/source/operators/apiOperatorKong/apiOperatorKong.html#apiOperatorKong.delete_api_lifecycle">(in module apiOperatorKong)</a>
+</li>
+      </ul></li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="canvas/source/operators/apiOperatorApisix/apiOperatorApisix.html#apiOperatorKong.delete_api_lifecycle">delete_api_lifecycle() (in module apiOperatorKong)</a>, <a href="canvas/source/operators/apiOperatorKong/apiOperatorKong.html#apiOperatorKong.delete_api_lifecycle">[1]</a>
+      <li><a href="canvas/source/operators/apiOperatorApisix/apiOperatorApisix.html#apiOperatorApisix.download_and_append_plugin_names">download_and_append_plugin_names() (in module apiOperatorApisix)</a>
 </li>
-      <li><a href="canvas/source/operators/apiOperatorApisix/apiOperatorApisix.html#apiOperatorKong.download_template">download_template() (in module apiOperatorKong)</a>, <a href="canvas/source/operators/apiOperatorKong/apiOperatorKong.html#apiOperatorKong.download_template">[1]</a>
+      <li><a href="canvas/source/operators/apiOperatorKong/apiOperatorKong.html#apiOperatorKong.download_template">download_template() (in module apiOperatorKong)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -323,15 +360,19 @@
 <h2 id="M">M</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="canvas/source/operators/apiOperatorApisix/apiOperatorApisix.html#apiOperatorKong.manage_api_lifecycle">manage_api_lifecycle() (in module apiOperatorKong)</a>, <a href="canvas/source/operators/apiOperatorKong/apiOperatorKong.html#apiOperatorKong.manage_api_lifecycle">[1]</a>
+      <li><a href="canvas/source/operators/apiOperatorApisix/apiOperatorApisix.html#apiOperatorApisix.manage_api_lifecycle">manage_api_lifecycle() (in module apiOperatorApisix)</a>
+
+      <ul>
+        <li><a href="canvas/source/operators/apiOperatorKong/apiOperatorKong.html#apiOperatorKong.manage_api_lifecycle">(in module apiOperatorKong)</a>
 </li>
-      <li><a href="canvas/source/operators/apiOperatorApisix/apiOperatorApisix.html#apiOperatorKong.manage_apiauthentication">manage_apiauthentication() (in module apiOperatorKong)</a>, <a href="canvas/source/operators/apiOperatorKong/apiOperatorKong.html#apiOperatorKong.manage_apiauthentication">[1]</a>
+      </ul></li>
+      <li><a href="canvas/source/operators/apiOperatorKong/apiOperatorKong.html#apiOperatorKong.manage_apiauthentication">manage_apiauthentication() (in module apiOperatorKong)</a>
 </li>
-      <li><a href="canvas/source/operators/apiOperatorApisix/apiOperatorApisix.html#apiOperatorKong.manage_cors">manage_cors() (in module apiOperatorKong)</a>, <a href="canvas/source/operators/apiOperatorKong/apiOperatorKong.html#apiOperatorKong.manage_cors">[1]</a>
+      <li><a href="canvas/source/operators/apiOperatorKong/apiOperatorKong.html#apiOperatorKong.manage_cors">manage_cors() (in module apiOperatorKong)</a>
 </li>
-      <li><a href="canvas/source/operators/apiOperatorApisix/apiOperatorApisix.html#apiOperatorKong.manage_plugins_from_url">manage_plugins_from_url() (in module apiOperatorKong)</a>, <a href="canvas/source/operators/apiOperatorKong/apiOperatorKong.html#apiOperatorKong.manage_plugins_from_url">[1]</a>
+      <li><a href="canvas/source/operators/apiOperatorKong/apiOperatorKong.html#apiOperatorKong.manage_plugins_from_url">manage_plugins_from_url() (in module apiOperatorKong)</a>
 </li>
-      <li><a href="canvas/source/operators/apiOperatorApisix/apiOperatorApisix.html#apiOperatorKong.manage_ratelimit">manage_ratelimit() (in module apiOperatorKong)</a>, <a href="canvas/source/operators/apiOperatorKong/apiOperatorKong.html#apiOperatorKong.manage_ratelimit">[1]</a>
+      <li><a href="canvas/source/operators/apiOperatorKong/apiOperatorKong.html#apiOperatorKong.manage_ratelimit">manage_ratelimit() (in module apiOperatorKong)</a>
 </li>
       <li><a href="canvas/source/operators/componentOperator/componentOperator.html#componentOperator.managementAPIs">managementAPIs() (in module componentOperator)</a>
 </li>
@@ -341,9 +382,11 @@
       <ul>
         <li><a href="canvas/source/operators/apiOperatorApig/apiOperatorApig.html#module-apiOperatorApig">apiOperatorApig</a>
 </li>
+        <li><a href="canvas/source/operators/apiOperatorApisix/apiOperatorApisix.html#module-apiOperatorApisix">apiOperatorApisix</a>
+</li>
         <li><a href="canvas/source/operators/apiOperatorIstio/apiOperatorIstio.html#module-apiOperatorIstio">apiOperatorIstio</a>
 </li>
-        <li><a href="canvas/source/operators/apiOperatorApisix/apiOperatorApisix.html#module-apiOperatorKong">apiOperatorKong</a>, <a href="canvas/source/operators/apiOperatorKong/apiOperatorKong.html#module-apiOperatorKong">[1]</a>
+        <li><a href="canvas/source/operators/apiOperatorKong/apiOperatorKong.html#module-apiOperatorKong">apiOperatorKong</a>
 </li>
         <li><a href="canvas/source/operators/componentOperator/componentOperator.html#module-componentOperator">componentOperator</a>
 </li>
@@ -364,6 +407,8 @@
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="canvas/source/operators/apiOperatorApisix/apiOperatorApisix.html#apiOperatorApisix.patch_apisixroute_with_plugin_config">patch_apisixroute_with_plugin_config() (in module apiOperatorApisix)</a>
+</li>
       <li><a href="canvas/source/operators/componentOperator/componentOperator.html#componentOperator.publishedEvents">publishedEvents() (in module componentOperator)</a>
 </li>
   </ul></td>
@@ -427,7 +472,7 @@
 <h2 id="U">U</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="canvas/source/operators/apiOperatorApisix/apiOperatorApisix.html#apiOperatorKong.update_httproute_annotations">update_httproute_annotations() (in module apiOperatorKong)</a>, <a href="canvas/source/operators/apiOperatorKong/apiOperatorKong.html#apiOperatorKong.update_httproute_annotations">[1]</a>
+      <li><a href="canvas/source/operators/apiOperatorKong/apiOperatorKong.html#apiOperatorKong.update_httproute_annotations">update_httproute_annotations() (in module apiOperatorKong)</a>
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>

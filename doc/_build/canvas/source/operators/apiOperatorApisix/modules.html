@@ -22,7 +22,7 @@
     <script src="../../../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../../../genindex.html" />
     <link rel="search" title="Search" href="../../../../search.html" />
-    <link rel="next" title="&lt;no title&gt;" href="README.html" />
+    <link rel="next" title="Kubernetes Kong API Lifecycle Management Operator" href="README.html" />
     <link rel="prev" title="apiOperatorIstio module" href="../apiOperatorKong/apiOperatorKong.html" /> 
 </head>
 
@@ -79,6 +79,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../apiOperatorIstio/modules.html">API Operator: Istio</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../apiOperatorKong/modules.html">API Operator: Kong</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">API Operator: Apisix</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="README.html">Kubernetes Kong API Lifecycle Management Operator</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#python-modules">Python modules</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="apiOperatorApisix.html">apiOperatorIstio module</a></li>
 </ul>
@@ -138,23 +139,34 @@
 <h1>API Operator: Apisix<a class="headerlink" href="#api-operator-apisix" title="Link to this heading"></a></h1>
 <p>This is the Reference Implementation Operator for API CRD’s using a Apisix API gateway.</p>
 <div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="README.html">Kubernetes Kong API Lifecycle Management Operator</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="README.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="README.html#key-features">Key Features</a></li>
+<li class="toctree-l2"><a class="reference internal" href="README.html#usage">Usage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="README.html#testing-kopf-module-from-workstation">Testing KOPF module from workstation</a></li>
+</ul>
+</li>
+</ul>
 </div>
 <section id="python-modules">
 <h2>Python modules<a class="headerlink" href="#python-modules" title="Link to this heading"></a></h2>
 <div class="toctree-wrapper compound">
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="apiOperatorApisix.html">apiOperatorIstio module</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="apiOperatorApisix.html#apiOperatorKong.manage_api_lifecycle"><code class="docutils literal notranslate"><span class="pre">manage_api_lifecycle()</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="apiOperatorApisix.html#apiOperatorKong.create_or_update_ingress"><code class="docutils literal notranslate"><span class="pre">create_or_update_ingress()</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="apiOperatorApisix.html#apiOperatorKong.manage_ratelimit"><code class="docutils literal notranslate"><span class="pre">manage_ratelimit()</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="apiOperatorApisix.html#apiOperatorKong.manage_apiauthentication"><code class="docutils literal notranslate"><span class="pre">manage_apiauthentication()</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="apiOperatorApisix.html#apiOperatorKong.manage_cors"><code class="docutils literal notranslate"><span class="pre">manage_cors()</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="apiOperatorApisix.html#apiOperatorKong.update_httproute_annotations"><code class="docutils literal notranslate"><span class="pre">update_httproute_annotations()</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="apiOperatorApisix.html#apiOperatorKong.check_url"><code class="docutils literal notranslate"><span class="pre">check_url()</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="apiOperatorApisix.html#apiOperatorKong.download_template"><code class="docutils literal notranslate"><span class="pre">download_template()</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="apiOperatorApisix.html#apiOperatorKong.apply_plugins_from_template"><code class="docutils literal notranslate"><span class="pre">apply_plugins_from_template()</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="apiOperatorApisix.html#apiOperatorKong.manage_plugins_from_url"><code class="docutils literal notranslate"><span class="pre">manage_plugins_from_url()</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="apiOperatorApisix.html#apiOperatorKong.delete_api_lifecycle"><code class="docutils literal notranslate"><span class="pre">delete_api_lifecycle()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="apiOperatorApisix.html#apiOperatorApisix.manage_api_lifecycle"><code class="docutils literal notranslate"><span class="pre">manage_api_lifecycle()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="apiOperatorApisix.html#apiOperatorApisix.create_or_update_ingress"><code class="docutils literal notranslate"><span class="pre">create_or_update_ingress()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="apiOperatorApisix.html#apiOperatorApisix.create_rate_limiting_policy"><code class="docutils literal notranslate"><span class="pre">create_rate_limiting_policy()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="apiOperatorApisix.html#apiOperatorApisix.create_quota_policy"><code class="docutils literal notranslate"><span class="pre">create_quota_policy()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="apiOperatorApisix.html#apiOperatorApisix.create_oas_validation_policy"><code class="docutils literal notranslate"><span class="pre">create_oas_validation_policy()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="apiOperatorApisix.html#apiOperatorApisix.create_cors_policy"><code class="docutils literal notranslate"><span class="pre">create_cors_policy()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="apiOperatorApisix.html#apiOperatorApisix.create_api_key_verification_policy"><code class="docutils literal notranslate"><span class="pre">create_api_key_verification_policy()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="apiOperatorApisix.html#apiOperatorApisix.check_url"><code class="docutils literal notranslate"><span class="pre">check_url()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="apiOperatorApisix.html#apiOperatorApisix.download_and_append_plugin_names"><code class="docutils literal notranslate"><span class="pre">download_and_append_plugin_names()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="apiOperatorApisix.html#apiOperatorApisix.combine_all_policies_with_plugins"><code class="docutils literal notranslate"><span class="pre">combine_all_policies_with_plugins()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="apiOperatorApisix.html#apiOperatorApisix.apply_plugins_from_template"><code class="docutils literal notranslate"><span class="pre">apply_plugins_from_template()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="apiOperatorApisix.html#apiOperatorApisix.patch_apisixroute_with_plugin_config"><code class="docutils literal notranslate"><span class="pre">patch_apisixroute_with_plugin_config()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="apiOperatorApisix.html#apiOperatorApisix.delete_api_lifecycle"><code class="docutils literal notranslate"><span class="pre">delete_api_lifecycle()</span></code></a></li>
 </ul>
 </li>
 </ul>
@@ -167,7 +179,7 @@
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="../apiOperatorKong/apiOperatorKong.html" class="btn btn-neutral float-left" title="apiOperatorIstio module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="README.html" class="btn btn-neutral float-right" title="&lt;no title&gt;" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="README.html" class="btn btn-neutral float-right" title="Kubernetes Kong API Lifecycle Management Operator" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

@@ -1,5 +1,5 @@
 API Operator: Apisix
-===================
+====================
 
 This is the Reference Implementation Operator for API CRD's using a Apisix API gateway.
 

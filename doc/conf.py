@@ -121,6 +121,7 @@ copyImagesAndMarkdown('../../oda-canvas/source/operators/apiOperatorApig', './ca
 copyImagesAndMarkdown('../../oda-canvas/source/operators/securityController', './canvas/source/operators/securityController')
 copyImagesAndMarkdown('../../oda-canvas/source/operators/componentOperator/sequenceDiagrams', './canvas/source/operators/componentOperator/sequenceDiagrams')
 copyImagesAndMarkdown('../../oda-canvas/source/operators/apiOperatorIstio/sequenceDiagrams', './canvas/source/operators/apiOperatorIstio/sequenceDiagrams')
+copyImagesAndMarkdown('../../oda-canvas/source/operators/apiOperatorApisix/sequenceDiagrams', './canvas/source/operators/apiOperatorApisix/sequenceDiagrams')
 copyImagesAndMarkdown('../../oda-canvas/source/operators/apiOperatorApig/sequenceDiagrams', './canvas/source/operators/apiOperatorApig/sequenceDiagrams')
 copyImagesAndMarkdown('../../oda-canvas/source/operators/apiOperatorKong/sequenceDiagrams', './canvas/source/operators/apiOperatorKong/sequenceDiagrams')
 copyImagesAndMarkdown('../../oda-canvas/source/operators/securityController/sequenceDiagrams', './canvas/source/operators/securityController/sequenceDiagrams')
@@ -135,6 +136,10 @@ copyImagesAndMarkdown('../../oda-canvas/usecase-library/pumlFiles', './canvas/us
 copyImagesAndMarkdown('../../oda-canvas/feature-definition-and-test-kit', './canvas/feature-definition-and-test-kit')
 copyImagesAndMarkdown('../../oda-canvas/feature-definition-and-test-kit/images', './canvas/feature-definition-and-test-kit/images')
 copyImagesAndMarkdown('../../oda-canvas/installation', './canvas/installation')
+
+# Delete files that are not needed ./docs/ODACanvasDesignGuidelines.md ./docs/README.md 
+os.remove('./canvas/source/webhooks/system-tests/README.md')
+os.remove('./canvas/source/webhooks/unit-tests/README.md')
 
 # Base Documentation files
 copyImagesAndMarkdown('../', './docs')
@@ -169,4 +174,4 @@ copyImagesAndMarkdown('../../oda-canvas', './canvas')
 copyImagesAndMarkdown('../../oda-component-ctk/', './ctk')
 
 # Docs folder and developer subfolder
-copyImagesAndMarkdown('../../oda-canvas/docs/Developer', './docs/developer')
+copyImagesAndMarkdown('../../oda-canvas/docs/developer', './docs/developer')
