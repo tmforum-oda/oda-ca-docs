@@ -126,8 +126,6 @@ copyImagesAndMarkdown('../../oda-canvas/source/operators/apiOperatorApig/sequenc
 copyImagesAndMarkdown('../../oda-canvas/source/operators/apiOperatorKong/sequenceDiagrams', './canvas/source/operators/apiOperatorKong/sequenceDiagrams')
 copyImagesAndMarkdown('../../oda-canvas/source/operators/securityController/sequenceDiagrams', './canvas/source/operators/securityController/sequenceDiagrams')
 copyImagesAndMarkdown('../../oda-canvas/source/webhooks', './canvas/source/webhooks')
-copyImagesAndMarkdown('../../oda-canvas/source/webhooks/system-tests', './canvas/source/webhooks/system-tests')
-copyImagesAndMarkdown('../../oda-canvas/source/webhooks/unit-tests', './canvas/source/webhooks/unit-tests')
 copyImagesAndMarkdown('../../oda-canvas/source/utilities/canvas-log-viewer', './canvas/source/utilities')
 copyImagesAndMarkdown('../../oda-canvas/source/utilities/component-viewer', './canvas/source/utilities')
 copyImagesAndMarkdown('../../oda-canvas/source/utilities', './canvas/source/utilities')
@@ -136,10 +134,6 @@ copyImagesAndMarkdown('../../oda-canvas/usecase-library/pumlFiles', './canvas/us
 copyImagesAndMarkdown('../../oda-canvas/feature-definition-and-test-kit', './canvas/feature-definition-and-test-kit')
 copyImagesAndMarkdown('../../oda-canvas/feature-definition-and-test-kit/images', './canvas/feature-definition-and-test-kit/images')
 copyImagesAndMarkdown('../../oda-canvas/installation', './canvas/installation')
-
-# Delete files that are not needed ./docs/ODACanvasDesignGuidelines.md ./docs/README.md 
-os.remove('./canvas/source/webhooks/system-tests/README.md')
-os.remove('./canvas/source/webhooks/unit-tests/README.md')
 
 # Base Documentation files
 copyImagesAndMarkdown('../', './docs')
