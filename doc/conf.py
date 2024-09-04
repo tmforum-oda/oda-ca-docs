@@ -175,3 +175,4 @@ copyImagesAndMarkdown('../../oda-component-ctk/', './ctk')
 
 # Docs folder and developer subfolder
 copyImagesAndMarkdown('../../oda-canvas/docs/developer', './docs/developer')
+copyImagesAndMarkdown('../../oda-canvas/docs/developer/images', './docs/developer/images')
