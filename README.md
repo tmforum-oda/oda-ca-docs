@@ -8,8 +8,8 @@ The documentation is published as GitHub pages from the /docs folder. The docume
 This area contains:
 
 * [Playbook](Playbook.md)
-* [Component Design Guidelines](ODAComponentDesignGuidelines.md)
-* [Contributions Guide](ContributionsGuide.md)
+* [Component Design Guidelines](ODAComponentDesignGuidelines.md) 
+* [Contributions Guide](ContributionsGuide.md) 
 * [Documentation Process](DocumentationProcess.md) 
       
   
