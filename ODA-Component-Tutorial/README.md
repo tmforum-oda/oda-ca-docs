@@ -2,21 +2,20 @@
 
 This tutorial shows the complete process to package, test and deploy an ODA-Component, using the nodejs reference implementation of the TMF637 Product Inventory Management API as the source code. You should be able to follow the process below using an existing software application as source. The process should work for simple applications - it is intended as a tutorial to get you started. For more complex applications you may have to decompose to multiple containers/micro-services and even multiple ODA-Components.
 
-> **Note:** This tutorial has been updated for v1beta3 version of the ODA component speficiation
+> **Note:** This tutorial has been updated for v1.0 version of the ODA component speficiation
 > and should be deployed unto an ODA Canvas environment that supports this version of the specification.
 
 <!-- There is a video of this tutorial at: [ODA Component Tutorial Video walkthrough](https://youtu.be/wZJ8d5uQ7_8) --->
 
-For an introdution to the Open-Digital Architecture component model, take a look at the recording from the Digital Transformation World Series conference:
-
-![https://www.youtube.com/watch?v=e_m-nnKvWIs](./images/DTW-Video.png)
-
-[DTW World Series Masterclass:Leveraging ODA and Open APIs to achieve digital transformation](https://www.youtube.com/watch?v=e_m-nnKvWIs)
-
+## Prerequisites
+/**
+*  ODA Canvas runtime environment is installed. The installation instruction is available at:
+*  Access to Open API Reference implementation  
+*/
 
 ## Step 1. Download Reference Implementation
 
-We are using one of the Reference implementations of the Open-APIs as a starting point. Go to the open-API Table at [https://projects.tmforum.org/wiki/display/API/Open+API+Table](https://projects.tmforum.org/wiki/display/API/Open+API+Table) and download one of the reference implmentation `.zip` files (we are using the Product Inventory Management API version 4, but you can choose any).
+We are using one of the Reference implementations of the Open-APIs as a starting point. Go to the open-API Directory at [https://www.tmforum.org/oda/open-apis/directory](https://www.tmforum.org/oda/open-apis/directory) and download one of the reference implmentation `.zip` files (we are using the Product Inventory Management API version 4 (### TBC if version 5 is used ###), but you can choose any).
 
 ![<img src="https://projects.tmforum.org/wiki/display/API/Open+API+Table">](./images/Open-API-Table.png)
 
