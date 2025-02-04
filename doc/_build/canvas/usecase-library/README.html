@@ -22,8 +22,8 @@
     <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Open Digital Architecture - Controllers/Operators" href="../source/operators/index.html" />
-    <link rel="prev" title="ODA Canvas Design" href="../Canvas-design.html" /> 
+    <link rel="next" title="Usecase List" href="../Usecases.html" />
+    <link rel="prev" title="Event based integration design" href="../Event-based-integration-design.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -53,7 +53,7 @@
 <p class="caption" role="heading"><span class="caption-text">Tutorials:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../docs/Observability-Tutorial/README.html">Tutorial to deploy and observe a running component</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../docs/ODAComponentTutorial/README.html">Tutorial to build ODA-Component from Open-API Reference Implemenation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../docs/ODAComponentTutorial/README.html">Tutorial to build ODA-Component from Open-API Reference Implementation</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Component:</span></p>
 <ul>
@@ -61,23 +61,40 @@
 <li class="toctree-l1"><a class="reference internal" href="../../ctk/README.html">ODA Component - CTK</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Canvas:</span></p>
-<ul class="current">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../README.html">Open Digital Architecture Canvas</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../installation/README.html">ODA Canvas installation</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Canvas Design:</span></p>
+<ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../Canvas-design.html">ODA Canvas Design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Design-Epics.html">Design Epics</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">ODA Canvas - use-case library</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#oda-software-operators">ODA Software Operators</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#use-case-list">Use-case list</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="../Usecases.html">Usecase List</a></li>
+<li class="toctree-l1"><a class="reference internal" href="use-case-naming-conventions.html">Use case naming conventions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../source/README.html">ODA Canvas source code</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../source/operators/index.html">Open Digital Architecture - Controllers/Operators</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../source/webhooks-and-utilities.html">Webuooks and Utilities</a></li>
 </ul>
-<p class="caption" role="heading"><span class="caption-text">Troubleshooting Guide:</span></p>
+<p class="caption" role="heading"><span class="caption-text">Feature Tests:</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../docs/TroubleshootingGuide/index.html">ODA-CA Troubleshooting Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../feature-definition-and-test-kit/README.html">ODA Canvas Features and Test Kit</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../feature-definition-and-test-kit/README.html#list-of-bdd-features">List of BDD Features</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../feature-definition-and-test-kit/Executing-tests.html">Installing and executing the BDD tests</a></li>
 </ul>
-<p class="caption" role="heading"><span class="caption-text">Contributions Guide:</span></p>
+<p class="caption" role="heading"><span class="caption-text">Contributions and Troubleshooting:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../docs/ContributionsGuide.html">Contribution guidance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../docs/TroubleshootingGuide/index.html">Troubleshooting Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../docs/developer/work-with-dockerimages.html">Developer How-Tos: Work with Dockerimages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../docs/developer/work-with-dockerimages.html#summary">Summary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../docs/developer/work-with-dockerimages.html#how-to-add-a-new-dockerimage">How-To add a new Dockerimage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../devcontainer.html">ODA Canvas Development Environment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../source/operators/Installing%20KOPF%20development%20environment.html">Installing KOPF (tested in GKE)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../docs/DocumentationProcess.html">Documentation Process</a></li>
 </ul>
 
@@ -122,8 +139,8 @@
 </thead>
 <tbody>
 <tr>
-<td>Component Management</td>
-<td>The Component operator manages the de-composition of an ODA component into APIs and Events (that are processed by their corresponding operators).</td>
+<td>Component Lifecycle Management</td>
+<td>The Component Lifecycle Management operator manages the de-composition of an ODA component into APIs, Events and other resources (that are processed by their corresponding operators).</td>
 </tr>
 <tr>
 <td>API Management</td>
@@ -134,11 +151,11 @@
 <td>Configures event based integration to allow components to use asynchronous events (in addition to Rest based API integration).</td>
 </tr>
 <tr>
-<td>Identity Management</td>
+<td>Identity Config</td>
 <td>Configures an Identity Management Service based on requirements defined in ODA Components.</td>
 </tr>
 <tr>
-<td>Observability Management</td>
+<td>Observability Config</td>
 <td>Configures observabiliy services for both technical and business metrics and events. Enables alarming, tracing and root-cause analysis of issues.</td>
 </tr>
 <tr>
@@ -146,11 +163,11 @@
 <td>Configures a secrets vault to enable ODA Components to store secrets in a secure way</td>
 </tr>
 <tr>
-<td>Carbon Management</td>
+<td>Carbon Control</td>
 <td>Configures a services to analyze carbon (and energy) usage of ODA Components and to provide API services to enable components to make intelligent decisions to minimise Carbon usage.</td>
 </tr>
 <tr>
-<td>Cost Management</td>
+<td>Cost Control</td>
 <td>Configures services for cost control for both cloud consumption and license costs.</td>
 </tr>
 <tr>
@@ -176,9 +193,9 @@
 <li><p>UC010: <a class="reference internal" href="UC010-External-Authentication.html"><span class="std std-doc">External Authentication</span></a> - Authenticate API calls originating outside the Canvas.</p></li>
 <li><p>UC011: <a class="reference internal" href="UC011-View-Technical-Observability.html"><span class="std std-doc">View Technical Observability</span></a> - Run-time view of technical observability data.</p></li>
 <li><p>UC012: <a class="reference internal" href="UC012-View-Business-Observability.html"><span class="std std-doc">View Business Observability</span></a> - Run-time view of business observability data.</p></li>
-<li><p>UC013: <a class="reference internal" href="UC013-Upgrade-Canvas.html"><span class="std std-doc">Upgrade Canvas</span></a> - Seamless in-life upgrade of the ODA Canvas.
-The corresponding Behavour Driven Design (BDD) features and scenarious can be found here: <a class="reference internal" href="../feature-definition-and-test-kit/README.html"><span class="std std-doc">BDD Features and Scenarios</span></a></p></li>
+<li><p>UC013: <a class="reference internal" href="UC013-Upgrade-Canvas.html"><span class="std std-doc">Upgrade Canvas</span></a> - Seamless in-life upgrade of the ODA Canvas.</p></li>
 </ul>
+<p>The corresponding Behavour Driven Design (BDD) features and scenarious can be found here: <a class="reference internal" href="../feature-definition-and-test-kit/README.html"><span class="std std-doc">BDD Features and Scenarios</span></a></p>
 </section>
 </section>
 
@@ -186,8 +203,8 @@ The corresponding Behavour Driven Design (BDD) features and scenarious can be fo
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="../Canvas-design.html" class="btn btn-neutral float-left" title="ODA Canvas Design" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="../source/operators/index.html" class="btn btn-neutral float-right" title="Open Digital Architecture - Controllers/Operators" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="../Event-based-integration-design.html" class="btn btn-neutral float-left" title="Event based integration design" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../Usecases.html" class="btn btn-neutral float-right" title="Usecase List" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

@@ -32,27 +32,45 @@ Open Digital Architecture - Component Accelerator
    ctk/README.md
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 3
    :caption: Canvas:
 
+   canvas/README.md
    canvas/installation/README.md
+
+.. toctree::
+   :maxdepth: 3
+   :caption: Canvas Design:
+
    canvas/Canvas-design.md
+   canvas/Design-Epics
+
    canvas/usecase-library/README.md
-   canvas/source/operators/index.rst        
+   canvas/Usecases
+   canvas/usecase-library/use-case-naming-conventions.md
+
+   canvas/source/README.md
+   canvas/source/operators/index.rst
+
+   canvas/source/webhooks-and-utilities.rst        
 
 
 .. toctree::
-   :maxdepth: 2
-   :caption: Troubleshooting Guide:
+   :maxdepth: 3
+   :caption: Feature Tests:
 
-   docs/TroubleshootingGuide/index.rst
-
+   canvas/feature-definition-and-test-kit/README.md
+   canvas/feature-definition-and-test-kit/Executing-tests.md
 
 .. toctree::
    :maxdepth: 2
-   :caption: Contributions Guide:
+   :caption: Contributions and Troubleshooting:
 
    docs/ContributionsGuide.md
+   docs/TroubleshootingGuide/index.rst
+   docs/developer/work-with-dockerimages.md
+   canvas/devcontainer.md
+   canvas/source/operators/Installing KOPF development environment.md
    docs/DocumentationProcess.md
 
 

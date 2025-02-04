@@ -22,7 +22,7 @@
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="ODA Canvas - use-case library" href="usecase-library/README.html" />
+    <link rel="next" title="Design Epics" href="Design-Epics.html" />
     <link rel="prev" title="ODA Canvas installation" href="installation/README.html" /> 
 </head>
 
@@ -53,7 +53,7 @@
 <p class="caption" role="heading"><span class="caption-text">Tutorials:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../docs/Observability-Tutorial/README.html">Tutorial to deploy and observe a running component</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../docs/ODAComponentTutorial/README.html">Tutorial to build ODA-Component from Open-API Reference Implemenation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../docs/ODAComponentTutorial/README.html">Tutorial to build ODA-Component from Open-API Reference Implementation</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Component:</span></p>
 <ul>
@@ -61,8 +61,12 @@
 <li class="toctree-l1"><a class="reference internal" href="../ctk/README.html">ODA Component - CTK</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Canvas:</span></p>
-<ul class="current">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="README.html">Open Digital Architecture Canvas</a></li>
 <li class="toctree-l1"><a class="reference internal" href="installation/README.html">ODA Canvas installation</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Canvas Design:</span></p>
+<ul class="current">
 <li class="toctree-l1 current"><a class="current reference internal" href="#">ODA Canvas Design</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#what-is-the-oda-canvas">What is the ODA Canvas?</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#how-do-i-buy-or-build-a-canvas">How do I buy or build a Canvas?</a></li>
@@ -72,16 +76,29 @@
 <li class="toctree-l2"><a class="reference internal" href="#design-epics">Design Epics</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="Design-Epics.html">Design Epics</a></li>
 <li class="toctree-l1"><a class="reference internal" href="usecase-library/README.html">ODA Canvas - use-case library</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Usecases.html">Usecase List</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usecase-library/use-case-naming-conventions.html">Use case naming conventions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="source/README.html">ODA Canvas source code</a></li>
 <li class="toctree-l1"><a class="reference internal" href="source/operators/index.html">Open Digital Architecture - Controllers/Operators</a></li>
+<li class="toctree-l1"><a class="reference internal" href="source/webhooks-and-utilities.html">Webuooks and Utilities</a></li>
 </ul>
-<p class="caption" role="heading"><span class="caption-text">Troubleshooting Guide:</span></p>
+<p class="caption" role="heading"><span class="caption-text">Feature Tests:</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../docs/TroubleshootingGuide/index.html">ODA-CA Troubleshooting Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="feature-definition-and-test-kit/README.html">ODA Canvas Features and Test Kit</a></li>
+<li class="toctree-l1"><a class="reference internal" href="feature-definition-and-test-kit/README.html#list-of-bdd-features">List of BDD Features</a></li>
+<li class="toctree-l1"><a class="reference internal" href="feature-definition-and-test-kit/Executing-tests.html">Installing and executing the BDD tests</a></li>
 </ul>
-<p class="caption" role="heading"><span class="caption-text">Contributions Guide:</span></p>
+<p class="caption" role="heading"><span class="caption-text">Contributions and Troubleshooting:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../docs/ContributionsGuide.html">Contribution guidance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../docs/TroubleshootingGuide/index.html">Troubleshooting Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../docs/developer/work-with-dockerimages.html">Developer How-Tos: Work with Dockerimages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../docs/developer/work-with-dockerimages.html#summary">Summary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../docs/developer/work-with-dockerimages.html#how-to-add-a-new-dockerimage">How-To add a new Dockerimage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="devcontainer.html">ODA Canvas Development Environment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="source/operators/Installing%20KOPF%20development%20environment.html">Installing KOPF (tested in GKE)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../docs/DocumentationProcess.html">Documentation Process</a></li>
 </ul>
 
@@ -138,17 +155,17 @@
 <li><p>The use cases and features are Level 2 standards and should be implementation agnostic. For the Level 3 Reference Implementation, to turn the BDD features into executable tests, there are a set of steps that define tests for each BDD scenario (embedded within each BDD). These are in the <a class="reference internal" href="feature-definition-and-test-kit/README.html"><span class="std std-doc">Test Kit</span></a>.</p></li>
 <li><p>Specific design decisions where we assess options and make a decision are documented in the <a class="reference external" href="https://github.com/tmforum-oda/oda-ca-docs/tree/master/Decision-Log/README.md">Architecture Decision Log</a>.</p></li>
 <li><p>To organise the backlog of work for the team, we use <a class="reference external" href="https://github.com/tmforum-oda/oda-canvas/issues">GitHub issues</a>. Issues may describe new features, bugs or refactoring of work. Contributors self-assign to issues to indicate who is working on what.</p></li>
-<li><p>Finally, the <a class="reference internal" href="#../source/README.md"><span class="xref myst">source code</span></a> contains the source code, helm charts and configuration files that form the reference implementation for the Canvas. Source code should embed <a class="reference external" href="https://en.wikipedia.org/wiki/Docstring">docstrings</a> so that it becomes part of the documentation of the system. The source code comprises:</p></li>
+<li><p>Finally, the <a class="reference internal" href="source/README.html"><span class="std std-doc">source code</span></a> contains the source code, helm charts and configuration files that form the reference implementation for the Canvas. Source code should embed <a class="reference external" href="https://en.wikipedia.org/wiki/Docstring">docstrings</a> so that it becomes part of the documentation of the system. The source code comprises:</p></li>
 </ul>
 <ol class="arabic simple">
-<li><p><a class="reference internal" href="#/source/operators"><span class="xref myst">Software operators</span></a> - this is the key part of the Canvas. Operators manage ODA Components by reading the Component’s requirements as metadata in the component spec and then executing whatever lifecycle process is required to meet those requirements. Operators execute the initial deployment of a Component, as well as ongoing maintenance and upgrade processes. Operators are responsible for monitoring the health of the component and taking remedial action if required. The Reference Implementation implements operators following the <a class="reference external" href="https://kubernetes.io/docs/concepts/extend-kubernetes/operator/">Kubernetes Operator Pattern</a>. Operators could be described as management-plane functions, and are the cloud-native equivalent of Network Element Managers.</p></li>
-<li><p><a class="reference internal" href="#/source/webhooks"><span class="xref myst">Webhooks</span></a> - The Reference implementation Canvas utilizes webhooks to integrate with the Kubernetes Control Plane. The initial use of this is for the Canvas to support multiple versions of the ODA Component Standard, allowing seamless upgrades of components and appropriate deprecation warnings.</p></li>
-<li><p><a class="reference internal" href="#/source/utilities"><span class="xref myst">Utilities</span></a> - The reference implementation includes some simple utilities to help with the development of the Canvas. These are not part of the Canvas itself, but are useful for development and troubleshooting. We may in the future support a command-line interface to the Canvas, similar to <a class="reference external" href="https://kubernetes.io/docs/reference/kubectl/">kubectl</a> (for Kubernetes) or <a class="reference external" href="https://istio.io/latest/docs/ops/diagnostic-tools/istioctl/">istioctl</a> (for Istio).</p></li>
+<li><p><a class="reference internal" href="source/operators/README.html"><span class="std std-doc">Software operators</span></a> - this is the key part of the Canvas. Operators manage ODA Components by reading the Component’s requirements as metadata in the component spec and then executing whatever lifecycle process is required to meet those requirements. Operators execute the initial deployment of a Component, as well as ongoing maintenance and upgrade processes. Operators are responsible for monitoring the health of the component and taking remedial action if required. The Reference Implementation implements operators following the <a class="reference external" href="https://kubernetes.io/docs/concepts/extend-kubernetes/operator/">Kubernetes Operator Pattern</a>. Operators could be described as management-plane functions, and are the cloud-native equivalent of Network Element Managers.</p></li>
+<li><p><a class="reference internal" href="source/webhooks/README.html"><span class="std std-doc">Webhooks</span></a> - The Reference implementation Canvas utilizes webhooks to integrate with the Kubernetes Control Plane. The initial use of this is for the Canvas to support multiple versions of the ODA Component Standard, allowing seamless upgrades of components and appropriate deprecation warnings.</p></li>
+<li><p><a class="reference internal" href="source/utilities/README.html"><span class="std std-doc">Utilities</span></a> - The reference implementation includes some simple utilities to help with the development of the Canvas. These are not part of the Canvas itself, but are useful for development and troubleshooting. We may in the future support a command-line interface to the Canvas, similar to <a class="reference external" href="https://kubernetes.io/docs/reference/kubectl/">kubectl</a> (for Kubernetes) or <a class="reference external" href="https://istio.io/latest/docs/ops/diagnostic-tools/istioctl/">istioctl</a> (for Istio).</p></li>
 </ol>
 </section>
 <section id="interaction-with-oda-component-standard">
 <h2>Interaction with ODA Component standard<a class="headerlink" href="#interaction-with-oda-component-standard" title="Link to this heading"></a></h2>
-<p>The Canvas reads the Component requirements as metadata in the Component spec. We may need to propose changes to the Component standard to meet the Canvas requirements. The Canvas should be able to support any Component that meets the Component standard, but not every Component will necessarily use all the features of the Canvas. The Component design guidelines are documented at <a class="reference internal" href="#../oda-ca-docs/ODAComponentDesignGuidelines.md"><span class="xref myst">ODA Component Design Guidelines</span></a>.</p>
+<p>The Canvas reads the Component requirements as metadata in the Component spec. We may need to propose changes to the Component standard to meet the Canvas requirements. The Canvas should be able to support any Component that meets the Component standard, but not every Component will necessarily use all the features of the Canvas. The Component design guidelines are documented at <a class="reference external" href="https://github.com/tmforum-oda/oda-ca-docs/blob/master/ODAComponentDesignGuidelines.md">ODA Component Design Guidelines</a>.</p>
 </section>
 <section id="summary">
 <h2>Summary<a class="headerlink" href="#summary" title="Link to this heading"></a></h2>
@@ -160,7 +177,7 @@
 <p>The Canvas design is split into the following epics:</p>
 <ul class="simple">
 <li><p><a class="reference internal" href="Authentication-design.html"><span class="std std-doc">Epic 1: Authentication</span></a></p></li>
-<li><p><a class="reference internal" href="#Event-based-integration-design.md"><span class="xref myst">Epic 2: Event based integration</span></a></p></li>
+<li><p><a class="reference internal" href="Event-based-integration-design.html"><span class="std std-doc">Epic 2: Event based integration</span></a></p></li>
 <li><p><a class="reference internal" href="Observability-design.html"><span class="std std-doc">Epic 3: Observability</span></a></p></li>
 </ul>
 </section>
@@ -171,7 +188,7 @@
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="installation/README.html" class="btn btn-neutral float-left" title="ODA Canvas installation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="usecase-library/README.html" class="btn btn-neutral float-right" title="ODA Canvas - use-case library" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="Design-Epics.html" class="btn btn-neutral float-right" title="Design Epics" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

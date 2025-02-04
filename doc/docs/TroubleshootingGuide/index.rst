@@ -3,7 +3,7 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-ODA-CA Troubleshooting Guide
+Troubleshooting Guide
 ============================
 
 If you have deployed an ODA Component into an ODA Canvas environment and are having problems getting things to work, then this troubleshootinng guide is for you!

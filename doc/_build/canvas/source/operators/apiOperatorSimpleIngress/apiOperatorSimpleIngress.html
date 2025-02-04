@@ -53,7 +53,7 @@
 <p class="caption" role="heading"><span class="caption-text">Tutorials:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../../../docs/Observability-Tutorial/README.html">Tutorial to deploy and observe a running component</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../../docs/ODAComponentTutorial/README.html">Tutorial to build ODA-Component from Open-API Reference Implemenation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../docs/ODAComponentTutorial/README.html">Tutorial to build ODA-Component from Open-API Reference Implementation</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Component:</span></p>
 <ul>
@@ -61,10 +61,18 @@
 <li class="toctree-l1"><a class="reference internal" href="../../../../ctk/README.html">ODA Component - CTK</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Canvas:</span></p>
-<ul class="current">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../README.html">Open Digital Architecture Canvas</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../installation/README.html">ODA Canvas installation</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Canvas Design:</span></p>
+<ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../../../Canvas-design.html">ODA Canvas Design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../Design-Epics.html">Design Epics</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../usecase-library/README.html">ODA Canvas - use-case library</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../Usecases.html">Usecase List</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../usecase-library/use-case-naming-conventions.html">Use case naming conventions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../README.html">ODA Canvas source code</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../index.html">Open Digital Architecture - Controllers/Operators</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../README.html">ODA Canvas Operators</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../componentOperator/modules.html">Component Operator</a></li>
@@ -82,14 +90,23 @@
 <li class="toctree-l2"><a class="reference internal" href="../securityController/modules.html">Security Operator</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="../../webhooks-and-utilities.html">Webuooks and Utilities</a></li>
 </ul>
-<p class="caption" role="heading"><span class="caption-text">Troubleshooting Guide:</span></p>
+<p class="caption" role="heading"><span class="caption-text">Feature Tests:</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../../../docs/TroubleshootingGuide/index.html">ODA-CA Troubleshooting Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../feature-definition-and-test-kit/README.html">ODA Canvas Features and Test Kit</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../feature-definition-and-test-kit/README.html#list-of-bdd-features">List of BDD Features</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../feature-definition-and-test-kit/Executing-tests.html">Installing and executing the BDD tests</a></li>
 </ul>
-<p class="caption" role="heading"><span class="caption-text">Contributions Guide:</span></p>
+<p class="caption" role="heading"><span class="caption-text">Contributions and Troubleshooting:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../../../docs/ContributionsGuide.html">Contribution guidance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../docs/TroubleshootingGuide/index.html">Troubleshooting Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../docs/developer/work-with-dockerimages.html">Developer How-Tos: Work with Dockerimages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../docs/developer/work-with-dockerimages.html#summary">Summary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../docs/developer/work-with-dockerimages.html#how-to-add-a-new-dockerimage">How-To add a new Dockerimage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../devcontainer.html">ODA Canvas Development Environment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Installing%20KOPF%20development%20environment.html">Installing KOPF (tested in GKE)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../docs/DocumentationProcess.html">Documentation Process</a></li>
 </ul>
 
@@ -119,8 +136,88 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="apioperatorsimpleingress-module">
-<h1>apiOperatorSimpleIngress module<a class="headerlink" href="#apioperatorsimpleingress-module" title="Link to this heading"></a></h1>
+  <section id="module-apiOperatorSimpleIngress">
+<span id="apioperatorsimpleingress-module"></span><h1>apiOperatorSimpleIngress module<a class="headerlink" href="#module-apiOperatorSimpleIngress" title="Link to this heading"></a></h1>
+<p>Kubernetes operator for ODA API custom resources.</p>
+<p>Normally this module is deployed as part of an ODA Canvas. It uses the kopf kubernetes operator framework (<a class="reference external" href="https://kopf.readthedocs.io/">https://kopf.readthedocs.io/</a>) to build an
+operator that takes API custom resources and implements them using Kubernetes Ingress resources.</p>
+<p>This is the simplest API operator and is not suitable for a production environment. It is possible to create alternative API operators
+that would configure an API gateway instead of an Ingress.</p>
+<p>It registers handler functions for:</p>
+<ol class="arabic simple">
+<li><p>New ODA APIs - to create, update or delete child Ingress resources to expose the API using a kubernetes Ingress. see <a class="reference external" href="#apiOperatorSimpleIngress.apiOperatorSimpleIngress.apiStatus">apiStatus</a></p></li>
+<li><p>For status updates in the child Ingress resources and EndPointSlice resources, so that the API status reflects a summary the Ingress and Implementation for the API. see <a class="reference external" href="#apiOperatorSimpleIngress.apiOperatorSimpleIngress.ingress_status">ingress_status</a> and <a class="reference external" href="#apiOperatorSimpleIngress.apiOperatorSimpleIngress.implementation_status">implementation_status</a></p></li>
+</ol>
+<dl class="py function">
+<dt class="sig sig-object py" id="apiOperatorSimpleIngress.apiStatus">
+<em class="property"><span class="k"><span class="pre">async</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">apiOperatorSimpleIngress.</span></span><span class="sig-name descname"><span class="pre">apiStatus</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">meta</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">spec</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">status</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">body</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">namespace</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">labels</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#apiOperatorSimpleIngress.apiStatus" title="Link to this definition"></a></dt>
+<dd><p>Handler function for new or updated APIs.</p>
+<p>Processes the spec of the API and create child Kubernetes Ingress resources. The Kubernetes Ingress will expose the API to the outside.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><ul class="simple">
+<li><p>meta (Dict): The metadata from the API Custom Resource</p></li>
+<li><p>spec (Dict): The spec from the  showing the intent (or desired state)</p></li>
+<li><p>status (Dict): The status from the  showing the actual state.</p></li>
+<li><p>body (Dict): The entire</p></li>
+<li><p>namespace (String): The namespace for the API Custom Resource</p></li>
+<li><p>labels (Dict): The labels attached to the API Custom Resource. All ODA Components (and their children) should have a oda.tmforum.org/componentName label</p></li>
+<li><p>name (String): The name of the API Custom Resource</p></li>
+</ul>
+</dd>
+<dt>Returns:</dt><dd><p>Dict: The apiStatus status that is put into the API Custom Resource status field.</p>
+</dd>
+</dl>
+<dl class="field-list simple">
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="apiOperatorSimpleIngress.ingress_status">
+<em class="property"><span class="k"><span class="pre">async</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">apiOperatorSimpleIngress.</span></span><span class="sig-name descname"><span class="pre">ingress_status</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">meta</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">spec</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">status</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">body</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">namespace</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">labels</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#apiOperatorSimpleIngress.ingress_status" title="Link to this definition"></a></dt>
+<dd><p>Handler function to register for status changes in child Ingress resources.</p>
+<p>When Ingress adds IP address/dns of load balancer, update parent API object.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><ul class="simple">
+<li><p>meta (Dict): The metadata from the Ingress Resource</p></li>
+<li><p>spec (Dict): The spec from the Ingress Resource showing the intent (or desired state)</p></li>
+<li><p>status (Dict): The status from the Ingress Resource showing the actual state.</p></li>
+<li><p>body (Dict): The entire Ingress Resource</p></li>
+<li><p>namespace (String): The namespace for the Ingress Resource</p></li>
+<li><p>labels (Dict): The labels attached to the Ingress Resource. All ODA Components (and their children) should have a oda.tmforum.org/componentName label</p></li>
+<li><p>name (String): The name of the Ingress Resource</p></li>
+</ul>
+</dd>
+<dt>Returns:</dt><dd><p>No return value.</p>
+</dd>
+</dl>
+<dl class="field-list simple">
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="apiOperatorSimpleIngress.implementation_status">
+<em class="property"><span class="k"><span class="pre">async</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">apiOperatorSimpleIngress.</span></span><span class="sig-name descname"><span class="pre">implementation_status</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">meta</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">spec</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">status</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">body</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">namespace</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">labels</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#apiOperatorSimpleIngress.implementation_status" title="Link to this definition"></a></dt>
+<dd><p>Handler function to register for status changes in EndPointSlide resources.</p>
+<p>The EndPointSlide resources show the implementation of an API linked the the API implementations Service Resource.
+When EndPointSlide updates the ready-status of the implementation, update parent API object.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><ul class="simple">
+<li><p>meta (Dict): The metadata from the EndPointSlide Resource</p></li>
+<li><p>spec (Dict): The spec from the EndPointSlide Resource showing the intent (or desired state)</p></li>
+<li><p>status (Dict): The status from the EndPointSlide Resource showing the actual state.</p></li>
+<li><p>body (Dict): The entire EndPointSlide Resource</p></li>
+<li><p>namespace (String): The namespace for the EndPointSlide Resource</p></li>
+<li><p>labels (Dict): The labels attached to the EndPointSlide Resource. All ODA Components (and their children) should have a oda.tmforum.org/componentName label</p></li>
+<li><p>name (String): The name of the EndPointSlide Resource</p></li>
+</ul>
+</dd>
+<dt>Returns:</dt><dd><p>No return value.</p>
+</dd>
+</dl>
+<dl class="field-list simple">
+</dl>
+</dd></dl>
+
 </section>
 
 
