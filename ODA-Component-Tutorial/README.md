@@ -17,7 +17,7 @@ This tutorial shows the complete process to package, test and deploy an ODA-Comp
 
 We are using one of the Reference implementations of the Open-APIs as a starting point. Go to the open-API Directory at [https://www.tmforum.org/oda/open-apis/directory](https://www.tmforum.org/oda/open-apis/directory) and download one of the reference implmentation `.zip` files (we are using the Product Inventory Management API version 4 (### TBC if version 5 is used ###), but you can choose any).
 
-![<img src="https://projects.tmforum.org/wiki/display/API/Open+API+Table">](./images/Open-API-Table.png)
+![<img src="https://www.tmforum.org/oda/open-apis/directory">](./images/Open-API-Table.png)
 
 
 The reference implementation provides a Nodejs API server implementation that requires a MongoDb backend. It provides a nice swagger-ui on top of a Open-API implementation stub. The reference implementation is set-up to run in IBM Cloud (bluemix). To enable it to run locally or in a docker container, we edit the /api/swagger.yaml file to remove the `host:` field (it will default to looking in the current host), and change the `schemes:` from `https` to `http`.
