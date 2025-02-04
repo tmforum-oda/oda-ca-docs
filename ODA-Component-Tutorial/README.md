@@ -9,8 +9,9 @@ This tutorial shows the complete process to package, test and deploy an ODA-Comp
 
 ## Prerequisites
 
-*  ODA Canvas runtime environment is installed. The installation instruction is available at [https://github.com/tmforum-oda/oda-canvas/tree/main/installation](https://github.com/tmforum-oda/oda-canvas/tree/main/installation)
-*  Access to the Open API Reference implementation  
+* ODA Canvas runtime environment is installed. The installation instruction is available at [https://github.com/tmforum-oda/oda-canvas/tree/main/installation](https://github.com/tmforum-oda/oda-canvas/tree/main/installation)
+* Access to the Open API Reference implementation
+* npm 8.1 and above or its equivalent 
 
 
 ## Step 1. Download Reference Implementation
