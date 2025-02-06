@@ -83,7 +83,7 @@ function connectHelper(callback) {
 ```
 ## 3.2 Use environment variables to allow API path to be configured externally
 
-By default the nodejs code will serve the API at the path in the swagger file, which for our example is `/tmf-api/tmf-api/productInventory/v4/`. We want to potentially deploy multiple component instances in the same environment, and so we add a configurable `COMPONENT_NAME` to the start of the URL. We need to do this in the `swaggerDoc` as well as in the `swagger-ui-dist/index.html` that provides the swagger user interface. 
+By default the nodejs code will serve the API at the path in the swagger file, which for our example is `/tmf-api/productInventory/v4/`. We want to potentially deploy multiple component instances in the same environment, and so we add a configurable `COMPONENT_NAME` to the start of the URL. We need to do this in the `swaggerDoc` as well as in the `swagger-ui-dist/index.html` that provides the swagger user interface. 
 
 Edit the `./index.js` file in the implementation root directory.
 ```js
@@ -131,13 +131,13 @@ First, we've created a simple module in `utils/entrypoint.js` to build this entr
 
 Next, we integrated this module by adding `app.use(swaggerDoc.basePath, entrypointUtils.entrypoint);` as the last hook before starting the server.
 
-Finally, we change the path where the 'api-docs' and 'docs' are exposed. By default they are served at `/api-docs` and `/docs`. Again, we want to avoid conflicts if we have multiple components running in the same environment. We solve this by moving them to the full path of the API, so in our example, they would be at `/tmf-api/tmf-api/productInventory/v4/`
+Finally, we change the path where the 'api-docs' and 'docs' are exposed. By default they are served at `/api-docs` and `/docs`. Again, we want to avoid conflicts if we have multiple components running in the same environment. We solve this by moving them to the full path of the API, so in our example, they would be at `/tmf-api/productInventory/v4/`
 
 ```js
   // Serve the Swagger documents and Swagger UI
-  app.use(middleware.swaggerUi({   apiDocs: swaggerDoc.basePath + 'api-docs',
-    swaggerUi: swaggerDoc.basePath + 'docs',
-    swaggerUiDir: path.join(__dirname, 'node_modules', 'swagger-ui-dist') }));
+  app.use(middleware.swaggerUi({   apiDocs: swaggerDoc.basePath + '/api-docs',
+  swaggerUi: swaggerDoc.basePath + '/docs',
+  swaggerUiDir: path.join(__dirname, 'node_modules', 'swagger-ui-dist') }));
 
   // create an entrypoint
   const entrypointUtils = require('./utils/entrypoint');
@@ -147,7 +147,7 @@ Finally, we change the path where the 'api-docs' and 'docs' are exposed. By defa
     // Start the server
   http.createServer(app).listen(serverPort, function () {
     console.log('Your server is listening on port %d (http://localhost:%d)', serverPort, serverPort);
-    console.log('Swagger-ui is available on http://localhost:'+ serverPort  + swaggerDoc.basePath + 'docs', serverPort);
+    console.log('Swagger-ui is available on http://localhost:'+ serverPort  + swaggerDoc.basePath + '/docs', serverPort);
   });
 ```
 
