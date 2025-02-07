@@ -156,7 +156,7 @@ Finally, we change the path where the 'api-docs' and 'docs' are exposed. By defa
 Create a dockerfile in the product inventory implementation directory with the instructions to build our image. We are starting with the official [node](https://hub.docker.com/_/node) docker image.
 
 ```text
-FROM node:12
+FROM node:16
 ```
 
 Define the working directory of a Docker container 
@@ -194,7 +194,7 @@ CMD ["node", "index.js"]
 The complete dockerfile should look like:
 
 ```text
-FROM node:12
+FROM node:16
 WORKDIR /usr/app
 COPY package*.json ./
 RUN npm install
@@ -203,7 +203,7 @@ EXPOSE 8080
 CMD ["node", "index.js"]
 ```
 
-Before we build this dockerfile, we create a `.dockerignore` file (so the at node_modules packages are not copied into the docker image - this would make the image very large. The `RUN npm install` command inside the dockerfile will install these on demand).
+Before we build this dockerfile, we create a `.dockerignore` file (so that the node_modules packages are not copied into the docker image - this would make the image very large. The `RUN npm install` command inside the dockerfile will install these on demand).
 
 ```
 node_modules
