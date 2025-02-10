@@ -330,9 +330,11 @@ type: application
 # This is the chart version. This version number should be incremented each time you make changes
 # to the chart and its templates, including the app version.
 # Versions are expected to follow Semantic Versioning (https://semver.org/)
-version: 1.1.0 
+version: 1.2.0 
+# version: 1.2.0 - upgrade to v1 spec
 # version: 1.1.0 - upgrade to v1beta3 spec
 # version: 1.0.0 - baseline version
+
 
 # This is the version number of the application being deployed. This version number should be
 # incremented each time you make changes to the application. Versions are not expected to
@@ -378,11 +380,11 @@ spec:
       labels:
         impl: {{.Release.Name}}-productinventoryapi
         app: {{.Release.Name}}-{{.Values.component.name}}
-        version:  productinventoryapi-0.2
+        version:  productinventoryapi-0.1
     spec:
       containers:
       - name: {{.Release.Name}}-productinventoryapi         
-        image: dominico/productinventoryapi:0.2
+        image: dominico/productinventoryapi:0.1
         env:
         - name: RELEASE_NAME
           value: {{.Release.Name}}           
@@ -453,7 +455,7 @@ spec:
           failureThreshold: 30
 ```
 
-We also need to deploy a mongoDb. We will use the standard mongoDb image from dockerhub. Copy the code below into: `deployment-partyroleapi.yaml`
+We also need to deploy a mongoDb. We will use the standard mongoDb image from dockerhub. Copy the code below into: `deployment-mongodb.yaml`
 
 
 ```yaml
