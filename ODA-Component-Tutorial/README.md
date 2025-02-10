@@ -213,7 +213,7 @@ npm-debug.log
 To build the docker image, we use the command:
 
 ```
-docker build . -t dominico/productinventoryapi:0.2 -t dominico/productinventoryapi:latest
+docker build . -t dominico/productinventoryapi:0.1 -t dominico/productinventoryapi:latest
 ```
 
 Note: we use the -t to tag the image. We give the image two tags, one with a version number and the other with a `latest` tag that will overwrite any previously uploaded images.
@@ -225,8 +225,8 @@ To check that the images are in the local repository, we use this command:
 
 --Result--
 REPOSITORY                     TAG       IMAGE ID       CREATED             SIZE
-dominico/productinventoryapi   0.2       6f2819946f76   About an hour ago   910MB
-dominico/productinventoryapi   latest    6f2819946f76   About an hour ago   910MB
+dominico/productinventoryapi   0.1       6f2819946f76   About a minute ago   924MB
+dominico/productinventoryapi   latest    6f2819946f76   About a minute ago   924MB
 
 ```
 Finally we upload the docker image to a Docker repository. I'm using the default [DockerHub](https://hub.docker.com) with an account `dominico` that I have created previously. If this is the first time accessing the docker repository you will need to login first with the `docker login` command.
@@ -287,7 +287,7 @@ const createPartyRole = async () => {
 The role initialisation dockerfile file:
 
 ```text
-FROM node:12
+FROM node:16
 WORKDIR /src
 COPY package*.json ./
 RUN npm install
