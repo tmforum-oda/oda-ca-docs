@@ -684,7 +684,7 @@ partyrole:
   versionlabel: partyroleapi-1.0
 api:
   image: dominico/productinventoryapi:latest
-  versionlabel: productinventoryapi-0.2
+  versionlabel: productinventoryapi-0.1
 ```
 
 ## Step 6. Test component envelope using component CTK
