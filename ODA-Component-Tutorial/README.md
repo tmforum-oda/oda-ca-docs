@@ -9,7 +9,8 @@ This tutorial shows the complete process to package, test and deploy an ODA-Comp
 
 ## Prerequisites
 
-* ODA Canvas runtime environment is installed. The installation instruction is available at [https://github.com/tmforum-oda/oda-canvas/tree/main/installation](https://github.com/tmforum-oda/oda-canvas/tree/main/installation)
+* ODA Canvas runtime environment is installed. The installation instruction is available at [https://github.com/tmforum-oda/oda-canvas/tree/main/installation](https://github.com/tmforum-oda/oda-canvas/tree/main/installation). 
+**  Setup kubectl to access the Kubernetes cluster control plane if it was not automatically configured during the ODA canvas installation.
 * Access to the Open API Reference implementation
 * npm or its equivalent. NPM version 8.19.4 has been used for this tutorial.
 * mongodb. mongodb-community@8.0 has been used for this tutorial.
@@ -720,13 +721,13 @@ You should get an output like the image below. If you receive any errors, fix th
 
 
 
-## Step 8. Deploy the component envelope into Open Digital Lab canvas
+## Step 8. Deploy the component envelope into the Canvas
 
-Connect to the Open Digital Lab: Get the kubectl config from the rancher environment at https://rke.tmforum.org/c/c-85kcq/monitoring - click the Kubeconfig File button in the top right:
+<!-- Connect to the Open Digital Lab: Get the kubectl config from the rancher environment at https://rke.tmforum.org/c/c-85kcq/monitoring - click the Kubeconfig File button in the top right:
 
-![Rancher](./images/Rancher.png)
+![Rancher](./images/Rancher.png) --->
 
-Copy this into your `~/.kube/config` file.
+Verify that your kubectl config is already copied into your `~/.kube/config` file as per the prerequisites above.
 
 You can test the connection using `kubectl get all --namespace components`. (You should either see a message `No resources found in components namespace.` or you may retrieve a list of kubernetes resources).
 
@@ -736,7 +737,7 @@ To permanently save the namespace for all subsequent kubectl commands use:
 kubectl config set-context --current --namespace=components
 ```
 
-Install the component using Helm, we call the release name `r1` . Ensure the release name is not in conflict with release name already assigned to other components in the open digital lab:
+Install the component using Helm, we call the release name `r1` . Ensure the release name is not in conflict with release name already assigned to other components in the your Canvas:
 
 ```sh
 helm install r1 productinventory/ 
