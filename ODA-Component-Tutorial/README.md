@@ -764,7 +764,7 @@ The `kubectl get exposedapis` command shows details of exposed apis and a develo
 
 ![get apis](./images/kubectl-get-apis.png)
 
-If you navigate to the root or the API (in a web browser or in postman), you should see the entrypoint of the API:
+If you navigate to the root or the API (in a web browser or in postman), you should see the entrypoint of the API. You may need to create a port forwarding on the product inventory component in your canvas:
 
 ![api entrypoint](./images/api-entrypoint.png)
 
