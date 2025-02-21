@@ -742,6 +742,7 @@ Install the component using Helm, we call the release name `r1` . Ensure the rel
 ```sh
 helm install r1 productinventory/ 
 ```
+![install components](./images/helm-install-components.png)
 
 You can then view the component in `kubectl`:
 
@@ -756,10 +757,10 @@ The `kubectl get components` will show all the deployed components and the deplo
 You can also view the component API endpoint in `kubectl`:
 
 ```sh
-kubectl get apis
+kubectl get exposedapis
 ```
 
-The `kubectl get apis` command shows details of exposed apis and a developer-ui (if supplied). Initially these details will be blank - the component may take a few seconds to fully deploy. Once deployed, it should look like:
+The `kubectl get exposedapis` command shows details of exposed apis and a developer-ui (if supplied). Initially these details will be blank - the component may take a few seconds to fully deploy. Once deployed, it should look like:
 
 ![get apis](./images/kubectl-get-apis.png)
 
