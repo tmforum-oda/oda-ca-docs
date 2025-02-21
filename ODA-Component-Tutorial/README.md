@@ -10,7 +10,7 @@ This tutorial shows the complete process to package, test and deploy an ODA-Comp
 ## Prerequisites
 
 * ODA Canvas runtime environment is installed. The installation instruction is available at [https://github.com/tmforum-oda/oda-canvas/tree/main/installation](https://github.com/tmforum-oda/oda-canvas/tree/main/installation). 
-**  Setup kubectl to access the Kubernetes cluster control plane if it was not automatically configured during the ODA canvas installation.
+* Kubectl to access the Kubernetes cluster control plane is configured. It may have been automatically configured during the ODA canvas installation.
 * Access to the Open API Reference implementation
 * npm or its equivalent. NPM version 8.19.4 has been used for this tutorial.
 * mongodb. mongodb-community@8.0 has been used for this tutorial.
