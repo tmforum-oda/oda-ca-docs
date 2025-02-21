@@ -385,7 +385,7 @@ spec:
     spec:
       containers:
       - name: {{.Release.Name}}-productinventoryapi         
-        image: dominico/productinventoryapi:0.1
+        image: dominico/productinventoryapi:latest
         env:
         - name: RELEASE_NAME
           value: {{.Release.Name}}           
@@ -403,6 +403,13 @@ spec:
         ports:
         - name: {{.Release.Name}}-prodinvapi
           containerPort: 8080
+        startupProbe:
+          httpGet:
+            path: /{{.Release.Name}}-{{.Values.component.name}}/tmf-api/productInventory/v4/
+            port: 8080
+          initialDelaySeconds: 10
+          periodSeconds: 5
+          failureThreshold: 30
 ```
 
 Next, we need create the deployment resource for the party Role API. Copy the code below into `deployment-partyroleapi.yaml`
@@ -463,7 +470,7 @@ We also need to deploy a mongoDb. We will use the standard mongoDb image from do
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{.Release.Name}}-mongodb-prod
+  name: {{.Release.Name}}-mongodb
   labels:
     oda.tmforum.org/componentName: {{.Release.Name}}-{{.Values.component.name}}
 spec:
@@ -480,7 +487,7 @@ spec:
     spec:
       containers:
       - name: {{.Release.Name}}-mongodb
-        image: mongo:latest
+        image: mongo:5.0.1
         ports:
         - name: {{.Release.Name}}-mongodb
           containerPort: {{.Values.mongodb.port}}
@@ -541,13 +548,13 @@ kind: Service
 metadata:
   name: {{.Release.Name}}-productinventoryapi
   labels:
-    app: {{.Release.Name}}-productinventoryapi
+    app: {{.Release.Name}}-{{.Values.component.name}}
     oda.tmforum.org/componentName: {{.Release.Name}}-{{.Values.component.name}}
 spec:
   ports:
   - port: 8080
-    targetPort: 8080
-    name: {{.Release.Name}}-productinventoryapi
+    targetPort: {{.Release.Name}}-prodinvapi
+    name: http-{{.Release.Name}}-productinventoryapi
   type: NodePort
   selector:
     impl: {{.Release.Name}}-productinventoryapi
@@ -561,7 +568,7 @@ kind: Service
 metadata:
   name: {{.Release.Name}}-partyroleapi
   labels:
-    app: {{.Release.Name}}-partyroleapi
+    app: {{.Release.Name}}-{{.Values.component.name}}
     oda.tmforum.org/componentName: {{.Release.Name}}-{{.Values.component.name}}
 spec:
   ports:
@@ -606,55 +613,71 @@ We have created all the Kubernetes resources to deploy the mongoDb, party role a
 This is a relatively simple component that just exposes one API as part of its `coreFunction`. Note that we have included the release name and component name in the root of the API path (this is a good pattern to follow so that the API doesn't conflict with any other components deployed in the same environment).
 
 ```yaml
-apiVersion: oda.tmforum.org/v1beta3
+apiVersion: oda.tmforum.org/v1
 kind: Component
 metadata:
   name: {{.Release.Name}}-{{.Values.component.name}}
   labels:
     oda.tmforum.org/componentName: {{.Release.Name}}-{{.Values.component.name}}
+  annotations:
+    webhookconverted: Webhook converted From oda.tmforum.org/v1beta3 to oda.tmforum.org/v1
 spec:
-  id: {{.Values.component.id}}
-  name: {{.Values.component.name}}
-  functionalBlock: {{.Values.component.functionalBlock}}
-  publicationDate: {{.Values.component.publicationDate}}
-  status: specified
-  version: {{.Values.component.version}}
-  description: "Simple Product Inventory ODA-Component from Open-API reference implementation."
-  maintainers:
-    - name: Dominic Oyeniran
-      email: dominic.oyeniran@vodafone.com
-  owners:
-    - name: Dominic Oyeniran
-      email: dominic.oyeniran@vodafone.com     
+  componentMetadata:
+    id: {{.Values.component.id}}
+    name: {{.Values.component.name}}
+    version: {{.Values.component.version}}
+    description: >-
+      Simple Product Inventory ODA-Component from Open-API reference
+      implementation.
+    functionalBlock: {{.Values.component.functionalBlock}}
+    publicationDate: {{.Values.component.publicationDate}}
+    status: specified
+    maintainers:
+      - name: Dominic Oyeniran
+        email: dominic.oyeniran@vodafone.com
+    owners:
+      - name: Dominic Oyeniran
+        email: dominic.oyeniran@vodafone.com
   coreFunction:
-    exposedAPIs: 
-    - name: productinventorymanagement
-      specification: ["https://raw.githubusercontent.com/tmforum-apis/TMF637_ProductInventory/master/TMF637-ProductInventory-v4.0.0.swagger.json"]
-      implementation: {{.Release.Name}}-productinventoryapi
-      apitype: openapi
-      path: /{{.Release.Name}}-{{.Values.component.name}}/tmf-api/productInventory/v4
-      developerUI: /{{.Release.Name}}-{{.Values.component.name}}/tmf-api/productInventory/v4/docs
-      port: 8080
-    dependentAPIs: 
-    - name: party
-      apitype: openapi        
-      specification: https://open-api.tmforum.org/TMF632-Party-v4.0.0.swagger.json
+    exposedAPIs:
+      - name: productinventorymanagement
+        specification:
+          - url: >-
+              https://raw.githubusercontent.com/tmforum-apis/TMF637_ProductInventory/master/TMF637-ProductInventory-v4.0.0.swagger.json
+        implementation: {{.Release.Name}}-productinventoryapi
+        apiType: openapi
+        path: >-
+          /{{.Release.Name}}-{{.Values.component.name}}/tmf-api/productInventory/v4
+        developerUI: >-
+          /{{.Release.Name}}-{{.Values.component.name}}/tmf-api/productInventory/v4/docs
+        port: 8080
+        gatewayConfiguration: {}
+    dependentAPIs:
+      - name: party
+        apiType: openapi
+        specification:
+          - url: https://open-api.tmforum.org/TMF632-Party-v4.0.0.swagger.json
   eventNotification:
     publishedEvents: []
     subscribedEvents: []
-  managementFunction: 
+  managementFunction:
     exposedAPIs: []
-    dependentAPIs: []   
+    dependentAPIs: []
   securityFunction:
-    controllerRole: {{.Values.security.controllerRole }}
-    exposedAPIs: 
-    - name: partyrole
-      specification: ["https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json"]
-      implementation: {{.Release.Name}}-partyroleapi
-      apitype: openapi
-      path: /{{.Release.Name}}-{{.Values.component.name}}/tmf-api/partyRoleManagement/v4
-      developerUI: /{{.Release.Name}}-{{.Values.component.name}}/tmf-api/partyRoleManagement/v4/docs
-      port: 8080
+    canvasSystemRole: {{.Values.security.controllerRole}}
+    exposedAPIs:
+      - name: partyrole
+        specification:
+          - url: >-
+              https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
+        implementation: {{.Release.Name}}-partyroleapi
+        apiType: openapi
+        path: >-
+          /{{.Release.Name}}-{{.Values.component.name}}/tmf-api/partyRoleManagement/v4
+        developerUI: >-
+          /{{.Release.Name}}-{{.Values.component.name}}/tmf-api/partyRoleManagement/v4/docs
+        port: 8080
+        gatewayConfiguration: {}
 ```
 
 Finally we have to create the parameters in the `values.yaml` file.
@@ -681,14 +704,14 @@ mongodb:
   port: 27017
   database: tmf
 partyrole:
-  image: lesterthomas/partyroleapi:1.0
+  image: dominico/partyroleapi:latest
   versionlabel: partyroleapi-1.0
 api:
   image: dominico/productinventoryapi:latest
   versionlabel: productinventoryapi-0.1
 ```
 
-## Step 6. Test component envelope using component CTK
+## Step 8. Test component envelope using component CTK
 
 
 The CTK will operate against an instance of the component. We can generate a kubernetes manifest of an instance using the `helm template [instance namme] [chart]` command. We can take the output of this command into a temporary file:
@@ -721,7 +744,7 @@ You should get an output like the image below. If you receive any errors, fix th
 
 
 
-## Step 8. Deploy the component envelope into the Canvas
+## Step 9. Deploy the component envelope into the Canvas
 
 <!-- Connect to the Open Digital Lab: Get the kubectl config from the rancher environment at https://rke.tmforum.org/c/c-85kcq/monitoring - click the Kubeconfig File button in the top right:
 
@@ -769,7 +792,7 @@ If you navigate to the root or the API (in a web browser or in postman), you sho
 ![api entrypoint](./images/api-entrypoint.png)
 
 
-If you navigate to the developer-ui, you shold see the swagger-ui tool:
+If you navigate to the developer-ui, you should see the swagger-ui tool:
 
 ![swagger ui](./images/swagger-ui.png)
 
