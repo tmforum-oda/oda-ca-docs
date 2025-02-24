@@ -14,7 +14,7 @@ This tutorial shows the complete process to package, test and deploy an ODA-Comp
 * Access to the Open API Reference implementation
 * npm or its equivalent. NPM version 8.19.4 has been used for this tutorial.
 * mongodb. mongodb-community@8.0 has been used for this tutorial.
-
+* node, version v16.20.2 has been used for this tutorial.
 
 
 ## Step 1. Download Reference Implementation
@@ -711,38 +711,15 @@ api:
   versionlabel: productinventoryapi-0.1
 ```
 
-## Step 8. Test component envelope using component CTK
+## Step 8. Generate the manifest
 
-
-The CTK will operate against an instance of the component. We can generate a kubernetes manifest of an instance using the `helm template [instance namme] [chart]` command. We can take the output of this command into a temporary file:
+We can generate a kubernetes manifest of an instance using the `helm template [instance name] [chart]` command. We can take the output of this command into a temporary file:
 
 ```
 helm template test productinventory > test-instance.component.yaml
 ```
 
 If you examine the test-instance.component.yaml you will see all the kubernetes resources (deployments, services, persistentVolumeClaim) as well as a component resource. All the resources are labelled as belonging to the component. Also the component describes its core function (exposing a single API).
-
-We can test that this component instance conforms to the ODA-Component standard by using the component CTK: Download the ODA-Component CTK from [https://github.com/tmforum-oda/oda-component-ctk/](https://github.com/tmforum-oda/oda-component-ctk/).
-
-
-Within the oda-component-ctk folder, install the ctk.
-
-```sh
-npm install
-```
-
-Then run the static ctk against the component envelope, you would need to specify the correct path to the `test-instance.component.yaml` created earlier.
-
-```sh
-
-npm run L1-static ../ProductInventory/test-instance.component.yaml
-```
-
-You should get an output like the image below. If you receive any errors, fix the issue in the helm chart yaml file and try again.
-
-![CTK image](./images/ctksuccess.png)
-
-
 
 ## Step 9. Deploy the component envelope into the Canvas
 
@@ -797,17 +774,7 @@ If you navigate to the developer-ui, you should see the swagger-ui tool:
 ![swagger ui](./images/swagger-ui.png)
 
 
-Finally, you can run the dynamic ctk against the component envelope.
-
-```sh
-npm dynamic ../oda-ca-docs/ODA-Component-Tutorial/test-instance.component.yaml
-```
-
-You should get a result like the image below:
-
-![CTK image](./images/ctkdynamicsuccess.png)
-
-This is the last step. You would have succesffully deployed an ODA Component unto an ODA Canvas environment!
+This is the last step. You would have successfully deployed an ODA Component unto an ODA Canvas environment!
 
 ## Directory Structure
 
@@ -827,6 +794,6 @@ Also, the reference implementation sourcecode is available on the [ODA-Component
   console.log('app.use entrypoint');
   app.use(swaggerDoc.basePath, entrypointUtils.entrypoint);
 ```
-2. Due to a node version issue (i think!) the generated API RI does not work on the latest v15 of node. I have created container based on node v12. The issue is with the fs.copyFileSync function: The v15 expects the third parameter to be an optional `mode` whilst the current implementation has a call-back error function.
+2. Due to a node version issue (i think!) the generated API RI does not work on the latest v16 of node. I have created container based on node v16. The issue is with the fs.copyFileSync function: The v16 expects the third parameter to be an optional `mode` whilst the current API reference implementation has a call-back error function.
 3. Api-docs are exposed at /api-docs which means that you can't host multiple apis on the same server. Therefore, it is hosted at `tmf-api/productInventory/v4/api-docs` instead (and the swagger-ui at `tmf-api/productInventory/v4/docs`).
-4. The component name has been included in the root of the API (so that multiple instances of the API can be deployed in the same server). For a Helm install with release name `test`, the api is deployed at: `/test-productinventory/tmf-api/productInventory/v4/` and with a Helm install with release name `r1`, the api is deployed at: `/test-productinventory/tmf-api/productInventory/v4/` . Component release name must be unique and cannot be reused. 
+4. The component name has been included in the root of the API (so that multiple instances of the API can be deployed in the same server). For a Helm install with release name `test`, the api is deployed at: `/test-productinventory/tmf-api/productInventory/v4/` and with a Helm install with release name `r1`, the api is deployed at: `/r1-productinventory/tmf-api/productInventory/v4/` . Component release name must be unique and cannot be reused. 
