@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{.Release.Name}}-mongodb-prod
+  name: {{.Release.Name}}-mongodb
   labels:
     oda.tmforum.org/componentName: {{.Release.Name}}-{{.Values.component.name}}
 spec:
@@ -18,7 +18,7 @@ spec:
     spec:
       containers:
       - name: {{.Release.Name}}-mongodb
-        image: mongo:latest
+        image: mongo:5.0.1
         ports:
         - name: {{.Release.Name}}-mongodb
           containerPort: {{.Values.mongodb.port}}

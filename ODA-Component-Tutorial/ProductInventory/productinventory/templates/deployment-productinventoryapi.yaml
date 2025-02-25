@@ -14,11 +14,11 @@ spec:
       labels:
         impl: {{.Release.Name}}-productinventoryapi
         app: {{.Release.Name}}-{{.Values.component.name}}
-        version:  productinventoryapi-0.2
+        version:  productinventoryapi-0.1
     spec:
       containers:
       - name: {{.Release.Name}}-productinventoryapi         
-        image: dominico/productinventoryapi:0.2
+        image: dominico/productinventoryapi:latest
         env:
         - name: RELEASE_NAME
           value: {{.Release.Name}}           
@@ -36,3 +36,10 @@ spec:
         ports:
         - name: {{.Release.Name}}-prodinvapi
           containerPort: 8080
+        startupProbe:
+          httpGet:
+            path: /{{.Release.Name}}-{{.Values.component.name}}/tmf-api/productInventory/v4/
+            port: 8080
+          initialDelaySeconds: 10
+          periodSeconds: 5
+          failureThreshold: 30

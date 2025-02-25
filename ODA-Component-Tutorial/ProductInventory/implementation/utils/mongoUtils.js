@@ -13,7 +13,7 @@ const {getResponseType, getPayloadType, getTypeDefinition} = require('./swaggerU
 
 var mongodb = null; 
 
-/* local mongo db
+// local mongo db
 function connectHelper(callback) {
  var credentials_uri = "mongodb://localhost:27017/tmf";
   let options = {
@@ -29,9 +29,10 @@ function connectHelper(callback) {
     }
   });
 };
-*/
+
 
 /*Connection helper for running Mongodb from url */
+/*
 function connectHelper(callback) {
   var releaseName = process.env.RELEASE_NAME; // Release name from Helm deployment
   var credentials_uri = "mongodb://" + releaseName + "-mongodb:27017/tmf";
@@ -48,7 +49,7 @@ function connectHelper(callback) {
     }
   });
 };
-
+*/
 function getMongoQuery(req) {
   var res;
   if(req instanceof Object) {

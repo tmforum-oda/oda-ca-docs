@@ -19,8 +19,8 @@ mongodb:
   port: 27017
   database: tmf
 partyrole:
-  image: lesterthomas/partyroleapi:1.0
+  image: dominico/partyroleapi:latest
   versionlabel: partyroleapi-1.0
 api:
   image: dominico/productinventoryapi:latest
-  versionlabel: productinventoryapi-0.2
+  versionlabel: productinventoryapi-0.1

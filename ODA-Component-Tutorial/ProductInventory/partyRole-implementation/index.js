@@ -16,6 +16,7 @@ const serverPort = 8080;
 
 // Correct the url in swagger-ui-dist that points to some demo (like the petstore)
 // And add additional useful options
+/*
 fs.copyFileSync(path.join(__dirname, './index.html_replacement'),
   path.join(__dirname, './node_modules/swagger-ui-dist/index.html'), (err) => {
   if(err) {
@@ -23,6 +24,13 @@ fs.copyFileSync(path.join(__dirname, './index.html_replacement'),
     process.exit(1);
   }
 })
+*/
+fs.copyFileSync(
+  path.join(__dirname, './index.html_replacement'),
+  path.join(__dirname, './node_modules/swagger-ui-dist/index.html'),
+  fs.constants.COPYFILE_FICLONE // This is the correct third argument
+);
+console.log('File replaced successfully.');
 
 // swaggerRouter configuration
 const options = {

@@ -16,6 +16,7 @@ const serverPort = 8080;
 
 // Correct the url in swagger-ui-dist that points to some demo (like the petstore)
 // And add additional useful options
+/*
 fs.copyFileSync(path.join(__dirname, './index.html_replacement'),
   path.join(__dirname, './node_modules/swagger-ui-dist/index.html'), (err) => {
   if(err) {
@@ -23,6 +24,14 @@ fs.copyFileSync(path.join(__dirname, './index.html_replacement'),
     process.exit(1);
   }
 })
+*/
+
+fs.copyFileSync(
+  path.join(__dirname, './index.html_replacement'),
+  path.join(__dirname, './node_modules/swagger-ui-dist/index.html'),
+  fs.constants.COPYFILE_FICLONE // This is the correct third argument
+);
+console.log('File replaced successfully.');
 
 // swaggerRouter configuration
 const options = {
@@ -32,32 +41,26 @@ const options = {
 };
 
 const swaggerDoc = swaggerUtils.getSwaggerDoc();
+console.log('Swagger Doc constant:'+swaggerDoc);
 
 // Get Component instance name from Environment variable and put it at start of API path
 var componentName = process.env.COMPONENT_NAME;
 if (!componentName) {
   componentName = 'productinventory'
 }
-// Remove leading and trailing slashes from componentName
-componentName = componentName.replace(/^\/+|\/+$/g, '');
-
+console.log('ComponentName:'+componentName);
 // end
 
-// Remove leading slashes from basePath and ensure it does not end with a trailing slash
-swaggerDoc.basePath = swaggerDoc.basePath.replace(/^\/+|\/+$/g, '');
-
 // add component name to swaggerDoc
-swaggerDoc.basePath = '/' + componentName + (swaggerDoc.basePath ? '/' + swaggerDoc.basePath : '');
+swaggerDoc.basePath = '/' + componentName + swaggerDoc.basePath
+console.log('New Swagger Doc Base Path:'+ swaggerDoc.basePath);
 
 // add component name to url in swagger_ui - i.e. swagger-ui-dist/index.html
 fs.readFile(path.join(__dirname, './node_modules/swagger-ui-dist/index.html'), 'utf8', function (err,data) {
   if (err) {
-    return console.log('error reading the file'+ err);
+    return console.log(err);
   }
-  // Ensure exactly one leading slash in basePath before concatenating with '/api-docs'
-  const basePathWithSingleSlash = swaggerDoc.basePath.replace(/\/+/g, '/');
-  const result = data.replace(/\/api-docs/g, basePathWithSingleSlash + '/api-docs');
-  console.log('result of replacing ', result);
+  var result = data.replace(/api-docs/g, swaggerDoc.basePath + 'api-docs' );
   console.log('updating ' + path.join(__dirname, './node_modules/swagger-ui-dist/index.html'));
   fs.writeFile(path.join(__dirname, './node_modules/swagger-ui-dist/index.html'), result, 'utf8', function (err) {
       if (err) return console.log(err);
@@ -91,19 +94,18 @@ swaggerTools.initializeMiddleware(swaggerDoc, function (middleware) {
 
   // Serve the Swagger documents and Swagger UI
   // using the more up-to-date swagger-ui-dist - not the default app.use(middleware.swaggerUi())
-  app.use(middleware.swaggerUi({   apiDocs: swaggerDoc.basePath + '/api-docs',
-    swaggerUi: swaggerDoc.basePath + '/docs',
+  app.use(middleware.swaggerUi({   apiDocs: swaggerDoc.basePath + 'api-docs',
+    swaggerUi: swaggerDoc.basePath + 'docs',
     swaggerUiDir: path.join(__dirname, 'node_modules', 'swagger-ui-dist') }));
 
   // create an entrypoint
   console.log('app.use entrypoint');
   app.use(swaggerDoc.basePath, entrypointUtils.entrypoint);
-  
 
     // Start the server
   http.createServer(app).listen(serverPort, function () {
     console.log('Your server is listening on port %d (http://localhost:%d)', serverPort, serverPort);
-    console.log('Swagger-ui is available on http://localhost:'+ serverPort  + swaggerDoc.basePath + '/docs', serverPort);
+    console.log('Swagger-ui is available on http://localhost:'+ serverPort  + swaggerDoc.basePath + 'docs', serverPort);
   });
 
 });
