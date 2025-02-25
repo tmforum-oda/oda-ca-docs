@@ -3,7 +3,7 @@ kind: Service
 metadata:
   name: {{.Release.Name}}-partyroleapi
   labels:
-    app: {{.Release.Name}}-partyroleapi
+    app: {{.Release.Name}}-{{.Values.component.name}}
     oda.tmforum.org/componentName: {{.Release.Name}}-{{.Values.component.name}}
 spec:
   ports:
