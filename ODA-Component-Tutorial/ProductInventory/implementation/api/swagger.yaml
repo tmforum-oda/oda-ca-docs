@@ -1,3 +1,4 @@
+---
 swagger: "2.0"
 info:
   description: "**TMF API Reference : TMF 637 - Product Inventory Management**\n\n\
@@ -15,6 +16,7 @@ info:
     \ of events on product.\n\nCopyright © TM Forum 2019. All Rights Reserved\n\n\n"
   version: "4.0.0"
   title: "Product Inventory"
+# host: "serverRoot:8080"
 basePath: "/tmf-api/productInventory/v4/"
 tags:
 - name: "product"

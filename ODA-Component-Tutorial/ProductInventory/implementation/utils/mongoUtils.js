@@ -9,47 +9,53 @@ const querystring = require('querystring');
 
 const MongoClient = require('mongodb').MongoClient;
 
+
 const {getResponseType, getPayloadType, getTypeDefinition} = require('./swaggerUtils');
 
+
 var mongodb = null; 
-
-// local mongo db
-function connectHelper(callback) {
- var credentials_uri = "mongodb://localhost:27017/tmf";
-  let options = {
-    useNewUrlParser: true 
-  };
-  MongoClient.connect(credentials_uri, options, function (err, db) {
-    if (err) {
-      mongodb = null;
-      callback(err,null);
-    } else {
-      mongodb = db.db("tmf");
-      callback(null,mongodb);
-    }
-  });
-};
-
-
-/*Connection helper for running Mongodb from url */
 /*
 function connectHelper(callback) {
-  var releaseName = process.env.RELEASE_NAME; // Release name from Helm deployment
-  var credentials_uri = "mongodb://" + releaseName + "-mongodb:27017/tmf";
-  let options = {
-    useNewUrlParser: true 
-  };
-  MongoClient.connect(credentials_uri, options, function (err, db) {
-    if (err) {
-      mongodb = null;
-      callback(err,null);
-    } else {
-      mongodb = db.db("tmf");
-      callback(null,mongodb);
+  var config = require('../config.json');
+
+  var argv = require('minimist')(process.argv);
+  var dbhost = argv.dbhost ? argv.dbhost: config.db_host;
+  const mongourl = process.env.MONGO_URL || (config.db_prot + "://" + dbhost + ":" + config.db_port + "/" + config.db_name);
+ 
+  MongoClient.connect(mongourl, { useNewUrlParser: true }, function (err, db) {
+
+      if (err) {
+        mongodb = null;
+        callback(err,null);
+      } else {
+        mongodb = db.db("tmf");
+        callback(null,mongodb);
+      }
     }
-  });
+  );
 };
 */
+
+
+/* connection helper for running MongoDb from url */
+function connectHelper(callback) {
+  //var credentials_uri = "mongodb://localhost:27017/tmf"; // local mongo db
+  var releaseName = process.env.RELEASE_NAME; // Release name from Helm deployment
+  var credentials_uri = "mongodb://" + releaseName + "-mongodb:27017/tmf"; 
+  let options = {
+     useNewUrlParser: true 
+   };
+   MongoClient.connect(credentials_uri, options, function (err, db) {
+     if (err) {
+       mongodb = null;
+       callback(err,null);
+     } else {
+       mongodb = db.db("tmf");
+       callback(null,mongodb);
+     }
+   });
+ };
+
 function getMongoQuery(req) {
   var res;
   if(req instanceof Object) {
