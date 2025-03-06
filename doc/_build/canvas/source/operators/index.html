@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Open Digital Architecture - Controllers/Operators &mdash; ODA-Component Accelerator v1beta3 documentation</title>
+  <title>Open Digital Architecture - Operators &mdash; ODA-Component Accelerator v1 documentation</title>
       <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=80d5e7a1" />
       <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=19f00094" />
       <link rel="stylesheet" type="text/css" href="../../../_static/css/custom.css?v=6567dac9" />
@@ -16,7 +16,7 @@
   
         <script src="../../../_static/jquery.js?v=5d32c60e"></script>
         <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script src="../../../_static/documentation_options.js?v=546c8a9f"></script>
+        <script src="../../../_static/documentation_options.js?v=5cb08e4e"></script>
         <script src="../../../_static/doctools.js?v=9a2dae69"></script>
         <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../_static/js/theme.js"></script>
@@ -58,7 +58,6 @@
 <p class="caption" role="heading"><span class="caption-text">Component:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../../docs/ODAComponentDesignGuidelines.html">Design Guidelines to create a new ODA Component</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../ctk/README.html">ODA Component - CTK</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Canvas:</span></p>
 <ul>
@@ -73,14 +72,16 @@
 <li class="toctree-l1"><a class="reference internal" href="../../Usecases.html">Usecase List</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../usecase-library/use-case-naming-conventions.html">Use case naming conventions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../README.html">ODA Canvas source code</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Open Digital Architecture - Controllers/Operators</a><ul>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Open Digital Architecture - Operators</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="README.html">ODA Canvas Operators</a></li>
-<li class="toctree-l2"><a class="reference internal" href="componentOperator/modules.html">Component Operator</a></li>
-<li class="toctree-l2"><a class="reference internal" href="apiOperatorIstio/modules.html">API Operator: Istio</a></li>
-<li class="toctree-l2"><a class="reference internal" href="apiOperatorKong/modules.html">API Operator: Kong</a></li>
-<li class="toctree-l2"><a class="reference internal" href="apiOperatorApisix/modules.html">API Operator: Apisix</a></li>
-<li class="toctree-l2"><a class="reference internal" href="apiOperatorApig/modules.html">API Operator: WhaleCloud API Gateway</a></li>
-<li class="toctree-l2"><a class="reference internal" href="securityController/modules.html">Security Operator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="component-management/modules.html">Component Operator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api-management/istio/modules.html">API Operator: Istio</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api-management/kong/modules.html">API Operator: Kong</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api-management/apache-apisix/modules.html">API Operator: Apisix</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api-management/apigee/modules.html">API Operator: Apigee API Gateway</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api-management/azure-apim/modules.html">API Operator: Azure-Apim</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api-management/whalecloud-apim/modules.html">API Operator: Whalecloud Apim</a></li>
+<li class="toctree-l2"><a class="reference internal" href="identity-config/keycloak/modules.html">Security Operator</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../webhooks-and-utilities.html">Webuooks and Utilities</a></li>
@@ -98,6 +99,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../../docs/developer/work-with-dockerimages.html">Developer How-Tos: Work with Dockerimages</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../docs/developer/work-with-dockerimages.html#summary">Summary</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../docs/developer/work-with-dockerimages.html#how-to-add-a-new-dockerimage">How-To add a new Dockerimage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../docs/developer/work-with-dockerimages.html#how-to-define-unit-tests">How-To define unit tests</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../devcontainer.html">ODA Canvas Development Environment</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Installing%20KOPF%20development%20environment.html">Installing KOPF (tested in GKE)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../docs/DocumentationProcess.html">Documentation Process</a></li>
@@ -117,7 +119,7 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
-      <li class="breadcrumb-item active">Open Digital Architecture - Controllers/Operators</li>
+      <li class="breadcrumb-item active">Open Digital Architecture - Operators</li>
       <li class="wy-breadcrumbs-aside">
             <a href="../../../_sources/canvas/source/operators/index.rst.txt" rel="nofollow"> View page source</a>
       </li>
@@ -127,8 +129,8 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="open-digital-architecture-controllers-operators">
-<h1>Open Digital Architecture - Controllers/Operators<a class="headerlink" href="#open-digital-architecture-controllers-operators" title="Link to this heading"></a></h1>
+  <section id="open-digital-architecture-operators">
+<h1>Open Digital Architecture - Operators<a class="headerlink" href="#open-digital-architecture-operators" title="Link to this heading"></a></h1>
 <p>This contains documentation on the Custom Operators that are part of the Open Digital Architecture - Component Accelerator (ODA-CA) project.
 The ODA-CA is a reference implementation of the <a class="reference external" href="https://www.tmforum.org/resources/exploratory-report/ig1171-oda-component-definition-r19-0-0/">IG1171 Component Definition</a></p>
 <img alt="../../../_images/Component.png" src="../../../_images/Component.png" />
@@ -137,39 +139,60 @@ The ODA-CA is a reference implementation of the <a class="reference external" hr
 <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="README.html">ODA Canvas Operators</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="README.html#list-of-operators">List of Operators</a></li>
-<li class="toctree-l2"><a class="reference internal" href="README.html#docker-images">Docker Images</a></li>
+<li class="toctree-l2"><a class="reference internal" href="README.html#how-do-i-buy-or-build-an-oda-canvas">How do I buy or build an ODA Canvas?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="README.html#types-of-operators">Types of Operators</a></li>
+<li class="toctree-l2"><a class="reference internal" href="README.html#operator-container-images">Operator Container Images</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="componentOperator/modules.html">Component Operator</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="componentOperator/README.html">Component Operator - Introduction</a></li>
-<li class="toctree-l2"><a class="reference internal" href="componentOperator/README.html#buildautomation-and-versioning">Buildautomation and Versioning</a></li>
-<li class="toctree-l2"><a class="reference internal" href="componentOperator/modules.html#python-modules">Python modules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="component-management/modules.html">Component Operator</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="component-management/README.html">Component Operator - Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="component-management/README.html#build-automation-and-versioning">Build automation and versioning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="component-management/modules.html#python-modules">Python modules</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="apiOperatorIstio/modules.html">API Operator: Istio</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="apiOperatorIstio/README.html">API Operator for Istio/Prometheus - Introduction</a></li>
-<li class="toctree-l2"><a class="reference internal" href="apiOperatorIstio/modules.html#python-modules">Python modules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api-management/istio/modules.html">API Operator: Istio</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="api-management/istio/README.html">API Operator for Istio</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api-management/istio/modules.html#python-modules">Python modules</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="apiOperatorKong/modules.html">API Operator: Kong</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="apiOperatorKong/README.html">Kubernetes Kong API Lifecycle Management Operator</a></li>
-<li class="toctree-l2"><a class="reference internal" href="apiOperatorKong/modules.html#python-modules">Python modules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api-management/kong/modules.html">API Operator: Kong</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="api-management/kong/README.html">Kubernetes Kong API Lifecycle Management Operator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api-management/kong/modules.html#python-modules">Python modules</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="apiOperatorApisix/modules.html">API Operator: Apisix</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="apiOperatorApisix/README.html">Kubernetes Kong API Lifecycle Management Operator</a></li>
-<li class="toctree-l2"><a class="reference internal" href="apiOperatorApisix/modules.html#python-modules">Python modules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api-management/apache-apisix/modules.html">API Operator: Apisix</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="api-management/apache-apisix/README.html">Apache APISIX API Management Operator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api-management/apache-apisix/modules.html#python-modules">Python modules</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="apiOperatorApig/modules.html">API Operator: WhaleCloud API Gateway</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="apiOperatorApig/README.html">API Operator apig - Introduction</a></li>
-<li class="toctree-l2"><a class="reference internal" href="apiOperatorApig/modules.html#python-modules">Python modules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api-management/apigee/modules.html">API Operator: Apigee API Gateway</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="api-management/apigee/README.html">API Operator apig - Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api-management/apigee/modules.html#python-modules">Python modules</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="securityController/modules.html">Security Operator</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="securityController/README.html">Security Operator - Introduction</a></li>
-<li class="toctree-l2"><a class="reference internal" href="securityController/modules.html#python-modules">Python modules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api-management/azure-apim/modules.html">API Operator: Azure-Apim</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="api-management/azure-apim/README.html">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api-management/azure-apim/README.html#operator-architecture">Operator Architecture</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api-management/azure-apim/README.html#key-components">Key Components</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api-management/azure-apim/README.html#event-handling-workflow">Event Handling Workflow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api-management/azure-apim/README.html#code-structure-and-functions">Code Structure and Functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api-management/azure-apim/README.html#interaction-with-azure-services">Interaction with Azure Services</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api-management/azure-apim/README.html#security-considerations">Security Considerations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api-management/azure-apim/README.html#testing-and-debugging">Testing and Debugging</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api-management/azure-apim/README.html#limitations-and-future-enhancements">Limitations and Future Enhancements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api-management/azure-apim/README.html#conclusion">Conclusion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api-management/azure-apim/README.html#key-takeaways">Key Takeaways:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api-management/azure-apim/modules.html#python-modules">Python modules</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="api-management/whalecloud-apim/modules.html">API Operator: Whalecloud Apim</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="api-management/whalecloud-apim/README.html">API Operator apig - Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api-management/whalecloud-apim/modules.html#python-modules">Python modules</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="identity-config/keycloak/modules.html">Security Operator</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="identity-config/keycloak/README.html">Security Operator - Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="identity-config/keycloak/modules.html#python-modules">Python modules</a></li>
 </ul>
 </li>
 </ul>
@@ -187,7 +210,7 @@ The ODA-CA is a reference implementation of the <a class="reference external" hr
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2024, TM Forum ODA-Component Accelerator project.</p>
+    <p>&#169; Copyright 2025, TM Forum ODA-Component Accelerator project.</p>
   </div>
 
   Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a

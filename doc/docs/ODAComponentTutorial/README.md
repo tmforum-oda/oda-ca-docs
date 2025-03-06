@@ -2,23 +2,26 @@
 
 This tutorial shows the complete process to package, test and deploy an ODA-Component, using the nodejs reference implementation of the TMF637 Product Inventory Management API as the source code. You should be able to follow the process below using an existing software application as source. The process should work for simple applications - it is intended as a tutorial to get you started. For more complex applications you may have to decompose to multiple containers/micro-services and even multiple ODA-Components.
 
-> **Note:** This tutorial has been updated for v1beta3 version of the ODA component speficiation
+> **Note:** This tutorial has been updated for v1.0 version of the ODA component speficiation
 > and should be deployed unto an ODA Canvas environment that supports this version of the specification.
 
 <!-- There is a video of this tutorial at: [ODA Component Tutorial Video walkthrough](https://youtu.be/wZJ8d5uQ7_8) --->
 
-For an introdution to the Open-Digital Architecture component model, take a look at the recording from the Digital Transformation World Series conference:
+## Prerequisites
 
-![https://www.youtube.com/watch?v=e_m-nnKvWIs](./images/DTW-Video.png)
-
-[DTW World Series Masterclass:Leveraging ODA and Open APIs to achieve digital transformation](https://www.youtube.com/watch?v=e_m-nnKvWIs)
+* ODA Canvas runtime environment is installed. The installation instruction is available at [https://github.com/tmforum-oda/oda-canvas/tree/main/installation](https://github.com/tmforum-oda/oda-canvas/tree/main/installation). 
+* Kubectl to access the Kubernetes cluster control plane is configured. It may have been automatically configured during the ODA canvas installation.
+* Access to the Open API Reference implementation
+* npm or its equivalent. NPM version 8.19.4 has been used for this tutorial.
+* mongodb. mongodb-community@8.0 has been used for this tutorial.
+* node, version v16.20.2 has been used for this tutorial.
 
 
 ## Step 1. Download Reference Implementation
 
-We are using one of the Reference implementations of the Open-APIs as a starting point. Go to the open-API Table at [https://projects.tmforum.org/wiki/display/API/Open+API+Table](https://projects.tmforum.org/wiki/display/API/Open+API+Table) and download one of the reference implmentation `.zip` files (we are using the Product Inventory Management API version 4, but you can choose any).
+We are using one of the Reference implementations of the Open-APIs as a starting point. Go to the open-API Directory at [https://www.tmforum.org/oda/open-apis/directory](https://www.tmforum.org/oda/open-apis/directory) and download one of the reference implmentation `.zip` files (we are using the Product Inventory Management API version 4 (### TBC if version 5 is used ###), but you can choose any).
 
-![<img src="https://projects.tmforum.org/wiki/display/API/Open+API+Table">](./images/Open-API-Table.png)
+![<img src="https://www.tmforum.org/oda/open-apis/directory">](./images/Open-API-Table.png)
 
 
 The reference implementation provides a Nodejs API server implementation that requires a MongoDb backend. It provides a nice swagger-ui on top of a Open-API implementation stub. The reference implementation is set-up to run in IBM Cloud (bluemix). To enable it to run locally or in a docker container, we edit the /api/swagger.yaml file to remove the `host:` field (it will default to looking in the current host), and change the `schemes:` from `https` to `http`.
@@ -81,7 +84,7 @@ function connectHelper(callback) {
 ```
 ## 3.2 Use environment variables to allow API path to be configured externally
 
-By default the nodejs code will serve the API at the path in the swagger file, which for our example is `/tmf-api/tmf-api/productInventory/v4/`. We want to potentially deploy multiple component instances in the same environment, and so we add a configurable `COMPONENT_NAME` to the start of the URL. We need to do this in the `swaggerDoc` as well as in the `swagger-ui-dist/index.html` that provides the swagger user interface. 
+By default the nodejs code will serve the API at the path in the swagger file, which for our example is `/tmf-api/productInventory/v4/`. We want to potentially deploy multiple component instances in the same environment, and so we add a configurable `COMPONENT_NAME` to the start of the URL. We need to do this in the `swaggerDoc` as well as in the `swagger-ui-dist/index.html` that provides the swagger user interface. 
 
 Edit the `./index.js` file in the implementation root directory.
 ```js
@@ -129,13 +132,13 @@ First, we've created a simple module in `utils/entrypoint.js` to build this entr
 
 Next, we integrated this module by adding `app.use(swaggerDoc.basePath, entrypointUtils.entrypoint);` as the last hook before starting the server.
 
-Finally, we change the path where the 'api-docs' and 'docs' are exposed. By default they are served at `/api-docs` and `/docs`. Again, we want to avoid conflicts if we have multiple components running in the same environment. We solve this by moving them to the full path of the API, so in our example, they would be at `/tmf-api/tmf-api/productInventory/v4/`
+Finally, we change the path where the 'api-docs' and 'docs' are exposed. By default they are served at `/api-docs` and `/docs`. Again, we want to avoid conflicts if we have multiple components running in the same environment. We solve this by moving them to the full path of the API, so in our example, they would be at `/tmf-api/productInventory/v4/`
 
 ```js
   // Serve the Swagger documents and Swagger UI
-  app.use(middleware.swaggerUi({   apiDocs: swaggerDoc.basePath + 'api-docs',
-    swaggerUi: swaggerDoc.basePath + 'docs',
-    swaggerUiDir: path.join(__dirname, 'node_modules', 'swagger-ui-dist') }));
+  app.use(middleware.swaggerUi({   apiDocs: swaggerDoc.basePath + '/api-docs',
+  swaggerUi: swaggerDoc.basePath + '/docs',
+  swaggerUiDir: path.join(__dirname, 'node_modules', 'swagger-ui-dist') }));
 
   // create an entrypoint
   const entrypointUtils = require('./utils/entrypoint');
@@ -145,7 +148,7 @@ Finally, we change the path where the 'api-docs' and 'docs' are exposed. By defa
     // Start the server
   http.createServer(app).listen(serverPort, function () {
     console.log('Your server is listening on port %d (http://localhost:%d)', serverPort, serverPort);
-    console.log('Swagger-ui is available on http://localhost:'+ serverPort  + swaggerDoc.basePath + 'docs', serverPort);
+    console.log('Swagger-ui is available on http://localhost:'+ serverPort  + swaggerDoc.basePath + '/docs', serverPort);
   });
 ```
 
@@ -154,7 +157,7 @@ Finally, we change the path where the 'api-docs' and 'docs' are exposed. By defa
 Create a dockerfile in the product inventory implementation directory with the instructions to build our image. We are starting with the official [node](https://hub.docker.com/_/node) docker image.
 
 ```text
-FROM node:12
+FROM node:16
 ```
 
 Define the working directory of a Docker container 
@@ -192,7 +195,7 @@ CMD ["node", "index.js"]
 The complete dockerfile should look like:
 
 ```text
-FROM node:12
+FROM node:16
 WORKDIR /usr/app
 COPY package*.json ./
 RUN npm install
@@ -201,7 +204,7 @@ EXPOSE 8080
 CMD ["node", "index.js"]
 ```
 
-Before we build this dockerfile, we create a `.dockerignore` file (so the at node_modules packages are not copied into the docker image - this would make the image very large. The `RUN npm install` command inside the dockerfile will install these on demand).
+Before we build this dockerfile, we create a `.dockerignore` file (so that the node_modules packages are not copied into the docker image - this would make the image very large. The `RUN npm install` command inside the dockerfile will install these on demand).
 
 ```
 node_modules
@@ -211,7 +214,7 @@ npm-debug.log
 To build the docker image, we use the command:
 
 ```
-docker build . -t dominico/productinventoryapi:0.2 -t dominico/productinventoryapi:latest
+docker build . -t dominico/productinventoryapi:0.1 -t dominico/productinventoryapi:latest
 ```
 
 Note: we use the -t to tag the image. We give the image two tags, one with a version number and the other with a `latest` tag that will overwrite any previously uploaded images.
@@ -223,8 +226,8 @@ To check that the images are in the local repository, we use this command:
 
 --Result--
 REPOSITORY                     TAG       IMAGE ID       CREATED             SIZE
-dominico/productinventoryapi   0.2       6f2819946f76   About an hour ago   910MB
-dominico/productinventoryapi   latest    6f2819946f76   About an hour ago   910MB
+dominico/productinventoryapi   0.1       6f2819946f76   About a minute ago   924MB
+dominico/productinventoryapi   latest    6f2819946f76   About a minute ago   924MB
 
 ```
 Finally we upload the docker image to a Docker repository. I'm using the default [DockerHub](https://hub.docker.com) with an account `dominico` that I have created previously. If this is the first time accessing the docker repository you will need to login first with the `docker login` command.
@@ -285,7 +288,7 @@ const createPartyRole = async () => {
 The role initialisation dockerfile file:
 
 ```text
-FROM node:12
+FROM node:16
 WORKDIR /src
 COPY package*.json ./
 RUN npm install
@@ -328,9 +331,11 @@ type: application
 # This is the chart version. This version number should be incremented each time you make changes
 # to the chart and its templates, including the app version.
 # Versions are expected to follow Semantic Versioning (https://semver.org/)
-version: 1.1.0 
+version: 1.2.0 
+# version: 1.2.0 - upgrade to v1 spec
 # version: 1.1.0 - upgrade to v1beta3 spec
 # version: 1.0.0 - baseline version
+
 
 # This is the version number of the application being deployed. This version number should be
 # incremented each time you make changes to the application. Versions are not expected to
@@ -376,11 +381,11 @@ spec:
       labels:
         impl: {{.Release.Name}}-productinventoryapi
         app: {{.Release.Name}}-{{.Values.component.name}}
-        version:  productinventoryapi-0.2
+        version:  productinventoryapi-0.1
     spec:
       containers:
       - name: {{.Release.Name}}-productinventoryapi         
-        image: dominico/productinventoryapi:0.2
+        image: dominico/productinventoryapi:latest
         env:
         - name: RELEASE_NAME
           value: {{.Release.Name}}           
@@ -398,6 +403,13 @@ spec:
         ports:
         - name: {{.Release.Name}}-prodinvapi
           containerPort: 8080
+        startupProbe:
+          httpGet:
+            path: /{{.Release.Name}}-{{.Values.component.name}}/tmf-api/productInventory/v4/
+            port: 8080
+          initialDelaySeconds: 10
+          periodSeconds: 5
+          failureThreshold: 30
 ```
 
 Next, we need create the deployment resource for the party Role API. Copy the code below into `deployment-partyroleapi.yaml`
@@ -451,14 +463,14 @@ spec:
           failureThreshold: 30
 ```
 
-We also need to deploy a mongoDb. We will use the standard mongoDb image from dockerhub. Copy the code below into: `deployment-partyroleapi.yaml`
+We also need to deploy a mongoDb. We will use the standard mongoDb image from dockerhub. Copy the code below into: `deployment-mongodb.yaml`
 
 
 ```yaml
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{.Release.Name}}-mongodb-prod
+  name: {{.Release.Name}}-mongodb
   labels:
     oda.tmforum.org/componentName: {{.Release.Name}}-{{.Values.component.name}}
 spec:
@@ -475,7 +487,7 @@ spec:
     spec:
       containers:
       - name: {{.Release.Name}}-mongodb
-        image: mongo:latest
+        image: mongo:5.0.1
         ports:
         - name: {{.Release.Name}}-mongodb
           containerPort: {{.Values.mongodb.port}}
@@ -536,13 +548,13 @@ kind: Service
 metadata:
   name: {{.Release.Name}}-productinventoryapi
   labels:
-    app: {{.Release.Name}}-productinventoryapi
+    app: {{.Release.Name}}-{{.Values.component.name}}
     oda.tmforum.org/componentName: {{.Release.Name}}-{{.Values.component.name}}
 spec:
   ports:
   - port: 8080
-    targetPort: 8080
-    name: {{.Release.Name}}-productinventoryapi
+    targetPort: {{.Release.Name}}-prodinvapi
+    name: http-{{.Release.Name}}-productinventoryapi
   type: NodePort
   selector:
     impl: {{.Release.Name}}-productinventoryapi
@@ -556,7 +568,7 @@ kind: Service
 metadata:
   name: {{.Release.Name}}-partyroleapi
   labels:
-    app: {{.Release.Name}}-partyroleapi
+    app: {{.Release.Name}}-{{.Values.component.name}}
     oda.tmforum.org/componentName: {{.Release.Name}}-{{.Values.component.name}}
 spec:
   ports:
@@ -601,55 +613,71 @@ We have created all the Kubernetes resources to deploy the mongoDb, party role a
 This is a relatively simple component that just exposes one API as part of its `coreFunction`. Note that we have included the release name and component name in the root of the API path (this is a good pattern to follow so that the API doesn't conflict with any other components deployed in the same environment).
 
 ```yaml
-apiVersion: oda.tmforum.org/v1beta3
+apiVersion: oda.tmforum.org/v1
 kind: Component
 metadata:
   name: {{.Release.Name}}-{{.Values.component.name}}
   labels:
     oda.tmforum.org/componentName: {{.Release.Name}}-{{.Values.component.name}}
+  annotations:
+    webhookconverted: Webhook converted From oda.tmforum.org/v1beta3 to oda.tmforum.org/v1
 spec:
-  id: {{.Values.component.id}}
-  name: {{.Values.component.name}}
-  functionalBlock: {{.Values.component.functionalBlock}}
-  publicationDate: {{.Values.component.publicationDate}}
-  status: specified
-  version: {{.Values.component.version}}
-  description: "Simple Product Inventory ODA-Component from Open-API reference implementation."
-  maintainers:
-    - name: Dominic Oyeniran
-      email: dominic.oyeniran@vodafone.com
-  owners:
-    - name: Dominic Oyeniran
-      email: dominic.oyeniran@vodafone.com     
+  componentMetadata:
+    id: {{.Values.component.id}}
+    name: {{.Values.component.name}}
+    version: {{.Values.component.version}}
+    description: >-
+      Simple Product Inventory ODA-Component from Open-API reference
+      implementation.
+    functionalBlock: {{.Values.component.functionalBlock}}
+    publicationDate: {{.Values.component.publicationDate}}
+    status: specified
+    maintainers:
+      - name: Dominic Oyeniran
+        email: dominic.oyeniran@vodafone.com
+    owners:
+      - name: Dominic Oyeniran
+        email: dominic.oyeniran@vodafone.com
   coreFunction:
-    exposedAPIs: 
-    - name: productinventorymanagement
-      specification: ["https://raw.githubusercontent.com/tmforum-apis/TMF637_ProductInventory/master/TMF637-ProductInventory-v4.0.0.swagger.json"]
-      implementation: {{.Release.Name}}-productinventoryapi
-      apitype: openapi
-      path: /{{.Release.Name}}-{{.Values.component.name}}/tmf-api/productInventory/v4
-      developerUI: /{{.Release.Name}}-{{.Values.component.name}}/tmf-api/productInventory/v4/docs
-      port: 8080
-    dependentAPIs: 
-    - name: party
-      apitype: openapi        
-      specification: https://open-api.tmforum.org/TMF632-Party-v4.0.0.swagger.json
+    exposedAPIs:
+      - name: productinventorymanagement
+        specification:
+          - url: >-
+              https://raw.githubusercontent.com/tmforum-apis/TMF637_ProductInventory/master/TMF637-ProductInventory-v4.0.0.swagger.json
+        implementation: {{.Release.Name}}-productinventoryapi
+        apiType: openapi
+        path: >-
+          /{{.Release.Name}}-{{.Values.component.name}}/tmf-api/productInventory/v4
+        developerUI: >-
+          /{{.Release.Name}}-{{.Values.component.name}}/tmf-api/productInventory/v4/docs
+        port: 8080
+        gatewayConfiguration: {}
+    dependentAPIs:
+      - name: party
+        apiType: openapi
+        specification:
+          - url: https://open-api.tmforum.org/TMF632-Party-v4.0.0.swagger.json
   eventNotification:
     publishedEvents: []
     subscribedEvents: []
-  managementFunction: 
+  managementFunction:
     exposedAPIs: []
-    dependentAPIs: []   
+    dependentAPIs: []
   securityFunction:
-    controllerRole: {{.Values.security.controllerRole }}
-    exposedAPIs: 
-    - name: partyrole
-      specification: ["https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json"]
-      implementation: {{.Release.Name}}-partyroleapi
-      apitype: openapi
-      path: /{{.Release.Name}}-{{.Values.component.name}}/tmf-api/partyRoleManagement/v4
-      developerUI: /{{.Release.Name}}-{{.Values.component.name}}/tmf-api/partyRoleManagement/v4/docs
-      port: 8080
+    canvasSystemRole: {{.Values.security.controllerRole}}
+    exposedAPIs:
+      - name: partyrole
+        specification:
+          - url: >-
+              https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
+        implementation: {{.Release.Name}}-partyroleapi
+        apiType: openapi
+        path: >-
+          /{{.Release.Name}}-{{.Values.component.name}}/tmf-api/partyRoleManagement/v4
+        developerUI: >-
+          /{{.Release.Name}}-{{.Values.component.name}}/tmf-api/partyRoleManagement/v4/docs
+        port: 8080
+        gatewayConfiguration: {}
 ```
 
 Finally we have to create the parameters in the `values.yaml` file.
@@ -676,17 +704,16 @@ mongodb:
   port: 27017
   database: tmf
 partyrole:
-  image: lesterthomas/partyroleapi:1.0
+  image: dominico/partyroleapi:latest
   versionlabel: partyroleapi-1.0
 api:
   image: dominico/productinventoryapi:latest
-  versionlabel: productinventoryapi-0.2
+  versionlabel: productinventoryapi-0.1
 ```
 
-## Step 6. Test component envelope using component CTK
+## Step 8. Generate the manifest
 
-
-The CTK will operate against an instance of the component. We can generate a kubernetes manifest of an instance using the `helm template [instance namme] [chart]` command. We can take the output of this command into a temporary file:
+We can generate a kubernetes manifest of an instance using the `helm template [instance name] [chart]` command. We can take the output of this command into a temporary file:
 
 ```
 helm template test productinventory > test-instance.component.yaml
@@ -694,35 +721,13 @@ helm template test productinventory > test-instance.component.yaml
 
 If you examine the test-instance.component.yaml you will see all the kubernetes resources (deployments, services, persistentVolumeClaim) as well as a component resource. All the resources are labelled as belonging to the component. Also the component describes its core function (exposing a single API).
 
-We can test that this component instance conforms to the ODA-Component standard by using the component CTK: Download the ODA-Component CTK from [https://github.com/tmforum-oda/oda-component-ctk/](https://github.com/tmforum-oda/oda-component-ctk/).
+## Step 9. Deploy the component envelope into the Canvas
 
+<!-- Connect to the Open Digital Lab: Get the kubectl config from the rancher environment at https://rke.tmforum.org/c/c-85kcq/monitoring - click the Kubeconfig File button in the top right:
 
-Within the oda-component-ctk folder, install the ctk.
+![Rancher](./images/Rancher.png) --->
 
-```sh
-npm install
-```
-
-Then run the static ctk against the component envelope, you would need to specify the correct path to the `test-instance.component.yaml` created earlier.
-
-```sh
-
-npm run L1-static ../ProductInventory/test-instance.component.yaml
-```
-
-You should get an output like the image below. If you receive any errors, fix the issue in the helm chart yaml file and try again.
-
-![CTK image](./images/ctksuccess.png)
-
-
-
-## Step 8. Deploy the component envelope into Open Digital Lab canvas
-
-Connect to the Open Digital Lab: Get the kubectl config from the rancher environment at https://rke.tmforum.org/c/c-85kcq/monitoring - click the Kubeconfig File button in the top right:
-
-![Rancher](./images/Rancher.png)
-
-Copy this into your `~/.kube/config` file.
+Verify that your kubectl config is already copied into your `~/.kube/config` file as per the prerequisites above.
 
 You can test the connection using `kubectl get all --namespace components`. (You should either see a message `No resources found in components namespace.` or you may retrieve a list of kubernetes resources).
 
@@ -732,11 +737,12 @@ To permanently save the namespace for all subsequent kubectl commands use:
 kubectl config set-context --current --namespace=components
 ```
 
-Install the component using Helm, we call the release name `r1` . Ensure the release name is not in conflict with release name already assigned to other components in the open digital lab:
+Install the component using Helm, we call the release name `r1` . Ensure the release name is not in conflict with release name already assigned to other components in the your Canvas:
 
 ```sh
 helm install r1 productinventory/ 
 ```
+![install components](./images/helm-install-components.png)
 
 You can then view the component in `kubectl`:
 
@@ -751,34 +757,24 @@ The `kubectl get components` will show all the deployed components and the deplo
 You can also view the component API endpoint in `kubectl`:
 
 ```sh
-kubectl get apis
+kubectl get exposedapis
 ```
 
-The `kubectl get apis` command shows details of exposed apis and a developer-ui (if supplied). Initially these details will be blank - the component may take a few seconds to fully deploy. Once deployed, it should look like:
+The `kubectl get exposedapis` command shows details of exposed apis and a developer-ui (if supplied). Initially these details will be blank - the component may take a few seconds to fully deploy. Once deployed, it should look like:
 
 ![get apis](./images/kubectl-get-apis.png)
 
-If you navigate to the root or the API (in a web browser or in postman), you should see the entrypoint of the API:
+If you navigate to the root or the API (in a web browser or in postman), you should see the entrypoint of the API. You may need to create a port forwarding on the product inventory component in your canvas:
 
 ![api entrypoint](./images/api-entrypoint.png)
 
 
-If you navigate to the developer-ui, you shold see the swagger-ui tool:
+If you navigate to the developer-ui, you should see the swagger-ui tool:
 
 ![swagger ui](./images/swagger-ui.png)
 
 
-Finally, you can run the dynamic ctk against the component envelope.
-
-```sh
-npm dynamic ../oda-ca-docs/ODA-Component-Tutorial/test-instance.component.yaml
-```
-
-You should get a result like the image below:
-
-![CTK image](./images/ctkdynamicsuccess.png)
-
-This is the last step. You would have succesffully deployed an ODA Component unto an ODA Canvas environment!
+This is the last step. You would have successfully deployed an ODA Component unto an ODA Canvas environment!
 
 ## Directory Structure
 
@@ -798,6 +794,6 @@ Also, the reference implementation sourcecode is available on the [ODA-Component
   console.log('app.use entrypoint');
   app.use(swaggerDoc.basePath, entrypointUtils.entrypoint);
 ```
-2. Due to a node version issue (i think!) the generated API RI does not work on the latest v15 of node. I have created container based on node v12. The issue is with the fs.copyFileSync function: The v15 expects the third parameter to be an optional `mode` whilst the current implementation has a call-back error function.
+2. Due to a node version issue (i think!) the generated API RI does not work on the latest v16 of node. I have created container based on node v16. The issue is with the fs.copyFileSync function: The v16 expects the third parameter to be an optional `mode` whilst the current API reference implementation has a call-back error function.
 3. Api-docs are exposed at /api-docs which means that you can't host multiple apis on the same server. Therefore, it is hosted at `tmf-api/productInventory/v4/api-docs` instead (and the swagger-ui at `tmf-api/productInventory/v4/docs`).
-4. The component name has been included in the root of the API (so that multiple instances of the API can be deployed in the same server). For a Helm install with release name `test`, the api is deployed at: `/test-productinventory/tmf-api/productInventory/v4/` and with a Helm install with release name `r1`, the api is deployed at: `/test-productinventory/tmf-api/productInventory/v4/` . Component release name must be unique and cannot be reused. 
+4. The component name has been included in the root of the API (so that multiple instances of the API can be deployed in the same server). For a Helm install with release name `test`, the api is deployed at: `/test-productinventory/tmf-api/productInventory/v4/` and with a Helm install with release name `r1`, the api is deployed at: `/r1-productinventory/tmf-api/productInventory/v4/` . Component release name must be unique and cannot be reused. 

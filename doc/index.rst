@@ -29,7 +29,6 @@ Open Digital Architecture - Component Accelerator
    :caption: Component:
 
    docs/ODAComponentDesignGuidelines.md
-   ctk/README.md
 
 .. toctree::
    :maxdepth: 3

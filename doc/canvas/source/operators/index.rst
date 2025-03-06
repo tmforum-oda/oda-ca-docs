@@ -3,7 +3,7 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Open Digital Architecture - Controllers/Operators
+Open Digital Architecture - Operators
 =================================================
 
 This contains documentation on the Custom Operators that are part of the Open Digital Architecture - Component Accelerator (ODA-CA) project.
@@ -18,11 +18,16 @@ The Custom Operators extend Kubernetes to understand ODA Component resources. Th
    :caption: Contents:
 
    README.md
-   componentOperator/modules.rst
-   apiOperatorIstio/modules.rst
-   apiOperatorKong/modules.rst
-   apiOperatorApisix/modules.rst
-   apiOperatorApig/modules.rst
-   securityController/modules.rst
+   component-management/modules.rst
+   api-management/istio/modules.rst
+   api-management/kong/modules.rst
+   api-management/apache-apisix/modules.rst
+   api-management/apigee/modules.rst
+   api-management/azure-apim/modules.rst
+   api-management/whalecloud-apim/modules.rst
+   identity-config/keycloak/modules.rst
+   credentials-management/modules.rst
+   dependentApiSimpleOperator/modules.rst
+   secretsmanagementOperator-hc/modules.rst
 
 

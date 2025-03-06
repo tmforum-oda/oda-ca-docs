@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Manage Components use case &mdash; ODA-Component Accelerator v1beta3 documentation</title>
+  <title>Manage Components use case &mdash; ODA-Component Accelerator v1 documentation</title>
       <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=80d5e7a1" />
       <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=19f00094" />
       <link rel="stylesheet" type="text/css" href="../../_static/css/custom.css?v=6567dac9" />
@@ -16,7 +16,7 @@
   
         <script src="../../_static/jquery.js?v=5d32c60e"></script>
         <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script src="../../_static/documentation_options.js?v=546c8a9f"></script>
+        <script src="../../_static/documentation_options.js?v=5cb08e4e"></script>
         <script src="../../_static/doctools.js?v=9a2dae69"></script>
         <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../_static/js/theme.js"></script>
@@ -58,7 +58,6 @@
 <p class="caption" role="heading"><span class="caption-text">Component:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../docs/ODAComponentDesignGuidelines.html">Design Guidelines to create a new ODA Component</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../ctk/README.html">ODA Component - CTK</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Canvas:</span></p>
 <ul>
@@ -83,7 +82,7 @@
 <li class="toctree-l2"><a class="reference internal" href="UC004-Configure-Published-Events.html">Configure Published Events use-case</a></li>
 <li class="toctree-l2"><a class="reference internal" href="UC005-Configure-Users-and-Roles.html">Configure Users and Roles use case</a></li>
 <li class="toctree-l2"><a class="reference internal" href="UC006-Configure-Observability.html">Configure Observability use case</a></li>
-<li class="toctree-l2"><a class="reference internal" href="UC007-Configure-Dependent-APIs.html">Discover dependent APIs use case</a></li>
+<li class="toctree-l2"><a class="reference internal" href="UC007-Configure-Dependent-APIs.html">Configure dependent APIs use case</a></li>
 <li class="toctree-l2"><a class="reference internal" href="UC008-Configure-Subscribed-Events.html">Configure Subscribed Events use-case</a></li>
 <li class="toctree-l2"><a class="reference internal" href="UC009-Internal-Authentication.html">Internal authentication use-case</a></li>
 <li class="toctree-l2"><a class="reference internal" href="UC010-External-Authentication.html">External authentication use-case</a></li>
@@ -95,7 +94,7 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="use-case-naming-conventions.html">Use case naming conventions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../source/README.html">ODA Canvas source code</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../source/operators/index.html">Open Digital Architecture - Controllers/Operators</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../source/operators/index.html">Open Digital Architecture - Operators</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../source/webhooks-and-utilities.html">Webuooks and Utilities</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Feature Tests:</span></p>
@@ -111,6 +110,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../docs/developer/work-with-dockerimages.html">Developer How-Tos: Work with Dockerimages</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../docs/developer/work-with-dockerimages.html#summary">Summary</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../docs/developer/work-with-dockerimages.html#how-to-add-a-new-dockerimage">How-To add a new Dockerimage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../docs/developer/work-with-dockerimages.html#how-to-define-unit-tests">How-To define unit tests</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../devcontainer.html">ODA Canvas Development Environment</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../source/operators/Installing%20KOPF%20development%20environment.html">Installing KOPF (tested in GKE)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../docs/DocumentationProcess.html">Documentation Process</a></li>
@@ -147,26 +147,26 @@
 <p>It uses the following assumptions:</p>
 <ul class="simple">
 <li><p>The ODA Component describes the requirements (for its Core Function, Management and Security) in a machine-readible specification conforming to the <a class="reference external" href="https://github.com/tmforum-oda/oda-ca-docs/blob/master/ODAComponentDesignGuidelines.md">Component Design Guidelines</a>.</p></li>
-<li><p>The ODA Component conforms to the latest <a class="reference external" href="https://github.com/tmforum-oda/oda-canvas/blob/master/charts/oda-crds/templates/oda-component-crd.yaml">ODA Component API Specification</a> or the previous (N-1) or (N-2) version.</p></li>
+<li><p>The ODA Component conforms to the latest <a class="reference external" href="https://github.com/tmforum-oda/oda-canvas/blob/main/charts/oda-crds/templates/oda-component-crd.yaml">ODA Component API Specification</a> or the previous (N-1) or (N-2) version.</p></li>
 <li><p>The Component Operator decomposes the ODA Component resource into multiple sub-resources (for Exposed APIs, Dependent APIs, Published Events, Subscribed Events, Observability, Identity etc). These sub-resources are processed by their corresponding operators.</p></li>
 <li><p>The Component Operator summarises the status of the sub-resources and the overall status of the ODA Component. The component will have a status of ‘In-Progress’ until all the sub-resource updates are complete. The component will then have a status of ‘Complete’.</p></li>
 </ul>
 <section id="install-component">
 <h2>Install component<a class="headerlink" href="#install-component" title="Link to this heading"></a></h2>
-<p><img alt="manage-components-install" src="http://www.plantuml.com/plantuml/proxy?cache=no&amp;src=https://raw.githubusercontent.com/tmforum-oda/oda-canvas/master/usecase-library/pumlFiles/manage-components-install.puml" />
+<p><img alt="manage-components-install" src="http://www.plantuml.com/plantuml/proxy?cache=no&amp;src=https://raw.githubusercontent.com/tmforum-oda/oda-canvas/main/usecase-library/pumlFiles/manage-components-install.puml" />
 <a class="reference download internal" download="" href="../../_downloads/968b99245f563a7fbeb7bac23a613239/manage-components-install.puml"><span class="xref download myst">plantUML code</span></a></p>
 </section>
 <section id="upgrade-component">
 <h2>Upgrade component<a class="headerlink" href="#upgrade-component" title="Link to this heading"></a></h2>
 <p>The upgrade could include new, updated or deleted Exposed APIs, Dependent APIs, Published Events or Subscribed Events.
 It can also include updates to the Observability, Identity or Secrets metadata etc.</p>
-<p><img alt="manage-components-update" src="http://www.plantuml.com/plantuml/proxy?cache=no&amp;src=https://raw.githubusercontent.com/tmforum-oda/oda-canvas/master/usecase-library/pumlFiles/manage-components-update.puml" />
+<p><img alt="manage-components-update" src="http://www.plantuml.com/plantuml/proxy?cache=no&amp;src=https://raw.githubusercontent.com/tmforum-oda/oda-canvas/main/usecase-library/pumlFiles/manage-components-update.puml" />
 <a class="reference download internal" download="" href="../../_downloads/c502fe3298149b5de609c12f1557a154/manage-components-update.puml"><span class="xref download myst">plantUML code</span></a></p>
 </section>
 <section id="delete-component">
 <h2>Delete component<a class="headerlink" href="#delete-component" title="Link to this heading"></a></h2>
 <p>The component deletion should clean-up all the resources created during the installation of the component. If any of the clean-up processes fail, the component deletion should be cancelled.</p>
-<p><img alt="manage-components-uninstall" src="http://www.plantuml.com/plantuml/proxy?cache=no&amp;src=https://raw.githubusercontent.com/tmforum-oda/oda-canvas/master/usecase-library/pumlFiles/manage-components-uninstall.puml" />
+<p><img alt="manage-components-uninstall" src="http://www.plantuml.com/plantuml/proxy?cache=no&amp;src=https://raw.githubusercontent.com/tmforum-oda/oda-canvas/main/usecase-library/pumlFiles/manage-components-uninstall.puml" />
 <a class="reference download internal" download="" href="../../_downloads/48c0cc29de29c2e70ee00620ef25aeb5/manage-components-uninstall.puml"><span class="xref download myst">plantUML code</span></a></p>
 </section>
 <section id="error-scenarios">
@@ -187,7 +187,7 @@ For troubleshooting, you need to check each of the sub-resources. The sub-resour
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2024, TM Forum ODA-Component Accelerator project.</p>
+    <p>&#169; Copyright 2025, TM Forum ODA-Component Accelerator project.</p>
   </div>
 
   Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a

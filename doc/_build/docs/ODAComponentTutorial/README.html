@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Tutorial to build ODA-Component from Open-API Reference Implementation &mdash; ODA-Component Accelerator v1beta3 documentation</title>
+  <title>Tutorial to build ODA-Component from Open-API Reference Implementation &mdash; ODA-Component Accelerator v1 documentation</title>
       <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=80d5e7a1" />
       <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=19f00094" />
       <link rel="stylesheet" type="text/css" href="../../_static/css/custom.css?v=6567dac9" />
@@ -16,7 +16,7 @@
   
         <script src="../../_static/jquery.js?v=5d32c60e"></script>
         <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script src="../../_static/documentation_options.js?v=546c8a9f"></script>
+        <script src="../../_static/documentation_options.js?v=5cb08e4e"></script>
         <script src="../../_static/doctools.js?v=9a2dae69"></script>
         <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../_static/js/theme.js"></script>
@@ -54,6 +54,7 @@
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../Observability-Tutorial/README.html">Tutorial to deploy and observe a running component</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Tutorial to build ODA-Component from Open-API Reference Implementation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#prerequisites">Prerequisites</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#step-1-download-reference-implementation">Step 1. Download Reference Implementation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#step-2-optionally-test-locally-with-local-mongodb">Step 2. (optionally) test locally with local MongoDb.</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#step-3-configure-for-use-within-kubernetes">Step 3. Configure for use within Kubernetes.</a></li>
@@ -65,8 +66,8 @@
 <li class="toctree-l2"><a class="reference internal" href="#step-6-create-partyrole-initialisation-implementation">Step 6. Create PartyRole Initialisation Implementation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#step-6-1-package-the-nodejs-implementation-into-a-docker-image-following-step-4-above">Step 6.1 Package the nodejs implementation into a docker image following step 4 above.</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#step-7-create-component-envelope">Step 7. Create Component Envelope</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#step-6-test-component-envelope-using-component-ctk">Step 6. Test component envelope using component CTK</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#step-8-deploy-the-component-envelope-into-open-digital-lab-canvas">Step 8. Deploy the component envelope into Open Digital Lab canvas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#step-8-generate-the-manifest">Step 8. Generate the manifest</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#step-9-deploy-the-component-envelope-into-the-canvas">Step 9. Deploy the component envelope into the Canvas</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#directory-structure">Directory Structure</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#issues-resolution">ISSUES &amp; resolution</a></li>
 </ul>
@@ -75,7 +76,6 @@
 <p class="caption" role="heading"><span class="caption-text">Component:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../ODAComponentDesignGuidelines.html">Design Guidelines to create a new ODA Component</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../ctk/README.html">ODA Component - CTK</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Canvas:</span></p>
 <ul>
@@ -90,7 +90,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../canvas/Usecases.html">Usecase List</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../canvas/usecase-library/use-case-naming-conventions.html">Use case naming conventions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../canvas/source/README.html">ODA Canvas source code</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../canvas/source/operators/index.html">Open Digital Architecture - Controllers/Operators</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../canvas/source/operators/index.html">Open Digital Architecture - Operators</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../canvas/source/webhooks-and-utilities.html">Webuooks and Utilities</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Feature Tests:</span></p>
@@ -106,6 +106,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../developer/work-with-dockerimages.html">Developer How-Tos: Work with Dockerimages</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../developer/work-with-dockerimages.html#summary">Summary</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../developer/work-with-dockerimages.html#how-to-add-a-new-dockerimage">How-To add a new Dockerimage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developer/work-with-dockerimages.html#how-to-define-unit-tests">How-To define unit tests</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../canvas/devcontainer.html">ODA Canvas Development Environment</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../canvas/source/operators/Installing%20KOPF%20development%20environment.html">Installing KOPF (tested in GKE)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../DocumentationProcess.html">Documentation Process</a></li>
@@ -139,16 +140,24 @@
 <h1>Tutorial to build ODA-Component from Open-API Reference Implementation<a class="headerlink" href="#tutorial-to-build-oda-component-from-open-api-reference-implementation" title="Link to this heading"></a></h1>
 <p>This tutorial shows the complete process to package, test and deploy an ODA-Component, using the nodejs reference implementation of the TMF637 Product Inventory Management API as the source code. You should be able to follow the process below using an existing software application as source. The process should work for simple applications - it is intended as a tutorial to get you started. For more complex applications you may have to decompose to multiple containers/micro-services and even multiple ODA-Components.</p>
 <blockquote>
-<div><p><strong>Note:</strong> This tutorial has been updated for v1beta3 version of the ODA component speficiation
+<div><p><strong>Note:</strong> This tutorial has been updated for v1.0 version of the ODA component speficiation
 and should be deployed unto an ODA Canvas environment that supports this version of the specification.</p>
 </div></blockquote>
 <!-- There is a video of this tutorial at: [ODA Component Tutorial Video walkthrough](https://youtu.be/wZJ8d5uQ7_8) --->
-<p>For an introdution to the Open-Digital Architecture component model, take a look at the recording from the Digital Transformation World Series conference:</p>
-<p><img alt="https://www.youtube.com/watch?v=e_m-nnKvWIs" src="../../_images/DTW-Video.png" /></p>
-<p><a class="reference external" href="https://www.youtube.com/watch?v=e_m-nnKvWIs">DTW World Series Masterclass:Leveraging ODA and Open APIs to achieve digital transformation</a></p>
+<section id="prerequisites">
+<h2>Prerequisites<a class="headerlink" href="#prerequisites" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p>ODA Canvas runtime environment is installed. The installation instruction is available at <a class="reference external" href="https://github.com/tmforum-oda/oda-canvas/tree/main/installation">https://github.com/tmforum-oda/oda-canvas/tree/main/installation</a>.</p></li>
+<li><p>Kubectl to access the Kubernetes cluster control plane is configured. It may have been automatically configured during the ODA canvas installation.</p></li>
+<li><p>Access to the Open API Reference implementation</p></li>
+<li><p>npm or its equivalent. NPM version 8.19.4 has been used for this tutorial.</p></li>
+<li><p>mongodb. mongodb-community&#64;8.0 has been used for this tutorial.</p></li>
+<li><p>node, version v16.20.2 has been used for this tutorial.</p></li>
+</ul>
+</section>
 <section id="step-1-download-reference-implementation">
 <h2>Step 1. Download Reference Implementation<a class="headerlink" href="#step-1-download-reference-implementation" title="Link to this heading"></a></h2>
-<p>We are using one of the Reference implementations of the Open-APIs as a starting point. Go to the open-API Table at <a class="reference external" href="https://projects.tmforum.org/wiki/display/API/Open+API+Table">https://projects.tmforum.org/wiki/display/API/Open+API+Table</a> and download one of the reference implmentation <code class="docutils literal notranslate"><span class="pre">.zip</span></code> files (we are using the Product Inventory Management API version 4, but you can choose any).</p>
+<p>We are using one of the Reference implementations of the Open-APIs as a starting point. Go to the open-API Directory at <a class="reference external" href="https://www.tmforum.org/oda/open-apis/directory">https://www.tmforum.org/oda/open-apis/directory</a> and download one of the reference implmentation <code class="docutils literal notranslate"><span class="pre">.zip</span></code> files (we are using the Product Inventory Management API version 4 (### TBC if version 5 is used ###), but you can choose any).</p>
 <p><img alt="" src="../../_images/Open-API-Table.png" /></p>
 <p>The reference implementation provides a Nodejs API server implementation that requires a MongoDb backend. It provides a nice swagger-ui on top of a Open-API implementation stub. The reference implementation is set-up to run in IBM Cloud (bluemix). To enable it to run locally or in a docker container, we edit the /api/swagger.yaml file to remove the <code class="docutils literal notranslate"><span class="pre">host:</span></code> field (it will default to looking in the current host), and change the <code class="docutils literal notranslate"><span class="pre">schemes:</span></code> from <code class="docutils literal notranslate"><span class="pre">https</span></code> to <code class="docutils literal notranslate"><span class="pre">http</span></code>.</p>
 </section>
@@ -205,7 +214,7 @@ and should be deployed unto an ODA Canvas environment that supports this version
 </section>
 <section id="use-environment-variables-to-allow-api-path-to-be-configured-externally">
 <h2>3.2 Use environment variables to allow API path to be configured externally<a class="headerlink" href="#use-environment-variables-to-allow-api-path-to-be-configured-externally" title="Link to this heading"></a></h2>
-<p>By default the nodejs code will serve the API at the path in the swagger file, which for our example is <code class="docutils literal notranslate"><span class="pre">/tmf-api/tmf-api/productInventory/v4/</span></code>. We want to potentially deploy multiple component instances in the same environment, and so we add a configurable <code class="docutils literal notranslate"><span class="pre">COMPONENT_NAME</span></code> to the start of the URL. We need to do this in the <code class="docutils literal notranslate"><span class="pre">swaggerDoc</span></code> as well as in the <code class="docutils literal notranslate"><span class="pre">swagger-ui-dist/index.html</span></code> that provides the swagger user interface.</p>
+<p>By default the nodejs code will serve the API at the path in the swagger file, which for our example is <code class="docutils literal notranslate"><span class="pre">/tmf-api/productInventory/v4/</span></code>. We want to potentially deploy multiple component instances in the same environment, and so we add a configurable <code class="docutils literal notranslate"><span class="pre">COMPONENT_NAME</span></code> to the start of the URL. We need to do this in the <code class="docutils literal notranslate"><span class="pre">swaggerDoc</span></code> as well as in the <code class="docutils literal notranslate"><span class="pre">swagger-ui-dist/index.html</span></code> that provides the swagger user interface.</p>
 <p>Edit the <code class="docutils literal notranslate"><span class="pre">./index.js</span></code> file in the implementation root directory.</p>
 <div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="kd">const</span><span class="w"> </span><span class="nx">swaggerDoc</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">swaggerUtils</span><span class="p">.</span><span class="nx">getSwaggerDoc</span><span class="p">();</span>
 
@@ -249,11 +258,11 @@ and should be deployed unto an ODA Canvas environment that supports this version
 <p>By default, the swagger tools expose a resource at all the paths in the API (defined in the swagger.yaml file); They don’t offer any response at the root of the API. This can make it harder for a developer to discover the API paths. In addition, a Kubernetes ingress will by default test the root of the API (as a liveness test). If it receives no response, it will assume the microservice is dead and will not route any traffic to it. A simple solution is to create a home resource that provides a set of links to the other API endpoints. The TM Forum Open-API design standards (TMF630) provides a good definition of this resource which is called the <code class="docutils literal notranslate"><span class="pre">home</span></code> or <code class="docutils literal notranslate"><span class="pre">entrypoint</span></code> resource.</p>
 <p>First, we’ve created a simple module in <code class="docutils literal notranslate"><span class="pre">utils/entrypoint.js</span></code> to build this entrypoint resource at run-time from the swagger.yaml. Operating at run-time also provides the ability to send a contextual response (that might vary depending on the role of the user, for example).</p>
 <p>Next, we integrated this module by adding <code class="docutils literal notranslate"><span class="pre">app.use(swaggerDoc.basePath,</span> <span class="pre">entrypointUtils.entrypoint);</span></code> as the last hook before starting the server.</p>
-<p>Finally, we change the path where the ‘api-docs’ and ‘docs’ are exposed. By default they are served at <code class="docutils literal notranslate"><span class="pre">/api-docs</span></code> and <code class="docutils literal notranslate"><span class="pre">/docs</span></code>. Again, we want to avoid conflicts if we have multiple components running in the same environment. We solve this by moving them to the full path of the API, so in our example, they would be at <code class="docutils literal notranslate"><span class="pre">/tmf-api/tmf-api/productInventory/v4/</span></code></p>
+<p>Finally, we change the path where the ‘api-docs’ and ‘docs’ are exposed. By default they are served at <code class="docutils literal notranslate"><span class="pre">/api-docs</span></code> and <code class="docutils literal notranslate"><span class="pre">/docs</span></code>. Again, we want to avoid conflicts if we have multiple components running in the same environment. We solve this by moving them to the full path of the API, so in our example, they would be at <code class="docutils literal notranslate"><span class="pre">/tmf-api/productInventory/v4/</span></code></p>
 <div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="w">  </span><span class="c1">// Serve the Swagger documents and Swagger UI</span>
-<span class="w">  </span><span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="nx">middleware</span><span class="p">.</span><span class="nx">swaggerUi</span><span class="p">({</span><span class="w">   </span><span class="nx">apiDocs</span><span class="o">:</span><span class="w"> </span><span class="nx">swaggerDoc</span><span class="p">.</span><span class="nx">basePath</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s1">&#39;api-docs&#39;</span><span class="p">,</span>
-<span class="w">    </span><span class="nx">swaggerUi</span><span class="o">:</span><span class="w"> </span><span class="nx">swaggerDoc</span><span class="p">.</span><span class="nx">basePath</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s1">&#39;docs&#39;</span><span class="p">,</span>
-<span class="w">    </span><span class="nx">swaggerUiDir</span><span class="o">:</span><span class="w"> </span><span class="nx">path</span><span class="p">.</span><span class="nx">join</span><span class="p">(</span><span class="nx">__dirname</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;node_modules&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;swagger-ui-dist&#39;</span><span class="p">)</span><span class="w"> </span><span class="p">}));</span>
+<span class="w">  </span><span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="nx">middleware</span><span class="p">.</span><span class="nx">swaggerUi</span><span class="p">({</span><span class="w">   </span><span class="nx">apiDocs</span><span class="o">:</span><span class="w"> </span><span class="nx">swaggerDoc</span><span class="p">.</span><span class="nx">basePath</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s1">&#39;/api-docs&#39;</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">swaggerUi</span><span class="o">:</span><span class="w"> </span><span class="nx">swaggerDoc</span><span class="p">.</span><span class="nx">basePath</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s1">&#39;/docs&#39;</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">swaggerUiDir</span><span class="o">:</span><span class="w"> </span><span class="nx">path</span><span class="p">.</span><span class="nx">join</span><span class="p">(</span><span class="nx">__dirname</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;node_modules&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;swagger-ui-dist&#39;</span><span class="p">)</span><span class="w"> </span><span class="p">}));</span>
 
 <span class="w">  </span><span class="c1">// create an entrypoint</span>
 <span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">entrypointUtils</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s1">&#39;./utils/entrypoint&#39;</span><span class="p">);</span>
@@ -263,7 +272,7 @@ and should be deployed unto an ODA Canvas environment that supports this version
 <span class="w">    </span><span class="c1">// Start the server</span>
 <span class="w">  </span><span class="nx">http</span><span class="p">.</span><span class="nx">createServer</span><span class="p">(</span><span class="nx">app</span><span class="p">).</span><span class="nx">listen</span><span class="p">(</span><span class="nx">serverPort</span><span class="p">,</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;Your server is listening on port %d (http://localhost:%d)&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">serverPort</span><span class="p">,</span><span class="w"> </span><span class="nx">serverPort</span><span class="p">);</span>
-<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;Swagger-ui is available on http://localhost:&#39;</span><span class="o">+</span><span class="w"> </span><span class="nx">serverPort</span><span class="w">  </span><span class="o">+</span><span class="w"> </span><span class="nx">swaggerDoc</span><span class="p">.</span><span class="nx">basePath</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s1">&#39;docs&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">serverPort</span><span class="p">);</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;Swagger-ui is available on http://localhost:&#39;</span><span class="o">+</span><span class="w"> </span><span class="nx">serverPort</span><span class="w">  </span><span class="o">+</span><span class="w"> </span><span class="nx">swaggerDoc</span><span class="p">.</span><span class="nx">basePath</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s1">&#39;/docs&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">serverPort</span><span class="p">);</span>
 <span class="w">  </span><span class="p">});</span>
 </pre></div>
 </div>
@@ -271,7 +280,7 @@ and should be deployed unto an ODA Canvas environment that supports this version
 <section id="step-4-package-the-nodejs-implementation-into-a-docker-image">
 <h2>Step 4. Package the nodejs implementation into a docker image<a class="headerlink" href="#step-4-package-the-nodejs-implementation-into-a-docker-image" title="Link to this heading"></a></h2>
 <p>Create a dockerfile in the product inventory implementation directory with the instructions to build our image. We are starting with the official <a class="reference external" href="https://hub.docker.com/_/node">node</a> docker image.</p>
-<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>FROM node:12
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>FROM node:16
 </pre></div>
 </div>
 <p>Define the working directory of a Docker container</p>
@@ -296,7 +305,7 @@ RUN npm install
 </pre></div>
 </div>
 <p>The complete dockerfile should look like:</p>
-<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>FROM node:12
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>FROM node:16
 WORKDIR /usr/app
 COPY package*.json ./
 RUN npm install
@@ -305,13 +314,13 @@ EXPOSE 8080
 CMD [&quot;node&quot;, &quot;index.js&quot;]
 </pre></div>
 </div>
-<p>Before we build this dockerfile, we create a <code class="docutils literal notranslate"><span class="pre">.dockerignore</span></code> file (so the at node_modules packages are not copied into the docker image - this would make the image very large. The <code class="docutils literal notranslate"><span class="pre">RUN</span> <span class="pre">npm</span> <span class="pre">install</span></code> command inside the dockerfile will install these on demand).</p>
+<p>Before we build this dockerfile, we create a <code class="docutils literal notranslate"><span class="pre">.dockerignore</span></code> file (so that the node_modules packages are not copied into the docker image - this would make the image very large. The <code class="docutils literal notranslate"><span class="pre">RUN</span> <span class="pre">npm</span> <span class="pre">install</span></code> command inside the dockerfile will install these on demand).</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">node_modules</span>
 <span class="n">npm</span><span class="o">-</span><span class="n">debug</span><span class="o">.</span><span class="n">log</span>
 </pre></div>
 </div>
 <p>To build the docker image, we use the command:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">docker</span> <span class="n">build</span> <span class="o">.</span> <span class="o">-</span><span class="n">t</span> <span class="n">dominico</span><span class="o">/</span><span class="n">productinventoryapi</span><span class="p">:</span><span class="mf">0.2</span> <span class="o">-</span><span class="n">t</span> <span class="n">dominico</span><span class="o">/</span><span class="n">productinventoryapi</span><span class="p">:</span><span class="n">latest</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">docker</span> <span class="n">build</span> <span class="o">.</span> <span class="o">-</span><span class="n">t</span> <span class="n">dominico</span><span class="o">/</span><span class="n">productinventoryapi</span><span class="p">:</span><span class="mf">0.1</span> <span class="o">-</span><span class="n">t</span> <span class="n">dominico</span><span class="o">/</span><span class="n">productinventoryapi</span><span class="p">:</span><span class="n">latest</span>
 </pre></div>
 </div>
 <p>Note: we use the -t to tag the image. We give the image two tags, one with a version number and the other with a <code class="docutils literal notranslate"><span class="pre">latest</span></code> tag that will overwrite any previously uploaded images.</p>
@@ -320,8 +329,8 @@ CMD [&quot;node&quot;, &quot;index.js&quot;]
 
 <span class="o">--</span><span class="n">Result</span><span class="o">--</span>
 <span class="n">REPOSITORY</span>                     <span class="n">TAG</span>       <span class="n">IMAGE</span> <span class="n">ID</span>       <span class="n">CREATED</span>             <span class="n">SIZE</span>
-<span class="n">dominico</span><span class="o">/</span><span class="n">productinventoryapi</span>   <span class="mf">0.2</span>       <span class="mi">6</span><span class="n">f2819946f76</span>   <span class="n">About</span> <span class="n">an</span> <span class="n">hour</span> <span class="n">ago</span>   <span class="mi">910</span><span class="n">MB</span>
-<span class="n">dominico</span><span class="o">/</span><span class="n">productinventoryapi</span>   <span class="n">latest</span>    <span class="mi">6</span><span class="n">f2819946f76</span>   <span class="n">About</span> <span class="n">an</span> <span class="n">hour</span> <span class="n">ago</span>   <span class="mi">910</span><span class="n">MB</span>
+<span class="n">dominico</span><span class="o">/</span><span class="n">productinventoryapi</span>   <span class="mf">0.1</span>       <span class="mi">6</span><span class="n">f2819946f76</span>   <span class="n">About</span> <span class="n">a</span> <span class="n">minute</span> <span class="n">ago</span>   <span class="mi">924</span><span class="n">MB</span>
+<span class="n">dominico</span><span class="o">/</span><span class="n">productinventoryapi</span>   <span class="n">latest</span>    <span class="mi">6</span><span class="n">f2819946f76</span>   <span class="n">About</span> <span class="n">a</span> <span class="n">minute</span> <span class="n">ago</span>   <span class="mi">924</span><span class="n">MB</span>
 
 </pre></div>
 </div>
@@ -379,7 +388,7 @@ Excerpts from <code class="docutils literal notranslate"><span class="pre">&lt;r
 <section id="step-6-1-package-the-nodejs-implementation-into-a-docker-image-following-step-4-above">
 <h2>Step 6.1 Package the nodejs implementation into a docker image following step 4 above.<a class="headerlink" href="#step-6-1-package-the-nodejs-implementation-into-a-docker-image-following-step-4-above" title="Link to this heading"></a></h2>
 <p>The role initialisation dockerfile file:</p>
-<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>FROM node:12
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>FROM node:16
 WORKDIR /src
 COPY package*.json ./
 RUN npm install
@@ -415,9 +424,11 @@ CMD [&quot;node&quot;, &quot;initialization.js&quot;]
 <span class="c1"># This is the chart version. This version number should be incremented each time you make changes</span>
 <span class="c1"># to the chart and its templates, including the app version.</span>
 <span class="c1"># Versions are expected to follow Semantic Versioning (https://semver.org/)</span>
-<span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1.1.0</span><span class="w"> </span>
+<span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1.2.0</span><span class="w"> </span>
+<span class="c1"># version: 1.2.0 - upgrade to v1 spec</span>
 <span class="c1"># version: 1.1.0 - upgrade to v1beta3 spec</span>
 <span class="c1"># version: 1.0.0 - baseline version</span>
+
 
 <span class="c1"># This is the version number of the application being deployed. This version number should be</span>
 <span class="c1"># incremented each time you make changes to the application. Versions are not expected to</span>
@@ -455,11 +466,11 @@ CMD [&quot;node&quot;, &quot;initialization.js&quot;]
 <span class="w">      </span><span class="nt">labels</span><span class="p">:</span>
 <span class="w">        </span><span class="nt">impl</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{{</span><span class="nv">.Release.Name</span><span class="p p-Indicator">}}</span><span class="l l-Scalar l-Scalar-Plain">-productinventoryapi</span>
 <span class="w">        </span><span class="nt">app</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{{</span><span class="nv">.Release.Name</span><span class="p p-Indicator">}}</span><span class="l l-Scalar l-Scalar-Plain">-{{.Values.component.name}}</span>
-<span class="w">        </span><span class="nt">version</span><span class="p">:</span><span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">productinventoryapi-0.2</span>
+<span class="w">        </span><span class="nt">version</span><span class="p">:</span><span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">productinventoryapi-0.1</span>
 <span class="w">    </span><span class="nt">spec</span><span class="p">:</span>
 <span class="w">      </span><span class="nt">containers</span><span class="p">:</span>
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{{</span><span class="nv">.Release.Name</span><span class="p p-Indicator">}}</span><span class="l l-Scalar l-Scalar-Plain">-productinventoryapi</span><span class="w">         </span>
-<span class="w">        </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dominico/productinventoryapi:0.2</span>
+<span class="w">        </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dominico/productinventoryapi:latest</span>
 <span class="w">        </span><span class="nt">env</span><span class="p">:</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">RELEASE_NAME</span>
 <span class="w">          </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{{</span><span class="nv">.Release.Name</span><span class="p p-Indicator">}}</span><span class="w">           </span>
@@ -477,6 +488,13 @@ CMD [&quot;node&quot;, &quot;initialization.js&quot;]
 <span class="w">        </span><span class="nt">ports</span><span class="p">:</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{{</span><span class="nv">.Release.Name</span><span class="p p-Indicator">}}</span><span class="l l-Scalar l-Scalar-Plain">-prodinvapi</span>
 <span class="w">          </span><span class="nt">containerPort</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">8080</span>
+<span class="w">        </span><span class="nt">startupProbe</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">httpGet</span><span class="p">:</span>
+<span class="w">            </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/{{.Release.Name}}-{{.Values.component.name}}/tmf-api/productInventory/v4/</span>
+<span class="w">            </span><span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">8080</span>
+<span class="w">          </span><span class="nt">initialDelaySeconds</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">10</span>
+<span class="w">          </span><span class="nt">periodSeconds</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">5</span>
+<span class="w">          </span><span class="nt">failureThreshold</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">30</span>
 </pre></div>
 </div>
 <p>Next, we need create the deployment resource for the party Role API. Copy the code below into <code class="docutils literal notranslate"><span class="pre">deployment-partyroleapi.yaml</span></code></p>
@@ -527,11 +545,11 @@ CMD [&quot;node&quot;, &quot;initialization.js&quot;]
 <span class="w">          </span><span class="nt">failureThreshold</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">30</span>
 </pre></div>
 </div>
-<p>We also need to deploy a mongoDb. We will use the standard mongoDb image from dockerhub. Copy the code below into: <code class="docutils literal notranslate"><span class="pre">deployment-partyroleapi.yaml</span></code></p>
+<p>We also need to deploy a mongoDb. We will use the standard mongoDb image from dockerhub. Copy the code below into: <code class="docutils literal notranslate"><span class="pre">deployment-mongodb.yaml</span></code></p>
 <div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">apps/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Deployment</span>
 <span class="nt">metadata</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{{</span><span class="nv">.Release.Name</span><span class="p p-Indicator">}}</span><span class="l l-Scalar l-Scalar-Plain">-mongodb-prod</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{{</span><span class="nv">.Release.Name</span><span class="p p-Indicator">}}</span><span class="l l-Scalar l-Scalar-Plain">-mongodb</span>
 <span class="w">  </span><span class="nt">labels</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">oda.tmforum.org/componentName</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{{</span><span class="nv">.Release.Name</span><span class="p p-Indicator">}}</span><span class="l l-Scalar l-Scalar-Plain">-{{.Values.component.name}}</span>
 <span class="nt">spec</span><span class="p">:</span>
@@ -548,7 +566,7 @@ CMD [&quot;node&quot;, &quot;initialization.js&quot;]
 <span class="w">    </span><span class="nt">spec</span><span class="p">:</span>
 <span class="w">      </span><span class="nt">containers</span><span class="p">:</span>
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{{</span><span class="nv">.Release.Name</span><span class="p p-Indicator">}}</span><span class="l l-Scalar l-Scalar-Plain">-mongodb</span>
-<span class="w">        </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">mongo:latest</span>
+<span class="w">        </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">mongo:5.0.1</span>
 <span class="w">        </span><span class="nt">ports</span><span class="p">:</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{{</span><span class="nv">.Release.Name</span><span class="p p-Indicator">}}</span><span class="l l-Scalar l-Scalar-Plain">-mongodb</span>
 <span class="w">          </span><span class="nt">containerPort</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{{</span><span class="nv">.Values.mongodb.port</span><span class="p p-Indicator">}}</span>
@@ -600,13 +618,13 @@ CMD [&quot;node&quot;, &quot;initialization.js&quot;]
 <span class="nt">metadata</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{{</span><span class="nv">.Release.Name</span><span class="p p-Indicator">}}</span><span class="l l-Scalar l-Scalar-Plain">-productinventoryapi</span>
 <span class="w">  </span><span class="nt">labels</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">app</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{{</span><span class="nv">.Release.Name</span><span class="p p-Indicator">}}</span><span class="l l-Scalar l-Scalar-Plain">-productinventoryapi</span>
+<span class="w">    </span><span class="nt">app</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{{</span><span class="nv">.Release.Name</span><span class="p p-Indicator">}}</span><span class="l l-Scalar l-Scalar-Plain">-{{.Values.component.name}}</span>
 <span class="w">    </span><span class="nt">oda.tmforum.org/componentName</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{{</span><span class="nv">.Release.Name</span><span class="p p-Indicator">}}</span><span class="l l-Scalar l-Scalar-Plain">-{{.Values.component.name}}</span>
 <span class="nt">spec</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">ports</span><span class="p">:</span>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">8080</span>
-<span class="w">    </span><span class="nt">targetPort</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">8080</span>
-<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{{</span><span class="nv">.Release.Name</span><span class="p p-Indicator">}}</span><span class="l l-Scalar l-Scalar-Plain">-productinventoryapi</span>
+<span class="w">    </span><span class="nt">targetPort</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{{</span><span class="nv">.Release.Name</span><span class="p p-Indicator">}}</span><span class="l l-Scalar l-Scalar-Plain">-prodinvapi</span>
+<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">http-{{.Release.Name}}-productinventoryapi</span>
 <span class="w">  </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">NodePort</span>
 <span class="w">  </span><span class="nt">selector</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">impl</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{{</span><span class="nv">.Release.Name</span><span class="p p-Indicator">}}</span><span class="l l-Scalar l-Scalar-Plain">-productinventoryapi</span>
@@ -618,7 +636,7 @@ CMD [&quot;node&quot;, &quot;initialization.js&quot;]
 <span class="nt">metadata</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{{</span><span class="nv">.Release.Name</span><span class="p p-Indicator">}}</span><span class="l l-Scalar l-Scalar-Plain">-partyroleapi</span>
 <span class="w">  </span><span class="nt">labels</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">app</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{{</span><span class="nv">.Release.Name</span><span class="p p-Indicator">}}</span><span class="l l-Scalar l-Scalar-Plain">-partyroleapi</span>
+<span class="w">    </span><span class="nt">app</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{{</span><span class="nv">.Release.Name</span><span class="p p-Indicator">}}</span><span class="l l-Scalar l-Scalar-Plain">-{{.Values.component.name}}</span>
 <span class="w">    </span><span class="nt">oda.tmforum.org/componentName</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{{</span><span class="nv">.Release.Name</span><span class="p p-Indicator">}}</span><span class="l l-Scalar l-Scalar-Plain">-{{.Values.component.name}}</span>
 <span class="nt">spec</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">ports</span><span class="p">:</span>
@@ -658,55 +676,71 @@ CMD [&quot;node&quot;, &quot;initialization.js&quot;]
 </div>
 <p>We have created all the Kubernetes resources to deploy the mongoDb, party role and product inventory nodejs containers and expose them as services. The final step is to add the ODA-Component meta-data. This meta-data will be used at run-time to configure the canvas services. Create the code below in <code class="docutils literal notranslate"><span class="pre">component-productinventory.yaml</span></code>.</p>
 <p>This is a relatively simple component that just exposes one API as part of its <code class="docutils literal notranslate"><span class="pre">coreFunction</span></code>. Note that we have included the release name and component name in the root of the API path (this is a good pattern to follow so that the API doesn’t conflict with any other components deployed in the same environment).</p>
-<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">oda.tmforum.org/v1beta3</span>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">oda.tmforum.org/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Component</span>
 <span class="nt">metadata</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{{</span><span class="nv">.Release.Name</span><span class="p p-Indicator">}}</span><span class="l l-Scalar l-Scalar-Plain">-{{.Values.component.name}}</span>
 <span class="w">  </span><span class="nt">labels</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">oda.tmforum.org/componentName</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{{</span><span class="nv">.Release.Name</span><span class="p p-Indicator">}}</span><span class="l l-Scalar l-Scalar-Plain">-{{.Values.component.name}}</span>
+<span class="w">  </span><span class="nt">annotations</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">webhookconverted</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Webhook converted From oda.tmforum.org/v1beta3 to oda.tmforum.org/v1</span>
 <span class="nt">spec</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">id</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{{</span><span class="nv">.Values.component.id</span><span class="p p-Indicator">}}</span>
-<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{{</span><span class="nv">.Values.component.name</span><span class="p p-Indicator">}}</span>
-<span class="w">  </span><span class="nt">functionalBlock</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{{</span><span class="nv">.Values.component.functionalBlock</span><span class="p p-Indicator">}}</span>
-<span class="w">  </span><span class="nt">publicationDate</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{{</span><span class="nv">.Values.component.publicationDate</span><span class="p p-Indicator">}}</span>
-<span class="w">  </span><span class="nt">status</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">specified</span>
-<span class="w">  </span><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{{</span><span class="nv">.Values.component.version</span><span class="p p-Indicator">}}</span>
-<span class="w">  </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Simple</span><span class="nv"> </span><span class="s">Product</span><span class="nv"> </span><span class="s">Inventory</span><span class="nv"> </span><span class="s">ODA-Component</span><span class="nv"> </span><span class="s">from</span><span class="nv"> </span><span class="s">Open-API</span><span class="nv"> </span><span class="s">reference</span><span class="nv"> </span><span class="s">implementation.&quot;</span>
-<span class="w">  </span><span class="nt">maintainers</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Dominic Oyeniran</span>
-<span class="w">      </span><span class="nt">email</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dominic.oyeniran@vodafone.com</span>
-<span class="w">  </span><span class="nt">owners</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Dominic Oyeniran</span>
-<span class="w">      </span><span class="nt">email</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dominic.oyeniran@vodafone.com</span><span class="w">     </span>
+<span class="w">  </span><span class="nt">componentMetadata</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">id</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{{</span><span class="nv">.Values.component.id</span><span class="p p-Indicator">}}</span>
+<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{{</span><span class="nv">.Values.component.name</span><span class="p p-Indicator">}}</span>
+<span class="w">    </span><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{{</span><span class="nv">.Values.component.version</span><span class="p p-Indicator">}}</span>
+<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">&gt;-</span>
+<span class="w">      </span><span class="no">Simple Product Inventory ODA-Component from Open-API reference</span>
+<span class="w">      </span><span class="no">implementation.</span>
+<span class="w">    </span><span class="nt">functionalBlock</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{{</span><span class="nv">.Values.component.functionalBlock</span><span class="p p-Indicator">}}</span>
+<span class="w">    </span><span class="nt">publicationDate</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{{</span><span class="nv">.Values.component.publicationDate</span><span class="p p-Indicator">}}</span>
+<span class="w">    </span><span class="nt">status</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">specified</span>
+<span class="w">    </span><span class="nt">maintainers</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Dominic Oyeniran</span>
+<span class="w">        </span><span class="nt">email</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dominic.oyeniran@vodafone.com</span>
+<span class="w">    </span><span class="nt">owners</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Dominic Oyeniran</span>
+<span class="w">        </span><span class="nt">email</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dominic.oyeniran@vodafone.com</span>
 <span class="w">  </span><span class="nt">coreFunction</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">exposedAPIs</span><span class="p">:</span><span class="w"> </span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">productinventorymanagement</span>
-<span class="w">      </span><span class="nt">specification</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;https://raw.githubusercontent.com/tmforum-apis/TMF637_ProductInventory/master/TMF637-ProductInventory-v4.0.0.swagger.json&quot;</span><span class="p p-Indicator">]</span>
-<span class="w">      </span><span class="nt">implementation</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{{</span><span class="nv">.Release.Name</span><span class="p p-Indicator">}}</span><span class="l l-Scalar l-Scalar-Plain">-productinventoryapi</span>
-<span class="w">      </span><span class="nt">apitype</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">openapi</span>
-<span class="w">      </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/{{.Release.Name}}-{{.Values.component.name}}/tmf-api/productInventory/v4</span>
-<span class="w">      </span><span class="nt">developerUI</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/{{.Release.Name}}-{{.Values.component.name}}/tmf-api/productInventory/v4/docs</span>
-<span class="w">      </span><span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">8080</span>
-<span class="w">    </span><span class="nt">dependentAPIs</span><span class="p">:</span><span class="w"> </span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">party</span>
-<span class="w">      </span><span class="nt">apitype</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">openapi</span><span class="w">        </span>
-<span class="w">      </span><span class="nt">specification</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://open-api.tmforum.org/TMF632-Party-v4.0.0.swagger.json</span>
+<span class="w">    </span><span class="nt">exposedAPIs</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">productinventorymanagement</span>
+<span class="w">        </span><span class="nt">specification</span><span class="p">:</span>
+<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">url</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">&gt;-</span>
+<span class="w">              </span><span class="no">https://raw.githubusercontent.com/tmforum-apis/TMF637_ProductInventory/master/TMF637-ProductInventory-v4.0.0.swagger.json</span>
+<span class="w">        </span><span class="nt">implementation</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{{</span><span class="nv">.Release.Name</span><span class="p p-Indicator">}}</span><span class="l l-Scalar l-Scalar-Plain">-productinventoryapi</span>
+<span class="w">        </span><span class="nt">apiType</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">openapi</span>
+<span class="w">        </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">&gt;-</span>
+<span class="w">          </span><span class="no">/{{.Release.Name}}-{{.Values.component.name}}/tmf-api/productInventory/v4</span>
+<span class="w">        </span><span class="nt">developerUI</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">&gt;-</span>
+<span class="w">          </span><span class="no">/{{.Release.Name}}-{{.Values.component.name}}/tmf-api/productInventory/v4/docs</span>
+<span class="w">        </span><span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">8080</span>
+<span class="w">        </span><span class="nt">gatewayConfiguration</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{}</span>
+<span class="w">    </span><span class="nt">dependentAPIs</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">party</span>
+<span class="w">        </span><span class="nt">apiType</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">openapi</span>
+<span class="w">        </span><span class="nt">specification</span><span class="p">:</span>
+<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">url</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://open-api.tmforum.org/TMF632-Party-v4.0.0.swagger.json</span>
 <span class="w">  </span><span class="nt">eventNotification</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">publishedEvents</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[]</span>
 <span class="w">    </span><span class="nt">subscribedEvents</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[]</span>
-<span class="w">  </span><span class="nt">managementFunction</span><span class="p">:</span><span class="w"> </span>
+<span class="w">  </span><span class="nt">managementFunction</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">exposedAPIs</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[]</span>
-<span class="w">    </span><span class="nt">dependentAPIs</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[]</span><span class="w">   </span>
+<span class="w">    </span><span class="nt">dependentAPIs</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[]</span>
 <span class="w">  </span><span class="nt">securityFunction</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">controllerRole</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{{</span><span class="nv">.Values.security.controllerRole</span><span class="w"> </span><span class="p p-Indicator">}}</span>
-<span class="w">    </span><span class="nt">exposedAPIs</span><span class="p">:</span><span class="w"> </span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">partyrole</span>
-<span class="w">      </span><span class="nt">specification</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json&quot;</span><span class="p p-Indicator">]</span>
-<span class="w">      </span><span class="nt">implementation</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{{</span><span class="nv">.Release.Name</span><span class="p p-Indicator">}}</span><span class="l l-Scalar l-Scalar-Plain">-partyroleapi</span>
-<span class="w">      </span><span class="nt">apitype</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">openapi</span>
-<span class="w">      </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/{{.Release.Name}}-{{.Values.component.name}}/tmf-api/partyRoleManagement/v4</span>
-<span class="w">      </span><span class="nt">developerUI</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/{{.Release.Name}}-{{.Values.component.name}}/tmf-api/partyRoleManagement/v4/docs</span>
-<span class="w">      </span><span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">8080</span>
+<span class="w">    </span><span class="nt">canvasSystemRole</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{{</span><span class="nv">.Values.security.controllerRole</span><span class="p p-Indicator">}}</span>
+<span class="w">    </span><span class="nt">exposedAPIs</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">partyrole</span>
+<span class="w">        </span><span class="nt">specification</span><span class="p">:</span>
+<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">url</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">&gt;-</span>
+<span class="w">              </span><span class="no">https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json</span>
+<span class="w">        </span><span class="nt">implementation</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{{</span><span class="nv">.Release.Name</span><span class="p p-Indicator">}}</span><span class="l l-Scalar l-Scalar-Plain">-partyroleapi</span>
+<span class="w">        </span><span class="nt">apiType</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">openapi</span>
+<span class="w">        </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">&gt;-</span>
+<span class="w">          </span><span class="no">/{{.Release.Name}}-{{.Values.component.name}}/tmf-api/partyRoleManagement/v4</span>
+<span class="w">        </span><span class="nt">developerUI</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">&gt;-</span>
+<span class="w">          </span><span class="no">/{{.Release.Name}}-{{.Values.component.name}}/tmf-api/partyRoleManagement/v4/docs</span>
+<span class="w">        </span><span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">8080</span>
+<span class="w">        </span><span class="nt">gatewayConfiguration</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{}</span>
 </pre></div>
 </div>
 <p>Finally we have to create the parameters in the <code class="docutils literal notranslate"><span class="pre">values.yaml</span></code> file.</p>
@@ -731,47 +765,38 @@ CMD [&quot;node&quot;, &quot;initialization.js&quot;]
 <span class="w">  </span><span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">27017</span>
 <span class="w">  </span><span class="nt">database</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tmf</span>
 <span class="nt">partyrole</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">lesterthomas/partyroleapi:1.0</span>
+<span class="w">  </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dominico/partyroleapi:latest</span>
 <span class="w">  </span><span class="nt">versionlabel</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">partyroleapi-1.0</span>
 <span class="nt">api</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dominico/productinventoryapi:latest</span>
-<span class="w">  </span><span class="nt">versionlabel</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">productinventoryapi-0.2</span>
+<span class="w">  </span><span class="nt">versionlabel</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">productinventoryapi-0.1</span>
 </pre></div>
 </div>
 </section>
-<section id="step-6-test-component-envelope-using-component-ctk">
-<h2>Step 6. Test component envelope using component CTK<a class="headerlink" href="#step-6-test-component-envelope-using-component-ctk" title="Link to this heading"></a></h2>
-<p>The CTK will operate against an instance of the component. We can generate a kubernetes manifest of an instance using the <code class="docutils literal notranslate"><span class="pre">helm</span> <span class="pre">template</span> <span class="pre">[instance</span> <span class="pre">namme]</span> <span class="pre">[chart]</span></code> command. We can take the output of this command into a temporary file:</p>
+<section id="step-8-generate-the-manifest">
+<h2>Step 8. Generate the manifest<a class="headerlink" href="#step-8-generate-the-manifest" title="Link to this heading"></a></h2>
+<p>We can generate a kubernetes manifest of an instance using the <code class="docutils literal notranslate"><span class="pre">helm</span> <span class="pre">template</span> <span class="pre">[instance</span> <span class="pre">name]</span> <span class="pre">[chart]</span></code> command. We can take the output of this command into a temporary file:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">helm</span> <span class="n">template</span> <span class="n">test</span> <span class="n">productinventory</span> <span class="o">&gt;</span> <span class="n">test</span><span class="o">-</span><span class="n">instance</span><span class="o">.</span><span class="n">component</span><span class="o">.</span><span class="n">yaml</span>
 </pre></div>
 </div>
 <p>If you examine the test-instance.component.yaml you will see all the kubernetes resources (deployments, services, persistentVolumeClaim) as well as a component resource. All the resources are labelled as belonging to the component. Also the component describes its core function (exposing a single API).</p>
-<p>We can test that this component instance conforms to the ODA-Component standard by using the component CTK: Download the ODA-Component CTK from <a class="reference external" href="https://github.com/tmforum-oda/oda-component-ctk/">https://github.com/tmforum-oda/oda-component-ctk/</a>.</p>
-<p>Within the oda-component-ctk folder, install the ctk.</p>
-<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>npm<span class="w"> </span>install
-</pre></div>
-</div>
-<p>Then run the static ctk against the component envelope, you would need to specify the correct path to the <code class="docutils literal notranslate"><span class="pre">test-instance.component.yaml</span></code> created earlier.</p>
-<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>npm<span class="w"> </span>run<span class="w"> </span>L1-static<span class="w"> </span>../ProductInventory/test-instance.component.yaml
-</pre></div>
-</div>
-<p>You should get an output like the image below. If you receive any errors, fix the issue in the helm chart yaml file and try again.</p>
-<p><img alt="CTK image" src="../../_images/ctksuccess.png" /></p>
 </section>
-<section id="step-8-deploy-the-component-envelope-into-open-digital-lab-canvas">
-<h2>Step 8. Deploy the component envelope into Open Digital Lab canvas<a class="headerlink" href="#step-8-deploy-the-component-envelope-into-open-digital-lab-canvas" title="Link to this heading"></a></h2>
-<p>Connect to the Open Digital Lab: Get the kubectl config from the rancher environment at <a class="reference external" href="https://rke.tmforum.org/c/c-85kcq/monitoring">https://rke.tmforum.org/c/c-85kcq/monitoring</a> - click the Kubeconfig File button in the top right:</p>
-<p><img alt="Rancher" src="../../_images/Rancher.png" /></p>
-<p>Copy this into your <code class="docutils literal notranslate"><span class="pre">~/.kube/config</span></code> file.</p>
+<section id="step-9-deploy-the-component-envelope-into-the-canvas">
+<h2>Step 9. Deploy the component envelope into the Canvas<a class="headerlink" href="#step-9-deploy-the-component-envelope-into-the-canvas" title="Link to this heading"></a></h2>
+<!-- Connect to the Open Digital Lab: Get the kubectl config from the rancher environment at https://rke.tmforum.org/c/c-85kcq/monitoring - click the Kubeconfig File button in the top right:
+
+![Rancher](./images/Rancher.png) --->
+<p>Verify that your kubectl config is already copied into your <code class="docutils literal notranslate"><span class="pre">~/.kube/config</span></code> file as per the prerequisites above.</p>
 <p>You can test the connection using <code class="docutils literal notranslate"><span class="pre">kubectl</span> <span class="pre">get</span> <span class="pre">all</span> <span class="pre">--namespace</span> <span class="pre">components</span></code>. (You should either see a message <code class="docutils literal notranslate"><span class="pre">No</span> <span class="pre">resources</span> <span class="pre">found</span> <span class="pre">in</span> <span class="pre">components</span> <span class="pre">namespace.</span></code> or you may retrieve a list of kubernetes resources).</p>
 <p>To permanently save the namespace for all subsequent kubectl commands use:</p>
 <div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>kubectl<span class="w"> </span>config<span class="w"> </span>set-context<span class="w"> </span>--current<span class="w"> </span>--namespace<span class="o">=</span>components
 </pre></div>
 </div>
-<p>Install the component using Helm, we call the release name <code class="docutils literal notranslate"><span class="pre">r1</span></code> . Ensure the release name is not in conflict with release name already assigned to other components in the open digital lab:</p>
+<p>Install the component using Helm, we call the release name <code class="docutils literal notranslate"><span class="pre">r1</span></code> . Ensure the release name is not in conflict with release name already assigned to other components in the your Canvas:</p>
 <div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>helm<span class="w"> </span>install<span class="w"> </span>r1<span class="w"> </span>productinventory/<span class="w"> </span>
 </pre></div>
 </div>
+<p><img alt="install components" src="../../_images/helm-install-components.png" /></p>
 <p>You can then view the component in <code class="docutils literal notranslate"><span class="pre">kubectl</span></code>:</p>
 <div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>kubectl<span class="w"> </span>get<span class="w"> </span>components
 </pre></div>
@@ -779,22 +804,16 @@ CMD [&quot;node&quot;, &quot;initialization.js&quot;]
 <p>The <code class="docutils literal notranslate"><span class="pre">kubectl</span> <span class="pre">get</span> <span class="pre">components</span></code> will show all the deployed components and the deployment status. Initially these details will be blank - the component may take a few seconds to fully deploy. Once deployed, it should look like:</p>
 <p><img alt="get components" src="../../_images/kubectl-get-components.png" /></p>
 <p>You can also view the component API endpoint in <code class="docutils literal notranslate"><span class="pre">kubectl</span></code>:</p>
-<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>kubectl<span class="w"> </span>get<span class="w"> </span>apis
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>kubectl<span class="w"> </span>get<span class="w"> </span>exposedapis
 </pre></div>
 </div>
-<p>The <code class="docutils literal notranslate"><span class="pre">kubectl</span> <span class="pre">get</span> <span class="pre">apis</span></code> command shows details of exposed apis and a developer-ui (if supplied). Initially these details will be blank - the component may take a few seconds to fully deploy. Once deployed, it should look like:</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">kubectl</span> <span class="pre">get</span> <span class="pre">exposedapis</span></code> command shows details of exposed apis and a developer-ui (if supplied). Initially these details will be blank - the component may take a few seconds to fully deploy. Once deployed, it should look like:</p>
 <p><img alt="get apis" src="../../_images/kubectl-get-apis.png" /></p>
-<p>If you navigate to the root or the API (in a web browser or in postman), you should see the entrypoint of the API:</p>
+<p>If you navigate to the root or the API (in a web browser or in postman), you should see the entrypoint of the API. You may need to create a port forwarding on the product inventory component in your canvas:</p>
 <p><img alt="api entrypoint" src="../../_images/api-entrypoint.png" /></p>
-<p>If you navigate to the developer-ui, you shold see the swagger-ui tool:</p>
+<p>If you navigate to the developer-ui, you should see the swagger-ui tool:</p>
 <p><img alt="swagger ui" src="../../_images/swagger-ui.png" /></p>
-<p>Finally, you can run the dynamic ctk against the component envelope.</p>
-<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>npm<span class="w"> </span>dynamic<span class="w"> </span>../oda-ca-docs/ODA-Component-Tutorial/test-instance.component.yaml
-</pre></div>
-</div>
-<p>You should get a result like the image below:</p>
-<p><img alt="CTK image" src="../../_images/ctkdynamicsuccess.png" /></p>
-<p>This is the last step. You would have succesffully deployed an ODA Component unto an ODA Canvas environment!</p>
+<p>This is the last step. You would have successfully deployed an ODA Component unto an ODA Canvas environment!</p>
 </section>
 <section id="directory-structure">
 <h2>Directory Structure<a class="headerlink" href="#directory-structure" title="Link to this heading"></a></h2>
@@ -813,9 +832,9 @@ CMD [&quot;node&quot;, &quot;initialization.js&quot;]
 </pre></div>
 </div>
 <ol class="arabic simple" start="2">
-<li><p>Due to a node version issue (i think!) the generated API RI does not work on the latest v15 of node. I have created container based on node v12. The issue is with the fs.copyFileSync function: The v15 expects the third parameter to be an optional <code class="docutils literal notranslate"><span class="pre">mode</span></code> whilst the current implementation has a call-back error function.</p></li>
+<li><p>Due to a node version issue (i think!) the generated API RI does not work on the latest v16 of node. I have created container based on node v16. The issue is with the fs.copyFileSync function: The v16 expects the third parameter to be an optional <code class="docutils literal notranslate"><span class="pre">mode</span></code> whilst the current API reference implementation has a call-back error function.</p></li>
 <li><p>Api-docs are exposed at /api-docs which means that you can’t host multiple apis on the same server. Therefore, it is hosted at <code class="docutils literal notranslate"><span class="pre">tmf-api/productInventory/v4/api-docs</span></code> instead (and the swagger-ui at <code class="docutils literal notranslate"><span class="pre">tmf-api/productInventory/v4/docs</span></code>).</p></li>
-<li><p>The component name has been included in the root of the API (so that multiple instances of the API can be deployed in the same server). For a Helm install with release name <code class="docutils literal notranslate"><span class="pre">test</span></code>, the api is deployed at: <code class="docutils literal notranslate"><span class="pre">/test-productinventory/tmf-api/productInventory/v4/</span></code> and with a Helm install with release name <code class="docutils literal notranslate"><span class="pre">r1</span></code>, the api is deployed at: <code class="docutils literal notranslate"><span class="pre">/test-productinventory/tmf-api/productInventory/v4/</span></code> . Component release name must be unique and cannot be reused.</p></li>
+<li><p>The component name has been included in the root of the API (so that multiple instances of the API can be deployed in the same server). For a Helm install with release name <code class="docutils literal notranslate"><span class="pre">test</span></code>, the api is deployed at: <code class="docutils literal notranslate"><span class="pre">/test-productinventory/tmf-api/productInventory/v4/</span></code> and with a Helm install with release name <code class="docutils literal notranslate"><span class="pre">r1</span></code>, the api is deployed at: <code class="docutils literal notranslate"><span class="pre">/r1-productinventory/tmf-api/productInventory/v4/</span></code> . Component release name must be unique and cannot be reused.</p></li>
 </ol>
 </section>
 </section>
@@ -831,7 +850,7 @@ CMD [&quot;node&quot;, &quot;initialization.js&quot;]
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2024, TM Forum ODA-Component Accelerator project.</p>
+    <p>&#169; Copyright 2025, TM Forum ODA-Component Accelerator project.</p>
   </div>
 
   Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a

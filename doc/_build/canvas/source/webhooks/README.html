@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>ODA Component webhooks &mdash; ODA-Component Accelerator v1beta3 documentation</title>
+  <title>ODA Component webhooks &mdash; ODA-Component Accelerator v1 documentation</title>
       <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=80d5e7a1" />
       <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=19f00094" />
       <link rel="stylesheet" type="text/css" href="../../../_static/css/custom.css?v=6567dac9" />
@@ -16,7 +16,7 @@
   
         <script src="../../../_static/jquery.js?v=5d32c60e"></script>
         <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script src="../../../_static/documentation_options.js?v=546c8a9f"></script>
+        <script src="../../../_static/documentation_options.js?v=5cb08e4e"></script>
         <script src="../../../_static/doctools.js?v=9a2dae69"></script>
         <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../_static/js/theme.js"></script>
@@ -58,7 +58,6 @@
 <p class="caption" role="heading"><span class="caption-text">Component:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../../docs/ODAComponentDesignGuidelines.html">Design Guidelines to create a new ODA Component</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../ctk/README.html">ODA Component - CTK</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Canvas:</span></p>
 <ul>
@@ -73,7 +72,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../Usecases.html">Usecase List</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../usecase-library/use-case-naming-conventions.html">Use case naming conventions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../README.html">ODA Canvas source code</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../operators/index.html">Open Digital Architecture - Controllers/Operators</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../operators/index.html">Open Digital Architecture - Operators</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../webhooks-and-utilities.html">Webuooks and Utilities</a><ul class="current">
 <li class="toctree-l2 current"><a class="current reference internal" href="#">ODA Component webhooks</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#unit-tests">Unit tests</a></li>
@@ -97,6 +96,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../../docs/developer/work-with-dockerimages.html">Developer How-Tos: Work with Dockerimages</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../docs/developer/work-with-dockerimages.html#summary">Summary</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../docs/developer/work-with-dockerimages.html#how-to-add-a-new-dockerimage">How-To add a new Dockerimage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../docs/developer/work-with-dockerimages.html#how-to-define-unit-tests">How-To define unit tests</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../devcontainer.html">ODA Canvas Development Environment</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../operators/Installing%20KOPF%20development%20environment.html">Installing KOPF (tested in GKE)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../docs/DocumentationProcess.html">Documentation Process</a></li>
@@ -142,7 +142,7 @@
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>  <span class="n">conversion</span><span class="p">:</span>
     <span class="n">strategy</span><span class="p">:</span> <span class="n">Webhook</span>
     <span class="n">webhook</span><span class="p">:</span>
-      <span class="n">conversionReviewVersions</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;v1alpha1&quot;</span><span class="p">,</span> <span class="s2">&quot;v1alpha2&quot;</span><span class="p">,</span> <span class="s2">&quot;v1alpha3&quot;</span><span class="p">,</span> <span class="s2">&quot;v1beta1&quot;</span><span class="p">]</span>
+      <span class="n">conversionReviewVersions</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;v1beta2&quot;</span><span class="p">,</span> <span class="s2">&quot;v1beta3&quot;</span><span class="p">,</span> <span class="s2">&quot;v1beta4&quot;</span><span class="p">,</span> <span class="s2">&quot;v1&quot;</span><span class="p">]</span>
       <span class="n">clientConfig</span><span class="p">:</span>
         <span class="n">caBundle</span><span class="p">:</span> <span class="n">LS0tLS1CRUdJTiB</span><span class="o">--</span><span class="n">Details</span> <span class="n">Removed</span><span class="o">--</span><span class="n">Q0FURS0tLS0tCg</span><span class="o">==</span>
         <span class="n">service</span><span class="p">:</span>
@@ -154,11 +154,11 @@
 </div>
 <section id="unit-tests">
 <h2>Unit tests<a class="headerlink" href="#unit-tests" title="Link to this heading"></a></h2>
-<p>For details about how to unit test as a standalone Node application see <a class="reference external" href="https://github.com/tmforum-oda/oda-canvas/blob/master/source/webhooks/unit-tests/README.md">Unit tests</a></p>
+<p>For details about how to unit test as a standalone Node application see <a class="reference external" href="https://github.com/tmforum-oda/oda-canvas/blob/main/source/webhooks/unit-tests/README.md">Unit tests</a></p>
 </section>
 <section id="system-tests">
 <h2>System tests<a class="headerlink" href="#system-tests" title="Link to this heading"></a></h2>
-<p>For details about how to test as a micro-service in Kubernetes through the Kubernetes API, see <a class="reference external" href="https://github.com/tmforum-oda/oda-canvas/blob/master/source/webhooks/system-tests/README.md">System tests</a></p>
+<p>For details about how to test as a micro-service in Kubernetes through the Kubernetes API, see <a class="reference external" href="https://github.com/tmforum-oda/oda-canvas/blob/main/source/webhooks/system-tests/README.md">System tests</a></p>
 </section>
 </section>
 
@@ -173,7 +173,7 @@
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2024, TM Forum ODA-Component Accelerator project.</p>
+    <p>&#169; Copyright 2025, TM Forum ODA-Component Accelerator project.</p>
   </div>
 
   Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a

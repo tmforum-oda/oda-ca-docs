@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>ODA Canvas installation &mdash; ODA-Component Accelerator v1beta3 documentation</title>
+  <title>ODA Canvas installation &mdash; ODA-Component Accelerator v1 documentation</title>
       <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=80d5e7a1" />
       <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=19f00094" />
       <link rel="stylesheet" type="text/css" href="../../_static/css/custom.css?v=6567dac9" />
@@ -16,7 +16,7 @@
   
         <script src="../../_static/jquery.js?v=5d32c60e"></script>
         <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script src="../../_static/documentation_options.js?v=546c8a9f"></script>
+        <script src="../../_static/documentation_options.js?v=5cb08e4e"></script>
         <script src="../../_static/doctools.js?v=9a2dae69"></script>
         <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../_static/js/theme.js"></script>
@@ -58,7 +58,6 @@
 <p class="caption" role="heading"><span class="caption-text">Component:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../docs/ODAComponentDesignGuidelines.html">Design Guidelines to create a new ODA Component</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../ctk/README.html">ODA Component - CTK</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Canvas:</span></p>
 <ul class="current">
@@ -66,16 +65,18 @@
 <li class="toctree-l1 current"><a class="current reference internal" href="#">ODA Canvas installation</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#software-versions">Software Versions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#configuration-values">Configuration values</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#hardware-requirements">Hardware requirements</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#environment-installation">Environment installation</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#kubernetes-distribution">1. Kubernetes distribution</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#helm">2. Helm</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#istio">3. Istio</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#hashicorp-vault">4. HashiCorp Vault</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#reference-implementation">4. Reference implementation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#reference-implementation">5. Reference implementation</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#troubleshooting">Troubleshooting</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#error-instaling-backofflimitexceeded">Error instaling: BackoffLimitExceeded</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#error-installing-values-don-t-meet-the-specifications-of-the-schema-s">Error installing: values don’t meet the specifications of the schema(s)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#error-installing-backofflimitexceeded">Error installing: BackoffLimitExceeded</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#error-installing-failed-post-install">Error installing : Failed post-install</a></li>
 </ul>
 </li>
@@ -92,7 +93,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../Usecases.html">Usecase List</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../usecase-library/use-case-naming-conventions.html">Use case naming conventions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../source/README.html">ODA Canvas source code</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../source/operators/index.html">Open Digital Architecture - Controllers/Operators</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../source/operators/index.html">Open Digital Architecture - Operators</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../source/webhooks-and-utilities.html">Webuooks and Utilities</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Feature Tests:</span></p>
@@ -108,6 +109,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../docs/developer/work-with-dockerimages.html">Developer How-Tos: Work with Dockerimages</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../docs/developer/work-with-dockerimages.html#summary">Summary</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../docs/developer/work-with-dockerimages.html#how-to-add-a-new-dockerimage">How-To add a new Dockerimage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../docs/developer/work-with-dockerimages.html#how-to-define-unit-tests">How-To define unit tests</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../devcontainer.html">ODA Canvas Development Environment</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../source/operators/Installing%20KOPF%20development%20environment.html">Installing KOPF (tested in GKE)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../docs/DocumentationProcess.html">Documentation Process</a></li>
@@ -172,13 +174,23 @@
 <td>1.22</td>
 <td>1.29</td>
 </tr>
+<tr>
+<td>v1beta4</td>
+<td>1.22</td>
+<td>1.29</td>
+</tr>
+<tr>
+<td>v1</td>
+<td>1.22</td>
+<td>1.30</td>
+</tr>
 </tbody>
 </table>
 <p>If you are connected to an ODA Canvas, to test what version of Canvas it is, use the command:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>kubectl<span class="w"> </span>get<span class="w"> </span>crd<span class="w"> </span>components.oda.tmforum.org<span class="w"> </span>-o<span class="w"> </span><span class="nv">jsonpath</span><span class="o">=</span><span class="s1">&#39;{.spec.versions[?(@.served==true)].name}&#39;</span>
 </pre></div>
 </div>
-<p>It will return the versions of components the canvas supports. A canvas should support N-2 versions of a component i.e. for the <code class="docutils literal notranslate"><span class="pre">v1beta3</span></code> canvas, it will support components that are v1beta3, v1beta2, v1beta1 (and v1alpha4 with a deprecation warning).</p>
+<p>It will return the versions of components the canvas supports. A canvas should support N-2 versions of a component i.e. for the <code class="docutils literal notranslate"><span class="pre">v1</span></code> canvas, it will support components that are v1, v1beta4, v1beta3 (and v1beta2 with a deprecation warning).</p>
 <p>We will test the Reference Implementation Canvas against a range of kubernetes versions and on a number of different deployments.</p>
 <table border="1" class="docutils">
 <thead>
@@ -226,8 +238,8 @@
 </tr>
 <tr>
 <td>Kind</td>
-<td></td>
-<td>Using <a href="canvas-in-a-bottle/README.md">Canvas-in-a-bottle</a></td>
+<td>Yes</td>
+<td>Used in all the GitHub action automated testing.</td>
 </tr>
 <tr>
 <td>K3s</td>
@@ -283,7 +295,18 @@
 </section>
 <section id="configuration-values">
 <h2>Configuration values<a class="headerlink" href="#configuration-values" title="Link to this heading"></a></h2>
-<p>The values used <a class="reference external" href="https://github.com/tmforum-oda/oda-canvas/blob/master/charts/canvas-oda/README.md">here</a></p>
+<p>The values used <a class="reference external" href="https://github.com/tmforum-oda/oda-canvas/blob/main/charts/canvas-oda/README.md">here</a></p>
+</section>
+<section id="hardware-requirements">
+<h2>Hardware requirements<a class="headerlink" href="#hardware-requirements" title="Link to this heading"></a></h2>
+<p>The hardware requirements for the reference implementation are low. To deploy the reference implementation and run all the tests, the following minimum requirements should be adequate:</p>
+<ul class="simple">
+<li><p>CPU: 4 cores; AMD64 architecture, but we are also beginning to investigate running on ARM.</p></li>
+<li><p>RAM: 16Gb</p></li>
+<li><p>Storage: 50Gb</p></li>
+<li><p>Operating system: any supported by your hardware that will run Kubernetes. For our testing and development we have used several different Linux distributions and Windows 11.</p></li>
+</ul>
+<p>To host a component on the Reference Canvas you will have to account for its requirements in addition to the minimum.</p>
 </section>
 <section id="environment-installation">
 <h2>Environment installation<a class="headerlink" href="#environment-installation" title="Link to this heading"></a></h2>
@@ -361,7 +384,7 @@ the Service-Account-Issuer of this cluster is provided in CanvasVault/setup_Canv
 it will get stuck in state “InProgress-SecretsConfig”.</p>
 </section>
 <section id="reference-implementation">
-<h3>4. Reference implementation<a class="headerlink" href="#reference-implementation" title="Link to this heading"></a></h3>
+<h3>5. Reference implementation<a class="headerlink" href="#reference-implementation" title="Link to this heading"></a></h3>
 <ol class="arabic">
 <li><p>Add oda-canvas helm repo</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>helm<span class="w"> </span>repo<span class="w"> </span>add<span class="w"> </span>oda-canvas<span class="w"> </span>https://tmforum-oda.github.io/oda-canvas
@@ -370,20 +393,101 @@ helm<span class="w"> </span>repo<span class="w"> </span>update
 </div>
 </li>
 <li><p>Install the reference implementation</p>
+<p><strong>Istio API Operator as the Default:</strong>
+By default, the Istio API Operator is enabled in the Canvas installation. If you do not modify the <a class="reference external" href="https://github.com/tmforum-oda/oda-canvas/blob/main/charts/canvas-oda/values.yaml">values.yaml</a> file, Canvas will use the Istio API Operator which manages a Canvas environment that exposes APIs through the Istio Service Mesh without any additional API Gateway.</p>
+</li>
+</ol>
+<ul>
+<li><p><strong>For Istio (Default) no change required in <a class="reference external" href="https://github.com/tmforum-oda/oda-canvas/blob/main/charts/canvas-oda/values.yaml">values.yaml</a>.:</strong></p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">api-operator-istio</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="nt">apisix-gateway-install</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<span class="nt">kong-gateway-install</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+</pre></div>
+</div>
 <p>Install the canvas using the following command.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>helm<span class="w"> </span>install<span class="w"> </span>canvas<span class="w"> </span>oda-canvas/canvas-oda<span class="w"> </span>-n<span class="w"> </span>canvas<span class="w"> </span>--create-namespace<span class="w"> </span>
 </pre></div>
 </div>
+<p><strong>Selecting a Different Gateway Operator (Optional):</strong></p>
+<p>For users seeking advanced API gateway capabilities, the ODA Canvas provides the option to install either the Kong Gateway or the APISIX Gateway.These gateways offer powerful features for managing APIs, including traffic management,         security, load balancing, rate limiting, and observability.
+If you prefer to use Apisix or Kong, update the values.yaml file for the Canvas Helm chart.Only one API operator can be enabled at a time.</p>
 </li>
-</ol>
+<li><p><strong>For Apisix change required in <a class="reference external" href="https://github.com/tmforum-oda/oda-canvas/blob/main/charts/canvas-oda/values.yaml">values.yaml</a> file to disable Istio and enable Apisix.:</strong></p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">api-operator-istio</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<span class="nt">apisix-gateway-install</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="nt">kong-gateway-install</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+</pre></div>
+</div>
+<p>Using updated values.yaml directly Install the canvas using the following command.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>helm<span class="w"> </span>install<span class="w"> </span>canvas<span class="w"> </span>oda-canvas/canvas-oda<span class="w"> </span>-n<span class="w"> </span>canvas<span class="w"> </span>--create-namespace<span class="w"> </span>-f<span class="w"> </span>values.yaml
+</pre></div>
+</div>
+<p><strong>“or”</strong></p>
+<p>If you prefer to use the <strong>–set</strong> option instead of editing <strong>values.yaml</strong>.You can disable Istio and enable Apisix inline without modifying your values file:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>helm<span class="w"> </span>install<span class="w"> </span>canvas<span class="w"> </span>oda-canvas/canvas-oda<span class="w"> </span>-n<span class="w"> </span>canvas<span class="w"> </span>--create-namespace<span class="w"> </span><span class="se">\</span>
+--set<span class="w"> </span>api-operator-istio.enabled<span class="o">=</span><span class="nb">false</span><span class="w"> </span><span class="se">\</span>
+--set<span class="w"> </span>apisix-gateway-install.enabled<span class="o">=</span><span class="nb">true</span><span class="w"> </span><span class="se">\</span>
+--set<span class="w"> </span>kong-gateway-install.enabled<span class="o">=</span><span class="nb">false</span>
+</pre></div>
+</div>
+</li>
+<li><p><strong>For Kong change required in <a class="reference external" href="https://github.com/tmforum-oda/oda-canvas/blob/main/charts/canvas-oda/values.yaml">values.yaml</a> file to disable Istio and enable Kong.:</strong></p>
+<p><strong>Prerequisite: Install the Gateway API CRDs if required to enable the advanced networking capabilities required by Kong Gateway:</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>kubectl<span class="w"> </span>apply<span class="w"> </span>-f<span class="w"> </span>https://github.com/kubernetes-sigs/gateway-api/releases/download/v1.0.0/standard-install.yaml
+</pre></div>
+</div>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">api-operator-istio</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<span class="nt">apisix-gateway-install</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<span class="nt">kong-gateway-install</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+</pre></div>
+</div>
+<p>Using updated values.yaml directly Install the canvas using the following command.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>helm<span class="w"> </span>install<span class="w"> </span>canvas<span class="w"> </span>oda-canvas/canvas-oda<span class="w"> </span>-n<span class="w"> </span>canvas<span class="w"> </span>--create-namespace<span class="w"> </span>-f<span class="w"> </span>values.yaml
+</pre></div>
+</div>
+<p><strong>“or”</strong></p>
+<p>If you prefer to use the <strong>–set</strong> option instead of editing <strong>values.yaml</strong>.You can disable Istio and enable Kong inline without modifying your values file:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>helm<span class="w"> </span>install<span class="w"> </span>canvas<span class="w"> </span>oda-canvas/canvas-oda<span class="w"> </span>-n<span class="w"> </span>canvas<span class="w"> </span>--create-namespace<span class="w"> </span><span class="se">\</span>
+--set<span class="w"> </span>api-operator-istio.enabled<span class="o">=</span><span class="nb">false</span><span class="w"> </span><span class="se">\</span>
+--set<span class="w"> </span>apisix-gateway-install.enabled<span class="o">=</span><span class="nb">false</span><span class="w"> </span><span class="se">\</span>
+--set<span class="w"> </span>kong-gateway-install.enabled<span class="o">=</span><span class="nb">true</span>
+</pre></div>
+</div>
+</li>
+</ul>
 </section>
 </section>
 <section id="troubleshooting">
 <h2>Troubleshooting<a class="headerlink" href="#troubleshooting" title="Link to this heading"></a></h2>
-<section id="error-instaling-backofflimitexceeded">
-<h3>Error instaling: BackoffLimitExceeded<a class="headerlink" href="#error-instaling-backofflimitexceeded" title="Link to this heading"></a></h3>
+<section id="error-installing-values-don-t-meet-the-specifications-of-the-schema-s">
+<h3>Error installing: values don’t meet the specifications of the schema(s)<a class="headerlink" href="#error-installing-values-don-t-meet-the-specifications-of-the-schema-s" title="Link to this heading"></a></h3>
+<p>If you see an error like this, it means that you have enabled more than one gateway operator at the same time. The chart’s schema validation enforces that only one gateway operator (Istio, Apisix, or Kong) can be active. To resolve this, edit your  <a class="reference external" href="https://github.com/tmforum-oda/oda-canvas/blob/main/charts/canvas-oda/values.yaml">values.yaml</a> so that only one of these is set to true and the others are set to false.</p>
+</section>
+<section id="error-installing-backofflimitexceeded">
+<h3>Error installing: BackoffLimitExceeded<a class="headerlink" href="#error-installing-backofflimitexceeded" title="Link to this heading"></a></h3>
 <p>The installation can fail with an error</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>Error:<span class="w"> </span>INSTALLATION<span class="w"> </span>FAILED:<span class="w"> </span>failed<span class="w"> </span>post-install:<span class="w"> </span>job<span class="w"> </span>failed:<span class="w"> </span>BackoffLimitExceeded
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="m">1</span>.<span class="w"> </span>Error:<span class="w"> </span>INSTALLATION<span class="w"> </span>FAILED:<span class="w"> </span>failed<span class="w"> </span>pre-install:<span class="w"> </span>job<span class="w"> </span>failed:<span class="w"> </span>BackoffLimitExceeded
+</pre></div>
+</div>
+<p>It can be failed due to below mentioned reasons.Please use –debug option in helm install command in order to verify the reason</p>
+<p>Prehook to check the prerequisite for istio-ingress service in istio-ingress namespace.</p>
+<p>To solve this ensure below points:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>   <span class="n">a</span><span class="o">.</span> <span class="n">Istio</span> <span class="ow">in</span> <span class="n">properly</span> <span class="n">installed</span> <span class="ow">in</span> <span class="n">istio</span><span class="o">-</span><span class="n">ingress</span> <span class="n">namespace</span> <span class="ow">and</span> <span class="n">the</span> <span class="n">service</span> <span class="n">has</span> <span class="n">obtained</span> <span class="n">an</span> <span class="n">External</span> <span class="n">IP</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>   <span class="n">b</span><span class="o">.</span> <span class="n">Virtual</span> <span class="n">Service</span> <span class="n">CRD</span> <span class="ow">is</span> <span class="n">installed</span> <span class="ow">in</span> <span class="n">the</span> <span class="n">cluster</span><span class="o">.</span>
+</pre></div>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="m">2</span>.<span class="w"> </span>Error:<span class="w"> </span>INSTALLATION<span class="w"> </span>FAILED:<span class="w"> </span>failed<span class="w"> </span>post-install:<span class="w"> </span>job<span class="w"> </span>failed:<span class="w"> </span>BackoffLimitExceeded
 </pre></div>
 </div>
 <p>There are two major causes of this error</p>
@@ -538,7 +642,7 @@ Increase <code class="docutils literal notranslate"><span class="pre">leaseWaitT
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2024, TM Forum ODA-Component Accelerator project.</p>
+    <p>&#169; Copyright 2025, TM Forum ODA-Component Accelerator project.</p>
   </div>
 
   Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a

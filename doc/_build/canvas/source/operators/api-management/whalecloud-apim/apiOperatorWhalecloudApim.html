@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../../../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>apiOperatorWhalecloudApim module &mdash; ODA-Component Accelerator v1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../../../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../../../../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../../../../../_static/css/custom.css?v=6567dac9" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../../../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../../../../_static/documentation_options.js?v=5cb08e4e"></script>
+        <script src="../../../../../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../search.html" />
+    <link rel="next" title="Security Operator" href="../../identity-config/keycloak/modules.html" />
+    <link rel="prev" title="API Operator apig - Introduction" href="README.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../../../../index.html" class="icon icon-home">
+            ODA-Component Accelerator
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">About the project:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../docs/Playbook.html">Introduction to the ODA Component Accelerator Project (ODA-CA)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../docs/Getting_started.html">Getting started checklist for new members of ODA-CA</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Tutorials:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../docs/Observability-Tutorial/README.html">Tutorial to deploy and observe a running component</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../docs/ODAComponentTutorial/README.html">Tutorial to build ODA-Component from Open-API Reference Implementation</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Component:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../docs/ODAComponentDesignGuidelines.html">Design Guidelines to create a new ODA Component</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Canvas:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../README.html">Open Digital Architecture Canvas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../installation/README.html">ODA Canvas installation</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Canvas Design:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../../Canvas-design.html">ODA Canvas Design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../Design-Epics.html">Design Epics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../usecase-library/README.html">ODA Canvas - use-case library</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../Usecases.html">Usecase List</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../usecase-library/use-case-naming-conventions.html">Use case naming conventions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../README.html">ODA Canvas source code</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../index.html">Open Digital Architecture - Operators</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../README.html">ODA Canvas Operators</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../component-management/modules.html">Component Operator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../istio/modules.html">API Operator: Istio</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../kong/modules.html">API Operator: Kong</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../apache-apisix/modules.html">API Operator: Apisix</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../apigee/modules.html">API Operator: Apigee API Gateway</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../azure-apim/modules.html">API Operator: Azure-Apim</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="modules.html">API Operator: Whalecloud Apim</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="README.html">API Operator apig - Introduction</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="modules.html#python-modules">Python modules</a><ul class="current">
+<li class="toctree-l4 current"><a class="current reference internal" href="#">apiOperatorWhalecloudApim module</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../identity-config/keycloak/modules.html">Security Operator</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../webhooks-and-utilities.html">Webuooks and Utilities</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Feature Tests:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../feature-definition-and-test-kit/README.html">ODA Canvas Features and Test Kit</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../feature-definition-and-test-kit/README.html#list-of-bdd-features">List of BDD Features</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../feature-definition-and-test-kit/Executing-tests.html">Installing and executing the BDD tests</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Contributions and Troubleshooting:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../docs/ContributionsGuide.html">Contribution guidance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../docs/TroubleshootingGuide/index.html">Troubleshooting Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../docs/developer/work-with-dockerimages.html">Developer How-Tos: Work with Dockerimages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../docs/developer/work-with-dockerimages.html#summary">Summary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../docs/developer/work-with-dockerimages.html#how-to-add-a-new-dockerimage">How-To add a new Dockerimage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../docs/developer/work-with-dockerimages.html#how-to-define-unit-tests">How-To define unit tests</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../devcontainer.html">ODA Canvas Development Environment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Installing%20KOPF%20development%20environment.html">Installing KOPF (tested in GKE)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../docs/DocumentationProcess.html">Documentation Process</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../../index.html">ODA-Component Accelerator</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../index.html">Open Digital Architecture - Operators</a></li>
+          <li class="breadcrumb-item"><a href="modules.html">API Operator: Whalecloud Apim</a></li>
+      <li class="breadcrumb-item active">apiOperatorWhalecloudApim module</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../../../../_sources/canvas/source/operators/api-management/whalecloud-apim/apiOperatorWhalecloudApim.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="apioperatorwhalecloudapim-module">
+<h1>apiOperatorWhalecloudApim module<a class="headerlink" href="#apioperatorwhalecloudapim-module" title="Link to this heading"></a></h1>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="README.html" class="btn btn-neutral float-left" title="API Operator apig - Introduction" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../../identity-config/keycloak/modules.html" class="btn btn-neutral float-right" title="Security Operator" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, TM Forum ODA-Component Accelerator project.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

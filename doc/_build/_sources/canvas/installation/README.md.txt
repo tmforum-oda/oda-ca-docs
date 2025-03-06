@@ -13,6 +13,8 @@ For each release, we will support a min and max Kubernetes version.
 | v1beta1               | 1.22                   | 1.25                   |
 | v1beta2               | 1.22                   | 1.27                   |
 | v1beta3               | 1.22                   | 1.29                   |
+| v1beta4               | 1.22                   | 1.29                   |
+| v1                    | 1.22                   | 1.30                   |
 
 If you are connected to an ODA Canvas, to test what version of Canvas it is, use the command:
 
@@ -20,7 +22,7 @@ If you are connected to an ODA Canvas, to test what version of Canvas it is, use
 kubectl get crd components.oda.tmforum.org -o jsonpath='{.spec.versions[?(@.served==true)].name}'
 ```
 
-It will return the versions of components the canvas supports. A canvas should support N-2 versions of a component i.e. for the `v1beta3` canvas, it will support components that are v1beta3, v1beta2, v1beta1 (and v1alpha4 with a deprecation warning).
+It will return the versions of components the canvas supports. A canvas should support N-2 versions of a component i.e. for the `v1` canvas, it will support components that are v1, v1beta4, v1beta3 (and v1beta2 with a deprecation warning).
 
 We will test the Reference Implementation Canvas against a range of kubernetes versions and on a number of different deployments.
 
@@ -33,7 +35,7 @@ We will test the Reference Implementation Canvas against a range of kubernetes v
 | Microk8s              | Yes    |                                                                                                                           |
 | MiniKube              | Yes    |                                                                                                                           |
 | Docker Desktop        | Yes    | see also [devcontainer.md](../devcontainer.md)                                                                            |
-| Kind                  |        | Using [Canvas-in-a-bottle](canvas-in-a-bottle/README.md)                                                                  |
+| Kind                  | Yes    | Used in all the GitHub action automated testing.                                                                  |
 | K3s                   | Yes    |                                                                                                                           |
 | (other)               |        | To suggest additional environments please add to this [issue](https://github.com/tmforum-oda/oda-canvas-charts/issues/52) |
 
@@ -53,7 +55,17 @@ The helm chart installs the following updated versions of third party to
 
 ## Configuration values
 
-The values used [here](https://github.com/tmforum-oda/oda-canvas/blob/master/charts/canvas-oda/README.md)
+The values used [here](https://github.com/tmforum-oda/oda-canvas/blob/main/charts/canvas-oda/README.md)
+
+## Hardware requirements
+
+The hardware requirements for the reference implementation are low. To deploy the reference implementation and run all the tests, the following minimum requirements should be adequate:
+- CPU: 4 cores; AMD64 architecture, but we are also beginning to investigate running on ARM.
+- RAM: 16Gb
+- Storage: 50Gb
+- Operating system: any supported by your hardware that will run Kubernetes. For our testing and development we have used several different Linux distributions and Windows 11.
+
+To host a component on the Reference Canvas you will have to account for its requirements in addition to the minimum.
 
 ## Environment installation
 
@@ -140,7 +152,7 @@ If HashiCorp Vault is **NOT** installed, everything works fine, only if a compon
 it will get stuck in state "InProgress-SecretsConfig".
 
 
-### 4. Reference implementation
+### 5. Reference implementation
 
 1. Add oda-canvas helm repo
 
@@ -151,20 +163,115 @@ it will get stuck in state "InProgress-SecretsConfig".
 
 2. Install the reference implementation
 
-    Install the canvas using the following command.
+   **Istio API Operator as the Default:**
+   By default, the Istio API Operator is enabled in the Canvas installation. If you do not modify the [values.yaml](https://github.com/tmforum-oda/oda-canvas/blob/main/charts/canvas-oda/values.yaml) file, Canvas will use the Istio API Operator which manages a Canvas environment that exposes APIs through the Istio Service Mesh without any additional API Gateway.
+
+ - **For Istio (Default) no change required in [values.yaml](https://github.com/tmforum-oda/oda-canvas/blob/main/charts/canvas-oda/values.yaml).:**
+   ```yaml
+   api-operator-istio:
+     enabled: true
+   apisix-gateway-install:
+     enabled: false
+   kong-gateway-install:
+     enabled: false
+   ```
+   Install the canvas using the following command.
 
     ```bash
     helm install canvas oda-canvas/canvas-oda -n canvas --create-namespace 
     ```
 
+   **Selecting a Different Gateway Operator (Optional):**
+   
+   For users seeking advanced API gateway capabilities, the ODA Canvas provides the option to install either the Kong Gateway or the APISIX Gateway.These gateways offer powerful features for managing APIs, including traffic management,         security, load balancing, rate limiting, and observability.
+   If you prefer to use Apisix or Kong, update the values.yaml file for the Canvas Helm chart.Only one API operator can be enabled at a time.
+   
+ - **For Apisix change required in [values.yaml](https://github.com/tmforum-oda/oda-canvas/blob/main/charts/canvas-oda/values.yaml) file to disable Istio and enable Apisix.:**
+   ```yaml
+   api-operator-istio:
+     enabled: false
+   apisix-gateway-install:
+     enabled: true
+   kong-gateway-install:
+     enabled: false
+   ```
+   Using updated values.yaml directly Install the canvas using the following command.
+
+    ```bash
+    helm install canvas oda-canvas/canvas-oda -n canvas --create-namespace -f values.yaml
+    ```
+    **"or"**
+   
+   If you prefer to use the **--set** option instead of editing **values.yaml**.You can disable Istio and enable Apisix inline without modifying your values file:
+
+    ```bash
+    helm install canvas oda-canvas/canvas-oda -n canvas --create-namespace \
+    --set api-operator-istio.enabled=false \
+    --set apisix-gateway-install.enabled=true \
+    --set kong-gateway-install.enabled=false
+    ```
+    
+ - **For Kong change required in [values.yaml](https://github.com/tmforum-oda/oda-canvas/blob/main/charts/canvas-oda/values.yaml) file to disable Istio and enable Kong.:**
+   
+   **Prerequisite: Install the Gateway API CRDs if required to enable the advanced networking capabilities required by Kong Gateway:**
+    ```bash
+    kubectl apply -f https://github.com/kubernetes-sigs/gateway-api/releases/download/v1.0.0/standard-install.yaml
+    ```   
+   
+   ```yaml
+   api-operator-istio:
+     enabled: false
+   apisix-gateway-install:
+     enabled: false
+   kong-gateway-install:
+     enabled: true
+   ```
+   Using updated values.yaml directly Install the canvas using the following command.
+
+    ```bash
+    helm install canvas oda-canvas/canvas-oda -n canvas --create-namespace -f values.yaml
+    ```
+
+    **"or"**
+   
+   If you prefer to use the **--set** option instead of editing **values.yaml**.You can disable Istio and enable Kong inline without modifying your values file:
+
+    ```bash
+    helm install canvas oda-canvas/canvas-oda -n canvas --create-namespace \
+    --set api-operator-istio.enabled=false \
+    --set apisix-gateway-install.enabled=false \
+    --set kong-gateway-install.enabled=true
+    ```
+
 ## Troubleshooting
 
-### Error instaling: BackoffLimitExceeded
+### Error installing: values don't meet the specifications of the schema(s)
+
+If you see an error like this, it means that you have enabled more than one gateway operator at the same time. The chart’s schema validation enforces that only one gateway operator (Istio, Apisix, or Kong) can be active. To resolve this, edit your  [values.yaml](https://github.com/tmforum-oda/oda-canvas/blob/main/charts/canvas-oda/values.yaml) so that only one of these is set to true and the others are set to false.
+
+### Error installing: BackoffLimitExceeded
 
 The installation can fail with an error
 
 ```bash
-Error: INSTALLATION FAILED: failed post-install: job failed: BackoffLimitExceeded
+1. Error: INSTALLATION FAILED: failed pre-install: job failed: BackoffLimitExceeded
+```
+
+It can be failed due to below mentioned reasons.Please use --debug option in helm install command in order to verify the reason
+
+Prehook to check the prerequisite for istio-ingress service in istio-ingress namespace.
+
+To solve this ensure below points:
+```
+   a. Istio in properly installed in istio-ingress namespace and the service has obtained an External IP
+```
+```
+   b. Virtual Service CRD is installed in the cluster.
+```
+
+
+```bash
+2. Error: INSTALLATION FAILED: failed post-install: job failed: BackoffLimitExceeded
 ```
 
 There are two major causes of this error
@@ -226,6 +333,7 @@ To solve that issue
 - Uninstall the helm chart
 - Delete the PVC with `kubectl delete pvc -n canvas data-canvas-postgresql-0`
 - reinstall the canvas
+
 
 ### Error installing : Failed post-install
 

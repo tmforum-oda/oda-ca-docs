@@ -19,13 +19,13 @@ branch | create a branch, naming has to follow "feature/..." or "odaa-..." other
 4 | prepare everything for the Pull-Request. Set chart-version numbers, document changes, also update the version number in the dependent charts
 PR | create Pull-Request -> BDD Tests are executed and should be successfull 
 5 | before merging, remove all prereleaseSuffixes. This will make the  "no-prerelease-suffixes"-check in the PR green. Start the commit message with "\[skip tests\] ..." this will skip running the BDD tests (which would fail, because of the missing release images)
-Merge | the merge into the master branch triggers the build of the release docker images 
+Merge | the merge into the main branch triggers the build of the release docker images 
 
 
 
 ## Global Rules
 
-* Release versions (image tags) follow the semantic versioning format "\<major\>.\<minor\>.\<increment\>" and are built only from the master branch
+* Release versions (image tags) follow the semantic versioning format "\<major\>.\<minor\>.\<increment\>" and are built only from the main branch
 * Release versions are immutable and can not be overwritten 
 * Prerelease versions have the format "\<major\>.\<minor\>.\<increment\>-\<prerelease-suffix\>" and are built from feature branches
 * Feature branches have the format "feature/\*" or "odaa-\*"
@@ -35,7 +35,7 @@ Merge | the merge into the master branch triggers the build of the release docke
 
 ## Versions in values.yaml
 
-Dockerimages are versioned in the [charts/canvas-oda/values.yaml](https://github.com/tmforum-oda/oda-canvas/blob/master/charts/canvas-oda/values.yaml) file of the canva-oda chart and consist of three parts. 
+Dockerimages are versioned in the [charts/canvas-oda/values.yaml](https://github.com/tmforum-oda/oda-canvas/blob/main/charts/canvas-oda/values.yaml) file of the canva-oda chart and consist of three parts. 
 E.g. for oda-webhook:
 
 ```
@@ -46,7 +46,7 @@ oda-webhook:
   prereleaseSuffix: issue123
 ```
 
-The full dockerimage is put together as "tmforumodacanvas/compcrdwebhook:0.6.3-issue123".
+The full dockerimage is put together as "tmforumodacanvas/compcrdwebhook:1.0.0".
 
 If there is no prereleaseSuffix, the seperator "-" is ommitted: 
 
@@ -58,7 +58,7 @@ oda-webhook:
   prereleaseSuffix:
 ```
 
-The full docker image is "tmforumodacanvas/compcrdwebhook:0.6.2"
+The full docker image is "tmforumodacanvas/compcrdwebhook:1.0.0"
 
 The advantage of using the values.yaml as source for the dockerimage names is,
 that when deploying the canvas-oda chart from the filesystem all docker images exist, because they are automatically build on code changes.
@@ -80,7 +80,7 @@ Feature branches have the naming convention "feature/..." or "odaa-...".
 Let´s assume we are working on the GitHub issue 3456, 
 so a good name for the feature branch would be "feature/issue3456"
 
-Create this new branch in GitHub from the master branch.
+Create this new branch in GitHub from the main branch.
 
 ### Step 2: Configure Prerelease Version in feature branch
 
@@ -88,7 +88,7 @@ First get an overview, how the Dockerfile for the secretsmanagement-operator is 
 
 #### Look at the Docker build configuration
 
-All dependencies of a Docker image are configured in the file [automation/generators/dockerbuild-workflow-generator/dockerbuild-config.yaml](https://github.com/tmforum-oda/oda-canvas/blob/master/automation/generators/dockerbuild-workflow-generator/dockerbuild-config.yaml).
+All dependencies of a Docker image are configured in the file [automation/generators/dockerbuild-workflow-generator/dockerbuild-config.yaml](https://github.com/tmforum-oda/oda-canvas/blob/main/automation/generators/dockerbuild-workflow-generator/dockerbuild-config.yaml).
 
 For the Secretsmanagement-Operator this is:
 
@@ -174,7 +174,7 @@ Comitting the changes in the feature branch locally and pushing them to the GitH
 
 ![image](https://github.com/user-attachments/assets/d264d6c5-6933-4932-9e31-16323d87aa69)
 
-If we had not set a prereleaseSuffix, then the build would have fail with the error message, that release versions can only be built from the "master" branch.
+If we had not set a prereleaseSuffix, then the build would have fail with the error message, that release versions can only be built from the "main" branch.
 
 But as we set a prereleaseSuffix a new image with tag `0.1.1-issue3456` was created and uploaded to dockerhub:
 
@@ -197,7 +197,13 @@ From the command line in the root of the locally checked out repository execute 
 cd charts/cert-manager-init
 helm dependency update
 helm dependency build
-cd ../../charts/controller
+cd ../../charts/component-operator
+helm dependency update
+helm dependency build
+cd ../../charts/api-operator-istio
+helm dependency update
+helm dependency build
+cd ../../charts/identityconfig-operator-keycloak
 helm dependency update
 helm dependency build
 cd ../../charts/canvas-vault
@@ -236,7 +242,7 @@ The next time when an upgrade has to be deployed the dependencies do not have to
 Let´s take a look at the SecretsManagement-Operator logfile:
 
 ```
-$ kubectl logs -n canvas deployment/canvas-smanop
+$ kubectl logs -n canvas deployment/secretsmanagement-operator-vault
 
     [2024-07-30 14:24:20,772] SecretsmanagementOpe [INFO    ] Logging set to 20
 [*] [2024-07-30 14:24:20,773] SecretsmanagementOpe [INFO    ] GitHub ISSUE #3456 was added here
@@ -292,7 +298,7 @@ $ helm upgrade --install canvas charts/canvas-oda -n canvas --create-namespace
 #### Look for the changes in the logfile
 
 ```
-kubectl logs -n canvas deployment/canvas-smanop
+kubectl logs -n canvas deployment/secretsmanagement-operator-vault
 
     [2024-07-30 14:24:20,772] SecretsmanagementOpe [INFO    ] Logging set to 20
 [?] [2024-07-30 14:24:20,773] SecretsmanagementOpe [INFO    ] GitHub ISSUE #3456 was added here
@@ -319,9 +325,9 @@ Now the image did not change, it is still `...:0.1.1-issue3456`.
 But we can trigger a redeployment manually:
 
 ```
-$ kubectl rollout restart deployment -n canvas canvas-smanop
+$ kubectl rollout restart deployment -n canvas secretsmanagement-operator-vault
 
-  deployment.apps/canvas-smanop restarted
+  deployment.apps/secretsmanagement-operator-vault restarted
 ```
 
 Waiting a few seconds to give the old POD (running instance of the deployment) time to gracefully terminate and the new POD time to startup:
@@ -331,14 +337,14 @@ $ kubectl get pods -n canvas
 
   NAME                                          READY   STATUS      RESTARTS   AGE
   ...
-  canvas-smanop-6768cc66b5-ww85z                1/1     Running     0          8s
+  secretsmanagement-operator-vault-6768cc66b5-ww85z                1/1     Running     0          8s
   ...
 ```
 
 Age 8 seconds means, the POD was just started. Now we can take a look into the logfile:
 
 ```
-$ kubectl logs -n canvas canvas-smanop-7d4c875878-xdlts
+$ kubectl logs -n canvas secretsmanagement-operator-vault-7d4c875878-xdlts
 
     [2024-07-30 15:22:02,025] SecretsmanagementOpe [INFO    ] Logging set to 20
 [?] [2024-07-30 15:22:02,025] SecretsmanagementOpe [INFO    ] GitHub ISSUE #3456 was added here
@@ -359,12 +365,12 @@ This means, even if a  docker image with the same name already exists it is look
 Check:
 
 ```
-$ kubectl get deployment -n canvas canvas-smanop -oyaml
+$ kubectl get deployment -n canvas secretsmanagement-operator-vault -oyaml
 
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: canvas-smanop
+  name: secretsmanagement-operator-vault
   namespace: canvas
   ...
 spec:
@@ -373,7 +379,7 @@ spec:
   template:
     spec:
       containers:
-      - name: canvas-smanop
+      - name: secretsmanagement-operator-vault
         image: ocfork/secretsmanagement-operator:0.1.1-issue3456
 [*]     imagePullPolicy: Always
       ...
@@ -383,17 +389,17 @@ I have no explanation, why this did not work, but found a workaround:
 Scaling the deployment down to 0 instances (PODs) and then scaling up to 1 again:
 
 ```
-$ kubectl scale deployment -n canvas canvas-smanop --replicas=0
-  deployment.apps/canvas-smanop scaled
+$ kubectl scale deployment -n canvas secretsmanagement-operator-vault --replicas=0
+  deployment.apps/secretsmanagement-operator-vault scaled
 
-$ kubectl scale deployment -n canvas canvas-smanop --replicas=1
-  deployment.apps/canvas-smanop scaled
+$ kubectl scale deployment -n canvas secretsmanagement-operator-vault --replicas=1
+  deployment.apps/secretsmanagement-operator-vault scaled
 ```
 
 Wait a few seconds for the new POD to come up and look at the logfile:
 
 ```
-$ kubectl logs -n canvas deployment/canvas-smanop
+$ kubectl logs -n canvas deployment/secretsmanagement-operator-vault
 
     [2024-07-30 15:31:14,306] SecretsmanagementOpe [INFO    ] Logging set to 20
 [*] [2024-07-30 15:31:14,306] SecretsmanagementOpe [INFO    ] GitHub ISSUE #3456 WAS FIXED!!!
@@ -421,9 +427,9 @@ Then the new docker image is also pullled.
 
 ### Step 7: Creating a Pull-Request
 
-After the iterative process of doing code changes, and testing the image, we are ready to contribute our changes back to the "master" branch.
+After the iterative process of doing code changes, and testing the image, we are ready to contribute our changes back to the "main" branch.
 
-Therefore a Pull-Request (PR) is created from our feature branch `feature/issue-3456` into "master" using GitHub UI.
+Therefore a Pull-Request (PR) is created from our feature branch `feature/issue-3456` into "main" using GitHub UI.
 
 #### Automatically Run Tests
 
@@ -462,7 +468,7 @@ Now all preconditions are green:
 
 ### Step 8: Code-Review and Merging the PR
 
-A code review can now be done and after appoval the branch can be merged into the "master" branch.
+A code review can now be done and after appoval the branch can be merged into the "main" branch.
 
 When the PR is merged, the release build of the docker image is triggered:
 
@@ -485,7 +491,7 @@ In the Docker registry there is now a release version 0.1.1:
 Overview about the steps to do:
 
 * Create feature branch "feature/..." and do all work in this branch
-* Increment version number and set prereleaseSuffix for Dockerimage to modify in [charts/canvas-oda/values.yaml](https://github.com/tmforum-oda/oda-canvas/blob/master/charts/canvas-oda/values.yaml)
+* Increment version number and set prereleaseSuffix for Dockerimage to modify in [charts/canvas-oda/values.yaml](https://github.com/tmforum-oda/oda-canvas/blob/main/charts/canvas-oda/values.yaml)
 * Modify code, push triggers rebuild of prerelease docker image
 * For the first time do a `helm upgrade` to redeploy the prerelease version
 * For any further modifications to a `kubectl scale deployment ... ---replicas 0` and then `kubectl scale deployment ... ---replicas 1` (or delete running PODs)
@@ -496,8 +502,32 @@ Overview about the steps to do:
 # How-To add a new Dockerimage
 
 Currently there are 6 Docker images which are built automatically.
-New Docker images can be added by editing the file [automation/generators/dockerbuild-workflow-generator/dockerbuild-config.yaml](https://github.com/tmforum-oda/oda-canvas/blob/master/automation/generators/dockerbuild-workflow-generator/dockerbuild-config.yaml).
+New Docker images can be added by editing the file [automation/generators/dockerbuild-workflow-generator/dockerbuild-config.yaml](https://github.com/tmforum-oda/oda-canvas/blob/main/automation/generators/dockerbuild-workflow-generator/dockerbuild-config.yaml).
 In this file the docker build specific configurations and the relevant source paths have to be set.
 
 After the configuration is finished, the GitHub Actions have to be regenerated 
-by executing [automation/generators/dockerbuild-workflow-generator/dockerbuild_workflow_generator.py](https://github.com/tmforum-oda/oda-canvas/blob/master/automation/generators/dockerbuild-workflow-generator/dockerbuild_workflow_generator.py). For executing the python script, the packages "pyyaml" and "jinja2" have to be installed (see requirements.txt).
+by executing [automation/generators/dockerbuild-workflow-generator/dockerbuild_workflow_generator.py](https://github.com/tmforum-oda/oda-canvas/blob/main/automation/generators/dockerbuild-workflow-generator/dockerbuild_workflow_generator.py). For executing the python script, the packages "pyyaml" and "jinja2" have to be installed (see requirements.txt).
+
+# How-To define unit tests
+
+If the parameter testDockerfile is set, then after building the dockerfile to release in the same context the test Dockerfile is built and run.
+The output of the run should be a test report in junit xml format.
+
+Here is an Example:
+
+Definition in dockerbuild-workflow-generator (Line 55 is the testDockerfile config):
+
+https://github.com/tmforum-oda/oda-canvas/blob/2d6268346c215c6dedb7afb2862765679da5c23c/automation/generators/dockerbuild-workflow-generator/dockerbuild-config.yaml#L41-L57
+
+And the DockerfileTest looks like this:
+
+https://github.com/tmforum-oda/oda-canvas/blob/2d6268346c215c6dedb7afb2862765679da5c23c/source/operators/dependentApiSimpleOperator/docker/DockerfileTest#L1-L17
+
+There will be a warning, that it is bad practice to define a FROM solely from an argument, but I don´t know how to do it in another way.
+
+So, the test dockerfile uses the previously built image as "$FROM_IMAGE" and during the build process the unit tests are executed. The build itself should not fail, instead of the test report is analyzed afterwards. Running the test dockerfile just outputs the test report.
+
+On Failure, the docker build of the version is canceled and the broken tests are visible in the GitHub action.
+
+![failed tests in GitHub Action](images/failed-tests-in-github-action.png)
+

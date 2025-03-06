@@ -1,0 +1,815 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../../../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Overview &mdash; ODA-Component Accelerator v1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../../../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../../../../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../../../../../_static/css/custom.css?v=6567dac9" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../../../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../../../../_static/documentation_options.js?v=5cb08e4e"></script>
+        <script src="../../../../../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../search.html" />
+    <link rel="next" title="apiOperatorAzureApim module" href="apiOperatorAzureApim.html" />
+    <link rel="prev" title="API Operator: Azure-Apim" href="modules.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../../../../index.html" class="icon icon-home">
+            ODA-Component Accelerator
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">About the project:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../docs/Playbook.html">Introduction to the ODA Component Accelerator Project (ODA-CA)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../docs/Getting_started.html">Getting started checklist for new members of ODA-CA</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Tutorials:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../docs/Observability-Tutorial/README.html">Tutorial to deploy and observe a running component</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../docs/ODAComponentTutorial/README.html">Tutorial to build ODA-Component from Open-API Reference Implementation</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Component:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../docs/ODAComponentDesignGuidelines.html">Design Guidelines to create a new ODA Component</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Canvas:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../README.html">Open Digital Architecture Canvas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../installation/README.html">ODA Canvas installation</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Canvas Design:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../../Canvas-design.html">ODA Canvas Design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../Design-Epics.html">Design Epics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../usecase-library/README.html">ODA Canvas - use-case library</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../Usecases.html">Usecase List</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../usecase-library/use-case-naming-conventions.html">Use case naming conventions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../README.html">ODA Canvas source code</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../index.html">Open Digital Architecture - Operators</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../README.html">ODA Canvas Operators</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../component-management/modules.html">Component Operator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../istio/modules.html">API Operator: Istio</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../kong/modules.html">API Operator: Kong</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../apache-apisix/modules.html">API Operator: Apisix</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../apigee/modules.html">API Operator: Apigee API Gateway</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="modules.html">API Operator: Azure-Apim</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#operator-architecture">Operator Architecture</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#high-level-overview">High-Level Overview</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#key-interactions">Key Interactions</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#key-components">Key Components</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#custom-resource-definition-crd-exposedapi">1. Custom Resource Definition (CRD): <code class="docutils literal notranslate"><span class="pre">ExposedAPI</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#event-handlers">2. Event Handlers</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#azure-clients">3. Azure Clients</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#kubernetes-api-clients">4. Kubernetes API Clients</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#logging">5. Logging</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#event-handling-workflow">Event Handling Workflow</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#creation-and-update-events">1. Creation and Update Events</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#deletion-event">2. Deletion Event</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#code-structure-and-functions">Code Structure and Functions</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#imports-and-initialization">1. Imports and Initialization</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#azure-apim-configuration">2. Azure APIM Configuration</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id1">3. Event Handlers</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ingress-management-functions">4. Ingress Management Functions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#azure-apim-interaction-functions">5. Azure APIM Interaction Functions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#exception-handling">6. Exception Handling</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id2">7. Logging</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#interaction-with-azure-services">Interaction with Azure Services</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#azure-key-vault">1. Azure Key Vault</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#azure-api-management-apim">2. Azure API Management (APIM)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#azure-entra-id">3. Azure Entra ID</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#security-considerations">Security Considerations</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#secrets-management">1. Secrets Management</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#authentication-and-authorization">2. Authentication and Authorization</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#secure-communication">3. Secure Communication</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#network-policies">4. Network Policies</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#testing-and-debugging">Testing and Debugging</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id3">1. Logging</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#operator-logs">2. Operator Logs</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#kubernetes-events">3. Kubernetes Events</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#azure-apim-diagnostics">4. Azure APIM Diagnostics</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#exception-messages">5. Exception Messages</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#limitations-and-future-enhancements">Limitations and Future Enhancements</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#error-handling">1. Error Handling</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#scalability">2. Scalability</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#extensibility">3. Extensibility</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#configuration-management">4. Configuration Management</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#observability">5. Observability</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#conclusion">Conclusion</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#key-takeaways">Key Takeaways:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="modules.html#python-modules">Python modules</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../whalecloud-apim/modules.html">API Operator: Whalecloud Apim</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../identity-config/keycloak/modules.html">Security Operator</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../webhooks-and-utilities.html">Webuooks and Utilities</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Feature Tests:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../feature-definition-and-test-kit/README.html">ODA Canvas Features and Test Kit</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../feature-definition-and-test-kit/README.html#list-of-bdd-features">List of BDD Features</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../feature-definition-and-test-kit/Executing-tests.html">Installing and executing the BDD tests</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Contributions and Troubleshooting:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../docs/ContributionsGuide.html">Contribution guidance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../docs/TroubleshootingGuide/index.html">Troubleshooting Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../docs/developer/work-with-dockerimages.html">Developer How-Tos: Work with Dockerimages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../docs/developer/work-with-dockerimages.html#summary">Summary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../docs/developer/work-with-dockerimages.html#how-to-add-a-new-dockerimage">How-To add a new Dockerimage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../docs/developer/work-with-dockerimages.html#how-to-define-unit-tests">How-To define unit tests</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../devcontainer.html">ODA Canvas Development Environment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Installing%20KOPF%20development%20environment.html">Installing KOPF (tested in GKE)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../docs/DocumentationProcess.html">Documentation Process</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../../index.html">ODA-Component Accelerator</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../index.html">Open Digital Architecture - Operators</a></li>
+          <li class="breadcrumb-item"><a href="modules.html">API Operator: Azure-Apim</a></li>
+      <li class="breadcrumb-item active">Overview</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../../../../_sources/canvas/source/operators/api-management/azure-apim/README.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <ul class="simple">
+<li><p><a class="reference internal" href="#overview"><span class="xref myst">Overview</span></a></p></li>
+<li><p><a class="reference internal" href="#operator-architecture"><span class="xref myst">Operator Architecture</span></a></p>
+<ul>
+<li><p><a class="reference internal" href="#high-level-overview"><span class="xref myst">High-Level Overview</span></a></p>
+<ul>
+<li><p><a class="reference internal" href="#lifecycle-flow"><span class="xref myst"><strong>Lifecycle flow</strong></span></a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#key-interactions"><span class="xref myst">Key Interactions</span></a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#key-components"><span class="xref myst">Key Components</span></a></p>
+<ul>
+<li><p><a class="reference internal" href="#1-custom-resource-definition-crd-exposedapi"><span class="xref myst">1. Custom Resource Definition (CRD): <code class="docutils literal notranslate"><span class="pre">ExposedAPI</span></code></span></a></p></li>
+<li><p><a class="reference internal" href="#2-event-handlers"><span class="xref myst">2. Event Handlers</span></a></p></li>
+<li><p><a class="reference internal" href="#3-azure-clients"><span class="xref myst">3. Azure Clients</span></a></p></li>
+<li><p><a class="reference internal" href="#4-kubernetes-api-clients"><span class="xref myst">4. Kubernetes API Clients</span></a></p></li>
+<li><p><a class="reference internal" href="#5-logging"><span class="xref myst">5. Logging</span></a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#event-handling-workflow"><span class="xref myst">Event Handling Workflow</span></a></p>
+<ul>
+<li><p><a class="reference internal" href="#1-creation-and-update-events"><span class="xref myst">1. Creation and Update Events</span></a></p></li>
+<li><p><a class="reference internal" href="#2-deletion-event"><span class="xref myst">2. Deletion Event</span></a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#code-structure-and-functions"><span class="xref myst">Code Structure and Functions</span></a></p>
+<ul>
+<li><p><a class="reference internal" href="#1-imports-and-initialization"><span class="xref myst">1. Imports and Initialization</span></a></p></li>
+<li><p><a class="reference internal" href="#2-azure-apim-configuration"><span class="xref myst">2. Azure APIM Configuration</span></a></p></li>
+<li><p><a class="reference internal" href="#3-event-handlers"><span class="xref myst">3. Event Handlers</span></a></p>
+<ul>
+<li><p><a class="reference internal" href="#create-and-update-handler"><span class="xref myst">Create and Update Handler</span></a></p></li>
+<li><p><a class="reference internal" href="#delete-handler"><span class="xref myst">Delete Handler</span></a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#4-ingress-management-functions"><span class="xref myst">4. Ingress Management Functions</span></a></p>
+<ul>
+<li><p><a class="reference internal" href="#create-or-update-ingress"><span class="xref myst">Create or Update Ingress</span></a></p></li>
+<li><p><a class="reference internal" href="#delete-ingress"><span class="xref myst">Delete Ingress</span></a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#5-azure-apim-interaction-functions"><span class="xref myst">5. Azure APIM Interaction Functions</span></a></p>
+<ul>
+<li><p><a class="reference internal" href="#update-apim"><span class="xref myst">Update APIM</span></a></p></li>
+<li><p><a class="reference internal" href="#configure-apim-policies"><span class="xref myst">Configure APIM Policies</span></a></p></li>
+<li><p><a class="reference internal" href="#get-ingress-url"><span class="xref myst">Get Ingress URL</span></a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#6-exception-handling"><span class="xref myst">6. Exception Handling</span></a></p></li>
+<li><p><a class="reference internal" href="#7-logging"><span class="xref myst">7. Logging</span></a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#interaction-with-azure-services"><span class="xref myst">Interaction with Azure Services</span></a></p>
+<ul>
+<li><p><a class="reference internal" href="#1-azure-key-vault"><span class="xref myst">1. Azure Key Vault</span></a></p></li>
+<li><p><a class="reference internal" href="#2-azure-api-management-apim"><span class="xref myst">2. Azure API Management (APIM)</span></a></p></li>
+<li><p><a class="reference internal" href="#3-azure-entra-id"><span class="xref myst">3. Azure Entra ID</span></a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#security-considerations"><span class="xref myst">Security Considerations</span></a></p>
+<ul>
+<li><p><a class="reference internal" href="#1-secrets-management"><span class="xref myst">1. Secrets Management</span></a></p></li>
+<li><p><a class="reference internal" href="#2-authentication-and-authorization"><span class="xref myst">2. Authentication and Authorization</span></a></p></li>
+<li><p><a class="reference internal" href="#3-secure-communication"><span class="xref myst">3. Secure Communication</span></a></p></li>
+<li><p><a class="reference internal" href="#4-network-policies"><span class="xref myst">4. Network Policies</span></a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#testing-and-debugging"><span class="xref myst">Testing and Debugging</span></a></p>
+<ul>
+<li><p><a class="reference internal" href="#1-logging"><span class="xref myst">1. Logging</span></a></p></li>
+<li><p><a class="reference internal" href="#2-operator-logs"><span class="xref myst">2. Operator Logs</span></a></p></li>
+<li><p><a class="reference internal" href="#3-kubernetes-events"><span class="xref myst">3. Kubernetes Events</span></a></p></li>
+<li><p><a class="reference internal" href="#4-azure-apim-diagnostics"><span class="xref myst">4. Azure APIM Diagnostics</span></a></p></li>
+<li><p><a class="reference internal" href="#5-exception-messages"><span class="xref myst">5. Exception Messages</span></a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#limitations-and-future-enhancements"><span class="xref myst">Limitations and Future Enhancements</span></a></p>
+<ul>
+<li><p><a class="reference internal" href="#1-error-handling"><span class="xref myst">1. Error Handling</span></a></p></li>
+<li><p><a class="reference internal" href="#2-scalability"><span class="xref myst">2. Scalability</span></a></p></li>
+<li><p><a class="reference internal" href="#3-extensibility"><span class="xref myst">3. Extensibility</span></a></p></li>
+<li><p><a class="reference internal" href="#4-configuration-management"><span class="xref myst">4. Configuration Management</span></a></p></li>
+<li><p><a class="reference internal" href="#5-observability"><span class="xref myst">5. Observability</span></a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#conclusion"><span class="xref myst">Conclusion</span></a></p></li>
+<li><p><a class="reference internal" href="#key-takeaways"><span class="xref myst">Key Takeaways:</span></a></p></li>
+</ul>
+<section id="overview">
+<h1>Overview<a class="headerlink" href="#overview" title="Link to this heading"></a></h1>
+<p>The API Operator for Azure API Management (APIM) is a Kubernetes operator designed to automate the exposure of Kubernetes services as APIs through Azure APIM. Built using the Kopf (Kubernetes Operator Framework), the operator listens for custom resource events and manages the lifecycle of APIs in APIM accordingly. It integrates with Azure Entra ID for authentication, applies API policies such as JWT validation, rate limiting, and CORS, and manages Ingress resources within an Istio service mesh in an Azure Kubernetes Service (AKS) cluster.</p>
+<p>This detailed description delves into the internal workings of the operator, its architecture, key components, event handling mechanisms, code structure, and interactions with Azure services.</p>
+</section>
+<section id="operator-architecture">
+<h1>Operator Architecture<a class="headerlink" href="#operator-architecture" title="Link to this heading"></a></h1>
+<section id="high-level-overview">
+<h2>High-Level Overview<a class="headerlink" href="#high-level-overview" title="Link to this heading"></a></h2>
+<p>At a high level, the operator functions as an event-driven automation tool within the Kubernetes cluster:</p>
+<ul class="simple">
+<li><p><strong>Event Listener</strong>: It listens for creation, update, and deletion events of custom resources (ExposedAPI).</p></li>
+<li><p><strong>Event Handler</strong>: Upon detecting an event, it executes predefined functions to manage resources.</p></li>
+<li><p><strong>Resource Manager</strong>: It creates or updates Kubernetes Ingress resources and configures APIs in Azure APIM.</p></li>
+<li><p><strong>Policy Enforcer</strong>: It applies API policies in APIM, ensuring consistent security and operational standards.</p></li>
+<li><p><strong>Status Reporter</strong>: It updates the status of custom resources to reflect the current state of the API exposure process.</p></li>
+</ul>
+<section id="lifecycle-flow">
+<h3><strong>Lifecycle flow</strong><a class="headerlink" href="#lifecycle-flow" title="Link to this heading"></a></h3>
+<p><img alt="Diagram" src="canvas/source/operators/api-management/azure-apim/sequenceDiagrams/AzureAPIMAPIOperator.png" /></p>
+</section>
+</section>
+<section id="key-interactions">
+<h2>Key Interactions<a class="headerlink" href="#key-interactions" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p><strong>Kubernetes API</strong>: The operator interacts with the Kubernetes API to manage custom resources, Ingresses, and update resource statuses.</p></li>
+<li><p><strong>Azure Services</strong>: It uses Azure SDKs to interact with Azure APIM, Key Vault, and Entra ID.</p></li>
+<li><p><strong>Istio Service Mesh</strong>: Operates within an Istio-enabled cluster, ensuring that internal service communications are secured via mutual TLS (mTLS).</p></li>
+</ul>
+</section>
+</section>
+<section id="key-components">
+<h1>Key Components<a class="headerlink" href="#key-components" title="Link to this heading"></a></h1>
+<section id="custom-resource-definition-crd-exposedapi">
+<h2>1. Custom Resource Definition (CRD): <code class="docutils literal notranslate"><span class="pre">ExposedAPI</span></code><a class="headerlink" href="#custom-resource-definition-crd-exposedapi" title="Link to this heading"></a></h2>
+<p>Defines the schema for the custom resource that users create to expose an API. It includes specifications like the API path, OpenAPI specification, implementation details, and policy configurations.</p>
+<p>CRD Schema:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">apiextensions.k8s.io/v1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">CustomResourceDefinition</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">exposedapis.oda.tmforum.org</span>
+<span class="nt">spec</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">group</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">oda.tmforum.org</span>
+<span class="w">  </span><span class="nt">versions</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1beta3</span>
+<span class="w">      </span><span class="nt">served</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">      </span><span class="nt">storage</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">      </span><span class="nt">schema</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">openAPIV3Schema</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">object</span>
+<span class="w">          </span><span class="nt">properties</span><span class="p">:</span>
+<span class="w">            </span><span class="nt">spec</span><span class="p">:</span>
+<span class="w">              </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">object</span>
+<span class="w">              </span><span class="nt">properties</span><span class="p">:</span>
+<span class="w">                </span><span class="nt">path</span><span class="p">:</span>
+<span class="w">                  </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
+<span class="w">                </span><span class="nt">specification</span><span class="p">:</span>
+<span class="w">                  </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
+<span class="w">                </span><span class="nt">implementation</span><span class="p">:</span>
+<span class="w">                  </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
+<span class="w">                </span><span class="nt">port</span><span class="p">:</span>
+<span class="w">                  </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">integer</span>
+<span class="w">                </span><span class="nt">rateLimit</span><span class="p">:</span>
+<span class="w">                  </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">object</span>
+<span class="w">                </span><span class="nt">CORS</span><span class="p">:</span>
+<span class="w">                  </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">object</span>
+<span class="w">  </span><span class="nt">scope</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Namespaced</span>
+<span class="w">  </span><span class="nt">names</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">plural</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">exposedapis</span>
+<span class="w">    </span><span class="nt">singular</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">exposedapi</span>
+<span class="w">    </span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ExposedAPI</span>
+</pre></div>
+</div>
+</section>
+<section id="event-handlers">
+<h2>2. Event Handlers<a class="headerlink" href="#event-handlers" title="Link to this heading"></a></h2>
+<p>The operator defines handlers for the following events:</p>
+<ul class="simple">
+<li><p><strong>Create</strong>: Triggered when a new ExposedAPI resource is created.</p></li>
+<li><p><strong>Update</strong>: Triggered when an existing ExposedAPI resource is modified.</p></li>
+<li><p><strong>Delete</strong>: Triggered when an ExposedAPI resource is deleted.</p></li>
+</ul>
+</section>
+<section id="azure-clients">
+<h2>3. Azure Clients<a class="headerlink" href="#azure-clients" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p><strong>Azure Key Vault Client</strong>: Retrieves secrets required for authentication and APIM configuration.</p></li>
+<li><p><strong>Azure APIM Client</strong>: Manages APIs and policies in Azure APIM.</p></li>
+<li><p><strong>Azure Entra ID Integration</strong>: Configures OpenID Connect providers and authentication settings in APIM.</p></li>
+</ul>
+</section>
+<section id="kubernetes-api-clients">
+<h2>4. Kubernetes API Clients<a class="headerlink" href="#kubernetes-api-clients" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p><strong>CustomObjectsApi</strong>: Interacts with custom resources to get and update their statuses.</p></li>
+<li><p><strong>NetworkingV1Api</strong>: Manages Ingress resources.</p></li>
+<li><p><strong>ApiException Handling</strong>: Handles exceptions when interacting with the Kubernetes API.</p></li>
+</ul>
+</section>
+<section id="logging">
+<h2>5. Logging<a class="headerlink" href="#logging" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p>Configurable logging levels (INFO, DEBUG, etc.) to monitor operator activities.</p></li>
+<li><p>Uses Python’s built-in logging module.</p></li>
+</ul>
+</section>
+</section>
+<section id="event-handling-workflow">
+<h1>Event Handling Workflow<a class="headerlink" href="#event-handling-workflow" title="Link to this heading"></a></h1>
+<section id="creation-and-update-events">
+<h2>1. Creation and Update Events<a class="headerlink" href="#creation-and-update-events" title="Link to this heading"></a></h2>
+<p>When a new ExposedAPI resource is created or updated:</p>
+<ul class="simple">
+<li><p><strong>Extract API Specifications</strong>: The operator reads the specifications from the custom resource.</p></li>
+<li><p><strong>Ingress Management</strong>:</p>
+<ul>
+<li><p><strong>Create or Update Ingress</strong>: Generates an Ingress resource to route traffic to the specified service.</p></li>
+<li><p><strong>Ingress Manifest</strong>: Includes the necessary annotations and rules to integrate with the cluster’s ingress controller (e.g., Istio).</p></li>
+</ul>
+</li>
+<li><p><strong>Azure APIM Configuration</strong>:</p>
+<ul>
+<li><p><strong>Retrieve Backend URL</strong>: Gets the external URL from the Ingress to use as the backend service URL in APIM.</p></li>
+<li><p><strong>Create or Update API in APIM</strong>:</p>
+<ul>
+<li><p><strong>API Parameters</strong>: Constructs parameters including display name, path, OpenAPI specification, and backend URL.</p></li>
+<li><p><strong>Authentication Settings</strong>: Configures OAuth 2.0 authentication using the OpenID Connect provider.</p></li>
+<li><p><strong>Import OpenAPI Specification</strong>: Imports the provided OpenAPI spec into APIM.</p></li>
+</ul>
+</li>
+<li><p><strong>Apply API Policies</strong>:</p>
+<ul>
+<li><p><strong>JWT Validation</strong>: Ensures that incoming requests have valid JWT tokens issued by Azure Entra ID.</p></li>
+<li><p><strong>Rate Limiting</strong>: Applies rate limiting policies based on the specifications.</p></li>
+<li><p><strong>CORS Configuration</strong>: Sets up CORS policies to control cross-origin requests.</p></li>
+</ul>
+</li>
+<li><p><strong>Status Update</strong>:</p>
+<ul>
+<li><p><strong>Update Custom Resource Status</strong>: Modifies the status subresource of the ExposedAPI to reflect the current state and any relevant information.</p></li>
+<li><p><strong>Handle Exceptions</strong>: If any step fails, the operator logs the error and may retry based on the retry policy.</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="deletion-event">
+<h2>2. Deletion Event<a class="headerlink" href="#deletion-event" title="Link to this heading"></a></h2>
+<p>When an ExposedAPI resource is deleted:</p>
+<ul class="simple">
+<li><p><strong>Ingress Deletion</strong>: Deletes the associated Ingress resource from the cluster.</p></li>
+<li><p><strong>APIM Cleanup</strong>:</p>
+<ul>
+<li><p><strong>Delete API from APIM</strong>: Removes the API configuration from Azure APIM.</p></li>
+<li><p><strong>Handle Non-existence</strong>: If the API does not exist in APIM, logs the information and proceeds.</p></li>
+<li><p><strong>Logging</strong>: Records the successful deletion of resources or any errors encountered.</p></li>
+</ul>
+</li>
+</ul>
+</section>
+</section>
+<section id="code-structure-and-functions">
+<h1>Code Structure and Functions<a class="headerlink" href="#code-structure-and-functions" title="Link to this heading"></a></h1>
+<section id="imports-and-initialization">
+<h2>1. Imports and Initialization<a class="headerlink" href="#imports-and-initialization" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p><strong>Libraries</strong>:</p>
+<ul>
+<li><p><strong>kopf</strong>: For Kubernetes operator functionality.</p></li>
+<li><p><strong>kubernetes.client</strong>: Interacting with Kubernetes API.</p></li>
+<li><p><strong>azure.identity</strong>: For Azure authentication.</p></li>
+<li><p><strong>azure.keyvault.secrets</strong>: Accessing Key Vault secrets.</p></li>
+<li><p><strong>azure.mgmt.apimanagement</strong>: Managing APIM resources.</p></li>
+</ul>
+</li>
+<li><p><strong>Logging Configuration</strong>: Sets the logging level based on an environment variable.</p></li>
+<li><p><strong>Environment Variables</strong>:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">KEY_VAULT_NAME</span></code>: Name of the Azure Key Vault.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">LOGGING</span></code>: Logging level.</p></li>
+</ul>
+</li>
+<li><p><strong>Azure Key Vault Client Initialization</strong>: Uses DefaultAzureCredential to authenticate and access secrets.</p></li>
+</ul>
+</section>
+<section id="azure-apim-configuration">
+<h2>2. Azure APIM Configuration<a class="headerlink" href="#azure-apim-configuration" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p><strong>OpenID Connect Provider Setup</strong>: Ensures that an OpenID Connect provider is configured in APIM for Azure Entra ID.</p></li>
+<li><p><strong>Function</strong>: <code class="docutils literal notranslate"><span class="pre">create_openid_connect_provider()</span></code></p></li>
+</ul>
+</section>
+<section id="id1">
+<h2>3. Event Handlers<a class="headerlink" href="#id1" title="Link to this heading"></a></h2>
+<section id="create-and-update-handler">
+<h3>Create and Update Handler<a class="headerlink" href="#create-and-update-handler" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>Function</strong>: <code class="docutils literal notranslate"><span class="pre">manage_api_lifecycle()</span></code></p></li>
+<li><p><strong>Parameters</strong>:</p>
+<ul>
+<li><p>spec: The specifications from the custom resource.</p></li>
+<li><p>name: Name of the custom resource.</p></li>
+<li><p>namespace: Namespace where the resource is deployed.</p></li>
+<li><p>status: Current status of the resource.</p></li>
+</ul>
+</li>
+<li><p><strong>Workflow</strong>:</p>
+<ul>
+<li><p>Extracts API specifications.</p></li>
+<li><p>Checks if an update is necessary by comparing the current spec with the status.</p></li>
+<li><p>Calls create_or_update_ingress() to manage the Ingress resource.</p></li>
+<li><p>Calls update_apim() to configure the API in APIM.</p></li>
+<li><p>Updates the custom resource’s status.</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="delete-handler">
+<h3>Delete Handler<a class="headerlink" href="#delete-handler" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>Function</strong>: <code class="docutils literal notranslate"><span class="pre">manage_api_deletion()</span></code></p></li>
+<li><p><strong>Parameters</strong>:</p>
+<ul>
+<li><p>meta: Metadata of the custom resource.</p></li>
+<li><p>name: Name of the custom resource.</p></li>
+<li><p>namespace: Namespace where the resource was deployed.</p></li>
+</ul>
+</li>
+<li><p><strong>Workflow</strong>:</p>
+<ul>
+<li><p>Deletes the Ingress resource using delete_ingress().</p></li>
+<li><p>Deletes the API from APIM.</p></li>
+<li><p>Logs the deletion activities.</p></li>
+</ul>
+</li>
+</ul>
+</section>
+</section>
+<section id="ingress-management-functions">
+<h2>4. Ingress Management Functions<a class="headerlink" href="#ingress-management-functions" title="Link to this heading"></a></h2>
+<section id="create-or-update-ingress">
+<h3>Create or Update Ingress<a class="headerlink" href="#create-or-update-ingress" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>Function</strong>: <code class="docutils literal notranslate"><span class="pre">create_or_update_ingress()</span></code></p></li>
+<li><p><strong>Parameters</strong>:</p>
+<ul>
+<li><p>spec, name, namespace, meta</p></li>
+</ul>
+</li>
+<li><p><strong>Workflow</strong>:</p>
+<ul>
+<li><p>Constructs the Ingress manifest with necessary annotations and rules.</p></li>
+<li><p>Adopts the resource to ensure proper ownership.</p></li>
+<li><p>Checks if the Ingress exists:</p>
+<ul>
+<li><p>If it exists, updates it.</p></li>
+<li><p>If it doesn’t, creates a new one.</p></li>
+</ul>
+</li>
+<li><p>Handles exceptions and logs accordingly.</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="delete-ingress">
+<h3>Delete Ingress<a class="headerlink" href="#delete-ingress" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>Function</strong>: <code class="docutils literal notranslate"><span class="pre">delete_ingress()</span></code></p></li>
+<li><p><strong>Parameters</strong>:</p>
+<ul>
+<li><p>name, namespace</p></li>
+</ul>
+</li>
+<li><p><strong>Workflow</strong>:</p>
+<ul>
+<li><p>Attempts to delete the Ingress resource.</p></li>
+<li><p>Handles exceptions if the resource does not exist.</p></li>
+</ul>
+</li>
+</ul>
+</section>
+</section>
+<section id="azure-apim-interaction-functions">
+<h2>5. Azure APIM Interaction Functions<a class="headerlink" href="#azure-apim-interaction-functions" title="Link to this heading"></a></h2>
+<section id="update-apim">
+<h3>Update APIM<a class="headerlink" href="#update-apim" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>Function</strong>: <code class="docutils literal notranslate"><span class="pre">update_apim()</span></code></p></li>
+<li><p><strong>Parameters</strong>:</p>
+<ul>
+<li><p>api_spec, namespace</p></li>
+</ul>
+</li>
+<li><p><strong>Workflow:</strong></p>
+<ul>
+<li><p>Retrieves the backend service URL from the Ingress.</p></li>
+<li><p>Constructs API parameters, including authentication settings.</p></li>
+<li><p>Checks if the API exists in APIM and retrieves the ETag.</p></li>
+<li><p>Creates or updates the API in APIM, using the ETag for concurrency control.</p></li>
+<li><p>Calls configure_apim_policies() to apply policies.</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="configure-apim-policies">
+<h3>Configure APIM Policies<a class="headerlink" href="#configure-apim-policies" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>Function</strong>: <code class="docutils literal notranslate"><span class="pre">configure_apim_policies()</span></code></p></li>
+<li><p><strong>Parameters:</strong></p>
+<ul>
+<li><p>api_id, api_spec</p></li>
+</ul>
+</li>
+<li><p><strong>Workflow</strong>:</p>
+<ul>
+<li><p>Extracts policy configurations from api_spec.</p></li>
+<li><p>Constructs the policies XML, including JWT validation, rate limiting, and CORS.</p></li>
+<li><p>Updates the API policies in APIM.</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="get-ingress-url">
+<h3>Get Ingress URL<a class="headerlink" href="#get-ingress-url" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>Function</strong>: <code class="docutils literal notranslate"><span class="pre">get_ingress_url()</span></code></p></li>
+<li><p><strong>Parameters:</strong></p>
+<ul>
+<li><p>api_name, namespace, path</p></li>
+</ul>
+</li>
+<li><p><strong>Workflow:</strong></p>
+<ul>
+<li><p>Retrieves the Ingress resource.</p></li>
+<li><p>Extracts the external IP or hostname.</p></li>
+<li><p>Constructs the backend URL using the scheme (http or https) and the path.</p></li>
+<li><p>Handles exceptions if the Ingress does not have a load balancer IP or hostname.</p></li>
+</ul>
+</li>
+</ul>
+</section>
+</section>
+<section id="exception-handling">
+<h2>6. Exception Handling<a class="headerlink" href="#exception-handling" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p><strong>Kubernetes API Exceptions</strong>: Uses ApiException to handle errors when interacting with Kubernetes resources.</p></li>
+<li><p><strong>Azure Exceptions</strong>: Catches AzureError and ResourceNotFoundError for Azure service interactions.</p></li>
+<li><p><strong>Retries</strong>: Uses kopf.TemporaryError for retryable errors, allowing the operator to retry failed operations based on the retry policy.</p></li>
+</ul>
+</section>
+<section id="id2">
+<h2>7. Logging<a class="headerlink" href="#id2" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p>Uses the logging module to log information, warnings, and errors.</p></li>
+<li><p>Logs important events like resource creation, updates, deletions, and any errors encountered.</p></li>
+</ul>
+</section>
+</section>
+<section id="interaction-with-azure-services">
+<h1>Interaction with Azure Services<a class="headerlink" href="#interaction-with-azure-services" title="Link to this heading"></a></h1>
+<section id="azure-key-vault">
+<h2>1. Azure Key Vault<a class="headerlink" href="#azure-key-vault" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p><strong>Purpose</strong>: Securely retrieves secrets required for operator functionality, such as APIM service name, resource group, subscription ID, Azure Entra ID tenant and client IDs.</p></li>
+<li><p><strong>Authentication</strong>: Uses DefaultAzureCredential to authenticate with Azure, supporting various authentication methods (managed identity, environment variables, etc.).</p></li>
+<li><p><strong>Error Handling</strong>: Catches and logs AzureError exceptions during secret retrieval.</p></li>
+</ul>
+</section>
+<section id="azure-api-management-apim">
+<h2>2. Azure API Management (APIM)<a class="headerlink" href="#azure-api-management-apim" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p><strong>API Management</strong>: Uses the ApiManagementClient from the Azure SDK to create, update, and delete APIs in APIM.</p></li>
+<li><p><strong>OpenID Connect Provider</strong>: Configures an OpenID Connect provider for Azure Entra ID to enable OAuth 2.0 authentication.</p></li>
+<li><p><strong>Policies</strong>: Applies policies to APIs for authentication, rate limiting, and CORS.</p></li>
+<li><p><strong>Concurrency Control</strong>: Uses ETags to handle concurrent updates to APIs.</p></li>
+</ul>
+</section>
+<section id="azure-entra-id">
+<h2>3. Azure Entra ID<a class="headerlink" href="#azure-entra-id" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p><strong>Authentication Settings</strong>: Configures APIs in APIM to use Azure Entra ID for authentication.</p></li>
+<li><p><strong>JWT Validation</strong>: Applies policies in APIM to validate JWT tokens issued by Azure Entra ID.</p></li>
+</ul>
+</section>
+</section>
+<section id="security-considerations">
+<h1>Security Considerations<a class="headerlink" href="#security-considerations" title="Link to this heading"></a></h1>
+<section id="secrets-management">
+<h2>1. Secrets Management<a class="headerlink" href="#secrets-management" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p><strong>Azure Key Vault</strong>: All sensitive information is stored in Azure Key Vault.</p></li>
+<li><p><strong>Access Control</strong>: Operator uses managed identities to access Key Vault, minimizing the need for explicit credentials.</p></li>
+</ul>
+</section>
+<section id="authentication-and-authorization">
+<h2>2. Authentication and Authorization<a class="headerlink" href="#authentication-and-authorization" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p><strong>Azure Entra ID Integration</strong>: Ensures that only authenticated users can access the APIs.</p></li>
+<li><p><strong>Policy Enforcement</strong>: Applies strict policies for JWT validation in APIM.</p></li>
+</ul>
+</section>
+<section id="secure-communication">
+<h2>3. Secure Communication<a class="headerlink" href="#secure-communication" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p><strong>Istio Service Mesh</strong>: Uses mTLS for secure service-to-service communication within the cluster.</p></li>
+<li><p><strong>Ingress TLS</strong>: Ensures that external communications are encrypted.</p></li>
+</ul>
+</section>
+<section id="network-policies">
+<h2>4. Network Policies<a class="headerlink" href="#network-policies" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p><strong>Ingress Restrictions</strong>: Configures network policies to restrict access to services only from allowed sources (e.g., APIM).</p></li>
+</ul>
+</section>
+</section>
+<section id="testing-and-debugging">
+<h1>Testing and Debugging<a class="headerlink" href="#testing-and-debugging" title="Link to this heading"></a></h1>
+<section id="id3">
+<h2>1. Logging<a class="headerlink" href="#id3" title="Link to this heading"></a></h2>
+<p>Adjust the LOGGING environment variable to set the desired logging level (e.g., DEBUG) for more verbose output.</p>
+</section>
+<section id="operator-logs">
+<h2>2. Operator Logs<a class="headerlink" href="#operator-logs" title="Link to this heading"></a></h2>
+<p>View operator logs using:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>kubectl<span class="w"> </span>logs<span class="w"> </span>&lt;apioperatorazureapim-pod-name&gt;<span class="w"> </span>-n<span class="w"> </span>operators
+</pre></div>
+</div>
+</section>
+<section id="kubernetes-events">
+<h2>3. Kubernetes Events<a class="headerlink" href="#kubernetes-events" title="Link to this heading"></a></h2>
+<p>Inspect events in the cluster for issues related to resource creation or updates:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>kubectl<span class="w"> </span>get<span class="w"> </span>events<span class="w"> </span>-n<span class="w"> </span>&lt;namespace&gt;
+</pre></div>
+</div>
+</section>
+<section id="azure-apim-diagnostics">
+<h2>4. Azure APIM Diagnostics<a class="headerlink" href="#azure-apim-diagnostics" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p>Use APIM diagnostics to troubleshoot issues with API configurations or policy applications.</p></li>
+</ul>
+</section>
+<section id="exception-messages">
+<h2>5. Exception Messages<a class="headerlink" href="#exception-messages" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p>The operator logs detailed exception messages, which can help identify the root cause of failures.</p></li>
+</ul>
+</section>
+</section>
+<section id="limitations-and-future-enhancements">
+<h1>Limitations and Future Enhancements<a class="headerlink" href="#limitations-and-future-enhancements" title="Link to this heading"></a></h1>
+<section id="error-handling">
+<h2>1. Error Handling<a class="headerlink" href="#error-handling" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p><strong>Retries</strong>: Currently uses kopf.TemporaryError with specified retries. Consider implementing exponential backoff strategies.</p></li>
+</ul>
+</section>
+<section id="scalability">
+<h2>2. Scalability<a class="headerlink" href="#scalability" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p><strong>Concurrency</strong>: Ensure the operator can handle multiple events efficiently, possibly by scaling replicas.</p></li>
+</ul>
+</section>
+<section id="extensibility">
+<h2>3. Extensibility<a class="headerlink" href="#extensibility" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p><strong>Additional Policies</strong>: Support for more complex policies or custom policy templates.</p></li>
+<li><p><strong>Custom Authentication Providers</strong>: Extend support for other authentication mechanisms beyond Azure Entra ID.</p></li>
+</ul>
+</section>
+<section id="configuration-management">
+<h2>4. Configuration Management<a class="headerlink" href="#configuration-management" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p><strong>Parameterization</strong>: Make certain configurations (e.g., default rate limits, CORS settings) more easily customizable.</p></li>
+</ul>
+</section>
+<section id="observability">
+<h2>5. Observability<a class="headerlink" href="#observability" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p><strong>Metrics Exporter</strong>: Implement metrics exporting for monitoring operator performance.</p></li>
+</ul>
+</section>
+</section>
+<section id="conclusion">
+<h1>Conclusion<a class="headerlink" href="#conclusion" title="Link to this heading"></a></h1>
+<p>The API Operator for Azure API Management streamlines the process of exposing Kubernetes services as APIs in Azure APIM. By automating the creation and management of necessary resources and configurations, it reduces manual efforts and ensures consistency across deployments. Its integration with Azure services and adherence to security best practices make it a valuable tool for organizations leveraging Kubernetes and Azure for their application infrastructure.</p>
+</section>
+<section id="key-takeaways">
+<h1>Key Takeaways:<a class="headerlink" href="#key-takeaways" title="Link to this heading"></a></h1>
+<ul class="simple">
+<li><p>The operator leverages Kubernetes-native constructs (custom resources) to manage API exposure.</p></li>
+<li><p>It tightly integrates with Azure services, utilizing managed identities and SDKs for secure operations.</p></li>
+<li><p>The use of Kopf simplifies the development of the operator, providing robust event handling capabilities.</p></li>
+<li><p>Security is a primary focus, with mechanisms in place for secure secrets management, authentication, and network communication.</p></li>
+</ul>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="modules.html" class="btn btn-neutral float-left" title="API Operator: Azure-Apim" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="apiOperatorAzureApim.html" class="btn btn-neutral float-right" title="apiOperatorAzureApim module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, TM Forum ODA-Component Accelerator project.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
