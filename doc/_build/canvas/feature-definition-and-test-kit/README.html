@@ -72,17 +72,30 @@
 <li class="toctree-l1"><a class="reference internal" href="../Usecases.html">Usecase List</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../usecase-library/use-case-naming-conventions.html">Use case naming conventions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../source/README.html">ODA Canvas source code</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../source/operators/index.html">Open Digital Architecture - Operators</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../source/webhooks-and-utilities.html">Webuooks and Utilities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../source/operators/README.html">ODA Canvas Operators</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../source/operators/component-management/README.html">Component Management Operator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../source/operators/api-management/README.html">API Management Operators</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../source/operators/identity-config/README.html">Identity Config Operators</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../source/operators/secretsmanagementOperator-hc/README.html">Secrets Management Operator for HashiCorp Vault</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../source/operators/credentials-management/README.html">Credentials Management Operator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../source/operators/dependentApiSimpleOperator/README.html">Dependency Management Operator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../source/webhooks-and-utilities.html">Webhooks and Utilities</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Feature Tests:</span></p>
 <ul class="current">
 <li class="toctree-l1 current"><a class="current reference internal" href="#">ODA Canvas Features and Test Kit</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#linkage-to-use-cases">Linkage to use-cases</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#work-breakdown">Work breakdown</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#list-of-bdd-features">List of BDD Features</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#uc002-manage-components">UC002 - Manage Components</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#uc003-expose-apis-for-component">UC003 - Expose APIs for Component</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#uc005-configure-users-and-roles">UC005 - Configure Users and Roles</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#uc007-dependent-apis">UC007 - Dependent APIs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#uc010-authentication-external">UC010 - Authentication External</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#uc013-seamless-upgrade">UC013 - Seamless upgrade</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#uc015-api-gateway-configuration">UC015 - API Gateway configuration</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="#list-of-bdd-features">List of BDD Features</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#executing-the-bdd-tests">Executing the BDD tests</a></li>
 </ul>
 </li>
@@ -92,13 +105,11 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../docs/ContributionsGuide.html">Contribution guidance</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../docs/TroubleshootingGuide/index.html">Troubleshooting Guide</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../docs/developer/work-with-dockerimages.html">Developer How-Tos: Work with Dockerimages</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../docs/developer/work-with-dockerimages.html#summary">Summary</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../docs/developer/work-with-dockerimages.html#how-to-add-a-new-dockerimage">How-To add a new Dockerimage</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../docs/developer/work-with-dockerimages.html#how-to-define-unit-tests">How-To define unit tests</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../docs/developer/work-with-dockerimages.html">Developer How-Tos: Work with Dockerimages</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../devcontainer.html">ODA Canvas Development Environment</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../source/operators/Installing%20KOPF%20development%20environment.html">Installing KOPF (tested in GKE)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../docs/DocumentationProcess.html">Documentation Process</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CONTRIBUTING.html">How to contribute to the ODA Canvas Accelerator</a></li>
 </ul>
 
         </div>
@@ -147,86 +158,71 @@ Example: “Then the user’s account is deactivated and the user is redirected 
 <h2>Work breakdown<a class="headerlink" href="#work-breakdown" title="Link to this heading"></a></h2>
 <p>For contributors contributing new features to the ODA Canvas, the expectation is that the contibuitor will define the features alongside implementing the software. Instead of having separate design, development and test teams, the approach is to separate work into different features and have the same contributor (or small team) work on the feature from design to implementation to testing. This approach is known as feature-driven development and is a key part of the agile methodology.</p>
 </section>
-</section>
 <section id="list-of-bdd-features">
-<h1>List of BDD Features<a class="headerlink" href="#list-of-bdd-features" title="Link to this heading"></a></h1>
-<p>The table below shows the list of features, together with the test status. The features are numbered depending on the use-case they describe.</p>
-<table border="1" class="docutils">
-<thead>
-<tr>
-<th>Use-Case</th>
-<th>Feature</th>
-<th>Test Status</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><a href="../usecase-library/UC003-Configure-Exposed-APIs.md">UC003 - Expose APIs for Component</a></td>
-<td><a href="features/UC003-F001-Expose-APIs-Create-API-Resource.feature">F001 - Create API Resource</a></td>
-<td>Complete</td>
-</tr>
-<tr>
-<td><a href="../usecase-library/UC003-Configure-Exposed-APIs.md">UC003 - Expose APIs for Component</a></td>
-<td><a href="features/UC003-F002-Expose-APIs-Publish-API-Resource-URL.feature">F002 - Publish API Resource URL</a></td>
-<td>Complete</td>
-</tr>
-<tr>
-<td><a href="../usecase-library/UC003-Configure-Exposed-APIs.md">UC003 - Expose APIs for Component</a></td>
-<td><a href="features/UC003-F003-Expose-APIs-Verify-API-implementation-is-ready.feature">F003 - Verify API implementation is ready</a></td>
-<td>Complete</td>
-</tr>
-<tr>
-<td><a href="../usecase-library/UC003-Configure-Exposed-APIs.md">UC003 - Expose APIs for Component</a></td>
-<td><a href="features/UC003-F004-Expose-APIs-Upgrade-component-with-additional-API.feature">F004 - Upgrade component with additional API</a></td>
-<td>Complete</td>
-</tr>
-<tr>
-<td><a href="../usecase-library/UC003-Configure-Exposed-APIs.md">UC003 - Expose APIs for Component</a></td>
-<td><a href="features/UC003-F005-Expose-APIs-Upgrade-component-with-removed-API.feature">F005 - Upgrade component with removed API</a></td>
-<td>Complete</td>
-</tr>
-<tr>
-<td><a href="../usecase-library/UC003-Configure-Exposed-APIs.md">UC003 - Expose APIs for Component</a></td>
-<td><a href="features/UC003-F006-Expose-APIs-Component-Specified-Rate-Limiting-and-Throttling-of-API-Requests.feature">F006 - Component Specified Rate Limiting and Throttling of API Requests</a></td>
-<td>Not started</td>
-</tr>
-<tr>
-<td><a href="../usecase-library/UC005-Configure-Users-and-Roles.md">UC005 - Configure Users and Roles</a></td>
-<td><a href="features/UC005-F001-Bootstrap-Apply-Standard-Defined-Role-to-Canvas-Admin-user.feature">F001 - Apply Standard Defined Role to Canvas Admin user</a></td>
-<td>Complete</td>
-</tr>
-<tr>
-<td><a href="../usecase-library/UC005-Configure-Users-and-Roles.md">UC005 - Configure Users and Roles</a></td>
-<td><a href="features/UC005-F002-Bootstrap-Grouping-Permission-Specification-Sets-into-Business-Roles-in-Identity-Management-Solution.feature">F002 - Grouping Permission Specification Sets-into Business Roles in Identity Management Solution</a></td>
-<td>Not started</td>
-</tr>
-<tr>
-<td><a href="../usecase-library/UC005-Configure-Users-and-Roles.md">UC005 - Configure Users and Roles</a></td>
-<td><a href="features/UC005-F003-Bootstrap-Secure-User-and-Role-Information-Communication.feature">F003 - Secure User and Role Information</a></td>
-<td>Not started</td>
-</tr>
-<tr>
-<td><a href="../usecase-library/UC005-Configure-Users-and-Roles.md">UC005 - Configure Users and Roles</a></td>
-<td><a href="features/UC005-F004-Bootstrap-Component-Exposes-Permission-Specification-Set-Towards-Canvas.feature">F004 - Component Exposes Permission Specification Set Towards Canvas</a></td>
-<td>Not started</td>
-</tr>
-<tr>
-<td><a href="../usecase-library/UC010-External-Authentication.md">UC010 - Authentication external</a></td>
-<td><a href="features/UC010-F001-External-Authentication-Logging-and-Monitoring-of-Authentication-Activity.feature">F001 - Logging and Monitoring of Authentication Activity</a></td>
-<td>Not started</td>
-</tr>
-<tr>
-<td><a href="../usecase-library/UC013-Upgrade-Canvas.md">UC013 - Seamless upgrade</a></td>
-<td><a href="features/UC013-F001-Seamless-upgrades-Installing-components-using-prev-version.feature">F001 - Installing components using prev version</a></td>
-<td>Complete</td>
-</tr>
-<tr>
-<td><a href="../usecase-library/UC013-Upgrade-Canvas.md">UC013 - Seamless upgrade</a></td>
-<td><a href="features/UC013-F002-Seamless-upgrades-Canvas-Operators-using-prev-version.feature">F002 - Canvas Operators using prev version</a></td>
-<td>Complete</td>
-</tr>
-</tbody>
-</table>
+<h2>List of BDD Features<a class="headerlink" href="#list-of-bdd-features" title="Link to this heading"></a></h2>
+<p>The list below shows the features organized by use case, with their current test status indicated. ✅ indicates the corresponding test is ready, ⏳ indicates the test has yet to be defined.</p>
+<section id="uc002-manage-components">
+<h3>UC002 - Manage Components<a class="headerlink" href="#uc002-manage-components" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>✅ <a class="reference internal" href="#features/UC002-F001-Install-Component.feature"><span class="xref myst">F001 - Install Component</span></a></p></li>
+<li><p>✅ <a class="reference internal" href="#features/UC002-F002-Upgrade-Component.feature"><span class="xref myst">F002 - Upgrade Component</span></a></p></li>
+<li><p>✅ <a class="reference internal" href="#features/UC002-F003-Install-Component-from-reference-examples.feature"><span class="xref myst">F003 - Install Component from Reference Examples</span></a></p></li>
+<li><p>✅ <a class="reference internal" href="#features/UC002-F004-Uninstall-Component-from-reference-examples.feature"><span class="xref myst">F004 - Uninstall Component from Reference Examples</span></a></p></li>
+</ul>
+</section>
+<section id="uc003-expose-apis-for-component">
+<h3>UC003 - Expose APIs for Component<a class="headerlink" href="#uc003-expose-apis-for-component" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>✅ <a class="reference internal" href="#features/UC003-F001-Expose-APIs-Create-API-Resource.feature"><span class="xref myst">F001 - Create API Resource</span></a></p></li>
+<li><p>✅ <a class="reference internal" href="#features/UC003-F002-Expose-APIs-Publish-API-Resource-URL.feature"><span class="xref myst">F002 - Publish API Resource URL</span></a></p></li>
+<li><p>✅ <a class="reference internal" href="#features/UC003-F003-Expose-APIs-Verify-API-implementation-is-ready.feature"><span class="xref myst">F003 - Verify API implementation is ready</span></a></p></li>
+<li><p>✅ <a class="reference internal" href="#features/UC003-F004-Expose-APIs-Upgrade-component-with-additional-API.feature"><span class="xref myst">F004 - Upgrade component with additional API</span></a></p></li>
+<li><p>✅ <a class="reference internal" href="#features/UC003-F005-Expose-APIs-Upgrade-component-with-removed-API.feature"><span class="xref myst">F005 - Upgrade component with removed API</span></a></p></li>
+<li><p>⏳ <a class="reference internal" href="#features/UC003-F006-Expose-APIs-Component-Specified-Rate-Limiting-and-Throttling-of-API-Requests.feature"><span class="xref myst">F006 - Component Specified Rate Limiting and Throttling of API Requests</span></a></p></li>
+</ul>
+</section>
+<section id="uc005-configure-users-and-roles">
+<h3>UC005 - Configure Users and Roles<a class="headerlink" href="#uc005-configure-users-and-roles" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>✅ <a class="reference internal" href="#features/UC005-F001-Bootstrap-Apply-Standard-Defined-Role-to-Canvas-Admin-user.feature"><span class="xref myst">F001 - Apply Standard Defined Role to Canvas Admin user</span></a></p></li>
+<li><p>⏳ <a class="reference internal" href="#features/UC005-F002-Bootstrap-Grouping-Permission-Specification-Sets-into-Business-Roles-in-Identity-Management-Solution.feature"><span class="xref myst">F002 - Grouping Permission Specification Sets into Business Roles</span></a></p></li>
+<li><p>⏳ <a class="reference internal" href="#features/UC005-F003-Bootstrap-Secure-User-and-Role-Information-Communication.feature"><span class="xref myst">F003 - Secure User and Role Information</span></a></p></li>
+<li><p>⏳ <a class="reference internal" href="#features/UC005-F004-Bootstrap-Component-Exposes-Permission-Specification-Set-Towards-Canvas.feature"><span class="xref myst">F004 - Component Exposes Permission Specification Set</span></a></p></li>
+<li><p>⏳ <a class="reference internal" href="#features/UC003-F005-Expose-APIs-Upgrade-component-with-removed-API.feature"><span class="xref myst">F005 - Add Permission Specification Sets in Component to Identity Platform</span></a></p></li>
+<li><p>⏳ <a class="reference internal" href="#features/UC005-F006-Bootstrap-Creation-Update-Removal-of-Technical-Roles-in-the-Identity-Platform.feature"><span class="xref myst">F006 - Creation Update Removal of Technical Roles in the Identity Platform</span></a></p></li>
+<li><p>⏳ <a class="reference internal" href="#features/UC005-F007-Bootstrap-Creation-Update-Removal-of-PartyRoles-as-Business-Roles-and-Mapping-with-Technical-Roles-in-the-Identity-Platform.feature"><span class="xref myst">F006 - Creation Update Removal of PartyRoles as Businees Roles and Mapping with Technical Roles in the Identity Platform</span></a></p></li>
+</ul>
+</section>
+<section id="uc007-dependent-apis">
+<h3>UC007 - Dependent APIs<a class="headerlink" href="#uc007-dependent-apis" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>✅ <a class="reference internal" href="#features/UC007-F001-Dependent-APIs-Create-Dependent-API-Resource.feature"><span class="xref myst">F001 - Create Dependent API Resource</span></a></p></li>
+<li><p>✅ <a class="reference internal" href="#features/UC007-F002-Dependent-APIs-Configure-Dependent-APIs-Single-Downstream.feature"><span class="xref myst">F001 - Configure Dependent API Single Downstream</span></a></p></li>
+</ul>
+</section>
+<section id="uc010-authentication-external">
+<h3>UC010 - Authentication External<a class="headerlink" href="#uc010-authentication-external" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>⏳ <a class="reference internal" href="#features/UC010-F001-External-Authentication-Logging-and-Monitoring-of-Authentication-Activity.feature"><span class="xref myst">F001 - Logging and Monitoring of Authentication Activity</span></a></p></li>
+</ul>
+</section>
+<section id="uc013-seamless-upgrade">
+<h3>UC013 - Seamless upgrade<a class="headerlink" href="#uc013-seamless-upgrade" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>✅ <a class="reference internal" href="#features/UC013-F001-Seamless-upgrades-Installing-components-using-prev-version.feature"><span class="xref myst">F001 - Installing components using prev version</span></a></p></li>
+<li><p>✅ <a class="reference internal" href="#features/UC013-F002-Seamless-upgrades-Canvas-Operators-using-prev-version.feature"><span class="xref myst">F002 - Canvas Operators using prev version</span></a></p></li>
+</ul>
+</section>
+<section id="uc015-api-gateway-configuration">
+<h3>UC015 - API Gateway configuration<a class="headerlink" href="#uc015-api-gateway-configuration" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>✅ <a class="reference internal" href="#features/UC015-F001-Create-ApisixApiGateway-Route.feature"><span class="xref myst">F001 - Create Apisix Api Gateway Route</span></a></p></li>
+<li><p>✅ <a class="reference internal" href="#features/UC015-F002-Create-KongApiGateway-Route.feature"><span class="xref myst">F002 - Create Kong Api Gateway Route</span></a></p></li>
+<li><p>✅ <a class="reference internal" href="#features/UC015-F003-Create-ApisixApiGateway-Plugin.feature"><span class="xref myst">F003 - Create Apisix Api Gateway Plugin</span></a></p></li>
+<li><p>✅ <a class="reference internal" href="#features/UC015-F004-Create-KongApiGateway-Plugin.feature"><span class="xref myst">F004 - Create Kong Api Gateway Plugin</span></a></p></li>
+</ul>
+</section>
+</section>
 <section id="executing-the-bdd-tests">
 <h2>Executing the BDD tests<a class="headerlink" href="#executing-the-bdd-tests" title="Link to this heading"></a></h2>
 <p>Follow the instructions in <a class="reference internal" href="Executing-tests.html"><span class="std std-doc">executing tests</span></a> to run the BDD tests.</p>

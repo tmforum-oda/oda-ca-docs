@@ -21,9 +21,7 @@
         <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
-    <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="ODA Canvas Development Environment" href="../../canvas/devcontainer.html" />
-    <link rel="prev" title="Postman API Tests Troubleshooting Guide" href="../TroubleshootingGuide/Postman-API-Tests.html" /> 
+    <link rel="search" title="Search" href="../../search.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -72,59 +70,26 @@
 <li class="toctree-l1"><a class="reference internal" href="../../canvas/Usecases.html">Usecase List</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../canvas/usecase-library/use-case-naming-conventions.html">Use case naming conventions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../canvas/source/README.html">ODA Canvas source code</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../canvas/source/operators/index.html">Open Digital Architecture - Operators</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../canvas/source/webhooks-and-utilities.html">Webuooks and Utilities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../canvas/source/operators/README.html">ODA Canvas Operators</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../canvas/source/operators/component-management/README.html">Component Management Operator - Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../canvas/source/operators/api-management/README.html">API Management Operators</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../canvas/source/operators/identity-config/README.html">Identity Config Operators</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../canvas/source/webhooks-and-utilities.html">Webhooks and Utilities</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Feature Tests:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../canvas/feature-definition-and-test-kit/README.html">ODA Canvas Features and Test Kit</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../canvas/feature-definition-and-test-kit/README.html#list-of-bdd-features">List of BDD Features</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../canvas/feature-definition-and-test-kit/Executing-tests.html">Installing and executing the BDD tests</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Contributions and Troubleshooting:</span></p>
-<ul class="current">
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="../ContributionsGuide.html">Contribution guidance</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../TroubleshootingGuide/index.html">Troubleshooting Guide</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Developer How-Tos: Work with Dockerimages</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#tl-dr">TL;DR;</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#global-rules">Global Rules</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#versions-in-values-yaml">Versions in values.yaml</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#example-update-code-of-secretsmanagement-operator">Example: Update code of Secretsmanagement-Operator</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#step-1-create-a-feature-branch">Step 1: Create a feature branch</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#step-2-configure-prerelease-version-in-feature-branch">Step 2: Configure Prerelease Version in feature branch</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#look-at-the-docker-build-configuration">Look at the Docker build configuration</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#configure-prerelease-version-in-values-yaml">Configure Prerelease-Version in values.yaml</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="#step-3-change-the-code-in-the-feature-branch">Step 3: Change the code in the feature branch</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#step-4-push-changed-feature-branch-to-github">Step 4: Push changed feature branch to GitHub</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#step-5-upgrade-canvas">Step 5: Upgrade Canvas</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#update-chart-dependencies">Update chart dependencies</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#install-upgrade-canvas">Install/Upgrade canvas</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="#step-5-test-that-changed-code-is-active">Step 5: Test that changed code is active</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#step-6a-6n-modify-code-multiple-times">Step 6a..6n: Modify code multiple times</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#update-canvas-deployment">Update canvas deployment</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#look-for-the-changes-in-the-logfile">Look for the changes in the logfile</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="#step-7-creating-a-pull-request">Step 7: Creating a Pull-Request</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#automatically-run-tests">Automatically Run Tests</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#check-for-release-versions">Check for release versions</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="#step-8-code-review-and-merging-the-pr">Step 8: Code-Review and Merging the PR</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="#summary">Summary</a></li>
-<li class="toctree-l1"><a class="reference internal" href="#how-to-add-a-new-dockerimage">How-To add a new Dockerimage</a></li>
-<li class="toctree-l1"><a class="reference internal" href="#how-to-define-unit-tests">How-To define unit tests</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../canvas/docs/developer/work-with-dockerimages.html">Developer How-Tos: Work with Dockerimages</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../canvas/devcontainer.html">ODA Canvas Development Environment</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../canvas/source/operators/Installing%20KOPF%20development%20environment.html">Installing KOPF (tested in GKE)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../DocumentationProcess.html">Documentation Process</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../canvas/CONTRIBUTING.html">How to contribute to the ODA Canvas Accelerator</a></li>
 </ul>
 
         </div>
@@ -618,9 +583,8 @@ If this is the case, the build pipeline will fail.</p>
 </table>
 </section>
 </section>
-</section>
 <section id="summary">
-<h1>Summary<a class="headerlink" href="#summary" title="Link to this heading"></a></h1>
+<h2>Summary<a class="headerlink" href="#summary" title="Link to this heading"></a></h2>
 <p>Overview about the steps to do:</p>
 <ul class="simple">
 <li><p>Create feature branch “feature/…” and do all work in this branch</p></li>
@@ -634,7 +598,7 @@ If this is the case, the build pipeline will fail.</p>
 </ul>
 </section>
 <section id="how-to-add-a-new-dockerimage">
-<h1>How-To add a new Dockerimage<a class="headerlink" href="#how-to-add-a-new-dockerimage" title="Link to this heading"></a></h1>
+<h2>How-To add a new Dockerimage<a class="headerlink" href="#how-to-add-a-new-dockerimage" title="Link to this heading"></a></h2>
 <p>Currently there are 6 Docker images which are built automatically.
 New Docker images can be added by editing the file <a class="reference external" href="https://github.com/tmforum-oda/oda-canvas/blob/main/automation/generators/dockerbuild-workflow-generator/dockerbuild-config.yaml">automation/generators/dockerbuild-workflow-generator/dockerbuild-config.yaml</a>.
 In this file the docker build specific configurations and the relevant source paths have to be set.</p>
@@ -642,7 +606,7 @@ In this file the docker build specific configurations and the relevant source pa
 by executing <a class="reference external" href="https://github.com/tmforum-oda/oda-canvas/blob/main/automation/generators/dockerbuild-workflow-generator/dockerbuild_workflow_generator.py">automation/generators/dockerbuild-workflow-generator/dockerbuild_workflow_generator.py</a>. For executing the python script, the packages “pyyaml” and “jinja2” have to be installed (see requirements.txt).</p>
 </section>
 <section id="how-to-define-unit-tests">
-<h1>How-To define unit tests<a class="headerlink" href="#how-to-define-unit-tests" title="Link to this heading"></a></h1>
+<h2>How-To define unit tests<a class="headerlink" href="#how-to-define-unit-tests" title="Link to this heading"></a></h2>
 <p>If the parameter testDockerfile is set, then after building the dockerfile to release in the same context the test Dockerfile is built and run.
 The output of the run should be a test report in junit xml format.</p>
 <p>Here is an Example:</p>
@@ -655,14 +619,12 @@ The output of the run should be a test report in junit xml format.</p>
 <p>On Failure, the docker build of the version is canceled and the broken tests are visible in the GitHub action.</p>
 <p><img alt="failed tests in GitHub Action" src="../../_images/failed-tests-in-github-action.png" /></p>
 </section>
+</section>
 
 
            </div>
           </div>
-          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="../TroubleshootingGuide/Postman-API-Tests.html" class="btn btn-neutral float-left" title="Postman API Tests Troubleshooting Guide" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="../../canvas/devcontainer.html" class="btn btn-neutral float-right" title="ODA Canvas Development Environment" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
-    </div>
+          <footer>
 
   <hr/>
 

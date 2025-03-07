@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Component Operator - Introduction &mdash; ODA-Component Accelerator v1 documentation</title>
+  <title>Component Management Operator &mdash; ODA-Component Accelerator v1 documentation</title>
       <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=80d5e7a1" />
       <link rel="stylesheet" type="text/css" href="../../../../_static/css/theme.css?v=19f00094" />
       <link rel="stylesheet" type="text/css" href="../../../../_static/css/custom.css?v=6567dac9" />
@@ -22,8 +22,8 @@
     <script src="../../../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../../../genindex.html" />
     <link rel="search" title="Search" href="../../../../search.html" />
-    <link rel="next" title="componentOperator module" href="componentOperator.html" />
-    <link rel="prev" title="Component Operator" href="modules.html" /> 
+    <link rel="next" title="API Management Operators" href="../api-management/README.html" />
+    <link rel="prev" title="ODA Canvas Operators" href="../README.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -72,46 +72,34 @@
 <li class="toctree-l1"><a class="reference internal" href="../../../Usecases.html">Usecase List</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../usecase-library/use-case-naming-conventions.html">Use case naming conventions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../README.html">ODA Canvas source code</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Open Digital Architecture - Operators</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="../README.html">ODA Canvas Operators</a></li>
-<li class="toctree-l2 current"><a class="reference internal" href="modules.html">Component Operator</a><ul class="current">
-<li class="toctree-l3 current"><a class="current reference internal" href="#">Component Operator - Introduction</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#sequence-diagram">Sequence Diagram</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#reference-implementation">Reference Implementation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../README.html">ODA Canvas Operators</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Component Management Operator</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#sequence-diagram">Sequence Diagram</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#reference-implementation">Reference Implementation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#build-automation-and-versioning">Build automation and versioning</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#build-automation-and-versioning">Build automation and versioning</a></li>
-<li class="toctree-l3"><a class="reference internal" href="modules.html#python-modules">Python modules</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="../api-management/istio/modules.html">API Operator: Istio</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../api-management/kong/modules.html">API Operator: Kong</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../api-management/apache-apisix/modules.html">API Operator: Apisix</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../api-management/apigee/modules.html">API Operator: Apigee API Gateway</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../api-management/azure-apim/modules.html">API Operator: Azure-Apim</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../api-management/whalecloud-apim/modules.html">API Operator: Whalecloud Apim</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../identity-config/keycloak/modules.html">Security Operator</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="../../webhooks-and-utilities.html">Webuooks and Utilities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api-management/README.html">API Management Operators</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../identity-config/README.html">Identity Config Operators</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../secretsmanagementOperator-hc/README.html">Secrets Management Operator for HashiCorp Vault</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../credentials-management/README.html">Credentials Management Operator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dependentApiSimpleOperator/README.html">Dependency Management Operator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../webhooks-and-utilities.html">Webhooks and Utilities</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Feature Tests:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../../feature-definition-and-test-kit/README.html">ODA Canvas Features and Test Kit</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../feature-definition-and-test-kit/README.html#list-of-bdd-features">List of BDD Features</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../feature-definition-and-test-kit/Executing-tests.html">Installing and executing the BDD tests</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Contributions and Troubleshooting:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../../../docs/ContributionsGuide.html">Contribution guidance</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../docs/TroubleshootingGuide/index.html">Troubleshooting Guide</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../../docs/developer/work-with-dockerimages.html">Developer How-Tos: Work with Dockerimages</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../../docs/developer/work-with-dockerimages.html#summary">Summary</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../../docs/developer/work-with-dockerimages.html#how-to-add-a-new-dockerimage">How-To add a new Dockerimage</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../../docs/developer/work-with-dockerimages.html#how-to-define-unit-tests">How-To define unit tests</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../docs/developer/work-with-dockerimages.html">Developer How-Tos: Work with Dockerimages</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../devcontainer.html">ODA Canvas Development Environment</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../Installing%20KOPF%20development%20environment.html">Installing KOPF (tested in GKE)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../docs/DocumentationProcess.html">Documentation Process</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../CONTRIBUTING.html">How to contribute to the ODA Canvas Accelerator</a></li>
 </ul>
 
         </div>
@@ -128,9 +116,7 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="../../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
-          <li class="breadcrumb-item"><a href="../index.html">Open Digital Architecture - Operators</a></li>
-          <li class="breadcrumb-item"><a href="modules.html">Component Operator</a></li>
-      <li class="breadcrumb-item active">Component Operator - Introduction</li>
+      <li class="breadcrumb-item active">Component Management Operator</li>
       <li class="wy-breadcrumbs-aside">
             <a href="../../../../_sources/canvas/source/operators/component-management/README.md.txt" rel="nofollow"> View page source</a>
       </li>
@@ -140,15 +126,15 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="component-operator-introduction">
-<h1>Component Operator - Introduction<a class="headerlink" href="#component-operator-introduction" title="Link to this heading"></a></h1>
+  <section id="component-management-operator">
+<h1>Component Management Operator<a class="headerlink" href="#component-management-operator" title="Link to this heading"></a></h1>
 <p>This is the reference implementiton of a component operator that manages the overall lifecycle of an ODA Component. The component operator takes the <code class="docutils literal notranslate"><span class="pre">Component</span></code> custom resource and creates multiple sub-reaources for each part of the component specification. At present it creates sub-resources for <code class="docutils literal notranslate"><span class="pre">ExposedAPI</span></code>, <code class="docutils literal notranslate"><span class="pre">DependentAPI</span></code>, <code class="docutils literal notranslate"><span class="pre">PublishedNotification</span></code>, <code class="docutils literal notranslate"><span class="pre">SubscribedNotification</span></code> and <code class="docutils literal notranslate"><span class="pre">SecretsManagement</span></code>. In the near future it will also create custom resources for <code class="docutils literal notranslate"><span class="pre">IdentityConfig</span></code> and <code class="docutils literal notranslate"><span class="pre">ObservabilityConfig</span></code>.</p>
 <p>Separate operators then process the sub-resources and manage the relavant services in the ODA Canvas. This allows technology-specific versions of these operators. For example, if you were using an open source Kong API Gateway, you install the kong-specific API Management operator which would take metadata from the <code class="docutils literal notranslate"><span class="pre">ExposedAPI</span></code> resource and use it to configure APIs in Kong.</p>
 <section id="sequence-diagram">
 <h2>Sequence Diagram<a class="headerlink" href="#sequence-diagram" title="Link to this heading"></a></h2>
 <p>The sequence diagram shows the overall lifecycle of deploying an ODA Component, with the component operator creating multiple sub-resources.</p>
 <p><img alt="manage-components-install" src="http://www.plantuml.com/plantuml/proxy?cache=no&amp;src=https://raw.githubusercontent.com/tmforum-oda/oda-canvas/main/usecase-library/pumlFiles/manage-components-install.puml" />
-<a class="reference internal" href="#pumlFiles/manage-components-install.puml"><span class="xref myst">plantUML code</span></a></p>
+<a class="reference download internal" download="" href="../../../../_downloads/968b99245f563a7fbeb7bac23a613239/manage-components-install.puml"><span class="xref download myst">plantUML code</span></a></p>
 <p>There is more detail, including sequence diagrams for upgrade and deletion in use case <a class="reference internal" href="../../../usecase-library/UC002-Manage-Components.html"><span class="std std-doc">UC002-Manage-Components</span></a>.</p>
 </section>
 <section id="reference-implementation">
@@ -164,19 +150,19 @@
 <p>You need to ensure you turn-off the operator executing in Kubernetes (for example, by setting the replicas to 0 in the operator Deployment).</p>
 <p>The command above will execute just the component operator. You will also need to execute the other operators relevant for your Canvas implementation - these can be executed in separate terminal command-lines.</p>
 </section>
-</section>
 <section id="build-automation-and-versioning">
-<h1>Build automation and versioning<a class="headerlink" href="#build-automation-and-versioning" title="Link to this heading"></a></h1>
+<h2>Build automation and versioning<a class="headerlink" href="#build-automation-and-versioning" title="Link to this heading"></a></h2>
 <p>The build and release process for docker images is described here:
-<a class="reference internal" href="../../../../docs/developer/work-with-dockerimages.html"><span class="std std-doc">/docs/developer/work-with-dockerimages.md</span></a></p>
+<a class="reference internal" href="../../../docs/developer/work-with-dockerimages.html"><span class="std std-doc">/docs/developer/work-with-dockerimages.md</span></a></p>
+</section>
 </section>
 
 
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="modules.html" class="btn btn-neutral float-left" title="Component Operator" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="componentOperator.html" class="btn btn-neutral float-right" title="componentOperator module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="../README.html" class="btn btn-neutral float-left" title="ODA Canvas Operators" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../api-management/README.html" class="btn btn-neutral float-right" title="API Management Operators" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

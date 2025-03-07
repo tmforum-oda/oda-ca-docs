@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>API Operator apig - Introduction &mdash; ODA-Component Accelerator v1 documentation</title>
+  <title>Kubernetes Apigee API Lifecycle Management Operator &mdash; ODA-Component Accelerator v1 documentation</title>
       <link rel="stylesheet" type="text/css" href="../../../../../_static/pygments.css?v=80d5e7a1" />
       <link rel="stylesheet" type="text/css" href="../../../../../_static/css/theme.css?v=19f00094" />
       <link rel="stylesheet" type="text/css" href="../../../../../_static/css/custom.css?v=6567dac9" />
@@ -21,9 +21,7 @@
         <script src="../../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../../../../genindex.html" />
-    <link rel="search" title="Search" href="../../../../../search.html" />
-    <link rel="next" title="Apigee module" href="apiOperatorApigee.html" />
-    <link rel="prev" title="API Operator: Apigee API Gateway" href="modules.html" /> 
+    <link rel="search" title="Search" href="../../../../../search.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -65,48 +63,36 @@
 <li class="toctree-l1"><a class="reference internal" href="../../../../installation/README.html">ODA Canvas installation</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Canvas Design:</span></p>
-<ul class="current">
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="../../../../Canvas-design.html">ODA Canvas Design</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../Design-Epics.html">Design Epics</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../usecase-library/README.html">ODA Canvas - use-case library</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../Usecases.html">Usecase List</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../usecase-library/use-case-naming-conventions.html">Use case naming conventions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../README.html">ODA Canvas source code</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="../../index.html">Open Digital Architecture - Operators</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="../../README.html">ODA Canvas Operators</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../component-management/modules.html">Component Operator</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../istio/modules.html">API Operator: Istio</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../kong/modules.html">API Operator: Kong</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../apache-apisix/modules.html">API Operator: Apisix</a></li>
-<li class="toctree-l2 current"><a class="reference internal" href="modules.html">API Operator: Apigee API Gateway</a><ul class="current">
-<li class="toctree-l3 current"><a class="current reference internal" href="#">API Operator apig - Introduction</a></li>
-<li class="toctree-l3"><a class="reference internal" href="modules.html#python-modules">Python modules</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="../azure-apim/modules.html">API Operator: Azure-Apim</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../whalecloud-apim/modules.html">API Operator: Whalecloud Apim</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../identity-config/keycloak/modules.html">Security Operator</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="../../../webhooks-and-utilities.html">Webuooks and Utilities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../README.html">ODA Canvas Operators</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../component-management/README.html">Component Management Operator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../README.html">API Management Operators</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../identity-config/README.html">Identity Config Operators</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../secretsmanagementOperator-hc/README.html">Secrets Management Operator for HashiCorp Vault</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../credentials-management/README.html">Credentials Management Operator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dependentApiSimpleOperator/README.html">Dependency Management Operator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../webhooks-and-utilities.html">Webhooks and Utilities</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Feature Tests:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../../../feature-definition-and-test-kit/README.html">ODA Canvas Features and Test Kit</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../../feature-definition-and-test-kit/README.html#list-of-bdd-features">List of BDD Features</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../feature-definition-and-test-kit/Executing-tests.html">Installing and executing the BDD tests</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Contributions and Troubleshooting:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../../../../docs/ContributionsGuide.html">Contribution guidance</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../../docs/TroubleshootingGuide/index.html">Troubleshooting Guide</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../../../docs/developer/work-with-dockerimages.html">Developer How-Tos: Work with Dockerimages</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../../../docs/developer/work-with-dockerimages.html#summary">Summary</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../../../docs/developer/work-with-dockerimages.html#how-to-add-a-new-dockerimage">How-To add a new Dockerimage</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../../../docs/developer/work-with-dockerimages.html#how-to-define-unit-tests">How-To define unit tests</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../docs/developer/work-with-dockerimages.html">Developer How-Tos: Work with Dockerimages</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../devcontainer.html">ODA Canvas Development Environment</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../Installing%20KOPF%20development%20environment.html">Installing KOPF (tested in GKE)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../../docs/DocumentationProcess.html">Documentation Process</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../CONTRIBUTING.html">How to contribute to the ODA Canvas Accelerator</a></li>
 </ul>
 
         </div>
@@ -123,9 +109,7 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="../../../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
-          <li class="breadcrumb-item"><a href="../../index.html">Open Digital Architecture - Operators</a></li>
-          <li class="breadcrumb-item"><a href="modules.html">API Operator: Apigee API Gateway</a></li>
-      <li class="breadcrumb-item active">API Operator apig - Introduction</li>
+      <li class="breadcrumb-item active">Kubernetes Apigee API Lifecycle Management Operator</li>
       <li class="wy-breadcrumbs-aside">
             <a href="../../../../../_sources/canvas/source/operators/api-management/apigee/README.md.txt" rel="nofollow"> View page source</a>
       </li>
@@ -135,28 +119,19 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="api-operator-apig-introduction">
-<h1>API Operator apig - Introduction<a class="headerlink" href="#api-operator-apig-introduction" title="Link to this heading"></a></h1>
-<p>The API operator ‘apig’ takes the meta-data described in the <a class="reference external" href="http://api.oda.tmforum.org">api.oda.tmforum.org</a> CRD and uses it to configure the <code class="docutils literal notranslate"><span class="pre">API</span> <span class="pre">Gateway</span></code>(apig in short) from <a class="reference external" href="https://online.iwhalecloud.com">WhaleCloud</a>.</p>
-<p>The component controller written in Python, using the KOPF (<a class="reference external" href="https://kopf.readthedocs.io/">https://kopf.readthedocs.io/</a>) framework to listen for API resources being deployed in the ODA Canvas.</p>
-<p><strong>Flow description</strong></p>
-<ol class="arabic simple">
-<li><p>When deployment Consolidated Product Catalog (CPC) Component, component controller gets the exposed API definition from Helm chart, and create corresponding API CRDs. The Helm chart is the Component Envelope describes the overall Component structure as a Component custom resource,including the TMF620 for core function and TMF669 for security and management.</p></li>
-<li><p>When API CRDs created, API operator configures  API custom resources in API Gateway automatically. API operator is another K8S controller which watches the API objects and reacting to the objects’ events (such as the install update and delete).</p></li>
-<li><p>When API registed in API Gateway successfual, it will feeback to Component, and also update status of API resources.</p></li>
-</ol>
-<p><img alt="Sequence diagram" src="../../../../../_images/apiOperatorApig.png" /></p>
-<p><strong>Testing KOPF module</strong></p>
-<p>Run: <code class="docutils literal notranslate"><span class="pre">kopf</span> <span class="pre">run</span> <span class="pre">--namespace=components</span> <span class="pre">--standalone</span> <span class="pre">.\apiOperatorApig.py</span></code></p>
+  <section id="kubernetes-apigee-api-lifecycle-management-operator">
+<h1>Kubernetes Apigee API Lifecycle Management Operator<a class="headerlink" href="#kubernetes-apigee-api-lifecycle-management-operator" title="Link to this heading"></a></h1>
+<section id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Link to this heading"></a></h2>
+<p>The Kubernetes Apigee API Lifecycle Management Operator is a component of the ODA Canvas, optimized for environments that utilize the Apigee API Gateway. It is built using the Kopf Kubernetes operator framework to effectively manage API custom resources. This operator ensures seamless integration with the Apigee API Gateway, facilitating the creation, management, and exposure of APIs through HTTPRoute configurations.</p>
+<p>This operator also uses Istio to control traffic between components and from the components to the API Gateway. This is a zero-trust model where internal traffic within the Canvas is controlled and communication is only allowed if it is explicitly declared in the Component specification.</p>
+</section>
 </section>
 
 
            </div>
           </div>
-          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="modules.html" class="btn btn-neutral float-left" title="API Operator: Apigee API Gateway" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="apiOperatorApigee.html" class="btn btn-neutral float-right" title="Apigee module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
-    </div>
+          <footer>
 
   <hr/>
 

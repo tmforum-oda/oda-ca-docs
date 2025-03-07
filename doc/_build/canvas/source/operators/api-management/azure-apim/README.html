@@ -21,9 +21,7 @@
         <script src="../../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../../../../genindex.html" />
-    <link rel="search" title="Search" href="../../../../../search.html" />
-    <link rel="next" title="apiOperatorAzureApim module" href="apiOperatorAzureApim.html" />
-    <link rel="prev" title="API Operator: Azure-Apim" href="modules.html" /> 
+    <link rel="search" title="Search" href="../../../../../search.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -65,107 +63,36 @@
 <li class="toctree-l1"><a class="reference internal" href="../../../../installation/README.html">ODA Canvas installation</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Canvas Design:</span></p>
-<ul class="current">
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="../../../../Canvas-design.html">ODA Canvas Design</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../Design-Epics.html">Design Epics</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../usecase-library/README.html">ODA Canvas - use-case library</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../Usecases.html">Usecase List</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../usecase-library/use-case-naming-conventions.html">Use case naming conventions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../README.html">ODA Canvas source code</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="../../index.html">Open Digital Architecture - Operators</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="../../README.html">ODA Canvas Operators</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../component-management/modules.html">Component Operator</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../istio/modules.html">API Operator: Istio</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../kong/modules.html">API Operator: Kong</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../apache-apisix/modules.html">API Operator: Apisix</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../apigee/modules.html">API Operator: Apigee API Gateway</a></li>
-<li class="toctree-l2 current"><a class="reference internal" href="modules.html">API Operator: Azure-Apim</a><ul class="current">
-<li class="toctree-l3 current"><a class="current reference internal" href="#">Overview</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#operator-architecture">Operator Architecture</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#high-level-overview">High-Level Overview</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#key-interactions">Key Interactions</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="#key-components">Key Components</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#custom-resource-definition-crd-exposedapi">1. Custom Resource Definition (CRD): <code class="docutils literal notranslate"><span class="pre">ExposedAPI</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#event-handlers">2. Event Handlers</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#azure-clients">3. Azure Clients</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#kubernetes-api-clients">4. Kubernetes API Clients</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#logging">5. Logging</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="#event-handling-workflow">Event Handling Workflow</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#creation-and-update-events">1. Creation and Update Events</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#deletion-event">2. Deletion Event</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="#code-structure-and-functions">Code Structure and Functions</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#imports-and-initialization">1. Imports and Initialization</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#azure-apim-configuration">2. Azure APIM Configuration</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id1">3. Event Handlers</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#ingress-management-functions">4. Ingress Management Functions</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#azure-apim-interaction-functions">5. Azure APIM Interaction Functions</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#exception-handling">6. Exception Handling</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id2">7. Logging</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="#interaction-with-azure-services">Interaction with Azure Services</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#azure-key-vault">1. Azure Key Vault</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#azure-api-management-apim">2. Azure API Management (APIM)</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#azure-entra-id">3. Azure Entra ID</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="#security-considerations">Security Considerations</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#secrets-management">1. Secrets Management</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#authentication-and-authorization">2. Authentication and Authorization</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#secure-communication">3. Secure Communication</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#network-policies">4. Network Policies</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="#testing-and-debugging">Testing and Debugging</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#id3">1. Logging</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#operator-logs">2. Operator Logs</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#kubernetes-events">3. Kubernetes Events</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#azure-apim-diagnostics">4. Azure APIM Diagnostics</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#exception-messages">5. Exception Messages</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="#limitations-and-future-enhancements">Limitations and Future Enhancements</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#error-handling">1. Error Handling</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#scalability">2. Scalability</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#extensibility">3. Extensibility</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#configuration-management">4. Configuration Management</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#observability">5. Observability</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="#conclusion">Conclusion</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#key-takeaways">Key Takeaways:</a></li>
-<li class="toctree-l3"><a class="reference internal" href="modules.html#python-modules">Python modules</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="../whalecloud-apim/modules.html">API Operator: Whalecloud Apim</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../identity-config/keycloak/modules.html">Security Operator</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="../../../webhooks-and-utilities.html">Webuooks and Utilities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../README.html">ODA Canvas Operators</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../component-management/README.html">Component Management Operator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../README.html">API Management Operators</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../identity-config/README.html">Identity Config Operators</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../secretsmanagementOperator-hc/README.html">Secrets Management Operator for HashiCorp Vault</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../credentials-management/README.html">Credentials Management Operator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dependentApiSimpleOperator/README.html">Dependency Management Operator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../webhooks-and-utilities.html">Webhooks and Utilities</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Feature Tests:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../../../feature-definition-and-test-kit/README.html">ODA Canvas Features and Test Kit</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../../feature-definition-and-test-kit/README.html#list-of-bdd-features">List of BDD Features</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../feature-definition-and-test-kit/Executing-tests.html">Installing and executing the BDD tests</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Contributions and Troubleshooting:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../../../../docs/ContributionsGuide.html">Contribution guidance</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../../docs/TroubleshootingGuide/index.html">Troubleshooting Guide</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../../../docs/developer/work-with-dockerimages.html">Developer How-Tos: Work with Dockerimages</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../../../docs/developer/work-with-dockerimages.html#summary">Summary</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../../../docs/developer/work-with-dockerimages.html#how-to-add-a-new-dockerimage">How-To add a new Dockerimage</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../../../docs/developer/work-with-dockerimages.html#how-to-define-unit-tests">How-To define unit tests</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../docs/developer/work-with-dockerimages.html">Developer How-Tos: Work with Dockerimages</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../devcontainer.html">ODA Canvas Development Environment</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../Installing%20KOPF%20development%20environment.html">Installing KOPF (tested in GKE)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../../docs/DocumentationProcess.html">Documentation Process</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../CONTRIBUTING.html">How to contribute to the ODA Canvas Accelerator</a></li>
 </ul>
 
         </div>
@@ -182,8 +109,6 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="../../../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
-          <li class="breadcrumb-item"><a href="../../index.html">Open Digital Architecture - Operators</a></li>
-          <li class="breadcrumb-item"><a href="modules.html">API Operator: Azure-Apim</a></li>
       <li class="breadcrumb-item active">Overview</li>
       <li class="wy-breadcrumbs-aside">
             <a href="../../../../../_sources/canvas/source/operators/api-management/azure-apim/README.md.txt" rel="nofollow"> View page source</a>
@@ -303,7 +228,7 @@
 </ul>
 <section id="lifecycle-flow">
 <h3><strong>Lifecycle flow</strong><a class="headerlink" href="#lifecycle-flow" title="Link to this heading"></a></h3>
-<p><img alt="Diagram" src="canvas/source/operators/api-management/azure-apim/sequenceDiagrams/AzureAPIMAPIOperator.png" /></p>
+<p><img alt="Diagram" src="../../../../../_images/AzureAPIMAPIOperator.png" /></p>
 </section>
 </section>
 <section id="key-interactions">
@@ -784,10 +709,7 @@
 
            </div>
           </div>
-          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="modules.html" class="btn btn-neutral float-left" title="API Operator: Azure-Apim" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="apiOperatorAzureApim.html" class="btn btn-neutral float-right" title="apiOperatorAzureApim module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
-    </div>
+          <footer>
 
   <hr/>
 

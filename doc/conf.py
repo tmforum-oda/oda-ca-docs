@@ -171,6 +171,10 @@ copyImagesAndMarkdown(
     "./canvas/source/operators/component-management",
 )
 copyImagesAndMarkdown(
+    "../../oda-canvas/source/operators/api-management",
+    "./canvas/source/operators/api-management",
+)
+copyImagesAndMarkdown(
     "../../oda-canvas/source/operators/api-management/istio",
     "./canvas/source/operators/api-management/istio",
 )
@@ -198,7 +202,22 @@ copyImagesAndMarkdown(
     "../../oda-canvas/source/operators/identity-config/keycloak",
     "./canvas/source/operators/identity-config/keycloak",
 )
-
+copyImagesAndMarkdown(
+    "../../oda-canvas/source/operators/identity-config",
+    "./canvas/source/operators/identity-config",
+)
+copyImagesAndMarkdown(
+    "../../oda-canvas/source/operators/credentials-management",
+    "./canvas/source/operators/credentials-management",
+)
+copyImagesAndMarkdown(
+    "../../oda-canvas/source/operators/dependentApiSimpleOperator",
+    "./canvas/source/operators/dependentApiSimpleOperator",
+)
+copyImagesAndMarkdown(
+    "../../oda-canvas/source/operators/secretsmanagementOperator-hc",
+    "./canvas/source/operators/secretsmanagementOperator-hc",
+)
 copyImagesAndMarkdown(
     "../../oda-canvas/source/operators/component-management/sequenceDiagrams",
     "./canvas/source/operators/component-management/sequenceDiagrams",
@@ -212,8 +231,8 @@ copyImagesAndMarkdown(
     "./canvas/source/operators/api-management/apache-apisix/sequenceDiagrams",
 )
 copyImagesAndMarkdown(
-    "../../oda-canvas/source/operators/api-management/apache-apisix/sequenceDiagrams",
-    "./canvas/source/operators/api-management/apache-apisix/sequenceDiagrams",
+    "../../oda-canvas/source/operators/api-management/azure-apim/sequenceDiagrams",
+    "./canvas/source/operators/api-management/azure-apim/sequenceDiagrams",
 )
 copyImagesAndMarkdown(
     "../../oda-canvas/source/operators/api-management/kong/sequenceDiagrams",
@@ -248,6 +267,10 @@ copyImagesAndMarkdown(
     "./canvas/feature-definition-and-test-kit/images",
 )
 copyImagesAndMarkdown("../../oda-canvas/installation", "./canvas/installation")
+copyImagesAndMarkdown("../../oda-canvas/docs/developer", "./canvas/docs/developer")
+copyImagesAndMarkdown(
+    "../../oda-canvas/docs/developer/images", "./canvas/docs/developer/images"
+)
 
 # Base Documentation files
 copyImagesAndMarkdown("../", "./docs")
@@ -302,10 +325,3 @@ os.remove("./docs/TroubleshootingGuide/README.md")
 
 # Canvas helm charts
 copyImagesAndMarkdown("../../oda-canvas", "./canvas")
-
-
-# Docs folder and developer subfolder
-copyImagesAndMarkdown("../../oda-canvas/docs/developer", "./docs/developer")
-copyImagesAndMarkdown(
-    "../../oda-canvas/docs/developer/images", "./docs/developer/images"
-)

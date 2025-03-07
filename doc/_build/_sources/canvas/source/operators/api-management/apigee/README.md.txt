@@ -1,18 +1,7 @@
-# API Operator apig - Introduction
+# Kubernetes Apigee API Lifecycle Management Operator
 
-The API operator 'apig' takes the meta-data described in the api.oda.tmforum.org CRD and uses it to configure the `API Gateway`(apig in short) from [WhaleCloud](https://online.iwhalecloud.com).
+## Overview
 
-The component controller written in Python, using the KOPF (https://kopf.readthedocs.io/) framework to listen for API resources being deployed in the ODA Canvas. 
+The Kubernetes Apigee API Lifecycle Management Operator is a component of the ODA Canvas, optimized for environments that utilize the Apigee API Gateway. It is built using the Kopf Kubernetes operator framework to effectively manage API custom resources. This operator ensures seamless integration with the Apigee API Gateway, facilitating the creation, management, and exposure of APIs through HTTPRoute configurations.
 
-**Flow description**
-1. When deployment Consolidated Product Catalog (CPC) Component, component controller gets the exposed API definition from Helm chart, and create corresponding API CRDs. The Helm chart is the Component Envelope describes the overall Component structure as a Component custom resource,including the TMF620 for core function and TMF669 for security and management.
-2. When API CRDs created, API operator configures  API custom resources in API Gateway automatically. API operator is another K8S controller which watches the API objects and reacting to the objects’ events (such as the install update and delete).
-3. When API registed in API Gateway successfual, it will feeback to Component, and also update status of API resources.
-
-![Sequence diagram](sequenceDiagrams/apiOperatorApig.png)
-
-
-
-**Testing KOPF module**
-
-Run: `kopf run --namespace=components --standalone .\apiOperatorApig.py`
+This operator also uses Istio to control traffic between components and from the components to the API Gateway. This is a zero-trust model where internal traffic within the Canvas is controlled and communication is only allowed if it is explicitly declared in the Component specification.
