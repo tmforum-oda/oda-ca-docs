@@ -1,0 +1,23 @@
+ul {
+  list-style-type: disc;
+  margin-left: 1em;
+}
+ul li {
+  display: list-item;
+  list-style: disc;
+}
+
+dl,
+ol,
+div.wy-menu ul {
+    list-style: none;
+    list-style-image: none
+}
+
+div.wy-menu ul li {
+    list-style: none
+}
+
+.wy-nav-content {
+  max-width: 1200px !important;
+}

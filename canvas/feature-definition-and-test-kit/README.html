@@ -1,0 +1,265 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ODA Canvas Features and Test Kit &mdash; ODA-Component Accelerator v1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/custom.css?v=6567dac9" />
+
+  
+      <script src="../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../_static/documentation_options.js?v=5cb08e4e"></script>
+      <script src="../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Installing and executing the BDD tests" href="Executing-tests.html" />
+    <link rel="prev" title="ODA Canvas utilities" href="../source/utilities/README.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            ODA-Component Accelerator
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">About the project:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../docs/Playbook.html">Introduction to the ODA Component Accelerator Project (ODA-CA)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../docs/Getting_started.html">Getting started checklist for new members of ODA-CA</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Tutorials:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../docs/Observability-Tutorial/README.html">Tutorial to deploy and observe a running component</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../docs/ODAComponentTutorial/README.html">Tutorial to build ODA-Component from Open-API Reference Implementation</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Component:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../docs/ODAComponentDesignGuidelines.html">Design Guidelines to create a new ODA Component</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Canvas:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../README.html">Open Digital Architecture Canvas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../installation/README.html">ODA Canvas installation</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Canvas Design:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../Canvas-design.html">ODA Canvas Design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Design-Epics.html">Design Epics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../usecase-library/README.html">ODA Canvas - use-case library</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Usecases.html">Usecase List</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../usecase-library/use-case-naming-conventions.html">Use case naming conventions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../source/README.html">ODA Canvas source code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../source/operators/README.html">ODA Canvas Operators</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../source/operators/component-management/README.html">Component Management Operator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../source/operators/api-management/README.html">API Management Operators</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../source/operators/identity-config/README.html">Identity Config Operators</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../source/operators/secretsmanagementOperator-hc/README.html">Secrets Management Operator for HashiCorp Vault</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../source/operators/credentials-management/README.html">Credentials Management Operator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../source/operators/dependentApiSimpleOperator/README.html">Dependency Management Operator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../source/webhooks-and-utilities.html">Webhooks and Utilities</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Feature Tests:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">ODA Canvas Features and Test Kit</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#linkage-to-use-cases">Linkage to use-cases</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#work-breakdown">Work breakdown</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#list-of-bdd-features">List of BDD Features</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#uc002-manage-components">UC002 - Manage Components</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#uc003-expose-apis-for-component">UC003 - Expose APIs for Component</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#uc005-configure-users-and-roles">UC005 - Configure Users and Roles</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#uc007-dependent-apis">UC007 - Dependent APIs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#uc010-authentication-external">UC010 - Authentication External</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#uc013-seamless-upgrade">UC013 - Seamless upgrade</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#uc015-api-gateway-configuration">UC015 - API Gateway configuration</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#executing-the-bdd-tests">Executing the BDD tests</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Executing-tests.html">Installing and executing the BDD tests</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Contributions and Troubleshooting:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../docs/ContributionsGuide.html">Contribution guidance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../docs/TroubleshootingGuide/index.html">Troubleshooting Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../docs/developer/work-with-dockerimages.html">Developer How-Tos: Work with Dockerimages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../devcontainer.html">ODA Canvas Development Environment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../source/operators/Installing%20KOPF%20development%20environment.html">Installing KOPF (tested in GKE)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../docs/DocumentationProcess.html">Documentation Process</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CONTRIBUTING.html">How to contribute to the ODA Canvas Accelerator</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">ODA-Component Accelerator</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">ODA Canvas Features and Test Kit</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/canvas/feature-definition-and-test-kit/README.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="oda-canvas-features-and-test-kit">
+<h1>ODA Canvas Features and Test Kit<a class="headerlink" href="#oda-canvas-features-and-test-kit" title="Link to this heading"></a></h1>
+<p>The ODA Canvas takes a Behaviour Driven Design (BDD) approch to define the features of the canvas. BDD allows you to specify the desired behavior of software through examples in plain language that both business stakeholders and technical teams can understand. These examples are written in a format known as Gherkin, which uses Given-When-Then syntax to describe test scenarios.</p>
+<ul class="simple">
+<li><p><strong>Given:</strong> This part of the syntax sets the scene for the scenario. It describes the initial context or the pre-conditions of the system before the key action is performed.
+Example: “Given the user is logged into their account”</p></li>
+<li><p><strong>When:</strong>
+This section describes the event or the action that triggers the scenario. It is the key action that the user performs or the event that occurs within the system.
+Example: “When the user clicks on the delete account button”</p></li>
+<li><p><strong>Then:</strong>
+This final part specifies the expected outcome or the post-conditions following the action described in the When section. It clearly defines what success (or sometimes failure) looks like.
+Example: “Then the user’s account is deactivated and the user is redirected to the homepage”</p></li>
+</ul>
+<p>By defining the desired behavior of the software through examples, you can then implement automated tests to verify that the software behaves as expected. This approach helps to ensure that the software meets the requirements of the business and that it continues to do so as it evolves over time. The automated tests are written in step definitions that map the plain language examples to code that interacts with the software under test.</p>
+<section id="linkage-to-use-cases">
+<h2>Linkage to use-cases<a class="headerlink" href="#linkage-to-use-cases" title="Link to this heading"></a></h2>
+<p>Each BDD feature is linked to the respective use-case in the <a class="reference internal" href="../usecase-library/README.html"><span class="std std-doc">use-case library</span></a>. The use-case provides the context and details for the feature. This linkage ensures that the features and are aligned with the overall design of the ODA Canvas and that the tests are verifying the correct behavior.</p>
+</section>
+<section id="work-breakdown">
+<h2>Work breakdown<a class="headerlink" href="#work-breakdown" title="Link to this heading"></a></h2>
+<p>For contributors contributing new features to the ODA Canvas, the expectation is that the contibuitor will define the features alongside implementing the software. Instead of having separate design, development and test teams, the approach is to separate work into different features and have the same contributor (or small team) work on the feature from design to implementation to testing. This approach is known as feature-driven development and is a key part of the agile methodology.</p>
+</section>
+<section id="list-of-bdd-features">
+<h2>List of BDD Features<a class="headerlink" href="#list-of-bdd-features" title="Link to this heading"></a></h2>
+<p>The list below shows the features organized by use case, with their current test status indicated. ✅ indicates the corresponding test is ready, ⏳ indicates the test has yet to be defined.</p>
+<section id="uc002-manage-components">
+<h3>UC002 - Manage Components<a class="headerlink" href="#uc002-manage-components" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>✅ <a class="reference internal" href="#features/UC002-F001-Install-Component.feature"><span class="xref myst">F001 - Install Component</span></a></p></li>
+<li><p>✅ <a class="reference internal" href="#features/UC002-F002-Upgrade-Component.feature"><span class="xref myst">F002 - Upgrade Component</span></a></p></li>
+<li><p>✅ <a class="reference internal" href="#features/UC002-F003-Install-Component-from-reference-examples.feature"><span class="xref myst">F003 - Install Component from Reference Examples</span></a></p></li>
+<li><p>✅ <a class="reference internal" href="#features/UC002-F004-Uninstall-Component-from-reference-examples.feature"><span class="xref myst">F004 - Uninstall Component from Reference Examples</span></a></p></li>
+</ul>
+</section>
+<section id="uc003-expose-apis-for-component">
+<h3>UC003 - Expose APIs for Component<a class="headerlink" href="#uc003-expose-apis-for-component" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>✅ <a class="reference internal" href="#features/UC003-F001-Expose-APIs-Create-API-Resource.feature"><span class="xref myst">F001 - Create API Resource</span></a></p></li>
+<li><p>✅ <a class="reference internal" href="#features/UC003-F002-Expose-APIs-Publish-API-Resource-URL.feature"><span class="xref myst">F002 - Publish API Resource URL</span></a></p></li>
+<li><p>✅ <a class="reference internal" href="#features/UC003-F003-Expose-APIs-Verify-API-implementation-is-ready.feature"><span class="xref myst">F003 - Verify API implementation is ready</span></a></p></li>
+<li><p>✅ <a class="reference internal" href="#features/UC003-F004-Expose-APIs-Upgrade-component-with-additional-API.feature"><span class="xref myst">F004 - Upgrade component with additional API</span></a></p></li>
+<li><p>✅ <a class="reference internal" href="#features/UC003-F005-Expose-APIs-Upgrade-component-with-removed-API.feature"><span class="xref myst">F005 - Upgrade component with removed API</span></a></p></li>
+<li><p>⏳ <a class="reference internal" href="#features/UC003-F006-Expose-APIs-Component-Specified-Rate-Limiting-and-Throttling-of-API-Requests.feature"><span class="xref myst">F006 - Component Specified Rate Limiting and Throttling of API Requests</span></a></p></li>
+</ul>
+</section>
+<section id="uc005-configure-users-and-roles">
+<h3>UC005 - Configure Users and Roles<a class="headerlink" href="#uc005-configure-users-and-roles" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>✅ <a class="reference internal" href="#features/UC005-F001-Bootstrap-Apply-Standard-Defined-Role-to-Canvas-Admin-user.feature"><span class="xref myst">F001 - Apply Standard Defined Role to Canvas Admin user</span></a></p></li>
+<li><p>⏳ <a class="reference internal" href="#features/UC005-F002-Bootstrap-Grouping-Permission-Specification-Sets-into-Business-Roles-in-Identity-Management-Solution.feature"><span class="xref myst">F002 - Grouping Permission Specification Sets into Business Roles</span></a></p></li>
+<li><p>⏳ <a class="reference internal" href="#features/UC005-F003-Bootstrap-Secure-User-and-Role-Information-Communication.feature"><span class="xref myst">F003 - Secure User and Role Information</span></a></p></li>
+<li><p>⏳ <a class="reference internal" href="#features/UC005-F004-Bootstrap-Component-Exposes-Permission-Specification-Set-Towards-Canvas.feature"><span class="xref myst">F004 - Component Exposes Permission Specification Set</span></a></p></li>
+<li><p>⏳ <a class="reference internal" href="#features/UC003-F005-Expose-APIs-Upgrade-component-with-removed-API.feature"><span class="xref myst">F005 - Add Permission Specification Sets in Component to Identity Platform</span></a></p></li>
+<li><p>⏳ <a class="reference internal" href="#features/UC005-F006-Bootstrap-Creation-Update-Removal-of-Technical-Roles-in-the-Identity-Platform.feature"><span class="xref myst">F006 - Creation Update Removal of Technical Roles in the Identity Platform</span></a></p></li>
+<li><p>⏳ <a class="reference internal" href="#features/UC005-F007-Bootstrap-Creation-Update-Removal-of-PartyRoles-as-Business-Roles-and-Mapping-with-Technical-Roles-in-the-Identity-Platform.feature"><span class="xref myst">F006 - Creation Update Removal of PartyRoles as Businees Roles and Mapping with Technical Roles in the Identity Platform</span></a></p></li>
+</ul>
+</section>
+<section id="uc007-dependent-apis">
+<h3>UC007 - Dependent APIs<a class="headerlink" href="#uc007-dependent-apis" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>✅ <a class="reference internal" href="#features/UC007-F001-Dependent-APIs-Create-Dependent-API-Resource.feature"><span class="xref myst">F001 - Create Dependent API Resource</span></a></p></li>
+<li><p>✅ <a class="reference internal" href="#features/UC007-F002-Dependent-APIs-Configure-Dependent-APIs-Single-Downstream.feature"><span class="xref myst">F001 - Configure Dependent API Single Downstream</span></a></p></li>
+</ul>
+</section>
+<section id="uc010-authentication-external">
+<h3>UC010 - Authentication External<a class="headerlink" href="#uc010-authentication-external" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>⏳ <a class="reference internal" href="#features/UC010-F001-External-Authentication-Logging-and-Monitoring-of-Authentication-Activity.feature"><span class="xref myst">F001 - Logging and Monitoring of Authentication Activity</span></a></p></li>
+</ul>
+</section>
+<section id="uc013-seamless-upgrade">
+<h3>UC013 - Seamless upgrade<a class="headerlink" href="#uc013-seamless-upgrade" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>✅ <a class="reference internal" href="#features/UC013-F001-Seamless-upgrades-Installing-components-using-prev-version.feature"><span class="xref myst">F001 - Installing components using prev version</span></a></p></li>
+<li><p>✅ <a class="reference internal" href="#features/UC013-F002-Seamless-upgrades-Canvas-Operators-using-prev-version.feature"><span class="xref myst">F002 - Canvas Operators using prev version</span></a></p></li>
+</ul>
+</section>
+<section id="uc015-api-gateway-configuration">
+<h3>UC015 - API Gateway configuration<a class="headerlink" href="#uc015-api-gateway-configuration" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>✅ <a class="reference internal" href="#features/UC015-F001-Create-ApisixApiGateway-Route.feature"><span class="xref myst">F001 - Create Apisix Api Gateway Route</span></a></p></li>
+<li><p>✅ <a class="reference internal" href="#features/UC015-F002-Create-KongApiGateway-Route.feature"><span class="xref myst">F002 - Create Kong Api Gateway Route</span></a></p></li>
+<li><p>✅ <a class="reference internal" href="#features/UC015-F003-Create-ApisixApiGateway-Plugin.feature"><span class="xref myst">F003 - Create Apisix Api Gateway Plugin</span></a></p></li>
+<li><p>✅ <a class="reference internal" href="#features/UC015-F004-Create-KongApiGateway-Plugin.feature"><span class="xref myst">F004 - Create Kong Api Gateway Plugin</span></a></p></li>
+</ul>
+</section>
+</section>
+<section id="executing-the-bdd-tests">
+<h2>Executing the BDD tests<a class="headerlink" href="#executing-the-bdd-tests" title="Link to this heading"></a></h2>
+<p>Follow the instructions in <a class="reference internal" href="Executing-tests.html"><span class="std std-doc">executing tests</span></a> to run the BDD tests.</p>
+<p>When you run the tests, the test results are reported in the console and in a HTML report. The console output is shown below:</p>
+<p><img alt="CTK Console Output" src="../../_images/CTK-console-output.png" /></p>
+<p>And the cucumber report will look like this:</p>
+<p><img alt="CTK Cucumber report" src="../../_images/CTK-cucumber-report.png" /></p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../source/utilities/README.html" class="btn btn-neutral float-left" title="ODA Canvas utilities" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="Executing-tests.html" class="btn btn-neutral float-right" title="Installing and executing the BDD tests" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, TM Forum ODA-Component Accelerator project.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
