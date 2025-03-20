@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Python Module Index &mdash; ODA-Component Accelerator v1beta3 documentation</title>
+  <title>Python Module Index &mdash; ODA-Component Accelerator v1 documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=80d5e7a1" />
       <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
       <link rel="stylesheet" type="text/css" href="_static/css/custom.css?v=6567dac9" />
@@ -15,7 +15,7 @@
   
         <script src="_static/jquery.js?v=5d32c60e"></script>
         <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script src="_static/documentation_options.js?v=546c8a9f"></script>
+        <script src="_static/documentation_options.js?v=5cb08e4e"></script>
         <script src="_static/doctools.js?v=9a2dae69"></script>
         <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/js/theme.js"></script>
@@ -62,7 +62,6 @@
 <p class="caption" role="heading"><span class="caption-text">Component:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="docs/ODAComponentDesignGuidelines.html">Design Guidelines to create a new ODA Component</a></li>
-<li class="toctree-l1"><a class="reference internal" href="ctk/README.html">ODA Component - CTK</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Canvas:</span></p>
 <ul>
@@ -77,13 +76,15 @@
 <li class="toctree-l1"><a class="reference internal" href="canvas/Usecases.html">Usecase List</a></li>
 <li class="toctree-l1"><a class="reference internal" href="canvas/usecase-library/use-case-naming-conventions.html">Use case naming conventions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="canvas/source/README.html">ODA Canvas source code</a></li>
-<li class="toctree-l1"><a class="reference internal" href="canvas/source/operators/index.html">Open Digital Architecture - Controllers/Operators</a></li>
-<li class="toctree-l1"><a class="reference internal" href="canvas/source/webhooks-and-utilities.html">Webuooks and Utilities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="canvas/source/operators/README.html">ODA Canvas Operators</a></li>
+<li class="toctree-l1"><a class="reference internal" href="canvas/source/operators/component-management/README.html">Component Management Operator - Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="canvas/source/operators/api-management/README.html">API Management Operators</a></li>
+<li class="toctree-l1"><a class="reference internal" href="canvas/source/operators/identity-config/README.html">Identity Config Operators</a></li>
+<li class="toctree-l1"><a class="reference internal" href="canvas/source/webhooks-and-utilities.html">Webhooks and Utilities</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Feature Tests:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="canvas/feature-definition-and-test-kit/README.html">ODA Canvas Features and Test Kit</a></li>
-<li class="toctree-l1"><a class="reference internal" href="canvas/feature-definition-and-test-kit/README.html#list-of-bdd-features">List of BDD Features</a></li>
 <li class="toctree-l1"><a class="reference internal" href="canvas/feature-definition-and-test-kit/Executing-tests.html">Installing and executing the BDD tests</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Contributions and Troubleshooting:</span></p>
@@ -91,8 +92,6 @@
 <li class="toctree-l1"><a class="reference internal" href="docs/ContributionsGuide.html">Contribution guidance</a></li>
 <li class="toctree-l1"><a class="reference internal" href="docs/TroubleshootingGuide/index.html">Troubleshooting Guide</a></li>
 <li class="toctree-l1"><a class="reference internal" href="docs/developer/work-with-dockerimages.html">Developer How-Tos: Work with Dockerimages</a></li>
-<li class="toctree-l1"><a class="reference internal" href="docs/developer/work-with-dockerimages.html#summary">Summary</a></li>
-<li class="toctree-l1"><a class="reference internal" href="docs/developer/work-with-dockerimages.html#how-to-add-a-new-dockerimage">How-To add a new Dockerimage</a></li>
 <li class="toctree-l1"><a class="reference internal" href="canvas/devcontainer.html">ODA Canvas Development Environment</a></li>
 <li class="toctree-l1"><a class="reference internal" href="canvas/source/operators/Installing%20KOPF%20development%20environment.html">Installing KOPF (tested in GKE)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="docs/DocumentationProcess.html">Documentation Process</a></li>
@@ -125,9 +124,7 @@
    <h1>Python Module Index</h1>
 
    <div class="modindex-jumpbox">
-   <a href="#cap-a"><strong>a</strong></a> | 
-   <a href="#cap-c"><strong>c</strong></a> | 
-   <a href="#cap-s"><strong>s</strong></a>
+   <a href="#cap-a"><strong>a</strong></a>
    </div>
 
    <table class="indextable modindextable">
@@ -137,48 +134,17 @@
      <tr>
        <td></td>
        <td>
-       <a href="canvas/source/operators/apiOperatorApig/apiOperatorApig.html#module-apiOperatorApig"><code class="xref">apiOperatorApig</code></a></td><td>
+       <a href="canvas/source/operators/api-management/apache-apisix/apiOperatorApisix.html#module-apiOperatorApisix"><code class="xref">apiOperatorApisix</code></a></td><td>
        <em></em></td></tr>
      <tr>
        <td></td>
        <td>
-       <a href="canvas/source/operators/apiOperatorApisix/apiOperatorApisix.html#module-apiOperatorApisix"><code class="xref">apiOperatorApisix</code></a></td><td>
+       <a href="canvas/source/operators/api-management/istio/apiOperatorIstio.html#module-apiOperatorIstio"><code class="xref">apiOperatorIstio</code></a></td><td>
        <em></em></td></tr>
      <tr>
        <td></td>
        <td>
-       <a href="canvas/source/operators/apiOperatorIstio/apiOperatorIstio.html#module-apiOperatorIstio"><code class="xref">apiOperatorIstio</code></a></td><td>
-       <em></em></td></tr>
-     <tr>
-       <td></td>
-       <td>
-       <a href="canvas/source/operators/apiOperatorKong/apiOperatorKong.html#module-apiOperatorKong"><code class="xref">apiOperatorKong</code></a></td><td>
-       <em></em></td></tr>
-     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
-     <tr class="cap" id="cap-c"><td></td><td>
-       <strong>c</strong></td><td></td></tr>
-     <tr>
-       <td></td>
-       <td>
-       <a href="canvas/source/operators/componentOperator/componentOperator.html#module-componentOperator"><code class="xref">componentOperator</code></a></td><td>
-       <em></em></td></tr>
-     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
-     <tr class="cap" id="cap-s"><td></td><td>
-       <strong>s</strong></td><td></td></tr>
-     <tr>
-       <td></td>
-       <td>
-       <a href="canvas/source/operators/securityController/secconkeycloak.html#module-secconkeycloak"><code class="xref">secconkeycloak</code></a></td><td>
-       <em></em></td></tr>
-     <tr>
-       <td></td>
-       <td>
-       <a href="canvas/source/operators/securityController/securityControllerAPIserverKeycloak.html#module-securityControllerAPIserverKeycloak"><code class="xref">securityControllerAPIserverKeycloak</code></a></td><td>
-       <em></em></td></tr>
-     <tr>
-       <td></td>
-       <td>
-       <a href="canvas/source/operators/securityController/securityControllerKeycloak.html#module-securityControllerKeycloak"><code class="xref">securityControllerKeycloak</code></a></td><td>
+       <a href="canvas/source/operators/api-management/kong/apiOperatorKong.html#module-apiOperatorKong"><code class="xref">apiOperatorKong</code></a></td><td>
        <em></em></td></tr>
    </table>
 
@@ -190,7 +156,7 @@
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2024, TM Forum ODA-Component Accelerator project.</p>
+    <p>&#169; Copyright 2025, TM Forum ODA-Component Accelerator project.</p>
   </div>
 
   Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a

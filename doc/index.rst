@@ -29,7 +29,6 @@ Open Digital Architecture - Component Accelerator
    :caption: Component:
 
    docs/ODAComponentDesignGuidelines.md
-   ctk/README.md
 
 .. toctree::
    :maxdepth: 3
@@ -50,8 +49,14 @@ Open Digital Architecture - Component Accelerator
    canvas/usecase-library/use-case-naming-conventions.md
 
    canvas/source/README.md
-   canvas/source/operators/index.rst
-
+   canvas/source/operators/README.md
+   canvas/source/operators/component-management/README.md
+   canvas/source/operators/api-management/README.md
+   canvas/source/operators/identity-config/README.md
+   canvas/source/operators/secretsmanagementOperator-hc/README.md
+   canvas/source/operators/credentials-management/README.md
+   canvas/source/operators/dependentApiSimpleOperator/README.md
+   
    canvas/source/webhooks-and-utilities.rst        
 
 
@@ -68,10 +73,11 @@ Open Digital Architecture - Component Accelerator
 
    docs/ContributionsGuide.md
    docs/TroubleshootingGuide/index.rst
-   docs/developer/work-with-dockerimages.md
+   canvas/docs/developer/work-with-dockerimages.md
    canvas/devcontainer.md
    canvas/source/operators/Installing KOPF development environment.md
    docs/DocumentationProcess.md
+   canvas/CONTRIBUTING.md
 
 
 

@@ -17,7 +17,7 @@ The Webhook allows you to create custom code to support Kubernetes in converting
   conversion:
     strategy: Webhook
     webhook:
-      conversionReviewVersions: ["v1alpha1", "v1alpha2", "v1alpha3", "v1beta1"]
+      conversionReviewVersions: ["v1beta2", "v1beta3", "v1beta4", "v1"]
       clientConfig:
         caBundle: LS0tLS1CRUdJTiB--Details Removed--Q0FURS0tLS0tCg==
         service:
@@ -29,8 +29,8 @@ The Webhook allows you to create custom code to support Kubernetes in converting
 
 ## Unit tests
 
-For details about how to unit test as a standalone Node application see [Unit tests](https://github.com/tmforum-oda/oda-canvas/blob/master/source/webhooks/unit-tests/README.md)
+For details about how to unit test as a standalone Node application see [Unit tests](https://github.com/tmforum-oda/oda-canvas/blob/main/source/webhooks/unit-tests/README.md)
 
 ## System tests
 
-For details about how to test as a micro-service in Kubernetes through the Kubernetes API, see [System tests](https://github.com/tmforum-oda/oda-canvas/blob/master/source/webhooks/system-tests/README.md)
+For details about how to test as a micro-service in Kubernetes through the Kubernetes API, see [System tests](https://github.com/tmforum-oda/oda-canvas/blob/main/source/webhooks/system-tests/README.md)

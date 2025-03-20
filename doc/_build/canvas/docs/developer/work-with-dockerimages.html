@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Developer How-Tos: Work with Dockerimages &mdash; ODA-Component Accelerator v1beta3 documentation</title>
+  <title>Developer How-Tos: Work with Dockerimages &mdash; ODA-Component Accelerator v1 documentation</title>
       <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=80d5e7a1" />
       <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=19f00094" />
       <link rel="stylesheet" type="text/css" href="../../../_static/css/custom.css?v=6567dac9" />
@@ -16,7 +16,7 @@
   
         <script src="../../../_static/jquery.js?v=5d32c60e"></script>
         <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script src="../../../_static/documentation_options.js?v=546c8a9f"></script>
+        <script src="../../../_static/documentation_options.js?v=5cb08e4e"></script>
         <script src="../../../_static/doctools.js?v=9a2dae69"></script>
         <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../_static/js/theme.js"></script>
@@ -58,7 +58,6 @@
 <p class="caption" role="heading"><span class="caption-text">Component:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../../docs/ODAComponentDesignGuidelines.html">Design Guidelines to create a new ODA Component</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../ctk/README.html">ODA Component - CTK</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Canvas:</span></p>
 <ul>
@@ -73,13 +72,18 @@
 <li class="toctree-l1"><a class="reference internal" href="../../Usecases.html">Usecase List</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../usecase-library/use-case-naming-conventions.html">Use case naming conventions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../source/README.html">ODA Canvas source code</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../source/operators/index.html">Open Digital Architecture - Controllers/Operators</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../source/webhooks-and-utilities.html">Webuooks and Utilities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../source/operators/README.html">ODA Canvas Operators</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../source/operators/component-management/README.html">Component Management Operator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../source/operators/api-management/README.html">API Management Operators</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../source/operators/identity-config/README.html">Identity Config Operators</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../source/operators/secretsmanagementOperator-hc/README.html">Secrets Management Operator for HashiCorp Vault</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../source/operators/credentials-management/README.html">Credentials Management Operator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../source/operators/dependentApiSimpleOperator/README.html">Dependency Management Operator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../source/webhooks-and-utilities.html">Webhooks and Utilities</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Feature Tests:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../feature-definition-and-test-kit/README.html">ODA Canvas Features and Test Kit</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../feature-definition-and-test-kit/README.html#list-of-bdd-features">List of BDD Features</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../feature-definition-and-test-kit/Executing-tests.html">Installing and executing the BDD tests</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Contributions and Troubleshooting:</span></p>
@@ -87,6 +91,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../../docs/ContributionsGuide.html">Contribution guidance</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../docs/TroubleshootingGuide/index.html">Troubleshooting Guide</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Developer How-Tos: Work with Dockerimages</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#tl-dr">TL;DR;</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#global-rules">Global Rules</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#versions-in-values-yaml">Versions in values.yaml</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#example-update-code-of-secretsmanagement-operator">Example: Update code of Secretsmanagement-Operator</a><ul>
@@ -117,13 +122,15 @@
 <li class="toctree-l3"><a class="reference internal" href="#step-8-code-review-and-merging-the-pr">Step 8: Code-Review and Merging the PR</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="#summary">Summary</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#how-to-add-a-new-dockerimage">How-To add a new Dockerimage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#how-to-define-unit-tests">How-To define unit tests</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="#summary">Summary</a></li>
-<li class="toctree-l1"><a class="reference internal" href="#how-to-add-a-new-dockerimage">How-To add a new Dockerimage</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../devcontainer.html">ODA Canvas Development Environment</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../source/operators/Installing%20KOPF%20development%20environment.html">Installing KOPF (tested in GKE)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../docs/DocumentationProcess.html">Documentation Process</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../CONTRIBUTING.html">How to contribute to the ODA Canvas Accelerator</a></li>
 </ul>
 
         </div>
@@ -154,10 +161,58 @@
 <h1>Developer How-Tos: Work with Dockerimages<a class="headerlink" href="#developer-how-tos-work-with-dockerimages" title="Link to this heading"></a></h1>
 <p>The project oda-canvas is configured to automatically build docker images, when their source code is changed.
 To successfully collaborate in the same repository some rules have to be followed.</p>
+<section id="tl-dr">
+<h2>TL;DR;<a class="headerlink" href="#tl-dr" title="Link to this heading"></a></h2>
+<p>Example PR:
+<a class="reference external" href="https://github.com/tmforum-oda/oda-canvas/pull/305/files">https://github.com/tmforum-oda/oda-canvas/pull/305/files</a></p>
+<p><img alt="steps for building docker images in a feature branch" src="../../../_images/autobuild-dockerimages-steps.png" /></p>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>Step</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>branch</td>
+<td>create a branch, naming has to follow "feature/..." or "odaa-..." otherwise the automated docker builds are not active</td>
+</tr>
+<tr>
+<td>1</td>
+<td>Increment the version number of the dockerfile which will be updated and and set the prereleaseSuffix, e.g to the issue number</td>
+</tr>
+<tr>
+<td>2</td>
+<td>change the source code. This triggers the docker build of the prerelease version</td>
+</tr>
+<tr>
+<td>3</td>
+<td>adjust the tests to cover the changed code (steps 2 and 3 might iterate multiple times)</td>
+</tr>
+<tr>
+<td>4</td>
+<td>prepare everything for the Pull-Request. Set chart-version numbers, document changes, also update the version number in the dependent charts</td>
+</tr>
+<tr>
+<td>PR</td>
+<td>create Pull-Request -&gt; BDD Tests are executed and should be successfull</td>
+</tr>
+<tr>
+<td>5</td>
+<td>before merging, remove all prereleaseSuffixes. This will make the  "no-prerelease-suffixes"-check in the PR green. Start the commit message with "[skip tests] ..." this will skip running the BDD tests (which would fail, because of the missing release images)</td>
+</tr>
+<tr>
+<td>Merge</td>
+<td>the merge into the main branch triggers the build of the release docker images</td>
+</tr>
+</tbody>
+</table>
+</section>
 <section id="global-rules">
 <h2>Global Rules<a class="headerlink" href="#global-rules" title="Link to this heading"></a></h2>
 <ul class="simple">
-<li><p>Release versions (image tags) follow the semantic versioning format “&lt;major&gt;.&lt;minor&gt;.&lt;increment&gt;” and are built only from the master branch</p></li>
+<li><p>Release versions (image tags) follow the semantic versioning format “&lt;major&gt;.&lt;minor&gt;.&lt;increment&gt;” and are built only from the main branch</p></li>
 <li><p>Release versions are immutable and can not be overwritten</p></li>
 <li><p>Prerelease versions have the format “&lt;major&gt;.&lt;minor&gt;.&lt;increment&gt;-&lt;prerelease-suffix&gt;” and are built from feature branches</p></li>
 <li><p>Feature branches have the format “feature/*” or “odaa-*”</p></li>
@@ -168,7 +223,7 @@ To successfully collaborate in the same repository some rules have to be followe
 </section>
 <section id="versions-in-values-yaml">
 <h2>Versions in values.yaml<a class="headerlink" href="#versions-in-values-yaml" title="Link to this heading"></a></h2>
-<p>Dockerimages are versioned in the <a class="reference external" href="https://github.com/tmforum-oda/oda-canvas/blob/master/charts/canvas-oda/values.yaml">charts/canvas-oda/values.yaml</a> file of the canva-oda chart and consist of three parts.
+<p>Dockerimages are versioned in the <a class="reference external" href="https://github.com/tmforum-oda/oda-canvas/blob/main/charts/canvas-oda/values.yaml">charts/canvas-oda/values.yaml</a> file of the canva-oda chart and consist of three parts.
 E.g. for oda-webhook:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">...</span>
 <span class="n">oda</span><span class="o">-</span><span class="n">webhook</span><span class="p">:</span>
@@ -177,7 +232,7 @@ E.g. for oda-webhook:</p>
   <span class="n">prereleaseSuffix</span><span class="p">:</span> <span class="n">issue123</span>
 </pre></div>
 </div>
-<p>The full dockerimage is put together as “tmforumodacanvas/compcrdwebhook:0.6.3-issue123”.</p>
+<p>The full dockerimage is put together as “tmforumodacanvas/compcrdwebhook:1.0.0”.</p>
 <p>If there is no prereleaseSuffix, the seperator “-” is ommitted:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">...</span>
 <span class="n">oda</span><span class="o">-</span><span class="n">webhook</span><span class="p">:</span>
@@ -186,7 +241,7 @@ E.g. for oda-webhook:</p>
   <span class="n">prereleaseSuffix</span><span class="p">:</span>
 </pre></div>
 </div>
-<p>The full docker image is “tmforumodacanvas/compcrdwebhook:0.6.2”</p>
+<p>The full docker image is “tmforumodacanvas/compcrdwebhook:1.0.0”</p>
 <p>The advantage of using the values.yaml as source for the dockerimage names is,
 that when deploying the canvas-oda chart from the filesystem all docker images exist, because they are automatically build on code changes.</p>
 <p>A prerelease version is semantically smaller than the release version:</p>
@@ -203,14 +258,14 @@ that when deploying the canvas-oda chart from the filesystem all docker images e
 Feature branches have the naming convention “feature/…” or “odaa-…”.
 Let´s assume we are working on the GitHub issue 3456,
 so a good name for the feature branch would be “feature/issue3456”</p>
-<p>Create this new branch in GitHub from the master branch.</p>
+<p>Create this new branch in GitHub from the main branch.</p>
 </section>
 <section id="step-2-configure-prerelease-version-in-feature-branch">
 <h3>Step 2: Configure Prerelease Version in feature branch<a class="headerlink" href="#step-2-configure-prerelease-version-in-feature-branch" title="Link to this heading"></a></h3>
 <p>First get an overview, how the Dockerfile for the secretsmanagement-operator is built</p>
 <section id="look-at-the-docker-build-configuration">
 <h4>Look at the Docker build configuration<a class="headerlink" href="#look-at-the-docker-build-configuration" title="Link to this heading"></a></h4>
-<p>All dependencies of a Docker image are configured in the file <a class="reference external" href="https://github.com/tmforum-oda/oda-canvas/blob/master/automation/generators/dockerbuild-workflow-generator/dockerbuild-config.yaml">automation/generators/dockerbuild-workflow-generator/dockerbuild-config.yaml</a>.</p>
+<p>All dependencies of a Docker image are configured in the file <a class="reference external" href="https://github.com/tmforum-oda/oda-canvas/blob/main/automation/generators/dockerbuild-workflow-generator/dockerbuild-config.yaml">automation/generators/dockerbuild-workflow-generator/dockerbuild-config.yaml</a>.</p>
 <p>For the Secretsmanagement-Operator this is:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">...</span>
 <span class="n">secretsmanagement</span><span class="o">-</span><span class="n">operator</span><span class="p">:</span>  
@@ -281,7 +336,7 @@ Any change in this folder will trigger a new build of the dockerimage with tag <
 <h3>Step 4: Push changed feature branch to GitHub<a class="headerlink" href="#step-4-push-changed-feature-branch-to-github" title="Link to this heading"></a></h3>
 <p>Comitting the changes in the feature branch locally and pushing them to the GitHub repository triggers a GitHub Action, which builds the docker prerelease image.</p>
 <p><img alt="image" src="https://github.com/user-attachments/assets/d264d6c5-6933-4932-9e31-16323d87aa69" /></p>
-<p>If we had not set a prereleaseSuffix, then the build would have fail with the error message, that release versions can only be built from the “master” branch.</p>
+<p>If we had not set a prereleaseSuffix, then the build would have fail with the error message, that release versions can only be built from the “main” branch.</p>
 <p>But as we set a prereleaseSuffix a new image with tag <code class="docutils literal notranslate"><span class="pre">0.1.1-issue3456</span></code> was created and uploaded to dockerhub:</p>
 <table border="1" class="docutils">
 <thead>
@@ -307,7 +362,13 @@ Any change in this folder will trigger a new build of the dockerimage with tag <
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">charts</span><span class="o">/</span><span class="n">cert</span><span class="o">-</span><span class="n">manager</span><span class="o">-</span><span class="n">init</span>
 <span class="n">helm</span> <span class="n">dependency</span> <span class="n">update</span>
 <span class="n">helm</span> <span class="n">dependency</span> <span class="n">build</span>
-<span class="n">cd</span> <span class="o">../../</span><span class="n">charts</span><span class="o">/</span><span class="n">controller</span>
+<span class="n">cd</span> <span class="o">../../</span><span class="n">charts</span><span class="o">/</span><span class="n">component</span><span class="o">-</span><span class="n">operator</span>
+<span class="n">helm</span> <span class="n">dependency</span> <span class="n">update</span>
+<span class="n">helm</span> <span class="n">dependency</span> <span class="n">build</span>
+<span class="n">cd</span> <span class="o">../../</span><span class="n">charts</span><span class="o">/</span><span class="n">api</span><span class="o">-</span><span class="n">operator</span><span class="o">-</span><span class="n">istio</span>
+<span class="n">helm</span> <span class="n">dependency</span> <span class="n">update</span>
+<span class="n">helm</span> <span class="n">dependency</span> <span class="n">build</span>
+<span class="n">cd</span> <span class="o">../../</span><span class="n">charts</span><span class="o">/</span><span class="n">identityconfig</span><span class="o">-</span><span class="n">operator</span><span class="o">-</span><span class="n">keycloak</span>
 <span class="n">helm</span> <span class="n">dependency</span> <span class="n">update</span>
 <span class="n">helm</span> <span class="n">dependency</span> <span class="n">build</span>
 <span class="n">cd</span> <span class="o">../../</span><span class="n">charts</span><span class="o">/</span><span class="n">canvas</span><span class="o">-</span><span class="n">vault</span>
@@ -343,7 +404,7 @@ Any change in this folder will trigger a new build of the dockerimage with tag <
 <section id="step-5-test-that-changed-code-is-active">
 <h3>Step 5: Test that changed code is active<a class="headerlink" href="#step-5-test-that-changed-code-is-active" title="Link to this heading"></a></h3>
 <p>Let´s take a look at the SecretsManagement-Operator logfile:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ kubectl logs -n canvas deployment/canvas-smanop
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ kubectl logs -n canvas deployment/secretsmanagement-operator-vault
 
     [2024-07-30 14:24:20,772] SecretsmanagementOpe [INFO    ] Logging set to 20
 [*] [2024-07-30 14:24:20,773] SecretsmanagementOpe [INFO    ] GitHub ISSUE #3456 was added here
@@ -391,7 +452,7 @@ So an iterative process of code changes is neccessary.</p>
 </section>
 <section id="look-for-the-changes-in-the-logfile">
 <h4>Look for the changes in the logfile<a class="headerlink" href="#look-for-the-changes-in-the-logfile" title="Link to this heading"></a></h4>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>kubectl logs -n canvas deployment/canvas-smanop
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>kubectl logs -n canvas deployment/secretsmanagement-operator-vault
 
     [2024-07-30 14:24:20,772] SecretsmanagementOpe [INFO    ] Logging set to 20
 [?] [2024-07-30 14:24:20,773] SecretsmanagementOpe [INFO    ] GitHub ISSUE #3456 was added here
@@ -412,9 +473,9 @@ This means, the secretsmanagement-operator was not updated.</p>
 When we did the first upgrade, the docker image changed from <code class="docutils literal notranslate"><span class="pre">...:0.1.0</span></code> to <code class="docutils literal notranslate"><span class="pre">...:0.1.1-issue3456</span></code> and that triggered a redeployment of the secretsmanagement-operator.
 Now the image did not change, it is still <code class="docutils literal notranslate"><span class="pre">...:0.1.1-issue3456</span></code>.</p>
 <p>But we can trigger a redeployment manually:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ kubectl rollout restart deployment -n canvas canvas-smanop
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ kubectl rollout restart deployment -n canvas secretsmanagement-operator-vault
 
-  deployment.apps/canvas-smanop restarted
+  deployment.apps/secretsmanagement-operator-vault restarted
 </pre></div>
 </div>
 <p>Waiting a few seconds to give the old POD (running instance of the deployment) time to gracefully terminate and the new POD time to startup:</p>
@@ -422,12 +483,12 @@ Now the image did not change, it is still <code class="docutils literal notransl
 
   NAME                                          READY   STATUS      RESTARTS   AGE
   ...
-  canvas-smanop-6768cc66b5-ww85z                1/1     Running     0          8s
+  secretsmanagement-operator-vault-6768cc66b5-ww85z                1/1     Running     0          8s
   ...
 </pre></div>
 </div>
 <p>Age 8 seconds means, the POD was just started. Now we can take a look into the logfile:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ kubectl logs -n canvas canvas-smanop-7d4c875878-xdlts
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ kubectl logs -n canvas secretsmanagement-operator-vault-7d4c875878-xdlts
 
     [2024-07-30 15:22:02,025] SecretsmanagementOpe [INFO    ] Logging set to 20
 [?] [2024-07-30 15:22:02,025] SecretsmanagementOpe [INFO    ] GitHub ISSUE #3456 was added here
@@ -444,12 +505,12 @@ Now the image did not change, it is still <code class="docutils literal notransl
 In the charts we have configured the deployments in a way, that prerelease images automatically get the imagePullPolicy “Always”.
 This means, even if a  docker image with the same name already exists it is looking for updates in the remote docker registry.</p>
 <p>Check:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ kubectl get deployment -n canvas canvas-smanop -oyaml
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ kubectl get deployment -n canvas secretsmanagement-operator-vault -oyaml
 
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: canvas-smanop
+  name: secretsmanagement-operator-vault
   namespace: canvas
   ...
 spec:
@@ -458,7 +519,7 @@ spec:
   template:
     spec:
       containers:
-      - name: canvas-smanop
+      - name: secretsmanagement-operator-vault
         image: ocfork/secretsmanagement-operator:0.1.1-issue3456
 [*]     imagePullPolicy: Always
       ...
@@ -466,15 +527,15 @@ spec:
 </div>
 <p>I have no explanation, why this did not work, but found a workaround:
 Scaling the deployment down to 0 instances (PODs) and then scaling up to 1 again:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ kubectl scale deployment -n canvas canvas-smanop --replicas=0
-  deployment.apps/canvas-smanop scaled
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ kubectl scale deployment -n canvas secretsmanagement-operator-vault --replicas=0
+  deployment.apps/secretsmanagement-operator-vault scaled
 
-$ kubectl scale deployment -n canvas canvas-smanop --replicas=1
-  deployment.apps/canvas-smanop scaled
+$ kubectl scale deployment -n canvas secretsmanagement-operator-vault --replicas=1
+  deployment.apps/secretsmanagement-operator-vault scaled
 </pre></div>
 </div>
 <p>Wait a few seconds for the new POD to come up and look at the logfile:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ kubectl logs -n canvas deployment/canvas-smanop
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ kubectl logs -n canvas deployment/secretsmanagement-operator-vault
 
     [2024-07-30 15:31:14,306] SecretsmanagementOpe [INFO    ] Logging set to 20
 [*] [2024-07-30 15:31:14,306] SecretsmanagementOpe [INFO    ] GitHub ISSUE #3456 WAS FIXED!!!
@@ -500,8 +561,8 @@ Then the new docker image is also pullled.</p>
 </section>
 <section id="step-7-creating-a-pull-request">
 <h3>Step 7: Creating a Pull-Request<a class="headerlink" href="#step-7-creating-a-pull-request" title="Link to this heading"></a></h3>
-<p>After the iterative process of doing code changes, and testing the image, we are ready to contribute our changes back to the “master” branch.</p>
-<p>Therefore a Pull-Request (PR) is created from our feature branch <code class="docutils literal notranslate"><span class="pre">feature/issue-3456</span></code> into “master” using GitHub UI.</p>
+<p>After the iterative process of doing code changes, and testing the image, we are ready to contribute our changes back to the “main” branch.</p>
+<p>Therefore a Pull-Request (PR) is created from our feature branch <code class="docutils literal notranslate"><span class="pre">feature/issue-3456</span></code> into “main” using GitHub UI.</p>
 <section id="automatically-run-tests">
 <h4>Automatically Run Tests<a class="headerlink" href="#automatically-run-tests" title="Link to this heading"></a></h4>
 <p>Now the automatic tests of the PR are triggered and the result should be green. (WIP)</p>
@@ -532,7 +593,7 @@ For our PR this check fails, because secretsmanagement-operator has prereleaseSu
     <span class="o">...</span>
 </pre></div>
 </div>
-<p>After pushing this change, the two checks (Linting and Release version check) are triggered again:</p>
+<p>Start the commit message with “[skip tests] …” which will skip running the BDD tests. After pushing this change, the two checks (Linting and Release version check) are triggered again:</p>
 <p><img alt="image" src="https://github.com/user-attachments/assets/e687ec09-df02-4eea-b347-d09cbbb72f32" /></p>
 <p>A docker build was not triggered again, because there was no change in the docker source files.
 Now all preconditions are green:</p>
@@ -541,7 +602,7 @@ Now all preconditions are green:</p>
 </section>
 <section id="step-8-code-review-and-merging-the-pr">
 <h3>Step 8: Code-Review and Merging the PR<a class="headerlink" href="#step-8-code-review-and-merging-the-pr" title="Link to this heading"></a></h3>
-<p>A code review can now be done and after appoval the branch can be merged into the “master” branch.</p>
+<p>A code review can now be done and after appoval the branch can be merged into the “main” branch.</p>
 <p>When the PR is merged, the release build of the docker image is triggered:</p>
 <p><img alt="image" src="https://github.com/user-attachments/assets/3e0ffa45-cb22-413b-8135-6e9aa360708b" /></p>
 <p>There is a check, that the release version does not already exists.
@@ -563,28 +624,42 @@ If this is the case, the build pipeline will fail.</p>
 </table>
 </section>
 </section>
-</section>
 <section id="summary">
-<h1>Summary<a class="headerlink" href="#summary" title="Link to this heading"></a></h1>
+<h2>Summary<a class="headerlink" href="#summary" title="Link to this heading"></a></h2>
 <p>Overview about the steps to do:</p>
 <ul class="simple">
 <li><p>Create feature branch “feature/…” and do all work in this branch</p></li>
-<li><p>Increment version number and set prereleaseSuffix for Dockerimage to modify in <a class="reference external" href="https://github.com/tmforum-oda/oda-canvas/blob/master/charts/canvas-oda/values.yaml">charts/canvas-oda/values.yaml</a></p></li>
+<li><p>Increment version number and set prereleaseSuffix for Dockerimage to modify in <a class="reference external" href="https://github.com/tmforum-oda/oda-canvas/blob/main/charts/canvas-oda/values.yaml">charts/canvas-oda/values.yaml</a></p></li>
 <li><p>Modify code, push triggers rebuild of prerelease docker image</p></li>
 <li><p>For the first time do a <code class="docutils literal notranslate"><span class="pre">helm</span> <span class="pre">upgrade</span></code> to redeploy the prerelease version</p></li>
 <li><p>For any further modifications to a <code class="docutils literal notranslate"><span class="pre">kubectl</span> <span class="pre">scale</span> <span class="pre">deployment</span> <span class="pre">...</span> <span class="pre">---replicas</span> <span class="pre">0</span></code> and then <code class="docutils literal notranslate"><span class="pre">kubectl</span> <span class="pre">scale</span> <span class="pre">deployment</span> <span class="pre">...</span> <span class="pre">---replicas</span> <span class="pre">1</span></code> (or delete running PODs)</p></li>
 <li><p>Finally create PR and make BDD tests green</p></li>
-<li><p>Remove prereleaseSuffixes from values.yaml</p></li>
+<li><p>Remove prereleaseSuffixes from values.yaml, add “[skip tests]” to the commit message</p></li>
 <li><p>Merge the PR</p></li>
 </ul>
 </section>
 <section id="how-to-add-a-new-dockerimage">
-<h1>How-To add a new Dockerimage<a class="headerlink" href="#how-to-add-a-new-dockerimage" title="Link to this heading"></a></h1>
+<h2>How-To add a new Dockerimage<a class="headerlink" href="#how-to-add-a-new-dockerimage" title="Link to this heading"></a></h2>
 <p>Currently there are 6 Docker images which are built automatically.
-New Docker images can be added by editing the file <a class="reference external" href="https://github.com/tmforum-oda/oda-canvas/blob/master/automation/generators/dockerbuild-workflow-generator/dockerbuild-config.yaml">automation/generators/dockerbuild-workflow-generator/dockerbuild-config.yaml</a>.
+New Docker images can be added by editing the file <a class="reference external" href="https://github.com/tmforum-oda/oda-canvas/blob/main/automation/generators/dockerbuild-workflow-generator/dockerbuild-config.yaml">automation/generators/dockerbuild-workflow-generator/dockerbuild-config.yaml</a>.
 In this file the docker build specific configurations and the relevant source paths have to be set.</p>
 <p>After the configuration is finished, the GitHub Actions have to be regenerated
-by executing <a class="reference external" href="https://github.com/tmforum-oda/oda-canvas/blob/master/automation/generators/dockerbuild-workflow-generator/dockerbuild_workflow_generator.py">automation/generators/dockerbuild-workflow-generator/dockerbuild_workflow_generator.py</a>. For executing the python script, the packages “pyyaml” and “jinja2” have to be installed (see requirements.txt).</p>
+by executing <a class="reference external" href="https://github.com/tmforum-oda/oda-canvas/blob/main/automation/generators/dockerbuild-workflow-generator/dockerbuild_workflow_generator.py">automation/generators/dockerbuild-workflow-generator/dockerbuild_workflow_generator.py</a>. For executing the python script, the packages “pyyaml” and “jinja2” have to be installed (see requirements.txt).</p>
+</section>
+<section id="how-to-define-unit-tests">
+<h2>How-To define unit tests<a class="headerlink" href="#how-to-define-unit-tests" title="Link to this heading"></a></h2>
+<p>If the parameter testDockerfile is set, then after building the dockerfile to release in the same context the test Dockerfile is built and run.
+The output of the run should be a test report in junit xml format.</p>
+<p>Here is an Example:</p>
+<p>Definition in dockerbuild-workflow-generator (Line 55 is the testDockerfile config):</p>
+<p><a class="reference external" href="https://github.com/tmforum-oda/oda-canvas/blob/2d6268346c215c6dedb7afb2862765679da5c23c/automation/generators/dockerbuild-workflow-generator/dockerbuild-config.yaml#L41-L57">https://github.com/tmforum-oda/oda-canvas/blob/2d6268346c215c6dedb7afb2862765679da5c23c/automation/generators/dockerbuild-workflow-generator/dockerbuild-config.yaml#L41-L57</a></p>
+<p>And the DockerfileTest looks like this:</p>
+<p><a class="reference external" href="https://github.com/tmforum-oda/oda-canvas/blob/2d6268346c215c6dedb7afb2862765679da5c23c/source/operators/dependentApiSimpleOperator/docker/DockerfileTest#L1-L17">https://github.com/tmforum-oda/oda-canvas/blob/2d6268346c215c6dedb7afb2862765679da5c23c/source/operators/dependentApiSimpleOperator/docker/DockerfileTest#L1-L17</a></p>
+<p>There will be a warning, that it is bad practice to define a FROM solely from an argument, but I don´t know how to do it in another way.</p>
+<p>So, the test dockerfile uses the previously built image as “$FROM_IMAGE” and during the build process the unit tests are executed. The build itself should not fail, instead of the test report is analyzed afterwards. Running the test dockerfile just outputs the test report.</p>
+<p>On Failure, the docker build of the version is canceled and the broken tests are visible in the GitHub action.</p>
+<p><img alt="failed tests in GitHub Action" src="../../../_images/failed-tests-in-github-action.png" /></p>
+</section>
 </section>
 
 
@@ -598,7 +673,7 @@ by executing <a class="reference external" href="https://github.com/tmforum-oda/
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2024, TM Forum ODA-Component Accelerator project.</p>
+    <p>&#169; Copyright 2025, TM Forum ODA-Component Accelerator project.</p>
   </div>
 
   Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a

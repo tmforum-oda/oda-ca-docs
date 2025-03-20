@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Open Digital Architecture Canvas &mdash; ODA-Component Accelerator v1beta3 documentation</title>
+  <title>Open Digital Architecture Canvas &mdash; ODA-Component Accelerator v1 documentation</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=80d5e7a1" />
       <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=19f00094" />
       <link rel="stylesheet" type="text/css" href="../_static/css/custom.css?v=6567dac9" />
@@ -16,14 +16,14 @@
   
         <script src="../_static/jquery.js?v=5d32c60e"></script>
         <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script src="../_static/documentation_options.js?v=546c8a9f"></script>
+        <script src="../_static/documentation_options.js?v=5cb08e4e"></script>
         <script src="../_static/doctools.js?v=9a2dae69"></script>
         <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="ODA Canvas installation" href="installation/README.html" />
-    <link rel="prev" title="ODA Component - CTK" href="../ctk/README.html" /> 
+    <link rel="prev" title="Design Guidelines to create a new ODA Component" href="../docs/ODAComponentDesignGuidelines.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -58,12 +58,12 @@
 <p class="caption" role="heading"><span class="caption-text">Component:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../docs/ODAComponentDesignGuidelines.html">Design Guidelines to create a new ODA Component</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../ctk/README.html">ODA Component - CTK</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Canvas:</span></p>
 <ul class="current">
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Open Digital Architecture Canvas</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#installation">Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#introduction-to-oda-canvas">Introduction to ODA Canvas</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#oda-canvas-design">ODA Canvas Design</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#release-notes">Release notes</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#for-developers">For Developers</a></li>
@@ -79,25 +79,29 @@
 <li class="toctree-l1"><a class="reference internal" href="Usecases.html">Usecase List</a></li>
 <li class="toctree-l1"><a class="reference internal" href="usecase-library/use-case-naming-conventions.html">Use case naming conventions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="source/README.html">ODA Canvas source code</a></li>
-<li class="toctree-l1"><a class="reference internal" href="source/operators/index.html">Open Digital Architecture - Controllers/Operators</a></li>
-<li class="toctree-l1"><a class="reference internal" href="source/webhooks-and-utilities.html">Webuooks and Utilities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="source/operators/README.html">ODA Canvas Operators</a></li>
+<li class="toctree-l1"><a class="reference internal" href="source/operators/component-management/README.html">Component Management Operator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="source/operators/api-management/README.html">API Management Operators</a></li>
+<li class="toctree-l1"><a class="reference internal" href="source/operators/identity-config/README.html">Identity Config Operators</a></li>
+<li class="toctree-l1"><a class="reference internal" href="source/operators/secretsmanagementOperator-hc/README.html">Secrets Management Operator for HashiCorp Vault</a></li>
+<li class="toctree-l1"><a class="reference internal" href="source/operators/credentials-management/README.html">Credentials Management Operator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="source/operators/dependentApiSimpleOperator/README.html">Dependency Management Operator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="source/webhooks-and-utilities.html">Webhooks and Utilities</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Feature Tests:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="feature-definition-and-test-kit/README.html">ODA Canvas Features and Test Kit</a></li>
-<li class="toctree-l1"><a class="reference internal" href="feature-definition-and-test-kit/README.html#list-of-bdd-features">List of BDD Features</a></li>
 <li class="toctree-l1"><a class="reference internal" href="feature-definition-and-test-kit/Executing-tests.html">Installing and executing the BDD tests</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Contributions and Troubleshooting:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../docs/ContributionsGuide.html">Contribution guidance</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../docs/TroubleshootingGuide/index.html">Troubleshooting Guide</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../docs/developer/work-with-dockerimages.html">Developer How-Tos: Work with Dockerimages</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../docs/developer/work-with-dockerimages.html#summary">Summary</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../docs/developer/work-with-dockerimages.html#how-to-add-a-new-dockerimage">How-To add a new Dockerimage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="docs/developer/work-with-dockerimages.html">Developer How-Tos: Work with Dockerimages</a></li>
 <li class="toctree-l1"><a class="reference internal" href="devcontainer.html">ODA Canvas Development Environment</a></li>
 <li class="toctree-l1"><a class="reference internal" href="source/operators/Installing%20KOPF%20development%20environment.html">Installing KOPF (tested in GKE)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../docs/DocumentationProcess.html">Documentation Process</a></li>
+<li class="toctree-l1"><a class="reference internal" href="CONTRIBUTING.html">How to contribute to the ODA Canvas Accelerator</a></li>
 </ul>
 
         </div>
@@ -126,9 +130,9 @@
              
   <section id="open-digital-architecture-canvas">
 <h1>Open Digital Architecture Canvas<a class="headerlink" href="#open-digital-architecture-canvas" title="Link to this heading"></a></h1>
-<p><a class="reference external" href="https://github.com/tmforum-oda/oda-canvas"><img alt="Supported-component-version" src="https://img.shields.io/badge/dynamic/yaml?url=https%3A%2F%2Fraw.githubusercontent.com%2Ftmforum-oda%2Foda-canvas%2Fmaster%2Fcharts%2Fcanvas-oda%2FChart.yaml&amp;query=%24.appVersion&amp;label=Supported-component-version" /></a>
-<a class="reference external" href="https://github.com/tmforum-oda/oda-canvas"><img alt="Canvas-version" src="https://img.shields.io/badge/dynamic/yaml?url=https%3A%2F%2Fraw.githubusercontent.com%2Ftmforum-oda%2Foda-canvas%2Fmaster%2Fcharts%2Fcanvas-oda%2FChart.yaml&amp;query=%24.version&amp;label=Canvas-version" /></a>
-<a class="reference external" href="https://github.com/tmforum-oda/oda-canvas/blob/master/LICENSE"><img alt="License" src="https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fraw.githubusercontent.com%2Ftmforum-oda%2Foda-canvas-ctk%2Fmain%2Fpackage.json&amp;query=%24.license&amp;label=License&amp;color=%09%23a3ff00" /></a></p>
+<p><a class="reference external" href="https://github.com/tmforum-oda/oda-canvas"><img alt="Supported-component-version" src="https://img.shields.io/badge/dynamic/yaml?url=https%3A%2F%2Fraw.githubusercontent.com%2Ftmforum-oda%2Foda-canvas%2Fmain%2Fcharts%2Fcanvas-oda%2FChart.yaml&amp;query=%24.appVersion&amp;label=Supported-component-version" /></a>
+<a class="reference external" href="https://github.com/tmforum-oda/oda-canvas"><img alt="Canvas-version" src="https://img.shields.io/badge/dynamic/yaml?url=https%3A%2F%2Fraw.githubusercontent.com%2Ftmforum-oda%2Foda-canvas%2Fmain%2Fcharts%2Fcanvas-oda%2FChart.yaml&amp;query=%24.version&amp;label=Canvas-version" /></a>
+<a class="reference external" href="https://github.com/tmforum-oda/oda-canvas/blob/main/LICENSE"><img alt="License" src="https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fraw.githubusercontent.com%2Ftmforum-oda%2Foda-canvas-ctk%2Fmain%2Fpackage.json&amp;query=%24.license&amp;label=License&amp;color=%09%23a3ff00" /></a></p>
 <p><a class="reference external" href="https://reports.cucumber.io/report-collections/f62e87a7-f6bf-4aaf-b603-d4fa2b05b630"><img alt="bdd" src="https://img.shields.io/badge/BDD_tests-8A2BE2?style=flat-square&amp;color=grey" /></a><a class="reference external" href="https://reports.cucumber.io/report-collections/f62e87a7-f6bf-4aaf-b603-d4fa2b05b630"><img alt="passed" src="https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fmessages.cucumber.io%2Fapi%2Freport-collections%2Ff62e87a7-f6bf-4aaf-b603-d4fa2b05b630%2Freports&amp;query=%24.reports%5B-1%3A%5D.statusCounts.PASSED&amp;style=flat-square&amp;label=Passed%3A%20&amp;labelColor=%230BDA51&amp;color=%230BDA51" /></a><a class="reference external" href="https://reports.cucumber.io/report-collections/f62e87a7-f6bf-4aaf-b603-d4fa2b05b630"><img alt="undef" src="https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fmessages.cucumber.io%2Fapi%2Freport-collections%2Ff62e87a7-f6bf-4aaf-b603-d4fa2b05b630%2Freports&amp;query=%24.reports%5B-1%3A%5D.statusCounts.UNDEFINED&amp;style=flat-square&amp;label=Undefined%3A%20&amp;labelColor=%23FFC000&amp;color=%23FFC000" /></a><a class="reference external" href="https://reports.cucumber.io/report-collections/f62e87a7-f6bf-4aaf-b603-d4fa2b05b630"><img alt="failed" src="https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fmessages.cucumber.io%2Fapi%2Freport-collections%2Ff62e87a7-f6bf-4aaf-b603-d4fa2b05b630%2Freports&amp;query=%24.reports%5B-1%3A%5D.statusCounts.FAILED&amp;style=flat-square&amp;label=Failed%3A%20&amp;labelColor=%23D22B2B&amp;color=%23D22B2B" />
 </a></p>
 <p>The Open Digital Architecture (ODA) Canvas is an execution environment for ODA Components and the release automation part of a CI/CD pipeline. This repository contains the Reference Implementation, open-source code, use-cases and test-kit for a <a class="reference external" href="https://www.tmforum.org/oda/deployment-runtime/oda-canvas/">TM Forum ODA canvas</a>. You are free to use this as a starting point for your own ODA Canvas implementation.</p>
@@ -138,9 +142,18 @@
 <h2>Installation<a class="headerlink" href="#installation" title="Link to this heading"></a></h2>
 <p>see <a class="reference internal" href="installation/README.html"><span class="std std-doc">Installation Guide</span></a> for installation instructions.</p>
 </section>
+<section id="introduction-to-oda-canvas">
+<h2>Introduction to ODA Canvas<a class="headerlink" href="#introduction-to-oda-canvas" title="Link to this heading"></a></h2>
+<p>There is an introductory video on the ODA Canvas at:</p>
+<p><a class="reference external" href="https://youtu.be/B5lF94l-Dek?si=gKQAW57j8GEDx6Yv&amp;amp;t=1"><img alt="How do I buy or build an ODA Canvas?" src="https://img.youtube.com/vi/dYyyCDPlVHY/0.jpg" /></a></p>
+<p>The ODA Canvas is itself a modular architecture, with independent <strong>operators</strong> that embed the management and operations activities in software. The <strong>Component Management</strong> operator manages the lifecycle of each component, and the de-composition into ExposedAPIs, IdentityConfigs and other sub-resources (that are processed by their corresponding operators). The <strong>API Management</strong> operators manage the API Gateway and/or Service Mesh to provide security, throttling and other non-functional services to allow API endpoints to be exposed to external consumers. You deploy the matching API Management operator for whatever API Gateway or Service Mesh you are using. The <strong>Identitiy Config</strong> operator configures the Identity Management Services. The <strong>Secrets Management</strong> operator is an optional operator to configure secrets. The <strong>Dependency Management</strong> operator provides services to allow a Component to discover API dependencies. We foresee new operator types becoming available as the ODA Canvas matures.</p>
+<p>The ODA Canvas reference implementation includes example operators to that are freely available for organizations to re-use, extend or replace with their own implementations. We expect a typical production implementation will use a combination of standard operators and custom operators that can implement that organizations specific operational policies.</p>
+<p>For more information see <a class="reference internal" href="source/operators/README.html"><span class="std std-doc">Software Operators</span></a></p>
+</section>
 <section id="oda-canvas-design">
 <h2>ODA Canvas Design<a class="headerlink" href="#oda-canvas-design" title="Link to this heading"></a></h2>
 <p>The design (including ongoing work) of the ODA Canvas is documented in <a class="reference internal" href="Canvas-design.html"><span class="std std-doc">ODA Canvas Design</span></a>.</p>
+<p>Security principles for the ODA Canvas design are documented in <a class="reference internal" href="SecurityPrinciples.html"><span class="std std-doc">ODA Securty Principles</span></a>.</p>
 </section>
 <section id="release-notes">
 <h2>Release notes<a class="headerlink" href="#release-notes" title="Link to this heading"></a></h2>
@@ -152,6 +165,34 @@
 </tr>
 </thead>
 <tbody>
+<tr>
+<td style="text-align: center;">1.2.0</td>
+<td>Release of <code>v1</code> component specification and general availability of ODA Canvas</td>
+</tr>
+<tr>
+<td style="text-align: center;">1.1.8</td>
+<td>Final changes to <code>v1beta4</code> component specification</td>
+</tr>
+<tr>
+<td style="text-align: center;">1.1.7</td>
+<td>Updated to <code>v1beta4</code> component specification</td>
+</tr>
+<tr>
+<td style="text-align: center;">1.1.5</td>
+<td>Multiple fixes</td>
+</tr>
+<tr>
+<td style="text-align: center;">1.1.4</td>
+<td>Added secretsmanagement-operator</td>
+</tr>
+<tr>
+<td style="text-align: center;">1.1.3</td>
+<td>Moved operators to use <code>tmforumodacanvas</code> docker repository</td>
+</tr>
+<tr>
+<td style="text-align: center;">1.1.2</td>
+<td>Added dependentApiSimpleOperator</td>
+</tr>
 <tr>
 <td style="text-align: center;">1.1.1</td>
 <td>Bug fix release - Webhook handles empty specification field for exposedAPI. Tested against kubernetes 1.29.</td>
@@ -171,7 +212,7 @@
 <h2>For Developers<a class="headerlink" href="#for-developers" title="Link to this heading"></a></h2>
 <p>How to work with this repository:</p>
 <ul class="simple">
-<li><p><a class="reference internal" href="../docs/developer/work-with-dockerimages.html"><span class="std std-doc">How-To work with Dockerimages</span></a></p></li>
+<li><p><a class="reference internal" href="docs/developer/work-with-dockerimages.html"><span class="std std-doc">How-To work with Dockerimages</span></a></p></li>
 </ul>
 </section>
 </section>
@@ -180,14 +221,14 @@
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="../ctk/README.html" class="btn btn-neutral float-left" title="ODA Component - CTK" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../docs/ODAComponentDesignGuidelines.html" class="btn btn-neutral float-left" title="Design Guidelines to create a new ODA Component" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
         <a href="installation/README.html" class="btn btn-neutral float-right" title="ODA Canvas installation" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2024, TM Forum ODA-Component Accelerator project.</p>
+    <p>&#169; Copyright 2025, TM Forum ODA-Component Accelerator project.</p>
   </div>
 
   Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
