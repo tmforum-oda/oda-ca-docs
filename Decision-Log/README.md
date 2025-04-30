@@ -14,3 +14,4 @@ This folder contains a log of architectural decisions made on this project, incl
 | 0008 Identity Propagation from Component to Component | 2023-05-31 | In progress | [0008-identity-propagation.md](0008-identity-propagation.md) |  Authentication workshop |
 | 0009 Monorepo Helm and Container versioning | 2024-05-15 | Pending ODA-CA board approval | [0009-monorepo-helm-container-versioning.md](0009-monorepo-helm-container-versioning.md) |  Authentication workshop |
 | 0010 AI4Canvas Operator Scope Decision | 2025-04-30 | Proposed | [0010-ai4canvas-operator.md](0010-ai4canvas-operator.md) |  [@lesterthomas](https://www.github.com/lesterthomas) |
+| 0011 Uniform Method for Canvas-to-Component Information Transfer | 2025-04-30 | Proposed | [0011-canvas-information-transfer.md](0011-canvas-information-transfer.md) |  [@ferenc-hechler](https://www.github.com/ferenc-hechler) |
