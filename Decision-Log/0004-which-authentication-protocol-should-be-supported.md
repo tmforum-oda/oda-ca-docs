@@ -24,11 +24,9 @@ SAML is a set of XML-based protocol for communicating identity, authentication a
 SAML is typically used in enterprise environments for single sign-on (SSO) solutions where a user logs in once and gains access to multiple applications, with the applications trusting the user because they trust
 the authenticating authority.
 
-
 ## Decision
 
-The Proposal is to eventually support SAML as well as OpenID Connect/OAuth2. The initial sprint will focus on OpenID Connect/OAuth2. We don't believe we can create a MVP with just OAuth2 as we want to
-support Authentication ad well as Authorization.
+The Proposal is to eventually support SAML as well as OpenID Connect/OAuth2. The initial sprint will focus on OpenID Connect/OAuth2. We don't believe we can create a MVP with just OAuth2 as we want to support Authentication ad well as Authorization.
 
 ## Consequences
 

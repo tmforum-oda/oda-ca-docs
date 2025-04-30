@@ -1,6 +1,6 @@
 # 5. Which languages and libraries should be used for Software Operators
 
-Date: 2013-05-24
+Date: 2023-05-24
 
 ## Status
 
@@ -9,8 +9,7 @@ In progress
 ## Context
 
 The canvas uses The ODA Canvas provides access to a range of common services (for identity management, authentication, observability etc) and has a set of
-[Software Operators](operators/README.md) that automatically configure these services based on requirements defined in each ODA Component YAML specification. The operators are packaged as docker 
-images and are deployed as part of the canvas. 
+[Software Operators](operators/README.md) that automatically configure these services based on requirements defined in each ODA Component YAML specification. The operators are packaged as docker images and are deployed as part of the canvas.
 
 Operators can be created in many different programming languages and frameworks: These are the ones linked from the [Extending Kubernetes with Operators](https://kubernetes.io/docs/concepts/extend-kubernetes/operator/) site:
 

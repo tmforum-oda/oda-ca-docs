@@ -1,6 +1,6 @@
 # 6. Create common set of minimum mandatory JWT claims for interoperability
 
-Date: 2013-05-24
+Date: 2023-05-24
 
 ## Status
 

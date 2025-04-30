@@ -20,4 +20,4 @@ The decision is to ensure every operator is deployed using its own Helm chart, a
 
 ## Consequences
 
-We need to refactor the existing component operator to separate out the API management, Identity Management and Observability parts into separate Helm charte. 
+We need to refactor the existing component operator to separate out the API management, Identity Management and Observability parts into separate Helm charte.
