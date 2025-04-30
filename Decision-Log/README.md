@@ -15,3 +15,4 @@ This folder contains a log of architectural decisions made on this project, incl
 | 0009 Monorepo Helm and Container versioning | 2024-05-15 | Pending ODA-CA board approval | [0009-monorepo-helm-container-versioning.md](0009-monorepo-helm-container-versioning.md) |  Authentication workshop |
 | 0010 AI4Canvas Operator Scope Decision | 2025-04-30 | Proposed | [0010-ai4canvas-operator.md](0010-ai4canvas-operator.md) |  [@lesterthomas](https://www.github.com/lesterthomas) |
 | 0011 Uniform Method for Canvas-to-Component Information Transfer | 2025-04-30 | Proposed | [0011-canvas-information-transfer.md](0011-canvas-information-transfer.md) |  [@ferenc-hechler](https://www.github.com/ferenc-hechler) |
+| 0012 Handling of Exposed APIs by Different Operators | 2025-04-30 | Proposed | [0012-exposed-api-handling.md](0012-exposed-api-handling.md) |  Canvas Spec Jam Workshop |
