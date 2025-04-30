@@ -16,3 +16,4 @@ This folder contains a log of architectural decisions made on this project, incl
 | 0010 AI4Canvas Operator Scope Decision | 2025-04-30 | Proposed | [0010-ai4canvas-operator.md](0010-ai4canvas-operator.md) |  [@lesterthomas](https://www.github.com/lesterthomas) |
 | 0011 Uniform Method for Canvas-to-Component Information Transfer | 2025-04-30 | Proposed | [0011-canvas-information-transfer.md](0011-canvas-information-transfer.md) |  [@ferenc-hechler](https://www.github.com/ferenc-hechler) |
 | 0012 Handling of Exposed APIs by Different Operators | 2025-04-30 | Proposed | [0012-exposed-api-handling.md](0012-exposed-api-handling.md) |  Canvas Spec Jam Workshop |
+| 0013 No certification for canvas implementation | 2025-04-30 | Pending ODA-CA board approval | [0013-canvas-certification.md](0013-canvas-certification.md) |  ODA-CA Canvas Working Group |
