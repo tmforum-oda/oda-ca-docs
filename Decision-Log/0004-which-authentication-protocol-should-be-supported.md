@@ -26,7 +26,20 @@ the authenticating authority.
 
 ## Decision
 
-The Proposal is to eventually support SAML as well as OpenID Connect/OAuth2. The initial sprint will focus on OpenID Connect/OAuth2. We don't believe we can create a MVP with just OAuth2 as we want to support Authentication ad well as Authorization.
+The Proposal is to eventually support SAML as well as OpenID Connect/OAuth2. 
+The initial sprint will focus on OpenID Connect/OAuth2. 
+We don't believe we can create a MVP with just OAuth2 as we want to support Authentication as well as Authorization.
+
+The limiting factor on this decision is not the canvas, it is the component.
+If a canvas supports SAML and a component is deployed, which only supports oauth2, 
+the component will not be accessible.
+This will break interoperabillity, which is the primary goal of ODA.
+
+To avoid this, an optional sidecar aproach can be offered, which handles authentication (and authorization) 
+while the component talks in plain unauthorized HTTP with the sidecar.
+This can be done for incoming and outgoing requests.
+The advantage is, that any component can be run inside a canvas without having to know, which protocol is used.
+The drawback might be some overhead in resources and latency.
 
 ## Consequences
 
