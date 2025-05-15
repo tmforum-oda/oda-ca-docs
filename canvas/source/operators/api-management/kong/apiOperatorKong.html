@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../../../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>apiOperatorIstio module &mdash; ODA-Component Accelerator v1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../../../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../../../../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../../../../../_static/css/custom.css?v=6567dac9" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../../../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../../../../_static/documentation_options.js?v=5cb08e4e"></script>
+        <script src="../../../../../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../../../../index.html" class="icon icon-home">
+            ODA-Component Accelerator
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">About the project:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../docs/Playbook.html">Introduction to the ODA Component Accelerator Project (ODA-CA)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../docs/Getting_started.html">Getting started checklist for new members of ODA-CA</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Tutorials:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../docs/Observability-Tutorial/README.html">Tutorial to deploy and observe a running component</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../docs/ODAComponentTutorial/README.html">Tutorial to build ODA-Component from Open-API Reference Implementation</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Component:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../docs/ODAComponentDesignGuidelines.html">Design Guidelines to create a new ODA Component</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Canvas:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../README.html">Open Digital Architecture Canvas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../installation/README.html">ODA Canvas installation</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Canvas Design:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../Canvas-design.html">ODA Canvas Design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../Design-Epics.html">Design Epics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../usecase-library/README.html">ODA Canvas - use-case library</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../Usecases.html">Usecase List</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../usecase-library/use-case-naming-conventions.html">Use case naming conventions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../README.html">ODA Canvas source code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../README.html">ODA Canvas Operators</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../component-management/README.html">Component Management Operator - Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../README.html">API Management Operators</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../identity-config/README.html">Identity Config Operators</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../webhooks-and-utilities.html">Webhooks and Utilities</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Feature Tests:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../feature-definition-and-test-kit/README.html">ODA Canvas Features and Test Kit</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../feature-definition-and-test-kit/Executing-tests.html">Installing and executing the BDD tests</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Contributions and Troubleshooting:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../docs/ContributionsGuide.html">Contribution guidance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../docs/TroubleshootingGuide/index.html">Troubleshooting Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../docs/developer/work-with-dockerimages.html">Developer How-Tos: Work with Dockerimages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../devcontainer.html">ODA Canvas Development Environment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Installing%20KOPF%20development%20environment.html">Installing KOPF (tested in GKE)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../docs/DocumentationProcess.html">Documentation Process</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../../index.html">ODA-Component Accelerator</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">apiOperatorIstio module</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../../../../_sources/canvas/source/operators/api-management/kong/apiOperatorKong.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-apiOperatorKong">
+<span id="apioperatoristio-module"></span><h1>apiOperatorIstio module<a class="headerlink" href="#module-apiOperatorKong" title="Link to this heading"></a></h1>
+<p>Kubernetes Kong API Lifecycle Management Operator for ODA API Custom Resources.</p>
+<p>This module is part of the ODA Canvas, specifically tailored for environments adopting the Kong API Gateway. It utilizes the Kopf Kubernetes operator framework (<a class="reference external" href="https://kopf.readthedocs.io/">https://kopf.readthedocs.io/</a>) to manage API custom resources. 
+The operator is designed to seamlessly integrate with the Kong API Gateway, facilitating the creation and management of HTTPRoute configurations to expose APIs.</p>
+<p>Key Features:
+* Automatically handles the lifecycle of ODA APIs including creation, update, and deletion of corresponding HTTPRoute resources to expose APIs through Kong.
+* Manages KongPlugin resources to apply and enforce various plugins and policies on APIs routed through Kong.
+* Configures an API gateway to act as a front aligning with recommended production architectures.</p>
+<p>Usage:
+This operator can be deployed as part of the ODA Canvas in Kubernetes clusters where the Kong API Gateway is used to expose APIs. It simplifies the management of API exposure and security by interfacing directly with Kong, 
+providing a robust and scalable API management solution.</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="apiOperatorKong.manage_api_lifecycle">
+<span class="sig-prename descclassname"><span class="pre">apiOperatorKong.</span></span><span class="sig-name descname"><span class="pre">manage_api_lifecycle</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">spec</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">namespace</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">status</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">meta</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">logger</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#apiOperatorKong.manage_api_lifecycle" title="Link to this definition"></a></dt>
+<dd><p>Handles the lifecycle events (creation and updates) for API resources.
+This function creates or updates HTTPRoute based on the provided spec, and manages associated
+plugins like rate limiting, API key verification, and CORS settings based on their enabled status
+along with check file path if plugin are provided in form on template.
+It also updates the HTTPRoute with annotations corresponding to the plugins applied.</p>
+<dl class="simple">
+<dt>Parameters:</dt><dd><p>spec (dict): The specification dictionary containing settings like path, plugins configuration etc.
+name (str): The name of the resource triggering this handler.
+namespace (str): The Kubernetes namespace where the resource resides.
+meta (dict): Metadata dictionary containing information eg. uid which is useful for managing resources.
+logger (logging.Logger): Logger instance for logging information or errors.
+kwargs: Arbitrary keyword arguments which might include additional context needed for plugins.</p>
+</dd>
+<dt>Returns:</dt><dd><p>Nothing</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="apiOperatorKong.create_or_update_ingress">
+<span class="sig-prename descclassname"><span class="pre">apiOperatorKong.</span></span><span class="sig-name descname"><span class="pre">create_or_update_ingress</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">spec</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">namespace</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">meta</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#apiOperatorKong.create_or_update_ingress" title="Link to this definition"></a></dt>
+<dd><p>Creates or updates an HTTPRoute for the given API resource. It configures the route based on the
+specified path and attaches it to defined service.
+The function also manages Kubernetes ownership metadata to ensure resources are cleaned up appropriately
+when the parent resource is deleted. see kopf.adopt()</p>
+<dl class="simple">
+<dt>Parameters:</dt><dd><p>spec (dict): The specification dictionary which should contain the path and other related settings.
+name (str): The name of the resource.
+namespace (str): The namespace where the HTTPRoute will be created or updated.
+meta (dict): Metadata about the resource, used to set ownership in Kubernetes.
+kwargs: Arbitrary keyword arguments, typically unused but available for future extensions.</p>
+</dd>
+<dt>Returns:</dt><dd><p>True if the HTTPRoute was successfully created or updated, False otherwise.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="apiOperatorKong.manage_ratelimit">
+<span class="sig-prename descclassname"><span class="pre">apiOperatorKong.</span></span><span class="sig-name descname"><span class="pre">manage_ratelimit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">spec</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">namespace</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">meta</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#apiOperatorKong.manage_ratelimit" title="Link to this definition"></a></dt>
+<dd><p>Configures a rate limiting plugin for an API if rate limiting is enabled in the spec. It creates or updates
+the plugin configuration in the specified namespace.</p>
+<dl class="simple">
+<dt>Parameters:</dt><dd><p>spec (dict): The specification dictionary containing rate limiting configuration details.
+name (str): The name of the API resource.
+namespace (str): The Kubernetes namespace where the plugin will be configured.
+meta (dict): Metadata containing information eg. uid .
+kwargs: Arbitrary keyword arguments, used for logging or other contextual operations.</p>
+</dd>
+<dt>Returns:</dt><dd><p>str or None: The name of the authentication plugin on success, or None if the setup is skipped</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="apiOperatorKong.manage_apiauthentication">
+<span class="sig-prename descclassname"><span class="pre">apiOperatorKong.</span></span><span class="sig-name descname"><span class="pre">manage_apiauthentication</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">spec</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">namespace</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">meta</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#apiOperatorKong.manage_apiauthentication" title="Link to this definition"></a></dt>
+<dd><p>Configures or updates an API authentication plugin (JWT) , for the specified API resource based on its specification. This is configured and tested as per CE version of kong.
+If using paid version ,can use template option to pass authenication plugin yaml and authentication will be configured on route.</p>
+<p>This function checks if API key verification (authentication) is enabled and sets up or updates the JWT plugin
+accordingly. The function also handles the lifecycle of the plugin, ensuring it is properly adopted and managed within
+the Kubernetes environment.</p>
+<dl class="simple">
+<dt>Parameters:</dt><dd><p>spec (dict): The specification dictionary containing the API key verification settings.
+name (str): The name of the API resource.
+namespace (str): The Kubernetes namespace where the plugin will be configured.
+meta (dict): Metadata about the resource.
+kwargs: Arbitrary keyword arguments, primarily used for additional logging or context.</p>
+</dd>
+<dt>Returns:</dt><dd><p>str or None: The name of the authentication plugin on success, or None if the setup is skipped.</p>
+</dd>
+<dt>Raises:</dt><dd><p>ApiException: An error from the Kubernetes API if the plugin update or creation fails.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="apiOperatorKong.manage_cors">
+<span class="sig-prename descclassname"><span class="pre">apiOperatorKong.</span></span><span class="sig-name descname"><span class="pre">manage_cors</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">spec</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">namespace</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">meta</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#apiOperatorKong.manage_cors" title="Link to this definition"></a></dt>
+<dd><p>Manages the creation or update of a CORS (Cross-Origin Resource Sharing) configuration for an API.</p>
+<p>This function sets up or updates a CORS plugin based on the CORS settings specified in the API resource’s spec.
+It checks if CORS is enabled and configures the KongPlugin accordingly, handling its lifecycle within the Kubernetes environment.</p>
+<dl class="simple">
+<dt>Parameters:</dt><dd><p>spec (dict): The specification dictionary containing CORS configuration.
+name (str): The name of the API resource.
+namespace (str): The Kubernetes namespace where the plugin will be configured.
+meta (dict): Metadata about the resource, used for managing ownership in Kubernetes.
+kwargs: Arbitrary keyword arguments, primarily used for additional logging or context.</p>
+</dd>
+<dt>Returns:</dt><dd><p>str or None: The name of the CORS plugin on success, or None if CORS is not enabled.</p>
+</dd>
+<dt>Raises:</dt><dd><p>ApiException: An error from the Kubernetes API if the plugin update or creation fails.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="apiOperatorKong.update_httproute_annotations">
+<span class="sig-prename descclassname"><span class="pre">apiOperatorKong.</span></span><span class="sig-name descname"><span class="pre">update_httproute_annotations</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">namespace</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">annotations</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#apiOperatorKong.update_httproute_annotations" title="Link to this definition"></a></dt>
+<dd><p>Updates the annotations of an HTTPRoute resource to include references to any plugins/policies applied.</p>
+<p>This function attempts to patch the existing HTTPRoute with new plugins/policies .This helps in maintaining a clear record of what plugins are
+associated with which routes.</p>
+<dl class="simple">
+<dt>Parameters:</dt><dd><p>name (str): The name of the HTTPRoute resource.
+namespace (str): The Kubernetes namespace where the HTTPRoute is located.
+annotations (dict): A dictionary containing the annotations to be added or updated on the HTTPRoute.</p>
+</dd>
+<dt>Returns:</dt><dd><p>bool: True if the update is successful, False otherwise.</p>
+</dd>
+<dt>Raises:</dt><dd><p>ApiException: Error if the update fails.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="apiOperatorKong.check_url">
+<span class="sig-prename descclassname"><span class="pre">apiOperatorKong.</span></span><span class="sig-name descname"><span class="pre">check_url</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">url</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#apiOperatorKong.check_url" title="Link to this definition"></a></dt>
+<dd><p>Checks the accessibility of a URL to ensure it is reachable.
+This function sends a HEAD request to the URL to verify if the URL is accessible without downloading the content.
+It logs an error if the URL is not reachable or returns an unsuccessful status code.</p>
+<dl class="simple">
+<dt>Parameters:</dt><dd><p>url (str): The URL to check for its accessibility.</p>
+</dd>
+<dt>Returns:</dt><dd><p>bool: True for accessible URL else its False</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="apiOperatorKong.download_template">
+<span class="sig-prename descclassname"><span class="pre">apiOperatorKong.</span></span><span class="sig-name descname"><span class="pre">download_template</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">url</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#apiOperatorKong.download_template" title="Link to this definition"></a></dt>
+<dd><p>Downloads and parses a YAML template from a given URL.
+This function attempts to fetch content from a specified URL expecting it to be a YAML format. It parses the content
+into a list of documents. Using ‘no-cache’ headers to make sure fresh content is fetched always.</p>
+<dl class="simple">
+<dt>Parameters:</dt><dd><p>url (str): The URL from which to download the YAML template.</p>
+</dd>
+<dt>Returns:</dt><dd><p>list or None: A list of YAML documents or None if the download fails or content is invalid.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="apiOperatorKong.apply_plugins_from_template">
+<span class="sig-prename descclassname"><span class="pre">apiOperatorKong.</span></span><span class="sig-name descname"><span class="pre">apply_plugins_from_template</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">templates</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">namespace</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">owner_references</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#apiOperatorKong.apply_plugins_from_template" title="Link to this definition"></a></dt>
+<dd><p>Applies plugin configurations to the Kubernetes cluster using the provided templates.
+Each template is expected to define a Kubernetes custom object for a plugin. This function manages the lifecycle of
+these plugins, updating existing ones and creating new ones as per requirement.</p>
+<dl class="simple">
+<dt>Parameters:</dt><dd><p>templates (list): A list of dictionaries, each representing a plugin configuration in YAML format.
+namespace (str): The Kubernetes namespace in which the plugins should be managed.
+owner_references (list): A list of owner references to ensure Kubernetes garbage collection is linked to the parent resource.</p>
+</dd>
+<dt>Returns:</dt><dd><p>list: A list of names of the plugins that were successfully created or updated.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="apiOperatorKong.manage_plugins_from_url">
+<span class="sig-prename descclassname"><span class="pre">apiOperatorKong.</span></span><span class="sig-name descname"><span class="pre">manage_plugins_from_url</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">spec</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">namespace</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">meta</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#apiOperatorKong.manage_plugins_from_url" title="Link to this definition"></a></dt>
+<dd><p>Manages the download and application of plugins from a URL specified in the API resource specification.
+This function checks if a URL is provided and reachable, downloads the corresponding templates, and applies them
+as plugins in the specified namespace. It also handles setting up ownership for automatic cleanup and logs the results.</p>
+<dl class="simple">
+<dt>Parameters:</dt><dd><p>spec (dict): The specification dictionary that may contain a ‘template’ URL.
+name (str): The name of the API resource.
+namespace (str): The Kubernetes namespace where plugins will be applied.
+meta (dict): Metadata about the resource, used for managing ownership in Kubernetes.</p>
+</dd>
+<dt>Returns:</dt><dd><p>list: A list of plugin names that were applied from the URL in template in CR.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="apiOperatorKong.delete_api_lifecycle">
+<span class="sig-prename descclassname"><span class="pre">apiOperatorKong.</span></span><span class="sig-name descname"><span class="pre">delete_api_lifecycle</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">meta</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">namespace</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#apiOperatorKong.delete_api_lifecycle" title="Link to this definition"></a></dt>
+<dd><p>Handles the deletion event of an API resource and logs the expected cascading deletions.
+This function logs the deletion of an ‘ExposedAPI’ resource and the expected automatic deletion of its associated
+‘HTTPRoute’ due to Kubernetes ownership links that were created using kopf.adopt().</p>
+<dl class="simple">
+<dt>Parameters:</dt><dd><p>meta (dict): Metadata about the resource, which includes details like the resource’s unique identifier.
+name (str): The name of the API resource that was deleted.
+namespace (str): The Kubernetes namespace from which the resource was deleted.
+kwargs: Arbitrary keyword arguments, primarily used for additional logging or context.</p>
+</dd>
+<dt>Returns:</dt><dd><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, TM Forum ODA-Component Accelerator project.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
