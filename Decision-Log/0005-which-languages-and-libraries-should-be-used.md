@@ -4,11 +4,11 @@ Date: 2023-05-24
 
 ## Status
 
-In progress
+Approved at Innovation Hub clinic on 2025-05-07
 
 ## Context
 
-The canvas uses The ODA Canvas provides access to a range of common services (for identity management, authentication, observability etc) and has a set of
+The ODA Canvas provides access to a range of common services (for identity management, authentication, observability etc) and has a set of
 [Software Operators](operators/README.md) that automatically configure these services based on requirements defined in each ODA Component YAML specification. The operators are packaged as docker images and are deployed as part of the canvas.
 
 Operators can be created in many different programming languages and frameworks: These are the ones linked from the [Extending Kubernetes with Operators](https://kubernetes.io/docs/concepts/extend-kubernetes/operator/) site:
@@ -29,11 +29,9 @@ There are many other frameworks - for example, one team is creating Java operato
 
 ## Decision
 
-We actively encourage a polyglot approach using the best framework and language for each task. As a reference implementation we want to demonstrate that the operators are themselves modular independently deployable
-pieces of software. We also want so show good practice in using some of the operator frameworks
+We actively encourage a polyglot approach using the best framework and language for each task. As a reference implementation we want to demonstrate that the operators are themselves modular independently deployable pieces of software. We also want so show good practice in using some of the operator frameworks
 
-We have written Kubernetes Operators in python (using KOPF framework). We have teams building operators in Java using Quarkus/Fabric8. If teams want to use alternative frameworks for the Operators
-then that is welcome.
+We will accept contributions of kubernetes operators in any programming language, as long as they support the Kubernetes Operator pattern.
 
 ## Consequences
 
