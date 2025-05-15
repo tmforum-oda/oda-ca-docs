@@ -4,7 +4,7 @@ Date: 2023-05-03
 
 ## Status
 
-In progress
+Approved at Innovation Hub clinic on 2025-05-07
 
 ## Context
 
@@ -12,12 +12,10 @@ The authentication use cases [UC001,UC002,UC003,UC007,UC008](https://github.com/
 
 ## Decision
 
-The Proposal is to support two open-source API Gateways: Kong API Gatway and Apache APISIX. Both usa the open-source model, cloud-native implementation and support for Kubernetes Operators.
+The decision is to support two open-source API Gateways: Kong API Gatway and Apache APISIX. Both use the open-source model, cloud-native implementation and support for Kubernetes Operators. 
 
 ## Consequences
 
-The Canvas implementation needs to be extended to:
+Having two API Gateways demonstrates the portability of components: Components declare their requirements for API Exposure and whe APIs will be exposed in either gateway.
 
-* Include charts for both Kong and APISIX API Gatways.
-* Configure the specific authentication use-case, requiring integration to Keycloak.
-* Extend the API Operator to configure Keycloak.
+The [API Management Operators](https://github.com/tmforum-oda/oda-canvas/tree/main/source/operators/api-management#api-management-operators) has links to the two operators that will be maintained as part of Reference Implementation, as well as other vendor supported alternatives.
