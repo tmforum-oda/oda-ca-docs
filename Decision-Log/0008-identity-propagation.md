@@ -4,13 +4,13 @@ Date: 2023-05-31
 
 ## Status
 
-In progress
+Approved at Innovation Hub clinic on 2025-05-07
 
 ## Context
 
 From the authentication workshop, it was proposed that we should propagate (pass-through) identities from component to component.
 
-In contrast, [UC007](https://github.com/tmforum-oda/oda-canvas/blob/master/usecase-library/UC007-Authentication-external.md) states that we will not support pass-through authorisation.
+In contrast, [UC010-External-Authentication](https://github.com/tmforum-oda/oda-canvas/blob/main/usecase-library/UC010-External-Authentication.md) states that we will not support pass-through authorisation.
 
 Consider the example of an action being performed with three parties involved: an end-user who makes a request via a front-end system that, in turn, makes a request of a back-end system to fulfil the end-user request.
 
@@ -20,7 +20,7 @@ Not performing pass-through authorisation means that the front-end system is aut
 
 ## Decision
 
-This is an area where different approaches have their merits and drawbacks, but the decision is also relatively easily reversed. The proposal is to follow the recommendation already made in [UC007](https://github.com/tmforum-oda/oda-canvas/blob/master/usecase-library/UC007-Authentication-external.md) but to test the practicality of the decision with the help of interested component vendors.
+This is an area where different approaches have their merits and drawbacks, but the decision is also relatively easily reversed. The decision is to follow the recommendation already made in [UC010-External-Authentication](https://github.com/tmforum-oda/oda-canvas/blob/main/usecase-library/UC010-External-Authentication.md) but to test the practicality of the decision with the help of interested component vendors.
 
 ## Consequences
 
