@@ -1,51 +1,31 @@
-# Contribution guidance
+# How to contribute to the ODA Canvas Accelerator
 
-We welcome contributions to this initiative. The following outlines the process and governance for contributing.
+## Have you read our code of conduct?
 
-* Contributions will include contributing new components, updates to the CRDs (Custom Resource Definitions) that kubernetes uses to define the structure of a component, updates to the kubernetes operators that use these CRDs and updates to the CTKs (Compliance Test Kits). 
-* Before you create a contribution, you should create an issue to describe what you plan to address and make any work visible to the whole team. You should also check that there are no open issues that may conflict with your planned contribution.
-* There are multiple issue types to use:
+We want the ODA Canvas Accelerator to be a welcoming community project. We have a [code of conduct](code-of-conduct.md) that we expect all participants to follow in all interactions with, or about, the project. We will take corrective action where the code of conduct is not followed.
 
-![Issues](./.github/Issues.PNG)
+## Can you contribute under the terms of the license?
 
+The project is released under the Apache 2 license. Please ensure that you have all necessary permissions to contribute code under those terms.
 
-Each issue type has its own template. e.g. a Feature uses:
-```
-<scope>: <subject>
+## Is something not working as expected?
 
-<body>
-```
+- If it's a security vulnerability, please contact us directly at [components@tmforum.org](mailto:components@tmforum.org)rather than creating an issue. We will work together to figure out when and how that vulnerability will be disclosed.
+- Check the issues to see if what you're experiencing has already been reported.
+- If needed, open a new issue, and give us as much information as you can about what you did, what you were expecting and what actually happened. Even better, if you know what the root of the problem is, tell us that too.
 
-Where `scope` is one of:
-1. component (for new/updated component)
-2. operator (for new or updates to the controller or custom resource definition)
-3. ctk (for new/updated CTKs)
+## Can you fix a bug?
 
+- Fork the repo, make your changes and then open a pull request against our repo with the fix.
+- Make sure the PR clearly describes the problem and the solution. If you have already raised an issue, please include that reference as well.
 
-e.g. 
-```
-component: Sigscale OCS
+## Do you need a new feature?
 
-Add envelope for Sigscale OCS component (https://github.com/sigscale/ocs-k8s)
-```
+Raise an issue describing the feature you need and how you might implement it before starting to code. Any feature that is applied to the codebase will eventually become part of the TM Forum Open Digital Architecture standard, so new features may need ratifying before implementation. We can have that discussion with you as part of the issue and nail the feature down in a way that will be acceptable to members before development work starts.
 
-* Once the issues have been created, create a feature-branch.
-* For the git commit messages we will follow the format in http://karma-runner.github.io/4.0/dev/git-commit-msg.html . For the allowed `scope` we should use:
-1. component (for new/updated component)
-2. operator (for new or updates to the controller or custom resource definition)
-3. test (for new/updated CTKs)
+## Anything else?
 
-example commit message
-```
-feat(component): Sigscale OCS
+Please contact us directly at [components@tmforum.org](mailto:components@tmforum.org).
 
-Add envelope for Sigscale OCS component (https://github.com/sigscale/ocs-k8s)
-
-fixes #6
-```
-
-* Finally, once a feature-branch is complete and tested, issue a pull-request to merge the feature-branch into the main branch. The pull request should mention the issues it addresses by including `closes #<issue_number>` in the pull request body (You have to hit the <return> key after the issue number to create the link). This will link and then automatically close the issue (if you want to link without closing an issue, include `references #<issue_number>`.)  
-
-The `github-actions bot` will analyse the pull request and automatically merge if the pull request relates to `documentation`, `bug-fix` or `refactor`. For `feature` pull requests, we will review and approve as part of the weekly ODA-CA governance meeting.
 
 
