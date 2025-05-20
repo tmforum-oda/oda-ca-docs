@@ -2,7 +2,7 @@
 
 ## Have you read our code of conduct?
 
-We want the ODA Canvas Accelerator to be a welcoming community project. We have a [code of conduct](code-of-conduct.md) that we expect all participants to follow in all interactions with, or about, the project. We will take corrective action where the code of conduct is not followed.
+We want the ODA Canvas Accelerator to be a welcoming community project. We have a [code of conduct](https://github.com/tmforum-oda/oda-canvas/blob/main/code-of-conduct.md) that we expect all participants to follow in all interactions with, or about, the project. We will take corrective action where the code of conduct is not followed.
 
 ## Can you contribute under the terms of the license?
 
