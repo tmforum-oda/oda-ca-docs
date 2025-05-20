@@ -1,0 +1,206 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Identity Config Operators &mdash; ODA-Component Accelerator v1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/css/custom.css?v=6567dac9" />
+
+  
+      <script src="../../../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../../../_static/documentation_options.js?v=5cb08e4e"></script>
+      <script src="../../../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" />
+    <link rel="next" title="Secrets Management Operator for HashiCorp Vault" href="../secretsmanagementOperator-hc/README.html" />
+    <link rel="prev" title="API Management Operators" href="../api-management/README.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../../../index.html" class="icon icon-home">
+            ODA-Component Accelerator
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">About the project:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../docs/Playbook.html">Introduction to the ODA Component Accelerator Project (ODA-CA)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../docs/Getting_started.html">Getting started checklist for new members of ODA-CA</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Tutorials:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../docs/Observability-Tutorial/README.html">Tutorial to deploy and observe a running component</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../docs/ODAComponentTutorial/README.html">Tutorial to build ODA-Component from Open-API Reference Implementation</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Component:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../docs/ODAComponentDesignGuidelines.html">Design Guidelines to create a new ODA Component</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Canvas:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../README.html">Open Digital Architecture Canvas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../installation/README.html">ODA Canvas installation</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Canvas Design:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../Canvas-design.html">ODA Canvas Design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../Design-Epics.html">Design Epics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../usecase-library/README.html">ODA Canvas - use-case library</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../Usecases.html">Usecase List</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../usecase-library/use-case-naming-conventions.html">Use case naming conventions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../README.html">ODA Canvas source code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../README.html">ODA Canvas Operators</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../component-management/README.html">Component Management Operator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api-management/README.html">API Management Operators</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Identity Config Operators</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#identityconfig-data-model">IdentityConfig Data Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#sequence-diagrams">Sequence Diagrams</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../secretsmanagementOperator-hc/README.html">Secrets Management Operator for HashiCorp Vault</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../credentials-management/README.html">Credentials Management Operator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dependentApiSimpleOperator/README.html">Dependency Management Operator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../webhooks-and-utilities.html">Webhooks and Utilities</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Feature Tests:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../feature-definition-and-test-kit/README.html">ODA Canvas Features and Test Kit</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../feature-definition-and-test-kit/Executing-tests.html">Installing and executing the BDD tests</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Contributions and Troubleshooting:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../docs/ContributionsGuide.html">Contribution guidance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../docs/TroubleshootingGuide/index.html">Troubleshooting Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../docs/developer/work-with-dockerimages.html">Developer How-Tos: Work with Dockerimages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../devcontainer.html">ODA Canvas Development Environment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Installing%20KOPF%20development%20environment.html">Installing KOPF (tested in GKE)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../docs/DocumentationProcess.html">Documentation Process</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../CONTRIBUTING.html">How to contribute to the ODA Canvas Accelerator</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">ODA-Component Accelerator</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Identity Config Operators</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../../../_sources/canvas/source/operators/identity-config/README.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="identity-config-operators">
+<h1>Identity Config Operators<a class="headerlink" href="#identity-config-operators" title="Link to this heading"></a></h1>
+<p>Each ODA Component includes a declarative definition of its requirements for creating Roles and Permissions in the Identity Management system.</p>
+<p>A Canvas platform can use any Identity Management system. IdentityConfig Operators automate the configuration of whatever Identity Management service is used.</p>
+<p>The Component Operator takes the <code class="docutils literal notranslate"><span class="pre">Component</span></code> custom resource and extracts the identity configuration requirements into an IdentityConfig resource. The IdentityConfig Operator is a class of Canvas Operator then manages the lifecycle of these <code class="docutils literal notranslate"><span class="pre">IdentityConfig</span></code> resources. In a given Canvas implementation, you can implement any Identity Management system by installing the corresponding IdentityConfig operator as part of the Canvas installation.</p>
+<p>At present, there are IdentityConfig Operators for the following:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="keycloak/README.html"><span class="std std-doc">Keycloak</span></a>: Operator for the Keycloak open source Identity Management system (<a class="reference external" href="https://www.keycloak.org/">https://www.keycloak.org/</a>).</p></li>
+<li><p><a class="reference internal" href="#../../../installation/azure/README.md"><span class="xref myst">Microsoft Azure Entra ID</span></a>: Operator for Azure Entra ID (<a class="reference external" href="https://learn.microsoft.com/en-us/entra/identity/">https://learn.microsoft.com/en-us/entra/identity/</a>).</p></li>
+</ul>
+<section id="identityconfig-data-model">
+<h2>IdentityConfig Data Model<a class="headerlink" href="#identityconfig-data-model" title="Link to this heading"></a></h2>
+<p>The <code class="docutils literal notranslate"><span class="pre">IdentityConfig</span></code> resource describes the permissions a component would like to configure in the Identity Management system. The component can provide static definitions in the component itself, or the component can dynamically manage the permissions by exposing a TM Forum Open-API.</p>
+<p>IdentityConfig with statically defined roles.</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">oda.tmforum.org/v1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">IdentityConfig</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ctk-productcatalogmanagementproductcatalogmanagement</span><span class="w"> </span><span class="c1"># Kubernetes resource name for the instance of the IdentityConfig</span>
+<span class="nt">spec</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">canvasSystemRole</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Admin</span>
+<span class="w">  </span><span class="nt">componentRole</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Product Catalogue Administrator</span>
+<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pcadmin</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Catalogue Owner for catalogue 1</span>
+<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cat1owner</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Catalogue Owner for catalogue 2</span>
+<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cat2owner</span>
+</pre></div>
+</div>
+<p>IdentityConfig with dynamically defined roles. At present this uses the TMF669 Party Role Management API; In the future this will be updated to use the TMF672 User Roles and Permissions API.</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">oda.tmforum.org/v1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">IdentityConfig</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ctk-productcatalogmanagementproductcatalogmanagement</span><span class="w"> </span><span class="c1"># Kubernetes resource name for the instance of the IdentityConfig</span>
+<span class="nt">spec</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">canvasSystemRole</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Admin</span>
+<span class="w">  </span><span class="nt">partyRoleAPI</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">implementation</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ctk-partyroleapi</span>
+<span class="w">    </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/ctk-productcatalogmanagement/tmf-api/partyRoleManagement/v4</span>
+<span class="w">    </span><span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">8080</span>
+</pre></div>
+</div>
+</section>
+<section id="sequence-diagrams">
+<h2>Sequence Diagrams<a class="headerlink" href="#sequence-diagrams" title="Link to this heading"></a></h2>
+<p>See <a class="reference internal" href="../../../usecase-library/UC005-Configure-Users-and-Roles.html"><span class="std std-doc">UC005-Configure-Users-and-Roles</span></a> for details of the Identity Management System use case.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../api-management/README.html" class="btn btn-neutral float-left" title="API Management Operators" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../secretsmanagementOperator-hc/README.html" class="btn btn-neutral float-right" title="Secrets Management Operator for HashiCorp Vault" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, TM Forum ODA-Component Accelerator project.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
