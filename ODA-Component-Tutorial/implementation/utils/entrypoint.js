@@ -46,5 +46,6 @@ function stripTrailingSlash(str) {
     }
     return str;
   }
+
 module.exports = { entrypoint };
 

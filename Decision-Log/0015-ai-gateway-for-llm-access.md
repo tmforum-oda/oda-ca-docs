@@ -1,10 +1,10 @@
-# 15. AI Gateway for LLM Access
+# 15. AI Model Gateway for LLM Access
 
 Date: 2025-10-06
 
 ## Status
 
-In progress
+Approved in 2025 Innovation Hub Elevate Workshop
 
 ## Context
 
@@ -27,7 +27,8 @@ The AI Gateway may integrate with existing identity platforms and observability 
 
 ## Consequences
 
-• All agent-based components must route LLM interactions through the AI Gateway.
-• Canvas and reference implementations must include AI Gateway integration examples.
+• All agent-based components must route LLM interactions through the AI Model Gateway.
+• Canvas and reference implementations must include AI Model Gateway integration examples.
 • Governance and compliance teams gain visibility into AI usage.
+• Introduces potential latency in LLM interactions due to policy enforcement and routing overhead. Performance monitoring and optimization strategies should be considered in implementation.
 • Future decisions may define specific guardrail policies and auditing schemas.

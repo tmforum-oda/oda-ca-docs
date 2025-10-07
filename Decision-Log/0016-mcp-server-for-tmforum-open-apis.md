@@ -4,7 +4,7 @@ Date: 2025-10-06
 
 ## Status
 
-In progress
+Approved in 2025 Innovation Hub Elevate Workshop
 
 ## Context
 
@@ -14,14 +14,19 @@ The Model Context Protocol (MCP) is an open standard designed to connect AI appl
 
 ## Decision
 
-Establish a Model Context Protocol (MCP) server for each TM Forum Open-API. Multiple MCP servers may be created for a single Open-API to represent different domain contexts (e.g., Retail, Wholesale, B2B, B2C), aligned with the Domain Context Specialization strategy.
+Establish Model Context Protocol (MCP) server(s) for TM Forum Open-APIs to enable AI agent interaction. The implementation approach may vary based on operational requirements.
+
+Multiple MCP servers may be created for a single Open-API to represent different domain contexts (e.g., Retail, Wholesale, B2B, B2C), aligned with the Domain Context Specialization strategy.
+
+It is also possible to build MCP tools on top of orchestration or composite APIs.
 
 Each MCP server will:
 
-• Serve contextual metadata and tool definitions for the Open-API
+• Serve contextual metadata and tool definitions for the Open-API(s)
 • Be discoverable via the API Inventory (MCP is just a type of API in the Canvas)
 • Support versioning, governance, and lifecycle management
 • Enable AI agents to reason about and interact with TM Forum APIs in a safe, auditable, and policy-compliant manner
+
 
 ## Consequences
 

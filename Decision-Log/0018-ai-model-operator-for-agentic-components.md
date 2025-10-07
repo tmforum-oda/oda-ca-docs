@@ -4,7 +4,7 @@ Date: 2025-10-06
 
 ## Status
 
-In progress
+Approved in 2025 Innovation Hub Elevate Workshop
 
 ## Context
 
@@ -26,3 +26,4 @@ Agentic Components must declare their AI model requirements (e.g., model type, g
 • Agentic Components must externalize model requirements in a declarative format.
 • Canvas and reference implementations must include AI Model Operator integration.
 • The AI Gateway and Model Operator must coordinate to ensure safe, compliant model access.
+
