@@ -18,3 +18,10 @@ This folder contains a log of architectural decisions made on this project, incl
 | 0012 Handling of Exposed APIs by Different Operators | 2025-04-30 | Proposed | [0012-exposed-api-handling.md](0012-exposed-api-handling.md) |  Canvas Spec Jam Workshop |
 | 0013 No certification for canvas implementation | 2025-04-30 | Pending ODA-CA board approval | [0013-canvas-certification.md](0013-canvas-certification.md) |  ODA-CA Canvas Working Group |
 | 0014 Supporting Multiple Component Namespaces | 2025-05-20 | Pending ODA-CA board approval | [0014-multiple-component-namespaces.md](0014-multiple-component-namespaces.md) |  ODA-CA Operations Team |
+| 0015 AI Gateway for LLM Access | 2025-10-06 | In progress | [0015-ai-gateway-for-llm-access.md](0015-ai-gateway-for-llm-access.md) |  Innovation Hub Elevate Workshop |
+| 0016 Model Context Protocol (MCP) Server for TM Forum Open-APIs | 2025-10-06 | In progress | [0016-mcp-server-for-tmforum-open-apis.md](0016-mcp-server-for-tmforum-open-apis.md) |  Innovation Hub Elevate Workshop |
+| 0017 Strategy for AI Agents: Modular, Self-Descriptive, CSP-Specific | 2025-10-06 | In progress | [0017-strategy-for-ai-agents.md](0017-strategy-for-ai-agents.md) |  Innovation Hub Elevate Workshop |
+| 0018 AI Model Operator for Agentic Components | 2025-10-06 | In progress | [0018-ai-model-operator-for-agentic-components.md](0018-ai-model-operator-for-agentic-components.md) |  Innovation Hub Elevate Workshop |
+| 0019 Adopt A2A Protocol as Open Standard for Agent Skill Exposure | 2025-10-06 | In progress | [0019-adopt-a2a-protocol-for-agent-skill-exposure.md](0019-adopt-a2a-protocol-for-agent-skill-exposure.md) |  Innovation Hub Elevate Workshop |
+| 0020 ML Model Integration via ML Ops Pipeline | 2025-10-06 | In progress | [0020-ml-model-integration-via-ml-ops-pipeline.md](0020-ml-model-integration-via-ml-ops-pipeline.md) |  Innovation Hub Elevate Workshop |
+| 0021 Optimize ODA Canvas Repository for AI Coding Agents | 2025-10-06 | In progress | [0021-optimize-oda-canvas-for-ai-coding-agents.md](0021-optimize-oda-canvas-for-ai-coding-agents.md) |  Innovation Hub Elevate Workshop |
