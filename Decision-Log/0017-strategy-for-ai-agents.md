@@ -1,4 +1,4 @@
-# 17. Strategy for AI Agents: Modular, Self-Descriptive, CSP-Specific
+# 17. Strategy for AI Agents: Modular, Autonomous, Self-Descriptive, CSP-Specific
 
 Date: 2025-10-06
 
@@ -30,16 +30,18 @@ Additionally, **serverless computing patterns** will be added to Canvas to suppo
 
 The architecture will support:
 
-• Modular, self-descriptive AI Agents that expose their capabilities, interfaces, and context via metadata (e.g., using MCP or A2A)
-• Interoperability between AI Agents and ODA Components through standardized APIs
-• CSP-specific agent implementations, allowing differentiation and alignment with unique customer experience strategies
+* Modular, self-descriptive AI Agents that expose their capabilities, interfaces, and context via metadata (e.g., using MCP or A2A)
+* Interoperability between AI Agents and ODA Components through standardized APIs
+* Autonomous: AI agents can reason to gather context, take actions (e.g. via tools accessed by MCP), can run in parallel (to speed up execution), can be used for validation.
+* Human in the loop: AI agents output should be improved by working iteratively in loops. Human are needed to check the output and steer the loops.
+* CSP-specific agent implementations, allowing differentiation and alignment with unique customer experience strategies
 
 This approach enables innovation and flexibility while maintaining architectural consistency and interoperability. The recommendation is to observe developments in the AI industry and assess the impact on Canvas and components before committing to specific standardization frameworks for agents.
 
 ## Consequences
 
-• TM Forum will focus on enabling agent interoperability and composability, rather than defining strict agent boundaries.
-• Canvas and reference implementations may include example agents, but these are illustrative—not normative.
-• CSPs are responsible for designing and deploying AI Agents aligned with their operational and customer experience goals.
-• The Canvas architecture will be extended to explicitly recognize and support serverless patterns.
-• TM Forum will continue to monitor AI industry trends to inform future standardization decisions, avoiding premature commitments to specific frameworks.
+* TM Forum will focus on enabling agent interoperability and composability, rather than defining strict agent boundaries.
+* Canvas and reference implementations may include example agents, but these are illustrative—not normative.
+* CSPs are responsible for designing and deploying AI Agents aligned with their operational and customer experience goals.
+* The Canvas architecture will be extended to explicitly recognize and support serverless patterns.
+* TM Forum will continue to monitor AI industry trends to inform future standardization decisions, avoiding premature commitments to specific frameworks.
