@@ -20,8 +20,8 @@ This tight coupling has several implications:
 The ODA Canvas is designed to be a modular and extensible platform. To fully realize this vision, we need a more decoupled architecture that allows:
 - Independent development cycles for each operator
 - Separate versioning and release management for each operator
-- Organizations to mix and match operators based on their needs
-- Easier contribution and maintenance by different teams or organizations
+- Organizations to selectively deploy and mix and match operators based on their needs
+- Easier contributions and maintenance by different teams or organizations
 - Clear separation of concerns between component lifecycle management and specific resource management
 
 ## Decision
@@ -132,7 +132,7 @@ The Component Operator will no longer:
 2. **Increased Repository Management**
    - More repositories to maintain and manage
    - Need for consistent governance across repositories
-   - Potential for version incompatibilities if not carefully managed
+   - Potential for API version incompatibilities between operators and the Component CRD if not carefully managed
 
 3. **Helm Chart Complexity**
    - Component Helm charts become larger with embedded sub-resources
@@ -161,7 +161,7 @@ The Component Operator will no longer:
 
 ## Implementation Notes
 
-This decision aligns with Decision 0009 (Monorepo Helm and Container Versioning) which already established that every operator should be deployed using its own Helm chart with aligned container image versions.
+This decision aligns with [Decision 0009](0009-monorepo-helm-container-versioning.md) (Monorepo Helm and Container Versioning) which already established that every operator should be deployed using its own Helm chart with aligned container image versions.
 
 The implementation should be phased:
 1. Define the new simplified Component CRD schema
