@@ -25,3 +25,4 @@ This folder contains a log of architectural decisions made on this project, incl
 | 0019 Adopt A2A Protocol as Open Standard for Agent Skill Exposure | 2025-10-06 | In progress | [0019-adopt-a2a-protocol-for-agent-skill-exposure.md](0019-adopt-a2a-protocol-for-agent-skill-exposure.md) |  Innovation Hub Elevate Workshop |
 | 0020 ML Model Integration via ML Ops Pipeline | 2025-10-06 | In progress | [0020-ml-model-integration-via-ml-ops-pipeline.md](0020-ml-model-integration-via-ml-ops-pipeline.md) |  Innovation Hub Elevate Workshop |
 | 0021 Optimize ODA Canvas Repository for AI Coding Agents | 2025-10-06 | In progress | [0021-optimize-oda-canvas-for-ai-coding-agents.md](0021-optimize-oda-canvas-for-ai-coding-agents.md) |  Innovation Hub Elevate Workshop |
+| 0022 Modular and Independent Operators | 2025-12-11 | In progress | [0022-modular-independent-operators.md](0022-modular-independent-operators.md) |  ODA-CA Architecture Working Group |
