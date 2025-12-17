@@ -8,7 +8,7 @@ In progress
 
 ## Context
 
-The current architecture of the ODA Canvas has a monolithic Component Custom Resource Definition (CRD) that embeds all the structure of sub-CRDs including ExposedAPI, DependentAPI, IdentityConfig, PublishedNotification, SubscribedNotification, SecretsManagement, and others. The Component Operator decomposes this Component CRD and creates the sub-CRDs dynamically. While each sub-CRD already has its own dedicated operator to manage the relevant Canvas services, this approach creates tight coupling between the Component CRD structure and the sub-resource definitions.
+The current architecture of the ODA Canvas has a Component Custom Resource Definition (CRD) that embeds all the structure of sub-CRDs including ExposedAPI, DependentAPI, IdentityConfig, PublishedNotification, SubscribedNotification, SecretsManagement, and others. The Component Operator decomposes this Component CRD and creates the sub-CRDs dynamically. While each sub-CRD already has its own dedicated operator to manage the relevant Canvas services, this approach creates tight coupling between the Component CRD structure and the sub-resource definitions.
 
 This tight coupling has several implications:
 - Changes to any sub-CRD structure require modifications to the Component CRD schema
@@ -16,6 +16,7 @@ This tight coupling has several implications:
 - Independent development and versioning of sub-operators is complicated
 - Organizations cannot easily replace or extend individual operators without forking the entire Component Operator
 - Testing and validation of individual operators is more complex due to dependencies on the Component Operator
+- Independent API versioning of individual operators/CRD's is not supported (e.g. we can't have a v1alpha1 version of a new experimental operator CRD whilst having a v1 of the Component CRD).
 
 The ODA Canvas is designed to be a modular and extensible platform. To fully realize this vision, we need a more decoupled architecture that allows:
 - Independent development cycles for each operator
@@ -32,10 +33,9 @@ We will restructure the Custom Resource Definitions (CRDs) and Software Operator
 
 The Component CRD will be significantly reduced in size and scope. It will only contain:
 - Component metadata (name, version, description, etc.)
-- References to the sub-resources rather than embedding their full specifications
 - Core component lifecycle information
 
-The Component CRD will no longer embed the complete structure of sub-CRDs. Instead, sub-resources will be declared as independent Kubernetes resources.
+The Component CRD will no longer embed the complete structure of sub-CRDs. Instead, sub-resources will be declared as independent Kubernetes resources. The sub-resources will include a label to declare that they are part of the component and at deployment-time the Component operator will build a parent-child relationship between the Component CRD and all the sub-resources (as it already does for standard Kubernetes resources).
 
 ### 2. Package Sub-CRDs as Independent Resources
 
@@ -85,7 +85,7 @@ The Component Operator will retain responsibility for:
 The Component Operator will no longer:
 - Embed sub-CRD schemas in the Component CRD
 - Dynamically create sub-CRDs from Component specifications
-- Manage the lifecycle of sub-resources beyond initial references
+- Manage the lifecycle of sub-resources 
 
 ## Consequences
 
@@ -137,17 +137,11 @@ The Component Operator will no longer:
 3. **Helm Chart Complexity**
    - Component Helm charts become larger with embedded sub-resources
    - Chart developers must understand sub-resource schemas
-   - More resources created during component installation
 
 4. **Coordination Required**
    - Breaking changes to CRD schemas require coordination across repositories
    - Need for clear API contracts and versioning policies
    - Integration testing becomes more complex with multiple repositories
-
-5. **Discovery and Learning Curve**
-   - Developers need to know about multiple repositories
-   - Understanding the full Canvas requires navigating more locations
-   - Need for strong cross-repository documentation
 
 ### Mitigation Strategies
 
