@@ -23,7 +23,11 @@ The content is not kept in the `doc` folder. When Sphinx starts, [`doc/conf.py`]
 2. copies the project pages and tutorials from the root of this repository into `doc/docs`; and
 3. copies the hand-written navigation files from `doc/overlay` on top.
 
-`doc/canvas`, `doc/docs` and `doc/_build` are generated, so don't edit or commit them. To change a Canvas page, raise a pull request on oda-canvas. To change the menu structure, edit [`doc/index.rst`](doc/index.rst) or the `.rst` files in [`doc/overlay`](doc/overlay).
+`doc/canvas`, `doc/docs` and `doc/_build` are generated, so don't edit or commit them. To change a Canvas page, raise a pull request on oda-canvas. To change the menu structure, edit [`doc/index.rst`](doc/index.rst): each `toctree` in it is one section of the sidebar.
+
+Only the top page of each area needs to be listed there. When the build reads a `README.md` (or a skill's `SKILL.md`), it adds every page in that folder and its sub-folders to the menu underneath it, down to the next `README.md`. So a new page in oda-canvas appears in the menu without any change here, as long as it sits in a folder with a README. The use case archive (`usecase-library/archive`) is not published.
+
+The site uses the [Furo](https://pradyunsg.me/furo/) theme, styled in [`doc/_static/css/custom.css`](doc/_static/css/custom.css) to match the ODA Canvas training videos: the same colour for each concept, the Inter and JetBrains Mono fonts, and dark mode by default.
 
 To build the site locally, check out oda-canvas next to oda-ca-docs, then:
 
