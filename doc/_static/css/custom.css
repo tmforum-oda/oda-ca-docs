@@ -1,23 +1,263 @@
-ul {
-  list-style-type: disc;
-  margin-left: 1em;
-}
-ul li {
-  display: list-item;
-  list-style: disc;
+/*
+ * ODA Canvas documentation theme: Furo, styled after the ODA Canvas training videos.
+ * Same palette as the videos (videos/src/theme.ts): one colour per recurring concept,
+ * a dark navy stage with a faint dot grid, Inter for text and JetBrains Mono for code.
+ */
+
+/* -- Palette (identical in both modes) ------------------------------------ */
+:root {
+  --oda-tmf: #e6007e;           /* TM Forum magenta */
+  --oda-component: #f5a623;     /* ODA Component */
+  --oda-canvas: #2f6fed;        /* ODA Canvas */
+  --oda-operator: #1fc7a8;      /* Canvas operators */
+  --oda-api: #8b6cff;           /* API management */
+  --oda-identity: #ff6b6b;      /* Identity and access */
+  --oda-observability: #38bdf8; /* Observability */
+  --oda-secrets: #e9c46a;       /* Secrets */
+  --oda-events: #a3e635;        /* Events */
+  --oda-ai: #f472b6;            /* AI-native */
+  --oda-carbon: #34d399;        /* Carbon */
 }
 
-dl,
-ol,
-div.wy-menu ul {
-    list-style: none;
-    list-style-image: none
+/* -- Light mode ------------------------------------------------------------ */
+body {
+  --font-stack: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+  --font-stack--monospace: "JetBrains Mono", SFMono-Regular, Menlo, Consolas, monospace;
+  --font-stack--headings: var(--font-stack);
+
+  --oda-stage: #ffffff;
+  --oda-glow: #ffffff;
+  --oda-grid: transparent;
+  --oda-panel: #f4f6fb;
+  --oda-panel-edge: #dbe2ef;
+  --oda-ink: #10284c;
+  --oda-kicker: #2f6fed;
+
+  --color-foreground-primary: #10284c;
+  --color-foreground-secondary: #4a5675;
+  --color-foreground-muted: #6b7690;
+  --color-background-primary: #ffffff;
+  --color-background-secondary: #f4f6fb;
+  --color-background-border: #dbe2ef;
+  --color-brand-primary: #2f6fed;
+  --color-brand-content: #1f5adb;
+  --color-brand-visited: #6a4fd6;
+  --color-sidebar-caption-text: #2f6fed;
+  --color-inline-code-background: #eef2fa;
+  --color-code-background: #f4f6fb;
+  --color-highlight-on-target: #fff4d6;
 }
 
-div.wy-menu ul li {
-    list-style: none
+/* -- Dark mode: the video "stage" -------------------------------------------- */
+body[data-theme="dark"] {
+  --oda-stage: #0a0f1e;
+  --oda-glow: #16203a;
+  --oda-grid: #1a2440;
+  --oda-panel: #111a30;
+  --oda-panel-edge: #24314f;
+  --oda-ink: #f2f5fb;
+  --oda-kicker: #5b8def;
+
+  --color-foreground-primary: #f2f5fb;
+  --color-foreground-secondary: #b6c0d6;
+  --color-foreground-muted: #8f9bb8;
+  --color-foreground-border: #4a5675;
+  --color-background-primary: #0a0f1e;
+  --color-background-secondary: #0d1426;
+  --color-background-hover: #16203a;
+  --color-background-hover--transparent: #16203a00;
+  --color-background-border: #24314f;
+  --color-background-item: #24314f;
+  --color-brand-primary: #6e9bff;
+  --color-brand-content: #7aa5ff;
+  --color-brand-visited: #a48cff;
+  --color-sidebar-caption-text: #5b8def;
+  --color-sidebar-link-text: #d5dcea;
+  --color-sidebar-link-text--top-level: #f2f5fb;
+  --color-sidebar-item-background--current: #16203a;
+  --color-sidebar-item-background--hover: #16203a;
+  --color-inline-code-background: #16203a;
+  --color-code-background: #0d1426;
+  --color-code-foreground: #e6ebf5;
+  --color-table-border: #24314f;
+  --color-table-header-background: #111a30;
+  --color-admonition-background: #111a30;
+  --color-highlight-on-target: #2a2310;
+  --color-card-background: #111a30;
+}
+@media (prefers-color-scheme: dark) {
+  body:not([data-theme="light"]) {
+    --oda-stage: #0a0f1e;
+    --oda-glow: #16203a;
+    --oda-grid: #1a2440;
+    --oda-panel: #111a30;
+    --oda-panel-edge: #24314f;
+    --oda-ink: #f2f5fb;
+    --oda-kicker: #5b8def;
+
+    --color-foreground-primary: #f2f5fb;
+    --color-foreground-secondary: #b6c0d6;
+    --color-foreground-muted: #8f9bb8;
+    --color-foreground-border: #4a5675;
+    --color-background-primary: #0a0f1e;
+    --color-background-secondary: #0d1426;
+    --color-background-hover: #16203a;
+    --color-background-hover--transparent: #16203a00;
+    --color-background-border: #24314f;
+    --color-background-item: #24314f;
+    --color-brand-primary: #6e9bff;
+    --color-brand-content: #7aa5ff;
+    --color-brand-visited: #a48cff;
+    --color-sidebar-caption-text: #5b8def;
+    --color-sidebar-link-text: #d5dcea;
+    --color-sidebar-link-text--top-level: #f2f5fb;
+    --color-sidebar-item-background--current: #16203a;
+    --color-sidebar-item-background--hover: #16203a;
+    --color-inline-code-background: #16203a;
+    --color-code-background: #0d1426;
+    --color-code-foreground: #e6ebf5;
+    --color-table-border: #24314f;
+    --color-table-header-background: #111a30;
+    --color-admonition-background: #111a30;
+    --color-highlight-on-target: #2a2310;
+    --color-card-background: #111a30;
+  }
 }
 
-.wy-nav-content {
-  max-width: 1200px !important;
+/* -- The stage: a soft glow and a faint dot grid behind the content ------- */
+.main {
+  background-color: var(--oda-stage);
+  background-image:
+    radial-gradient(ellipse 70% 50% at 50% 0%, var(--oda-glow) 0%, transparent 70%),
+    radial-gradient(var(--oda-grid) 1.2px, transparent 1.2px);
+  background-size: 100% 900px, 32px 32px;
+  background-repeat: no-repeat, repeat;
+}
+.content {
+  max-width: 52em;
+}
+
+/* -- Typography --------------------------------------------------------------- */
+h1, h2, h3, h4 {
+  font-weight: 800;
+  letter-spacing: -0.015em;
+}
+h1 {
+  font-size: 2.2em;
+}
+h2 {
+  font-weight: 700;
+}
+
+/* Sidebar section captions look like the video kickers: small, bold, spaced capitals. */
+.sidebar-tree .caption,
+.sidebar-tree :not(.caption) > .caption-text {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+.sidebar-brand-text {
+  font-weight: 800;
+  font-size: 1.05rem;
+}
+.sidebar-logo {
+  max-width: 100%;
+}
+
+/* Code blocks sit on a panel, like the terminal clips in the videos. */
+.highlight,
+.literal-block-wrapper {
+  border-radius: 8px;
+}
+div.highlight {
+  border: 1px solid var(--color-background-border);
+}
+
+/* Tables */
+table.docutils {
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+/* Images that are diagrams on a transparent background stay legible in dark mode. */
+body[data-theme="dark"] .content img[src$=".svg"],
+body[data-theme="dark"] .content img[src$=".png"],
+body[data-theme="dark"] .content img[src$=".PNG"] {
+  background: #ffffff;
+  border-radius: 6px;
+  padding: 4px;
+}
+@media (prefers-color-scheme: dark) {
+  body:not([data-theme="light"]) .content img[src$=".svg"],
+  body:not([data-theme="light"]) .content img[src$=".png"],
+  body:not([data-theme="light"]) .content img[src$=".PNG"] {
+    background: #ffffff;
+    border-radius: 6px;
+    padding: 4px;
+  }
+}
+.sidebar-logo,
+.content a.reference img[src*="img.youtube.com"] {
+  background: none !important;
+  padding: 0 !important;
+}
+
+/* -- Home page -------------------------------------------------------------- */
+.oda-hero {
+  margin: 0.5rem 0 2rem;
+}
+.oda-kicker {
+  color: var(--oda-kicker);
+  font-weight: 700;
+  font-size: 0.85rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  margin: 1.5rem 0 -0.75rem;
+}
+.oda-lede {
+  font-size: 1.15rem;
+  line-height: 1.6;
+  color: var(--color-foreground-secondary);
+  max-width: 42em;
+}
+.oda-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
+  gap: 1rem;
+  margin: 1.5rem 0 2.5rem;
+}
+a.oda-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  padding: 1.1rem 1.2rem 1.2rem;
+  background: var(--oda-panel);
+  border: 1px solid var(--oda-panel-edge);
+  border-top: 4px solid var(--accent, var(--oda-canvas));
+  border-radius: 10px;
+  color: var(--oda-ink);
+  text-decoration: none;
+  transition: transform 0.15s ease, border-color 0.15s ease;
+}
+a.oda-card:hover {
+  transform: translateY(-2px);
+  border-color: var(--accent, var(--oda-canvas));
+  border-top-width: 4px;
+}
+.oda-card-kicker {
+  color: var(--accent, var(--oda-canvas));
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+.oda-card-title {
+  font-size: 1.1rem;
+  font-weight: 800;
+}
+.oda-card-text {
+  font-size: 0.9rem;
+  color: var(--color-foreground-secondary);
+  line-height: 1.45;
 }

@@ -36,14 +36,35 @@ myst_enable_extensions = [
 
 source_suffix = {".rst": "restructuredtext", ".md": "markdown"}
 templates_path = ["_templates"]
-exclude_patterns = ["_build", "overlay", "Thumbs.db", ".DS_Store"]
+# Archived use cases are kept in oda-canvas for history, but not published.
+exclude_patterns = ["_build", "overlay", "canvas/usecase-library/archive", "Thumbs.db", ".DS_Store"]
 master_doc = "index"
 
 # -- Options for HTML output -------------------------------------------------
 
-html_theme = "sphinx_rtd_theme"
+# Furo, styled to match the ODA Canvas training videos: the same palette (one
+# colour per concept), Inter and JetBrains Mono, and a dark stage by default.
+# The colours are defined in _static/css/custom.css.
+html_theme = "furo"
+html_title = "ODA Canvas and Components"
 html_static_path = ["_static"]
-html_css_files = ["css/custom.css"]
+html_css_files = [
+    "https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800"
+    "&family=JetBrains+Mono:wght@400;600&display=swap",
+    "css/custom.css",
+]
+html_js_files = ["js/default-dark.js"]
+html_theme_options = {
+    "light_logo": "ODA-Canvas.svg",
+    "dark_logo": "ODA-Canvas-dark.svg",
+    "sidebar_hide_name": False,
+    "navigation_with_keys": True,
+    # No "edit this page" link: most pages are copied from oda-canvas, so the
+    # source is not in this repository.
+    "top_of_page_buttons": [],
+}
+pygments_style = "friendly"
+pygments_dark_style = "github-dark"
 # Google Search Console site verification file, served at the site root.
 html_extra_path = ["../google6235ca3ee03a50cf.html"]
 
@@ -154,6 +175,7 @@ def populate():
         ("Observability-Tutorial", "Observability-Tutorial"),
         ("ODA-Component-Tutorial", "ODAComponentTutorial"),
         ("Troubleshooting-Guide", "TroubleshootingGuide"),
+        ("Decision-Log", "Decision-Log"),
     ]:
         copy_tree(os.path.join(REPO_ROOT, src), os.path.join(docs_out, dest))
     # The troubleshooting guide's landing page is overlay/docs/TroubleshootingGuide/index.rst
@@ -185,6 +207,98 @@ def _decode_image_paths(app, doctree):
             image["uri"] = unquote(uri)
 
 
+# -- Nest each README's sub-pages under it in the navigation ------------------
+
+import re
+
+from sphinx.util.matching import patfilter
+
+# Pages whose folder is a section of its own: their sub-pages are nested under them.
+INDEX_PAGES = ("README", "SKILL")
+# Index pages that are not given nested sub-pages (their children are listed in
+# index.rst, or they are the root of the whole repository).
+NO_NESTING = ("canvas/README", "canvas/usecase-library/README")
+
+_listed = None
+
+
+def _listed_in_toctrees(app):
+    """Docnames that index.rst (and the overlay .rst files) already put in the
+    navigation, with globs expanded the way Sphinx expands them."""
+    global _listed
+    if _listed is None:
+        found = sorted(app.env.found_docs)
+        _listed = set()
+        rst_files = [os.path.join(DOC_DIR, "index.rst")]
+        for root, _dirs, files in os.walk(os.path.join(DOC_DIR, "overlay")):
+            rst_files += [os.path.join(root, f) for f in files if f.endswith(".rst")]
+        for path in rst_files:
+            rel_dir = os.path.relpath(os.path.dirname(path), DOC_DIR)
+            rel_dir = os.path.relpath(rel_dir, "overlay") if rel_dir.startswith("overlay") else rel_dir
+            base = "" if rel_dir == "." else rel_dir.replace(os.sep, "/") + "/"
+            for line in open(path, encoding="utf-8"):
+                m = re.match(r"^   ([^\s:.][^:]*?)\s*$", line)
+                if not m:
+                    continue
+                entry = base + re.sub(r"\.(md|rst)$", "", m.group(1))
+                if "*" in entry or "?" in entry:
+                    _listed.update(patfilter(found, entry))
+                else:
+                    _listed.add(entry)
+    return _listed
+
+
+def _is_index(docname):
+    return docname.rsplit("/", 1)[-1] in INDEX_PAGES
+
+
+def _owner(app, docname):
+    """The nearest README (or SKILL) page that a page sits under."""
+    folder = docname.rsplit("/", 1)[0] if "/" in docname else ""
+    if _is_index(docname):
+        folder = folder.rsplit("/", 1)[0] if "/" in folder else ""
+    while folder:
+        for name in INDEX_PAGES:
+            if f"{folder}/{name}" in app.env.found_docs:
+                return f"{folder}/{name}"
+        folder = folder.rsplit("/", 1)[0] if "/" in folder else ""
+    return None
+
+
+def _nest_sub_pages(app, docname, source):
+    if not _is_index(docname) or docname in NO_NESTING:
+        return
+    listed = _listed_in_toctrees(app)
+    children = sorted(
+        d
+        for d in app.env.found_docs
+        if d != docname
+        and d.startswith(docname.rsplit("/", 1)[0] + "/")
+        and d not in listed
+        and _owner(app, d) == docname
+    )
+    if children:
+        entries = "\n".join("/" + c for c in children)
+        source[0] += _close_open_fence(source[0])
+        source[0] += f"\n\n```{{toctree}}\n:hidden:\n\n{entries}\n```\n"
+
+
+def _close_open_fence(text):
+    """If a page ends inside an unclosed code fence, return the line that closes it."""
+    fence = None
+    for line in text.splitlines():
+        m = re.match(r"^\s{0,3}(`{3,}|~{3,})", line)
+        if not m:
+            continue
+        marker = m.group(1)
+        if fence is None:
+            fence = marker
+        elif marker[0] == fence[0] and len(marker) >= len(fence) and not line.strip()[len(marker):]:
+            fence = None
+    return f"\n{fence}\n" if fence else ""
+
+
 def setup(app):
     # Priority below the default (500) so this runs before the image collector.
     app.connect("doctree-read", _decode_image_paths, priority=400)
+    app.connect("source-read", _nest_sub_pages)
