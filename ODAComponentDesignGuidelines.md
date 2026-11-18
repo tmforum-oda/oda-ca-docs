@@ -1,177 +1,289 @@
 # Design Guidelines to create a new ODA Component
 
-ODA Components are self-contained, independently deployable software modules that confirm to the [TM Forum Open Digital Architecture](https://tmforum.org/oda).
+ODA Components are self-contained, independently deployable software modules that conform to the [TM Forum Open Digital Architecture](https://www.tmforum.org/oda/). The business drivers and conceptual model for ODA Components are described in [IG1171 ODA Component Definition](https://www.tmforum.org/resources/how-to-guide/ig1171-oda-component-definition/).
 
-The business drivers and conceptual model for ODA Components is described in [IG1171 ODA Component Definition](https://projects.tmforum.org/wiki/display/PUB/IG1171%20ODA%20Component%20Definition%20R19.0.1).
+An ODA Component builds on open standards such as containers, Kubernetes and Helm, and adds telco-domain metadata. You start with containerized microservices described in Kubernetes manifests (usually packaged as a Helm chart). To turn them into an ODA Component you:
 
+1. Add a `Component` resource that describes the component's *core function*, *event notification*, *management function* and *security function*.
+2. Label every standard Kubernetes resource as belonging to the component.
+3. Deploy and test the component on a Kubernetes cluster with the [ODA Canvas](../canvas/README.md) installed.
 
-The ODA Component concept builds on top of open standards like Docker and Kubernetes, and adds Telco-domain knowledge and meta-data. The starting point for building an ODA component is containerized, micro-service software described in a kubernetes manifest YAML file. To turn this into an ODA Component we will:
+There are two ways to do this: let an AI coding agent do it with the **ODA Agent Skill**, or follow the **manual steps** below. Both produce a component that conforms to the **v1** component specification.
 
-1. Add meta-data to the Kubernetes manifest describing the *Core Function*, *Notification/Reporting*, *Security Function* and *Management Function* of the software component.
-2. Add labels to all the standard Kubernetes resources to label them as belonging to the component.
-3. Test the deployment of the Component in an operating platform that has the ODA Canvas installed (for example the TM FOrum Open-Digital Lab). See the [Getting Started](https://github.com/tmforum-rand/oda-component-definitions#get-started) section to see how to install the ODA Canvas onto a kubernetes cluster environmnet.
+## Option 1: Use the ODA Agent Skill
 
+The **implement-oda-component** Agent Skill builds a new ODA Component for you. It is in the `tm-forum-oda-consumer` plugin of the [ODA Agent Skills Marketplace](https://github.com/tmforum-oda/oda-agent-skills-marketplace). The skills work with Claude Code and most other popular AI coding agents, such as GitHub Copilot.
 
-## Step 1: ODA-Component Metadata
+For a demonstration, watch [Part 7 of the training videos, The ODA Agent Skills Marketplace](training-videos/part-7.md) (or [on YouTube](https://youtu.be/6ONDbSo3RfY)).
 
-This guide has been updated to conform to the [v1beta2 component specification](oda-component-oas-v1beta2.yaml).
+### What the skill does
 
-The ODA-Component metadata contains all the Telco-domain knowledge that makes the component a self-describing deployable software module. From [IG1171 ODA Component Definition](https://projects.tmforum.org/wiki/display/PUB/IG1171%20ODA%20Component%20Definition%20R19.0.1), this meta-data describes the Open-APIs, event data schemas as well as security and management & operations for the component. 
+1. It asks which standard component to build, from TMFC001 to TMFC062 (for example *TMFC001 Product Catalog Management*).
+2. It reads the component's published specification from the TM Forum ODA component catalogue: its mandatory and optional APIs, its events and its security API.
+3. It implements the mandatory Open APIs, the security API the specification asks for (TMF669 Party Role or TMF672 Roles and Permissions), a Prometheus metrics endpoint and, if you want them, the optional APIs and an MCP server.
+4. It generates Node.js microservices, a Dockerfile for each one, and a Helm chart that contains a **v1** `Component` resource with every resource labelled.
+5. It can build and push the container images and install the chart on your Canvas.
 
-The meta-data is defined using a Kubernetes [CustomResourceDefinition](https://kubernetes.io/docs/tasks/access-kubernetes-api/custom-resources/custom-resource-definitions/). This allows us to extend the Kubernetes API with our custom-defined schema for Telco meta-data. The CustomResourceDefinition schema is in the [github.com/tmforum-oda/oda-canvas-charts](https://github.com/tmforum-oda/oda-canvas-charts/blob/master/canvas/charts/crds/templates) repository.
+The result is scaffolding: it gives you a component that the Canvas can deploy, expose and secure, with working API stubs. You still add your own business logic.
 
-There is an example of the metadata for the [productcatalog example component](https://github.com/tmforum-oda/reference-example-components/blob/master/charts/ProductCatalog/templates/component-productcatalog.yaml) broken-down into sections below:
+```{note}
+The marketplace is an alpha release. Review what the agent generates, and check what it is about to do before it builds and pushes images or runs `helm install`.
+```
+
+### Prerequisites
+
+- An AI coding agent that supports Agent Skills, for example [Claude Code](https://claude.com/claude-code).
+- Docker, Helm and `kubectl`, and a container registry you can push images to.
+- A Kubernetes cluster with the ODA Canvas installed, if you want to deploy the result. See the [installation guide](../canvas/installation/README.md).
+
+### Install and run the skill
+
+In Claude Code, add the marketplace and install the plugin:
+
+```text
+/plugin marketplace add https://github.com/tmforum-oda/oda-agent-skills-marketplace
+/plugin install tm-forum-oda-consumer@tm-forum-oda-marketplace
+```
+
+From a terminal you can use `claude plugin marketplace add …` and `claude plugin install …` instead. Restart Claude Code after installing.
+
+Then run the skill:
+
+```text
+/tm-forum-oda-consumer:implement-oda-component
+```
+
+Or describe what you want, and the agent picks the skill: for example *"Build an ODA Component for TMFC001 Product Catalog Management"*.
+
+For other AI coding agents, see the [marketplace README](https://github.com/tmforum-oda/oda-agent-skills-marketplace) for installation steps. The skill was first developed as `create-oda-component` in the [reference-example-components](https://github.com/tmforum-oda/reference-example-components/tree/master/skills/create-oda-component) repository. The marketplace also has skills to audit an implementation against a component specification, generate API conformance tests, and draw component diagrams.
+
+## Option 2: Build the component manually
+
+These steps follow the **v1** component specification. The authoritative schema is the `Component` CustomResourceDefinition in the ODA Canvas, at [charts/oda-crds](https://github.com/tmforum-oda/oda-canvas/tree/main/charts/oda-crds/templates). There is also an OpenAPI version of the schema, [oda-component-oas-v1.yaml](oda-component-oas-v1.yaml).
+
+The examples come from the [ProductCatalog reference component](https://github.com/tmforum-oda/reference-example-components/blob/master/charts/ProductCatalog/templates/component-productcatalog.yaml). The reference uses Helm template values; they are replaced here with the values for a release called `r1`.
+
+### Step 1: Add the Component metadata
+
+The `Component` resource holds the telco-domain knowledge that makes the component self-describing. It lists the Open APIs and events the component exposes and depends on, and the APIs it uses for security and management. The Canvas operators read it to configure the API gateway, identity management, observability and dependencies.
+
+The resource has five sections under `spec`: `componentMetadata`, `coreFunction`, `eventNotification`, `managementFunction` and `securityFunction`.
+
+#### Header and componentMetadata
 
 ```yaml
-apiVersion: oda.tmforum.org/v1beta2
-kind: component
+apiVersion: oda.tmforum.org/v1
+kind: Component
 metadata:
-  name: vodafone-productcatalog
+  name: r1-productcatalogmanagement
   labels:
-    oda.tmforum.org/componentName: vodafone-productcatalog
-    oda.tmforum.org/funtionalBlockName: CoreCommerce
-```
-
-This is the header information for the component, specifying the version of the CRD (Custom Resource Definition) that it is using, and providing a name and a label for the component and a label describing which functional block the component belongs to.
-
-```yaml
+    oda.tmforum.org/componentName: r1-productcatalogmanagement
 spec:
-  name: ProductCatalogManagement
-  functionalBlock: CoreCommerce
-  id: TMFC001
-  status: specified
-  version: 1.2.1
-  description: "Simple Product Catalog ODA-Component from Open-API reference implementation."
-  publicationDate: 2023-08-18 
-  maintainers:
-  - name: Lester Thomas
-    email: lester.thomas@vodafone.com
-  owners:
-  - name: Lester Thomas
-    email: lester.thomas@vodafone.com  
+  componentMetadata:
+    id: TMFC001
+    name: productcatalogmanagement
+    functionalBlock: CoreCommerce
+    publicationDate: 2024-09-17T00:00:00.000Z
+    status: specified
+    version: "0.0.1"
+    description: "Simple Product Catalog ODA-Component from Open-API reference implementation."
+    maintainers:
+    - name: Lester Thomas
+      email: lester.thomas@vodafone.com
+    owners:
+    - name: Lester Thomas
+      email: lester.thomas@vodafone.com
 ```
 
-This next section starts the `spec` for the component.
+- `apiVersion` is `oda.tmforum.org/v1` and `kind` is `Component`.
+- The `oda.tmforum.org/componentName` label matches the resource name. Use the same label on every resource in the component (Step 2).
+- `componentMetadata` identifies the component. `id` is the standard component it implements (for example `TMFC001`), and `functionalBlock` is its ODA functional block (`CoreCommerce`, `Production`, `PartyManagement`, `IntelligenceManagement` and so on).
+- You can also add `eTom`, `SID` and `functionalFramework` lists, to say which eTOM processes, SID entities and functional framework functions the component covers.
 
-The `type` allows us to specify that this is an implementation of a standard type of Component. If the `type` and `version` match one of the **Golden Components** then the Component CTK will test that the functional capability matches the requirements from that **Golden Component**. For a full list of all the standard ODA Components, see the [ODA Component Directory](https://oda-directory.labs.tmforum.org/)
+The published specifications for all the standard components are in the TM Forum ODA component catalogue. Use them to find the APIs, events and security API that your component must implement.
 
-The `description`, `maintainers` and `owners` are self-descriptive.
+#### coreFunction
 
 ```yaml
   coreFunction:
     exposedAPIs:
     - name: productcatalogmanagement
-      specification: https://raw.githubusercontent.com/tmforum-apis/TMF620_ProductCatalog/master/TMF620-ProductCatalog-v4.0.0.swagger.json
-      implementation: {{.Release.Name}}-prodcatapi
-      apitype: openapi
-      path: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/productCatalogManagement/v4
-      developerUI: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/productCatalogManagement/v4/docs
+      id: TMF620
+      apiType: openapi
+      specification:
+      - url: "https://raw.githubusercontent.com/tmforum-apis/TMF620_ProductCatalog/master/TMF620-ProductCatalog-v4.0.0.swagger.json"
+      implementation: r1-prodcatapi
+      path: /r1-productcatalogmanagement/tmf-api/productCatalogManagement/v4
+      developerUI: /r1-productcatalogmanagement/tmf-api/productCatalogManagement/v4/docs
       port: 8080
-    dependantAPIs:
-    - name: party 
-      apitype: openapi     
-      specification: https://open-api.tmforum.org/TMF632-Party-v4.0.0.swagger.json     
-    publishedEvents: 
-    - name: TMF620-productspecification
-      specification: https://open-api.tmforum.org/TMF620-Productcatalog-v4.0.0.swagger.json
-      hub: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/productspecification/hub
-      implementation: {{.Release.Name}}-prodspecevent
-      apitype: openapi
-      port: 80
-    subscribedEvents: 
-    - name: TMF633-servicespecification
-      specification: https://open-api.tmforum.org/TMF633-Servicecatalog-v4.0.0.swagger.json
-      call-back: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/servicepecification/call-back
-      port: 80
-      implementation: {{.Release.Name}}-servicespecevent
-      apitype: openapi
-      filter: CatalogStateChangeEvent&status=active
+      gatewayConfiguration:
+        rateLimit:
+          enabled: true
+          identifier: IP
+          limit: "100"
+          interval: pm
+        CORS:
+          enabled: true
+          allowCredentials: false
+          allowOrigins: "*"
+    - name: productcatalogmcp
+      apiType: mcp
+      implementation: r1-prodcatmcp
+      path: /r1-productcatalogmanagement/mcp
+      port: 8080
+    dependentAPIs:
+    - name: downstreamproductcatalog
+      id: TMF620
+      apiType: openapi
+      specification:
+      - url: "https://raw.githubusercontent.com/tmforum-apis/TMF620_ProductCatalog/master/TMF620-ProductCatalog-v4.0.0.swagger.json"
+      required: true
 ```
 
-The `coreFunction` describes the core purpose of the software component. It describes the list of APIs and/or events that the component exposes as well as the APIs and/or events that it is dependant on. The definitions within the `publishedEvents` and `subscribedEvents` are experimental at this point, and we will modify and enhance them as we build-out the ODA Canvas and assemble a representative set of ODA Components. The current definition has:
-* an `implementation` which links to the Kubernetes service that implements the API or event, including the `port` where the http service is exposed. 
-* The `path` shows the API resource end-point, and can be used, for example, to automatically configure any API Gateway that is included as part of the Canvas. Note that the `path` points to the root of the API (and you need to append the relevant path from the swagger document to get to an implemented API resource). 
-* The `specification` points to the swagger documentation for the API. The Component CTK (Compliance Test Kit) will look inside this swagger for the `basePath` determine which Open-API CTK to execute for that API. The `basePath` is of format `"/tmf-api/productCatalogManagement/v4/"` which shows it is a `tmf-api` for `productCatalogManagement` with major version `4`. The swagger can be one of the TM Forum published swagger files (e.g. [https://raw.githubusercontent.com/tmforum-rand/Open_API_And_Data_Model/v4.0-Sprint-2020-03/apis/TMF620_Product_Catalog/swaggers/TMF620-ProductCatalog-v4.1.0.swagger.json](https://raw.githubusercontent.com/tmforum-rand/Open_API_And_Data_Model/v4.0-Sprint-2020-03/apis/TMF620_Product_Catalog/swaggers/TMF620-ProductCatalog-v4.1.0.swagger.json?token=ACS2FQP4M3AEZBKQQEMIUQ3ABGIBM)) or can be an extension (conforming to the TMF630 Design Guidelines).
-* The `hub` represents the path for configuring the destination for the events.
-* The `call-back` represents the path to the call-back end-point for these events.
-* The `filter` allows the component to define a filter to only subscribe to certain type of events.
+`coreFunction` describes the business purpose of the component: the APIs it exposes and the APIs it depends on.
 
+For each **exposed API**:
 
+- `name` is unique within the component, and `id` is the TM Forum Open API number (for example `TMF620`).
+- `apiType` is `openapi` for TM Forum Open APIs. The Canvas also accepts `mcp` (a Model Context Protocol server) and `a2a` (an Agent-to-Agent endpoint). These are experimental: see the [AI-Native Canvas design](../canvas/AI-Native-Canvas-design.md).
+- `specification` is a list of one or more specifications, each with a `url` (and optionally a `version`). It is a list so that a component can offer more than one version, for example Gen-4 and Gen-5 of the same Open API.
+- `implementation` is the name of the Kubernetes Service that implements the API, and `port` is the port it listens on.
+- `path` is the root of the API, which the Canvas exposes through its API gateway. Append the resource paths from the specification to reach a resource. `developerUI` is an optional path to API documentation, such as Swagger UI.
+- `gatewayConfiguration` is optional. It asks the API gateway to apply policies to the API: `apiKeyVerification`, `rateLimit`, `quota`, `OASValidation`, `CORS`, or a gateway-specific `template`.
+- `resources` is an optional list of the API resources the component implements, and `required` says whether the API is mandatory.
+
+For each **dependent API**, give the `name`, `id`, `apiType` and `specification` of an API the component calls, and whether it is `required`. The Canvas [Dependency Management operator](../canvas/source/operators/TMFOP005-Dependency-Management/README.md) finds an exposed API that matches and tells your component where it is.
+
+#### eventNotification
+
+```yaml
+  eventNotification:
+    publishedEvents: []
+    subscribedEvents: []
+```
+
+`eventNotification` lists the events the component publishes (`publishedEvents`, with a `hub` for registering listeners) and the events it subscribes to (`subscribedEvents`, with a `callback` path and an optional `query` to filter them). Event support in the Canvas is still being developed, so most components leave these lists empty. Check the CRD for the current fields.
+
+#### managementFunction
 
 ```yaml
   managementFunction:
     exposedAPIs:
     - name: metrics
-      apitype: open-metrics
-      implementation: {{.Release.Name}}-{{.Values.component.name}}-sm
-      path: /{{.Release.Name}}-{{.Values.component.name}}/metrics
-      port: 4000    
-    dependantAPIs: []
-    publishedEvents: 
-    - name: TMF642-alarmmanagement
-      specification: https://open-api.tmforum.org/TMF642-alarmmanagement-v4.0.0.swagger.json
-      hub: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/alarmmanagement/hub
-      implementation: {{.Release.Name}}-alarmmgtevent
-      apitype: openapi
-      port: 80
-    subscribedEvents: []
-  securityFunction:
-    controllerRole: secConAdmin
-    exposedAPIs:
-    - name: partyrole
-      specification: https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
-      implementation: {{.Release.Name}}-partyroleapi
-      apitype: openapi
-      path: /{{.Release.Name}}-{{.Values.component.name}}/tmf-api/partyRoleManagement/v4
-      developerUI: /{{.Release.Name}}-{{.Values.component.name}}/tmf-api/partyRoleManagement/v4/docs
-      port: 8080 
-    dependantAPIs: []
+      apiType: prometheus
+      implementation: r1-productcatalogmanagement-sm
+      path: /r1-productcatalogmanagement/metrics
+      port: 4000
+    dependentAPIs: []
 ```
 
-The `managementFunction` and `securityFunction` sections describe management and security APIs the component exposes that are part of its management or security (rather than part of its core business function). Examples of management APIs are for self-testing, raising operational alarms, or configuring the component itself. The `security` section provides meta-data on the security mechanisms used by the component, for example, exposing the roles the component requires to be configured in the Identity Management service. Again, the current definitions within these sections are experimental and we will modify and enhance them as we build-out the ODA Canvas and assemble a representative set of ODA Components. As of version `v1alpha2` and later, the security definition should include a `partyrole` property that describes the TMF669 PartyRole Open-API that all components must support (future versions may support multiple mechanisms for components to expose the roles they support). As of version `v1alpha3` and layer, the security definition must include a `controllerRole` property that gives the name of a pre-existing role in the component that the security controller can use to a) POST a listener URL to the component partyRole notification endpoint so that it can receive notifications of events against party roles and b) GET the partyrole endpoint to query roles in the component.
+`managementFunction` describes the APIs the component exposes to operate and manage it, rather than for its business function. The most common is a metrics endpoint with `apiType: prometheus` (or `openmetrics`), which the Canvas uses to configure monitoring. See the [Observability design](../canvas/Observability-design.md) and the [Observability tutorial](Observability-Tutorial/README.md).
 
-## Step 2: Add labels to all the standard Kubernetes resources
+#### securityFunction
 
-By default, when you deploy a kubernetes manifest containing a number of different standard resources (Deployments, Pods, Services etc), they are deployed as independant resources with no reference to each-other. As part of the component standard, we add a label to every kubernetes resource to show that it belongs to a particular component.
+```yaml
+  securityFunction:
+    canvasSystemRole: canvasRole
+    exposedAPIs:
+    - name: partyrole
+      id: TMF669
+      apiType: openapi
+      specification:
+      - url: "https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json"
+      implementation: r1-partyroleapi
+      path: /r1-productcatalogmanagement/tmf-api/partyRoleManagement/v4
+      developerUI: /r1-productcatalogmanagement/tmf-api/partyRoleManagement/v4/docs
+      port: 8080
+```
 
-In our productcatalog example component, if you look at the service definition below, it shows us adding the component label to this service.
+`securityFunction` describes how the Canvas secures the component.
+
+- `exposedAPIs` holds the API that publishes the component's roles, so that the Canvas can configure them in the identity service. Use either **TMF669 Party Role** or **TMF672 Roles and Permissions** (`permissionSpecificationSet`), whichever your component's specification asks for.
+- `canvasSystemRole` is the name of a role in the component that the Canvas uses to call that API: to query the roles and to register for notifications when they change.
+- `secretsManagement` is optional. With `type: sideCar`, the Canvas injects a sidecar into the pods you select, so that the component can read secrets from the Canvas secrets store.
+- `componentRole` is an optional list of static roles, for components that don't expose a role API.
+
+See [Authentication design](../canvas/Authentication-design.md) and the [Identity Config operator](../canvas/source/operators/TMFOP003-Identity-Config/README.md).
+
+### Step 2: Label all the standard Kubernetes resources
+
+When you deploy a Kubernetes manifest that contains several standard resources (Deployments, Services and so on), they are independent resources with no reference to each other. The component standard adds a label to every resource to show which component it belongs to.
+
+In the ProductCatalog example, the Service definition has the component label:
 
 ```yaml
 apiVersion: v1
 kind: Service
 metadata:
-  name: productcatalog
+  name: r1-prodcatapi
   labels:
-    app: productcatalog
-    oda.tmforum.org/componentName: vodafone-productcatalog
+    app: r1-prodcatapi
+    oda.tmforum.org/componentName: r1-productcatalogmanagement
 spec:
   ports:
   - port: 8080
-    targetPort: productcatalog
-    name: productcatalog
-  type: NodePort
+    targetPort: prodcatapi
+    name: http-prodcatapi
+  type: ClusterIP
   selector:
-    app: productcatalog
+    app: r1-prodcatapi
 ```
 
-When this component is deployed, the [Component Operator](https://github.com/tmforum-rand/oda-component-definitions/tree/master/controllers/componentOperator) will use this information to build a parent relationship between the running instances of the component. This also means that when we delete a component using the `kubectl delete component <componentname>` comand, the Kubernetes garbage-collection will also delete all the standard resources within the component.
+When the component is deployed, the [Component Management operator](../canvas/source/operators/TMFOP001-Component-Management/README.md) uses the label to make the labelled resources children of the component. It adopts services, deployments, persistentvolumeclaims, jobs, cronjobs, statefulsets, configmaps, secrets, serviceaccounts, roles and rolebindings. Then, when you delete the component (`kubectl delete component <componentname>`, or `helm uninstall`), Kubernetes garbage collection deletes all its resources too.
 
-The component operator will create a parent->child relationship with any labelled resources (services, deployments, persistentvolumeclaims, jobs, cronjobs, statefulsets, configmap, secret, serviceaccount, role, rolebinding) to make them part of the component (and help with things like cascading deletion)
+Don't use these resources in a component:
 
-We should not support certain resources:
+- **Ingress**: a component expresses its intent through its APIs, and the Canvas creates the ingress or API gateway routes.
+- **Pod, ReplicaSet**: use a Deployment for stateless microservices, or a StatefulSet for stateful ones.
+- **DaemonSet**: a component has no need for one.
+- **ClusterRole, ClusterRoleBinding**: use a Role and RoleBinding instead.
 
-* ingress - A developer should express a components intent via APIs and not via ingress. The canvas should create any required ingress
-* pod, replicaset - a developer should use deployments (for stateless microservices) or statefulsets (for stateful microservices)
-* demonset - a component developer should have no need for creating a demonset
-* clusterrole, clusterrolebinding - a component developer should have no need for creating a clusterrole, clusterrolebinding they should be using role, rolebinding
+The component conformance tests give a warning if a component includes them.
 
-This if you include these unsupported resources in a component specification, the component CTK will issue a warning.
+### Step 3: Deploy and test on an ODA Canvas
 
+1. Install the ODA Canvas on a Kubernetes cluster: see the [installation guide](../canvas/installation/README.md).
+2. Install your component's Helm chart into the `components` namespace, then check that the Canvas has deployed it:
+
+   ```bash
+   helm install r1 ./productcatalog -n components
+   kubectl get components -n components
+   kubectl get exposedapis -n components
+   ```
+
+   The component's status moves to `Complete` when all its exposed APIs are configured and its security roles are registered.
+3. Run the conformance test kit for your component. Each standard component in the ODA component catalogue has its own CTK, which checks the component metadata and runs the Open API CTKs against the exposed APIs. See [Component CTK](TroubleshootingGuide/CTK.md).
+
+For working examples, see the [ProductCatalog reference component](https://github.com/tmforum-oda/reference-example-components/tree/master/charts/ProductCatalog) and the v1 test components in the Canvas [feature-definition-and-test-kit/testData](https://github.com/tmforum-oda/oda-canvas/tree/main/feature-definition-and-test-kit/testData) folder. The [ODA Component tutorial](ODAComponentTutorial/README.md) walks through building and deploying one.
 
 ## Changes between versions
 
+The Canvas still accepts older versions (v1beta2, v1beta3 and v1beta4) and converts them to v1. v1beta2 is deprecated. For new components, use v1.
+
+**v1beta4 to v1** (December 2024)
+
+- v1 is the first generally available version. It has the same schema as v1beta4.
+
+**v1beta3 to v1beta4**
+
+- The component identity fields (`id`, `name`, `version`, `description`, `functionalBlock`, `publicationDate`, `status`, `maintainers`, `owners`) moved from the top of `spec` into `spec.componentMetadata`.
+- `eTom`, `SID` and `functionalFramework` were added to `componentMetadata`.
+- Each exposed and dependent API gained an `id` (the TMF Open API number), and each specification a `version`.
+- The API gateway settings (`apiKeyVerification`, `rateLimit` and so on) moved into `gatewayConfiguration`.
+- `securityFunction.controllerRole` was renamed `canvasSystemRole`.
+
+**v1beta2 to v1beta3**
+
+- `specification` became a list (with at least one item) instead of a single string, so that a component can expose more than one version of an Open API, for example Gen-4 and Gen-5.
+- `apitype` was renamed `apiType`, to use camelCase like the other properties.
+- The `prometheus` API type is now allowed only in `managementFunction`.
+- `securityFunction.secretsManagement` was added.
+- Published and subscribed events gained properties such as `hub`, `callback`, `implementation`, `port` and `query`.
+
 **v1beta1 to v1beta2**
 
-* There were a number of changes to align the security and management sections with the core - previously they described APIs in a slightly different structure. 
-* v1beta2 adds some additional metadata for `functionalBlock`, `version` and `status`, so that the [ODA Component Directory](https://oda-directory.labs.tmforum.org/) could be created entirely from the YAML definitions in the components. The components team is now publishing all their components (against the beta2 standard) here: https://github.com/tmforum-rand/TMForum-ODA-Ready-for-publication/tree/v1beta2/specifications
-Finally, we renamed `security` to `securityFunction` and `management` to `managementFunction` to align with the `coreFunction` section.
+- The security and management sections were aligned with the core function section.
+- `functionalBlock`, `version` and `status` were added, so that a directory of components could be generated from the component definitions.
+- `security` was renamed `securityFunction`, and `management` was renamed `managementFunction`.
+
+For the details of every change, see the Canvas [release notes](../canvas/release-notes/ReleaseNotes.md).

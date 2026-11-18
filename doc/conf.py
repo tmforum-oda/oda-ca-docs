@@ -22,7 +22,7 @@ sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), "_ex
 # -- Project information -----------------------------------------------------
 
 project = "ODA-Component Accelerator"
-copyright = "2025, TM Forum ODA-Component Accelerator project"
+copyright = "2026, TM Forum ODA-Component Accelerator project"
 author = "TM Forum ODA-Component Accelerator project"
 release = "v1"
 
