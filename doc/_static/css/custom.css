@@ -261,3 +261,130 @@ a.oda-card:hover {
   color: var(--color-foreground-secondary);
   line-height: 1.45;
 }
+
+/* -- Training videos ---------------------------------------------------------- */
+a.oda-banner {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  margin: 0 0 1rem;
+  padding: 1.2rem 1.4rem;
+  border-radius: 10px;
+  border: 1px solid var(--oda-panel-edge);
+  border-left: 5px solid var(--oda-tmf);
+  background:
+    radial-gradient(ellipse 60% 120% at 100% 0%, color-mix(in srgb, var(--oda-tmf) 18%, transparent), transparent 70%),
+    var(--oda-panel);
+  color: var(--oda-ink);
+  text-decoration: none;
+  --accent: var(--oda-tmf);
+}
+a.oda-banner:hover {
+  border-color: var(--oda-tmf);
+}
+.oda-banner-title {
+  font-size: 1.35rem;
+  font-weight: 800;
+}
+.oda-banner-title::after {
+  content: " →";
+  color: var(--oda-tmf);
+}
+
+.oda-video-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(16rem, 1fr));
+  gap: 1.1rem;
+  margin: 1.5rem 0 2rem;
+}
+a.oda-video-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  padding: 0 0 1.1rem;
+  background: var(--oda-panel);
+  border: 1px solid var(--oda-panel-edge);
+  border-radius: 10px;
+  overflow: hidden;
+  color: var(--oda-ink);
+  text-decoration: none;
+  transition: transform 0.15s ease, border-color 0.15s ease;
+  --accent: var(--oda-kicker);
+}
+a.oda-video-card:hover {
+  transform: translateY(-2px);
+  border-color: var(--oda-kicker);
+}
+a.oda-video-card img {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  margin-bottom: 0.5rem;
+  background: none !important;
+  padding: 0 !important;
+  border-radius: 0 !important;
+}
+a.oda-video-card > span {
+  padding: 0 1.1rem;
+}
+a.oda-video-card .oda-card-text {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 4;
+  line-clamp: 4;
+  overflow: hidden;
+}
+
+.oda-video-meta {
+  color: var(--oda-kicker);
+  font-weight: 700;
+  font-size: 0.8rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  margin-top: -0.5rem;
+}
+.oda-video-player {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  margin: 1rem 0 1.5rem;
+  border-radius: 10px;
+  overflow: hidden;
+  border: 1px solid var(--oda-panel-edge);
+  background: #0a0f1e;
+}
+.oda-video-player iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+details.oda-transcript {
+  border: 1px solid var(--color-background-border);
+  border-radius: 8px;
+  padding: 0.6rem 1rem;
+  background: var(--oda-panel);
+}
+details.oda-transcript summary {
+  cursor: pointer;
+  font-weight: 700;
+  color: var(--color-brand-content);
+}
+
+/* The "Watch" box added to pages that a video covers. */
+.admonition.oda-watch {
+  --color-admonition-title--note: var(--oda-tmf);
+  --color-admonition-title-background--note: color-mix(in srgb, var(--oda-tmf) 14%, transparent);
+  border-left-color: var(--oda-tmf);
+}
+.admonition.oda-watch > .admonition-title::before {
+  background-color: var(--oda-tmf);
+  -webkit-mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>');
+  mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>');
+}
+.content a.reference img[src*="i.ytimg.com"],
+.content img[src*="img.youtube.com"] {
+  background: none !important;
+  padding: 0 !important;
+}

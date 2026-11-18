@@ -5,3 +5,4 @@ myst-parser==5.2.0
 linkify-it-py==2.2.0
 sphinx-markdown-tables==0.0.17
 Markdown==3.11.3
+PyYAML==6.0.3

@@ -16,6 +16,12 @@ ODA Canvas and Components
      </p>
    </div>
 
+   <a class="oda-banner" href="docs/training-videos/index.html">
+     <span class="oda-card-kicker">New: the ODA Canvas training series</span>
+     <span class="oda-banner-title">Watch the training videos</span>
+     <span class="oda-card-text">Short videos on the Canvas, security, AI, observability and agent skills, each with chapters and a transcript.</span>
+   </a>
+
    <div class="oda-cards">
      <a class="oda-card" style="--accent: var(--oda-canvas)" href="canvas/README.html">
        <span class="oda-card-kicker">Get started</span>
@@ -58,6 +64,7 @@ ODA Canvas and Components
    :caption: Get started
 
    canvas/README.md
+   docs/training-videos/index
    docs/Getting_started.md
    docs/Playbook.md
 

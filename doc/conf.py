@@ -14,6 +14,10 @@
 import fnmatch
 import os
 import shutil
+import sys
+
+# Local Sphinx extensions (the training videos pages).
+sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), "_ext"))
 
 # -- Project information -----------------------------------------------------
 
@@ -27,6 +31,7 @@ release = "v1"
 extensions = [
     "myst_parser",
     "sphinx_markdown_tables",
+    "oda_videos",
 ]
 
 myst_enable_extensions = [
@@ -37,7 +42,7 @@ myst_enable_extensions = [
 source_suffix = {".rst": "restructuredtext", ".md": "markdown"}
 templates_path = ["_templates"]
 # Archived use cases are kept in oda-canvas for history, but not published.
-exclude_patterns = ["_build", "overlay", "canvas/usecase-library/archive", "Thumbs.db", ".DS_Store"]
+exclude_patterns = ["_build", "_ext", "overlay", "canvas/usecase-library/archive", "Thumbs.db", ".DS_Store"]
 master_doc = "index"
 
 # -- Options for HTML output -------------------------------------------------

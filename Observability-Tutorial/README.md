@@ -4,7 +4,7 @@ This tutorial shows the process to deploy the reference example ODA Component in
 
 The pre-requisites for this tutorial is a PC/Mac/Linux machine with `kubectl` and `helm` installed and access to the TM Forum Open Digital Lab at [https://rke.tmforum.org/](https://rke.tmforum.org/) 
 
-There is a video of this tutorial at: [ODA Observability Video walkthrough](https://youtu.be/XEbjc4g_usM)
+There is a video of this tutorial at: [ODA Observability Video walkthrough](https://youtu.be/XEbjc4g_usM). It shows an earlier version of the Canvas. For the current observability stack (Prometheus, Grafana, Jaeger and the OpenTelemetry Collector), watch [Observability in the ODA Canvas](https://youtu.be/3Mcv0oc-0rs), part 5 of the ODA Canvas training series.
 
 
 ## Reference Implementation environment with Service Mesh

@@ -8,26 +8,28 @@ If you want to change the menu structure (e.g. to add a new section to the docum
 
 ## Full process
 
-There is a video overview of the Documentation Process at:
+There is a video overview of the Documentation Process below. It was recorded for an earlier version of the process, so the folder names have changed; the steps described on this page are current.
 
  [![Documentation Process](https://img.youtube.com/vi/C_1WW0o0Z5o/0.jpg)](https://www.youtube.com/watch?v=C_1WW0o0Z5o)
 
 
 The published home of the documentation is [https://tmforum-oda.github.io/oda-ca-docs/](https://tmforum-oda.github.io/oda-ca-docs/)
 
-The site is built with [Sphinx](https://www.sphinx-doc.org/) and [MyST](https://myst-parser.readthedocs.io/) (Markdown), and published to the `gh-pages` branch by the [Docs workflow](.github/workflows/documentation.yaml). The workflow runs on every push to `main`, every night, and on request, so changes to the oda-canvas documentation are published without a commit to this repository.
+The site is built with [Sphinx](https://www.sphinx-doc.org/) and [MyST](https://myst-parser.readthedocs.io/) (Markdown), and published to the `gh-pages` branch by the [Docs workflow](https://github.com/tmforum-oda/oda-ca-docs/blob/main/.github/workflows/documentation.yaml). The workflow runs on every push to `main`, every night, and on request, so changes to the oda-canvas documentation are published without a commit to this repository.
 
-The content is not kept in the `doc` folder. When Sphinx starts, [`doc/conf.py`](doc/conf.py):
+The content is not kept in the `doc` folder. When Sphinx starts, [`doc/conf.py`](https://github.com/tmforum-oda/oda-ca-docs/blob/main/doc/conf.py):
 
 1. copies every Markdown file and image (`.md`, `.png`, `.jpg`, `.gif`, `.svg`, `.puml`, `.feature`) from the [oda-canvas](https://github.com/tmforum-oda/oda-canvas) repository into `doc/canvas`, keeping its folder structure;
 2. copies the project pages and tutorials from the root of this repository into `doc/docs`; and
 3. copies the hand-written navigation files from `doc/overlay` on top.
 
-`doc/canvas`, `doc/docs` and `doc/_build` are generated, so don't edit or commit them. To change a Canvas page, raise a pull request on oda-canvas. To change the menu structure, edit [`doc/index.rst`](doc/index.rst): each `toctree` in it is one section of the sidebar.
+`doc/canvas`, `doc/docs` and `doc/_build` are generated, so don't edit or commit them. To change a Canvas page, raise a pull request on oda-canvas. To change the menu structure, edit [`doc/index.rst`](https://github.com/tmforum-oda/oda-ca-docs/blob/main/doc/index.rst): each `toctree` in it is one section of the sidebar.
 
 Only the top page of each area needs to be listed there. When the build reads a `README.md` (or a skill's `SKILL.md`), it adds every page in that folder and its sub-folders to the menu underneath it, down to the next `README.md`. So a new page in oda-canvas appears in the menu without any change here, as long as it sits in a folder with a README. The use case archive (`usecase-library/archive`) is not published.
 
-The site uses the [Furo](https://pradyunsg.me/furo/) theme, styled in [`doc/_static/css/custom.css`](doc/_static/css/custom.css) to match the ODA Canvas training videos: the same colour for each concept, the Inter and JetBrains Mono fonts, and dark mode by default.
+The [Training videos](https://tmforum-oda.github.io/oda-ca-docs/docs/training-videos/index.html) pages are generated from [`doc/videos.yaml`](https://github.com/tmforum-oda/oda-ca-docs/blob/main/doc/videos.yaml) by [`doc/_ext/oda_videos.py`](https://github.com/tmforum-oda/oda-ca-docs/blob/main/doc/_ext/oda_videos.py): an overview, and a page per video with the player, chapters, related documentation and the transcript. Each page listed in a video's `related` list gets a *Watch* box under its title, unless the page already embeds the video. To add a video, add an entry to `videos.yaml` (or re-export it from the training-videos project) and list the pages it covers under `related`, as site page names such as `canvas/Observability-design`.
+
+The site uses the [Furo](https://pradyunsg.me/furo/) theme, styled in [`doc/_static/css/custom.css`](https://github.com/tmforum-oda/oda-ca-docs/blob/main/doc/_static/css/custom.css) to match the ODA Canvas training videos: the same colour for each concept, the Inter and JetBrains Mono fonts, and dark mode by default.
 
 To build the site locally, check out oda-canvas next to oda-ca-docs, then:
 
