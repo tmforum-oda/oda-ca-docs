@@ -33,6 +33,12 @@ Since the project [started in December 2020](https://www.tmforum.org/press-and-n
 
 Read [this presentation](https://github.com/tmforum-oda/oda-ca-docs/blob/master/Presentations/TM%20Forum%20ODA%20Component%20Accelerator%20Briefing%20v29.pptx?raw=true) (updated Nov 2022) for more details about the ODA-CA project.  If you're interested in joining, please email [accelerator@tmforum.org](mailto:accelerator@tmforum.org).
 
+**ODA Canvas training videos**
+
+The [ODA Canvas training series](https://tmforum-oda.github.io/oda-ca-docs/docs/training-videos/index.html) is the best place to start. It covers the Canvas today: what it is, how to buy or build one, authentication and authorization, the AI-Native Canvas, observability and the ODA Agent Skills Marketplace. Each video has chapters and a transcript.
+
+The demos below were recorded at earlier stages of the project, so they show older versions of the Canvas and the component specification.
+
 **2024 demos and videos**
 
 * Demo of ODA Component and Canvas conformance testing (from DTW24): [video (20 min)](https://iframe.dacast.com/vod/9292f2e21c51139fb9b2ffd6080ab1d6/ae6e46d6-d22f-43c7-bc80-d72db0d2d1d1)
