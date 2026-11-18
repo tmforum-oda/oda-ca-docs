@@ -1,10 +1,7 @@
-myst-parser
-linkify-it-py
-sphinx
-sphinx_rtd_theme
-flask
-requests
-cloudevents
-sphinx-markdown-tables
-rst2pdf
-svglib
+# Pinned so the build is reproducible. Update deliberately and check the build.
+sphinx==9.2.0
+sphinx_rtd_theme==3.1.0
+myst-parser==5.2.0
+linkify-it-py==2.2.0
+sphinx-markdown-tables==0.0.17
+Markdown==3.11.3

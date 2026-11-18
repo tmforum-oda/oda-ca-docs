@@ -10,8 +10,8 @@ If you are joining the ODA-CA project, here's a checklist of things to get you o
 
 **Explore ODA-CA GitHub**
 
-* Browse around to find [documentation and demonstrations](https://tmforum-oda.github.io/oda-ca-docs/): eg [here](ODAComponentDesignGuidelines.md) is our Component Design guide with instructions on how to create a component, and [here](ContributionsGuide.md) is the process for making contributions.
-* [Go here](https://tmforum-oda.github.io/oda-ca-docs/docs/ContributionsGuide.html) for guidance on how to start making code contributions.
+* Browse around to find [documentation and demonstrations](https://tmforum-oda.github.io/oda-ca-docs/): eg [here](ODAComponentDesignGuidelines.md) is our Component Design guide with instructions on how to create a component, and [here](CONTRIBUTING.md) is the process for making contributions.
+* [Go here](https://tmforum-oda.github.io/oda-ca-docs/docs/CONTRIBUTING.html) for guidance on how to start making code contributions.
 * Ask questions on [Slack](https://app.slack.com/client/T01C5A3NAU9/C01CGGDDLCQ) - the team will be happy to help get you started.
 
 **Join the ODA Components & Canvas project**

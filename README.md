@@ -9,7 +9,7 @@ This area contains:
 
 * [Playbook](Playbook.md)
 * [Component Design Guidelines](ODAComponentDesignGuidelines.md) 
-* [Contributions Guide](ContributionsGuide.md) 
+* [Contributions Guide](CONTRIBUTING.md) 
 * [Documentation Process](DocumentationProcess.md) 
       
   
