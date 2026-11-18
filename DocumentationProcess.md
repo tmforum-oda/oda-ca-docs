@@ -15,7 +15,7 @@ There is a video overview of the Documentation Process at:
 
 The published home of the documentation is [https://tmforum-oda.github.io/oda-ca-docs/](https://tmforum-oda.github.io/oda-ca-docs/)
 
-The site is built with [Sphinx](https://www.sphinx-doc.org/) and [MyST](https://myst-parser.readthedocs.io/) (Markdown), and published to the `gh-pages` branch by the [Docs workflow](.github/workflows/documentation.yaml). The workflow runs on every push to the default branch, every night, and on request, so changes to the oda-canvas documentation are published without a commit to this repository.
+The site is built with [Sphinx](https://www.sphinx-doc.org/) and [MyST](https://myst-parser.readthedocs.io/) (Markdown), and published to the `gh-pages` branch by the [Docs workflow](.github/workflows/documentation.yaml). The workflow runs on every push to `main`, every night, and on request, so changes to the oda-canvas documentation are published without a commit to this repository.
 
 The content is not kept in the `doc` folder. When Sphinx starts, [`doc/conf.py`](doc/conf.py):
 
