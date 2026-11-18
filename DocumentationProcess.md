@@ -15,4 +15,22 @@ There is a video overview of the Documentation Process at:
 
 The published home of the documentation is [https://tmforum-oda.github.io/oda-ca-docs/](https://tmforum-oda.github.io/oda-ca-docs/)
 
-The documentation is published as GitHub pages from the [/docs](https://github.com/tmforum-oda/oda-ca-docs/tree/master/docs) folder. The documentation content is maintained as README and other content files in each of the TM Forum ODA repositories. The structure to the documentation uses the Sphinx framework (https://www.sphinx-doc.org/). The structure is maintained in the [/sphinx_documentation](https://github.com/tmforum-oda/oda-ca-docs/tree/master/sphinx_documentation) folder. Within this folder there is a `buildClean.bat` file that will re-build the documentation from the source.
+The site is built with [Sphinx](https://www.sphinx-doc.org/) and [MyST](https://myst-parser.readthedocs.io/) (Markdown), and published to the `gh-pages` branch by the [Docs workflow](.github/workflows/documentation.yaml). The workflow runs on every push to the default branch, every night, and on request, so changes to the oda-canvas documentation are published without a commit to this repository.
+
+The content is not kept in the `doc` folder. When Sphinx starts, [`doc/conf.py`](doc/conf.py):
+
+1. copies every Markdown file and image (`.md`, `.png`, `.jpg`, `.gif`, `.svg`, `.puml`, `.feature`) from the [oda-canvas](https://github.com/tmforum-oda/oda-canvas) repository into `doc/canvas`, keeping its folder structure;
+2. copies the project pages and tutorials from the root of this repository into `doc/docs`; and
+3. copies the hand-written navigation files from `doc/overlay` on top.
+
+`doc/canvas`, `doc/docs` and `doc/_build` are generated, so don't edit or commit them. To change a Canvas page, raise a pull request on oda-canvas. To change the menu structure, edit [`doc/index.rst`](doc/index.rst) or the `.rst` files in [`doc/overlay`](doc/overlay).
+
+To build the site locally, check out oda-canvas next to oda-ca-docs, then:
+
+```bash
+cd doc
+pip install -r requirements.txt
+sphinx-build -E -a . _build
+```
+
+Open `doc/_build/index.html` to view the result. Pull requests also upload the built site as a `docs-site` artifact on the workflow run.

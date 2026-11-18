@@ -50,14 +50,19 @@ Open Digital Architecture - Component Accelerator
 
    canvas/source/README.md
    canvas/source/operators/README.md
-   canvas/source/operators/component-management/README.md
-   canvas/source/operators/api-management/README.md
-   canvas/source/operators/identity-config/README.md
-   canvas/source/operators/secretsmanagementOperator-hc/README.md
-   canvas/source/operators/credentials-management/README.md
-   canvas/source/operators/dependentApiSimpleOperator/README.md
-   
-   canvas/source/webhooks-and-utilities.rst        
+
+.. toctree::
+   :maxdepth: 3
+   :glob:
+   :caption: Canvas Operators:
+
+   canvas/source/operators/TMFOP*/README
+
+.. toctree::
+   :maxdepth: 3
+   :caption: Webhooks and Utilities:
+
+   canvas/source/webhooks-and-utilities
 
 
 .. toctree::
@@ -71,7 +76,7 @@ Open Digital Architecture - Component Accelerator
    :maxdepth: 2
    :caption: Contributions and Troubleshooting:
 
-   docs/ContributionsGuide.md
+   docs/CONTRIBUTING.md
    docs/TroubleshootingGuide/index.rst
    canvas/docs/developer/work-with-dockerimages.md
    canvas/devcontainer.md

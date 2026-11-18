@@ -1,2 +1,0 @@
-# Credentials Management Operator
-
