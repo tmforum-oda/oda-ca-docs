@@ -67,7 +67,7 @@ def _overview():
 
 The ODA Canvas training series explains the Canvas and how to build ODA Components that run on
 it. Each video has chapters, a full transcript, and links to the documentation it covers. The
-videos are on the [Systems Architecture](https://www.youtube.com/channel/UCmVRZcgf2-gY_HR2lKAHhhw) YouTube
+videos are on the [Inside Telco Architecture](https://www.youtube.com/@insidetelcoarchitecture) YouTube
 channel, with captions.
 
 <div class="oda-video-cards">
