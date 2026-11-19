@@ -25,13 +25,16 @@ The ODA Component Accelerator (ODA-CA) is a practical project run by TM Forum me
 
 Since the project [started in December 2020](https://www.tmforum.org/press-and-news/leading-telecoms-companies-collaborating-to-build-market-for-plug-and-play-software/) we have:
 
-* Built a reference ODA Canvas in our Open Digital Lab based on Kubernetes infrastructure
-* Delivered a prototype Component CTK which validates security and functional aspects of ODA Components using a 3-stage test platform in the Open Digital Lab
-* Deployed a number of commercial applications onto the reference Canvas and validated them with the prototype Component CTK
-* Demonstrated deployment patterns for security and observability use cases
-* Built a ‘click-to-deploy’ reference Canvas for TM Forum members to use
+* Released the **v1 ODA Component specification** (December 2024) and made the [ODA Canvas reference implementation](https://github.com/tmforum-oda/oda-canvas) **generally available** (release 1.2.0). It has had regular releases since, and supports the earlier v1beta2 to v1beta4 specifications too.
+* Built the Canvas as a set of independent [software operators](../canvas/source/operators/README.md) for component management, API management (Istio, Kong, Apigee, Azure API Management and others), identity, credentials, secrets, dependencies and observability, which organizations can reuse, extend or replace.
+* Defined the Canvas behaviour in a [use-case library](../canvas/usecase-library/README.md), with a [BDD test kit](../canvas/feature-definition-and-test-kit/README.md) that tests any Canvas against it. The test kit runs on every change to the reference implementation.
+* Tested the Canvas on AWS EKS, Azure AKS, Google GKE, Rancher, MicroK8s, Minikube, Docker Desktop and Kind (see the [installation guide](../canvas/installation/README.md)). At DTW Copenhagen, AWS, Azure, China Mobile, Google Cloud and Oracle Cloud showed proof-of-concept managed Canvas offerings.
+* Published a conformance test kit (CTK) for each standard ODA Component, used to certify commercial products. Certified products are listed in the [ODA Component Directory](https://www.tmforum.org/oda/directory).
+* Added **AI-Native** capabilities: components can expose MCP servers, and AI agents can be deployed as ODA Components (see [AI-Native Canvas design](../canvas/AI-Native-Canvas-design.md)).
+* Published the [ODA Agent Skills Marketplace](https://github.com/tmforum-oda/oda-agent-skills-marketplace) (alpha), with skills that help AI coding agents design, build and test ODA Components.
+* Built the Canvas Portal, a web interface for exploring a Canvas, its components and operators, and for running BDD tests.
 
-Read [this presentation](https://github.com/tmforum-oda/oda-ca-docs/blob/master/Presentations/TM%20Forum%20ODA%20Component%20Accelerator%20Briefing%20v29.pptx?raw=true) (updated Nov 2022) for more details about the ODA-CA project.  If you're interested in joining, please email [accelerator@tmforum.org](mailto:accelerator@tmforum.org).
+Read [this presentation](https://github.com/tmforum-oda/oda-ca-docs/blob/main/Presentations/TM%20Forum%20ODA%20Component%20Accelerator%20Briefing%20v29.pptx?raw=true) (from November 2022) for the background to the ODA-CA project.  If you're interested in joining, please email [accelerator@tmforum.org](mailto:accelerator@tmforum.org).
 
 **ODA Canvas training videos**
 
@@ -62,8 +65,8 @@ The demos below were recorded at earlier stages of the project, so they show old
 
 **Deploying Cloud Native Network Functions onto the ODA Canvas**
  
-* [Deployment of a CNF to an ODA Canvas running on two different cloud environments](https://github.com/tmforum-oda/oda-ca-docs/blob/master/DTW_Presentations/Whale%20Cloud%20Multi-cloud%20CNF%20deployment%20with%20the%20ODA%20Canvas%20DTW-22.pptx?raw=true). The Canvas standardizes the environment to enable plug-and-play deployment on different cloud platforms (by Whale Cloud, [3 min demo video here](https://iframe.dacast.com/vod/9292f2e21c51139fb9b2ffd6080ab1d6/ecb75692-55a4-2796-7f0a-710ad118b190))
-* [Deployment of PCRF (4G) and PCF (5G) onto the same ODA Canvas](https://github.com/tmforum-oda/oda-ca-docs/blob/master/DTW_Presentations/STL_Digital_BSS_Components_Architecture_with_ODA_Canvas.pdf?raw=true), making 4G->5G upgrades and other use cases easy to achieve (by Sterlite, [5 min demo video here)](https://www.tmforum.org/stl-oda-components/)
+* [Deployment of a CNF to an ODA Canvas running on two different cloud environments](https://github.com/tmforum-oda/oda-ca-docs/blob/main/DTW_Presentations/Whale%20Cloud%20Multi-cloud%20CNF%20deployment%20with%20the%20ODA%20Canvas%20DTW-22.pptx?raw=true). The Canvas standardizes the environment to enable plug-and-play deployment on different cloud platforms (by Whale Cloud, [3 min demo video here](https://iframe.dacast.com/vod/9292f2e21c51139fb9b2ffd6080ab1d6/ecb75692-55a4-2796-7f0a-710ad118b190))
+* [Deployment of PCRF (4G) and PCF (5G) onto the same ODA Canvas](https://github.com/tmforum-oda/oda-ca-docs/blob/main/DTW_Presentations/STL_Digital_BSS_Components_Architecture_with_ODA_Canvas.pdf?raw=true), making 4G->5G upgrades and other use cases easy to achieve (by Sterlite, [5 min demo video here)](https://www.tmforum.org/stl-oda-components/)
 
 **Current ODA-CA project members**
 
