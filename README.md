@@ -2,7 +2,7 @@
 
 The published home of the documentation is [https://tmforum-oda.github.io/oda-ca-docs/](https://tmforum-oda.github.io/oda-ca-docs/)
 
-The documentation is published as GitHub pages from the /docs folder. The documentation process is described in [Documentation Process](DocumentationProcess.md)
+The site is built from this repository and the [oda-canvas](https://github.com/tmforum-oda/oda-canvas) repository, and published to the `gh-pages` branch. How it works, and how to add a page or preview the site, is described in [Documentation Process](DocumentationProcess.md).
 
 
 This area contains:
