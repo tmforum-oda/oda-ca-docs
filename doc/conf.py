@@ -37,6 +37,8 @@ myst_enable_extensions = [
     "linkify",  # Automatically turn URLs into links
     "substitution",
 ]
+# Give headings down to level 3 anchors, so links such as README.md#troubleshooting resolve.
+myst_heading_anchors = 3
 
 source_suffix = {".rst": "restructuredtext", ".md": "markdown"}
 templates_path = ["_templates"]

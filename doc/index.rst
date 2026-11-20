@@ -93,6 +93,7 @@ ODA Canvas and Components
    :caption: Install and operate
 
    canvas/installation/README.md
+   canvas/installation/local-demo-canvas.md
    canvas/release-notes/ReleaseNotes.md
 
 .. toctree::
