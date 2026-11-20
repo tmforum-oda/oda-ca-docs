@@ -1004,6 +1004,7 @@ videos:
     not the business functionality. The marketplace is an alpha, released to show the concept and gather
     feedback.
   related:
+  - docs/AI-Assisted-Development
   - canvas/ai-coding-assistants
   - docs/ODAComponentTutorial/README
   replaces: []

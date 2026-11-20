@@ -144,6 +144,7 @@ ODA Canvas and Components
    :glob:
    :caption: AI-assisted development
 
+   docs/AI-Assisted-Development.md
    canvas/ai-coding-assistants.md
    canvas/skills/*/SKILL
    canvas/docs/custom-copilot-documentation-agent.md
