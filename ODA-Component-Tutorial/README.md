@@ -7,9 +7,11 @@ This tutorial shows the complete process to package, test and deploy an ODA-Comp
 
 <!-- There is a video of this tutorial at: [ODA Component Tutorial Video walkthrough](https://youtu.be/wZJ8d5uQ7_8) --->
 
+> **Building components with an AI agent:** this tutorial builds a component by hand, so that you can see every step. The same steps are written down as an Agent Skill, `implement-oda-component`, in the [ODA Agent Skills Marketplace](https://github.com/tmforum-oda/oda-agent-skills-marketplace). An agent following it scaffolded the [reference example components](https://github.com/tmforum-oda/reference-example-components) (TMFC001, 002, 005, 006, 007, 008 and 028), which are a good starting point for a new component. See [AI-assisted development with ODA Agent Skills](../AI-Assisted-Development.md).
+
 ## Prerequisites
 
-* ODA Canvas runtime environment is installed. The installation instruction is available at [https://github.com/tmforum-oda/oda-canvas/tree/main/installation](https://github.com/tmforum-oda/oda-canvas/tree/main/installation). 
+* ODA Canvas runtime environment is installed. See [Installing the ODA Canvas](../../canvas/installation/README.md). 
 * Kubectl to access the Kubernetes cluster control plane is configured. It may have been automatically configured during the ODA canvas installation.
 * Access to the Open API Reference implementation
 * npm or its equivalent. NPM version 8.19.4 has been used for this tutorial.

@@ -30,7 +30,6 @@ release = "v1"
 
 extensions = [
     "myst_parser",
-    "sphinx_markdown_tables",
     "oda_videos",
 ]
 
