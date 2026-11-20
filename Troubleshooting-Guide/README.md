@@ -7,6 +7,7 @@ The guide shows different techniques and resources that are available for analys
 ODA-CA Specific guides
 ----------------------
 
+* [A component is stuck at In-Progress](Component-Stuck-In-Progress.md)
 * [CTK](CTK.md)
 * [Controller Logging](Controller-Logging.md)
 * [Exploring Custom Kubernetes resources](Exploring-Custom-Resources.md)

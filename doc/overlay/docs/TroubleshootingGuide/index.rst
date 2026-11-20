@@ -17,6 +17,7 @@ ODA-CA Specific guides
    :maxdepth: 1
    :caption: Contents:
 
+   Component-Stuck-In-Progress.md
    CTK.md
    Controller-Logging.md
    Exploring-Custom-Resources.md
