@@ -4,8 +4,6 @@ metadata:
   name: {{.Release.Name}}-{{.Values.component.name}}
   labels:
     oda.tmforum.org/componentName: {{.Release.Name}}-{{.Values.component.name}}
-  annotations:
-    webhookconverted: Webhook converted From oda.tmforum.org/v1beta3 to oda.tmforum.org/v1
 spec:
   componentMetadata:
     id: {{.Values.component.id}}
@@ -26,9 +24,11 @@ spec:
   coreFunction:
     exposedAPIs:
       - name: productinventorymanagement
+        id: TMF637
         specification:
           - url: >-
               https://raw.githubusercontent.com/tmforum-apis/TMF637_ProductInventory/master/TMF637-ProductInventory-v4.0.0.swagger.json
+            version: v4.0.0
         implementation: {{.Release.Name}}-productinventoryapi
         apiType: openapi
         path: >-
@@ -39,9 +39,11 @@ spec:
         gatewayConfiguration: {}
     dependentAPIs:
       - name: party
+        id: TMF632
         apiType: openapi
         specification:
-          - url: https://open-api.tmforum.org/TMF632-Party-v4.0.0.swagger.json
+          - url: https://raw.githubusercontent.com/tmforum-apis/TMF632_Party/master/TMF632-Party-v4.0.0.swagger.json
+            version: v4.0.0
   eventNotification:
     publishedEvents: []
     subscribedEvents: []
@@ -52,9 +54,11 @@ spec:
     canvasSystemRole: {{.Values.security.controllerRole}}
     exposedAPIs:
       - name: partyrole
+        id: TMF669
         specification:
           - url: >-
               https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
+            version: v4.0.0
         implementation: {{.Release.Name}}-partyroleapi
         apiType: openapi
         path: >-

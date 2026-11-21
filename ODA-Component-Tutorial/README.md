@@ -21,7 +21,7 @@ This tutorial shows the complete process to package, test and deploy an ODA-Comp
 
 ## Step 1. Download Reference Implementation
 
-We are using one of the Reference implementations of the Open-APIs as a starting point. Go to the open-API Directory at [https://www.tmforum.org/oda/open-apis/directory](https://www.tmforum.org/oda/open-apis/directory) and download one of the reference implmentation `.zip` files (we are using the Product Inventory Management API version 4 (### TBC if version 5 is used ###), but you can choose any).
+We are using one of the Reference implementations of the Open-APIs as a starting point. Go to the open-API Directory at [https://www.tmforum.org/oda/open-apis/directory](https://www.tmforum.org/oda/open-apis/directory) and download one of the reference implmentation `.zip` files (we are using the Product Inventory Management API version 4, but you can choose any).
 
 ![<img src="https://www.tmforum.org/oda/open-apis/directory">](./images/Open-API-Table.png)
 
@@ -300,7 +300,7 @@ CMD ["node", "initialization.js"]
 
 ## Step 7. Create Component Envelope 
 
-The Component Envelope contains the meta-data required to automatically deploy and manage the component in an ODA-Canvas environment. The envelope will contain meta-data about the standard Kubernetes resources, as well as the TM Forum ODA extensions. There is a detailed breakdown of the Component Envelope in [ODAComponentDesignGuidelines](https://github.com/tmforum-oda/oda-ca-docs/blob/master/ODAComponentDesignGuidelines.md).
+The Component Envelope contains the meta-data required to automatically deploy and manage the component in an ODA-Canvas environment. The envelope will contain meta-data about the standard Kubernetes resources, as well as the TM Forum ODA extensions. There is a detailed breakdown of the Component Envelope in [Component Design Guidelines](../ODAComponentDesignGuidelines.md).
 
 
 We will use [Helm](https://helm.sh/) to create the component envelope as a Helm-Chart. This tutorial assumes you have already installed Helm on your local environment.
@@ -621,8 +621,6 @@ metadata:
   name: {{.Release.Name}}-{{.Values.component.name}}
   labels:
     oda.tmforum.org/componentName: {{.Release.Name}}-{{.Values.component.name}}
-  annotations:
-    webhookconverted: Webhook converted From oda.tmforum.org/v1beta3 to oda.tmforum.org/v1
 spec:
   componentMetadata:
     id: {{.Values.component.id}}
@@ -643,9 +641,11 @@ spec:
   coreFunction:
     exposedAPIs:
       - name: productinventorymanagement
+        id: TMF637
         specification:
           - url: >-
               https://raw.githubusercontent.com/tmforum-apis/TMF637_ProductInventory/master/TMF637-ProductInventory-v4.0.0.swagger.json
+            version: v4.0.0
         implementation: {{.Release.Name}}-productinventoryapi
         apiType: openapi
         path: >-
@@ -656,9 +656,11 @@ spec:
         gatewayConfiguration: {}
     dependentAPIs:
       - name: party
+        id: TMF632
         apiType: openapi
         specification:
-          - url: https://open-api.tmforum.org/TMF632-Party-v4.0.0.swagger.json
+          - url: https://raw.githubusercontent.com/tmforum-apis/TMF632_Party/master/TMF632-Party-v4.0.0.swagger.json
+            version: v4.0.0
   eventNotification:
     publishedEvents: []
     subscribedEvents: []
@@ -669,9 +671,11 @@ spec:
     canvasSystemRole: {{.Values.security.controllerRole}}
     exposedAPIs:
       - name: partyrole
+        id: TMF669
         specification:
           - url: >-
               https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
+            version: v4.0.0
         implementation: {{.Release.Name}}-partyroleapi
         apiType: openapi
         path: >-
@@ -681,6 +685,14 @@ spec:
         port: 8080
         gatewayConfiguration: {}
 ```
+
+A few things to note in the `v1` component specification:
+
+* Each API has an `id`, the TM Forum Open API number (here `TMF637`, `TMF632` and `TMF669`), and a list of `specification` entries. Each entry gives the `url` of the API's specification and its `version`. The list lets a component offer more than one version of an API.
+* The `dependentAPIs` list declares the APIs that the component calls. Here the component depends on the TMF632 Party Management API. The Canvas looks for another component that exposes an API with the same specification `url`, and tells the component where to find it. Until it finds one, the component stays in the `In-Progress-DepApi` deployment status (see Step 9).
+* The `securityFunction` exposes the TMF669 Party Role API, which the Canvas reads to learn the component's roles, and names the `canvasSystemRole` that the Canvas uses to manage it.
+
+For the full list of fields, see the [Component Design Guidelines](../ODAComponentDesignGuidelines.md) and the [component custom resource definition](https://github.com/tmforum-oda/oda-canvas/blob/main/charts/oda-crds/templates/oda-component-crd.yaml).
 
 Finally we have to create the parameters in the `values.yaml` file.
 
@@ -739,7 +751,17 @@ To permanently save the namespace for all subsequent kubectl commands use:
 kubectl config set-context --current --namespace=components
 ```
 
-Install the component using Helm, we call the release name `r1` . Ensure the release name is not in conflict with release name already assigned to other components in the your Canvas:
+Our component depends on the TMF632 Party Management API, so first install a component that provides it. The [reference example components](https://github.com/tmforum-oda/reference-example-components) include one, TMFC028 Party Management:
+
+```sh
+helm repo add oda-components https://tmforum-oda.github.io/reference-example-components
+helm repo update
+helm install pty oda-components/partymanagement
+```
+
+Wait until `kubectl get components` shows `pty-partymanagement` as `Complete`. Install it first: the Canvas looks for a component's dependent APIs when the component is installed, and doesn't look again if it found none.
+
+Then install our component using Helm, we call the release name `r1` . Ensure the release name is not in conflict with release name already assigned to other components in the your Canvas:
 
 ```sh
 helm install r1 productinventory/ 
@@ -752,9 +774,17 @@ You can then view the component in `kubectl`:
 kubectl get components
 ```
 
-The `kubectl get components` will show all the deployed components and the deployment status. Initially these details will be blank - the component may take a few seconds to fully deploy. Once deployed, it should look like:
+The `kubectl get components` will show all the deployed components and the deployment status. Initially these details will be blank - the component may take a minute or two to fully deploy. Once deployed, it should look like:
 
 ![get components](./images/kubectl-get-components.png)
+
+If the component stays at `In-Progress-DepApi`, the Canvas hasn't found the Party Management API. Check that `pty-partymanagement` is `Complete`, then uninstall and reinstall `r1`. You can see what the Canvas found for each dependent API with:
+
+```sh
+kubectl get dependentapis
+```
+
+Once the dependency is resolved, it shows `READY` as `true` and the `URL` of the Party Management API, for example `https://<canvas-host>/pty-partymanagement/tmf-api/party/v4`.
 
 You can also view the component API endpoint in `kubectl`:
 
@@ -784,7 +814,7 @@ The high level directory structure for our reference implementation is depicted 
 
 ![Implementation directory image](./images/folderstructure.png)
 
-Also, the reference implementation sourcecode is available on the [ODA-Component-Tutorial Git Hub Repo](https://github.com/tmforum-oda/oda-ca-docs/tree/master/ODA-Component-Tutorial/ProductInventory)
+Also, the reference implementation sourcecode is available on the [ODA-Component-Tutorial Git Hub Repo](https://github.com/tmforum-oda/oda-ca-docs/tree/main/ODA-Component-Tutorial/ProductInventory)
 
 
 ## ISSUES & resolution
