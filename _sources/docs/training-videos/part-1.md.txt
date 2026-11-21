@@ -1,0 +1,168 @@
+# Introduction to the ODA Canvas
+
+<p class="oda-video-meta">Part 1 · 14:53 · Published 27 October 2026</p>
+
+<div class="oda-video-player">
+<iframe src="https://www.youtube-nocookie.com/embed/xLdFY9mGJxI" title="Introduction to the ODA Canvas" loading="lazy"
+  allow="accelerometer; encrypted-media; gyroscope; picture-in-picture; fullscreen" allowfullscreen></iframe>
+</div>
+
+The ODA Canvas is the execution platform for TM Forum Open Digital Architecture (ODA) Components, with an open-source reference implementation. This first video in the ODA Canvas training series explains why the Canvas exists, from TM Forum's frameworks and Open APIs to the ODA Component and Canvas standards.
+
+It covers what an ODA Component is and the services the Canvas provides to components, the business benefits of the approach, and a tour of the Canvas and its Portal: a component is deployed and its APIs, identity and observability are configured automatically. It finishes with which Canvas capabilities are available today, which are experimental and which are planned.
+
+[Watch on YouTube](https://youtu.be/xLdFY9mGJxI). Next in the series: [Part 2, How do I buy or build an ODA Canvas?](part-2.md).
+
+## Related documentation
+
+- {doc}`/canvas/README`
+- {doc}`/canvas/Canvas-design`
+
+## Chapters
+
+- [0:00](https://youtu.be/xLdFY9mGJxI?t=0) Title card
+- [0:58](https://youtu.be/xLdFY9mGJxI?t=58) Who this is for
+- [1:26](https://youtu.be/xLdFY9mGJxI?t=86) Roadmap
+- [1:50](https://youtu.be/xLdFY9mGJxI?t=110) Frameworks and the problem of interpretation
+- [2:25](https://youtu.be/xLdFY9mGJxI?t=145) The Open API programme
+- [3:05](https://youtu.be/xLdFY9mGJxI?t=185) The remaining gap
+- [3:30](https://youtu.be/xLdFY9mGJxI?t=210) What is an ODA Component?
+- [4:02](https://youtu.be/xLdFY9mGJxI?t=242) What is the ODA Canvas?
+- [4:32](https://youtu.be/xLdFY9mGJxI?t=272) Composable IT with ODA
+- [5:05](https://youtu.be/xLdFY9mGJxI?t=305) Composable AI with Agentic ODA
+- [5:44](https://youtu.be/xLdFY9mGJxI?t=344) Example: identity is declared, not implemented
+- [6:28](https://youtu.be/xLdFY9mGJxI?t=388) Example: secrets without bootstrap credentials
+- [6:56](https://youtu.be/xLdFY9mGJxI?t=416) Six benefits
+- [7:38](https://youtu.be/xLdFY9mGJxI?t=458) An order-of-magnitude goal
+- [7:53](https://youtu.be/xLdFY9mGJxI?t=473) The component standard in two layers
+- [8:20](https://youtu.be/xLdFY9mGJxI?t=500) Live demo: the ODA Component Directory
+- [8:58](https://youtu.be/xLdFY9mGJxI?t=538) The component YAML
+- [9:28](https://youtu.be/xLdFY9mGJxI?t=568) The Canvas as a set of operators
+- [10:04](https://youtu.be/xLdFY9mGJxI?t=604) Worked example: API exposure
+- [10:56](https://youtu.be/xLdFY9mGJxI?t=656) Live demo: the component inventory
+- [11:13](https://youtu.be/xLdFY9mGJxI?t=673) Live demo: deploying a component
+- [11:35](https://youtu.be/xLdFY9mGJxI?t=695) Identity configuration
+- [12:04](https://youtu.be/xLdFY9mGJxI?t=724) Observability
+- [12:44](https://youtu.be/xLdFY9mGJxI?t=764) Available today, experimental, planned
+- [13:28](https://youtu.be/xLdFY9mGJxI?t=808) Measuring Canvas adoption
+- [13:54](https://youtu.be/xLdFY9mGJxI?t=834) Built together
+- [14:22](https://youtu.be/xLdFY9mGJxI?t=862) What's next
+
+## Transcript
+
+The narration of the video, chapter by chapter. The captions on YouTube use the same text.
+
+<details class="oda-transcript">
+<summary>Show the transcript</summary>
+
+**[0:00](https://youtu.be/xLdFY9mGJxI?t=0) Title card**
+
+Welcome to the first video in a series about the Open Digital Architecture Canvas. The Canvas is the execution platform for ODA Components, with an open-source reference implementation. This video starts with a short history, from TM Forum's frameworks to its Open APIs, sharing what led us to creating the ODA Component and Canvas standards. It then shares what an ODA Component is, and what services the Canvas provides towards components.
+
+Next we'll go through the business benefits of this approach, and a tour of the Canvas and its Portal. You'll see a component deployed, with its APIs, identity and observability configured automatically. The video also covers which capabilities are available today, which are experimental, and which are planned. Let's get started.
+
+**[0:58](https://youtu.be/xLdFY9mGJxI?t=58) Who this is for**
+
+This video is for two groups. The first group is the architects and software engineers who build functional software components. They want to know what it means to meet the ODA standards and run on the Canvas. The second group is site reliability engineers who build or operate a Canvas platform. That might be a communication service provider running its own Canvas. Or it might be a cloud provider offering a managed Canvas to others.
+
+**[1:26](https://youtu.be/xLdFY9mGJxI?t=86) Roadmap**
+
+We'll start with a short history of how we got here. Then we'll explain what an ODA Component is and what the Canvas provides. After that we'll cover the business benefits. Next comes a quick tour of the Canvas, including the Canvas Portal. We'll finish with where the work is heading. Later videos in the series go deeper into each area.
+
+**[1:50](https://youtu.be/xLdFY9mGJxI?t=110) Frameworks and the problem of interpretation**
+
+For more than twenty-five years, TM Forum has been a hub for collaboration on telecom IT. The early frameworks gave the industry a common language for processes, information and functions. Operators used them successfully to design high-level architectures. They also gave a common language for product selection and requests for proposal. But they were not detailed enough for systems to work together seamlessly. So every integration needed custom work. That integration tax was paid again and again.
+
+**[2:25](https://youtu.be/xLdFY9mGJxI?t=145) The Open API programme**
+
+The next big step was TM Forum's Open API programme. It began with experiments and hackathons around 2013. It was formally launched in 2015. Open APIs are detailed, prescriptive, machine-readable specifications for standard services. Adoption has been huge. By September 2026, there had been almost one point four million downloads. They came from nearly seventy-two thousand developers. Today, TM Forum Open APIs are the foundation for many telcos' IT services. They have enabled seamless integration between systems.
+
+**[3:05](https://youtu.be/xLdFY9mGJxI?t=185) The remaining gap**
+
+Standard APIs didn't solve everything. Telecom IT estates are still diverse and complex, and upgrading them is hard. Often several systems have to be upgraded together in one large transformation project. Standardising the interfaces wasn't enough. The industry also needed a standard way to package, deploy and operate the software behind them.
+
+**[3:30](https://youtu.be/xLdFY9mGJxI?t=210) What is an ODA Component?**
+
+That's where ODA Components come in. An ODA Component is an independently deployable unit of functionality. Alongside its business function, it declares its non-functional needs. These include the APIs it exposes and depends on, the events it publishes, its security roles and its observability. Components are interoperable, designed around end-to-end use cases. They are also portable and can run on any cloud platform that follows the standard.
+
+**[4:02](https://youtu.be/xLdFY9mGJxI?t=242) What is the ODA Canvas?**
+
+The ODA Canvas is the cloud-native execution environment for those components. It reads each component's declared requirements. It provides the shared operational services components need, including API management, identity, observability and secrets. Component developers can focus on business functionality while the Canvas takes care of security, monitoring and scaling.
+
+**[4:32](https://youtu.be/xLdFY9mGJxI?t=272) Composable IT with ODA**
+
+Put the two together and you get composable IT. Use cases are assembled from standard components. Components are deployed onto a Canvas. Canvas operators configure the underlying platform services, such as API gateways, service meshes, identity and observability. Those can be open-source reference modules or commercial cloud services. When a new business need appears, you assemble existing building blocks instead of starting a new integration project.
+
+**[5:05](https://youtu.be/xLdFY9mGJxI?t=305) Composable AI with Agentic ODA**
+
+The same model now extends to AI. In the AI-Native Canvas, AI agents can be packaged as agentic components that follow the same component standard. Standard components can expose their APIs as tools for agents using the Model Context Protocol. Agents can describe themselves to other agents through agent-to-agent standards. The Canvas adds AI and data services, such as an AI gateway in front of the approved language models. This means agents from many vendors can be governed, observed and cost-managed in one consistent way.
+
+**[5:44](https://youtu.be/xLdFY9mGJxI?t=344) Example: identity is declared, not implemented**
+
+Identity is a good example of why this matters. Traditionally, each application ships with its own identity management. Operations teams then have to integrate each one. In the ODA model, a component only declares the roles it supports. The Canvas configures those roles in one shared identity platform. That could be Keycloak, Microsoft Entra ID, or another identity management platform. The Canvas does not mandate a specific product. It provides standard integration patterns, built on open standards, for interoperability and portability. Identities are managed once, consistently, across every application.
+
+**[6:28](https://youtu.be/xLdFY9mGJxI?t=388) Example: secrets without bootstrap credentials**
+
+Secrets work the same way. A component declares that it needs a secrets store, and the Canvas sets up a private vault for it. In the reference implementation that's HashiCorp Vault, but any secrets management platform can be used. The component authenticates with its own Kubernetes workload identity. So it never needs a bootstrap password just to reach the vault.
+
+**[6:56](https://youtu.be/xLdFY9mGJxI?t=416) Six benefits**
+
+Why do this? The benefits are shared by service providers, software vendors, integrators and cloud providers. Seamless integration supports zero-touch, zero-wait and zero-trouble customer experiences. Operations get simpler. Hundreds of teams running vertically integrated applications become one site reliability team running a Canvas. Agility drives innovation, including faster adoption of AI-native capabilities. Integration becomes automated instead of a manual project. Security is built in, with a zero-trust architecture and security as code. And modular contracts let every component be upgraded continuously, reducing technical debt.
+
+**[7:38](https://youtu.be/xLdFY9mGJxI?t=458) An order-of-magnitude goal**
+
+The ambition isn't an incremental gain. The goal is a step change, aiming for an order-of-magnitude improvement in efficiency and agility. And a faster transformation to an AI-native telco.
+
+**[7:53](https://youtu.be/xLdFY9mGJxI?t=473) The component standard in two layers**
+
+The component standard has two layers. The lower layer is a set of design patterns for self-describing, modular software. Security and management are defined as code. The upper layer is a set of standard golden components. They represent industry best practice for breaking telecom IT into building blocks. You can browse them in the TM Forum ODA Component Directory.
+
+**[8:20](https://youtu.be/xLdFY9mGJxI?t=500) Live demo: the ODA Component Directory**
+
+The standard components are published in the ODA Component Directory on the TM Forum website. Its components map groups them by business domain, alongside the Canvas operators. Opening Product Catalog Management shows its specification. The version and status, its YAML definition, conformance profile, test kit and reference implementation. The Open APIs it must expose and those it may depend on. And the products certified against it. Every standard component, such as Product Inventory, follows the same structure.
+
+**[8:58](https://youtu.be/xLdFY9mGJxI?t=538) The component YAML**
+
+Each component carries a YAML definition. Think of it as a Swagger file for a whole component. It describes the component's metadata and functional scope. Then, in its core, management and security functions, it lists the APIs it exposes and depends on. Also the events it uses, and the roles it needs. The specification reached version one, its generally available release, at the end of 2024.
+
+**[9:28](https://youtu.be/xLdFY9mGJxI?t=568) The Canvas as a set of operators**
+
+The Canvas itself is modular. It is a set of software operators, following the Kubernetes operator pattern. The component management operator takes the component definition and breaks it into sub-resources. These include exposed APIs, dependent APIs, identity configuration and secrets management. Each sub-resource is handled by its own specialised operator. Each operator is a piece of software that holds the operational knowledge a human operator would otherwise apply by hand.
+
+**[10:04](https://youtu.be/xLdFY9mGJxI?t=604) Worked example: API exposure**
+
+API exposure shows the pattern. The component declares which APIs it wants to expose. And optionally, policies such as rate limiting, API-key checks, cross-origin rules or request validation. An API operator reads that declaration and automatically configures whichever gateway or service mesh the Canvas uses. The reference implementation has six options. They are the Istio service mesh and the Kong and Apache APISIX gateways. There are also operators for Azure API Management, Google Apigee and Whale Cloud. Any other gateway can be added with its own operator. The component stays the same, and only the operator changes.
+
+**[10:56](https://youtu.be/xLdFY9mGJxI?t=656) Live demo: the component inventory**
+
+All of this is visible in the Canvas Portal. Here is the component inventory. It lists standard components grouped by business domain and shows which ones are installed on this Canvas.
+
+**[11:13](https://youtu.be/xLdFY9mGJxI?t=673) Live demo: deploying a component**
+
+Components are packaged as Helm charts. Deploying one is just a matter of choosing the chart and giving the release a name. From there, the operators take over. They expose its APIs, register its roles and configure its monitoring. Later videos follow that process end to end.
+
+**[11:35](https://youtu.be/xLdFY9mGJxI?t=695) Identity configuration**
+
+Identity follows the same pattern. A component declares its roles, either statically in its YAML or dynamically through a standard roles-and-permissions API. An identity config operator registers them in Keycloak, Microsoft Entra ID, or another identity management platform. Companion operators then create the component's client credentials and connect its API dependencies once access has been granted.
+
+**[12:04](https://youtu.be/xLdFY9mGJxI?t=724) Observability**
+
+For observability, components publish metrics using OpenMetrics and traces using OpenTelemetry, rather than shipping their own monitoring tools. When the API operator exposes a component's metrics endpoint, it also sets up scraping. In the reference implementation that means Prometheus, Grafana, Jaeger and an OpenTelemetry collector. The same declaration can target managed Prometheus services, Datadog, or another observability platform instead. Metrics can be business metrics as well as technical ones, for example a new product being added to a catalog.
+
+**[12:44](https://youtu.be/xLdFY9mGJxI?t=764) Available today, experimental, planned**
+
+Here's where things stand. Available in the reference implementation today are operators for component management, API management, identity, credentials, dependencies, secrets and disruption budgets. An OAuth2 configuration operator for authentication between components is available as a prototype. Experimental operators cover model-as-a-service, data products and carbon-aware scaling. Event management, cost control and database services are planned. The Canvas is generally available, with regular releases. Every change is checked by an automated behaviour-driven test suite, running against a real Kubernetes cluster.
+
+**[13:28](https://youtu.be/xLdFY9mGJxI?t=808) Measuring Canvas adoption**
+
+How do you measure adoption? The outcome that matters is automated component deployment and lifecycle management. A service provider can turn on each light in turn as it automates API exposure, observability, identity, secrets. And, increasingly, responsible AI, cost and carbon management. The Canvas itself is modular and can be deployed incrementally.
+
+**[13:54](https://youtu.be/xLdFY9mGJxI?t=834) Built together**
+
+The ODA Components and Canvas are the result of collaboration between software vendors, systems integrators, communication service providers and cloud providers. Together they deliver what the ODA Manifesto set out. A standard execution environment for ODA Components. That shared foundation lets the industry adopt new capabilities, including AI, faster together than any one company could do alone.
+
+**[14:22](https://youtu.be/xLdFY9mGJxI?t=862) What's next**
+
+This video was an overview. The next videos in the series go deeper into how to buy or build a Canvas. They also cover authentication and authorization, and the AI-Native Canvas. After that come observability, and carbon-aware software. The reference implementation, its documentation and its use-case library are all on GitHub at tmforum-oda slash oda-canvas. And contributions are welcome.
+
+</details>

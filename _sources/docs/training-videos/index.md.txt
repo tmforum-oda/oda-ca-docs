@@ -1,0 +1,24 @@
+# Training videos
+
+The ODA Canvas training series explains the Canvas and how to build ODA Components that run on
+it. Each video has chapters, a full transcript, and links to the documentation it covers. The
+videos are on the [Inside Telco Architecture](https://www.youtube.com/@insidetelcoarchitecture) YouTube
+channel, with captions.
+
+<div class="oda-video-cards">
+<a class="oda-video-card" href="part-1.html"><img src="https://i.ytimg.com/vi/xLdFY9mGJxI/hqdefault.jpg" alt="" loading="lazy"><span class="oda-card-kicker">Part 1 · 14:53</span><span class="oda-card-title">Introduction to the ODA Canvas</span><span class="oda-card-text">The ODA Canvas is the execution platform for TM Forum Open Digital Architecture (ODA) Components, with an open-source reference implementation. This first video in the ODA Canvas training series explains why the Canvas exists, from TM Forum&#x27;s frameworks and Open APIs to the ODA Component and Canvas standards.</span></a><a class="oda-video-card" href="part-2.html"><img src="https://i.ytimg.com/vi/fMXEmWalRFc/hqdefault.jpg" alt="" loading="lazy"><span class="oda-card-kicker">Part 2 · 9:30</span><span class="oda-card-title">How do I buy or build an ODA Canvas?</span><span class="oda-card-text">There is no separate standard for the ODA Canvas itself. The standard is the ODA Component specification: a Canvas is any platform that reads a component&#x27;s specification and meets its requirements. This second video in the ODA Canvas training series explains the three ways to get one: public cloud offerings, rolling your own from the open-source reference implementation, or assembling vendor and open-source operators, and mixing and matching all three.</span></a><a class="oda-video-card" href="part-3.html"><img src="https://i.ytimg.com/vi/a6j6tUDTS80/hqdefault.jpg" alt="" loading="lazy"><span class="oda-card-kicker">Part 3 · 8:45</span><span class="oda-card-title">Authentication and Authorization in the ODA Canvas</span><span class="oda-card-text">An ODA Component doesn&#x27;t implement identity management. It declares the roles it supports, and the ODA Canvas configures them in one shared identity platform, such as Keycloak, Microsoft Entra ID or another identity platform. This third video in the ODA Canvas training series explains how that works.</span></a><a class="oda-video-card" href="part-4.html"><img src="https://i.ytimg.com/vi/0QtnMJDblvE/hqdefault.jpg" alt="" loading="lazy"><span class="oda-card-kicker">Part 4 · 13:53</span><span class="oda-card-title">The AI-Native ODA Canvas</span><span class="oda-card-text">AI agents are fast becoming the way service providers deliver intelligent, autonomous services, but wiring each agent directly to its favourite model provider brings lock-in, hidden costs and inconsistent guardrails at enterprise scale. This fourth video in the ODA Canvas training series explains the AI-Native ODA Canvas: agents packaged as ODA Components that declare the tools and models they need, with governed access granted by the Canvas.</span></a><a class="oda-video-card" href="part-5.html"><img src="https://i.ytimg.com/vi/3Mcv0oc-0rs/hqdefault.jpg" alt="" loading="lazy"><span class="oda-card-kicker">Part 5 · 9:44</span><span class="oda-card-title">Observability in the ODA Canvas</span><span class="oda-card-text">Traditionally, every application arrives with its own monitoring agents and dashboards, and operations teams spend weeks wiring each one into their tools. An ODA Component is different: it declares its metrics API in its specification, and the ODA Canvas configures the observability platform for it automatically, using open standards (OpenMetrics for metrics, OpenTelemetry for traces), so any compliant platform can be used. This fifth video in the ODA Canvas training series explains how.</span></a><a class="oda-video-card" href="part-7.html"><img src="https://i.ytimg.com/vi/6ONDbSo3RfY/hqdefault.jpg" alt="" loading="lazy"><span class="oda-card-kicker">Part 7 · 11:27</span><span class="oda-card-title">The ODA Agent Skills Marketplace</span><span class="oda-card-text">AI software engineering agents are only as good as the context they are given and the process they follow. TM Forum&#x27;s Open Digital Architecture already holds that context in its Open APIs, ODA Component specifications and use cases. The ODA Agent Skills Marketplace packages it as an agent-friendly knowledge base, with Agent Skills that use it across the whole software delivery lifecycle, from requirements to operations.</span></a>
+</div>
+
+More parts are in production, including carbon-aware software. They will appear here when they
+are published.
+
+```{toctree}
+:hidden:
+
+part-1
+part-2
+part-3
+part-4
+part-5
+part-7
+```

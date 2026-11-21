@@ -1,0 +1,134 @@
+# How do I buy or build an ODA Canvas?
+
+<p class="oda-video-meta">Part 2 · 9:30 · Published 19 October 2026</p>
+
+<div class="oda-video-player">
+<iframe src="https://www.youtube-nocookie.com/embed/fMXEmWalRFc" title="How do I buy or build an ODA Canvas?" loading="lazy"
+  allow="accelerometer; encrypted-media; gyroscope; picture-in-picture; fullscreen" allowfullscreen></iframe>
+</div>
+
+There is no separate standard for the ODA Canvas itself. The standard is the ODA Component specification: a Canvas is any platform that reads a component's specification and meets its requirements. This second video in the ODA Canvas training series explains the three ways to get one: public cloud offerings, rolling your own from the open-source reference implementation, or assembling vendor and open-source operators, and mixing and matching all three.
+
+It shows how to check that a Canvas really provides the services it should, by running a BDD feature from the Canvas test kit live in the Canvas Portal. It then explains how operators make the Canvas modular, walks through the operator catalogue, and shows the operators in a real Canvas and how they were chosen. Examples cover API management, observability, identity, secrets and carbon-aware scaling, followed by how to build your own operator and what's coming next.
+
+[Watch on YouTube](https://youtu.be/fMXEmWalRFc). Next in the series: [Part 3, Authentication and Authorization in the ODA Canvas](part-3.md).
+
+## Related documentation
+
+- {doc}`/canvas/source/operators/README`
+- {doc}`/canvas/installation/README`
+
+## Chapters
+
+- [0:00](https://youtu.be/fMXEmWalRFc?t=0) How do I buy or build an ODA Canvas? (presenter introduction)
+- [1:00](https://youtu.be/fMXEmWalRFc?t=60) The standard is the component
+- [1:45](https://youtu.be/fMXEmWalRFc?t=105) Three ways to get a Canvas
+- [2:24](https://youtu.be/fMXEmWalRFc?t=144) Mix and match
+- [2:49](https://youtu.be/fMXEmWalRFc?t=169) How you know it's a Canvas
+- [3:16](https://youtu.be/fMXEmWalRFc?t=196) Live, the test kit in the Canvas Portal
+- [3:44](https://youtu.be/fMXEmWalRFc?t=224) Operators are the modules
+- [4:13](https://youtu.be/fMXEmWalRFc?t=253) The operator catalogue
+- [4:49](https://youtu.be/fMXEmWalRFc?t=289) Live, the operators in this Canvas
+- [5:13](https://youtu.be/fMXEmWalRFc?t=313) Live, choosing the modules
+- [5:38](https://youtu.be/fMXEmWalRFc?t=338) Example 1, API management
+- [6:10](https://youtu.be/fMXEmWalRFc?t=370) Example 2, observability
+- [6:43](https://youtu.be/fMXEmWalRFc?t=403) Example 3, identity
+- [7:16](https://youtu.be/fMXEmWalRFc?t=436) Example 4, secrets
+- [7:37](https://youtu.be/fMXEmWalRFc?t=457) Example 5, carbon-aware scaling
+- [8:01](https://youtu.be/fMXEmWalRFc?t=481) Build your own operator
+- [8:27](https://youtu.be/fMXEmWalRFc?t=507) What's next
+- [8:55](https://youtu.be/fMXEmWalRFc?t=535) Recap
+- [9:12](https://youtu.be/fMXEmWalRFc?t=552) Find out more
+
+## Transcript
+
+The narration of the video, chapter by chapter. The captions on YouTube use the same text.
+
+<details class="oda-transcript">
+<summary>Show the transcript</summary>
+
+**[0:00](https://youtu.be/fMXEmWalRFc?t=0) How do I buy or build an ODA Canvas? (presenter introduction)**
+
+Welcome to the second video in a series about the Open Digital Architecture Canvas. One question we're asked a lot is how do I buy or build an ODA Canvas?
+
+With a traditional application, you buy the software and its platform together. Every vendor brings its own gateway, identity management and monitoring solutions. The ODA Canvas separates those. Components declare what they need, and the Canvas provides it, using the platform services you choose.
+
+So the Canvas isn't one product. It's a modular platform, built from Canvas operators. In this video we'll look at the three ways to get a Canvas. We'll see how to check that a Canvas is really providing the services it's meant to. Then we'll look at the types of operator, with examples, and at the ODA Canvas running on a real cluster. Finally, we'll see what's coming next.
+
+**[1:00](https://youtu.be/fMXEmWalRFc?t=60) The standard is the component**
+
+There is no separate standard for the Canvas itself. The standard is the ODA Component specification. A Canvas is any platform that reads a component's specification and meets its requirements. It exposes the component's APIs, registers its roles, and monitors it. A component can also declare the AI models it needs, through the Model-as-a-Service operator. It can ask for data products through the Data operator. It can even manage its cost and carbon footprint, through the cost and carbon operators. This list isn't exhaustive. Any common platform service can be offered through the same pattern. The reference implementation does this on Kubernetes.
+
+**[1:45](https://youtu.be/fMXEmWalRFc?t=105) Three ways to get a Canvas**
+
+There are three ways to get a Canvas. First, a managed Canvas from a public cloud provider. At DTW Copenhagen, AWS, Microsoft Azure, China Mobile, Google Cloud and Oracle Cloud showed proofs of concept. They build on the reference implementation and the provider's own services.
+
+Second, roll your own. The reference implementation is open source, under the Apache two dot O licence, and designed to be extended.
+
+Third, use operators from software vendors and open-source projects, such as Istio and Kong.
+
+**[2:24](https://youtu.be/fMXEmWalRFc?t=144) Mix and match**
+
+These aren't either-or choices. The Canvas is modular, so you can mix and match. You might take a cloud provider's API management, the reference identity operator, and your own operator for an in-house system. A typical production Canvas combines standard operators with custom ones that apply the organisation's own policies.
+
+**[2:49](https://youtu.be/fMXEmWalRFc?t=169) How you know it's a Canvas**
+
+Whichever route you take, there's an objective way to check the result. The behaviour every Canvas must show is written down in two places. The use-case library describes it at a high level. Behaviour-driven development features describe it in detail, as scenarios. The test kit turns those scenarios into executable tests that can validate any Canvas implementation.
+
+**[3:16](https://youtu.be/fMXEmWalRFc?t=196) Live, the test kit in the Canvas Portal**
+
+Here is the test kit in the Canvas Portal. The catalogue loads the feature files straight from the GitHub repository. Each one is named after the use case it tests, such as installing components, exposing APIs, or configuring roles. You can pick features and run them against this Canvas. Every change to the reference implementation is checked this way too.
+
+**[3:44](https://youtu.be/fMXEmWalRFc?t=224) Operators are the modules**
+
+The modules of a Canvas are called Canvas operators. They follow the Kubernetes operator pattern, software that holds the operational knowledge for one job. The Component Management operator splits each component into parts, such as exposed APIs, dependent APIs and identity. A separate operator handles each part. So you can swap one technology for another without changing the component.
+
+**[4:13](https://youtu.be/fMXEmWalRFc?t=253) The operator catalogue**
+
+These are the operator types today. Seven are available now. They cover components, APIs, identity, credentials, dependencies, secrets and disruption budgets. A prototype operator handles authentication between components. Three operators are experimental. One provides model as a service. One manages data products. And one scales workloads to cut carbon. Event management, cost control and database services are planned. The list isn't fixed. New types will be added as the Canvas matures.
+
+**[4:49](https://youtu.be/fMXEmWalRFc?t=289) Live, the operators in this Canvas**
+
+Here are the operators in a running Canvas, in the Canvas Portal. Each one shows its catalogue number, its image and its pods. This Canvas uses the Kong API operator, the Keycloak identity operator, and the Vault secrets operator. The same list is visible from the command line, as ordinary Kubernetes deployments.
+
+**[5:13](https://youtu.be/fMXEmWalRFc?t=313) Live, choosing the modules**
+
+Choosing the modules is configuration, not code. When this Canvas was installed, the Istio API operator was switched off and Kong switched on. Only one API operator runs at a time. Later, the simple dependency operator was replaced with one that waits for an access grant in Keycloak. The components didn't change at all.
+
+**[5:38](https://youtu.be/fMXEmWalRFc?t=338) Example 1, API management**
+
+First, API management. Every component declares the APIs it exposes, with policies such as rate limits or API-key checks. A Canvas can use any API gateway or service mesh, and an API operator configures it. There are operators for Istio, Kong and Apache APISIX. There are also operators for Azure API Management, Google Apigee and Whale Cloud. Any other gateway can be added with its own operator.
+
+**[6:10](https://youtu.be/fMXEmWalRFc?t=370) Example 2, observability**
+
+Second, observability. A component doesn't bring its own monitoring tools. It publishes metrics and traces using the OpenMetrics and OpenTelemetry standards. When the API operator exposes the metrics endpoint, it also sets up how it is collected. That could be a Prometheus operator, a managed Prometheus service, or Datadog. The reference implementation includes a ready-made stack, and any other observability platform can be used.
+
+**[6:43](https://youtu.be/fMXEmWalRFc?t=403) Example 3, identity**
+
+Third, identity. Most applications today bring their own identity management. Each one has to be integrated with the company's central system. In the ODA model, a component holds only its roles and permissions, and declares them. Identity config operators register them in Keycloak, Microsoft Entra ID, or another identity platform. Companion operators manage each component's credentials and connect its dependencies once access is granted.
+
+**[7:16](https://youtu.be/fMXEmWalRFc?t=436) Example 4, secrets**
+
+Fourth, secrets. A component declares that it needs a secrets store, and the secrets management operator provides one. The reference implementation uses HashiCorp Vault, and another secrets platform can be used. The component signs in with its own Kubernetes identity, so no bootstrap passwords are needed.
+
+**[7:37](https://youtu.be/fMXEmWalRFc?t=457) Example 5, carbon-aware scaling**
+
+Carbon management was only a plan in the original version of this video. Now there is an experimental operator. A component marks some workloads as carbon-aware. The operator reads real-time grid carbon intensity, and limits how far those workloads scale when electricity is carbon-intensive. There's a dedicated video on this.
+
+**[8:01](https://youtu.be/fMXEmWalRFc?t=481) Build your own operator**
+
+You can also build your own operators. They can be written in any language that follows the Kubernetes operator pattern. The reference operators use Python with the KOPF framework, and Go. To work with the rest of the Canvas, an operator uses the same standard custom resources. The repository includes an AI coding-assistant skill for creating operators, and the test kit to check them.
+
+**[8:27](https://youtu.be/fMXEmWalRFc?t=507) What's next**
+
+The biggest area of new work is the AI-Native Canvas. Components will declare which AI models they need. The experimental Model-as-a-Service operator grants governed access through a model gateway. The gateway applies guardrails and records usage. The AI-Native Canvas has its own video. Operators for events, cost control and database services are also on the roadmap.
+
+**[8:55](https://youtu.be/fMXEmWalRFc?t=535) Recap**
+
+To recap. You can buy a Canvas, build one, or mix and match. Operators are the modules, and you choose them through configuration. Whatever you choose, the test kit checks that it behaves like a Canvas.
+
+**[9:12](https://youtu.be/fMXEmWalRFc?t=552) Find out more**
+
+To find out more, see the Open Digital Architecture pages on the TM Forum website. Browse the ODA Component Directory. And explore the reference implementation on GitHub, at TM Forum dash ODA slash ODA Canvas.
+
+</details>

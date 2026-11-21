@@ -1,0 +1,140 @@
+# Observability in the ODA Canvas
+
+<p class="oda-video-meta">Part 5 · 9:44 · Published 24 October 2026</p>
+
+<div class="oda-video-player">
+<iframe src="https://www.youtube-nocookie.com/embed/3Mcv0oc-0rs" title="Observability in the ODA Canvas" loading="lazy"
+  allow="accelerometer; encrypted-media; gyroscope; picture-in-picture; fullscreen" allowfullscreen></iframe>
+</div>
+
+Traditionally, every application arrives with its own monitoring agents and dashboards, and operations teams spend weeks wiring each one into their tools. An ODA Component is different: it declares its metrics API in its specification, and the ODA Canvas configures the observability platform for it automatically, using open standards (OpenMetrics for metrics, OpenTelemetry for traces), so any compliant platform can be used. This fifth video in the ODA Canvas training series explains how.
+
+It covers the three kinds of observability (technical metrics, business metrics and traces), how the Canvas wires a component's metrics API to the platform with a ServiceMonitor, and the choices for managed services. It then explores the reference observability stack live: business and technical metrics in Prometheus, a component dashboard in Grafana, and traces in Jaeger, sent through the OpenTelemetry Collector. It finishes with the Canvas Portal and the BDD features that test it all.
+
+[Watch on YouTube](https://youtu.be/3Mcv0oc-0rs). Next in the series: [Part 7, The ODA Agent Skills Marketplace](part-7.md).
+
+## Related documentation
+
+- {doc}`/canvas/Observability-design`
+- {doc}`/canvas/charts/observability-stack/README`
+- {doc}`/canvas/usecase-library/UC006-Configure-Observability`
+- {doc}`/canvas/usecase-library/UC011-View-Technical-Observability`
+- {doc}`/canvas/usecase-library/UC012-View-Business-Observability`
+- {doc}`/docs/Observability-Tutorial/README`
+
+## Chapters
+
+- [0:00](https://youtu.be/3Mcv0oc-0rs?t=0) Observability in the ODA Canvas (presenter introduction)
+- [0:56](https://youtu.be/3Mcv0oc-0rs?t=56) One view across many components
+- [1:24](https://youtu.be/3Mcv0oc-0rs?t=84) Three kinds of observability
+- [2:03](https://youtu.be/3Mcv0oc-0rs?t=123) Built on open standards
+- [2:30](https://youtu.be/3Mcv0oc-0rs?t=150) The reference observability stack
+- [2:56](https://youtu.be/3Mcv0oc-0rs?t=176) A component declares its metrics API
+- [3:24](https://youtu.be/3Mcv0oc-0rs?t=204) How the Canvas wires it up
+- [4:01](https://youtu.be/3Mcv0oc-0rs?t=241) Choose how metrics are collected
+- [4:31](https://youtu.be/3Mcv0oc-0rs?t=271) Live: the Canvas created the ServiceMonitor
+- [4:57](https://youtu.be/3Mcv0oc-0rs?t=297) Live: Prometheus finds the component
+- [5:17](https://youtu.be/3Mcv0oc-0rs?t=317) Live: business metrics in Prometheus
+- [5:44](https://youtu.be/3Mcv0oc-0rs?t=344) Technical metrics come with the platform
+- [6:05](https://youtu.be/3Mcv0oc-0rs?t=365) Live: a Grafana dashboard for the component
+- [6:35](https://youtu.be/3Mcv0oc-0rs?t=395) Live: the platform dashboards
+- [6:54](https://youtu.be/3Mcv0oc-0rs?t=414) How traces reach Jaeger
+- [7:19](https://youtu.be/3Mcv0oc-0rs?t=439) Pointing a component at the collector
+- [7:37](https://youtu.be/3Mcv0oc-0rs?t=457) Live: finding traces in Jaeger
+- [7:57](https://youtu.be/3Mcv0oc-0rs?t=477) Live: inside one request
+- [8:20](https://youtu.be/3Mcv0oc-0rs?t=500) Observability in the Canvas Portal
+- [8:47](https://youtu.be/3Mcv0oc-0rs?t=527) Tested with BDD features
+- [9:08](https://youtu.be/3Mcv0oc-0rs?t=548) Summary
+
+## Transcript
+
+The narration of the video, chapter by chapter. The captions on YouTube use the same text.
+
+<details class="oda-transcript">
+<summary>Show the transcript</summary>
+
+**[0:00](https://youtu.be/3Mcv0oc-0rs?t=0) Observability in the ODA Canvas (presenter introduction)**
+
+Welcome to the fifth video in the ODA Canvas training series, on observability. Traditionally, every application arrives with its own monitoring agents and its own dashboards. Operations teams then spend weeks wiring each into their own tools. An ODA Component is different. It declares its metrics APIs in its specification. The Canvas reads that declaration and configures the observability platform for it automatically. It uses open standards, OpenMetrics for metrics and OpenTelemetry for traces. So any compliant platform can be used. In this video, we look at the three kinds of observability the Canvas supports. We see how a component's metrics are wired up when it is deployed. Then we explore the reference stack live, with Prometheus, Grafana and Jaeger.
+
+**[0:56](https://youtu.be/3Mcv0oc-0rs?t=56) One view across many components**
+
+A service provider may run dozens of components from many different vendors. The operations team needs one consistent view across all of them. They should not need a different tool for each vendor. The Canvas provides that view, by connecting every component to the same observability platform. It can even trace a single request across components, and into the Canvas services they use.
+
+**[1:24](https://youtu.be/3Mcv0oc-0rs?t=84) Three kinds of observability**
+
+The Canvas supports three kinds of observability. Technical metrics show how a component is running, such as its CPU, memory and request rates. Business metrics are specific to each component, for example the number of orders it has captured. Traces follow a single request step by step, even across components and the Canvas services they use. Together, they show whether a component is healthy, and give insights into its business performance metrics. They also help troubleshoot issues, for example to track where time is spent for a request.
+
+**[2:03](https://youtu.be/3Mcv0oc-0rs?t=123) Built on open standards**
+
+The Canvas builds on two open standards. OpenMetrics defines how a component exposes its metrics for a platform to collect. OpenTelemetry defines how a component sends traces and other telemetry. The reference implementation uses Prometheus, Grafana and Jaeger. But the Canvas mandates no product. A managed cloud service, or another observability platform, can be used instead.
+
+**[2:30](https://youtu.be/3Mcv0oc-0rs?t=150) The reference observability stack**
+
+The Canvas repository includes a Helm chart for a complete reference stack. It installs into its own monitoring namespace. Prometheus collects and stores metrics, and Grafana turns them into dashboards. Jaeger stores and displays traces. The OpenTelemetry Collector receives telemetry from components and forwards traces to Jaeger.
+
+**[2:56](https://youtu.be/3Mcv0oc-0rs?t=176) A component declares its metrics API**
+
+Metrics start with the component specification. In the management function, the component lists a metrics API alongside its other exposed APIs. Its API type is openmetrics, the open standard for metrics. It also gives the path and port where its metrics can be read. The component does not say which observability platform will read them. That is the Canvas's job.
+
+**[3:24](https://youtu.be/3Mcv0oc-0rs?t=204) How the Canvas wires it up**
+
+When the component is deployed, the component operator creates an ExposedAPI resource for each API. The API operator handles each one. For an API of type openmetrics, it also configures the observability platform. In the reference Canvas, it creates a ServiceMonitor resource. Prometheus finds the ServiceMonitor and starts scraping the metrics endpoint every fifteen seconds. When the component is removed, the ServiceMonitor is removed with it.
+
+**[4:01](https://youtu.be/3Mcv0oc-0rs?t=241) Choose how metrics are collected**
+
+Not every platform uses ServiceMonitors. So the API operator has a setting called open metrics implementation. ServiceMonitor is the default, for platforms that use the Prometheus operator. Prometheus annotation adds pod annotations instead, which some managed Prometheus services read. Datadog annotation uses Datadog's own annotation format. The component specification stays the same in every case.
+
+**[4:31](https://youtu.be/3Mcv0oc-0rs?t=271) Live: the Canvas created the ServiceMonitor**
+
+Here is a product catalog component, deployed as release obs. It has three exposed APIs, and one of them is the metrics API. The Canvas has created a ServiceMonitor for it automatically. It points at the component's metrics path on port four thousand, every fifteen seconds. Nobody had to configure Prometheus by hand.
+
+**[4:57](https://youtu.be/3Mcv0oc-0rs?t=297) Live: Prometheus finds the component**
+
+In Prometheus, the target health page lists everything it scrapes. The product catalog's metrics endpoint is here, and its state is up. Prometheus picked it up from the ServiceMonitor within seconds of the component being deployed.
+
+**[5:17](https://youtu.be/3Mcv0oc-0rs?t=317) Live: business metrics in Prometheus**
+
+This component counts its business events. Every time a catalog, category, product specification or product offering is created or removed, a counter goes up. This query shows the rate of each kind of event over the last fifteen minutes. These are business metrics, defined by the component itself, and collected by the Canvas.
+
+**[5:44](https://youtu.be/3Mcv0oc-0rs?t=344) Technical metrics come with the platform**
+
+Technical metrics need nothing from the component at all. The platform already reports the CPU and memory of every container. Here is the CPU use of each pod in the product catalog component. The service mesh can add request rates and latencies in the same way.
+
+**[6:05](https://youtu.be/3Mcv0oc-0rs?t=365) Live: a Grafana dashboard for the component**
+
+Grafana turns these metrics into dashboards, using Prometheus as its data source. This dashboard puts one component's business and technical metrics side by side. At the top are business events per minute, by type. Below are the CPU and memory of each of the component's pods. An operations team can build one dashboard like this and reuse it for every component.
+
+**[6:35](https://youtu.be/3Mcv0oc-0rs?t=395) Live: the platform dashboards**
+
+The reference stack also comes with standard Kubernetes dashboards. Choosing the components namespace shows the CPU and memory of every deployed component together. So the same tool covers both the platform and the business view.
+
+**[6:54](https://youtu.be/3Mcv0oc-0rs?t=414) How traces reach Jaeger**
+
+Traces work the other way round. Instead of being scraped, the component pushes its traces as they happen. It sends them using the OpenTelemetry protocol to the OpenTelemetry Collector. The collector batches them and forwards them to Jaeger. Because the protocol is standard, the collector could forward them to another tracing platform instead.
+
+**[7:19](https://youtu.be/3Mcv0oc-0rs?t=439) Pointing a component at the collector**
+
+The collector address is set when the component is installed, in its Helm values. It is part of the environment, not of the component specification. Here, tracing is enabled and the component sends its traces to the collector in the monitoring namespace.
+
+**[7:37](https://youtu.be/3Mcv0oc-0rs?t=457) Live: finding traces in Jaeger**
+
+In Jaeger, the product catalog appears as its own service. Searching it lists recent traces, one for each API request. The chart at the top shows how long each request took. So a slow or failing request stands out straight away.
+
+**[7:57](https://youtu.be/3Mcv0oc-0rs?t=477) Live: inside one request**
+
+Opening a trace shows one request from end to end. It starts with the incoming HTTP call. Then come the middleware steps that validate the request against the TMF API definition. Last come the calls to the database. Each step shows exactly how long it took, so it is clear where the time goes.
+
+**[8:20](https://youtu.be/3Mcv0oc-0rs?t=500) Observability in the Canvas Portal**
+
+The Canvas Portal has an observability page that finds the telemetry tools in the cluster. It shows Prometheus, Grafana and Jaeger, each with its address inside the cluster. Langfuse, a tool for LLM observability, is shown in grey. The Canvas is still under development, and LLM observability is in the backlog.
+
+**[8:47](https://youtu.be/3Mcv0oc-0rs?t=527) Tested with BDD features**
+
+These behaviours are tested automatically. One BDD feature installs a component and checks that a ServiceMonitor is created, then removed on uninstall. Another adds catalog data and checks that new events reach the OpenTelemetry Collector. Both are tagged, so a Canvas without these tools simply skips them.
+
+**[9:08](https://youtu.be/3Mcv0oc-0rs?t=548) Summary**
+
+To recap. A component declares its metrics API in its specification, and sends its traces using OpenTelemetry. The Canvas configures the observability platform for it automatically, and removes the configuration when the component is uninstalled. The reference stack uses Prometheus, Grafana and Jaeger, but any platform that supports the open standards can be used. To find out more, see the observability design and the observability stack chart in the ODA Canvas repository.
+
+</details>

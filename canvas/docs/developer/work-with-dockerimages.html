@@ -1,0 +1,1288 @@
+<!doctype html>
+<html class="no-js" lang="en" data-content_root="../../../">
+  <head><meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="index" title="Index" href="../../../genindex.html"><link rel="search" title="Search" href="../../../search.html"><link rel="next" title="Installing KOPF (tested in GKE)" href="../../source/operators/Installing%20KOPF%20development%20environment.html"><link rel="prev" title="ODA Canvas Development Environment" href="../../devcontainer.html">
+        <link rel="prefetch" href="../../../_static/ODA-Canvas.svg" as="image">
+        <link rel="prefetch" href="../../../_static/ODA-Canvas-dark.svg" as="image">
+
+    <!-- Generated with Sphinx 9.2.0 and Furo 2025.12.19 -->
+        <title>Developer How-Tos: Work with Dockerimages - ODA Canvas and Components</title>
+      <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=d75fae25" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/styles/furo.css?v=7bdb33bb" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/styles/furo-extensions.css?v=8dab3a3b" />
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/css/custom.css?v=b2790eba" />
+    
+    
+
+
+<style>
+  body {
+    --color-code-background: #f0f0f0;
+  --color-code-foreground: black;
+  
+  }
+  @media not print {
+    body[data-theme="dark"] {
+      --color-code-background: #0d1117;
+  --color-code-foreground: #e6edf3;
+  
+    }
+    @media (prefers-color-scheme: dark) {
+      body:not([data-theme="light"]) {
+        --color-code-background: #0d1117;
+  --color-code-foreground: #e6edf3;
+  
+      }
+    }
+  }
+</style></head>
+  <body>
+    
+    <script>
+      document.body.dataset.theme = localStorage.getItem("theme") || "auto";
+    </script>
+    
+
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="svg-toc" viewBox="0 0 24 24">
+    <title>Contents</title>
+    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024">
+      <path d="M408 442h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8zm-8 204c0 4.4 3.6 8 8 8h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56zm504-486H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 632H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zM115.4 518.9L271.7 642c5.8 4.6 14.4.5 14.4-6.9V388.9c0-7.4-8.5-11.5-14.4-6.9L115.4 505.1a8.74 8.74 0 0 0 0 13.8z"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+    <title>Menu</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-menu">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+    <title>Expand</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-chevron-right">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </symbol>
+  <symbol id="svg-sun" viewBox="0 0 24 24">
+    <title>Light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="feather-sun">
+      <circle cx="12" cy="12" r="5"></circle>
+      <line x1="12" y1="1" x2="12" y2="3"></line>
+      <line x1="12" y1="21" x2="12" y2="23"></line>
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+      <line x1="1" y1="12" x2="3" y2="12"></line>
+      <line x1="21" y1="12" x2="23" y2="12"></line>
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon" viewBox="0 0 24 24">
+    <title>Dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-moon">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
+    </svg>
+  </symbol>
+  <symbol id="svg-sun-with-moon" viewBox="0 0 24 24">
+    <title>Auto light/dark, in light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path style="opacity: 50%" d="M 5.411 14.504 C 5.471 14.504 5.532 14.504 5.591 14.504 C 3.639 16.319 4.383 19.569 6.931 20.352 C 7.693 20.586 8.512 20.551 9.25 20.252 C 8.023 23.207 4.056 23.725 2.11 21.184 C 0.166 18.642 1.702 14.949 4.874 14.536 C 5.051 14.512 5.231 14.5 5.411 14.5 L 5.411 14.504 Z"/>
+      <line x1="14.5" y1="3.25" x2="14.5" y2="1.25"/>
+      <line x1="14.5" y1="15.85" x2="14.5" y2="17.85"/>
+      <line x1="10.044" y1="5.094" x2="8.63" y2="3.68"/>
+      <line x1="19" y1="14.05" x2="20.414" y2="15.464"/>
+      <line x1="8.2" y1="9.55" x2="6.2" y2="9.55"/>
+      <line x1="20.8" y1="9.55" x2="22.8" y2="9.55"/>
+      <line x1="10.044" y1="14.006" x2="8.63" y2="15.42"/>
+      <line x1="19" y1="5.05" x2="20.414" y2="3.636"/>
+      <circle cx="14.5" cy="9.55" r="3.6"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon-with-sun" viewBox="0 0 24 24">
+    <title>Auto light/dark, in dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path d="M 8.282 7.007 C 8.385 7.007 8.494 7.007 8.595 7.007 C 5.18 10.184 6.481 15.869 10.942 17.24 C 12.275 17.648 13.706 17.589 15 17.066 C 12.851 22.236 5.91 23.143 2.505 18.696 C -0.897 14.249 1.791 7.786 7.342 7.063 C 7.652 7.021 7.965 7 8.282 7 L 8.282 7.007 Z"/>
+      <line style="opacity: 50%" x1="18" y1="3.705" x2="18" y2="2.5"/>
+      <line style="opacity: 50%" x1="18" y1="11.295" x2="18" y2="12.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="4.816" x2="14.464" y2="3.964"/>
+      <line style="opacity: 50%" x1="20.711" y1="10.212" x2="21.563" y2="11.063"/>
+      <line style="opacity: 50%" x1="14.205" y1="7.5" x2="13.001" y2="7.5"/>
+      <line style="opacity: 50%" x1="21.795" y1="7.5" x2="23" y2="7.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="10.184" x2="14.464" y2="11.036"/>
+      <line style="opacity: 50%" x1="20.711" y1="4.789" x2="21.563" y2="3.937"/>
+      <circle style="opacity: 50%" cx="18" cy="7.5" r="2.169"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-pencil" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-pencil-code">
+      <path d="M4 20h4l10.5 -10.5a2.828 2.828 0 1 0 -4 -4l-10.5 10.5v4" />
+      <path d="M13.5 6.5l4 4" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+  <symbol id="svg-eye" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-eye-code">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M10 12a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" />
+      <path
+        d="M11.11 17.958c-3.209 -.307 -5.91 -2.293 -8.11 -5.958c2.4 -4 5.4 -6 9 -6c3.6 0 6.6 2 9 6c-.21 .352 -.427 .688 -.647 1.008" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+</svg>
+
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle site navigation sidebar">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc" aria-label="Toggle table of contents sidebar">
+<label class="overlay sidebar-overlay" for="__navigation"></label>
+<label class="overlay toc-overlay" for="__toc"></label>
+
+<a class="skip-to-content muted-link" href="#furo-main-content">Skip to content</a>
+
+
+
+<div class="page">
+  <header class="mobile-header">
+    <div class="header-left">
+      <label class="nav-overlay-icon" for="__navigation">
+        <span class="icon"><svg><use href="#svg-menu"></use></svg></span>
+      </label>
+    </div>
+    <div class="header-center">
+      <a href="../../../index.html"><div class="brand">ODA Canvas and Components</div></a>
+    </div>
+    <div class="header-right">
+      <div class="theme-toggle-container theme-toggle-header">
+        <button class="theme-toggle" aria-label="Toggle Light / Dark / Auto color theme">
+          <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+          <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+          <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+          <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+        </button>
+      </div>
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
+        <span class="icon"><svg><use href="#svg-toc"></use></svg></span>
+      </label>
+    </div>
+  </header>
+  <aside class="sidebar-drawer">
+    <div class="sidebar-container">
+      
+      <div class="sidebar-sticky"><a class="sidebar-brand" href="../../../index.html">
+  <div class="sidebar-logo-container">
+    <img class="sidebar-logo only-light" src="../../../_static/ODA-Canvas.svg" alt="Light Logo"/>
+    <img class="sidebar-logo only-dark" src="../../../_static/ODA-Canvas-dark.svg" alt="Dark Logo"/>
+  </div>
+  
+  <span class="sidebar-brand-text">ODA Canvas and Components</span>
+  
+</a><form class="sidebar-search-container" method="get" action="../../../search.html" role="search">
+  <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
+  <input type="hidden" name="check_keywords" value="yes">
+  <input type="hidden" name="area" value="default">
+</form>
+<div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
+  <p class="caption" role="heading"><span class="caption-text">Get started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../README.html">Open Digital Architecture Canvas</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../docs/training-videos/index.html">Training videos</a><input aria-label="Toggle navigation of Training videos" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../docs/training-videos/part-1.html">Introduction to the ODA Canvas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../docs/training-videos/part-2.html">How do I buy or build an ODA Canvas?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../docs/training-videos/part-3.html">Authentication and Authorization in the ODA Canvas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../docs/training-videos/part-4.html">The AI-Native ODA Canvas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../docs/training-videos/part-5.html">Observability in the ODA Canvas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../docs/training-videos/part-7.html">The ODA Agent Skills Marketplace</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../docs/Getting_started.html">Getting started checklist for new members of ODA-CA</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../docs/Playbook.html">Introduction to the ODA Component Accelerator Project (ODA-CA)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Concepts and design</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../Canvas-design.html">ODA Canvas Design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../SecurityPrinciples.html">Open Digital Architecture Reference Implementation (RI) Security Principles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Authentication-design.html">Authentication design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Observability-design.html">Observability design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Event-based-integration-design.html">Event based integration design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../AI-Native-Canvas-design.html">AI-Native Canvas design</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Use cases</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../usecase-library/README.html">ODA Canvas - Use-Case Library</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../usecase-library/UC001-Install-Canvas.html">Install Canvas use case</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../usecase-library/UC002-Manage-Components.html">Manage Components use case</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../usecase-library/UC003-Configure-Exposed-APIs.html">Configure Exposed APIs use-case</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../usecase-library/UC004-Configure-Published-Events.html">Configure Published Events use-case</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../usecase-library/UC005-Configure-Clients-and-Roles.html">Configure Clients and Roles use case</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../usecase-library/UC006-Configure-Observability.html">Configure Observability use case</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../usecase-library/UC007-Configure-Dependent-APIs.html">Configure dependent APIs use case</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../usecase-library/UC008-Configure-Subscribed-Events.html">Configure Subscribed Events use-case</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../usecase-library/UC009-Internal-Authentication.html">Internal authentication use-case</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../usecase-library/UC010-External-Authentication.html">External authentication use-case</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../usecase-library/UC011-View-Technical-Observability.html">View technical observability use-case</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../usecase-library/UC012-View-Business-Observability.html">View business observability use-case</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../usecase-library/UC013-Upgrade-Canvas.html">Upgrade Canvas use case</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../usecase-library/UC014-Secrets-Management-JWT-based.html">Secrets Management for Component</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../usecase-library/UC016-ODA-Component-and-API-Registry.html">UC016 - ODA Component and API Inventory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../usecase-library/use-case-naming-conventions.html">Use-Case Naming Conventions</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Install and operate</span></p>
+<ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../installation/README.html">ODA Canvas installation</a><input aria-label="Toggle navigation of ODA Canvas installation" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../installation/CanvasVault/README.html">HashiCorp Vault installation</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../installation/azure/README.html">Deployment Guide for TM Forum ODA Canvas on Azure</a><input aria-label="Toggle navigation of Deployment Guide for TM Forum ODA Canvas on Azure" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" role="switch" type="checkbox"/><label for="toctree-checkbox-3"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../installation/azure/automated/automated_install_azure_README.html">End-to-End Deployment and Observability Guide for TM Forum ODA Canvas on Azure</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../installation/prerequisites/README.html">Prerequisites installation</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../release-notes/ReleaseNotes.html">Component Specification Release Notes</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Canvas operators</span></p>
+<ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../source/operators/README.html">ODA Canvas Operators</a><input aria-label="Toggle navigation of ODA Canvas Operators" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" role="switch" type="checkbox"/><label for="toctree-checkbox-4"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../source/operators/tests/README.html">Tests</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../source/operators/TMFOP001-Component-Management/README.html">TMFOP001 Component Management Operators</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../source/operators/TMFOP002-API-Management/README.html">TMFOP002 API Management Operators</a><input aria-label="Toggle navigation of TMFOP002 API Management Operators" class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" role="switch" type="checkbox"/><label for="toctree-checkbox-5"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../source/operators/TMFOP002-API-Management/apache-apisix/README.html">Apache APISIX API Management Operator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../source/operators/TMFOP002-API-Management/azure-apim/README.html">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../source/operators/TMFOP002-API-Management/azure-apim/README.html#operator-architecture">Operator Architecture</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../source/operators/TMFOP002-API-Management/azure-apim/README.html#key-components">Key Components</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../source/operators/TMFOP002-API-Management/azure-apim/README.html#event-handling-workflow">Event Handling Workflow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../source/operators/TMFOP002-API-Management/azure-apim/README.html#code-structure-and-functions">Code Structure and Functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../source/operators/TMFOP002-API-Management/azure-apim/README.html#interaction-with-azure-services">Interaction with Azure Services</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../source/operators/TMFOP002-API-Management/azure-apim/README.html#security-considerations">Security Considerations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../source/operators/TMFOP002-API-Management/azure-apim/README.html#testing-and-debugging">Testing and Debugging</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../source/operators/TMFOP002-API-Management/azure-apim/README.html#limitations-and-future-enhancements">Limitations and Future Enhancements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../source/operators/TMFOP002-API-Management/azure-apim/README.html#conclusion">Conclusion</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../source/operators/TMFOP002-API-Management/azure-apim/README.html#key-takeaways">Key Takeaways:</a><input aria-label="Toggle navigation of Key Takeaways:" class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" role="switch" type="checkbox"/><label for="toctree-checkbox-6"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../source/operators/TMFOP002-API-Management/azure-apim/automated/automated_apiManagement_README.html">Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../source/operators/TMFOP002-API-Management/azure-apim/automated/automated_apiManagement_README.html#operator-architecture">Operator Architecture</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../source/operators/TMFOP002-API-Management/azure-apim/automated/automated_apiManagement_README.html#key-components">Key Components</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../source/operators/TMFOP002-API-Management/azure-apim/automated/automated_apiManagement_README.html#event-handling-workflow">Event Handling Workflow</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../source/operators/TMFOP002-API-Management/azure-apim/automated/automated_apiManagement_README.html#code-structure-and-functions">Code Structure and Functions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../source/operators/TMFOP002-API-Management/azure-apim/automated/automated_apiManagement_README.html#interaction-with-azure-services">Interaction with Azure Services</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../source/operators/TMFOP002-API-Management/azure-apim/automated/automated_apiManagement_README.html#security-considerations">Security Considerations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../source/operators/TMFOP002-API-Management/azure-apim/automated/automated_apiManagement_README.html#testing-and-debugging">Testing and Debugging</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../source/operators/TMFOP002-API-Management/azure-apim/automated/automated_apiManagement_README.html#limitations-and-future-enhancements">Limitations and Future Enhancements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../source/operators/TMFOP002-API-Management/azure-apim/automated/automated_apiManagement_README.html#conclusion">Conclusion</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../source/operators/TMFOP002-API-Management/azure-apim/automated/automated_apiManagement_README.html#key-takeaways">Key Takeaways:</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../source/operators/TMFOP002-API-Management/istio/README.html">API Operator for Istio</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../source/operators/TMFOP002-API-Management/kong/README.html">Kubernetes Kong API Lifecycle Management Operator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../source/operators/TMFOP002-API-Management/whalecloud-apim/README.html">API Operator apig - Introduction</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../source/operators/TMFOP003-Identity-Config/README.html">TMFOP003 Identity Config Operators</a><input aria-label="Toggle navigation of TMFOP003 Identity Config Operators" class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" role="switch" type="checkbox"/><label for="toctree-checkbox-7"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../source/operators/TMFOP003-Identity-Config/LOGGING-ENHANCEMENTS.html">Enhanced Logging for Identity Config Operator and Listener</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../source/operators/TMFOP003-Identity-Config/README-PermissionSpecificationSet.html">Identity Config Operator - Permission Specification Set Support</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../source/operators/TMFOP003-Identity-Config/keycloak/README.html">Identity Config operator for Keycloak - Introduction</a><input aria-label="Toggle navigation of Identity Config operator for Keycloak - Introduction" class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" role="switch" type="checkbox"/><label for="toctree-checkbox-8"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../source/operators/TMFOP003-Identity-Config/keycloak/identity-listener-keycloak/README.html">Identity Listener Keycloak</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../source/operators/TMFOP003-Identity-Config/keycloak/identity-listener-keycloak/README.html#buildautomation-and-versioning">Buildautomation and Versioning</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../source/operators/TMFOP004-Credentials-Management/README.html">TMFOP004 Credentials Management Operators</a><input aria-label="Toggle navigation of TMFOP004 Credentials Management Operators" class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" role="switch" type="checkbox"/><label for="toctree-checkbox-9"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../source/operators/TMFOP004-Credentials-Management/credentials-management/README.html">Credentials Management Operator for Kubernetes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../source/operators/TMFOP004-Credentials-Management/credentials-management/README.html#installation">Installation</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../source/operators/TMFOP005-Dependency-Management/README.html">TMFOP005 Dependency Management Operators</a><input aria-label="Toggle navigation of TMFOP005 Dependency Management Operators" class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" role="switch" type="checkbox"/><label for="toctree-checkbox-10"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../source/operators/TMFOP005-Dependency-Management/dependency-management-using-keycloak-authorization/README.html">Dependency Management Operator — Keycloak Authorization</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../source/operators/TMFOP005-Dependency-Management/simple-dependency-management/README.html">Simple Dependency Management Operator</a><input aria-label="Toggle navigation of Simple Dependency Management Operator" class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" role="switch" type="checkbox"/><label for="toctree-checkbox-11"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../source/operators/TMFOP005-Dependency-Management/simple-dependency-management/docker/README.html">DependentAPI Simple Operator</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../source/operators/TMFOP005-Dependency-Management/simple-dependency-management/docker/README.html#buildautomation-and-versioning">Buildautomation and Versioning</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../source/operators/TMFOP006-Event-Management/README.html">TMFOP006 Event Management Operators</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../source/operators/TMFOP007-Secrets-Management/README.html">TMFOP007 Secrets Management Operators</a><input aria-label="Toggle navigation of TMFOP007 Secrets Management Operators" class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" role="switch" type="checkbox"/><label for="toctree-checkbox-12"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../source/operators/TMFOP007-Secrets-Management/vault/README.html">Vault Secrets Management Operator</a><input aria-label="Toggle navigation of Vault Secrets Management Operator" class="toctree-checkbox" id="toctree-checkbox-13" name="toctree-checkbox-13" role="switch" type="checkbox"/><label for="toctree-checkbox-13"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../source/operators/TMFOP007-Secrets-Management/vault/docker/README.html">Secrets Management Operator HC</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../source/operators/TMFOP007-Secrets-Management/vault/docker/README.html#buildautomation-and-versioning">Buildautomation and Versioning</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../source/operators/TMFOP007-Secrets-Management/vault/sidecar/docker/README.html">Secrets Management Sidecar</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../source/operators/TMFOP007-Secrets-Management/vault/sidecar/docker/README.html#buildautomation-and-versioning">Buildautomation and Versioning</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../source/operators/TMFOP008-OAuth2-Config/README.html">TMFOP008 OAuth2 Config Operators</a><input aria-label="Toggle navigation of TMFOP008 OAuth2 Config Operators" class="toctree-checkbox" id="toctree-checkbox-14" name="toctree-checkbox-14" role="switch" type="checkbox"/><label for="toctree-checkbox-14"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../source/operators/TMFOP008-OAuth2-Config/envoy-filter/README.html">OAuth2 EnvoyFilter Operator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../source/operators/TMFOP008-OAuth2-Config/envoy-filter/README.html#error-analysis">error analysis</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../source/operators/TMFOP008-OAuth2-Config/envoy-filter/README.html#deploy">deploy</a><input aria-label="Toggle navigation of deploy" class="toctree-checkbox" id="toctree-checkbox-15" name="toctree-checkbox-15" role="switch" type="checkbox"/><label for="toctree-checkbox-15"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../source/operators/TMFOP008-OAuth2-Config/envoy-filter/OAUTH2DEMO.html">OAuth2 EnvoyFilter Demo</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../source/operators/TMFOP008-OAuth2-Config/envoy-filter/OAUTH2DEMO.html#closing">closing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../source/operators/TMFOP008-OAuth2-Config/envoy-filter/OAUTH2DEMO.html#error-analysis">error analysis</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../source/operators/TMFOP008-OAuth2-Config/envoy-filter/docker/README.html">OAuth2 EnvoyFilter Operator</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../source/operators/TMFOP008-OAuth2-Config/envoy-filter/docker/README.html#buildautomation-and-versioning">Buildautomation and Versioning</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../source/operators/TMFOP009-Model-as-a-Service/README.html">TMFOP009 Model-as-a-Service Operators</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../source/operators/TMFOP010-Disruption-Budget-Management/README.html">TMFOP010 Disruption Budget Management Operators</a><input aria-label="Toggle navigation of TMFOP010 Disruption Budget Management Operators" class="toctree-checkbox" id="toctree-checkbox-16" name="toctree-checkbox-16" role="switch" type="checkbox"/><label for="toctree-checkbox-16"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../source/operators/TMFOP010-Disruption-Budget-Management/pdb-management/README.html">PDB Management Operator</a><input aria-label="Toggle navigation of PDB Management Operator" class="toctree-checkbox" id="toctree-checkbox-17" name="toctree-checkbox-17" role="switch" type="checkbox"/><label for="toctree-checkbox-17"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../source/operators/TMFOP010-Disruption-Budget-Management/pdb-management/MAINTAINERS.html">Maintainers</a></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../source/operators/TMFOP010-Disruption-Budget-Management/pdb-management/config/grafana/README.html">PDB Management Operator - Grafana Dashboards</a><input aria-label="Toggle navigation of PDB Management Operator - Grafana Dashboards" class="toctree-checkbox" id="toctree-checkbox-18" name="toctree-checkbox-18" role="switch" type="checkbox"/><label for="toctree-checkbox-18"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../source/operators/TMFOP010-Disruption-Budget-Management/pdb-management/config/grafana/DASHBOARD_IMPORT_GUIDE.html">PDB Management Operator - Grafana Dashboard Import Guide</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../source/operators/TMFOP010-Disruption-Budget-Management/pdb-management/config/mcp/README.html">MCP Server Configuration</a></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../source/operators/TMFOP010-Disruption-Budget-Management/pdb-management/docs/README.html">PDB Management Operator</a><input aria-label="Toggle navigation of PDB Management Operator" class="toctree-checkbox" id="toctree-checkbox-19" name="toctree-checkbox-19" role="switch" type="checkbox"/><label for="toctree-checkbox-19"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../source/operators/TMFOP010-Disruption-Budget-Management/pdb-management/docs/MCP_INTEGRATION.html">MCP Server Integration</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../source/operators/TMFOP010-Disruption-Budget-Management/pdb-management/docs/OPERATIONAL_RUNBOOK.html">PDB Management Operator - Operational Runbook</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../source/operators/TMFOP010-Disruption-Budget-Management/pdb-management/docs/PERFORMANCE_AND_CACHING.html">PDB Management Operator - Performance and Caching</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../source/operators/TMFOP010-Disruption-Budget-Management/pdb-management/docs/TECHNICAL_DOCUMENTATION.html">PDB Management Operator - Technical Documentation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../source/operators/TMFOP010-Disruption-Budget-Management/pdb-management/docs/VERIFICATION.html">Test Verification and Performance Testing Guide</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../source/operators/TMFOP010-Disruption-Budget-Management/pdb-management/docs/WEBHOOK_DEPLOYMENT.html">Webhook Deployment Guide</a></li>
+</ul>
+</li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../source/operators/TMFOP010-Disruption-Budget-Management/pdb-management/examples/demo/README.html">Demo Examples for PDB Management Operator</a><input aria-label="Toggle navigation of Demo Examples for PDB Management Operator" class="toctree-checkbox" id="toctree-checkbox-20" name="toctree-checkbox-20" role="switch" type="checkbox"/><label for="toctree-checkbox-20"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../source/operators/TMFOP010-Disruption-Budget-Management/pdb-management/examples/demo/DEMO_PRESENTATION_SCRIPT.html">PDB Management Operator - Complete Demo Presentation Script</a></li>
+</ul>
+</li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../source/operators/TMFOP010-Disruption-Budget-Management/pdb-management/toolsforlocal/README.html">PDB Management Operator - Demo Tools</a><input aria-label="Toggle navigation of PDB Management Operator - Demo Tools" class="toctree-checkbox" id="toctree-checkbox-21" name="toctree-checkbox-21" role="switch" type="checkbox"/><label for="toctree-checkbox-21"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../source/operators/TMFOP010-Disruption-Budget-Management/pdb-management/toolsforlocal/PDB_RECREATION_GUIDE.html">🚀 PDB Instant Recreation Guide</a></li>
+<li class="toctree-l4 has-children"><a class="reference internal" href="../../source/operators/TMFOP010-Disruption-Budget-Management/pdb-management/toolsforlocal/mcp/README.html">AI + MCP Integration Clients</a><input aria-label="Toggle navigation of AI + MCP Integration Clients" class="toctree-checkbox" id="toctree-checkbox-22" name="toctree-checkbox-22" role="switch" type="checkbox"/><label for="toctree-checkbox-22"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l5"><a class="reference internal" href="../../source/operators/TMFOP010-Disruption-Budget-Management/pdb-management/toolsforlocal/mcp/CLAUDE_MCP_USAGE.html">Claude API + MCP Integration Usage Guide</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../source/operators/TMFOP010-Disruption-Budget-Management/pdb-management/toolsforlocal/mcp/README_GO_CLIENT.html">Claude MCP Client - Go Version</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="../../source/operators/TMFOP010-Disruption-Budget-Management/pdb-management/toolsforlocal/observability/README.html">PDB Management Operator - Observability Stack</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../source/operators/TMFOP010-Disruption-Budget-Management/pdb-management/web/README.html">ODA Canvas - PDB Management MCP Web Interface</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../source/operators/TMFOP011-Carbon-Management/README.html">TMFOP011 Carbon Management Operators</a><input aria-label="Toggle navigation of TMFOP011 Carbon Management Operators" class="toctree-checkbox" id="toctree-checkbox-23" name="toctree-checkbox-23" role="switch" type="checkbox"/><label for="toctree-checkbox-23"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../source/operators/TMFOP011-Carbon-Management/carbon-management/README.html">Carbon Management Operator</a><input aria-label="Toggle navigation of Carbon Management Operator" class="toctree-checkbox" id="toctree-checkbox-24" name="toctree-checkbox-24" role="switch" type="checkbox"/><label for="toctree-checkbox-24"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../source/operators/TMFOP011-Carbon-Management/carbon-management/carbon-aware-scaling-scenario.html">Carbon-Aware Scaling Scenario: ProductOrderCaptureAndValidation</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Helm charts</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../charts/api-operator-istio/README.html">api-operator-istio</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../charts/apisix-gateway/README.html">apisix-gateway</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../charts/canvas-info-service/README.html">canvas-info-service</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../charts/canvas-oda/README.html">canvas-oda</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../charts/canvas-vault/README.html">canvas-vault</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../charts/carbon-intensity-service/README.html">carbon-intensity-service</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../charts/carbon-management-operator/README.html">carbon-management-operator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../charts/cert-manager-init/README.html">cert-manager-init</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../charts/component-operator/README.html">component-operator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../charts/credentialsmanagement-operator/README.html">Credentials Management Operator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../charts/dependentapi-simple-operator/README.html">dependentapi-simple-operator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../charts/identityconfig-operator-keycloak/README.html">identityconfig-operator-keycloak</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../charts/kong-gateway/README.html">kong-gateway</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../charts/observability-stack/README.html">ODA Canvas Observability Stack</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../charts/oda-webhook/README.html">oda-webhook</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../charts/pdb-management-operator/README.html">PDB Management Operator Helm Chart</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../charts/resource-inventory/README.html">canvas-resource-inventory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../charts/secretsmanagement-operator/README.html">secretsmanagement-operator</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Canvas services and tools</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../source/README.html">ODA Canvas source code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../canvas-portal-v2/README.html">Canvas Portal v2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../canvas-portal/README.html">Canvas portal</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../canvas-portal/README.html#how-to-install">How to install</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../canvas-portal/README.html#uninstall">Uninstall</a><input aria-label="Toggle navigation of Uninstall" class="toctree-checkbox" id="toctree-checkbox-25" name="toctree-checkbox-25" role="switch" type="checkbox"/><label for="toctree-checkbox-25"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../canvas-portal/portal-web/README.html">oda-dashboard</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../component-registry/README.html">Component-Registry</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../component-registry/README.html#multi-canvas-support">Multi-Canvas Support</a><input aria-label="Toggle navigation of Multi-Canvas Support" class="toctree-checkbox" id="toctree-checkbox-26" name="toctree-checkbox-26" role="switch" type="checkbox"/><label for="toctree-checkbox-26"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../component-registry/SECURED-SETUP-COMPREG.html">Secure Setup of Component-Registry</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../source/services/ComponentRegistry/README.html">TMF639 Resource Inventory Management Service</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../source/services/ComponentRegistry/README.html#buildautomation-and-versioning">Buildautomation and Versioning</a><input aria-label="Toggle navigation of Buildautomation and Versioning" class="toctree-checkbox" id="toctree-checkbox-27" name="toctree-checkbox-27" role="switch" type="checkbox"/><label for="toctree-checkbox-27"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../source/services/ComponentRegistry/NOTES.html">deploy kc init compreg</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../source/services/ComponentRegistry/OAUTH2_README.html">OAuth2 Authentifizierung für Component Registry</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../source/tmf-services/MCP_Resource_Inventory/README.html">TMF639 Resource Inventory MCP Server with Helm Integration</a><input aria-label="Toggle navigation of TMF639 Resource Inventory MCP Server with Helm Integration" class="toctree-checkbox" id="toctree-checkbox-28" name="toctree-checkbox-28" role="switch" type="checkbox"/><label for="toctree-checkbox-28"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../source/tmf-services/MCP_Resource_Inventory/SETUP_COMPLETE.html">TMF639 Resource Inventory MCP Server Setup Complete</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../source/tmf-services/TMF628_Performance_Management/README.html">TMF628 Performance Management API - Carbon Intensity Service</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../source/tmf-services/TMF638_Service_Inventory/README.html">OpenAPI Generated JavaScript/Express Server</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../source/tmf-services/TMF638_Service_Inventory/README.html#buildautomation-and-versioning">Buildautomation and Versioning</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../source/tmf-services/TMF639_Resource_Inventory/README.html">TMF639 Resource Inventory Management API</a><input aria-label="Toggle navigation of TMF639 Resource Inventory Management API" class="toctree-checkbox" id="toctree-checkbox-29" name="toctree-checkbox-29" role="switch" type="checkbox"/><label for="toctree-checkbox-29"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../source/tmf-services/TMF639_Resource_Inventory/test/README.html">TMF639 Resource Inventory Test Suite</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../source/webhooks/README.html">ODA Component webhooks</a><input aria-label="Toggle navigation of ODA Component webhooks" class="toctree-checkbox" id="toctree-checkbox-30" name="toctree-checkbox-30" role="switch" type="checkbox"/><label for="toctree-checkbox-30"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../source/webhooks/command-line/README.html">Command-line tool for Conversion Webhook</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../source/webhooks/implementation/README.html">Implementation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../source/webhooks/implementation/README.html#buildautomation-and-versioning">Buildautomation and Versioning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../source/webhooks/system-tests/README.html">System tests</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../source/webhooks/unit-tests/README.html">Unit tests for Webhook</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../source/utilities/README.html">ODA Canvas utilities</a><input aria-label="Toggle navigation of ODA Canvas utilities" class="toctree-checkbox" id="toctree-checkbox-31" name="toctree-checkbox-31" role="switch" type="checkbox"/><label for="toctree-checkbox-31"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../source/utilities/canvas-log-viewer/README.html">Canvas Log Viewer utility</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../source/utilities/canvas-log-viewer/README.html#installation">Installation</a><input aria-label="Toggle navigation of Installation" class="toctree-checkbox" id="toctree-checkbox-32" name="toctree-checkbox-32" role="switch" type="checkbox"/><label for="toctree-checkbox-32"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../source/utilities/canvas-log-viewer/python_alternative/README.html">Python Canvas Log Viewer</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../source/utilities/component-viewer/README.html">Component Viewer utility</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../source/utilities/component-viewer/README.html#installation">Installation</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../demos/multi-canvas-service-discovery/README.html">Live-Demo Dependent API Resolution in a Multi-Canvas Scenario using TMF639</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../demos/multi-canvas-service-discovery/README.html#service-discovery-in-single-canvas-environment">Service Discovery in Single-Canvas Environment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../demos/multi-canvas-service-discovery/README.html#service-discovery-in-multi-canvas-environment">Service Discovery in Multi-Canvas Environment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../demos/multi-canvas-service-discovery/README.html#bdd-uc007-f002">BDD UC007-F002</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../demos/multi-canvas-service-discovery/README.html#from-bdd-uc007-f002-data-magenta-populate-and-green-verify-data-in-federated-product-catalog">From BDD UC007-F002 (data) -  [magenta] Populate and [green] verify data in federated product catalog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../demos/multi-canvas-service-discovery/README.html#green-show-access-of-r-cat-in-f-cat-logs">[green] show access of r-cat in f-cat logs:</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../demos/multi-canvas-service-discovery/README.html#cleanup-all">cleanup all</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../demos/multi-canvas-service-discovery/README.html#cleanup-all-ihc-dt-b-magenta">cleanup all IHC-DT-B (magenta)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../demos/multi-canvas-service-discovery/README.html#canvas-installation">Canvas installation</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../demos/multi-canvas-service-discovery/README.html#links">Links</a><input aria-label="Toggle navigation of Links" class="toctree-checkbox" id="toctree-checkbox-33" name="toctree-checkbox-33" role="switch" type="checkbox"/><label for="toctree-checkbox-33"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../demos/multi-canvas-service-discovery/COMPREG-MULTICANVAS.html">Live-Demo Dependent API Resolution in a Multi-Canvas Scenario using TMF639</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../demos/multi-canvas-service-discovery/COMPREG-MULTICANVAS.html#service-discovery-in-single-canvas-environment">Service Discovery in Single-Canvas Environment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../demos/multi-canvas-service-discovery/COMPREG-MULTICANVAS.html#service-discovery-in-multi-canvas-environment">Service Discovery in Multi-Canvas Environment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../demos/multi-canvas-service-discovery/COMPREG-MULTICANVAS.html#bdd-uc007-f002">BDD UC007-F002</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../demos/multi-canvas-service-discovery/COMPREG-MULTICANVAS.html#from-bdd-uc007-f002-data-magenta-populate-and-green-verify-data-in-federated-product-catalog">From BDD UC007-F002 (data) -  [magenta] Populate and [green] verify data in federated product catalog</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../demos/multi-canvas-service-discovery/COMPREG-MULTICANVAS.html#green-show-access-of-r-cat-in-f-cat-logs">[green] show access of r-cat in f-cat logs:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../demos/multi-canvas-service-discovery/COMPREG-MULTICANVAS.html#cleanup-all">cleanup all</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../demos/multi-canvas-service-discovery/COMPREG-MULTICANVAS.html#cleanup-all-ihc-dt-b-magenta">cleanup all IHC-DT-B (magenta)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../demos/multi-canvas-service-discovery/COMPREG-MULTICANVAS.html#canvas-installation">Canvas installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../demos/multi-canvas-service-discovery/COMPREG-MULTICANVAS.html#links">Links</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../demos/multi-canvas-service-discovery/COMPREG-SINGLECANVAS-SETUP.html">Live-Demo Dependent API Resolution in a Multi-Canvas Scenario using TMF639</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../demos/multi-canvas-service-discovery/COMPREG-SINGLECANVAS-SETUP.html#service-discovery-in-single-canvas-environment">Service Discovery in Single-Canvas Environment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../demos/multi-canvas-service-discovery/COMPREG-SINGLECANVAS-SETUP.html#service-discovery-in-multi-canvas-environment">Service Discovery in Multi-Canvas Environment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../demos/multi-canvas-service-discovery/COMPREG-SINGLECANVAS-SETUP.html#bdd-uc007-f002">BDD UC007-F002</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../demos/multi-canvas-service-discovery/COMPREG-SINGLECANVAS-SETUP.html#from-bdd-uc007-f002-data-magenta-populate-and-green-verify-data-in-federated-product-catalog">From BDD UC007-F002 (data) -  [magenta] Populate and [green] verify data in federated product catalog</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../demos/multi-canvas-service-discovery/COMPREG-SINGLECANVAS-SETUP.html#green-show-access-of-r-cat-in-f-cat-logs">[green] show access of r-cat in f-cat logs:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../demos/multi-canvas-service-discovery/COMPREG-SINGLECANVAS-SETUP.html#cleanup-all">cleanup all</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../demos/multi-canvas-service-discovery/COMPREG-SINGLECANVAS-SETUP.html#cleanup-all-ihc-dt-b-magenta">cleanup all IHC-DT-B (magenta)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../demos/multi-canvas-service-discovery/COMPREG-SINGLECANVAS-SETUP.html#canvas-installation">Canvas installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../demos/multi-canvas-service-discovery/COMPREG-SINGLECANVAS-SETUP.html#links">Links</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../demos/multi-canvas-service-discovery/COMPREG-SINGLECANVAS-SETUP.html#auth">AUTH</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../demos/multi-canvas-service-discovery/COMPREG-TESTS.html">Cluster IHC-DT-A (green)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../demos/multi-canvas-service-discovery/COMPREG-TESTS.html#cleanup">Cleanup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../demos/multi-canvas-service-discovery/COMPREG-TESTS.html#cleanup-canvas-completely">cleanup canvas completely</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../demos/multi-canvas-service-discovery/COMPREG-TESTS.html#install-default-canvas">Install default canvas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../demos/multi-canvas-service-discovery/COMPREG-TESTS.html#deploy-and-register-upstream-global-compreg">deploy and register upstream global-compreg</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../demos/multi-canvas-service-discovery/COMPREG-TESTS.html#test">Test</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../demos/multi-canvas-service-discovery/COMPREG-TESTS.html#bdd-uc007-f002">BDD UC007-F002</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../demos/multi-canvas-service-discovery/COMPREG-TESTS.html#from-bdd-uc007-f002-data-magenta-populate-and-green-verify-data-in-federated-product-catalog">From BDD UC007-F002 (data) -  [magenta] Populate and [green] verify data in federated product catalog</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../demos/multi-canvas-service-discovery/COMPREG-TESTS.html#green-show-access-of-r-cat-in-f-cat-logs">[green] show access of r-cat in f-cat logs:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../demos/multi-canvas-service-discovery/COMPREG-TESTS.html#cleanup-all">cleanup all</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../demos/multi-canvas-service-discovery/COMPREG-TESTS.html#cleanup-all-ihc-dt-b-magenta">cleanup all IHC-DT-B (magenta)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../demos/multi-canvas-service-discovery/COMPREG-TESTS.html#canvas-installation">Canvas installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../demos/multi-canvas-service-discovery/COMPREG-TESTS.html#links">Links</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../demos/multi-canvas-service-discovery/COMPREG-TESTS.html#auth">AUTH</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../demos/multi-canvas-service-discovery/COMPREG-TESTS.html#tests-with-kind">Tests with kind</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../demos/multi-canvas-service-discovery/COMPREG-TESTS.html#cucumber-reports">cucumber reports</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../demos/multi-canvas-service-discovery/COMPREG-TESTS_OLD.html">Cluster IHC-DT-A (green)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../demos/multi-canvas-service-discovery/COMPREG-TESTS_OLD.html#cleanup">Cleanup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../demos/multi-canvas-service-discovery/COMPREG-TESTS_OLD.html#cleanup-canvas-completely">cleanup canvas completely</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../demos/multi-canvas-service-discovery/COMPREG-TESTS_OLD.html#install-default-canvas">Install default canvas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../demos/multi-canvas-service-discovery/COMPREG-TESTS_OLD.html#manual-install-compreg">manual install compreg</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../demos/multi-canvas-service-discovery/COMPREG-TESTS_OLD.html#deploy-and-register-upstream-global-compreg">deploy and register upstream global-compreg</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../demos/multi-canvas-service-discovery/COMPREG-TESTS_OLD.html#test">Test</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../demos/multi-canvas-service-discovery/COMPREG-TESTS_OLD.html#bdd-uc007-f002">BDD UC007-F002</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../demos/multi-canvas-service-discovery/COMPREG-TESTS_OLD.html#from-bdd-uc007-f002-data-magenta-populate-and-green-verify-data-in-federated-product-catalog">From BDD UC007-F002 (data) -  [magenta] Populate and [green] verify data in federated product catalog</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../demos/multi-canvas-service-discovery/COMPREG-TESTS_OLD.html#green-show-access-of-r-cat-in-f-cat-logs">[green] show access of r-cat in f-cat logs:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../demos/multi-canvas-service-discovery/COMPREG-TESTS_OLD.html#cleanup-all">cleanup all</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../demos/multi-canvas-service-discovery/COMPREG-TESTS_OLD.html#cleanup-all-ihc-dt-b-magenta">cleanup all IHC-DT-B (magenta)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../demos/multi-canvas-service-discovery/COMPREG-TESTS_OLD.html#canvas-installation">Canvas installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../demos/multi-canvas-service-discovery/COMPREG-TESTS_OLD.html#links">Links</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../demos/multi-canvas-service-discovery/COMPREG-TESTS_OLD.html#auth">AUTH</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Testing</span></p>
+<ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../feature-definition-and-test-kit/README.html">ODA Canvas Features and Test Kit</a><input aria-label="Toggle navigation of ODA Canvas Features and Test Kit" class="toctree-checkbox" id="toctree-checkbox-34" name="toctree-checkbox-34" role="switch" type="checkbox"/><label for="toctree-checkbox-34"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../feature-definition-and-test-kit/Executing-tests.html">Installing and executing the BDD tests</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../feature-definition-and-test-kit/PDB-TEST-README.html">PDB Management Operator BDD Tests - Local Testing Guide</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../feature-definition-and-test-kit/features/step-definition/README.html">BDD Step Definition Framework and Guidelines</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../feature-definition-and-test-kit/testData/README.html">BDD test charts</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../feature-definition-and-test-kit/utilities/README.html">ODA Canvas Test Utilities</a><input aria-label="Toggle navigation of ODA Canvas Test Utilities" class="toctree-checkbox" id="toctree-checkbox-35" name="toctree-checkbox-35" role="switch" type="checkbox"/><label for="toctree-checkbox-35"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../feature-definition-and-test-kit/utilities/observability-utils-kubernetes/README.html">Observability Utils for Kubernetes</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Building ODA Components</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../docs/ODAComponentDesignGuidelines.html">Design Guidelines to create a new ODA Component</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../docs/ODAComponentTutorial/README.html">Tutorial to build ODA-Component from Open-API Reference Implementation</a><input aria-label="Toggle navigation of Tutorial to build ODA-Component from Open-API Reference Implementation" class="toctree-checkbox" id="toctree-checkbox-36" name="toctree-checkbox-36" role="switch" type="checkbox"/><label for="toctree-checkbox-36"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../../docs/ODAComponentTutorial/ProductInventory/README.html">Example Product Inventory component (including Security_role)</a><input aria-label="Toggle navigation of Example Product Inventory component (including Security_role)" class="toctree-checkbox" id="toctree-checkbox-37" name="toctree-checkbox-37" role="switch" type="checkbox"/><label for="toctree-checkbox-37"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../docs/ODAComponentTutorial/ProductInventory/implementation/README.html">Swagger generated server 2.3.1</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../docs/ODAComponentTutorial/ProductInventory/partyRole-implementation/README.html">Swagger generated server 2.3.1</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../docs/ODAComponentTutorial/ProductInventory/productinventory/README.html">Example Product Inventory component (including Security_role)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../docs/ODAComponentTutorial/ProductInventory/roleInit-implementation/README.html">Initialization microservice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../docs/ODAComponentTutorial/implementation/README.html">Swagger generated server 2.3.1</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../docs/Observability-Tutorial/README.html">Tutorial: deploy and observe a running component</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">AI-assisted development</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../docs/AI-Assisted-Development.html">AI-assisted development with ODA Agent Skills</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ai-coding-assistants.html">AI Coding Assistants for ODA Canvas Development</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../skills/canvas-ops-tutorial/SKILL.html">ODA Canvas Kubernetes Tutorial</a><input aria-label="Toggle navigation of ODA Canvas Kubernetes Tutorial" class="toctree-checkbox" id="toctree-checkbox-38" name="toctree-checkbox-38" role="switch" type="checkbox"/><label for="toctree-checkbox-38"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../skills/canvas-ops-tutorial/references/01-about-oda-canvas.html">About ODA Canvas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../skills/canvas-ops-tutorial/references/02-install-oda-canvas.html">Install ODA Canvas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../skills/canvas-ops-tutorial/references/03-deploy-component.html">Deploy an ODA Component</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../skills/canvas-ops-tutorial/references/04-view-components.html">View Deployed ODA Components</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../skills/canvas-ops-tutorial/references/05-view-exposedapis.html">View ExposedAPIs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../skills/canvas-ops-tutorial/references/06-view-dependentapis.html">View DependentAPIs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../skills/canvas-ops-tutorial/references/07-view-observability.html">View Observability Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../skills/canvas-ops-tutorial/references/08-manage-identities.html">Manage Identities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../skills/canvas-ops-tutorial/references/09-run-bdd-tests.html">Run BDD Feature Tests</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../skills/canvas-usecase-documentation/SKILL.html">Canvas Use-Case Documentation — Skill Instructions</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../skills/create-oda-operator/SKILL.html">Create ODA Operator</a><input aria-label="Toggle navigation of Create ODA Operator" class="toctree-checkbox" id="toctree-checkbox-39" name="toctree-checkbox-39" role="switch" type="checkbox"/><label for="toctree-checkbox-39"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../skills/create-oda-operator/references/kopf-docs.html">Kopf Documentation Reference</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../skills/create-oda-operator/references/operator-catalog.html">ODA Canvas Operator Catalog</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../skills/github-actions-debugging/SKILL.html">GitHub Actions Debugging — Skill Instructions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../skills/helm-chart-development/SKILL.html">Helm Chart Development — Skill Instructions</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../skills/skill-creator/SKILL.html">Skill Creator</a><input aria-label="Toggle navigation of Skill Creator" class="toctree-checkbox" id="toctree-checkbox-40" name="toctree-checkbox-40" role="switch" type="checkbox"/><label for="toctree-checkbox-40"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../skills/skill-creator/agents/analyzer.html">Post-hoc Analyzer Agent</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../skills/skill-creator/agents/analyzer.html#analyzing-benchmark-results">Analyzing Benchmark Results</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../skills/skill-creator/agents/comparator.html">Blind Comparator Agent</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../skills/skill-creator/agents/grader.html">Grader Agent</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../skills/skill-creator/references/schemas.html">JSON Schemas</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../skills/write-bdd-feature/SKILL.html">Write BDD Feature — Skill Instructions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../custom-copilot-documentation-agent.html">Custom GitHub Copilot Documentation Agent</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../bdd-feature-generator-agent-guide.html">BDD Feature Generator Custom Agent - Usage Guide</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Architecture decisions</span></p>
+<ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../docs/Decision-Log/README.html">Architecture Decision Log</a><input aria-label="Toggle navigation of Architecture Decision Log" class="toctree-checkbox" id="toctree-checkbox-41" name="toctree-checkbox-41" role="switch" type="checkbox"/><label for="toctree-checkbox-41"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../docs/Decision-Log/0001-record-architecture-decisions.html">1. Record architecture decisions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../docs/Decision-Log/0002-role-vs-permission.html">2. Role vs Permissions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../docs/Decision-Log/0003-reference-api-gateway.html">3. Reference Implementation API Gateway</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../docs/Decision-Log/0004-which-authentication-protocol-should-be-supported.html">4. Which authentication protocol should be supported</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../docs/Decision-Log/0005-which-languages-and-libraries-should-be-used.html">5. Which languages and libraries should be used for Software Operators</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../docs/Decision-Log/0006-common-set-of-minimum-mandatory-JWT-claims-for-interoperability.html">6. Create common set of minimum mandatory JWT claims for interoperability</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../docs/Decision-Log/0007-provisioning-identities-across-identity-providers.html">7. Provisioning identities across identity providers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../docs/Decision-Log/0008-identity-propagation.html">8. Identity Propagation from Component to Component</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../docs/Decision-Log/0009-monorepo-helm-container-versioning.html">9. Monorepo Helm and Container versioning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../docs/Decision-Log/0010-ai4canvas-operator.html">0010: AI4Canvas Operator Scope Decision</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../docs/Decision-Log/0011-canvas-information-transfer.html">0011: Uniform Method for Canvas-to-Component Information Transfer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../docs/Decision-Log/0012-exposed-api-handling.html">0012: Handling of Exposed APIs by Different Operators</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../docs/Decision-Log/0013-canvas-certification.html">13. No certification for canvas implementation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../docs/Decision-Log/0014-multiple-component-namespaces.html">14. Supporting Multiple Component Namespaces</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../docs/Decision-Log/0015-ai-gateway-for-llm-access.html">15. AI Model Gateway for LLM Access</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../docs/Decision-Log/0016-mcp-server-for-tmforum-open-apis.html">16. Model Context Protocol (MCP) Server for TM Forum Open-APIs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../docs/Decision-Log/0017-strategy-for-ai-agents.html">17. Strategy for AI Agents: Modular, Autonomous, Self-Descriptive, CSP-Specific</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../docs/Decision-Log/0018-ai-model-operator-for-agentic-components.html">18. AI Model Operator for Agentic Components</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../docs/Decision-Log/0019-adopt-a2a-protocol-for-agent-skill-exposure.html">19. Adopt A2A Protocol as Open Standard for Agent Skill Exposure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../docs/Decision-Log/0020-ml-model-integration-via-ml-ops-pipeline.html">20. ML Model Integration via ML Ops Pipeline</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../docs/Decision-Log/0021-optimize-oda-canvas-for-ai-coding-agents.html">21. Optimize ODA Canvas Repository for AI Coding Agents</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../docs/Decision-Log/0022-modular-independent-operators.html">22. Modular and Independent Operators</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Contributing</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../CONTRIBUTING.html">How to contribute to the ODA Canvas Accelerator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../docs/CONTRIBUTING.html">How to contribute to the ODA Canvas Accelerator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../code-of-conduct.html">ODA Accelerator Code of Conduct</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../README.html">ODA Canvas Documentation</a><input aria-label="Toggle navigation of ODA Canvas Documentation" class="toctree-checkbox" id="toctree-checkbox-42" name="toctree-checkbox-42" role="switch" type="checkbox"/><label for="toctree-checkbox-42"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../plantuml-to-svg-guide.html">PlantUML to SVG Conversion Guide</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../templates/README.html">Documentation Templates</a><input aria-label="Toggle navigation of Documentation Templates" class="toctree-checkbox" id="toctree-checkbox-43" name="toctree-checkbox-43" role="switch" type="checkbox"/><label for="toctree-checkbox-43"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../templates/chart-readme-template.html">{Chart Name}</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../templates/operator-readme-template.html">{Operator Name}</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../templates/test-component-readme-template.html">{Component Name}</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../templates/use-case-template.html">{Verb} {Object} use case</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../writing-style.html">ODA Canvas Documentation Writing Style Guide</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../devcontainer.html">ODA Canvas Development Environment</a></li>
+<li class="toctree-l1 current current-page"><a class="current reference internal" href="#">Developer How-Tos: Work with Dockerimages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../source/operators/Installing%20KOPF%20development%20environment.html">Installing KOPF (tested in GKE)</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../docs/TroubleshootingGuide/index.html">Troubleshooting Guide</a><input aria-label="Toggle navigation of Troubleshooting Guide" class="toctree-checkbox" id="toctree-checkbox-44" name="toctree-checkbox-44" role="switch" type="checkbox"/><label for="toctree-checkbox-44"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../docs/TroubleshootingGuide/CTK.html">CTK Troubleshooting Guide</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../docs/TroubleshootingGuide/Controller-Logging.html">Controller Logging Troubleshooting Guide</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../docs/TroubleshootingGuide/Exploring-Custom-Resources.html">Exploring Custom Resources Troubleshooting Guide</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../docs/TroubleshootingGuide/Microservice-Logging.html">Microservice Logging Troubleshooting Guide</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../docs/TroubleshootingGuide/Internal-Kubernetes-Testing.html">Internal Kubernetes Testing Troubleshooting Guide</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../docs/TroubleshootingGuide/Postman-API-Tests.html">Postman API Tests Troubleshooting Guide</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../docs/DocumentationProcess.html">Documentation Process</a></li>
+</ul>
+
+</div>
+</div>
+
+      </div>
+      
+    </div>
+  </aside>
+  <div class="main">
+    <div class="content">
+      <div class="article-container">
+        <a href="#" class="back-to-top muted-link">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+          </svg>
+          <span>Back to top</span>
+        </a>
+        <div class="content-icon-container">
+          <div class="theme-toggle-container theme-toggle-content">
+            <button class="theme-toggle" aria-label="Toggle Light / Dark / Auto color theme">
+              <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+              <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+              <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+              <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+            </button>
+          </div>
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
+            <span class="icon"><svg><use href="#svg-toc"></use></svg></span>
+          </label>
+        </div>
+        <article role="main" id="furo-main-content">
+          <section id="developer-how-tos-work-with-dockerimages">
+<h1>Developer How-Tos: Work with Dockerimages<a class="headerlink" href="#developer-how-tos-work-with-dockerimages" title="Link to this heading">¶</a></h1>
+<p>The project oda-canvas is configured to automatically build docker images, when their source code is changed.
+To successfully collaborate in the same repository some rules have to be followed.</p>
+<section id="tl-dr">
+<h2>TL;DR;<a class="headerlink" href="#tl-dr" title="Link to this heading">¶</a></h2>
+<p>Example PR:
+<a class="reference external" href="https://github.com/tmforum-oda/oda-canvas/pull/305/files">https://github.com/tmforum-oda/oda-canvas/pull/305/files</a></p>
+<p><img alt="steps for building docker images in a feature branch" src="../../../_images/autobuild-dockerimages-steps.png" /></p>
+<div class="table-wrapper colwidths-auto docutils container">
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Step</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>branch</p></td>
+<td><p>create a branch, naming has to follow “feature/…” or “odaa-…” otherwise the automated docker builds are not active</p></td>
+</tr>
+<tr class="row-odd"><td><p>1</p></td>
+<td><p>Increment the version number of the dockerfile which will be updated and and set the prereleaseSuffix, e.g to the issue number</p></td>
+</tr>
+<tr class="row-even"><td><p>2</p></td>
+<td><p>change the source code. This triggers the docker build of the prerelease version</p></td>
+</tr>
+<tr class="row-odd"><td><p>3</p></td>
+<td><p>adjust the tests to cover the changed code (steps 2 and 3 might iterate multiple times)</p></td>
+</tr>
+<tr class="row-even"><td><p>4</p></td>
+<td><p>prepare everything for the Pull-Request. Set chart-version numbers, document changes, also update the version number in the dependent charts</p></td>
+</tr>
+<tr class="row-odd"><td><p>PR</p></td>
+<td><p>create Pull-Request -&gt; BDD Tests are executed and should be successfull</p></td>
+</tr>
+<tr class="row-even"><td><p>5</p></td>
+<td><p>before merging, remove all prereleaseSuffixes. This will make the  “no-prerelease-suffixes”-check in the PR green. Start the commit message with “[skip tests] …” this will skip running the BDD tests (which would fail, because of the missing release images)</p></td>
+</tr>
+<tr class="row-odd"><td><p>Merge</p></td>
+<td><p>the merge into the main branch triggers the build of the release docker images</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="global-rules">
+<h2>Global Rules<a class="headerlink" href="#global-rules" title="Link to this heading">¶</a></h2>
+<ul class="simple">
+<li><p>Release versions (image tags) follow the semantic versioning format “&lt;major&gt;.&lt;minor&gt;.&lt;increment&gt;” and are built only from the main branch</p></li>
+<li><p>Release versions are immutable and can not be overwritten</p></li>
+<li><p>Prerelease versions have the format “&lt;major&gt;.&lt;minor&gt;.&lt;increment&gt;-&lt;prerelease-suffix&gt;” and are built from feature branches</p></li>
+<li><p>Feature branches have the format “feature/*” or “odaa-*”</p></li>
+<li><p>Prerelease versions are overwritten every time the source code changed</p></li>
+<li><p>The prerelease suffix should be unique for each feature branch, otherwise the same image will be built from different branches and the last build wins</p></li>
+<li><p>Versions are stored in the charts/canvas-oda/values.yaml file which is also used for deploying the canvas-oda chart (single source of truth)</p></li>
+</ul>
+</section>
+<section id="versions-in-values-yaml">
+<h2>Versions in values.yaml<a class="headerlink" href="#versions-in-values-yaml" title="Link to this heading">¶</a></h2>
+<p>Dockerimages are versioned in the <a class="reference external" href="https://github.com/tmforum-oda/oda-canvas/blob/main/charts/canvas-oda/values.yaml">charts/canvas-oda/values.yaml</a> file of the canva-oda chart and consist of three parts.
+E.g. for oda-webhook:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">...</span>
+<span class="n">oda</span><span class="o">-</span><span class="n">webhook</span><span class="p">:</span>
+  <span class="n">image</span><span class="p">:</span> <span class="n">tmforumodacanvas</span><span class="o">/</span><span class="n">compcrdwebhook</span>
+  <span class="n">version</span><span class="p">:</span> <span class="mf">0.6.3</span>
+  <span class="n">prereleaseSuffix</span><span class="p">:</span> <span class="n">issue123</span>
+</pre></div>
+</div>
+<p>The full dockerimage is put together as “tmforumodacanvas/compcrdwebhook:1.0.0”.</p>
+<p>If there is no prereleaseSuffix, the seperator “-” is ommitted:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">...</span>
+<span class="n">oda</span><span class="o">-</span><span class="n">webhook</span><span class="p">:</span>
+  <span class="n">image</span><span class="p">:</span> <span class="n">tmforumodacanvas</span><span class="o">/</span><span class="n">compcrdwebhook</span>
+  <span class="n">version</span><span class="p">:</span> <span class="mf">0.6.2</span>
+  <span class="n">prereleaseSuffix</span><span class="p">:</span>
+</pre></div>
+</div>
+<p>The full docker image is “tmforumodacanvas/compcrdwebhook:1.0.0”</p>
+<p>The advantage of using the values.yaml as source for the dockerimage names is,
+that when deploying the canvas-oda chart from the filesystem all docker images exist, because they are automatically build on code changes.</p>
+<p>A prerelease version is semantically smaller than the release version:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mf">0.6.2</span> <span class="o">&lt;</span> <span class="mf">0.6.3</span><span class="o">-</span><span class="n">issue</span><span class="o">-</span><span class="mi">123</span> <span class="o">&lt;</span> <span class="mf">0.6.3</span>
+</pre></div>
+</div>
+<p>How this can be used to implement a workflow is shown in the following example updating the secretsmanagement-operator.</p>
+</section>
+<section id="example-update-code-of-secretsmanagement-operator">
+<h2>Example: Update code of Secretsmanagement-Operator<a class="headerlink" href="#example-update-code-of-secretsmanagement-operator" title="Link to this heading">¶</a></h2>
+<section id="step-1-create-a-feature-branch">
+<h3>Step 1: Create a feature branch<a class="headerlink" href="#step-1-create-a-feature-branch" title="Link to this heading">¶</a></h3>
+<p>To do your code changes a feature branch is needed.
+Feature branches have the naming convention “feature/…” or “odaa-…”.
+Let´s assume we are working on the GitHub issue 3456,
+so a good name for the feature branch would be “feature/issue3456”</p>
+<p>Create this new branch in GitHub from the main branch.</p>
+</section>
+<section id="step-2-configure-prerelease-version-in-feature-branch">
+<h3>Step 2: Configure Prerelease Version in feature branch<a class="headerlink" href="#step-2-configure-prerelease-version-in-feature-branch" title="Link to this heading">¶</a></h3>
+<p>First get an overview, how the Dockerfile for the secretsmanagement-operator is built</p>
+<section id="look-at-the-docker-build-configuration">
+<h4>Look at the Docker build configuration<a class="headerlink" href="#look-at-the-docker-build-configuration" title="Link to this heading">¶</a></h4>
+<p>All dependencies of a Docker image are configured in the file <a class="reference external" href="https://github.com/tmforum-oda/oda-canvas/blob/main/automation/generators/dockerbuild-workflow-generator/dockerbuild-config.yaml">automation/generators/dockerbuild-workflow-generator/dockerbuild-config.yaml</a>.</p>
+<p>For the Secretsmanagement-Operator this is:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">...</span>
+<span class="n">secretsmanagement</span><span class="o">-</span><span class="n">operator</span><span class="p">:</span>  
+  <span class="n">displayName</span><span class="p">:</span> <span class="n">SecretsManagement</span><span class="o">-</span><span class="n">Operator</span>
+  <span class="n">fileName</span><span class="p">:</span> <span class="n">secretsmanagement</span><span class="o">-</span><span class="n">operator</span>
+
+  <span class="n">valuesYamlFile</span><span class="p">:</span> <span class="n">charts</span><span class="o">/</span><span class="n">canvas</span><span class="o">-</span><span class="n">oda</span><span class="o">/</span><span class="n">values</span><span class="o">.</span><span class="n">yaml</span>
+  <span class="n">valuesPathImage</span><span class="p">:</span> <span class="o">.</span><span class="n">secretsmanagement</span><span class="o">-</span><span class="n">operator</span><span class="o">.</span><span class="n">image</span>
+  <span class="n">valuesPathVersion</span><span class="p">:</span> <span class="o">.</span><span class="n">secretsmanagement</span><span class="o">-</span><span class="n">operator</span><span class="o">.</span><span class="n">version</span>
+  <span class="n">valuesPathPrereleaseSuffix</span><span class="p">:</span> <span class="o">.</span><span class="n">secretsmanagement</span><span class="o">-</span><span class="n">operator</span><span class="o">.</span><span class="n">prereleaseSuffix</span>
+
+  <span class="n">paths</span><span class="p">:</span>
+  <span class="o">-</span> <span class="n">source</span><span class="o">/</span><span class="n">operators</span><span class="o">/</span><span class="n">TMFOP007</span><span class="o">-</span><span class="n">Secrets</span><span class="o">-</span><span class="n">Management</span><span class="o">/</span><span class="n">vault</span><span class="o">/</span><span class="n">docker</span><span class="o">/**/*</span>
+  <span class="n">buildContext</span><span class="p">:</span> <span class="n">source</span><span class="o">/</span><span class="n">operators</span><span class="o">/</span><span class="n">TMFOP007</span><span class="o">-</span><span class="n">Secrets</span><span class="o">-</span><span class="n">Management</span><span class="o">/</span><span class="n">vault</span><span class="o">/</span><span class="n">docker</span>
+  <span class="n">platforms</span><span class="p">:</span> <span class="n">linux</span><span class="o">/</span><span class="n">amd64</span> 
+</pre></div>
+</div>
+<p>The relevant information for us now are the location and names in the values YAML file and the location of the source paths.
+Whenever a file/folder, which is referenced in “paths”, is changed a docker build is triggered when pushing changes to github.</p>
+</section>
+<section id="configure-prerelease-version-in-values-yaml">
+<h4>Configure Prerelease-Version in values.yaml<a class="headerlink" href="#configure-prerelease-version-in-values-yaml" title="Link to this heading">¶</a></h4>
+<p>Currently the values.yaml file has the following entries:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">...</span>
+<span class="n">secretsmanagement</span><span class="o">-</span><span class="n">operator</span><span class="p">:</span>
+  <span class="n">image</span><span class="p">:</span> <span class="n">tmforumodacanvas</span><span class="o">/</span><span class="n">secretsmanagement</span><span class="o">-</span><span class="n">operator</span>
+  <span class="n">version</span><span class="p">:</span> <span class="mf">0.1.0</span>
+  <span class="n">prereleaseSuffix</span><span class="p">:</span>
+  <span class="o">...</span>
+</pre></div>
+</div>
+<p>The corresponding docker image name is <code class="docutils literal notranslate"><span class="pre">tmforumodacanvas/secretsmanagement-operator:0.1.0</span></code>.
+We want to do a small change, so just increment the patch level and add a prereleaseSuffix.
+The “version” and “prereleaseSuffix” entries have to be changed in the feature branch accordingly:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">...</span>
+<span class="n">secretsmanagement</span><span class="o">-</span><span class="n">operator</span><span class="p">:</span>
+  <span class="n">image</span><span class="p">:</span> <span class="n">tmforumodacanvas</span><span class="o">/</span><span class="n">secretsmanagement</span><span class="o">-</span><span class="n">operator</span>
+  <span class="n">version</span><span class="p">:</span> <span class="mf">0.1.1</span>
+  <span class="n">prereleaseSuffix</span><span class="p">:</span> <span class="n">issue3456</span>
+  <span class="o">...</span>
+</pre></div>
+</div>
+<p>This would result in a docker image named: <code class="docutils literal notranslate"><span class="pre">tmforumodacanvas/secretsmanagement-operator:0.1.1-issue3456</span></code></p>
+<p>(Make sure, no one else uses the same prerelease version otherwise you will overwrite each others docker image.)</p>
+</section>
+</section>
+<section id="step-3-change-the-code-in-the-feature-branch">
+<h3>Step 3: Change the code in the feature branch<a class="headerlink" href="#step-3-change-the-code-in-the-feature-branch" title="Link to this heading">¶</a></h3>
+<p>From the docker build configuration above, we can see, that the sources are in the folder <code class="docutils literal notranslate"><span class="pre">source/operators/TMFOP007-Secrets-Management/vault/docker</span></code>.
+Any change in this folder will trigger a new build of the dockerimage with tag <code class="docutils literal notranslate"><span class="pre">0.1.1-issue3456</span></code>.</p>
+<p>For now just let´s add one print line on startup of the SecretsManagement-Operator:</p>
+<p><a class="reference external" href="https://github.com/tmforum-oda/oda-canvas/blob/32e89708912b2fb170f268efccdccb4325fb25ab/source/operators/TMFOP007-Secrets-Management/vault/docker/secretsmanagementOperatorHC.py#L38">https://github.com/tmforum-oda/oda-canvas/blob/32e89708912b2fb170f268efccdccb4325fb25ab/source/operators/TMFOP007-Secrets-Management/vault/docker/secretsmanagementOperatorHC.py#L38</a></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>    <span class="c1"># Setup logging</span>
+    <span class="n">logging_level</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"LOGGING"</span><span class="p">,</span> <span class="n">logging</span><span class="o">.</span><span class="n">INFO</span><span class="p">)</span>
+    <span class="n">kopf_logger</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">()</span>
+    <span class="n">kopf_logger</span><span class="o">.</span><span class="n">setLevel</span><span class="p">(</span><span class="n">logging</span><span class="o">.</span><span class="n">WARNING</span><span class="p">)</span>
+    <span class="n">logger</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="s2">"SecretsmanagementOperator"</span><span class="p">)</span>
+    <span class="n">logger</span><span class="o">.</span><span class="n">setLevel</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">logging_level</span><span class="p">))</span>
+    <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Logging set to %s"</span><span class="p">,</span> <span class="n">logging_level</span><span class="p">)</span>
+<span class="p">[</span><span class="o">+</span><span class="p">]</span> <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">"GitHub ISSUE #3456 was added here"</span><span class="p">)</span>
+    <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="sa">f</span><span class="s2">"debug logging active"</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>So, two files were changed, the <code class="docutils literal notranslate"><span class="pre">values.yaml</span></code> with the version number and an additional log line in the <code class="docutils literal notranslate"><span class="pre">secretsmanagementOperatorHC.py</span></code>:</p>
+<p><img alt="image" src="https://github.com/user-attachments/assets/419d3e5f-d593-47b1-88a4-c83f76715779" /></p>
+</section>
+<section id="step-4-push-changed-feature-branch-to-github">
+<h3>Step 4: Push changed feature branch to GitHub<a class="headerlink" href="#step-4-push-changed-feature-branch-to-github" title="Link to this heading">¶</a></h3>
+<p>Comitting the changes in the feature branch locally and pushing them to the GitHub repository triggers a GitHub Action, which builds the docker prerelease image.</p>
+<p><img alt="image" src="https://github.com/user-attachments/assets/d264d6c5-6933-4932-9e31-16323d87aa69" /></p>
+<p>If we had not set a prereleaseSuffix, then the build would have fail with the error message, that release versions can only be built from the “main” branch.</p>
+<p>But as we set a prereleaseSuffix a new image with tag <code class="docutils literal notranslate"><span class="pre">0.1.1-issue3456</span></code> was created and uploaded to dockerhub:</p>
+<div class="table-wrapper colwidths-auto docutils container">
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p><img alt="image" src="https://github.com/user-attachments/assets/2bfff74b-d0fc-4c43-a472-3cac75d66d74" /></p></th>
+</tr>
+</thead>
+</table>
+</div>
+<p>Now we have an up to date dockerimage and can upgrade the canvas.</p>
+</section>
+<section id="step-5-upgrade-canvas">
+<h3>Step 5: Upgrade Canvas<a class="headerlink" href="#step-5-upgrade-canvas" title="Link to this heading">¶</a></h3>
+<p>We will deploy the canvas update from the helm chart <code class="docutils literal notranslate"><span class="pre">oda-canvas</span></code> in the filesystem.</p>
+<section id="update-chart-dependencies">
+<h4>Update chart dependencies<a class="headerlink" href="#update-chart-dependencies" title="Link to this heading">¶</a></h4>
+<p>If it was not done before, the chart dependencies have to be updated.</p>
+<p>From the command line in the root of the locally checked out repository execute the following commands:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">charts</span><span class="o">/</span><span class="n">cert</span><span class="o">-</span><span class="n">manager</span><span class="o">-</span><span class="n">init</span>
+<span class="n">helm</span> <span class="n">dependency</span> <span class="n">update</span>
+<span class="n">helm</span> <span class="n">dependency</span> <span class="n">build</span>
+<span class="n">cd</span> <span class="o">../../</span><span class="n">charts</span><span class="o">/</span><span class="n">component</span><span class="o">-</span><span class="n">operator</span>
+<span class="n">helm</span> <span class="n">dependency</span> <span class="n">update</span>
+<span class="n">helm</span> <span class="n">dependency</span> <span class="n">build</span>
+<span class="n">cd</span> <span class="o">../../</span><span class="n">charts</span><span class="o">/</span><span class="n">api</span><span class="o">-</span><span class="n">operator</span><span class="o">-</span><span class="n">istio</span>
+<span class="n">helm</span> <span class="n">dependency</span> <span class="n">update</span>
+<span class="n">helm</span> <span class="n">dependency</span> <span class="n">build</span>
+<span class="n">cd</span> <span class="o">../../</span><span class="n">charts</span><span class="o">/</span><span class="n">identityconfig</span><span class="o">-</span><span class="n">operator</span><span class="o">-</span><span class="n">keycloak</span>
+<span class="n">helm</span> <span class="n">dependency</span> <span class="n">update</span>
+<span class="n">helm</span> <span class="n">dependency</span> <span class="n">build</span>
+<span class="n">cd</span> <span class="o">../../</span><span class="n">charts</span><span class="o">/</span><span class="n">canvas</span><span class="o">-</span><span class="n">vault</span>
+<span class="n">helm</span> <span class="n">dependency</span> <span class="n">update</span>
+<span class="n">helm</span> <span class="n">dependency</span> <span class="n">build</span>
+<span class="n">cd</span> <span class="o">../../</span><span class="n">charts</span><span class="o">/</span><span class="n">secretsmanagement</span><span class="o">-</span><span class="n">operator</span>
+<span class="n">helm</span> <span class="n">dependency</span> <span class="n">update</span>
+<span class="n">helm</span> <span class="n">dependency</span> <span class="n">build</span>
+<span class="n">cd</span> <span class="o">../../</span><span class="n">charts</span><span class="o">/</span><span class="n">resource</span><span class="o">-</span><span class="n">inventory</span>
+<span class="n">helm</span> <span class="n">dependency</span> <span class="n">update</span>
+<span class="n">helm</span> <span class="n">dependency</span> <span class="n">build</span>
+<span class="n">cd</span> <span class="o">../../</span><span class="n">charts</span><span class="o">/</span><span class="n">canvas</span><span class="o">-</span><span class="n">info</span><span class="o">-</span><span class="n">service</span>
+<span class="n">helm</span> <span class="n">dependency</span> <span class="n">update</span>
+<span class="n">helm</span> <span class="n">dependency</span> <span class="n">build</span>
+<span class="n">cd</span> <span class="o">../../</span><span class="n">charts</span><span class="o">/</span><span class="n">canvas</span><span class="o">-</span><span class="n">oda</span>
+<span class="n">helm</span> <span class="n">dependency</span> <span class="n">update</span>
+<span class="n">helm</span> <span class="n">dependency</span> <span class="n">build</span>
+<span class="n">cd</span> <span class="o">../..</span>
+</pre></div>
+</div>
+<p>Now we are ready to install/upgrade the canvas.</p>
+</section>
+<section id="install-upgrade-canvas">
+<h4>Install/Upgrade canvas<a class="headerlink" href="#install-upgrade-canvas" title="Link to this heading">¶</a></h4>
+<p>Again from the root of the local git repository execute the following command:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">helm</span> <span class="n">upgrade</span> <span class="o">--</span><span class="n">install</span> <span class="n">canvas</span> <span class="n">charts</span><span class="o">/</span><span class="n">canvas</span><span class="o">-</span><span class="n">oda</span> <span class="o">-</span><span class="n">n</span> <span class="n">canvas</span> <span class="o">--</span><span class="n">create</span><span class="o">-</span><span class="n">namespace</span> 
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>  Release "canvas" has been upgraded. Happy Helming!
+  NAME: canvas
+  LAST DEPLOYED: Tue Jul 30 16:23:41 2024
+  NAMESPACE: canvas
+  STATUS: deployed
+  REVISION: 2
+</pre></div>
+</div>
+<p>The next time when an upgrade has to be deployed the dependencies do not have to be updated/built again.</p>
+</section>
+</section>
+<section id="step-5-test-that-changed-code-is-active">
+<h3>Step 5: Test that changed code is active<a class="headerlink" href="#step-5-test-that-changed-code-is-active" title="Link to this heading">¶</a></h3>
+<p>Let´s take a look at the SecretsManagement-Operator logfile:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ kubectl logs -n canvas deployment/secretsmanagement-operator-vault
+
+    [2024-07-30 14:24:20,772] SecretsmanagementOpe [INFO    ] Logging set to 20
+[*] [2024-07-30 14:24:20,773] SecretsmanagementOpe [INFO    ] GitHub ISSUE #3456 was added here
+    [2024-07-30 14:24:20,773] SecretsmanagementOpe [INFO    ] SOURCE_DATE_EPOCH=1722342693
+    [2024-07-30 14:24:20,773] SecretsmanagementOpe [INFO    ] GIT_COMMIT_SHA=7dfc477
+    [2024-07-30 14:24:20,773] SecretsmanagementOpe [INFO    ] CICD_BUILD_TIME=2024-07-30T12:32:02+00:00
+    [2024-07-30 14:24:20,779] SecretsmanagementOpe [WARNING ] Environment variable HVAC_TOKEN given as plaintext. 
+    Please remove HVAC_TOKEN variable and use HVAC_TOKEN_ENC: gAAAAABmqPeU7O_WFBHu8UcBL1dA7FOmujM1UZocV23PxB9ka4SEszb3dYokUkJUc40BbZUB2Qyi_tDkEd3bc3IHJJZsz7hmhQ==
+</pre></div>
+</div>
+<p>So, our change is active, the line <code class="docutils literal notranslate"><span class="pre">GitHub</span> <span class="pre">ISSUE</span> <span class="pre">#3456</span> <span class="pre">was</span> <span class="pre">added</span> <span class="pre">here</span></code> is logged out on startup of the secretsmanagement-operator.</p>
+<p>Most of the time you need more than one iteration to get your code functional.
+So an iterative process of code changes is neccessary.</p>
+</section>
+<section id="step-6a-6n-modify-code-multiple-times">
+<h3>Step 6a..6n: Modify code multiple times<a class="headerlink" href="#step-6a-6n-modify-code-multiple-times" title="Link to this heading">¶</a></h3>
+<p>In our example we will modify the same file again source/operators/TMFOP007-Secrets-Management/vault/docker/secretsmanagementOperatorHC.py:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>    <span class="c1"># Setup logging</span>
+    <span class="n">logging_level</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"LOGGING"</span><span class="p">,</span> <span class="n">logging</span><span class="o">.</span><span class="n">INFO</span><span class="p">)</span>
+    <span class="n">kopf_logger</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">()</span>
+    <span class="n">kopf_logger</span><span class="o">.</span><span class="n">setLevel</span><span class="p">(</span><span class="n">logging</span><span class="o">.</span><span class="n">WARNING</span><span class="p">)</span>
+    <span class="n">logger</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="s2">"SecretsmanagementOperator"</span><span class="p">)</span>
+    <span class="n">logger</span><span class="o">.</span><span class="n">setLevel</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">logging_level</span><span class="p">))</span>
+    <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Logging set to %s"</span><span class="p">,</span> <span class="n">logging_level</span><span class="p">)</span>
+<span class="p">[</span><span class="o">*</span><span class="p">]</span> <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">"GitHub ISSUE #3456 WAS FIXED!!!"</span><span class="p">)</span>
+    <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="sa">f</span><span class="s2">"debug logging active"</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Committing and pushing the new code changes in the feature branch triggers again the GitHub Action to build the Docker file.</p>
+<p><img alt="image" src="https://github.com/user-attachments/assets/9427ac1e-f0c8-4aed-b9e9-1792e942a07d" /></p>
+<p>Wait until the build was successfully finished (green hook), then update the canvas deployment:</p>
+<section id="update-canvas-deployment">
+<h4>Update canvas deployment<a class="headerlink" href="#update-canvas-deployment" title="Link to this heading">¶</a></h4>
+<p>We do not need to update all the dependency again, so just calling <code class="docutils literal notranslate"><span class="pre">helm</span> <span class="pre">upgrade</span> <span class="pre">...</span></code> is sufficient:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ helm upgrade --install canvas charts/canvas-oda -n canvas --create-namespace
+
+  Release "canvas" has been upgraded. Happy Helming!
+  NAME: canvas
+  LAST DEPLOYED: Tue Jul 30 16:23:41 2024
+  NAMESPACE: canvas
+  STATUS: deployed
+  REVISION: 3
+</pre></div>
+</div>
+</section>
+<section id="look-for-the-changes-in-the-logfile">
+<h4>Look for the changes in the logfile<a class="headerlink" href="#look-for-the-changes-in-the-logfile" title="Link to this heading">¶</a></h4>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>kubectl logs -n canvas deployment/secretsmanagement-operator-vault
+
+    [2024-07-30 14:24:20,772] SecretsmanagementOpe [INFO    ] Logging set to 20
+[?] [2024-07-30 14:24:20,773] SecretsmanagementOpe [INFO    ] GitHub ISSUE #3456 was added here
+    [2024-07-30 14:24:20,773] SecretsmanagementOpe [INFO    ] SOURCE_DATE_EPOCH=1722342693
+    [2024-07-30 14:24:20,773] SecretsmanagementOpe [INFO    ] GIT_COMMIT_SHA=7dfc477
+    [2024-07-30 14:24:20,773] SecretsmanagementOpe [INFO    ] CICD_BUILD_TIME=2024-07-30T12:32:02+00:00
+    [2024-07-30 14:24:20,779] SecretsmanagementOpe [WARNING ] Environment variable HVAC_TOKEN given as plaintext.
+    Please remove HVAC_TOKEN variable and use HVAC_TOKEN_ENC:
+    gAAAAABmqPeU7O_WFBHu8UcBL1dA7FOmujM1UZocV23PxB9ka4SEszb3dYokUkJUc40BbZUB2Qyi_tDkEd3bc3IHJJZsz7hmhQ==
+</pre></div>
+</div>
+<p><em><em>Our change is not visible!!!</em></em></p>
+<p>We can see in the Logfile, the <code class="docutils literal notranslate"><span class="pre">CICD_BUILD_TIME</span></code>, the <code class="docutils literal notranslate"><span class="pre">GIT_COMMIT_SHA</span></code> and also the timestamp when the log was written.
+This is not our latest build and also the time when the log was written is the same as before the canvas redeployment.
+This means, the secretsmanagement-operator was not updated.</p>
+<p>Our deployment did not change and the dockerimage name also not, it is still <code class="docutils literal notranslate"><span class="pre">tmforumodacanvas/secretsmanagement-operator:0.1.1-issue3456</span></code>.</p>
+<p>So, Kubernetes did not see any reason to redeploy the SecretsManagement-Operator.
+When we did the first upgrade, the docker image changed from <code class="docutils literal notranslate"><span class="pre">...:0.1.0</span></code> to <code class="docutils literal notranslate"><span class="pre">...:0.1.1-issue3456</span></code> and that triggered a redeployment of the secretsmanagement-operator.
+Now the image did not change, it is still <code class="docutils literal notranslate"><span class="pre">...:0.1.1-issue3456</span></code>.</p>
+<p>But we can trigger a redeployment manually:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ kubectl rollout restart deployment -n canvas secretsmanagement-operator-vault
+
+  deployment.apps/secretsmanagement-operator-vault restarted
+</pre></div>
+</div>
+<p>Waiting a few seconds to give the old POD (running instance of the deployment) time to gracefully terminate and the new POD time to startup:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ kubectl get pods -n canvas
+
+  NAME                                          READY   STATUS      RESTARTS   AGE
+  ...
+  secretsmanagement-operator-vault-6768cc66b5-ww85z                1/1     Running     0          8s
+  ...
+</pre></div>
+</div>
+<p>Age 8 seconds means, the POD was just started. Now we can take a look into the logfile:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ kubectl logs -n canvas secretsmanagement-operator-vault-7d4c875878-xdlts
+
+    [2024-07-30 15:22:02,025] SecretsmanagementOpe [INFO    ] Logging set to 20
+[?] [2024-07-30 15:22:02,025] SecretsmanagementOpe [INFO    ] GitHub ISSUE #3456 was added here
+    [2024-07-30 15:22:02,025] SecretsmanagementOpe [INFO    ] SOURCE_DATE_EPOCH=1722342693
+    [2024-07-30 15:22:02,025] SecretsmanagementOpe [INFO    ] GIT_COMMIT_SHA=7dfc477
+    [2024-07-30 15:22:02,026] SecretsmanagementOpe [INFO    ] CICD_BUILD_TIME=2024-07-30T12:32:02+00:00
+    [2024-07-30 15:22:02,030] SecretsmanagementOpe [WARNING ] Environment variable HVAC_TOKEN given as plaintext.
+    Please remove HVAC_TOKEN variable and use HVAC_TOKEN_ENC:
+    gAAAAABmqQUa2nvJFaSX27nAhyflGSnmnvA5Aw0gwLa0NjsnK9bbjx-RPPBexroeYHKiCoHUmd0pxiFyHRgtJBkzuw3w8b4_Jw==
+</pre></div>
+</div>
+<p>The log timestamps are updated, so the log was newly written, but the second line is still the old one!</p>
+<p>This really came as a surprise for me. I expected the docker image to be repulled.
+In the charts we have configured the deployments in a way, that prerelease images automatically get the imagePullPolicy “Always”.
+This means, even if a  docker image with the same name already exists it is looking for updates in the remote docker registry.</p>
+<p>Check:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ kubectl get deployment -n canvas secretsmanagement-operator-vault -oyaml
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: secretsmanagement-operator-vault
+  namespace: canvas
+  ...
+spec:
+  strategy:
+    type: Recreate
+  template:
+    spec:
+      containers:
+      - name: secretsmanagement-operator-vault
+        image: ocfork/secretsmanagement-operator:0.1.1-issue3456
+[*]     imagePullPolicy: Always
+      ...
+</pre></div>
+</div>
+<p>I have no explanation, why this did not work, but found a workaround:
+Scaling the deployment down to 0 instances (PODs) and then scaling up to 1 again:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ kubectl scale deployment -n canvas secretsmanagement-operator-vault --replicas=0
+  deployment.apps/secretsmanagement-operator-vault scaled
+
+$ kubectl scale deployment -n canvas secretsmanagement-operator-vault --replicas=1
+  deployment.apps/secretsmanagement-operator-vault scaled
+</pre></div>
+</div>
+<p>Wait a few seconds for the new POD to come up and look at the logfile:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ kubectl logs -n canvas deployment/secretsmanagement-operator-vault
+
+    [2024-07-30 15:31:14,306] SecretsmanagementOpe [INFO    ] Logging set to 20
+[*] [2024-07-30 15:31:14,306] SecretsmanagementOpe [INFO    ] GitHub ISSUE #3456 WAS FIXED!!!
+    [2024-07-30 15:31:14,306] SecretsmanagementOpe [INFO    ] SOURCE_DATE_EPOCH=1722351400
+    [2024-07-30 15:31:14,306] SecretsmanagementOpe [INFO    ] GIT_COMMIT_SHA=462b37e
+    [2024-07-30 15:31:14,307] SecretsmanagementOpe [INFO    ] CICD_BUILD_TIME=2024-07-30T14:57:04+00:00
+    [2024-07-30 15:31:14,312] SecretsmanagementOpe [WARNING ] Environment variable HVAC_TOKEN given as plaintext.
+    Please remove HVAC_TOKEN variable and use HVAC_TOKEN_ENC:
+    gAAAAABmqQdCL8HcaLN2GJFP5gnAtJ0bXjaVFIWnw_ihXw-5U7pYFl-ieovQR3vGUyJvmKNDiZMP7R5IRPCtGkY8fJbAHpqJcw==
+</pre></div>
+</div>
+<p>Now it is as expected. The changed code is active.</p>
+<p>As we can see the <code class="docutils literal notranslate"><span class="pre">GIT_COMMIT_SHA</span></code> (short version, only the first 7 digits of the complete GIT SHA) we can verify,
+if the version deployed is realy the version we pushed.
+To verify the <code class="docutils literal notranslate"><span class="pre">GIT_COMMIT_SHA</span></code> you can use the git cli command:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ git rev-parse --short HEAD
+  462b37e
+</pre></div>
+</div>
+<p>Sidenote: instead of scaling the deployment to zero and up again, it is also possible to delete the running PODs.
+Then the new docker image is also pullled.</p>
+</section>
+</section>
+<section id="step-7-creating-a-pull-request">
+<h3>Step 7: Creating a Pull-Request<a class="headerlink" href="#step-7-creating-a-pull-request" title="Link to this heading">¶</a></h3>
+<p>After the iterative process of doing code changes, and testing the image, we are ready to contribute our changes back to the “main” branch.</p>
+<p>Therefore a Pull-Request (PR) is created from our feature branch <code class="docutils literal notranslate"><span class="pre">feature/issue-3456</span></code> into “main” using GitHub UI.</p>
+<section id="automatically-run-tests">
+<h4>Automatically Run Tests<a class="headerlink" href="#automatically-run-tests" title="Link to this heading">¶</a></h4>
+<p>Now the automatic tests of the PR are triggered and the result should be green. (WIP)</p>
+</section>
+<section id="check-for-release-versions">
+<h4>Check for release versions<a class="headerlink" href="#check-for-release-versions" title="Link to this heading">¶</a></h4>
+<p>Additionally there is a check, that no prereleaseSuffixes are set in the values.yaml.
+For our PR this check fails, because secretsmanagement-operator has prereleaseSuffix “issue3456”.</p>
+<p><img alt="image" src="https://github.com/user-attachments/assets/41a329e2-7b8b-4373-bd05-58cb2883ca72" /></p>
+<div class="table-wrapper colwidths-auto docutils container">
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p><img alt="image" src="https://github.com/user-attachments/assets/30099789-3643-4b49-909a-0b3af1ae9081" /></p></th>
+</tr>
+</thead>
+</table>
+</div>
+<p>This can be solved by removing the prereleaseSuffix in the values.yaml:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">...</span>
+<span class="n">secretsmanagement</span><span class="o">-</span><span class="n">operator</span><span class="p">:</span>
+    <span class="n">image</span><span class="p">:</span> <span class="n">ocfork</span><span class="o">/</span><span class="n">secretsmanagement</span><span class="o">-</span><span class="n">operator</span>
+    <span class="n">version</span><span class="p">:</span> <span class="mf">0.1.1</span>
+<span class="p">[</span><span class="o">*</span><span class="p">]</span> <span class="n">prereleaseSuffix</span><span class="p">:</span>
+    <span class="o">...</span>
+</pre></div>
+</div>
+<p>Start the commit message with “[skip tests] …” which will skip running the BDD tests. After pushing this change, the two checks (Linting and Release version check) are triggered again:</p>
+<p><img alt="image" src="https://github.com/user-attachments/assets/e687ec09-df02-4eea-b347-d09cbbb72f32" /></p>
+<p>A docker build was not triggered again, because there was no change in the docker source files.
+Now all preconditions are green:</p>
+<p><img alt="image" src="https://github.com/user-attachments/assets/9842c0b2-f353-4c42-bc23-bcd47f7d426c" /></p>
+</section>
+</section>
+<section id="step-8-code-review-and-merging-the-pr">
+<h3>Step 8: Code-Review and Merging the PR<a class="headerlink" href="#step-8-code-review-and-merging-the-pr" title="Link to this heading">¶</a></h3>
+<p>A code review can now be done and after appoval the branch can be merged into the “main” branch.</p>
+<p>When the PR is merged, the release build of the docker image is triggered:</p>
+<p><img alt="image" src="https://github.com/user-attachments/assets/3e0ffa45-cb22-413b-8135-6e9aa360708b" /></p>
+<p>There is a check, that the release version does not already exists.
+If this is the case, the build pipeline will fail.</p>
+<p>But here, everything is fine and the build is successful:</p>
+<p><img alt="image" src="https://github.com/user-attachments/assets/754e2284-31d1-42f6-ad3f-315f68663fd8" /></p>
+<p>In the Docker registry there is now a release version 0.1.1:</p>
+<div class="table-wrapper colwidths-auto docutils container">
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p><img alt="image" src="https://github.com/user-attachments/assets/afbe328e-9492-44e3-93c0-ac6ae4879774" /></p></th>
+</tr>
+</thead>
+</table>
+</div>
+</section>
+</section>
+<section id="summary">
+<h2>Summary<a class="headerlink" href="#summary" title="Link to this heading">¶</a></h2>
+<p>Overview about the steps to do:</p>
+<ul class="simple">
+<li><p>Create feature branch “feature/…” and do all work in this branch</p></li>
+<li><p>Increment version number and set prereleaseSuffix for Dockerimage to modify in <a class="reference external" href="https://github.com/tmforum-oda/oda-canvas/blob/main/charts/canvas-oda/values.yaml">charts/canvas-oda/values.yaml</a></p></li>
+<li><p>Modify code, push triggers rebuild of prerelease docker image</p></li>
+<li><p>For the first time do a <code class="docutils literal notranslate"><span class="pre">helm</span> <span class="pre">upgrade</span></code> to redeploy the prerelease version</p></li>
+<li><p>For any further modifications to a <code class="docutils literal notranslate"><span class="pre">kubectl</span> <span class="pre">scale</span> <span class="pre">deployment</span> <span class="pre">...</span> <span class="pre">---replicas</span> <span class="pre">0</span></code> and then <code class="docutils literal notranslate"><span class="pre">kubectl</span> <span class="pre">scale</span> <span class="pre">deployment</span> <span class="pre">...</span> <span class="pre">---replicas</span> <span class="pre">1</span></code> (or delete running PODs)</p></li>
+<li><p>Finally create PR and make BDD tests green</p></li>
+<li><p>Remove prereleaseSuffixes from values.yaml, add “[skip tests]” to the commit message</p></li>
+<li><p>Merge the PR</p></li>
+</ul>
+</section>
+<section id="how-to-add-a-new-dockerimage">
+<h2>How-To add a new Dockerimage<a class="headerlink" href="#how-to-add-a-new-dockerimage" title="Link to this heading">¶</a></h2>
+<p>Currently there are 6 Docker images which are built automatically.
+New Docker images can be added by editing the file <a class="reference external" href="https://github.com/tmforum-oda/oda-canvas/blob/main/automation/generators/dockerbuild-workflow-generator/dockerbuild-config.yaml">automation/generators/dockerbuild-workflow-generator/dockerbuild-config.yaml</a>.
+In this file the docker build specific configurations and the relevant source paths have to be set.</p>
+<p>After the configuration is finished, the GitHub Actions have to be regenerated
+by executing <a class="reference external" href="https://github.com/tmforum-oda/oda-canvas/blob/main/automation/generators/dockerbuild-workflow-generator/dockerbuild_workflow_generator.py">automation/generators/dockerbuild-workflow-generator/dockerbuild_workflow_generator.py</a>. For executing the python script, the packages “pyyaml” and “jinja2” have to be installed (see requirements.txt).</p>
+</section>
+<section id="how-to-define-unit-tests">
+<h2>How-To define unit tests<a class="headerlink" href="#how-to-define-unit-tests" title="Link to this heading">¶</a></h2>
+<p>If the parameter testDockerfile is set, then after building the dockerfile to release in the same context the test Dockerfile is built and run.
+The output of the run should be a test report in junit xml format.</p>
+<p>Here is an Example:</p>
+<p>Definition in dockerbuild-workflow-generator (Line 55 is the testDockerfile config):</p>
+<p><a class="reference external" href="https://github.com/tmforum-oda/oda-canvas/blob/2d6268346c215c6dedb7afb2862765679da5c23c/automation/generators/dockerbuild-workflow-generator/dockerbuild-config.yaml#L41-L57">https://github.com/tmforum-oda/oda-canvas/blob/2d6268346c215c6dedb7afb2862765679da5c23c/automation/generators/dockerbuild-workflow-generator/dockerbuild-config.yaml#L41-L57</a></p>
+<p>And the DockerfileTest looks like this:</p>
+<p><a class="reference external" href="https://github.com/tmforum-oda/oda-canvas/blob/2d6268346c215c6dedb7afb2862765679da5c23c/source/operators/TMFOP005-Dependency-Management/simple-dependency-management/docker/DockerfileTest#L1-L17">https://github.com/tmforum-oda/oda-canvas/blob/2d6268346c215c6dedb7afb2862765679da5c23c/source/operators/TMFOP005-Dependency-Management/simple-dependency-management/docker/DockerfileTest#L1-L17</a></p>
+<p>There will be a warning, that it is bad practice to define a FROM solely from an argument, but I don´t know how to do it in another way.</p>
+<p>So, the test dockerfile uses the previously built image as “$FROM_IMAGE” and during the build process the unit tests are executed. The build itself should not fail, instead of the test report is analyzed afterwards. Running the test dockerfile just outputs the test report.</p>
+<p>On Failure, the docker build of the version is canceled and the broken tests are visible in the GitHub action.</p>
+<p><img alt="failed tests in GitHub Action" src="../../../_images/failed-tests-in-github-action.png" /></p>
+</section>
+<section id="how-to-work-with-forks">
+<h2>How to work with forks<a class="headerlink" href="#how-to-work-with-forks" title="Link to this heading">¶</a></h2>
+<p>For security reasons, it is not possible for PRs from a forked repository to build dockerimages,
+as the credentials are not accessible in the GitHub Action.</p>
+<p>As a workaround the dockerimages can be created using a feature-branch and merging the same forked sources into this branch using a secondary PR. Then the prerelease docker images will be built and are available in the primary PR for running the BDD tests.</p>
+</section>
+</section>
+
+        </article>
+      </div>
+      <footer>
+        
+        <div class="related-pages">
+          <a class="next-page" href="../../source/operators/Installing%20KOPF%20development%20environment.html">
+              <div class="page-info">
+                <div class="context">
+                  <span>Next</span>
+                </div>
+                <div class="title">Installing KOPF (tested in GKE)</div>
+              </div>
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+            </a>
+          <a class="prev-page" href="../../devcontainer.html">
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+              <div class="page-info">
+                <div class="context">
+                  <span>Previous</span>
+                </div>
+                
+                <div class="title">ODA Canvas Development Environment</div>
+                
+              </div>
+            </a>
+        </div>
+        <div class="bottom-of-page">
+          <div class="left-details">
+            <div class="copyright">
+                Copyright &#169; 2026, TM Forum ODA-Component Accelerator project
+            </div>
+            Made with <a href="https://www.sphinx-doc.org/">Sphinx</a> and <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
+            
+            <a href="https://github.com/pradyunsg/furo">Furo</a>
+            
+          </div>
+          <div class="right-details">
+            
+          </div>
+        </div>
+        
+      </footer>
+    </div>
+    <aside class="toc-drawer">
+      
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            On this page
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">Developer How-Tos: Work with Dockerimages</a><ul>
+<li><a class="reference internal" href="#tl-dr">TL;DR;</a></li>
+<li><a class="reference internal" href="#global-rules">Global Rules</a></li>
+<li><a class="reference internal" href="#versions-in-values-yaml">Versions in values.yaml</a></li>
+<li><a class="reference internal" href="#example-update-code-of-secretsmanagement-operator">Example: Update code of Secretsmanagement-Operator</a><ul>
+<li><a class="reference internal" href="#step-1-create-a-feature-branch">Step 1: Create a feature branch</a></li>
+<li><a class="reference internal" href="#step-2-configure-prerelease-version-in-feature-branch">Step 2: Configure Prerelease Version in feature branch</a><ul>
+<li><a class="reference internal" href="#look-at-the-docker-build-configuration">Look at the Docker build configuration</a></li>
+<li><a class="reference internal" href="#configure-prerelease-version-in-values-yaml">Configure Prerelease-Version in values.yaml</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#step-3-change-the-code-in-the-feature-branch">Step 3: Change the code in the feature branch</a></li>
+<li><a class="reference internal" href="#step-4-push-changed-feature-branch-to-github">Step 4: Push changed feature branch to GitHub</a></li>
+<li><a class="reference internal" href="#step-5-upgrade-canvas">Step 5: Upgrade Canvas</a><ul>
+<li><a class="reference internal" href="#update-chart-dependencies">Update chart dependencies</a></li>
+<li><a class="reference internal" href="#install-upgrade-canvas">Install/Upgrade canvas</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#step-5-test-that-changed-code-is-active">Step 5: Test that changed code is active</a></li>
+<li><a class="reference internal" href="#step-6a-6n-modify-code-multiple-times">Step 6a..6n: Modify code multiple times</a><ul>
+<li><a class="reference internal" href="#update-canvas-deployment">Update canvas deployment</a></li>
+<li><a class="reference internal" href="#look-for-the-changes-in-the-logfile">Look for the changes in the logfile</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#step-7-creating-a-pull-request">Step 7: Creating a Pull-Request</a><ul>
+<li><a class="reference internal" href="#automatically-run-tests">Automatically Run Tests</a></li>
+<li><a class="reference internal" href="#check-for-release-versions">Check for release versions</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#step-8-code-review-and-merging-the-pr">Step 8: Code-Review and Merging the PR</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#summary">Summary</a></li>
+<li><a class="reference internal" href="#how-to-add-a-new-dockerimage">How-To add a new Dockerimage</a></li>
+<li><a class="reference internal" href="#how-to-define-unit-tests">How-To define unit tests</a></li>
+<li><a class="reference internal" href="#how-to-work-with-forks">How to work with forks</a></li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
+      
+      
+    </aside>
+  </div>
+</div><script src="../../../_static/documentation_options.js?v=13610682"></script>
+    <script src="../../../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../../../_static/scripts/furo.js?v=46bd48cc"></script>
+    <script src="../../../_static/js/default-dark.js?v=658bd94d"></script>
+    </body>
+</html>
