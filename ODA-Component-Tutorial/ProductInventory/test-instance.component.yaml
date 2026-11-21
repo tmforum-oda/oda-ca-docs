@@ -68,7 +68,7 @@ spec:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: test-mongodb-prod
+  name: test-mongodb
   labels:
     oda.tmforum.org/componentName: test-productinventory
 spec:
@@ -85,7 +85,7 @@ spec:
     spec:
       containers:
       - name: test-mongodb
-        image: mongo:latest
+        image: mongo:5.0.1
         ports:
         - name: test-mongodb
           containerPort: 27017
@@ -223,8 +223,6 @@ metadata:
   name: test-productinventory
   labels:
     oda.tmforum.org/componentName: test-productinventory
-  annotations:
-    webhookconverted: Webhook converted From oda.tmforum.org/v1beta3 to oda.tmforum.org/v1
 spec:
   componentMetadata:
     id: TMFC005
@@ -245,9 +243,11 @@ spec:
   coreFunction:
     exposedAPIs:
       - name: productinventorymanagement
+        id: TMF637
         specification:
           - url: >-
               https://raw.githubusercontent.com/tmforum-apis/TMF637_ProductInventory/master/TMF637-ProductInventory-v4.0.0.swagger.json
+            version: v4.0.0
         implementation: test-productinventoryapi
         apiType: openapi
         path: >-
@@ -258,9 +258,11 @@ spec:
         gatewayConfiguration: {}
     dependentAPIs:
       - name: party
+        id: TMF632
         apiType: openapi
         specification:
-          - url: https://open-api.tmforum.org/TMF632-Party-v4.0.0.swagger.json
+          - url: https://raw.githubusercontent.com/tmforum-apis/TMF632_Party/master/TMF632-Party-v4.0.0.swagger.json
+            version: v4.0.0
   eventNotification:
     publishedEvents: []
     subscribedEvents: []
@@ -271,9 +273,11 @@ spec:
     canvasSystemRole: Admin
     exposedAPIs:
       - name: partyrole
+        id: TMF669
         specification:
           - url: >-
               https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
+            version: v4.0.0
         implementation: test-partyroleapi
         apiType: openapi
         path: >-
