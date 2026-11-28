@@ -1,0 +1,132 @@
+# The ODA Agent Skills Marketplace
+
+<p class="oda-video-meta">Part 7 · 11:27 · Published 11 November 2026</p>
+
+<div class="oda-video-player">
+<iframe src="https://www.youtube-nocookie.com/embed/6ONDbSo3RfY" title="The ODA Agent Skills Marketplace" loading="lazy"
+  allow="accelerometer; encrypted-media; gyroscope; picture-in-picture; fullscreen" allowfullscreen></iframe>
+</div>
+
+AI software engineering agents are only as good as the context they are given and the process they follow. TM Forum's Open Digital Architecture already holds that context in its Open APIs, ODA Component specifications and use cases. The ODA Agent Skills Marketplace packages it as an agent-friendly knowledge base, with Agent Skills that use it across the whole software delivery lifecycle, from requirements to operations.
+
+This seventh video in the ODA Canvas training series explains why the ODA matters for software engineering agents, what an Agent Skill is, and how the knowledge was converted for agents. It tours the marketplace on GitHub, its consumer and creator plugins, and the reference example components (Helm charts, source code and architecture diagrams) that its skills have scaffolded. They provide the Open API interoperability, not the business functionality. The marketplace is an alpha, released to show the concept and gather feedback.
+
+[Watch on YouTube](https://youtu.be/6ONDbSo3RfY). This is the latest video in the series.
+
+## Related documentation
+
+- {doc}`/docs/AI-Assisted-Development`
+- {doc}`/canvas/ai-coding-assistants`
+- {doc}`/docs/ODAComponentTutorial/README`
+
+## Chapters
+
+- [0:00](https://youtu.be/6ONDbSo3RfY?t=0) The ODA Agent Skills Marketplace (presenter introduction)
+- [1:00](https://youtu.be/6ONDbSo3RfY?t=60) AI amplifies your practices
+- [1:31](https://youtu.be/6ONDbSo3RfY?t=91) Why the ODA helps software engineering agents
+- [2:04](https://youtu.be/6ONDbSo3RfY?t=124) What an Agent Skill is
+- [2:38](https://youtu.be/6ONDbSo3RfY?t=158) Live: a skill that builds ODA Components
+- [3:13](https://youtu.be/6ONDbSo3RfY?t=193) The procedure, step by step
+- [3:49](https://youtu.be/6ONDbSo3RfY?t=229) Live: seven reference components
+- [4:19](https://youtu.be/6ONDbSo3RfY?t=259) Live: diagrams generated from the Helm chart
+- [4:48](https://youtu.be/6ONDbSo3RfY?t=288) ODA knowledge as a data product
+- [5:23](https://youtu.be/6ONDbSo3RfY?t=323) Live: an agent-friendly use case
+- [5:53](https://youtu.be/6ONDbSo3RfY?t=353) An index, not an ontology
+- [6:31](https://youtu.be/6ONDbSo3RfY?t=391) Two plugins, one marketplace
+- [6:58](https://youtu.be/6ONDbSo3RfY?t=418) Live: installing the marketplace
+- [7:30](https://youtu.be/6ONDbSo3RfY?t=450) Skills from requirements to operations
+- [8:15](https://youtu.be/6ONDbSo3RfY?t=495) Live: inside a skill
+- [8:44](https://youtu.be/6ONDbSo3RfY?t=524) Not just code
+- [9:21](https://youtu.be/6ONDbSo3RfY?t=561) Skills for ODA creators
+- [9:54](https://youtu.be/6ONDbSo3RfY?t=594) Live: built spec-first
+- [10:19](https://youtu.be/6ONDbSo3RfY?t=619) An alpha, to show the concept
+- [10:57](https://youtu.be/6ONDbSo3RfY?t=657) Summary and get involved
+
+## Transcript
+
+The narration of the video, chapter by chapter. The captions on YouTube use the same text.
+
+<details class="oda-transcript">
+<summary>Show the transcript</summary>
+
+**[0:00](https://youtu.be/6ONDbSo3RfY?t=0) The ODA Agent Skills Marketplace (presenter introduction)**
+
+Welcome to the seventh video in the ODA training series, on the ODA Agent Skills Marketplace. AI software engineering agents are changing how software is built. But an agent is only as good as the context it is given, and the process it follows. TM Forum's Open Digital Architecture already holds that context, in its Open APIs, components, use cases and other frameworks. The marketplace packages it as an agent-friendly knowledge base. It adds Agent Skills that use it at every stage, from requirements through to operations. In this video, we look at why the ODA matters for software engineering agents, and what an Agent Skill is. Then we tour the marketplace on GitHub, and the reference components its skills have already scaffolded. This is an alpha version, released to show the concept and gather feedback.
+
+**[1:00](https://youtu.be/6ONDbSo3RfY?t=60) AI amplifies your practices**
+
+Research by Google's DORA team looked at how AI software engineering agents affect software delivery. Its main finding is that AI amplifies whatever practices a team already has. With a modular, API-first architecture and good engineering habits, agents make things better. With tightly coupled systems and poor practices, they just produce more problems, faster. So the foundations matter more than ever.
+
+**[1:31](https://youtu.be/6ONDbSo3RfY?t=91) Why the ODA helps software engineering agents**
+
+The ODA gives software engineering agents two things they need. The first is scope. A loosely coupled component is a well-bounded task, and agents do much better with focused work. The second is context. Open API specifications, component specifications and use cases describe exactly what to build. That suits a spec-driven approach. The specification is written and checked first, and only then is the code written.
+
+**[2:04](https://youtu.be/6ONDbSo3RfY?t=124) What an Agent Skill is**
+
+Part four of this series introduced Agent Skills. A skill is a written procedure that a software engineering agent follows, step by step. It is a folder with a skill file of instructions. It can also hold reference material, templates and scripts for deterministic steps. Agent Skills are an open standard, created by Anthropic. They work in Claude Code, GitHub Copilot or another software engineering agent. They are not the same as the skills listed in an A2A agent card.
+
+**[2:38](https://youtu.be/6ONDbSo3RfY?t=158) Live: a skill that builds ODA Components**
+
+It started with one skill, in the reference example components repository. The Canvas used to be tested with a single, hand-built product catalog component. The create ODA component skill wrote down how an engineer builds a component. An agent following it scaffolded the six other reference components in this repository. The same skill now ships in the marketplace as implement ODA component.
+
+**[3:13](https://youtu.be/6ONDbSo3RfY?t=193) The procedure, step by step**
+
+The skill is a precise procedure. It confirms which component to build, from its published specification, and asks which optional APIs to include. It then generates the source code, with a microservice for each API, plus metrics and role setup. Next it packages everything in a Helm chart, verifies the result, and builds the images. Finally, it writes the documentation. An agent follows these steps more precisely than a person would. So every improvement to the skill improves every component built with it.
+
+**[3:49](https://youtu.be/6ONDbSo3RfY?t=229) Live: seven reference components**
+
+Here are the results, seven reference components from product catalog to party management. Each one is the scaffolding for a functional component. It builds all the interoperability, through Open APIs with create, read, update and delete operations. So each has a Helm chart, and source code with one folder per microservice. The skill does not attempt to build the business functionality inside the component.
+
+**[4:19](https://youtu.be/6ONDbSo3RfY?t=259) Live: diagrams generated from the Helm chart**
+
+The documentation was generated too. This architecture diagram comes from another skill, generate component SVG diagram. It reads the Helm chart, and draws the component with its microservices. Dependent APIs are on the left, and exposed APIs on the right, coloured by function. Below it, the README describes the core, management and security functions the chart provides.
+
+**[4:48](https://youtu.be/6ONDbSo3RfY?t=288) ODA knowledge as a data product**
+
+Skills need knowledge they can read efficiently. Many ODA documents are published as PDF or Word files, with diagrams as pictures. So the marketplace converts them once into an agent-friendly form. Each use case and component becomes a Markdown file, with its links to other assets in a header. Sequence diagrams become PlantUML text, and other pictures get a written description. An agent can then read a diagram as text, instead of spending tokens interpreting an image.
+
+**[5:23](https://youtu.be/6ONDbSo3RfY?t=323) Live: an agent-friendly use case**
+
+Here is use case TMFS zero zero one, creating a new party account. The header records its version, its maturity, and where it came from. It also lists every component and Open API the use case touches. Further down, each sequence diagram links to its PlantUML source. This is the text an agent reads, rather than the picture.
+
+**[5:53](https://youtu.be/6ONDbSo3RfY?t=353) An index, not an ontology**
+
+Skills also need to find things quickly. The first design used a formal ontology to describe how the assets relate. In practice, simple JSON index files worked better, and use fewer tokens. There is one index each for use cases, components and APIs, with links in both directions. So a skill can go straight from an API to every use case that depends on it. As the scope of this work grows, a formal ontology may return. For this first version, it was overkill.
+
+**[6:31](https://youtu.be/6ONDbSo3RfY?t=391) Two plugins, one marketplace**
+
+The marketplace offers two plugins, for two audiences. The consumer plugin is for teams building software that uses the ODA. It has nineteen skills. The creator plugin is for the people who extend the ODA itself, such as use case and component authors. Each plugin carries its own copy of the knowledge, so it works from any project.
+
+**[6:58](https://youtu.be/6ONDbSo3RfY?t=418) Live: installing the marketplace**
+
+Installing it takes a few prompts. In Claude Code, ask it to add the repository as a plugin marketplace. Then list the plugins in the marketplace, and install the one you need. Typing the plugin name with a slash lists every skill it provides. You rarely need to name a skill, though. Just describe the task, and the agent picks the skill that fits. The same skills work in GitHub Copilot or another software engineering agent.
+
+**[7:30](https://youtu.be/6ONDbSo3RfY?t=450) Skills from requirements to operations**
+
+Software engineering agents can do far more than write code. The consumer skills cover the whole software delivery lifecycle. In discovery, they check whether a use case is mature enough, and recommend components for a requirement. In design, they turn use cases into user stories, diagrams and event designs, and validate a design. In build, they scaffold code and mocks, or implement a complete component. In test, they generate BDD scenarios and API conformance tests. And in operation, they audit implementations and assess the impact of a change. One more skill runs the whole chain, from a requirement to a delivered result.
+
+**[8:15](https://youtu.be/6ONDbSo3RfY?t=495) Live: inside a skill**
+
+Every skill is just a Markdown file. This one assesses the impact of a change, such as deprecating an Open API. Its description tells the agent when to use it. The steps then say exactly where to look in the knowledge. The agent identifies the asset, and reads which use cases use it. It checks the maturity of each one, then reports the impact in a set format.
+
+**[8:44](https://youtu.be/6ONDbSo3RfY?t=524) Not just code**
+
+Here are three real requests from a Claude Code session. None of them named a skill. Asked which use cases would break if an API were deprecated, the agent chose the change impact skill. It produced a table of affected use cases and their risk. Asked for user stories, it chose the requirements skill, and wrote stories with acceptance criteria. Asked for conformance tests, it first asked which test framework to use. Test-driven development matters even more with agents, because tests give them something to verify.
+
+**[9:21](https://youtu.be/6ONDbSo3RfY?t=561) Skills for ODA creators**
+
+The creator plugin is for the people who build the ODA itself. It drafts new use cases in the standard template, and checks drafts before they are submitted. It proposes component or API extensions for capability gaps. It also harvests gaps and inconsistencies from published documents, and feeds them back to the teams. Even the knowledge base was built with skills, including the ones that turned diagram images into PlantUML.
+
+**[9:54](https://youtu.be/6ONDbSo3RfY?t=594) Live: built spec-first**
+
+The marketplace itself was built the same spec-driven way. The spec describes the intent, the scope and the design principles. That is what a person checks. An agent then broke it into a plan of tasks, in phases. Each phase was built and verified before the next began, starting with six pilot use cases.
+
+**[10:19](https://youtu.be/6ONDbSo3RfY?t=619) An alpha, to show the concept**
+
+This is an alpha version, released to show the concept. Today, each skill has just one worked example. The next step is an evaluation data set for every skill, so each change can be measured with a score. The knowledge already includes the Open APIs, components and use case inventory. More of the ODA can be added, such as the information, business process, business capability and value stream frameworks. The knowledge could also be served through an MCP server, so it is always current. The plugins are versioned, so an update refreshes the knowledge on every machine.
+
+**[10:57](https://youtu.be/6ONDbSo3RfY?t=657) Summary and get involved**
+
+To recap. The ODA gives software engineering agents the scope and the context they need. The marketplace packages that knowledge, with skills from requirements through to operations, and for ODA creators. The reference example components show the scaffolding the skills can already build. The best way to improve the skills is to use them. So try them, and share your feedback through the marketplace's GitHub repository.
+
+</details>

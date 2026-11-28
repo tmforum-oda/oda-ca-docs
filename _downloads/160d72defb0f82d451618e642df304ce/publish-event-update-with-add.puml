@@ -1,0 +1,41 @@
+@startuml
+' UC004 "Upgrade component - with additional publishedNotifications" scenario
+actor Operations
+entity Component
+participant ComponentOperator
+entity PublishedNotification
+participant EventPublishingEnablementOperator
+participant "Event Manager"
+Component <- Operations : Install
+Component -> ComponentOperator: on.create
+group For each additional publishedNotification
+    ComponentOperator -> PublishedNotification: create
+    note right
+        A separate publishedNotification resource is created
+        for each published notification in the core function,
+        security and management sections
+    end note
+    PublishedNotification -> EventPublishingEnablementOperator: on.create
+    EventPublishingEnablementOperator -> "Event Manager": search for matching topic
+    note right
+        A topic can exist if another component
+        is already publishing these notifications
+        or if an operator pre-created topics
+    end note
+    alt Topic exist
+        EventPublishingEnablementOperator <-- "Event Manager": Found
+        EventPublishingEnablementOperator -> "Event Manager": configure Hub
+        EventPublishingEnablementOperator -> EventPublishingEnablementOperator: (optional) approval flow to approve creation of hub
+        EventPublishingEnablementOperator <-- "Event Manager": created
+    else Topic does not exist
+        EventPublishingEnablementOperator <-- "Event Manager": Not Found
+        note right
+            if a topic doesn't exist,
+            this should not block activation of the component
+        end note
+    end
+    PublishedNotification <- EventPublishingEnablementOperator: update
+    ComponentOperator <- PublishedNotification: on.update
+end
+Component <- ComponentOperator: update
+@enduml

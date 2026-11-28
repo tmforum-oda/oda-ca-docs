@@ -1,0 +1,1520 @@
+<!doctype html>
+<html class="no-js" lang="en" data-content_root="../../../../">
+  <head><meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="index" title="Index" href="../../../../genindex.html"><link rel="search" title="Search" href="../../../../search.html"><link rel="next" title="Run BDD Feature Tests" href="09-run-bdd-tests.html"><link rel="prev" title="View Observability Data" href="07-view-observability.html">
+        <link rel="prefetch" href="../../../../_static/ODA-Canvas.svg" as="image">
+        <link rel="prefetch" href="../../../../_static/ODA-Canvas-dark.svg" as="image">
+
+    <!-- Generated with Sphinx 9.2.0 and Furo 2025.12.19 -->
+        <title>Manage Identities - ODA Canvas and Components</title>
+      <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=d75fae25" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/styles/furo.css?v=7bdb33bb" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/styles/furo-extensions.css?v=8dab3a3b" />
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/css/custom.css?v=b2790eba" />
+    
+    
+
+
+<style>
+  body {
+    --color-code-background: #f0f0f0;
+  --color-code-foreground: black;
+  
+  }
+  @media not print {
+    body[data-theme="dark"] {
+      --color-code-background: #0d1117;
+  --color-code-foreground: #e6edf3;
+  
+    }
+    @media (prefers-color-scheme: dark) {
+      body:not([data-theme="light"]) {
+        --color-code-background: #0d1117;
+  --color-code-foreground: #e6edf3;
+  
+      }
+    }
+  }
+</style></head>
+  <body>
+    
+    <script>
+      document.body.dataset.theme = localStorage.getItem("theme") || "auto";
+    </script>
+    
+
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="svg-toc" viewBox="0 0 24 24">
+    <title>Contents</title>
+    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024">
+      <path d="M408 442h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8zm-8 204c0 4.4 3.6 8 8 8h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56zm504-486H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 632H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zM115.4 518.9L271.7 642c5.8 4.6 14.4.5 14.4-6.9V388.9c0-7.4-8.5-11.5-14.4-6.9L115.4 505.1a8.74 8.74 0 0 0 0 13.8z"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+    <title>Menu</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-menu">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+    <title>Expand</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-chevron-right">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </symbol>
+  <symbol id="svg-sun" viewBox="0 0 24 24">
+    <title>Light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="feather-sun">
+      <circle cx="12" cy="12" r="5"></circle>
+      <line x1="12" y1="1" x2="12" y2="3"></line>
+      <line x1="12" y1="21" x2="12" y2="23"></line>
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+      <line x1="1" y1="12" x2="3" y2="12"></line>
+      <line x1="21" y1="12" x2="23" y2="12"></line>
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon" viewBox="0 0 24 24">
+    <title>Dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-moon">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
+    </svg>
+  </symbol>
+  <symbol id="svg-sun-with-moon" viewBox="0 0 24 24">
+    <title>Auto light/dark, in light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path style="opacity: 50%" d="M 5.411 14.504 C 5.471 14.504 5.532 14.504 5.591 14.504 C 3.639 16.319 4.383 19.569 6.931 20.352 C 7.693 20.586 8.512 20.551 9.25 20.252 C 8.023 23.207 4.056 23.725 2.11 21.184 C 0.166 18.642 1.702 14.949 4.874 14.536 C 5.051 14.512 5.231 14.5 5.411 14.5 L 5.411 14.504 Z"/>
+      <line x1="14.5" y1="3.25" x2="14.5" y2="1.25"/>
+      <line x1="14.5" y1="15.85" x2="14.5" y2="17.85"/>
+      <line x1="10.044" y1="5.094" x2="8.63" y2="3.68"/>
+      <line x1="19" y1="14.05" x2="20.414" y2="15.464"/>
+      <line x1="8.2" y1="9.55" x2="6.2" y2="9.55"/>
+      <line x1="20.8" y1="9.55" x2="22.8" y2="9.55"/>
+      <line x1="10.044" y1="14.006" x2="8.63" y2="15.42"/>
+      <line x1="19" y1="5.05" x2="20.414" y2="3.636"/>
+      <circle cx="14.5" cy="9.55" r="3.6"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon-with-sun" viewBox="0 0 24 24">
+    <title>Auto light/dark, in dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path d="M 8.282 7.007 C 8.385 7.007 8.494 7.007 8.595 7.007 C 5.18 10.184 6.481 15.869 10.942 17.24 C 12.275 17.648 13.706 17.589 15 17.066 C 12.851 22.236 5.91 23.143 2.505 18.696 C -0.897 14.249 1.791 7.786 7.342 7.063 C 7.652 7.021 7.965 7 8.282 7 L 8.282 7.007 Z"/>
+      <line style="opacity: 50%" x1="18" y1="3.705" x2="18" y2="2.5"/>
+      <line style="opacity: 50%" x1="18" y1="11.295" x2="18" y2="12.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="4.816" x2="14.464" y2="3.964"/>
+      <line style="opacity: 50%" x1="20.711" y1="10.212" x2="21.563" y2="11.063"/>
+      <line style="opacity: 50%" x1="14.205" y1="7.5" x2="13.001" y2="7.5"/>
+      <line style="opacity: 50%" x1="21.795" y1="7.5" x2="23" y2="7.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="10.184" x2="14.464" y2="11.036"/>
+      <line style="opacity: 50%" x1="20.711" y1="4.789" x2="21.563" y2="3.937"/>
+      <circle style="opacity: 50%" cx="18" cy="7.5" r="2.169"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-pencil" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-pencil-code">
+      <path d="M4 20h4l10.5 -10.5a2.828 2.828 0 1 0 -4 -4l-10.5 10.5v4" />
+      <path d="M13.5 6.5l4 4" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+  <symbol id="svg-eye" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-eye-code">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M10 12a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" />
+      <path
+        d="M11.11 17.958c-3.209 -.307 -5.91 -2.293 -8.11 -5.958c2.4 -4 5.4 -6 9 -6c3.6 0 6.6 2 9 6c-.21 .352 -.427 .688 -.647 1.008" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+</svg>
+
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle site navigation sidebar">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc" aria-label="Toggle table of contents sidebar">
+<label class="overlay sidebar-overlay" for="__navigation"></label>
+<label class="overlay toc-overlay" for="__toc"></label>
+
+<a class="skip-to-content muted-link" href="#furo-main-content">Skip to content</a>
+
+
+
+<div class="page">
+  <header class="mobile-header">
+    <div class="header-left">
+      <label class="nav-overlay-icon" for="__navigation">
+        <span class="icon"><svg><use href="#svg-menu"></use></svg></span>
+      </label>
+    </div>
+    <div class="header-center">
+      <a href="../../../../index.html"><div class="brand">ODA Canvas and Components</div></a>
+    </div>
+    <div class="header-right">
+      <div class="theme-toggle-container theme-toggle-header">
+        <button class="theme-toggle" aria-label="Toggle Light / Dark / Auto color theme">
+          <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+          <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+          <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+          <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+        </button>
+      </div>
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
+        <span class="icon"><svg><use href="#svg-toc"></use></svg></span>
+      </label>
+    </div>
+  </header>
+  <aside class="sidebar-drawer">
+    <div class="sidebar-container">
+      
+      <div class="sidebar-sticky"><a class="sidebar-brand" href="../../../../index.html">
+  <div class="sidebar-logo-container">
+    <img class="sidebar-logo only-light" src="../../../../_static/ODA-Canvas.svg" alt="Light Logo"/>
+    <img class="sidebar-logo only-dark" src="../../../../_static/ODA-Canvas-dark.svg" alt="Dark Logo"/>
+  </div>
+  
+  <span class="sidebar-brand-text">ODA Canvas and Components</span>
+  
+</a><form class="sidebar-search-container" method="get" action="../../../../search.html" role="search">
+  <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
+  <input type="hidden" name="check_keywords" value="yes">
+  <input type="hidden" name="area" value="default">
+</form>
+<div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
+  <p class="caption" role="heading"><span class="caption-text">Get started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../README.html">Open Digital Architecture Canvas</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../../docs/training-videos/index.html">Training videos</a><input aria-label="Toggle navigation of Training videos" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../docs/training-videos/part-1.html">Introduction to the ODA Canvas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../docs/training-videos/part-2.html">How do I buy or build an ODA Canvas?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../docs/training-videos/part-3.html">Authentication and Authorization in the ODA Canvas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../docs/training-videos/part-4.html">The AI-Native ODA Canvas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../docs/training-videos/part-5.html">Observability in the ODA Canvas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../docs/training-videos/part-7.html">The ODA Agent Skills Marketplace</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../docs/Getting_started.html">Getting started checklist for new members of ODA-CA</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../docs/Playbook.html">Introduction to the ODA Component Accelerator Project (ODA-CA)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Concepts and design</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../Canvas-design.html">ODA Canvas Design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../SecurityPrinciples.html">Open Digital Architecture Reference Implementation (RI) Security Principles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../Authentication-design.html">Authentication design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../Observability-design.html">Observability design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../Event-based-integration-design.html">Event based integration design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../AI-Native-Canvas-design.html">AI-Native Canvas design</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Use cases</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../usecase-library/README.html">ODA Canvas - Use-Case Library</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../usecase-library/UC001-Install-Canvas.html">Install Canvas use case</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../usecase-library/UC002-Manage-Components.html">Manage Components use case</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../usecase-library/UC003-Configure-Exposed-APIs.html">Configure Exposed APIs use-case</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../usecase-library/UC004-Configure-Published-Events.html">Configure Published Events use-case</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../usecase-library/UC005-Configure-Clients-and-Roles.html">Configure Clients and Roles use case</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../usecase-library/UC006-Configure-Observability.html">Configure Observability use case</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../usecase-library/UC007-Configure-Dependent-APIs.html">Configure dependent APIs use case</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../usecase-library/UC008-Configure-Subscribed-Events.html">Configure Subscribed Events use-case</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../usecase-library/UC009-Internal-Authentication.html">Internal authentication use-case</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../usecase-library/UC010-External-Authentication.html">External authentication use-case</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../usecase-library/UC011-View-Technical-Observability.html">View technical observability use-case</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../usecase-library/UC012-View-Business-Observability.html">View business observability use-case</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../usecase-library/UC013-Upgrade-Canvas.html">Upgrade Canvas use case</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../usecase-library/UC014-Secrets-Management-JWT-based.html">Secrets Management for Component</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../usecase-library/UC016-ODA-Component-and-API-Registry.html">UC016 - ODA Component and API Inventory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../usecase-library/use-case-naming-conventions.html">Use-Case Naming Conventions</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Install and operate</span></p>
+<ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../installation/README.html">ODA Canvas installation</a><input aria-label="Toggle navigation of ODA Canvas installation" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../installation/CanvasVault/README.html">HashiCorp Vault installation</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../../installation/azure/README.html">Deployment Guide for TM Forum ODA Canvas on Azure</a><input aria-label="Toggle navigation of Deployment Guide for TM Forum ODA Canvas on Azure" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" role="switch" type="checkbox"/><label for="toctree-checkbox-3"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../installation/azure/automated/automated_install_azure_README.html">End-to-End Deployment and Observability Guide for TM Forum ODA Canvas on Azure</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../installation/prerequisites/README.html">Prerequisites installation</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../release-notes/ReleaseNotes.html">Component Specification Release Notes</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Canvas operators</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../source/operators/README.html">ODA Canvas Operators</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../source/operators/TMFOP001-Component-Management/README.html">TMFOP001 Component Management Operators</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../source/operators/TMFOP002-API-Management/README.html">TMFOP002 API Management Operators</a><input aria-label="Toggle navigation of TMFOP002 API Management Operators" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" role="switch" type="checkbox"/><label for="toctree-checkbox-4"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../source/operators/TMFOP002-API-Management/apache-apisix/README.html">Apache APISIX API Management Operator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../source/operators/TMFOP002-API-Management/azure-apim/README.html">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../source/operators/TMFOP002-API-Management/azure-apim/README.html#operator-architecture">Operator Architecture</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../source/operators/TMFOP002-API-Management/azure-apim/README.html#key-components">Key Components</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../source/operators/TMFOP002-API-Management/azure-apim/README.html#event-handling-workflow">Event Handling Workflow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../source/operators/TMFOP002-API-Management/azure-apim/README.html#code-structure-and-functions">Code Structure and Functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../source/operators/TMFOP002-API-Management/azure-apim/README.html#interaction-with-azure-services">Interaction with Azure Services</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../source/operators/TMFOP002-API-Management/azure-apim/README.html#security-considerations">Security Considerations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../source/operators/TMFOP002-API-Management/azure-apim/README.html#testing-and-debugging">Testing and Debugging</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../source/operators/TMFOP002-API-Management/azure-apim/README.html#limitations-and-future-enhancements">Limitations and Future Enhancements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../source/operators/TMFOP002-API-Management/azure-apim/README.html#conclusion">Conclusion</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../../source/operators/TMFOP002-API-Management/azure-apim/README.html#key-takeaways">Key Takeaways:</a><input aria-label="Toggle navigation of Key Takeaways:" class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" role="switch" type="checkbox"/><label for="toctree-checkbox-5"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../source/operators/TMFOP002-API-Management/azure-apim/automated/automated_apiManagement_README.html">Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../source/operators/TMFOP002-API-Management/azure-apim/automated/automated_apiManagement_README.html#operator-architecture">Operator Architecture</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../source/operators/TMFOP002-API-Management/azure-apim/automated/automated_apiManagement_README.html#key-components">Key Components</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../source/operators/TMFOP002-API-Management/azure-apim/automated/automated_apiManagement_README.html#event-handling-workflow">Event Handling Workflow</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../source/operators/TMFOP002-API-Management/azure-apim/automated/automated_apiManagement_README.html#code-structure-and-functions">Code Structure and Functions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../source/operators/TMFOP002-API-Management/azure-apim/automated/automated_apiManagement_README.html#interaction-with-azure-services">Interaction with Azure Services</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../source/operators/TMFOP002-API-Management/azure-apim/automated/automated_apiManagement_README.html#security-considerations">Security Considerations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../source/operators/TMFOP002-API-Management/azure-apim/automated/automated_apiManagement_README.html#testing-and-debugging">Testing and Debugging</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../source/operators/TMFOP002-API-Management/azure-apim/automated/automated_apiManagement_README.html#limitations-and-future-enhancements">Limitations and Future Enhancements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../source/operators/TMFOP002-API-Management/azure-apim/automated/automated_apiManagement_README.html#conclusion">Conclusion</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../source/operators/TMFOP002-API-Management/azure-apim/automated/automated_apiManagement_README.html#key-takeaways">Key Takeaways:</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../source/operators/TMFOP002-API-Management/istio/README.html">API Operator for Istio</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../source/operators/TMFOP002-API-Management/kong/README.html">Kubernetes Kong API Lifecycle Management Operator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../source/operators/TMFOP002-API-Management/whalecloud-apim/README.html">API Operator apig - Introduction</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../source/operators/TMFOP003-Identity-Config/README.html">TMFOP003 Identity Config Operators</a><input aria-label="Toggle navigation of TMFOP003 Identity Config Operators" class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" role="switch" type="checkbox"/><label for="toctree-checkbox-6"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../source/operators/TMFOP003-Identity-Config/LOGGING-ENHANCEMENTS.html">Enhanced Logging for Identity Config Operator and Listener</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../source/operators/TMFOP003-Identity-Config/README-PermissionSpecificationSet.html">Identity Config Operator - Permission Specification Set Support</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../../source/operators/TMFOP003-Identity-Config/keycloak/README.html">Identity Config operator for Keycloak - Introduction</a><input aria-label="Toggle navigation of Identity Config operator for Keycloak - Introduction" class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" role="switch" type="checkbox"/><label for="toctree-checkbox-7"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../source/operators/TMFOP003-Identity-Config/keycloak/identity-listener-keycloak/README.html">Identity Listener Keycloak</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../source/operators/TMFOP003-Identity-Config/keycloak/identity-listener-keycloak/README.html#buildautomation-and-versioning">Buildautomation and Versioning</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../source/operators/TMFOP004-Credentials-Management/README.html">TMFOP004 Credentials Management Operators</a><input aria-label="Toggle navigation of TMFOP004 Credentials Management Operators" class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" role="switch" type="checkbox"/><label for="toctree-checkbox-8"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../source/operators/TMFOP004-Credentials-Management/credentials-management/README.html">Credentials Management Operator for Kubernetes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../source/operators/TMFOP004-Credentials-Management/credentials-management/README.html#installation">Installation</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../source/operators/TMFOP005-Dependency-Management/README.html">TMFOP005 Dependency Management Operators</a><input aria-label="Toggle navigation of TMFOP005 Dependency Management Operators" class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" role="switch" type="checkbox"/><label for="toctree-checkbox-9"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../source/operators/TMFOP005-Dependency-Management/dependency-management-using-keycloak-authorization/README.html">Dependency Management Operator — Keycloak Authorization</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../../source/operators/TMFOP005-Dependency-Management/simple-dependency-management/README.html">Simple Dependency Management Operator</a><input aria-label="Toggle navigation of Simple Dependency Management Operator" class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" role="switch" type="checkbox"/><label for="toctree-checkbox-10"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../source/operators/TMFOP005-Dependency-Management/simple-dependency-management/docker/README.html">DependentAPI Simple Operator</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../source/operators/TMFOP005-Dependency-Management/simple-dependency-management/docker/README.html#buildautomation-and-versioning">Buildautomation and Versioning</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../source/operators/TMFOP006-Event-Management/README.html">TMFOP006 Event Management Operators</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../source/operators/TMFOP007-Secrets-Management/README.html">TMFOP007 Secrets Management Operators</a><input aria-label="Toggle navigation of TMFOP007 Secrets Management Operators" class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" role="switch" type="checkbox"/><label for="toctree-checkbox-11"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../../source/operators/TMFOP007-Secrets-Management/vault/README.html">Vault Secrets Management Operator</a><input aria-label="Toggle navigation of Vault Secrets Management Operator" class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" role="switch" type="checkbox"/><label for="toctree-checkbox-12"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../source/operators/TMFOP007-Secrets-Management/vault/docker/README.html">Secrets Management Operator HC</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../source/operators/TMFOP007-Secrets-Management/vault/docker/README.html#buildautomation-and-versioning">Buildautomation and Versioning</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../source/operators/TMFOP007-Secrets-Management/vault/sidecar/docker/README.html">Secrets Management Sidecar</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../source/operators/TMFOP007-Secrets-Management/vault/sidecar/docker/README.html#buildautomation-and-versioning">Buildautomation and Versioning</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../source/operators/TMFOP008-OAuth2-Config/README.html">TMFOP008 OAuth2 Config Operators</a><input aria-label="Toggle navigation of TMFOP008 OAuth2 Config Operators" class="toctree-checkbox" id="toctree-checkbox-13" name="toctree-checkbox-13" role="switch" type="checkbox"/><label for="toctree-checkbox-13"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../source/operators/TMFOP008-OAuth2-Config/envoy-filter/README.html">OAuth2 EnvoyFilter Operator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../source/operators/TMFOP008-OAuth2-Config/envoy-filter/README.html#error-analysis">error analysis</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../../source/operators/TMFOP008-OAuth2-Config/envoy-filter/README.html#deploy">deploy</a><input aria-label="Toggle navigation of deploy" class="toctree-checkbox" id="toctree-checkbox-14" name="toctree-checkbox-14" role="switch" type="checkbox"/><label for="toctree-checkbox-14"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../source/operators/TMFOP008-OAuth2-Config/envoy-filter/OAUTH2DEMO.html">OAuth2 EnvoyFilter Demo</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../source/operators/TMFOP008-OAuth2-Config/envoy-filter/OAUTH2DEMO.html#closing">closing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../source/operators/TMFOP008-OAuth2-Config/envoy-filter/OAUTH2DEMO.html#error-analysis">error analysis</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../source/operators/TMFOP008-OAuth2-Config/envoy-filter/docker/README.html">OAuth2 EnvoyFilter Operator</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../source/operators/TMFOP008-OAuth2-Config/envoy-filter/docker/README.html#buildautomation-and-versioning">Buildautomation and Versioning</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../source/operators/TMFOP009-Model-as-a-Service/README.html">TMFOP009 Model-as-a-Service Operators</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../source/operators/TMFOP010-Disruption-Budget-Management/README.html">TMFOP010 Disruption Budget Management Operators</a><input aria-label="Toggle navigation of TMFOP010 Disruption Budget Management Operators" class="toctree-checkbox" id="toctree-checkbox-15" name="toctree-checkbox-15" role="switch" type="checkbox"/><label for="toctree-checkbox-15"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../../source/operators/TMFOP010-Disruption-Budget-Management/pdb-management/README.html">PDB Management Operator</a><input aria-label="Toggle navigation of PDB Management Operator" class="toctree-checkbox" id="toctree-checkbox-16" name="toctree-checkbox-16" role="switch" type="checkbox"/><label for="toctree-checkbox-16"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../source/operators/TMFOP010-Disruption-Budget-Management/pdb-management/MAINTAINERS.html">Maintainers</a></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../../source/operators/TMFOP010-Disruption-Budget-Management/pdb-management/config/grafana/README.html">PDB Management Operator - Grafana Dashboards</a><input aria-label="Toggle navigation of PDB Management Operator - Grafana Dashboards" class="toctree-checkbox" id="toctree-checkbox-17" name="toctree-checkbox-17" role="switch" type="checkbox"/><label for="toctree-checkbox-17"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../source/operators/TMFOP010-Disruption-Budget-Management/pdb-management/config/grafana/DASHBOARD_IMPORT_GUIDE.html">PDB Management Operator - Grafana Dashboard Import Guide</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../source/operators/TMFOP010-Disruption-Budget-Management/pdb-management/config/mcp/README.html">MCP Server Configuration</a></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../../source/operators/TMFOP010-Disruption-Budget-Management/pdb-management/docs/README.html">PDB Management Operator</a><input aria-label="Toggle navigation of PDB Management Operator" class="toctree-checkbox" id="toctree-checkbox-18" name="toctree-checkbox-18" role="switch" type="checkbox"/><label for="toctree-checkbox-18"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../source/operators/TMFOP010-Disruption-Budget-Management/pdb-management/docs/MCP_INTEGRATION.html">MCP Server Integration</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../source/operators/TMFOP010-Disruption-Budget-Management/pdb-management/docs/OPERATIONAL_RUNBOOK.html">PDB Management Operator - Operational Runbook</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../source/operators/TMFOP010-Disruption-Budget-Management/pdb-management/docs/PERFORMANCE_AND_CACHING.html">PDB Management Operator - Performance and Caching</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../source/operators/TMFOP010-Disruption-Budget-Management/pdb-management/docs/TECHNICAL_DOCUMENTATION.html">PDB Management Operator - Technical Documentation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../source/operators/TMFOP010-Disruption-Budget-Management/pdb-management/docs/VERIFICATION.html">Test Verification and Performance Testing Guide</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../source/operators/TMFOP010-Disruption-Budget-Management/pdb-management/docs/WEBHOOK_DEPLOYMENT.html">Webhook Deployment Guide</a></li>
+</ul>
+</li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../../source/operators/TMFOP010-Disruption-Budget-Management/pdb-management/examples/demo/README.html">Demo Examples for PDB Management Operator</a><input aria-label="Toggle navigation of Demo Examples for PDB Management Operator" class="toctree-checkbox" id="toctree-checkbox-19" name="toctree-checkbox-19" role="switch" type="checkbox"/><label for="toctree-checkbox-19"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../source/operators/TMFOP010-Disruption-Budget-Management/pdb-management/examples/demo/DEMO_PRESENTATION_SCRIPT.html">PDB Management Operator - Complete Demo Presentation Script</a></li>
+</ul>
+</li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../../source/operators/TMFOP010-Disruption-Budget-Management/pdb-management/toolsforlocal/README.html">PDB Management Operator - Demo Tools</a><input aria-label="Toggle navigation of PDB Management Operator - Demo Tools" class="toctree-checkbox" id="toctree-checkbox-20" name="toctree-checkbox-20" role="switch" type="checkbox"/><label for="toctree-checkbox-20"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../source/operators/TMFOP010-Disruption-Budget-Management/pdb-management/toolsforlocal/PDB_RECREATION_GUIDE.html">🚀 PDB Instant Recreation Guide</a></li>
+<li class="toctree-l4 has-children"><a class="reference internal" href="../../../source/operators/TMFOP010-Disruption-Budget-Management/pdb-management/toolsforlocal/mcp/README.html">AI + MCP Integration Clients</a><input aria-label="Toggle navigation of AI + MCP Integration Clients" class="toctree-checkbox" id="toctree-checkbox-21" name="toctree-checkbox-21" role="switch" type="checkbox"/><label for="toctree-checkbox-21"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l5"><a class="reference internal" href="../../../source/operators/TMFOP010-Disruption-Budget-Management/pdb-management/toolsforlocal/mcp/CLAUDE_MCP_USAGE.html">Claude API + MCP Integration Usage Guide</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../source/operators/TMFOP010-Disruption-Budget-Management/pdb-management/toolsforlocal/mcp/README_GO_CLIENT.html">Claude MCP Client - Go Version</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="../../../source/operators/TMFOP010-Disruption-Budget-Management/pdb-management/toolsforlocal/observability/README.html">PDB Management Operator - Observability Stack</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../source/operators/TMFOP010-Disruption-Budget-Management/pdb-management/web/README.html">ODA Canvas - PDB Management MCP Web Interface</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../source/operators/TMFOP011-Carbon-Management/README.html">TMFOP011 Carbon Management Operators</a><input aria-label="Toggle navigation of TMFOP011 Carbon Management Operators" class="toctree-checkbox" id="toctree-checkbox-22" name="toctree-checkbox-22" role="switch" type="checkbox"/><label for="toctree-checkbox-22"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../../source/operators/TMFOP011-Carbon-Management/carbon-management/README.html">Carbon Management Operator</a><input aria-label="Toggle navigation of Carbon Management Operator" class="toctree-checkbox" id="toctree-checkbox-23" name="toctree-checkbox-23" role="switch" type="checkbox"/><label for="toctree-checkbox-23"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../source/operators/TMFOP011-Carbon-Management/carbon-management/carbon-aware-scaling-scenario.html">Carbon-Aware Scaling Scenario: ProductOrderCaptureAndValidation</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Helm charts</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../charts/api-operator-istio/README.html">api-operator-istio</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../charts/apisix-gateway/README.html">apisix-gateway</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../charts/canvas-info-service/README.html">canvas-info-service</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../charts/canvas-oda/README.html">canvas-oda</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../charts/canvas-vault/README.html">canvas-vault</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../charts/carbon-intensity-service/README.html">carbon-intensity-service</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../charts/carbon-management-operator/README.html">carbon-management-operator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../charts/cert-manager-init/README.html">cert-manager-init</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../charts/component-operator/README.html">component-operator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../charts/credentialsmanagement-operator/README.html">Credentials Management Operator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../charts/dependentapi-simple-operator/README.html">dependentapi-simple-operator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../charts/identityconfig-operator-keycloak/README.html">identityconfig-operator-keycloak</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../charts/kong-gateway/README.html">kong-gateway</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../charts/observability-stack/README.html">ODA Canvas Observability Stack</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../charts/oda-webhook/README.html">oda-webhook</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../charts/pdb-management-operator/README.html">PDB Management Operator Helm Chart</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../charts/resource-inventory/README.html">canvas-resource-inventory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../charts/secretsmanagement-operator/README.html">secretsmanagement-operator</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Canvas services and tools</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../source/README.html">ODA Canvas source code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../canvas-portal-v2/README.html">Canvas Portal v2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../canvas-portal/README.html">Canvas portal</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../canvas-portal/README.html#how-to-install">How to install</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../canvas-portal/README.html#uninstall">Uninstall</a><input aria-label="Toggle navigation of Uninstall" class="toctree-checkbox" id="toctree-checkbox-24" name="toctree-checkbox-24" role="switch" type="checkbox"/><label for="toctree-checkbox-24"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../canvas-portal/portal-web/README.html">oda-dashboard</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../docs/component-registry/README.html">Component-Registry</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../docs/component-registry/README.html#multi-canvas-support">Multi-Canvas Support</a><input aria-label="Toggle navigation of Multi-Canvas Support" class="toctree-checkbox" id="toctree-checkbox-25" name="toctree-checkbox-25" role="switch" type="checkbox"/><label for="toctree-checkbox-25"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../docs/component-registry/SECURED-SETUP-COMPREG.html">Secure Setup of Component-Registry</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../source/services/ComponentRegistry/README.html">TMF639 Resource Inventory Management Service</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../source/services/ComponentRegistry/README.html#buildautomation-and-versioning">Buildautomation and Versioning</a><input aria-label="Toggle navigation of Buildautomation and Versioning" class="toctree-checkbox" id="toctree-checkbox-26" name="toctree-checkbox-26" role="switch" type="checkbox"/><label for="toctree-checkbox-26"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../source/services/ComponentRegistry/NOTES.html">deploy kc init compreg</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../source/services/ComponentRegistry/OAUTH2_README.html">OAuth2 Authentifizierung für Component Registry</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../source/tmf-services/MCP_Resource_Inventory/README.html">TMF639 Resource Inventory MCP Server with Helm Integration</a><input aria-label="Toggle navigation of TMF639 Resource Inventory MCP Server with Helm Integration" class="toctree-checkbox" id="toctree-checkbox-27" name="toctree-checkbox-27" role="switch" type="checkbox"/><label for="toctree-checkbox-27"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../source/tmf-services/MCP_Resource_Inventory/SETUP_COMPLETE.html">TMF639 Resource Inventory MCP Server Setup Complete</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../source/tmf-services/TMF628_Performance_Management/README.html">TMF628 Performance Management API - Carbon Intensity Service</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../source/tmf-services/TMF638_Service_Inventory/README.html">OpenAPI Generated JavaScript/Express Server</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../source/tmf-services/TMF638_Service_Inventory/README.html#buildautomation-and-versioning">Buildautomation and Versioning</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../source/tmf-services/TMF639_Resource_Inventory/README.html">TMF639 Resource Inventory Management API</a><input aria-label="Toggle navigation of TMF639 Resource Inventory Management API" class="toctree-checkbox" id="toctree-checkbox-28" name="toctree-checkbox-28" role="switch" type="checkbox"/><label for="toctree-checkbox-28"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../source/tmf-services/TMF639_Resource_Inventory/test/README.html">TMF639 Resource Inventory Test Suite</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../source/webhooks/README.html">ODA Component webhooks</a><input aria-label="Toggle navigation of ODA Component webhooks" class="toctree-checkbox" id="toctree-checkbox-29" name="toctree-checkbox-29" role="switch" type="checkbox"/><label for="toctree-checkbox-29"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../source/webhooks/command-line/README.html">Command-line tool for Conversion Webhook</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../source/webhooks/implementation/README.html">Implementation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../source/webhooks/implementation/README.html#buildautomation-and-versioning">Buildautomation and Versioning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../source/webhooks/system-tests/README.html">System tests</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../source/webhooks/unit-tests/README.html">Unit tests for Webhook</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../source/utilities/README.html">ODA Canvas utilities</a><input aria-label="Toggle navigation of ODA Canvas utilities" class="toctree-checkbox" id="toctree-checkbox-30" name="toctree-checkbox-30" role="switch" type="checkbox"/><label for="toctree-checkbox-30"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../source/utilities/canvas-log-viewer/README.html">Canvas Log Viewer utility</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../../source/utilities/canvas-log-viewer/README.html#installation">Installation</a><input aria-label="Toggle navigation of Installation" class="toctree-checkbox" id="toctree-checkbox-31" name="toctree-checkbox-31" role="switch" type="checkbox"/><label for="toctree-checkbox-31"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../source/utilities/canvas-log-viewer/python_alternative/README.html">Python Canvas Log Viewer</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../source/utilities/component-viewer/README.html">Component Viewer utility</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../source/utilities/component-viewer/README.html#installation">Installation</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../demos/multi-canvas-service-discovery/README.html">Live-Demo Dependent API Resolution in a Multi-Canvas Scenario using TMF639</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../demos/multi-canvas-service-discovery/README.html#service-discovery-in-single-canvas-environment">Service Discovery in Single-Canvas Environment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../demos/multi-canvas-service-discovery/README.html#service-discovery-in-multi-canvas-environment">Service Discovery in Multi-Canvas Environment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../demos/multi-canvas-service-discovery/README.html#bdd-uc007-f002">BDD UC007-F002</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../demos/multi-canvas-service-discovery/README.html#from-bdd-uc007-f002-data-magenta-populate-and-green-verify-data-in-federated-product-catalog">From BDD UC007-F002 (data) -  [magenta] Populate and [green] verify data in federated product catalog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../demos/multi-canvas-service-discovery/README.html#green-show-access-of-r-cat-in-f-cat-logs">[green] show access of r-cat in f-cat logs:</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../demos/multi-canvas-service-discovery/README.html#cleanup-all">cleanup all</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../demos/multi-canvas-service-discovery/README.html#cleanup-all-ihc-dt-b-magenta">cleanup all IHC-DT-B (magenta)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../demos/multi-canvas-service-discovery/README.html#canvas-installation">Canvas installation</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../demos/multi-canvas-service-discovery/README.html#links">Links</a><input aria-label="Toggle navigation of Links" class="toctree-checkbox" id="toctree-checkbox-32" name="toctree-checkbox-32" role="switch" type="checkbox"/><label for="toctree-checkbox-32"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../demos/multi-canvas-service-discovery/COMPREG-MULTICANVAS.html">Live-Demo Dependent API Resolution in a Multi-Canvas Scenario using TMF639</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../demos/multi-canvas-service-discovery/COMPREG-MULTICANVAS.html#service-discovery-in-single-canvas-environment">Service Discovery in Single-Canvas Environment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../demos/multi-canvas-service-discovery/COMPREG-MULTICANVAS.html#service-discovery-in-multi-canvas-environment">Service Discovery in Multi-Canvas Environment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../demos/multi-canvas-service-discovery/COMPREG-MULTICANVAS.html#bdd-uc007-f002">BDD UC007-F002</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../demos/multi-canvas-service-discovery/COMPREG-MULTICANVAS.html#from-bdd-uc007-f002-data-magenta-populate-and-green-verify-data-in-federated-product-catalog">From BDD UC007-F002 (data) -  [magenta] Populate and [green] verify data in federated product catalog</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../demos/multi-canvas-service-discovery/COMPREG-MULTICANVAS.html#green-show-access-of-r-cat-in-f-cat-logs">[green] show access of r-cat in f-cat logs:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../demos/multi-canvas-service-discovery/COMPREG-MULTICANVAS.html#cleanup-all">cleanup all</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../demos/multi-canvas-service-discovery/COMPREG-MULTICANVAS.html#cleanup-all-ihc-dt-b-magenta">cleanup all IHC-DT-B (magenta)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../demos/multi-canvas-service-discovery/COMPREG-MULTICANVAS.html#canvas-installation">Canvas installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../demos/multi-canvas-service-discovery/COMPREG-MULTICANVAS.html#links">Links</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../demos/multi-canvas-service-discovery/COMPREG-SINGLECANVAS-SETUP.html">Live-Demo Dependent API Resolution in a Multi-Canvas Scenario using TMF639</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../demos/multi-canvas-service-discovery/COMPREG-SINGLECANVAS-SETUP.html#service-discovery-in-single-canvas-environment">Service Discovery in Single-Canvas Environment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../demos/multi-canvas-service-discovery/COMPREG-SINGLECANVAS-SETUP.html#service-discovery-in-multi-canvas-environment">Service Discovery in Multi-Canvas Environment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../demos/multi-canvas-service-discovery/COMPREG-SINGLECANVAS-SETUP.html#bdd-uc007-f002">BDD UC007-F002</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../demos/multi-canvas-service-discovery/COMPREG-SINGLECANVAS-SETUP.html#from-bdd-uc007-f002-data-magenta-populate-and-green-verify-data-in-federated-product-catalog">From BDD UC007-F002 (data) -  [magenta] Populate and [green] verify data in federated product catalog</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../demos/multi-canvas-service-discovery/COMPREG-SINGLECANVAS-SETUP.html#green-show-access-of-r-cat-in-f-cat-logs">[green] show access of r-cat in f-cat logs:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../demos/multi-canvas-service-discovery/COMPREG-SINGLECANVAS-SETUP.html#cleanup-all">cleanup all</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../demos/multi-canvas-service-discovery/COMPREG-SINGLECANVAS-SETUP.html#cleanup-all-ihc-dt-b-magenta">cleanup all IHC-DT-B (magenta)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../demos/multi-canvas-service-discovery/COMPREG-SINGLECANVAS-SETUP.html#canvas-installation">Canvas installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../demos/multi-canvas-service-discovery/COMPREG-SINGLECANVAS-SETUP.html#links">Links</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../demos/multi-canvas-service-discovery/COMPREG-SINGLECANVAS-SETUP.html#auth">AUTH</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../demos/multi-canvas-service-discovery/COMPREG-TESTS.html">Cluster IHC-DT-A (green)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../demos/multi-canvas-service-discovery/COMPREG-TESTS.html#cleanup">Cleanup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../demos/multi-canvas-service-discovery/COMPREG-TESTS.html#cleanup-canvas-completely">cleanup canvas completely</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../demos/multi-canvas-service-discovery/COMPREG-TESTS.html#install-default-canvas">Install default canvas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../demos/multi-canvas-service-discovery/COMPREG-TESTS.html#deploy-and-register-upstream-global-compreg">deploy and register upstream global-compreg</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../demos/multi-canvas-service-discovery/COMPREG-TESTS.html#test">Test</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../demos/multi-canvas-service-discovery/COMPREG-TESTS.html#bdd-uc007-f002">BDD UC007-F002</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../demos/multi-canvas-service-discovery/COMPREG-TESTS.html#from-bdd-uc007-f002-data-magenta-populate-and-green-verify-data-in-federated-product-catalog">From BDD UC007-F002 (data) -  [magenta] Populate and [green] verify data in federated product catalog</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../demos/multi-canvas-service-discovery/COMPREG-TESTS.html#green-show-access-of-r-cat-in-f-cat-logs">[green] show access of r-cat in f-cat logs:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../demos/multi-canvas-service-discovery/COMPREG-TESTS.html#cleanup-all">cleanup all</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../demos/multi-canvas-service-discovery/COMPREG-TESTS.html#cleanup-all-ihc-dt-b-magenta">cleanup all IHC-DT-B (magenta)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../demos/multi-canvas-service-discovery/COMPREG-TESTS.html#canvas-installation">Canvas installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../demos/multi-canvas-service-discovery/COMPREG-TESTS.html#links">Links</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../demos/multi-canvas-service-discovery/COMPREG-TESTS.html#auth">AUTH</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../demos/multi-canvas-service-discovery/COMPREG-TESTS.html#tests-with-kind">Tests with kind</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../demos/multi-canvas-service-discovery/COMPREG-TESTS.html#cucumber-reports">cucumber reports</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../demos/multi-canvas-service-discovery/COMPREG-TESTS_OLD.html">Cluster IHC-DT-A (green)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../demos/multi-canvas-service-discovery/COMPREG-TESTS_OLD.html#cleanup">Cleanup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../demos/multi-canvas-service-discovery/COMPREG-TESTS_OLD.html#cleanup-canvas-completely">cleanup canvas completely</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../demos/multi-canvas-service-discovery/COMPREG-TESTS_OLD.html#install-default-canvas">Install default canvas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../demos/multi-canvas-service-discovery/COMPREG-TESTS_OLD.html#manual-install-compreg">manual install compreg</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../demos/multi-canvas-service-discovery/COMPREG-TESTS_OLD.html#deploy-and-register-upstream-global-compreg">deploy and register upstream global-compreg</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../demos/multi-canvas-service-discovery/COMPREG-TESTS_OLD.html#test">Test</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../demos/multi-canvas-service-discovery/COMPREG-TESTS_OLD.html#bdd-uc007-f002">BDD UC007-F002</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../demos/multi-canvas-service-discovery/COMPREG-TESTS_OLD.html#from-bdd-uc007-f002-data-magenta-populate-and-green-verify-data-in-federated-product-catalog">From BDD UC007-F002 (data) -  [magenta] Populate and [green] verify data in federated product catalog</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../demos/multi-canvas-service-discovery/COMPREG-TESTS_OLD.html#green-show-access-of-r-cat-in-f-cat-logs">[green] show access of r-cat in f-cat logs:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../demos/multi-canvas-service-discovery/COMPREG-TESTS_OLD.html#cleanup-all">cleanup all</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../demos/multi-canvas-service-discovery/COMPREG-TESTS_OLD.html#cleanup-all-ihc-dt-b-magenta">cleanup all IHC-DT-B (magenta)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../demos/multi-canvas-service-discovery/COMPREG-TESTS_OLD.html#canvas-installation">Canvas installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../demos/multi-canvas-service-discovery/COMPREG-TESTS_OLD.html#links">Links</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../demos/multi-canvas-service-discovery/COMPREG-TESTS_OLD.html#auth">AUTH</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Testing</span></p>
+<ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../feature-definition-and-test-kit/README.html">ODA Canvas Features and Test Kit</a><input aria-label="Toggle navigation of ODA Canvas Features and Test Kit" class="toctree-checkbox" id="toctree-checkbox-33" name="toctree-checkbox-33" role="switch" type="checkbox"/><label for="toctree-checkbox-33"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../feature-definition-and-test-kit/Executing-tests.html">Installing and executing the BDD tests</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../feature-definition-and-test-kit/PDB-TEST-README.html">PDB Management Operator BDD Tests - Local Testing Guide</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../feature-definition-and-test-kit/features/step-definition/README.html">BDD Step Definition Framework and Guidelines</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../feature-definition-and-test-kit/testData/README.html">BDD test charts</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../../feature-definition-and-test-kit/utilities/README.html">ODA Canvas Test Utilities</a><input aria-label="Toggle navigation of ODA Canvas Test Utilities" class="toctree-checkbox" id="toctree-checkbox-34" name="toctree-checkbox-34" role="switch" type="checkbox"/><label for="toctree-checkbox-34"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../feature-definition-and-test-kit/utilities/observability-utils-kubernetes/README.html">Observability Utils for Kubernetes</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Building ODA Components</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../docs/ODAComponentDesignGuidelines.html">Design Guidelines to create a new ODA Component</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../../docs/ODAComponentTutorial/README.html">Tutorial to build ODA-Component from Open-API Reference Implementation</a><input aria-label="Toggle navigation of Tutorial to build ODA-Component from Open-API Reference Implementation" class="toctree-checkbox" id="toctree-checkbox-35" name="toctree-checkbox-35" role="switch" type="checkbox"/><label for="toctree-checkbox-35"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../../../docs/ODAComponentTutorial/ProductInventory/README.html">Example Product Inventory component (including Security_role)</a><input aria-label="Toggle navigation of Example Product Inventory component (including Security_role)" class="toctree-checkbox" id="toctree-checkbox-36" name="toctree-checkbox-36" role="switch" type="checkbox"/><label for="toctree-checkbox-36"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../docs/ODAComponentTutorial/ProductInventory/implementation/README.html">Swagger generated server 2.3.1</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../docs/ODAComponentTutorial/ProductInventory/partyRole-implementation/README.html">Swagger generated server 2.3.1</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../docs/ODAComponentTutorial/ProductInventory/productinventory/README.html">Example Product Inventory component (including Security_role)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../docs/ODAComponentTutorial/ProductInventory/roleInit-implementation/README.html">Initialization microservice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../docs/ODAComponentTutorial/implementation/README.html">Swagger generated server 2.3.1</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../docs/Observability-Tutorial/README.html">Tutorial: deploy and observe a running component</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">AI-assisted development</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../../docs/AI-Assisted-Development.html">AI-assisted development with ODA Agent Skills</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../ai-coding-assistants.html">AI Coding Assistants for ODA Canvas Development</a></li>
+<li class="toctree-l1 current has-children"><a class="reference internal" href="../SKILL.html">ODA Canvas Kubernetes Tutorial</a><input aria-label="Toggle navigation of ODA Canvas Kubernetes Tutorial" checked="" class="toctree-checkbox" id="toctree-checkbox-37" name="toctree-checkbox-37" role="switch" type="checkbox"/><label for="toctree-checkbox-37"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="01-about-oda-canvas.html">About ODA Canvas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="02-install-oda-canvas.html">Install ODA Canvas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="03-deploy-component.html">Deploy an ODA Component</a></li>
+<li class="toctree-l2"><a class="reference internal" href="04-view-components.html">View Deployed ODA Components</a></li>
+<li class="toctree-l2"><a class="reference internal" href="05-view-exposedapis.html">View ExposedAPIs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="06-view-dependentapis.html">View DependentAPIs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="07-view-observability.html">View Observability Data</a></li>
+<li class="toctree-l2 current current-page"><a class="current reference internal" href="#">Manage Identities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="09-run-bdd-tests.html">Run BDD Feature Tests</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../canvas-usecase-documentation/SKILL.html">Canvas Use-Case Documentation — Skill Instructions</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../create-oda-operator/SKILL.html">Create ODA Operator</a><input aria-label="Toggle navigation of Create ODA Operator" class="toctree-checkbox" id="toctree-checkbox-38" name="toctree-checkbox-38" role="switch" type="checkbox"/><label for="toctree-checkbox-38"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../create-oda-operator/references/kopf-docs.html">Kopf Documentation Reference</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../create-oda-operator/references/operator-catalog.html">ODA Canvas Operator Catalog</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../github-actions-debugging/SKILL.html">GitHub Actions Debugging — Skill Instructions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../helm-chart-development/SKILL.html">Helm Chart Development — Skill Instructions</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../skill-creator/SKILL.html">Skill Creator</a><input aria-label="Toggle navigation of Skill Creator" class="toctree-checkbox" id="toctree-checkbox-39" name="toctree-checkbox-39" role="switch" type="checkbox"/><label for="toctree-checkbox-39"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../skill-creator/agents/analyzer.html">Post-hoc Analyzer Agent</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../skill-creator/agents/analyzer.html#analyzing-benchmark-results">Analyzing Benchmark Results</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../skill-creator/agents/comparator.html">Blind Comparator Agent</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../skill-creator/agents/grader.html">Grader Agent</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../skill-creator/references/schemas.html">JSON Schemas</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../write-bdd-feature/SKILL.html">Write BDD Feature — Skill Instructions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../docs/custom-copilot-documentation-agent.html">Custom GitHub Copilot Documentation Agent</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../docs/bdd-feature-generator-agent-guide.html">BDD Feature Generator Custom Agent - Usage Guide</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Architecture decisions</span></p>
+<ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../../docs/Decision-Log/README.html">Architecture Decision Log</a><input aria-label="Toggle navigation of Architecture Decision Log" class="toctree-checkbox" id="toctree-checkbox-40" name="toctree-checkbox-40" role="switch" type="checkbox"/><label for="toctree-checkbox-40"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../docs/Decision-Log/0001-record-architecture-decisions.html">1. Record architecture decisions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../docs/Decision-Log/0002-role-vs-permission.html">2. Role vs Permissions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../docs/Decision-Log/0003-reference-api-gateway.html">3. Reference Implementation API Gateway</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../docs/Decision-Log/0004-which-authentication-protocol-should-be-supported.html">4. Which authentication protocol should be supported</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../docs/Decision-Log/0005-which-languages-and-libraries-should-be-used.html">5. Which languages and libraries should be used for Software Operators</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../docs/Decision-Log/0006-common-set-of-minimum-mandatory-JWT-claims-for-interoperability.html">6. Create common set of minimum mandatory JWT claims for interoperability</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../docs/Decision-Log/0007-provisioning-identities-across-identity-providers.html">7. Provisioning identities across identity providers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../docs/Decision-Log/0008-identity-propagation.html">8. Identity Propagation from Component to Component</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../docs/Decision-Log/0009-monorepo-helm-container-versioning.html">9. Monorepo Helm and Container versioning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../docs/Decision-Log/0010-ai4canvas-operator.html">0010: AI4Canvas Operator Scope Decision</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../docs/Decision-Log/0011-canvas-information-transfer.html">0011: Uniform Method for Canvas-to-Component Information Transfer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../docs/Decision-Log/0012-exposed-api-handling.html">0012: Handling of Exposed APIs by Different Operators</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../docs/Decision-Log/0013-canvas-certification.html">13. No certification for canvas implementation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../docs/Decision-Log/0014-multiple-component-namespaces.html">14. Supporting Multiple Component Namespaces</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../docs/Decision-Log/0015-ai-gateway-for-llm-access.html">15. AI Model Gateway for LLM Access</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../docs/Decision-Log/0016-mcp-server-for-tmforum-open-apis.html">16. Model Context Protocol (MCP) Server for TM Forum Open-APIs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../docs/Decision-Log/0017-strategy-for-ai-agents.html">17. Strategy for AI Agents: Modular, Autonomous, Self-Descriptive, CSP-Specific</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../docs/Decision-Log/0018-ai-model-operator-for-agentic-components.html">18. AI Model Operator for Agentic Components</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../docs/Decision-Log/0019-adopt-a2a-protocol-for-agent-skill-exposure.html">19. Adopt A2A Protocol as Open Standard for Agent Skill Exposure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../docs/Decision-Log/0020-ml-model-integration-via-ml-ops-pipeline.html">20. ML Model Integration via ML Ops Pipeline</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../docs/Decision-Log/0021-optimize-oda-canvas-for-ai-coding-agents.html">21. Optimize ODA Canvas Repository for AI Coding Agents</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../docs/Decision-Log/0022-modular-independent-operators.html">22. Modular and Independent Operators</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Contributing</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../CONTRIBUTING.html">How to contribute to the ODA Canvas Accelerator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../docs/CONTRIBUTING.html">How to contribute to the ODA Canvas Accelerator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../code-of-conduct.html">ODA Accelerator Code of Conduct</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../docs/README.html">ODA Canvas Documentation</a><input aria-label="Toggle navigation of ODA Canvas Documentation" class="toctree-checkbox" id="toctree-checkbox-41" name="toctree-checkbox-41" role="switch" type="checkbox"/><label for="toctree-checkbox-41"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../docs/plantuml-to-svg-guide.html">PlantUML to SVG Conversion Guide</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../../docs/templates/README.html">Documentation Templates</a><input aria-label="Toggle navigation of Documentation Templates" class="toctree-checkbox" id="toctree-checkbox-42" name="toctree-checkbox-42" role="switch" type="checkbox"/><label for="toctree-checkbox-42"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../docs/templates/chart-readme-template.html">{Chart Name}</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../docs/templates/operator-readme-template.html">{Operator Name}</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../docs/templates/test-component-readme-template.html">{Component Name}</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../docs/templates/use-case-template.html">{Verb} {Object} use case</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../docs/writing-style.html">ODA Canvas Documentation Writing Style Guide</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../devcontainer.html">ODA Canvas Development Environment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../docs/developer/work-with-dockerimages.html">Developer How-Tos: Work with Dockerimages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../source/operators/Installing%20KOPF%20development%20environment.html">Installing KOPF (tested in GKE)</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../../docs/TroubleshootingGuide/index.html">Troubleshooting Guide</a><input aria-label="Toggle navigation of Troubleshooting Guide" class="toctree-checkbox" id="toctree-checkbox-43" name="toctree-checkbox-43" role="switch" type="checkbox"/><label for="toctree-checkbox-43"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../docs/TroubleshootingGuide/CTK.html">CTK Troubleshooting Guide</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../docs/TroubleshootingGuide/Controller-Logging.html">Controller Logging Troubleshooting Guide</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../docs/TroubleshootingGuide/Exploring-Custom-Resources.html">Exploring Custom Resources Troubleshooting Guide</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../docs/TroubleshootingGuide/Microservice-Logging.html">Microservice Logging Troubleshooting Guide</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../docs/TroubleshootingGuide/Internal-Kubernetes-Testing.html">Internal Kubernetes Testing Troubleshooting Guide</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../docs/TroubleshootingGuide/Postman-API-Tests.html">Postman API Tests Troubleshooting Guide</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../docs/DocumentationProcess.html">Documentation Process</a></li>
+</ul>
+
+</div>
+</div>
+
+      </div>
+      
+    </div>
+  </aside>
+  <div class="main">
+    <div class="content">
+      <div class="article-container">
+        <a href="#" class="back-to-top muted-link">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+          </svg>
+          <span>Back to top</span>
+        </a>
+        <div class="content-icon-container">
+          <div class="theme-toggle-container theme-toggle-content">
+            <button class="theme-toggle" aria-label="Toggle Light / Dark / Auto color theme">
+              <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+              <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+              <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+              <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+            </button>
+          </div>
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
+            <span class="icon"><svg><use href="#svg-toc"></use></svg></span>
+          </label>
+        </div>
+        <article role="main" id="furo-main-content">
+          <section id="manage-identities">
+<h1>Manage Identities<a class="headerlink" href="#manage-identities" title="Link to this heading">¶</a></h1>
+<section id="table-of-contents">
+<h2>Table of Contents<a class="headerlink" href="#table-of-contents" title="Link to this heading">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="#identity-management-in-oda-canvas"><span class="xref myst">Identity Management in ODA Canvas</span></a></p></li>
+<li><p><a class="reference internal" href="#view-identityconfig-resources"><span class="xref myst">View IdentityConfig Resources</span></a></p></li>
+<li><p><a class="reference internal" href="#identityconfig-drill-down"><span class="xref myst">IdentityConfig Drill-Down</span></a></p></li>
+<li><p><a class="reference internal" href="#understanding-the-crd-schema"><span class="xref myst">Understanding the CRD Schema</span></a></p></li>
+<li><p><a class="reference internal" href="#add-component-roles"><span class="xref myst">Add Component Roles</span></a></p></li>
+<li><p><a class="reference internal" href="#keycloak-ui-access"><span class="xref myst">Keycloak UI Access</span></a></p></li>
+<li><p><a class="reference internal" href="#create-a-keycloak-client"><span class="xref myst">Create a Keycloak Client</span></a></p></li>
+<li><p><a class="reference internal" href="#verify-keycloak-kong-jwt-integration"><span class="xref myst">Verify Keycloak-Kong JWT Integration</span></a></p></li>
+<li><p><a class="reference internal" href="#generate-a-postman-collection"><span class="xref myst">Generate a Postman Collection</span></a></p></li>
+<li><p><a class="reference internal" href="#contextual-next-steps"><span class="xref myst">Contextual Next Steps</span></a></p></li>
+</ul>
+</section>
+<section id="identity-management-in-oda-canvas">
+<h2>Identity Management in ODA Canvas<a class="headerlink" href="#identity-management-in-oda-canvas" title="Link to this heading">¶</a></h2>
+<p>The ODA Canvas uses <strong>Keycloak</strong> as its Identity Management solution. When a Component is deployed, the <strong>Identity Config Operator</strong> reads the component’s <code class="docutils literal notranslate"><span class="pre">spec.securityFunction</span></code> and creates an <code class="docutils literal notranslate"><span class="pre">IdentityConfig</span></code> child resource. The operator then configures Keycloak by:</p>
+<ol class="arabic simple">
+<li><p><strong>Creating a Keycloak client</strong> named after the component (e.g., <code class="docutils literal notranslate"><span class="pre">pc1-productcatalogmanagement</span></code>) in the Canvas realm</p></li>
+<li><p><strong>Registering the Canvas system role</strong> (typically <code class="docutils literal notranslate"><span class="pre">canvasRole</span></code>) – this is a reserved role used by Canvas operators to interact with the component’s APIs; it should never be assigned to end users</p></li>
+<li><p><strong>Listening for role changes</strong> – if the component exposes a <code class="docutils literal notranslate"><span class="pre">permissionSpecificationSetAPI</span></code> or <code class="docutils literal notranslate"><span class="pre">partyRoleAPI</span></code>, the operator registers a listener to detect when the component adds or removes roles dynamically</p></li>
+</ol>
+<p><strong>Key concepts:</strong></p>
+<ul class="simple">
+<li><p>Each deployed component has exactly one <code class="docutils literal notranslate"><span class="pre">IdentityConfig</span></code> resource, owned by the parent Component</p></li>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">canvasSystemRole</span></code> is reserved for Canvas infrastructure – do not assign it to human users</p></li>
+<li><p><strong>Component roles are managed by the ODA Component, not directly in Keycloak.</strong> The Identity Config Operator syncs roles from the component to Keycloak automatically. There are two mechanisms:</p>
+<ul>
+<li><p><strong>Static roles</strong>: defined in the Component YAML under <code class="docutils literal notranslate"><span class="pre">spec.securityFunction.componentRole[]</span></code> and configured at deployment time</p></li>
+<li><p><strong>Dynamic roles</strong>: the component exposes a <code class="docutils literal notranslate"><span class="pre">permissionSpecificationSetAPI</span></code> (TMF672) or <code class="docutils literal notranslate"><span class="pre">partyRoleAPI</span></code> (TMF669), and the Identity Config Operator registers a listener to detect role changes and syncs them to Keycloak</p></li>
+</ul>
+</li>
+<li><p>Roles are scoped to a Keycloak <strong>client</strong>, not the realm – each component manages its own set of roles</p></li>
+<li><p><strong>Do not create or delete roles directly in Keycloak for component clients</strong> – the Identity Config Operator is the authoritative source and will overwrite manual changes</p></li>
+<li><p>Roles <strong>can</strong> be created directly in Keycloak for <strong>external clients</strong> (non-component clients created for M2M access)</p></li>
+<li><p><strong>Clients</strong> (applications/services) authenticate using the <strong>Client Credentials flow</strong> – this is the recommended approach for API access. Always create an <strong>external Keycloak client</strong> for programmatic access – do not create Keycloak users</p></li>
+</ul>
+</section>
+<section id="view-identityconfig-resources">
+<h2>View IdentityConfig Resources<a class="headerlink" href="#view-identityconfig-resources" title="Link to this heading">¶</a></h2>
+<p>Present the sub-menu when the user selects “Manage identities”:</p>
+<div class="table-wrapper colwidths-auto docutils container">
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>#</p></th>
+<th class="head"><p>Action</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>1</p></td>
+<td><p><strong>View IdentityConfig resources</strong> – List all IdentityConfig custom resources</p></td>
+</tr>
+<tr class="row-odd"><td><p>2</p></td>
+<td><p><strong>View Keycloak UI</strong> – Access the Keycloak admin console</p></td>
+</tr>
+<tr class="row-even"><td><p>3</p></td>
+<td><p><strong>Add component roles</strong> – Add roles to a component (static or dynamic)</p></td>
+</tr>
+<tr class="row-odd"><td><p>4</p></td>
+<td><p><strong>Create a Keycloak client</strong> – Create an external client for the Client Credentials flow</p></td>
+</tr>
+<tr class="row-even"><td><p>5</p></td>
+<td><p><strong>Check Keycloak-Kong JWT integration</strong> – Verify Kong can validate Keycloak JWT tokens</p></td>
+</tr>
+<tr class="row-odd"><td><p>6</p></td>
+<td><p><strong>Generate a Postman collection</strong> – Create a Postman collection for authenticated API testing</p></td>
+</tr>
+<tr class="row-even"><td><p>7</p></td>
+<td><p><strong>Return to main menu</strong></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<section id="listing-identityconfigs">
+<h3>Listing IdentityConfigs<a class="headerlink" href="#listing-identityconfigs" title="Link to this heading">¶</a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Raw output</span>
+kubectl<span class="w"> </span>get<span class="w"> </span>identityconfigs<span class="w"> </span>-n<span class="w"> </span>components
+
+<span class="c1"># Full YAML for detailed inspection</span>
+kubectl<span class="w"> </span>get<span class="w"> </span>identityconfigs<span class="w"> </span>-n<span class="w"> </span>components<span class="w"> </span>-o<span class="w"> </span>yaml
+</pre></div>
+</div>
+<p>The summary shows:</p>
+<div class="table-wrapper colwidths-auto docutils container">
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Column</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>NAME</p></td>
+<td><p>IdentityConfig resource name (matches component name)</p></td>
+</tr>
+<tr class="row-odd"><td><p>IDENTITY PROVIDER</p></td>
+<td><p>The identity provider in use (e.g., Keycloak)</p></td>
+</tr>
+<tr class="row-even"><td><p>LISTENER REG.</p></td>
+<td><p>Whether a listener is registered for dynamic role changes</p></td>
+</tr>
+<tr class="row-odd"><td><p>ROLES</p></td>
+<td><p>Number of static roles, or “dynamic” if roles come via an API</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>After listing, offer to drill into a specific IdentityConfig.</p>
+</section>
+</section>
+<section id="identityconfig-drill-down">
+<h2>IdentityConfig Drill-Down<a class="headerlink" href="#identityconfig-drill-down" title="Link to this heading">¶</a></h2>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>kubectl<span class="w"> </span>get<span class="w"> </span>identityconfig<span class="w"> </span>&lt;name&gt;<span class="w"> </span>-n<span class="w"> </span>components<span class="w"> </span>-o<span class="w"> </span>yaml
+</pre></div>
+</div>
+<p>Interpret the YAML output to show:</p>
+<ul class="simple">
+<li><p><strong>Parent Component</strong> – the Component that owns this IdentityConfig</p></li>
+<li><p><strong>Canvas System Role</strong> – the reserved role for Canvas operators (typically <code class="docutils literal notranslate"><span class="pre">canvasRole</span></code>)</p></li>
+<li><p><strong>Identity Provider</strong> – the configured identity provider (Keycloak)</p></li>
+<li><p><strong>Listener Registered</strong> – whether the operator is listening for dynamic role changes</p></li>
+<li><p><strong>Static Component Roles</strong> – any roles declared in <code class="docutils literal notranslate"><span class="pre">spec.componentRole[]</span></code></p></li>
+<li><p><strong>Permission Specification Set API</strong> – the API endpoint for dynamic role management (if configured)</p></li>
+<li><p><strong>Party Role API</strong> – legacy API for dynamic roles (if configured)</p></li>
+</ul>
+<p>After drill-down, explain:</p>
+<ul class="simple">
+<li><p>The <strong>canvasSystemRole</strong> (e.g., <code class="docutils literal notranslate"><span class="pre">canvasRole</span></code>) is used by Canvas operators to authenticate against the component’s APIs. It is created automatically and should not be assigned to users.</p></li>
+<li><p>If <strong>permissionSpecificationSetAPI</strong> is configured, the component exposes a TMF API (typically TMF672 Permission Specification) that allows it to define roles dynamically. The Identity Config Operator registers a listener on this API to detect role changes and syncs them to Keycloak.</p></li>
+<li><p><strong>Static componentRoles</strong> are defined in the Component YAML and configured once at deployment time.</p></li>
+</ul>
+<p>You can also view the raw YAML:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>kubectl<span class="w"> </span>get<span class="w"> </span>identityconfig<span class="w"> </span>&lt;name&gt;<span class="w"> </span>-n<span class="w"> </span>components<span class="w"> </span>-o<span class="w"> </span>yaml
+</pre></div>
+</div>
+</section>
+<section id="understanding-the-crd-schema">
+<h2>Understanding the CRD Schema<a class="headerlink" href="#understanding-the-crd-schema" title="Link to this heading">¶</a></h2>
+<p>Offer to explore the IdentityConfig schema:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>kubectl<span class="w"> </span>explain<span class="w"> </span>identityconfig.spec
+kubectl<span class="w"> </span>explain<span class="w"> </span>identityconfig.spec.componentRole
+kubectl<span class="w"> </span>explain<span class="w"> </span>identityconfig.spec.permissionSpecificationSetAPI
+</pre></div>
+</div>
+<p><strong>Key v1 schema properties</strong> (from <code class="docutils literal notranslate"><span class="pre">charts/oda-crds/templates/oda-identityconfig-crd.yaml</span></code>):</p>
+<div class="table-wrapper colwidths-auto docutils container">
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Field</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">canvasSystemRole</span></code></p></td>
+<td><p>string</p></td>
+<td><p>Role name for Canvas operators to use (reserved)</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">componentRole[]</span></code></p></td>
+<td><p>array of {name, description}</p></td>
+<td><p>Statically defined roles</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">permissionSpecificationSetAPI</span></code></p></td>
+<td><p>object {implementation, path, port}</p></td>
+<td><p>API for dynamic role management</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">partyRoleAPI</span></code></p></td>
+<td><p>object {implementation, path, port}</p></td>
+<td><p>Legacy API for dynamic roles (deprecated in future)</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong>Status fields:</strong></p>
+<div class="table-wrapper colwidths-auto docutils container">
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Field</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">.status.identityConfig.identityProvider</span></code></p></td>
+<td><p>The identity provider (e.g., Keycloak)</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">.status.identityConfig.listenerRegistered</span></code></p></td>
+<td><p>Whether a listener is active for dynamic role changes</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="add-component-roles">
+<h2>Add Component Roles<a class="headerlink" href="#add-component-roles" title="Link to this heading">¶</a></h2>
+<p>ODA Component roles are <strong>managed by the component itself</strong> and synced to Keycloak automatically by the Identity Config Operator. You should <strong>never create roles directly in Keycloak</strong> for a component client – the operator is the authoritative source and will overwrite manual changes.</p>
+<p>There are two mechanisms for defining component roles:</p>
+<section id="option-a-static-roles-component-yaml">
+<h3>Option A: Static Roles (Component YAML)<a class="headerlink" href="#option-a-static-roles-component-yaml" title="Link to this heading">¶</a></h3>
+<p>Static roles are defined in the Component’s Helm chart under <code class="docutils literal notranslate"><span class="pre">spec.securityFunction.componentRole[]</span></code>. They are configured once at deployment time and synced to Keycloak by the Identity Config Operator.</p>
+<p><strong>Example</strong> (from <code class="docutils literal notranslate"><span class="pre">feature-definition-and-test-kit/testData/productcatalog-static-roles-v1/</span></code>):</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">spec</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">securityFunction</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">canvasSystemRole</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">canvasRole</span>
+<span class="w">    </span><span class="nt">componentRole</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pcadmin</span>
+<span class="w">      </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Product Catalogue Administrator</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cat1owner</span>
+<span class="w">      </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Catalogue Owner for catalogue 1</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cat2owner</span>
+<span class="w">      </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Catalogue Owner for catalogue 2</span>
+</pre></div>
+</div>
+<p>To add a new static role to an existing component:</p>
+<ol class="arabic">
+<li><p><strong>Edit</strong> the component’s Helm chart values or template to add the role to <code class="docutils literal notranslate"><span class="pre">spec.securityFunction.componentRole[]</span></code></p></li>
+<li><p><strong>Upgrade</strong> the Helm release:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>helm<span class="w"> </span>upgrade<span class="w"> </span>&lt;release-name&gt;<span class="w"> </span>&lt;chart&gt;<span class="w"> </span>-n<span class="w"> </span>components
+</pre></div>
+</div>
+</li>
+<li><p>The Component Operator updates the <code class="docutils literal notranslate"><span class="pre">IdentityConfig</span></code> child resource, the Identity Config Operator detects the change and syncs the new role to Keycloak.</p></li>
+<li><p><strong>Verify</strong> the role appears in Keycloak:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python<span class="w"> </span>&lt;scripts&gt;/manage_keycloak_users.py<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--keycloak-url<span class="w"> </span>http://localhost:8083/auth<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--admin-password<span class="w"> </span>&lt;ADMIN_PASS&gt;<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--realm<span class="w"> </span>odari<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--action<span class="w"> </span>list-roles<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--client-id<span class="w"> </span>&lt;component-name&gt;
+</pre></div>
+</div>
+</li>
+</ol>
+</section>
+<section id="option-b-dynamic-roles-permissionspecificationsetapi">
+<h3>Option B: Dynamic Roles (permissionSpecificationSetAPI)<a class="headerlink" href="#option-b-dynamic-roles-permissionspecificationsetapi" title="Link to this heading">¶</a></h3>
+<p>Dynamic roles are defined at runtime by the component via its <strong>TMF672 Permission Specification</strong> API (or the legacy TMF669 Party Role API). The Identity Config Operator registers a listener on this API and syncs role changes to Keycloak automatically.</p>
+<p><strong>Example</strong> (from <code class="docutils literal notranslate"><span class="pre">feature-definition-and-test-kit/testData/productcatalog-v1/</span></code>):</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">spec</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">securityFunction</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">canvasSystemRole</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">canvasRole</span>
+<span class="w">    </span><span class="nt">exposedAPIs</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">userrolesandpermissions</span>
+<span class="w">      </span><span class="nt">specification</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">url</span><span class="p">:</span><span class="w"> </span><span class="s">"https://raw.githubusercontent.com/tmforum-apis/TMF672_UserRolePermissions/master/TMF672-UserRolePermissions-v5.0.0.swagger.json"</span>
+<span class="w">      </span><span class="nt">implementation</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pc1-permissionspecapi</span>
+<span class="w">      </span><span class="nt">apiType</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">openapi</span>
+<span class="w">      </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/pc1-productcatalogmanagement/rolesAndPermissionsManagement/v5</span>
+<span class="w">      </span><span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">8080</span>
+</pre></div>
+</div>
+<p>To add a role dynamically, <strong>POST</strong> a new <code class="docutils literal notranslate"><span class="pre">PermissionSpecificationSet</span></code> to the component’s TMF672 API. The component must be running and the API must be accessible.</p>
+<p><strong>Step 1: Find the TMF672 API URL</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>kubectl<span class="w"> </span>get<span class="w"> </span>exposedapis<span class="w"> </span>-n<span class="w"> </span>components<span class="w"> </span>-o<span class="w"> </span>yaml
+</pre></div>
+</div>
+<p>Look for the ExposedAPI with TMF ID <code class="docutils literal notranslate"><span class="pre">TMF672</span></code>. The URL will be in the format:
+<code class="docutils literal notranslate"><span class="pre">https://localhost/&lt;component-path&gt;/rolesAndPermissionsManagement/v5</span></code></p>
+<p><strong>Step 2: POST the PermissionSpecificationSet</strong></p>
+<blockquote>
+<div><p><strong>Critical:</strong> The <code class="docutils literal notranslate"><span class="pre">&#64;baseType</span></code> field <strong>must</strong> be set to <code class="docutils literal notranslate"><span class="pre">PermissionSpecificationSet</span></code> (uppercase ‘P’). If omitted, the component’s API defaults to lowercase <code class="docutils literal notranslate"><span class="pre">permissionSpecificationSet</span></code>, which the Identity Config Operator’s listener will reject with an “invalid &#64;baseType” warning and the role will <strong>not</strong> be synced to Keycloak.</p>
+</div></blockquote>
+<div class="highlight-powershell notranslate"><div class="highlight"><pre><span></span><span class="c"># PowerShell</span>
+<span class="nv">$body</span> <span class="p">=</span> <span class="p">@{</span>
+    <span class="s2">"@type"</span> <span class="p">=</span> <span class="s2">"PermissionSpecificationSet"</span>
+    <span class="s2">"@baseType"</span> <span class="p">=</span> <span class="s2">"PermissionSpecificationSet"</span>
+    <span class="s2">"name"</span> <span class="p">=</span> <span class="s2">"&lt;ROLE_NAME&gt;"</span>
+    <span class="s2">"involvementRole"</span> <span class="p">=</span> <span class="s2">"&lt;ROLE_NAME&gt;"</span>
+    <span class="s2">"description"</span> <span class="p">=</span> <span class="s2">"&lt;ROLE_DESCRIPTION&gt;"</span>
+    <span class="s2">"permissionSpecification"</span> <span class="p">=</span> <span class="p">@(@{</span>
+        <span class="s2">"@type"</span> <span class="p">=</span> <span class="s2">"PermissionSpecification"</span>
+        <span class="s2">"name"</span> <span class="p">=</span> <span class="s2">"&lt;ROLE_NAME&gt;:read-only"</span>
+        <span class="s2">"description"</span> <span class="p">=</span> <span class="s2">"Read-only access to resources"</span>
+        <span class="s2">"function"</span> <span class="p">=</span> <span class="s2">"&lt;ROLE_NAME&gt;"</span>
+        <span class="s2">"action"</span> <span class="p">=</span> <span class="s2">"all"</span>
+    <span class="p">})</span>
+<span class="p">}</span> <span class="p">|</span> <span class="nb">ConvertTo-Json</span> <span class="n">-Depth</span> <span class="n">5</span>
+
+<span class="nb">Invoke-RestMethod</span> <span class="n">-Uri</span> <span class="s2">"https://localhost/&lt;COMPONENT_PATH&gt;/rolesAndPermissionsManagement/v5/permissionSpecificationSet"</span> <span class="p">`</span>
+    <span class="n">-Method</span> <span class="n">POST</span> <span class="n">-ContentType</span> <span class="s2">"application/json"</span> <span class="n">-Body</span> <span class="nv">$body</span> <span class="n">-SkipCertificateCheck</span>
+</pre></div>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># bash</span>
+curl<span class="w"> </span>-sk<span class="w"> </span>-X<span class="w"> </span>POST<span class="w"> </span><span class="s2">"https://localhost/&lt;COMPONENT_PATH&gt;/rolesAndPermissionsManagement/v5/permissionSpecificationSet"</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-H<span class="w"> </span><span class="s2">"Content-Type: application/json"</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-d<span class="w"> </span><span class="s1">'{</span>
+<span class="s1">    "@type": "PermissionSpecificationSet",</span>
+<span class="s1">    "@baseType": "PermissionSpecificationSet",</span>
+<span class="s1">    "name": "&lt;ROLE_NAME&gt;",</span>
+<span class="s1">    "involvementRole": "&lt;ROLE_NAME&gt;",</span>
+<span class="s1">    "description": "&lt;ROLE_DESCRIPTION&gt;",</span>
+<span class="s1">    "permissionSpecification": [{</span>
+<span class="s1">      "@type": "PermissionSpecification",</span>
+<span class="s1">      "name": "&lt;ROLE_NAME&gt;:read-only",</span>
+<span class="s1">      "description": "Read-only access to resources",</span>
+<span class="s1">      "function": "&lt;ROLE_NAME&gt;",</span>
+<span class="s1">      "action": "all"</span>
+<span class="s1">    }]</span>
+<span class="s1">  }'</span>
+</pre></div>
+</div>
+<p><strong>Key fields:</strong></p>
+<div class="table-wrapper colwidths-auto docutils container">
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Field</p></th>
+<th class="head"><p>Required</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">&#64;type</span></code></p></td>
+<td><p>Yes</p></td>
+<td><p>Must be <code class="docutils literal notranslate"><span class="pre">PermissionSpecificationSet</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">&#64;baseType</span></code></p></td>
+<td><p>Yes</p></td>
+<td><p><strong>Must</strong> be <code class="docutils literal notranslate"><span class="pre">PermissionSpecificationSet</span></code> (uppercase P) – the operator rejects lowercase</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">name</span></code></p></td>
+<td><p>Yes</p></td>
+<td><p>The role name (e.g., <code class="docutils literal notranslate"><span class="pre">MVNO-user</span></code>) – this becomes the Keycloak role name</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">involvementRole</span></code></p></td>
+<td><p>Yes</p></td>
+<td><p>Should match <code class="docutils literal notranslate"><span class="pre">name</span></code> – identifies the role in TMF672</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">description</span></code></p></td>
+<td><p>No</p></td>
+<td><p>Human-readable description of the role</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">permissionSpecification[]</span></code></p></td>
+<td><p>Yes</p></td>
+<td><p>Array of permission specs defining what the role grants</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong>Step 3: Wait for sync</strong></p>
+<p>The Identity Config Operator’s listener sidecar receives the <code class="docutils literal notranslate"><span class="pre">PermissionSpecificationSetCreationNotification</span></code> from the component and creates the role in Keycloak. This typically takes a few seconds.</p>
+<p><strong>Step 4: Verify</strong> the role appears in Keycloak:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python<span class="w"> </span>&lt;scripts&gt;/manage_keycloak_users.py<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--keycloak-url<span class="w"> </span>http://localhost:8083/auth<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--admin-password<span class="w"> </span>&lt;ADMIN_PASS&gt;<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--realm<span class="w"> </span>odari<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--action<span class="w"> </span>list-roles<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--client-id<span class="w"> </span>&lt;component-name&gt;
+</pre></div>
+</div>
+<p><strong>Troubleshooting:</strong> If the role does not appear after 10–15 seconds, check the listener sidecar logs:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>kubectl<span class="w"> </span>logs<span class="w"> </span>&lt;identityconfig-operator-pod&gt;<span class="w"> </span>-n<span class="w"> </span>canvas<span class="w"> </span>-c<span class="w"> </span>idlistkey<span class="w"> </span>--tail<span class="o">=</span><span class="m">20</span>
+</pre></div>
+</div>
+<p>Look for:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">&quot;security-APIListener</span> <span class="pre">permissionSpecificationSet</span> <span class="pre">event</span> <span class="pre">listener</span> <span class="pre">success&quot;</span></code> – role was synced</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&quot;&#64;baseType</span> <span class="pre">was</span> <span class="pre">permissionSpecificationSet</span> <span class="pre">-</span> <span class="pre">not</span> <span class="pre">processed&quot;</span></code> – the <code class="docutils literal notranslate"><span class="pre">&#64;baseType</span></code> field has the wrong case; re-POST with <code class="docutils literal notranslate"><span class="pre">&quot;&#64;baseType&quot;:</span> <span class="pre">&quot;PermissionSpecificationSet&quot;</span></code></p></li>
+</ul>
+</section>
+<section id="when-to-use-each-approach">
+<h3>When to use each approach<a class="headerlink" href="#when-to-use-each-approach" title="Link to this heading">¶</a></h3>
+<div class="table-wrapper colwidths-auto docutils container">
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Approach</p></th>
+<th class="head"><p>When to use</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Static roles</strong></p></td>
+<td><p>Roles are known at design time, don’t change often, and are defined by the component developer</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Dynamic roles</strong></p></td>
+<td><p>Roles are determined at runtime, managed by administrators or business logic, or change frequently</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="important">
+<h3>Important<a class="headerlink" href="#important" title="Link to this heading">¶</a></h3>
+<ul class="simple">
+<li><p>If the user asks to “create a role” on a component, guide them through one of these two approaches – <strong>do not create the role directly in Keycloak</strong></p></li>
+<li><p>If <code class="docutils literal notranslate"><span class="pre">canvasRole</span></code> is the only role and no <code class="docutils literal notranslate"><span class="pre">permissionSpecificationSetAPI</span></code> is configured, the component needs to be redeployed with static roles or updated to expose a permission specification API</p></li>
+</ul>
+</section>
+</section>
+<section id="keycloak-ui-access">
+<h2>Keycloak UI Access<a class="headerlink" href="#keycloak-ui-access" title="Link to this heading">¶</a></h2>
+<section id="prerequisites">
+<h3>Prerequisites<a class="headerlink" href="#prerequisites" title="Link to this heading">¶</a></h3>
+<p>Keycloak runs in the <code class="docutils literal notranslate"><span class="pre">canvas</span></code> namespace. Check if it’s running:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>kubectl<span class="w"> </span>get<span class="w"> </span>pods<span class="w"> </span>-n<span class="w"> </span>canvas<span class="w"> </span>-l<span class="w"> </span>app.kubernetes.io/name<span class="o">=</span>keycloak
+</pre></div>
+</div>
+</section>
+<section id="retrieve-admin-credentials">
+<h3>Retrieve Admin Credentials<a class="headerlink" href="#retrieve-admin-credentials" title="Link to this heading">¶</a></h3>
+<p>The admin username is <code class="docutils literal notranslate"><span class="pre">admin</span></code>. Retrieve the password from the Kubernetes secret:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># bash</span>
+kubectl<span class="w"> </span>get<span class="w"> </span>secret<span class="w"> </span>canvas-keycloak<span class="w"> </span>-n<span class="w"> </span>canvas<span class="w"> </span>-o<span class="w"> </span><span class="nv">jsonpath</span><span class="o">=</span><span class="s1">'{.data.admin-password}'</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>base64<span class="w"> </span>-d
+
+<span class="c1"># PowerShell</span>
+kubectl<span class="w"> </span>get<span class="w"> </span>secret<span class="w"> </span>canvas-keycloak<span class="w"> </span>-n<span class="w"> </span>canvas<span class="w"> </span>-o<span class="w"> </span><span class="nv">jsonpath</span><span class="o">=</span><span class="s1">'{.data.admin-password}'</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>python<span class="w"> </span>-c<span class="w"> </span><span class="s2">"import sys,base64; print(base64.b64decode(sys.stdin.read()).decode())"</span>
+</pre></div>
+</div>
+</section>
+<section id="access-the-keycloak-console">
+<h3>Access the Keycloak Console<a class="headerlink" href="#access-the-keycloak-console" title="Link to this heading">¶</a></h3>
+<p>Find the Keycloak service:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>kubectl<span class="w"> </span>get<span class="w"> </span>svc<span class="w"> </span>canvas-keycloak<span class="w"> </span>-n<span class="w"> </span>canvas
+</pre></div>
+</div>
+<p>If the service type is <code class="docutils literal notranslate"><span class="pre">LoadBalancer</span></code> and has an external IP/hostname, it may already be accessible. Otherwise, port-forward:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>kubectl<span class="w"> </span>port-forward<span class="w"> </span>svc/canvas-keycloak<span class="w"> </span>-n<span class="w"> </span>canvas<span class="w"> </span><span class="m">8083</span>:8083
+</pre></div>
+</div>
+<p>Run port-forward as a <strong>background process</strong> so it remains accessible.</p>
+<p>Open the Keycloak admin console in VS Code Simple Browser at: <code class="docutils literal notranslate"><span class="pre">http://localhost:8083/auth/admin</span></code></p>
+<p>Log in with:</p>
+<ul class="simple">
+<li><p><strong>Username</strong>: <code class="docutils literal notranslate"><span class="pre">admin</span></code></p></li>
+<li><p><strong>Password</strong>: (retrieved from the secret above)</p></li>
+</ul>
+</section>
+<section id="navigating-keycloak">
+<h3>Navigating Keycloak<a class="headerlink" href="#navigating-keycloak" title="Link to this heading">¶</a></h3>
+<p>After logging in, guide the user:</p>
+<ul class="simple">
+<li><p><strong>Select the realm</strong>: The ODA Canvas realm is typically named <code class="docutils literal notranslate"><span class="pre">odari</span></code> (not <code class="docutils literal notranslate"><span class="pre">master</span></code>). Select it from the realm dropdown in the top-left.</p></li>
+<li><p><strong>Clients</strong>: Each deployed ODA Component has a corresponding client. Navigate to <strong>Clients</strong> in the left menu to see component clients. Click a client name to see its configuration and roles.</p></li>
+<li><p><strong>Users</strong>: Navigate to <strong>Users</strong> in the left menu to see all users in the realm. Service accounts for external clients appear here as <code class="docutils literal notranslate"><span class="pre">service-account-&lt;client-id&gt;</span></code>.</p></li>
+<li><p><strong>Client Roles</strong>: To see roles for a component, go to <strong>Clients</strong> &gt; select the component client &gt; <strong>Roles</strong> tab. The <code class="docutils literal notranslate"><span class="pre">canvasRole</span></code> is reserved for Canvas operators.</p></li>
+</ul>
+</section>
+</section>
+<section id="create-a-keycloak-client">
+<h2>Create a Keycloak Client<a class="headerlink" href="#create-a-keycloak-client" title="Link to this heading">¶</a></h2>
+<p>This section covers creating a Keycloak <strong>client</strong> (application identity) for <strong>external systems</strong> that need to call ODA Component APIs using the <strong>Client Credentials flow</strong>. This is the recommended authentication approach for machine-to-machine (M2M) API access.</p>
+<blockquote>
+<div><p><strong>Note:</strong> This creates an <strong>external client</strong> in Keycloak – separate from the component clients that are automatically managed by the Identity Config Operator. Roles can be freely created and assigned on external clients without conflicting with the operator.</p>
+</div></blockquote>
+<section id="interactive-workflow">
+<h3>Interactive Workflow<a class="headerlink" href="#interactive-workflow" title="Link to this heading">¶</a></h3>
+<p>When the user selects “Create a Keycloak client”, follow this workflow:</p>
+<p><strong>Step 1: Identify the target component</strong></p>
+<p>List the deployed components to determine which APIs the client needs to access:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>kubectl<span class="w"> </span>get<span class="w"> </span>identityconfigs<span class="w"> </span>-n<span class="w"> </span>components<span class="w"> </span>-o<span class="w"> </span>yaml
+</pre></div>
+</div>
+<p><strong>Step 2: Ask for client details</strong></p>
+<p>Ask the user for:</p>
+<ul class="simple">
+<li><p><strong>Client ID</strong> (required) – a descriptive name like <code class="docutils literal notranslate"><span class="pre">externalSystem</span></code>, <code class="docutils literal notranslate"><span class="pre">integration-test</span></code>, or <code class="docutils literal notranslate"><span class="pre">my-billing-app</span></code>. Must not conflict with existing component client names (e.g., do not use <code class="docutils literal notranslate"><span class="pre">pc1-productcatalogmanagement</span></code>)</p></li>
+<li><p><strong>Description</strong> (optional) – what the client is for</p></li>
+</ul>
+<p><strong>Step 3: Create the client</strong></p>
+<p>Use the helper script:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python<span class="w"> </span>&lt;scripts&gt;/manage_keycloak_users.py<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--keycloak-url<span class="w"> </span>http://localhost:8083/auth<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--admin-password<span class="w"> </span>&lt;ADMIN_PASS&gt;<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--realm<span class="w"> </span>odari<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--action<span class="w"> </span>create-client<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--client-id<span class="w"> </span>&lt;CLIENT_ID&gt;
+</pre></div>
+</div>
+<p>This creates a <strong>confidential</strong> Keycloak client with:</p>
+<ul class="simple">
+<li><p><strong>Client authentication</strong>: Enabled (confidential client – requires a client secret)</p></li>
+<li><p><strong>Service accounts roles</strong>: Enabled (allows Client Credentials grant)</p></li>
+<li><p><strong>Direct access grants</strong>: Enabled (allows password grant for testing)</p></li>
+<li><p><strong>Standard flow</strong>: Disabled (no browser-based login needed)</p></li>
+</ul>
+<p><strong>Step 4: Show the client secret</strong></p>
+<p>After creation, retrieve the client secret:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python<span class="w"> </span>&lt;scripts&gt;/manage_keycloak_users.py<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--keycloak-url<span class="w"> </span>http://localhost:8083/auth<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--admin-password<span class="w"> </span>&lt;ADMIN_PASS&gt;<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--realm<span class="w"> </span>odari<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--action<span class="w"> </span>get-client-secret<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--client-id<span class="w"> </span>&lt;CLIENT_ID&gt;
+</pre></div>
+</div>
+<p><strong>Step 5: Assign component roles (optional)</strong></p>
+<p>If the target component has roles beyond <code class="docutils literal notranslate"><span class="pre">canvasRole</span></code>, offer to assign them to the external client’s service account. These roles are defined by the component (statically or dynamically) and already exist in Keycloak – you are only <strong>assigning</strong> existing roles, not creating new ones:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python<span class="w"> </span>&lt;scripts&gt;/manage_keycloak_users.py<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--keycloak-url<span class="w"> </span>http://localhost:8083/auth<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--admin-password<span class="w"> </span>&lt;ADMIN_PASS&gt;<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--realm<span class="w"> </span>odari<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--action<span class="w"> </span>assign-client-roles<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--client-id<span class="w"> </span>&lt;CLIENT_ID&gt;<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--target-client<span class="w"> </span>&lt;COMPONENT_CLIENT_ID&gt;<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--roles<span class="w"> </span>&lt;ROLE1&gt;,&lt;ROLE2&gt;
+</pre></div>
+</div>
+<p>If no assignable roles exist yet (only <code class="docutils literal notranslate"><span class="pre">canvasRole</span></code>), explain that the component needs to define roles first – either by adding static <code class="docutils literal notranslate"><span class="pre">componentRole[]</span></code> entries in the Component YAML or by publishing roles via its <code class="docutils literal notranslate"><span class="pre">permissionSpecificationSetAPI</span></code>. See the <strong>Add component roles</strong> section.</p>
+<p><strong>Step 6: Verify with a Client Credentials call</strong></p>
+<p>Test that the client can obtain a JWT token:</p>
+<div class="highlight-powershell notranslate"><div class="highlight"><pre><span></span><span class="c"># PowerShell</span>
+<span class="nv">$token</span> <span class="p">=</span> <span class="p">(</span><span class="nb">Invoke-RestMethod</span> <span class="n">-Uri</span> <span class="s2">"http://localhost:8083/auth/realms/odari/protocol/openid-connect/token"</span> <span class="p">`</span>
+  <span class="n">-Method</span> <span class="n">POST</span> <span class="n">-ContentType</span> <span class="s2">"application/x-www-form-urlencoded"</span> <span class="p">`</span>
+  <span class="n">-Body</span> <span class="s2">"grant_type=client_credentials&amp;client_id=&lt;CLIENT_ID&gt;&amp;client_secret=&lt;CLIENT_SECRET&gt;"</span><span class="p">).</span><span class="n">access_token</span>
+<span class="nb">Write-Host</span> <span class="s2">"Token obtained successfully (length: </span><span class="p">$(</span><span class="nv">$token</span><span class="p">.</span><span class="n">Length</span><span class="p">)</span><span class="s2"> chars)"</span>
+</pre></div>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># bash</span>
+<span class="nv">TOKEN</span><span class="o">=</span><span class="k">$(</span>curl<span class="w"> </span>-s<span class="w"> </span>-X<span class="w"> </span>POST<span class="w"> </span>http://localhost:8083/auth/realms/odari/protocol/openid-connect/token<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-d<span class="w"> </span><span class="s2">"grant_type=client_credentials&amp;client_id=&lt;CLIENT_ID&gt;&amp;client_secret=&lt;CLIENT_SECRET&gt;"</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span><span class="p">|</span><span class="w"> </span>python<span class="w"> </span>-c<span class="w"> </span><span class="s2">"import sys,json; print(json.load(sys.stdin)['access_token'])"</span><span class="k">)</span>
+<span class="nb">echo</span><span class="w"> </span><span class="s2">"Token: </span><span class="si">${</span><span class="nv">TOKEN</span><span class="p">:</span><span class="nv">0</span><span class="p">:</span><span class="nv">50</span><span class="si">}</span><span class="s2">..."</span>
+</pre></div>
+</div>
+<p>If the Client Credentials call fails with <strong>“Client not enabled to retrieve service account”</strong>, the service accounts option was not enabled. The user can fix this in the Keycloak UI:</p>
+<ol class="arabic simple">
+<li><p>Navigate to <strong>Clients</strong> &gt; select the client</p></li>
+<li><p>Go to the <strong>Settings</strong> tab</p></li>
+<li><p>Enable <strong>Service accounts roles</strong> (or <strong>Service account enabled</strong> in older Keycloak versions)</p></li>
+<li><p>Click <strong>Save</strong></p></li>
+<li><p>Retry the token request</p></li>
+</ol>
+</section>
+<section id="explaining-client-scopes">
+<h3>Explaining Client Scopes<a class="headerlink" href="#explaining-client-scopes" title="Link to this heading">¶</a></h3>
+<p>When explaining the created client, mention:</p>
+<ul class="simple">
+<li><p>The client’s <strong>service account</strong> is automatically created by Keycloak when service accounts are enabled. It appears as a user named <code class="docutils literal notranslate"><span class="pre">service-account-&lt;client-id&gt;</span></code> in the Users list.</p></li>
+<li><p><strong>Client scopes</strong> control which claims appear in the JWT token. The default scopes (<code class="docutils literal notranslate"><span class="pre">email</span></code>, <code class="docutils literal notranslate"><span class="pre">profile</span></code>, <code class="docutils literal notranslate"><span class="pre">roles</span></code>) are typically sufficient.</p></li>
+<li><p>The JWT <code class="docutils literal notranslate"><span class="pre">iss</span></code> (issuer) claim will be the Keycloak realm URL (e.g., <code class="docutils literal notranslate"><span class="pre">http://localhost:8083/auth/realms/odari</span></code>). This is important for Kong JWT validation.</p></li>
+<li><p>The default token expiry is <strong>300 seconds</strong> (5 minutes). This can be changed in the client’s <strong>Advanced Settings</strong> tab under <strong>Access Token Lifespan</strong>.</p></li>
+</ul>
+</section>
+</section>
+<section id="verify-keycloak-kong-jwt-integration">
+<h2>Verify Keycloak-Kong JWT Integration<a class="headerlink" href="#verify-keycloak-kong-jwt-integration" title="Link to this heading">¶</a></h2>
+<p>When <code class="docutils literal notranslate"><span class="pre">apiKeyVerification</span></code> is enabled on ExposedAPIs, the Kong API Operator creates JWT <strong>KongPlugins</strong> for those APIs automatically. However, Kong needs to know Keycloak’s <strong>RSA public key</strong> to verify tokens. This section checks the bridge between Keycloak and Kong.</p>
+<blockquote>
+<div><p><strong>Important:</strong> The KongPlugins, KongConsumers, and JWT credential secrets described in this section are created and managed by the <strong>API Operator</strong>. Do not create, delete, or modify these resources directly. The commands below are for <strong>verification and debugging</strong> only. To enable or disable JWT authentication, use <code class="docutils literal notranslate"><span class="pre">helm</span> <span class="pre">upgrade</span> <span class="pre">--reuse-values</span></code> with <code class="docutils literal notranslate"><span class="pre">--set</span> <span class="pre">component.apipolicy.apiKeyVerification.enabled=true</span></code> on the parent Component’s Helm release (see View ExposedAPIs &gt; Enable/Disable Authentication).</p>
+</div></blockquote>
+<section id="how-kong-jwt-validation-works">
+<h3>How Kong JWT Validation Works<a class="headerlink" href="#how-kong-jwt-validation-works" title="Link to this heading">¶</a></h3>
+<p>The Kong JWT plugin uses these key settings (configured by the API Operator):</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">key_claim_name:</span> <span class="pre">iss</span></code> – the JWT <code class="docutils literal notranslate"><span class="pre">iss</span></code> (issuer) claim identifies which consumer/key to use</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">claims_to_verify:</span> <span class="pre">[exp]</span></code> – checks token expiry</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">secret_is_base64:</span> <span class="pre">false</span></code> – the RSA public key is stored in PEM format</p></li>
+</ul>
+<p>For Kong to validate a Keycloak JWT, you need:</p>
+<ol class="arabic simple">
+<li><p>A <strong>KongConsumer</strong> resource pointing to Keycloak</p></li>
+<li><p>A <strong>JWT credential</strong> on that consumer containing Keycloak’s RSA public key</p></li>
+<li><p>The credential’s <code class="docutils literal notranslate"><span class="pre">key</span></code> must match the JWT <code class="docutils literal notranslate"><span class="pre">iss</span></code> claim (i.e., the Keycloak realm URL)</p></li>
+</ol>
+</section>
+<section id="step-1-check-if-jwt-kongplugins-exist">
+<h3>Step 1: Check if JWT KongPlugins exist<a class="headerlink" href="#step-1-check-if-jwt-kongplugins-exist" title="Link to this heading">¶</a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>kubectl<span class="w"> </span>get<span class="w"> </span>kongplugins<span class="w"> </span>-n<span class="w"> </span>components<span class="w"> </span>-l<span class="w"> </span>oda.tmforum.org/type<span class="o">=</span>apiauthentication
+</pre></div>
+</div>
+<p>If no JWT plugins exist, <code class="docutils literal notranslate"><span class="pre">apiKeyVerification</span></code> is not enabled on any ExposedAPIs. Offer to enable it first (see View ExposedAPIs &gt; Enable Authentication).</p>
+</section>
+<section id="step-2-check-for-existing-kongconsumers-and-jwt-credentials">
+<h3>Step 2: Check for existing KongConsumers and JWT credentials<a class="headerlink" href="#step-2-check-for-existing-kongconsumers-and-jwt-credentials" title="Link to this heading">¶</a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>kubectl<span class="w"> </span>get<span class="w"> </span>kongconsumers<span class="w"> </span>-n<span class="w"> </span>components
+kubectl<span class="w"> </span>get<span class="w"> </span>secrets<span class="w"> </span>-n<span class="w"> </span>components<span class="w"> </span>-l<span class="w"> </span>konghq.com/credential<span class="o">=</span>jwt
+</pre></div>
+</div>
+<p>If a JWT credential secret already exists with a key matching the Keycloak issuer URL, the bridge is already configured. Verify by inspecting:</p>
+<div class="highlight-powershell notranslate"><div class="highlight"><pre><span></span><span class="c"># PowerShell</span>
+<span class="n">kubectl</span> <span class="n">get</span> <span class="n">secret</span> <span class="p">&lt;</span><span class="n">SECRET_NAME</span><span class="p">&gt;</span> <span class="n">-n</span> <span class="n">components</span> <span class="n">-o</span> <span class="n">jsonpath</span><span class="p">=</span><span class="s1">'{.data.key}'</span> <span class="p">|</span> <span class="n">python</span> <span class="n">-c</span> <span class="s2">"import sys,base64; print(base64.b64decode(sys.stdin.read()).decode())"</span>
+</pre></div>
+</div>
+<p>The key should be: <code class="docutils literal notranslate"><span class="pre">http://localhost:8083/auth/realms/odari</span></code></p>
+</section>
+<section id="step-3-if-no-integration-exists-troubleshooting">
+<h3>Step 3: If no integration exists — troubleshooting<a class="headerlink" href="#step-3-if-no-integration-exists-troubleshooting" title="Link to this heading">¶</a></h3>
+<p>The KongConsumer and JWT credential resources are created <strong>automatically</strong> by the API Operator when <code class="docutils literal notranslate"><span class="pre">apiKeyVerification.enabled</span></code> is set to <code class="docutils literal notranslate"><span class="pre">true</span></code> on any ExposedAPI. You should <strong>not</strong> create these resources manually.</p>
+<p>If <code class="docutils literal notranslate"><span class="pre">apiKeyVerification</span></code> is enabled on an ExposedAPI but the KongConsumer or JWT credential does not exist:</p>
+<ol class="arabic">
+<li><p><strong>Check the API Operator logs</strong> for errors:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>kubectl<span class="w"> </span>logs<span class="w"> </span>-n<span class="w"> </span>canvas<span class="w"> </span>-l<span class="w"> </span><span class="nv">app</span><span class="o">=</span>api-operator-kong<span class="w"> </span>--tail<span class="o">=</span><span class="m">30</span>
+</pre></div>
+</div>
+</li>
+<li><p><strong>Check that the ExposedAPI has <code class="docutils literal notranslate"><span class="pre">apiKeyVerification.enabled:</span> <span class="pre">true</span></code></strong>:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>kubectl<span class="w"> </span>get<span class="w"> </span>exposedapi<span class="w"> </span>&lt;name&gt;<span class="w"> </span>-n<span class="w"> </span>components<span class="w"> </span>-o<span class="w"> </span><span class="nv">jsonpath</span><span class="o">=</span><span class="s1">'{.spec.apiKeyVerification}'</span>
+</pre></div>
+</div>
+</li>
+<li><p><strong>Trigger a reconciliation</strong> by annotating the ExposedAPI:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>kubectl<span class="w"> </span>annotate<span class="w"> </span>exposedapi<span class="w"> </span>&lt;name&gt;<span class="w"> </span>-n<span class="w"> </span>components<span class="w"> </span><span class="nv">reconcile</span><span class="o">=</span><span class="k">$(</span>date<span class="w"> </span>+%s<span class="k">)</span><span class="w"> </span>--overwrite
+</pre></div>
+</div>
+</li>
+<li><p><strong>Verify</strong> the resources were created:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>kubectl<span class="w"> </span>get<span class="w"> </span>kongconsumers<span class="w"> </span>-n<span class="w"> </span>components
+kubectl<span class="w"> </span>get<span class="w"> </span>secrets<span class="w"> </span>-n<span class="w"> </span>components<span class="w"> </span>-l<span class="w"> </span>konghq.com/credential<span class="o">=</span>jwt
+</pre></div>
+</div>
+</li>
+</ol>
+<p>If the API Operator is not running or has persistent errors, investigate the operator deployment in the <code class="docutils literal notranslate"><span class="pre">canvas</span></code> namespace.</p>
+</section>
+<section id="step-4-test-the-integration">
+<h3>Step 4: Test the integration<a class="headerlink" href="#step-4-test-the-integration" title="Link to this heading">¶</a></h3>
+<p>Test with a valid JWT token (should return 200 OK):</p>
+<div class="highlight-powershell notranslate"><div class="highlight"><pre><span></span><span class="c"># Get token via Client Credentials</span>
+<span class="nv">$tokenResponse</span> <span class="p">=</span> <span class="nb">Invoke-RestMethod</span> <span class="n">-Uri</span> <span class="s2">"http://localhost:8083/auth/realms/odari/protocol/openid-connect/token"</span> <span class="p">`</span>
+  <span class="n">-Method</span> <span class="n">POST</span> <span class="n">-ContentType</span> <span class="s2">"application/x-www-form-urlencoded"</span> <span class="p">`</span>
+  <span class="n">-Body</span> <span class="s2">"grant_type=client_credentials&amp;client_id=&lt;CLIENT_ID&gt;&amp;client_secret=&lt;CLIENT_SECRET&gt;"</span>
+<span class="nv">$jwt</span> <span class="p">=</span> <span class="nv">$tokenResponse</span><span class="p">.</span><span class="n">access_token</span>
+
+<span class="c"># Call API with token (expect 200)</span>
+<span class="nb">Invoke-RestMethod</span> <span class="n">-Uri</span> <span class="s2">"https://localhost/&lt;API_PATH&gt;"</span> <span class="p">`</span>
+  <span class="n">-Headers</span> <span class="p">@{</span><span class="n">Authorization</span><span class="p">=</span><span class="s2">"Bearer $jwt"</span><span class="p">}</span> <span class="n">-SkipCertificateCheck</span>
+</pre></div>
+</div>
+<p>Test without a token (should return 401 Unauthorized):</p>
+<div class="highlight-powershell notranslate"><div class="highlight"><pre><span></span><span class="k">try</span> <span class="p">{</span>
+    <span class="nb">Invoke-RestMethod</span> <span class="n">-Uri</span> <span class="s2">"https://localhost/&lt;API_PATH&gt;"</span> <span class="n">-SkipCertificateCheck</span>
+<span class="p">}</span> <span class="k">catch</span> <span class="p">{</span>
+    <span class="nb">Write-Host</span> <span class="s2">"Status: </span><span class="p">$(</span><span class="nv">$_</span><span class="p">.</span><span class="n">Exception</span><span class="p">.</span><span class="n">Response</span><span class="p">.</span><span class="n">StatusCode</span><span class="p">)</span><span class="s2"> -- expected 401 Unauthorized"</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><strong>Note on PowerShell versions:</strong> The <code class="docutils literal notranslate"><span class="pre">-SkipCertificateCheck</span></code> parameter requires <strong>PowerShell 7+</strong> (<code class="docutils literal notranslate"><span class="pre">pwsh</span></code>). If using <strong>Windows PowerShell 5.1</strong> (<code class="docutils literal notranslate"><span class="pre">powershell.exe</span></code>), use the SSL bypass workaround described in the Keycloak UI Access section.</p>
+</section>
+<section id="explaining-the-bridge">
+<h3>Explaining the Bridge<a class="headerlink" href="#explaining-the-bridge" title="Link to this heading">¶</a></h3>
+<p>After verifying the integration, explain:</p>
+<ul class="simple">
+<li><p><strong>Kong JWT plugin</strong> validates the token’s signature using the RSA public key and checks the <code class="docutils literal notranslate"><span class="pre">exp</span></code> claim</p></li>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">iss</span></code> claim in the Keycloak JWT matches the <code class="docutils literal notranslate"><span class="pre">key</span></code> in the KongConsumer’s JWT credential – this is how Kong finds the right public key</p></li>
+<li><p>Any valid Keycloak JWT from the <code class="docutils literal notranslate"><span class="pre">odari</span></code> realm will be accepted, regardless of which Keycloak client issued it</p></li>
+<li><p><strong>No</strong> role-based authorization is enforced at the Kong level – Kong only verifies the token is valid and not expired</p></li>
+<li><p>If the Keycloak RSA key is rotated, the Kong credential must be updated with the new public key</p></li>
+</ul>
+</section>
+</section>
+<section id="generate-a-postman-collection">
+<h2>Generate a Postman Collection<a class="headerlink" href="#generate-a-postman-collection" title="Link to this heading">¶</a></h2>
+<p>When the user selects this option, generate a Postman collection file that includes requests to obtain a JWT token via <strong>Client Credentials flow</strong> and call the component’s ExposedAPI.</p>
+<section id="id1">
+<h3>Interactive Workflow<a class="headerlink" href="#id1" title="Link to this heading">¶</a></h3>
+<p><strong>Step 1: Identify the client and API</strong></p>
+<p>Ask which Keycloak client and ExposedAPI to use:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>kubectl<span class="w"> </span>get<span class="w"> </span>exposedapis<span class="w"> </span>-n<span class="w"> </span>components<span class="w"> </span>-o<span class="w"> </span>yaml
+</pre></div>
+</div>
+<p><strong>Step 2: Gather parameters</strong></p>
+<p>Collect:</p>
+<ul class="simple">
+<li><p><strong>Keycloak URL</strong> (default: <code class="docutils literal notranslate"><span class="pre">http://localhost:8083/auth/realms/odari</span></code>)</p></li>
+<li><p><strong>Client ID</strong> (ask the user or list available clients)</p></li>
+<li><p><strong>Client Secret</strong> (retrieve using the helper script or ask the user)</p></li>
+<li><p><strong>API Base URL</strong> (from the ExposedAPI’s <code class="docutils literal notranslate"><span class="pre">.status.apiStatus.url</span></code>)</p></li>
+</ul>
+<p><strong>Step 3: Generate the collection</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python<span class="w"> </span>&lt;scripts&gt;/generate_postman_collection.py<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--keycloak-url<span class="w"> </span><span class="s2">"http://localhost:8083/auth/realms/odari"</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--client-id<span class="w"> </span>&lt;CLIENT_ID&gt;<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--client-secret<span class="w"> </span>&lt;CLIENT_SECRET&gt;<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--api-base-url<span class="w"> </span>&lt;API_BASE_URL&gt;<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--api-name<span class="w"> </span><span class="s2">"&lt;API_NAME&gt;"</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--output<span class="w"> </span>postman_collection.json
+</pre></div>
+</div>
+<p>The script generates a Postman collection with:</p>
+<ol class="arabic simple">
+<li><p><strong>Get JWT Token</strong> – POST to Keycloak token endpoint using Client Credentials grant. A test script automatically saves the <code class="docutils literal notranslate"><span class="pre">access_token</span></code> to a collection variable.</p></li>
+<li><p><strong>List Resources</strong> – GET request to the API’s root resource. Uses the <code class="docutils literal notranslate"><span class="pre">{{access_token}}</span></code> variable in the <code class="docutils literal notranslate"><span class="pre">Authorization:</span> <span class="pre">Bearer</span></code> header.</p></li>
+<li><p><strong>Create Resource</strong> – POST request to create a new resource with a sample body.</p></li>
+</ol>
+<p><strong>Step 4: Import instructions</strong></p>
+<p>After generating, explain:</p>
+<ol class="arabic simple">
+<li><p><strong>Import</strong>: File &gt; Import &gt; select the generated JSON file</p></li>
+<li><p><strong>SSL</strong>: Go to Settings &gt; General &gt; turn <strong>off</strong> “SSL certificate verification” (Kong uses a self-signed cert on localhost)</p></li>
+<li><p><strong>Run in order</strong>: Execute “Get JWT Token” first – the test script auto-saves the token. Then run the API requests.</p></li>
+<li><p><strong>Token refresh</strong>: The token expires after 300 seconds. Re-run the token request if you get a 401.</p></li>
+<li><p><strong>Collection Runner</strong>: Use Postman’s Collection Runner to execute all requests in sequence.</p></li>
+</ol>
+</section>
+</section>
+<section id="contextual-next-steps">
+<h2>Contextual Next Steps<a class="headerlink" href="#contextual-next-steps" title="Link to this heading">¶</a></h2>
+<p>Present these options using <code class="docutils literal notranslate"><span class="pre">ask_questions</span></code>:</p>
+<div class="table-wrapper colwidths-auto docutils container">
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>#</p></th>
+<th class="head"><p>Next Step</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>1</p></td>
+<td><p><strong>View IdentityConfig resources</strong> – List and inspect identity configurations</p></td>
+</tr>
+<tr class="row-odd"><td><p>2</p></td>
+<td><p><strong>View Keycloak UI</strong> – Open the Keycloak admin console</p></td>
+</tr>
+<tr class="row-even"><td><p>3</p></td>
+<td><p><strong>Add component roles</strong> – Define roles through the component (static or dynamic)</p></td>
+</tr>
+<tr class="row-odd"><td><p>4</p></td>
+<td><p><strong>Create a Keycloak client</strong> – Set up an external client for the Client Credentials flow</p></td>
+</tr>
+<tr class="row-even"><td><p>5</p></td>
+<td><p><strong>Check Keycloak-Kong JWT integration</strong> – Verify token validation works end-to-end</p></td>
+</tr>
+<tr class="row-odd"><td><p>6</p></td>
+<td><p><strong>Generate a Postman collection</strong> – Create authenticated API test collection</p></td>
+</tr>
+<tr class="row-even"><td><p>7</p></td>
+<td><p><strong>View ExposedAPIs</strong> – Check API access control settings (apiKeyVerification)</p></td>
+</tr>
+<tr class="row-odd"><td><p>8</p></td>
+<td><p><strong>View deployed components</strong> – See component status and security configuration</p></td>
+</tr>
+<tr class="row-even"><td><p>9</p></td>
+<td><p><strong>Return to main menu</strong></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+</section>
+
+        </article>
+      </div>
+      <footer>
+        
+        <div class="related-pages">
+          <a class="next-page" href="09-run-bdd-tests.html">
+              <div class="page-info">
+                <div class="context">
+                  <span>Next</span>
+                </div>
+                <div class="title">Run BDD Feature Tests</div>
+              </div>
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+            </a>
+          <a class="prev-page" href="07-view-observability.html">
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+              <div class="page-info">
+                <div class="context">
+                  <span>Previous</span>
+                </div>
+                
+                <div class="title">View Observability Data</div>
+                
+              </div>
+            </a>
+        </div>
+        <div class="bottom-of-page">
+          <div class="left-details">
+            <div class="copyright">
+                Copyright &#169; 2026, TM Forum ODA-Component Accelerator project
+            </div>
+            Made with <a href="https://www.sphinx-doc.org/">Sphinx</a> and <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
+            
+            <a href="https://github.com/pradyunsg/furo">Furo</a>
+            
+          </div>
+          <div class="right-details">
+            
+          </div>
+        </div>
+        
+      </footer>
+    </div>
+    <aside class="toc-drawer">
+      
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            On this page
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">Manage Identities</a><ul>
+<li><a class="reference internal" href="#table-of-contents">Table of Contents</a></li>
+<li><a class="reference internal" href="#identity-management-in-oda-canvas">Identity Management in ODA Canvas</a></li>
+<li><a class="reference internal" href="#view-identityconfig-resources">View IdentityConfig Resources</a><ul>
+<li><a class="reference internal" href="#listing-identityconfigs">Listing IdentityConfigs</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#identityconfig-drill-down">IdentityConfig Drill-Down</a></li>
+<li><a class="reference internal" href="#understanding-the-crd-schema">Understanding the CRD Schema</a></li>
+<li><a class="reference internal" href="#add-component-roles">Add Component Roles</a><ul>
+<li><a class="reference internal" href="#option-a-static-roles-component-yaml">Option A: Static Roles (Component YAML)</a></li>
+<li><a class="reference internal" href="#option-b-dynamic-roles-permissionspecificationsetapi">Option B: Dynamic Roles (permissionSpecificationSetAPI)</a></li>
+<li><a class="reference internal" href="#when-to-use-each-approach">When to use each approach</a></li>
+<li><a class="reference internal" href="#important">Important</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#keycloak-ui-access">Keycloak UI Access</a><ul>
+<li><a class="reference internal" href="#prerequisites">Prerequisites</a></li>
+<li><a class="reference internal" href="#retrieve-admin-credentials">Retrieve Admin Credentials</a></li>
+<li><a class="reference internal" href="#access-the-keycloak-console">Access the Keycloak Console</a></li>
+<li><a class="reference internal" href="#navigating-keycloak">Navigating Keycloak</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#create-a-keycloak-client">Create a Keycloak Client</a><ul>
+<li><a class="reference internal" href="#interactive-workflow">Interactive Workflow</a></li>
+<li><a class="reference internal" href="#explaining-client-scopes">Explaining Client Scopes</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#verify-keycloak-kong-jwt-integration">Verify Keycloak-Kong JWT Integration</a><ul>
+<li><a class="reference internal" href="#how-kong-jwt-validation-works">How Kong JWT Validation Works</a></li>
+<li><a class="reference internal" href="#step-1-check-if-jwt-kongplugins-exist">Step 1: Check if JWT KongPlugins exist</a></li>
+<li><a class="reference internal" href="#step-2-check-for-existing-kongconsumers-and-jwt-credentials">Step 2: Check for existing KongConsumers and JWT credentials</a></li>
+<li><a class="reference internal" href="#step-3-if-no-integration-exists-troubleshooting">Step 3: If no integration exists — troubleshooting</a></li>
+<li><a class="reference internal" href="#step-4-test-the-integration">Step 4: Test the integration</a></li>
+<li><a class="reference internal" href="#explaining-the-bridge">Explaining the Bridge</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#generate-a-postman-collection">Generate a Postman Collection</a><ul>
+<li><a class="reference internal" href="#id1">Interactive Workflow</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#contextual-next-steps">Contextual Next Steps</a></li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
+      
+      
+    </aside>
+  </div>
+</div><script src="../../../../_static/documentation_options.js?v=13610682"></script>
+    <script src="../../../../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../../../../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../../../../_static/scripts/furo.js?v=46bd48cc"></script>
+    <script src="../../../../_static/js/default-dark.js?v=658bd94d"></script>
+    </body>
+</html>

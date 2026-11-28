@@ -1,0 +1,1314 @@
+<!doctype html>
+<html class="no-js" lang="en" data-content_root="../../">
+  <head><meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="index" title="Index" href="../../genindex.html"><link rel="search" title="Search" href="../../search.html"><link rel="next" title="HashiCorp Vault installation" href="CanvasVault/README.html"><link rel="prev" title="Use-Case Naming Conventions" href="../usecase-library/use-case-naming-conventions.html">
+        <link rel="prefetch" href="../../_static/ODA-Canvas.svg" as="image">
+        <link rel="prefetch" href="../../_static/ODA-Canvas-dark.svg" as="image">
+
+    <!-- Generated with Sphinx 9.2.0 and Furo 2025.12.19 -->
+        <title>ODA Canvas installation - ODA Canvas and Components</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=d75fae25" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/furo.css?v=7bdb33bb" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/furo-extensions.css?v=8dab3a3b" />
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/custom.css?v=b2790eba" />
+    
+    
+
+
+<style>
+  body {
+    --color-code-background: #f0f0f0;
+  --color-code-foreground: black;
+  
+  }
+  @media not print {
+    body[data-theme="dark"] {
+      --color-code-background: #0d1117;
+  --color-code-foreground: #e6edf3;
+  
+    }
+    @media (prefers-color-scheme: dark) {
+      body:not([data-theme="light"]) {
+        --color-code-background: #0d1117;
+  --color-code-foreground: #e6edf3;
+  
+      }
+    }
+  }
+</style></head>
+  <body>
+    
+    <script>
+      document.body.dataset.theme = localStorage.getItem("theme") || "auto";
+    </script>
+    
+
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="svg-toc" viewBox="0 0 24 24">
+    <title>Contents</title>
+    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024">
+      <path d="M408 442h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8zm-8 204c0 4.4 3.6 8 8 8h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56zm504-486H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 632H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zM115.4 518.9L271.7 642c5.8 4.6 14.4.5 14.4-6.9V388.9c0-7.4-8.5-11.5-14.4-6.9L115.4 505.1a8.74 8.74 0 0 0 0 13.8z"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+    <title>Menu</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-menu">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+    <title>Expand</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-chevron-right">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </symbol>
+  <symbol id="svg-sun" viewBox="0 0 24 24">
+    <title>Light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="feather-sun">
+      <circle cx="12" cy="12" r="5"></circle>
+      <line x1="12" y1="1" x2="12" y2="3"></line>
+      <line x1="12" y1="21" x2="12" y2="23"></line>
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+      <line x1="1" y1="12" x2="3" y2="12"></line>
+      <line x1="21" y1="12" x2="23" y2="12"></line>
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon" viewBox="0 0 24 24">
+    <title>Dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-moon">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
+    </svg>
+  </symbol>
+  <symbol id="svg-sun-with-moon" viewBox="0 0 24 24">
+    <title>Auto light/dark, in light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path style="opacity: 50%" d="M 5.411 14.504 C 5.471 14.504 5.532 14.504 5.591 14.504 C 3.639 16.319 4.383 19.569 6.931 20.352 C 7.693 20.586 8.512 20.551 9.25 20.252 C 8.023 23.207 4.056 23.725 2.11 21.184 C 0.166 18.642 1.702 14.949 4.874 14.536 C 5.051 14.512 5.231 14.5 5.411 14.5 L 5.411 14.504 Z"/>
+      <line x1="14.5" y1="3.25" x2="14.5" y2="1.25"/>
+      <line x1="14.5" y1="15.85" x2="14.5" y2="17.85"/>
+      <line x1="10.044" y1="5.094" x2="8.63" y2="3.68"/>
+      <line x1="19" y1="14.05" x2="20.414" y2="15.464"/>
+      <line x1="8.2" y1="9.55" x2="6.2" y2="9.55"/>
+      <line x1="20.8" y1="9.55" x2="22.8" y2="9.55"/>
+      <line x1="10.044" y1="14.006" x2="8.63" y2="15.42"/>
+      <line x1="19" y1="5.05" x2="20.414" y2="3.636"/>
+      <circle cx="14.5" cy="9.55" r="3.6"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon-with-sun" viewBox="0 0 24 24">
+    <title>Auto light/dark, in dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path d="M 8.282 7.007 C 8.385 7.007 8.494 7.007 8.595 7.007 C 5.18 10.184 6.481 15.869 10.942 17.24 C 12.275 17.648 13.706 17.589 15 17.066 C 12.851 22.236 5.91 23.143 2.505 18.696 C -0.897 14.249 1.791 7.786 7.342 7.063 C 7.652 7.021 7.965 7 8.282 7 L 8.282 7.007 Z"/>
+      <line style="opacity: 50%" x1="18" y1="3.705" x2="18" y2="2.5"/>
+      <line style="opacity: 50%" x1="18" y1="11.295" x2="18" y2="12.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="4.816" x2="14.464" y2="3.964"/>
+      <line style="opacity: 50%" x1="20.711" y1="10.212" x2="21.563" y2="11.063"/>
+      <line style="opacity: 50%" x1="14.205" y1="7.5" x2="13.001" y2="7.5"/>
+      <line style="opacity: 50%" x1="21.795" y1="7.5" x2="23" y2="7.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="10.184" x2="14.464" y2="11.036"/>
+      <line style="opacity: 50%" x1="20.711" y1="4.789" x2="21.563" y2="3.937"/>
+      <circle style="opacity: 50%" cx="18" cy="7.5" r="2.169"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-pencil" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-pencil-code">
+      <path d="M4 20h4l10.5 -10.5a2.828 2.828 0 1 0 -4 -4l-10.5 10.5v4" />
+      <path d="M13.5 6.5l4 4" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+  <symbol id="svg-eye" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-eye-code">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M10 12a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" />
+      <path
+        d="M11.11 17.958c-3.209 -.307 -5.91 -2.293 -8.11 -5.958c2.4 -4 5.4 -6 9 -6c3.6 0 6.6 2 9 6c-.21 .352 -.427 .688 -.647 1.008" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+</svg>
+
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle site navigation sidebar">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc" aria-label="Toggle table of contents sidebar">
+<label class="overlay sidebar-overlay" for="__navigation"></label>
+<label class="overlay toc-overlay" for="__toc"></label>
+
+<a class="skip-to-content muted-link" href="#furo-main-content">Skip to content</a>
+
+
+
+<div class="page">
+  <header class="mobile-header">
+    <div class="header-left">
+      <label class="nav-overlay-icon" for="__navigation">
+        <span class="icon"><svg><use href="#svg-menu"></use></svg></span>
+      </label>
+    </div>
+    <div class="header-center">
+      <a href="../../index.html"><div class="brand">ODA Canvas and Components</div></a>
+    </div>
+    <div class="header-right">
+      <div class="theme-toggle-container theme-toggle-header">
+        <button class="theme-toggle" aria-label="Toggle Light / Dark / Auto color theme">
+          <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+          <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+          <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+          <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+        </button>
+      </div>
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
+        <span class="icon"><svg><use href="#svg-toc"></use></svg></span>
+      </label>
+    </div>
+  </header>
+  <aside class="sidebar-drawer">
+    <div class="sidebar-container">
+      
+      <div class="sidebar-sticky"><a class="sidebar-brand" href="../../index.html">
+  <div class="sidebar-logo-container">
+    <img class="sidebar-logo only-light" src="../../_static/ODA-Canvas.svg" alt="Light Logo"/>
+    <img class="sidebar-logo only-dark" src="../../_static/ODA-Canvas-dark.svg" alt="Dark Logo"/>
+  </div>
+  
+  <span class="sidebar-brand-text">ODA Canvas and Components</span>
+  
+</a><form class="sidebar-search-container" method="get" action="../../search.html" role="search">
+  <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
+  <input type="hidden" name="check_keywords" value="yes">
+  <input type="hidden" name="area" value="default">
+</form>
+<div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
+  <p class="caption" role="heading"><span class="caption-text">Get started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../README.html">Open Digital Architecture Canvas</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../docs/training-videos/index.html">Training videos</a><input aria-label="Toggle navigation of Training videos" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../docs/training-videos/part-1.html">Introduction to the ODA Canvas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../docs/training-videos/part-2.html">How do I buy or build an ODA Canvas?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../docs/training-videos/part-3.html">Authentication and Authorization in the ODA Canvas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../docs/training-videos/part-4.html">The AI-Native ODA Canvas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../docs/training-videos/part-5.html">Observability in the ODA Canvas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../docs/training-videos/part-7.html">The ODA Agent Skills Marketplace</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../docs/Getting_started.html">Getting started checklist for new members of ODA-CA</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../docs/Playbook.html">Introduction to the ODA Component Accelerator Project (ODA-CA)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Concepts and design</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../Canvas-design.html">ODA Canvas Design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../SecurityPrinciples.html">Open Digital Architecture Reference Implementation (RI) Security Principles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Authentication-design.html">Authentication design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Observability-design.html">Observability design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Event-based-integration-design.html">Event based integration design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../AI-Native-Canvas-design.html">AI-Native Canvas design</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Use cases</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../usecase-library/README.html">ODA Canvas - Use-Case Library</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../usecase-library/UC001-Install-Canvas.html">Install Canvas use case</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../usecase-library/UC002-Manage-Components.html">Manage Components use case</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../usecase-library/UC003-Configure-Exposed-APIs.html">Configure Exposed APIs use-case</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../usecase-library/UC004-Configure-Published-Events.html">Configure Published Events use-case</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../usecase-library/UC005-Configure-Clients-and-Roles.html">Configure Clients and Roles use case</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../usecase-library/UC006-Configure-Observability.html">Configure Observability use case</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../usecase-library/UC007-Configure-Dependent-APIs.html">Configure dependent APIs use case</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../usecase-library/UC008-Configure-Subscribed-Events.html">Configure Subscribed Events use-case</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../usecase-library/UC009-Internal-Authentication.html">Internal authentication use-case</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../usecase-library/UC010-External-Authentication.html">External authentication use-case</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../usecase-library/UC011-View-Technical-Observability.html">View technical observability use-case</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../usecase-library/UC012-View-Business-Observability.html">View business observability use-case</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../usecase-library/UC013-Upgrade-Canvas.html">Upgrade Canvas use case</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../usecase-library/UC014-Secrets-Management-JWT-based.html">Secrets Management for Component</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../usecase-library/UC016-ODA-Component-and-API-Registry.html">UC016 - ODA Component and API Inventory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../usecase-library/use-case-naming-conventions.html">Use-Case Naming Conventions</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Install and operate</span></p>
+<ul class="current">
+<li class="toctree-l1 current has-children current-page"><a class="current reference internal" href="#">ODA Canvas installation</a><input aria-label="Toggle navigation of ODA Canvas installation" checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="CanvasVault/README.html">HashiCorp Vault installation</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="azure/README.html">Deployment Guide for TM Forum ODA Canvas on Azure</a><input aria-label="Toggle navigation of Deployment Guide for TM Forum ODA Canvas on Azure" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" role="switch" type="checkbox"/><label for="toctree-checkbox-3"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="azure/automated/automated_install_azure_README.html">End-to-End Deployment and Observability Guide for TM Forum ODA Canvas on Azure</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="prerequisites/README.html">Prerequisites installation</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../release-notes/ReleaseNotes.html">Component Specification Release Notes</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Canvas operators</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../source/operators/README.html">ODA Canvas Operators</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../source/operators/TMFOP001-Component-Management/README.html">TMFOP001 Component Management Operators</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../source/operators/TMFOP002-API-Management/README.html">TMFOP002 API Management Operators</a><input aria-label="Toggle navigation of TMFOP002 API Management Operators" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" role="switch" type="checkbox"/><label for="toctree-checkbox-4"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../source/operators/TMFOP002-API-Management/apache-apisix/README.html">Apache APISIX API Management Operator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../source/operators/TMFOP002-API-Management/azure-apim/README.html">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../source/operators/TMFOP002-API-Management/azure-apim/README.html#operator-architecture">Operator Architecture</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../source/operators/TMFOP002-API-Management/azure-apim/README.html#key-components">Key Components</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../source/operators/TMFOP002-API-Management/azure-apim/README.html#event-handling-workflow">Event Handling Workflow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../source/operators/TMFOP002-API-Management/azure-apim/README.html#code-structure-and-functions">Code Structure and Functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../source/operators/TMFOP002-API-Management/azure-apim/README.html#interaction-with-azure-services">Interaction with Azure Services</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../source/operators/TMFOP002-API-Management/azure-apim/README.html#security-considerations">Security Considerations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../source/operators/TMFOP002-API-Management/azure-apim/README.html#testing-and-debugging">Testing and Debugging</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../source/operators/TMFOP002-API-Management/azure-apim/README.html#limitations-and-future-enhancements">Limitations and Future Enhancements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../source/operators/TMFOP002-API-Management/azure-apim/README.html#conclusion">Conclusion</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../source/operators/TMFOP002-API-Management/azure-apim/README.html#key-takeaways">Key Takeaways:</a><input aria-label="Toggle navigation of Key Takeaways:" class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" role="switch" type="checkbox"/><label for="toctree-checkbox-5"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../source/operators/TMFOP002-API-Management/azure-apim/automated/automated_apiManagement_README.html">Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../source/operators/TMFOP002-API-Management/azure-apim/automated/automated_apiManagement_README.html#operator-architecture">Operator Architecture</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../source/operators/TMFOP002-API-Management/azure-apim/automated/automated_apiManagement_README.html#key-components">Key Components</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../source/operators/TMFOP002-API-Management/azure-apim/automated/automated_apiManagement_README.html#event-handling-workflow">Event Handling Workflow</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../source/operators/TMFOP002-API-Management/azure-apim/automated/automated_apiManagement_README.html#code-structure-and-functions">Code Structure and Functions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../source/operators/TMFOP002-API-Management/azure-apim/automated/automated_apiManagement_README.html#interaction-with-azure-services">Interaction with Azure Services</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../source/operators/TMFOP002-API-Management/azure-apim/automated/automated_apiManagement_README.html#security-considerations">Security Considerations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../source/operators/TMFOP002-API-Management/azure-apim/automated/automated_apiManagement_README.html#testing-and-debugging">Testing and Debugging</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../source/operators/TMFOP002-API-Management/azure-apim/automated/automated_apiManagement_README.html#limitations-and-future-enhancements">Limitations and Future Enhancements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../source/operators/TMFOP002-API-Management/azure-apim/automated/automated_apiManagement_README.html#conclusion">Conclusion</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../source/operators/TMFOP002-API-Management/azure-apim/automated/automated_apiManagement_README.html#key-takeaways">Key Takeaways:</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../source/operators/TMFOP002-API-Management/istio/README.html">API Operator for Istio</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../source/operators/TMFOP002-API-Management/kong/README.html">Kubernetes Kong API Lifecycle Management Operator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../source/operators/TMFOP002-API-Management/whalecloud-apim/README.html">API Operator apig - Introduction</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../source/operators/TMFOP003-Identity-Config/README.html">TMFOP003 Identity Config Operators</a><input aria-label="Toggle navigation of TMFOP003 Identity Config Operators" class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" role="switch" type="checkbox"/><label for="toctree-checkbox-6"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../source/operators/TMFOP003-Identity-Config/LOGGING-ENHANCEMENTS.html">Enhanced Logging for Identity Config Operator and Listener</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../source/operators/TMFOP003-Identity-Config/README-PermissionSpecificationSet.html">Identity Config Operator - Permission Specification Set Support</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../source/operators/TMFOP003-Identity-Config/keycloak/README.html">Identity Config operator for Keycloak - Introduction</a><input aria-label="Toggle navigation of Identity Config operator for Keycloak - Introduction" class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" role="switch" type="checkbox"/><label for="toctree-checkbox-7"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../source/operators/TMFOP003-Identity-Config/keycloak/identity-listener-keycloak/README.html">Identity Listener Keycloak</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../source/operators/TMFOP003-Identity-Config/keycloak/identity-listener-keycloak/README.html#buildautomation-and-versioning">Buildautomation and Versioning</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../source/operators/TMFOP004-Credentials-Management/README.html">TMFOP004 Credentials Management Operators</a><input aria-label="Toggle navigation of TMFOP004 Credentials Management Operators" class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" role="switch" type="checkbox"/><label for="toctree-checkbox-8"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../source/operators/TMFOP004-Credentials-Management/credentials-management/README.html">Credentials Management Operator for Kubernetes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../source/operators/TMFOP004-Credentials-Management/credentials-management/README.html#installation">Installation</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../source/operators/TMFOP005-Dependency-Management/README.html">TMFOP005 Dependency Management Operators</a><input aria-label="Toggle navigation of TMFOP005 Dependency Management Operators" class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" role="switch" type="checkbox"/><label for="toctree-checkbox-9"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../source/operators/TMFOP005-Dependency-Management/dependency-management-using-keycloak-authorization/README.html">Dependency Management Operator — Keycloak Authorization</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../source/operators/TMFOP005-Dependency-Management/simple-dependency-management/README.html">Simple Dependency Management Operator</a><input aria-label="Toggle navigation of Simple Dependency Management Operator" class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" role="switch" type="checkbox"/><label for="toctree-checkbox-10"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../source/operators/TMFOP005-Dependency-Management/simple-dependency-management/docker/README.html">DependentAPI Simple Operator</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../source/operators/TMFOP005-Dependency-Management/simple-dependency-management/docker/README.html#buildautomation-and-versioning">Buildautomation and Versioning</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../source/operators/TMFOP006-Event-Management/README.html">TMFOP006 Event Management Operators</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../source/operators/TMFOP007-Secrets-Management/README.html">TMFOP007 Secrets Management Operators</a><input aria-label="Toggle navigation of TMFOP007 Secrets Management Operators" class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" role="switch" type="checkbox"/><label for="toctree-checkbox-11"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../source/operators/TMFOP007-Secrets-Management/vault/README.html">Vault Secrets Management Operator</a><input aria-label="Toggle navigation of Vault Secrets Management Operator" class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" role="switch" type="checkbox"/><label for="toctree-checkbox-12"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../source/operators/TMFOP007-Secrets-Management/vault/docker/README.html">Secrets Management Operator HC</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../source/operators/TMFOP007-Secrets-Management/vault/docker/README.html#buildautomation-and-versioning">Buildautomation and Versioning</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../source/operators/TMFOP007-Secrets-Management/vault/sidecar/docker/README.html">Secrets Management Sidecar</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../source/operators/TMFOP007-Secrets-Management/vault/sidecar/docker/README.html#buildautomation-and-versioning">Buildautomation and Versioning</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../source/operators/TMFOP008-OAuth2-Config/README.html">TMFOP008 OAuth2 Config Operators</a><input aria-label="Toggle navigation of TMFOP008 OAuth2 Config Operators" class="toctree-checkbox" id="toctree-checkbox-13" name="toctree-checkbox-13" role="switch" type="checkbox"/><label for="toctree-checkbox-13"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../source/operators/TMFOP008-OAuth2-Config/envoy-filter/README.html">OAuth2 EnvoyFilter Operator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../source/operators/TMFOP008-OAuth2-Config/envoy-filter/README.html#error-analysis">error analysis</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../source/operators/TMFOP008-OAuth2-Config/envoy-filter/README.html#deploy">deploy</a><input aria-label="Toggle navigation of deploy" class="toctree-checkbox" id="toctree-checkbox-14" name="toctree-checkbox-14" role="switch" type="checkbox"/><label for="toctree-checkbox-14"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../source/operators/TMFOP008-OAuth2-Config/envoy-filter/OAUTH2DEMO.html">OAuth2 EnvoyFilter Demo</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../source/operators/TMFOP008-OAuth2-Config/envoy-filter/OAUTH2DEMO.html#closing">closing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../source/operators/TMFOP008-OAuth2-Config/envoy-filter/OAUTH2DEMO.html#error-analysis">error analysis</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../source/operators/TMFOP008-OAuth2-Config/envoy-filter/docker/README.html">OAuth2 EnvoyFilter Operator</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../source/operators/TMFOP008-OAuth2-Config/envoy-filter/docker/README.html#buildautomation-and-versioning">Buildautomation and Versioning</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../source/operators/TMFOP009-Model-as-a-Service/README.html">TMFOP009 Model-as-a-Service Operators</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../source/operators/TMFOP010-Disruption-Budget-Management/README.html">TMFOP010 Disruption Budget Management Operators</a><input aria-label="Toggle navigation of TMFOP010 Disruption Budget Management Operators" class="toctree-checkbox" id="toctree-checkbox-15" name="toctree-checkbox-15" role="switch" type="checkbox"/><label for="toctree-checkbox-15"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../source/operators/TMFOP010-Disruption-Budget-Management/pdb-management/README.html">PDB Management Operator</a><input aria-label="Toggle navigation of PDB Management Operator" class="toctree-checkbox" id="toctree-checkbox-16" name="toctree-checkbox-16" role="switch" type="checkbox"/><label for="toctree-checkbox-16"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../source/operators/TMFOP010-Disruption-Budget-Management/pdb-management/MAINTAINERS.html">Maintainers</a></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../source/operators/TMFOP010-Disruption-Budget-Management/pdb-management/config/grafana/README.html">PDB Management Operator - Grafana Dashboards</a><input aria-label="Toggle navigation of PDB Management Operator - Grafana Dashboards" class="toctree-checkbox" id="toctree-checkbox-17" name="toctree-checkbox-17" role="switch" type="checkbox"/><label for="toctree-checkbox-17"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="../source/operators/TMFOP010-Disruption-Budget-Management/pdb-management/config/grafana/DASHBOARD_IMPORT_GUIDE.html">PDB Management Operator - Grafana Dashboard Import Guide</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../source/operators/TMFOP010-Disruption-Budget-Management/pdb-management/config/mcp/README.html">MCP Server Configuration</a></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../source/operators/TMFOP010-Disruption-Budget-Management/pdb-management/docs/README.html">PDB Management Operator</a><input aria-label="Toggle navigation of PDB Management Operator" class="toctree-checkbox" id="toctree-checkbox-18" name="toctree-checkbox-18" role="switch" type="checkbox"/><label for="toctree-checkbox-18"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="../source/operators/TMFOP010-Disruption-Budget-Management/pdb-management/docs/MCP_INTEGRATION.html">MCP Server Integration</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../source/operators/TMFOP010-Disruption-Budget-Management/pdb-management/docs/OPERATIONAL_RUNBOOK.html">PDB Management Operator - Operational Runbook</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../source/operators/TMFOP010-Disruption-Budget-Management/pdb-management/docs/PERFORMANCE_AND_CACHING.html">PDB Management Operator - Performance and Caching</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../source/operators/TMFOP010-Disruption-Budget-Management/pdb-management/docs/TECHNICAL_DOCUMENTATION.html">PDB Management Operator - Technical Documentation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../source/operators/TMFOP010-Disruption-Budget-Management/pdb-management/docs/VERIFICATION.html">Test Verification and Performance Testing Guide</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../source/operators/TMFOP010-Disruption-Budget-Management/pdb-management/docs/WEBHOOK_DEPLOYMENT.html">Webhook Deployment Guide</a></li>
+</ul>
+</li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../source/operators/TMFOP010-Disruption-Budget-Management/pdb-management/examples/demo/README.html">Demo Examples for PDB Management Operator</a><input aria-label="Toggle navigation of Demo Examples for PDB Management Operator" class="toctree-checkbox" id="toctree-checkbox-19" name="toctree-checkbox-19" role="switch" type="checkbox"/><label for="toctree-checkbox-19"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="../source/operators/TMFOP010-Disruption-Budget-Management/pdb-management/examples/demo/DEMO_PRESENTATION_SCRIPT.html">PDB Management Operator - Complete Demo Presentation Script</a></li>
+</ul>
+</li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../source/operators/TMFOP010-Disruption-Budget-Management/pdb-management/toolsforlocal/README.html">PDB Management Operator - Demo Tools</a><input aria-label="Toggle navigation of PDB Management Operator - Demo Tools" class="toctree-checkbox" id="toctree-checkbox-20" name="toctree-checkbox-20" role="switch" type="checkbox"/><label for="toctree-checkbox-20"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="../source/operators/TMFOP010-Disruption-Budget-Management/pdb-management/toolsforlocal/PDB_RECREATION_GUIDE.html">🚀 PDB Instant Recreation Guide</a></li>
+<li class="toctree-l4 has-children"><a class="reference internal" href="../source/operators/TMFOP010-Disruption-Budget-Management/pdb-management/toolsforlocal/mcp/README.html">AI + MCP Integration Clients</a><input aria-label="Toggle navigation of AI + MCP Integration Clients" class="toctree-checkbox" id="toctree-checkbox-21" name="toctree-checkbox-21" role="switch" type="checkbox"/><label for="toctree-checkbox-21"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l5"><a class="reference internal" href="../source/operators/TMFOP010-Disruption-Budget-Management/pdb-management/toolsforlocal/mcp/CLAUDE_MCP_USAGE.html">Claude API + MCP Integration Usage Guide</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../source/operators/TMFOP010-Disruption-Budget-Management/pdb-management/toolsforlocal/mcp/README_GO_CLIENT.html">Claude MCP Client - Go Version</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="../source/operators/TMFOP010-Disruption-Budget-Management/pdb-management/toolsforlocal/observability/README.html">PDB Management Operator - Observability Stack</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../source/operators/TMFOP010-Disruption-Budget-Management/pdb-management/web/README.html">ODA Canvas - PDB Management MCP Web Interface</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../source/operators/TMFOP011-Carbon-Management/README.html">TMFOP011 Carbon Management Operators</a><input aria-label="Toggle navigation of TMFOP011 Carbon Management Operators" class="toctree-checkbox" id="toctree-checkbox-22" name="toctree-checkbox-22" role="switch" type="checkbox"/><label for="toctree-checkbox-22"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../source/operators/TMFOP011-Carbon-Management/carbon-management/README.html">Carbon Management Operator</a><input aria-label="Toggle navigation of Carbon Management Operator" class="toctree-checkbox" id="toctree-checkbox-23" name="toctree-checkbox-23" role="switch" type="checkbox"/><label for="toctree-checkbox-23"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../source/operators/TMFOP011-Carbon-Management/carbon-management/carbon-aware-scaling-scenario.html">Carbon-Aware Scaling Scenario: ProductOrderCaptureAndValidation</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Helm charts</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../charts/api-operator-istio/README.html">api-operator-istio</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../charts/apisix-gateway/README.html">apisix-gateway</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../charts/canvas-info-service/README.html">canvas-info-service</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../charts/canvas-oda/README.html">canvas-oda</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../charts/canvas-vault/README.html">canvas-vault</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../charts/carbon-intensity-service/README.html">carbon-intensity-service</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../charts/carbon-management-operator/README.html">carbon-management-operator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../charts/cert-manager-init/README.html">cert-manager-init</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../charts/component-operator/README.html">component-operator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../charts/credentialsmanagement-operator/README.html">Credentials Management Operator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../charts/dependentapi-simple-operator/README.html">dependentapi-simple-operator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../charts/identityconfig-operator-keycloak/README.html">identityconfig-operator-keycloak</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../charts/kong-gateway/README.html">kong-gateway</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../charts/observability-stack/README.html">ODA Canvas Observability Stack</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../charts/oda-webhook/README.html">oda-webhook</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../charts/pdb-management-operator/README.html">PDB Management Operator Helm Chart</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../charts/resource-inventory/README.html">canvas-resource-inventory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../charts/secretsmanagement-operator/README.html">secretsmanagement-operator</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Canvas services and tools</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../source/README.html">ODA Canvas source code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../canvas-portal-v2/README.html">Canvas Portal v2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../canvas-portal/README.html">Canvas portal</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../canvas-portal/README.html#how-to-install">How to install</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../canvas-portal/README.html#uninstall">Uninstall</a><input aria-label="Toggle navigation of Uninstall" class="toctree-checkbox" id="toctree-checkbox-24" name="toctree-checkbox-24" role="switch" type="checkbox"/><label for="toctree-checkbox-24"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../canvas-portal/portal-web/README.html">oda-dashboard</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../docs/component-registry/README.html">Component-Registry</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../docs/component-registry/README.html#multi-canvas-support">Multi-Canvas Support</a><input aria-label="Toggle navigation of Multi-Canvas Support" class="toctree-checkbox" id="toctree-checkbox-25" name="toctree-checkbox-25" role="switch" type="checkbox"/><label for="toctree-checkbox-25"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../docs/component-registry/SECURED-SETUP-COMPREG.html">Secure Setup of Component-Registry</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../source/services/ComponentRegistry/README.html">TMF639 Resource Inventory Management Service</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../source/services/ComponentRegistry/README.html#buildautomation-and-versioning">Buildautomation and Versioning</a><input aria-label="Toggle navigation of Buildautomation and Versioning" class="toctree-checkbox" id="toctree-checkbox-26" name="toctree-checkbox-26" role="switch" type="checkbox"/><label for="toctree-checkbox-26"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../source/services/ComponentRegistry/NOTES.html">deploy kc init compreg</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../source/services/ComponentRegistry/OAUTH2_README.html">OAuth2 Authentifizierung für Component Registry</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../source/tmf-services/MCP_Resource_Inventory/README.html">TMF639 Resource Inventory MCP Server with Helm Integration</a><input aria-label="Toggle navigation of TMF639 Resource Inventory MCP Server with Helm Integration" class="toctree-checkbox" id="toctree-checkbox-27" name="toctree-checkbox-27" role="switch" type="checkbox"/><label for="toctree-checkbox-27"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../source/tmf-services/MCP_Resource_Inventory/SETUP_COMPLETE.html">TMF639 Resource Inventory MCP Server Setup Complete</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../source/tmf-services/TMF628_Performance_Management/README.html">TMF628 Performance Management API - Carbon Intensity Service</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../source/tmf-services/TMF638_Service_Inventory/README.html">OpenAPI Generated JavaScript/Express Server</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../source/tmf-services/TMF638_Service_Inventory/README.html#buildautomation-and-versioning">Buildautomation and Versioning</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../source/tmf-services/TMF639_Resource_Inventory/README.html">TMF639 Resource Inventory Management API</a><input aria-label="Toggle navigation of TMF639 Resource Inventory Management API" class="toctree-checkbox" id="toctree-checkbox-28" name="toctree-checkbox-28" role="switch" type="checkbox"/><label for="toctree-checkbox-28"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../source/tmf-services/TMF639_Resource_Inventory/test/README.html">TMF639 Resource Inventory Test Suite</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../source/webhooks/README.html">ODA Component webhooks</a><input aria-label="Toggle navigation of ODA Component webhooks" class="toctree-checkbox" id="toctree-checkbox-29" name="toctree-checkbox-29" role="switch" type="checkbox"/><label for="toctree-checkbox-29"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../source/webhooks/command-line/README.html">Command-line tool for Conversion Webhook</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../source/webhooks/implementation/README.html">Implementation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../source/webhooks/implementation/README.html#buildautomation-and-versioning">Buildautomation and Versioning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../source/webhooks/system-tests/README.html">System tests</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../source/webhooks/unit-tests/README.html">Unit tests for Webhook</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../source/utilities/README.html">ODA Canvas utilities</a><input aria-label="Toggle navigation of ODA Canvas utilities" class="toctree-checkbox" id="toctree-checkbox-30" name="toctree-checkbox-30" role="switch" type="checkbox"/><label for="toctree-checkbox-30"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../source/utilities/canvas-log-viewer/README.html">Canvas Log Viewer utility</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../source/utilities/canvas-log-viewer/README.html#installation">Installation</a><input aria-label="Toggle navigation of Installation" class="toctree-checkbox" id="toctree-checkbox-31" name="toctree-checkbox-31" role="switch" type="checkbox"/><label for="toctree-checkbox-31"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../source/utilities/canvas-log-viewer/python_alternative/README.html">Python Canvas Log Viewer</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../source/utilities/component-viewer/README.html">Component Viewer utility</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../source/utilities/component-viewer/README.html#installation">Installation</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../demos/multi-canvas-service-discovery/README.html">Live-Demo Dependent API Resolution in a Multi-Canvas Scenario using TMF639</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../demos/multi-canvas-service-discovery/README.html#service-discovery-in-single-canvas-environment">Service Discovery in Single-Canvas Environment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../demos/multi-canvas-service-discovery/README.html#service-discovery-in-multi-canvas-environment">Service Discovery in Multi-Canvas Environment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../demos/multi-canvas-service-discovery/README.html#bdd-uc007-f002">BDD UC007-F002</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../demos/multi-canvas-service-discovery/README.html#from-bdd-uc007-f002-data-magenta-populate-and-green-verify-data-in-federated-product-catalog">From BDD UC007-F002 (data) -  [magenta] Populate and [green] verify data in federated product catalog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../demos/multi-canvas-service-discovery/README.html#green-show-access-of-r-cat-in-f-cat-logs">[green] show access of r-cat in f-cat logs:</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../demos/multi-canvas-service-discovery/README.html#cleanup-all">cleanup all</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../demos/multi-canvas-service-discovery/README.html#cleanup-all-ihc-dt-b-magenta">cleanup all IHC-DT-B (magenta)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../demos/multi-canvas-service-discovery/README.html#canvas-installation">Canvas installation</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../demos/multi-canvas-service-discovery/README.html#links">Links</a><input aria-label="Toggle navigation of Links" class="toctree-checkbox" id="toctree-checkbox-32" name="toctree-checkbox-32" role="switch" type="checkbox"/><label for="toctree-checkbox-32"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../demos/multi-canvas-service-discovery/COMPREG-MULTICANVAS.html">Live-Demo Dependent API Resolution in a Multi-Canvas Scenario using TMF639</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../demos/multi-canvas-service-discovery/COMPREG-MULTICANVAS.html#service-discovery-in-single-canvas-environment">Service Discovery in Single-Canvas Environment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../demos/multi-canvas-service-discovery/COMPREG-MULTICANVAS.html#service-discovery-in-multi-canvas-environment">Service Discovery in Multi-Canvas Environment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../demos/multi-canvas-service-discovery/COMPREG-MULTICANVAS.html#bdd-uc007-f002">BDD UC007-F002</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../demos/multi-canvas-service-discovery/COMPREG-MULTICANVAS.html#from-bdd-uc007-f002-data-magenta-populate-and-green-verify-data-in-federated-product-catalog">From BDD UC007-F002 (data) -  [magenta] Populate and [green] verify data in federated product catalog</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../demos/multi-canvas-service-discovery/COMPREG-MULTICANVAS.html#green-show-access-of-r-cat-in-f-cat-logs">[green] show access of r-cat in f-cat logs:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../demos/multi-canvas-service-discovery/COMPREG-MULTICANVAS.html#cleanup-all">cleanup all</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../demos/multi-canvas-service-discovery/COMPREG-MULTICANVAS.html#cleanup-all-ihc-dt-b-magenta">cleanup all IHC-DT-B (magenta)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../demos/multi-canvas-service-discovery/COMPREG-MULTICANVAS.html#canvas-installation">Canvas installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../demos/multi-canvas-service-discovery/COMPREG-MULTICANVAS.html#links">Links</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../demos/multi-canvas-service-discovery/COMPREG-SINGLECANVAS-SETUP.html">Live-Demo Dependent API Resolution in a Multi-Canvas Scenario using TMF639</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../demos/multi-canvas-service-discovery/COMPREG-SINGLECANVAS-SETUP.html#service-discovery-in-single-canvas-environment">Service Discovery in Single-Canvas Environment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../demos/multi-canvas-service-discovery/COMPREG-SINGLECANVAS-SETUP.html#service-discovery-in-multi-canvas-environment">Service Discovery in Multi-Canvas Environment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../demos/multi-canvas-service-discovery/COMPREG-SINGLECANVAS-SETUP.html#bdd-uc007-f002">BDD UC007-F002</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../demos/multi-canvas-service-discovery/COMPREG-SINGLECANVAS-SETUP.html#from-bdd-uc007-f002-data-magenta-populate-and-green-verify-data-in-federated-product-catalog">From BDD UC007-F002 (data) -  [magenta] Populate and [green] verify data in federated product catalog</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../demos/multi-canvas-service-discovery/COMPREG-SINGLECANVAS-SETUP.html#green-show-access-of-r-cat-in-f-cat-logs">[green] show access of r-cat in f-cat logs:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../demos/multi-canvas-service-discovery/COMPREG-SINGLECANVAS-SETUP.html#cleanup-all">cleanup all</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../demos/multi-canvas-service-discovery/COMPREG-SINGLECANVAS-SETUP.html#cleanup-all-ihc-dt-b-magenta">cleanup all IHC-DT-B (magenta)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../demos/multi-canvas-service-discovery/COMPREG-SINGLECANVAS-SETUP.html#canvas-installation">Canvas installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../demos/multi-canvas-service-discovery/COMPREG-SINGLECANVAS-SETUP.html#links">Links</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../demos/multi-canvas-service-discovery/COMPREG-SINGLECANVAS-SETUP.html#auth">AUTH</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../demos/multi-canvas-service-discovery/COMPREG-TESTS.html">Cluster IHC-DT-A (green)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../demos/multi-canvas-service-discovery/COMPREG-TESTS.html#cleanup">Cleanup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../demos/multi-canvas-service-discovery/COMPREG-TESTS.html#cleanup-canvas-completely">cleanup canvas completely</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../demos/multi-canvas-service-discovery/COMPREG-TESTS.html#install-default-canvas">Install default canvas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../demos/multi-canvas-service-discovery/COMPREG-TESTS.html#deploy-and-register-upstream-global-compreg">deploy and register upstream global-compreg</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../demos/multi-canvas-service-discovery/COMPREG-TESTS.html#test">Test</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../demos/multi-canvas-service-discovery/COMPREG-TESTS.html#bdd-uc007-f002">BDD UC007-F002</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../demos/multi-canvas-service-discovery/COMPREG-TESTS.html#from-bdd-uc007-f002-data-magenta-populate-and-green-verify-data-in-federated-product-catalog">From BDD UC007-F002 (data) -  [magenta] Populate and [green] verify data in federated product catalog</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../demos/multi-canvas-service-discovery/COMPREG-TESTS.html#green-show-access-of-r-cat-in-f-cat-logs">[green] show access of r-cat in f-cat logs:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../demos/multi-canvas-service-discovery/COMPREG-TESTS.html#cleanup-all">cleanup all</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../demos/multi-canvas-service-discovery/COMPREG-TESTS.html#cleanup-all-ihc-dt-b-magenta">cleanup all IHC-DT-B (magenta)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../demos/multi-canvas-service-discovery/COMPREG-TESTS.html#canvas-installation">Canvas installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../demos/multi-canvas-service-discovery/COMPREG-TESTS.html#links">Links</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../demos/multi-canvas-service-discovery/COMPREG-TESTS.html#auth">AUTH</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../demos/multi-canvas-service-discovery/COMPREG-TESTS.html#tests-with-kind">Tests with kind</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../demos/multi-canvas-service-discovery/COMPREG-TESTS.html#cucumber-reports">cucumber reports</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../demos/multi-canvas-service-discovery/COMPREG-TESTS_OLD.html">Cluster IHC-DT-A (green)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../demos/multi-canvas-service-discovery/COMPREG-TESTS_OLD.html#cleanup">Cleanup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../demos/multi-canvas-service-discovery/COMPREG-TESTS_OLD.html#cleanup-canvas-completely">cleanup canvas completely</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../demos/multi-canvas-service-discovery/COMPREG-TESTS_OLD.html#install-default-canvas">Install default canvas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../demos/multi-canvas-service-discovery/COMPREG-TESTS_OLD.html#manual-install-compreg">manual install compreg</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../demos/multi-canvas-service-discovery/COMPREG-TESTS_OLD.html#deploy-and-register-upstream-global-compreg">deploy and register upstream global-compreg</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../demos/multi-canvas-service-discovery/COMPREG-TESTS_OLD.html#test">Test</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../demos/multi-canvas-service-discovery/COMPREG-TESTS_OLD.html#bdd-uc007-f002">BDD UC007-F002</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../demos/multi-canvas-service-discovery/COMPREG-TESTS_OLD.html#from-bdd-uc007-f002-data-magenta-populate-and-green-verify-data-in-federated-product-catalog">From BDD UC007-F002 (data) -  [magenta] Populate and [green] verify data in federated product catalog</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../demos/multi-canvas-service-discovery/COMPREG-TESTS_OLD.html#green-show-access-of-r-cat-in-f-cat-logs">[green] show access of r-cat in f-cat logs:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../demos/multi-canvas-service-discovery/COMPREG-TESTS_OLD.html#cleanup-all">cleanup all</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../demos/multi-canvas-service-discovery/COMPREG-TESTS_OLD.html#cleanup-all-ihc-dt-b-magenta">cleanup all IHC-DT-B (magenta)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../demos/multi-canvas-service-discovery/COMPREG-TESTS_OLD.html#canvas-installation">Canvas installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../demos/multi-canvas-service-discovery/COMPREG-TESTS_OLD.html#links">Links</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../demos/multi-canvas-service-discovery/COMPREG-TESTS_OLD.html#auth">AUTH</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Testing</span></p>
+<ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../feature-definition-and-test-kit/README.html">ODA Canvas Features and Test Kit</a><input aria-label="Toggle navigation of ODA Canvas Features and Test Kit" class="toctree-checkbox" id="toctree-checkbox-33" name="toctree-checkbox-33" role="switch" type="checkbox"/><label for="toctree-checkbox-33"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../feature-definition-and-test-kit/Executing-tests.html">Installing and executing the BDD tests</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../feature-definition-and-test-kit/PDB-TEST-README.html">PDB Management Operator BDD Tests - Local Testing Guide</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../feature-definition-and-test-kit/features/step-definition/README.html">BDD Step Definition Framework and Guidelines</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../feature-definition-and-test-kit/testData/README.html">BDD test charts</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../feature-definition-and-test-kit/utilities/README.html">ODA Canvas Test Utilities</a><input aria-label="Toggle navigation of ODA Canvas Test Utilities" class="toctree-checkbox" id="toctree-checkbox-34" name="toctree-checkbox-34" role="switch" type="checkbox"/><label for="toctree-checkbox-34"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../feature-definition-and-test-kit/utilities/observability-utils-kubernetes/README.html">Observability Utils for Kubernetes</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Building ODA Components</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../docs/ODAComponentDesignGuidelines.html">Design Guidelines to create a new ODA Component</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../docs/ODAComponentTutorial/README.html">Tutorial to build ODA-Component from Open-API Reference Implementation</a><input aria-label="Toggle navigation of Tutorial to build ODA-Component from Open-API Reference Implementation" class="toctree-checkbox" id="toctree-checkbox-35" name="toctree-checkbox-35" role="switch" type="checkbox"/><label for="toctree-checkbox-35"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../docs/ODAComponentTutorial/ProductInventory/README.html">Example Product Inventory component (including Security_role)</a><input aria-label="Toggle navigation of Example Product Inventory component (including Security_role)" class="toctree-checkbox" id="toctree-checkbox-36" name="toctree-checkbox-36" role="switch" type="checkbox"/><label for="toctree-checkbox-36"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../docs/ODAComponentTutorial/ProductInventory/implementation/README.html">Swagger generated server 2.3.1</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../docs/ODAComponentTutorial/ProductInventory/partyRole-implementation/README.html">Swagger generated server 2.3.1</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../docs/ODAComponentTutorial/ProductInventory/productinventory/README.html">Example Product Inventory component (including Security_role)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../docs/ODAComponentTutorial/ProductInventory/roleInit-implementation/README.html">Initialization microservice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../docs/ODAComponentTutorial/implementation/README.html">Swagger generated server 2.3.1</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../docs/Observability-Tutorial/README.html">Tutorial: deploy and observe a running component</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">AI-assisted development</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../docs/AI-Assisted-Development.html">AI-assisted development with ODA Agent Skills</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ai-coding-assistants.html">AI Coding Assistants for ODA Canvas Development</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../skills/canvas-ops-tutorial/SKILL.html">ODA Canvas Kubernetes Tutorial</a><input aria-label="Toggle navigation of ODA Canvas Kubernetes Tutorial" class="toctree-checkbox" id="toctree-checkbox-37" name="toctree-checkbox-37" role="switch" type="checkbox"/><label for="toctree-checkbox-37"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../skills/canvas-ops-tutorial/references/01-about-oda-canvas.html">About ODA Canvas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../skills/canvas-ops-tutorial/references/02-install-oda-canvas.html">Install ODA Canvas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../skills/canvas-ops-tutorial/references/03-deploy-component.html">Deploy an ODA Component</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../skills/canvas-ops-tutorial/references/04-view-components.html">View Deployed ODA Components</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../skills/canvas-ops-tutorial/references/05-view-exposedapis.html">View ExposedAPIs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../skills/canvas-ops-tutorial/references/06-view-dependentapis.html">View DependentAPIs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../skills/canvas-ops-tutorial/references/07-view-observability.html">View Observability Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../skills/canvas-ops-tutorial/references/08-manage-identities.html">Manage Identities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../skills/canvas-ops-tutorial/references/09-run-bdd-tests.html">Run BDD Feature Tests</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../skills/canvas-usecase-documentation/SKILL.html">Canvas Use-Case Documentation — Skill Instructions</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../skills/create-oda-operator/SKILL.html">Create ODA Operator</a><input aria-label="Toggle navigation of Create ODA Operator" class="toctree-checkbox" id="toctree-checkbox-38" name="toctree-checkbox-38" role="switch" type="checkbox"/><label for="toctree-checkbox-38"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../skills/create-oda-operator/references/kopf-docs.html">Kopf Documentation Reference</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../skills/create-oda-operator/references/operator-catalog.html">ODA Canvas Operator Catalog</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../skills/github-actions-debugging/SKILL.html">GitHub Actions Debugging — Skill Instructions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../skills/helm-chart-development/SKILL.html">Helm Chart Development — Skill Instructions</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../skills/skill-creator/SKILL.html">Skill Creator</a><input aria-label="Toggle navigation of Skill Creator" class="toctree-checkbox" id="toctree-checkbox-39" name="toctree-checkbox-39" role="switch" type="checkbox"/><label for="toctree-checkbox-39"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../skills/skill-creator/agents/analyzer.html">Post-hoc Analyzer Agent</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../skills/skill-creator/agents/analyzer.html#analyzing-benchmark-results">Analyzing Benchmark Results</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../skills/skill-creator/agents/comparator.html">Blind Comparator Agent</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../skills/skill-creator/agents/grader.html">Grader Agent</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../skills/skill-creator/references/schemas.html">JSON Schemas</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../skills/write-bdd-feature/SKILL.html">Write BDD Feature — Skill Instructions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../docs/custom-copilot-documentation-agent.html">Custom GitHub Copilot Documentation Agent</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../docs/bdd-feature-generator-agent-guide.html">BDD Feature Generator Custom Agent - Usage Guide</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Architecture decisions</span></p>
+<ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../docs/Decision-Log/README.html">Architecture Decision Log</a><input aria-label="Toggle navigation of Architecture Decision Log" class="toctree-checkbox" id="toctree-checkbox-40" name="toctree-checkbox-40" role="switch" type="checkbox"/><label for="toctree-checkbox-40"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../docs/Decision-Log/0001-record-architecture-decisions.html">1. Record architecture decisions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../docs/Decision-Log/0002-role-vs-permission.html">2. Role vs Permissions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../docs/Decision-Log/0003-reference-api-gateway.html">3. Reference Implementation API Gateway</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../docs/Decision-Log/0004-which-authentication-protocol-should-be-supported.html">4. Which authentication protocol should be supported</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../docs/Decision-Log/0005-which-languages-and-libraries-should-be-used.html">5. Which languages and libraries should be used for Software Operators</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../docs/Decision-Log/0006-common-set-of-minimum-mandatory-JWT-claims-for-interoperability.html">6. Create common set of minimum mandatory JWT claims for interoperability</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../docs/Decision-Log/0007-provisioning-identities-across-identity-providers.html">7. Provisioning identities across identity providers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../docs/Decision-Log/0008-identity-propagation.html">8. Identity Propagation from Component to Component</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../docs/Decision-Log/0009-monorepo-helm-container-versioning.html">9. Monorepo Helm and Container versioning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../docs/Decision-Log/0010-ai4canvas-operator.html">0010: AI4Canvas Operator Scope Decision</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../docs/Decision-Log/0011-canvas-information-transfer.html">0011: Uniform Method for Canvas-to-Component Information Transfer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../docs/Decision-Log/0012-exposed-api-handling.html">0012: Handling of Exposed APIs by Different Operators</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../docs/Decision-Log/0013-canvas-certification.html">13. No certification for canvas implementation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../docs/Decision-Log/0014-multiple-component-namespaces.html">14. Supporting Multiple Component Namespaces</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../docs/Decision-Log/0015-ai-gateway-for-llm-access.html">15. AI Model Gateway for LLM Access</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../docs/Decision-Log/0016-mcp-server-for-tmforum-open-apis.html">16. Model Context Protocol (MCP) Server for TM Forum Open-APIs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../docs/Decision-Log/0017-strategy-for-ai-agents.html">17. Strategy for AI Agents: Modular, Autonomous, Self-Descriptive, CSP-Specific</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../docs/Decision-Log/0018-ai-model-operator-for-agentic-components.html">18. AI Model Operator for Agentic Components</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../docs/Decision-Log/0019-adopt-a2a-protocol-for-agent-skill-exposure.html">19. Adopt A2A Protocol as Open Standard for Agent Skill Exposure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../docs/Decision-Log/0020-ml-model-integration-via-ml-ops-pipeline.html">20. ML Model Integration via ML Ops Pipeline</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../docs/Decision-Log/0021-optimize-oda-canvas-for-ai-coding-agents.html">21. Optimize ODA Canvas Repository for AI Coding Agents</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../docs/Decision-Log/0022-modular-independent-operators.html">22. Modular and Independent Operators</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Contributing</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../CONTRIBUTING.html">How to contribute to the ODA Canvas Accelerator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../docs/CONTRIBUTING.html">How to contribute to the ODA Canvas Accelerator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../code-of-conduct.html">ODA Accelerator Code of Conduct</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../docs/README.html">ODA Canvas Documentation</a><input aria-label="Toggle navigation of ODA Canvas Documentation" class="toctree-checkbox" id="toctree-checkbox-41" name="toctree-checkbox-41" role="switch" type="checkbox"/><label for="toctree-checkbox-41"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../docs/plantuml-to-svg-guide.html">PlantUML to SVG Conversion Guide</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../docs/templates/README.html">Documentation Templates</a><input aria-label="Toggle navigation of Documentation Templates" class="toctree-checkbox" id="toctree-checkbox-42" name="toctree-checkbox-42" role="switch" type="checkbox"/><label for="toctree-checkbox-42"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../docs/templates/chart-readme-template.html">{Chart Name}</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../docs/templates/operator-readme-template.html">{Operator Name}</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../docs/templates/test-component-readme-template.html">{Component Name}</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../docs/templates/use-case-template.html">{Verb} {Object} use case</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../docs/writing-style.html">ODA Canvas Documentation Writing Style Guide</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../devcontainer.html">ODA Canvas Development Environment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../docs/developer/work-with-dockerimages.html">Developer How-Tos: Work with Dockerimages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../source/operators/Installing%20KOPF%20development%20environment.html">Installing KOPF (tested in GKE)</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../docs/TroubleshootingGuide/index.html">Troubleshooting Guide</a><input aria-label="Toggle navigation of Troubleshooting Guide" class="toctree-checkbox" id="toctree-checkbox-43" name="toctree-checkbox-43" role="switch" type="checkbox"/><label for="toctree-checkbox-43"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../docs/TroubleshootingGuide/CTK.html">CTK Troubleshooting Guide</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../docs/TroubleshootingGuide/Controller-Logging.html">Controller Logging Troubleshooting Guide</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../docs/TroubleshootingGuide/Exploring-Custom-Resources.html">Exploring Custom Resources Troubleshooting Guide</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../docs/TroubleshootingGuide/Microservice-Logging.html">Microservice Logging Troubleshooting Guide</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../docs/TroubleshootingGuide/Internal-Kubernetes-Testing.html">Internal Kubernetes Testing Troubleshooting Guide</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../docs/TroubleshootingGuide/Postman-API-Tests.html">Postman API Tests Troubleshooting Guide</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../docs/DocumentationProcess.html">Documentation Process</a></li>
+</ul>
+
+</div>
+</div>
+
+      </div>
+      
+    </div>
+  </aside>
+  <div class="main">
+    <div class="content">
+      <div class="article-container">
+        <a href="#" class="back-to-top muted-link">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+          </svg>
+          <span>Back to top</span>
+        </a>
+        <div class="content-icon-container">
+          <div class="theme-toggle-container theme-toggle-content">
+            <button class="theme-toggle" aria-label="Toggle Light / Dark / Auto color theme">
+              <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+              <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+              <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+              <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+            </button>
+          </div>
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
+            <span class="icon"><svg><use href="#svg-toc"></use></svg></span>
+          </label>
+        </div>
+        <article role="main" id="furo-main-content">
+          <p>﻿</p>
+<section id="oda-canvas-installation">
+<h1>ODA Canvas installation<a class="headerlink" href="#oda-canvas-installation" title="Link to this heading">¶</a></h1>
+<div class="oda-watch admonition">
+<p class="admonition-title">Watch: Part 2, How do I buy or build an ODA Canvas?</p>
+<p>A 9:30 video in the ODA Canvas training series. <a class="reference internal" href="../../docs/training-videos/part-2.html"><span class="std std-doc">Watch it with chapters and a transcript</span></a>, or <a class="reference external" href="https://youtu.be/fMXEmWalRFc">on YouTube</a>.</p>
+</div>
+<p>The Reference Implementation of the ODA Canvas is a set of Helm charts that can be used to install and configure a fully working Canvas. The Reference Implementation is built on top of Kubernetes and Istio.</p>
+<section id="software-versions">
+<h2>Software Versions<a class="headerlink" href="#software-versions" title="Link to this heading">¶</a></h2>
+<p>For each release, we will support a min and max Kubernetes version.</p>
+<div class="table-wrapper colwidths-auto docutils container">
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>ODA Component version</p></th>
+<th class="head"><p>Min Kubernetes version</p></th>
+<th class="head"><p>Max Kubernetes version</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>v1alpha4</p></td>
+<td><p>1.20</p></td>
+<td><p>1.22</p></td>
+</tr>
+<tr class="row-odd"><td><p>v1beta1</p></td>
+<td><p>1.22</p></td>
+<td><p>1.25</p></td>
+</tr>
+<tr class="row-even"><td><p>v1beta2</p></td>
+<td><p>1.22</p></td>
+<td><p>1.27</p></td>
+</tr>
+<tr class="row-odd"><td><p>v1beta3</p></td>
+<td><p>1.22</p></td>
+<td><p>1.29</p></td>
+</tr>
+<tr class="row-even"><td><p>v1beta4</p></td>
+<td><p>1.22</p></td>
+<td><p>1.29</p></td>
+</tr>
+<tr class="row-odd"><td><p>v1</p></td>
+<td><p>1.22</p></td>
+<td><p>1.30</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>If you are connected to an ODA Canvas, to test what version of Canvas it is, use the command:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>kubectl<span class="w"> </span>get<span class="w"> </span>crd<span class="w"> </span>components.oda.tmforum.org<span class="w"> </span>-o<span class="w"> </span><span class="nv">jsonpath</span><span class="o">=</span><span class="s1">'{.spec.versions[?(@.served==true)].name}'</span>
+</pre></div>
+</div>
+<p>It will return the versions of components the canvas supports. A canvas should support N-2 versions of a component i.e. for the <code class="docutils literal notranslate"><span class="pre">v1</span></code> canvas, it will support components that are v1, v1beta4, v1beta3 (and v1beta2 with a deprecation warning).</p>
+<p>We will test the Reference Implementation Canvas against a range of kubernetes versions and on a number of different deployments.</p>
+<div class="table-wrapper colwidths-auto docutils container">
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Kubernetes deployment</p></th>
+<th class="head"><p>Tested</p></th>
+<th class="head"><p>Notes</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>AWS EKS</p></td>
+<td><p>yes</p></td>
+<td><p>EKS 1.29</p></td>
+</tr>
+<tr class="row-odd"><td><p>Rancher on AWS</p></td>
+<td><p>Yes</p></td>
+<td><p>[Open Digital Lab environment]</p></td>
+</tr>
+<tr class="row-even"><td><p>Azure AKS</p></td>
+<td><p>Yes</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p>GCP GKE</p></td>
+<td><p>Yes</p></td>
+<td><p>[Innovation Hub environment]</p></td>
+</tr>
+<tr class="row-even"><td><p>Microk8s</p></td>
+<td><p>Yes</p></td>
+<td><p>Enable <code class="docutils literal notranslate"><span class="pre">metallb</span></code> and <code class="docutils literal notranslate"><span class="pre">hostpath-storage</span></code> before installing canvas</p></td>
+</tr>
+<tr class="row-odd"><td><p>MiniKube</p></td>
+<td><p>Yes</p></td>
+<td><p>v1.34.0 =&lt; Istio is installed by default so only the itsio/gateway chart needs configuring</p></td>
+</tr>
+<tr class="row-even"><td><p>Docker Desktop</p></td>
+<td><p>Yes</p></td>
+<td><p>see also <a class="reference internal" href="../devcontainer.html"><span class="std std-doc">devcontainer.md</span></a></p></td>
+</tr>
+<tr class="row-odd"><td><p>Kind</p></td>
+<td><p>Yes</p></td>
+<td><p>Used in all the GitHub action automated testing.</p></td>
+</tr>
+<tr class="row-even"><td><p>K3s</p></td>
+<td><p>Yes</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p>(other)</p></td>
+<td><p></p></td>
+<td><p>To suggest additional environments please add to this <a class="reference external" href="https://github.com/tmforum-oda/oda-canvas-charts/issues/52">issue</a></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>The environment where the chart has been tested has the following</p>
+<div class="table-wrapper colwidths-auto docutils container">
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Software</p></th>
+<th class="head"><p>Version</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Istio</p></td>
+<td><p>1.16.1</p></td>
+</tr>
+<tr class="row-odd"><td><p>Helm</p></td>
+<td><p>3.10</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>The helm chart installs the following updated versions of third party to</p>
+<div class="table-wrapper colwidths-auto docutils container">
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Software</p></th>
+<th class="head"><p>Version</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Cert-Manager</p></td>
+<td><p>1.20</p></td>
+</tr>
+<tr class="row-odd"><td><p>Keycloak</p></td>
+<td><p>20.0.3</p></td>
+</tr>
+<tr class="row-even"><td><p>Postgress</p></td>
+<td><p>15.0.1</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="configuration-values">
+<h2>Configuration values<a class="headerlink" href="#configuration-values" title="Link to this heading">¶</a></h2>
+<p>The values used <a class="reference external" href="https://github.com/tmforum-oda/oda-canvas/blob/main/charts/canvas-oda/README.md">here</a></p>
+</section>
+<section id="hardware-requirements">
+<h2>Hardware requirements<a class="headerlink" href="#hardware-requirements" title="Link to this heading">¶</a></h2>
+<p>The hardware requirements for the reference implementation are low. To deploy the reference implementation and run all the tests, the following minimum requirements should be adequate:</p>
+<ul class="simple">
+<li><p>CPU: 4 cores; AMD64 architecture, but we are also beginning to investigate running on ARM.</p></li>
+<li><p>RAM: 16Gb</p></li>
+<li><p>Storage: 50Gb</p></li>
+<li><p>Operating system: any supported by your hardware that will run Kubernetes. For our testing and development we have used several different Linux distributions and Windows 11.</p></li>
+</ul>
+<p>To host a component on the Reference Canvas you will have to account for its requirements in addition to the minimum.</p>
+</section>
+<section id="environment-installation">
+<h2>Environment installation<a class="headerlink" href="#environment-installation" title="Link to this heading">¶</a></h2>
+<section id="kubernetes-distribution">
+<h3>1. Kubernetes distribution<a class="headerlink" href="#kubernetes-distribution" title="Link to this heading">¶</a></h3>
+<p><strong>Prerequisites</strong>: a running K8S distribution.</p>
+<p>The procedure has been tested</p>
+<ul class="simple">
+<li><p>local k3s distribution, rancher desktop or similar</p></li>
+<li><p>AWS <a class="reference external" href="https://kops.sigs.k8s.io/">Kops</a> with AmazonVPC as network and with and without cert-manager managed by kops</p></li>
+</ul>
+<p>We assume there is a <code class="docutils literal notranslate"><span class="pre">kubeconfig</span></code> file available with adequate permissions on the K8s cluster to:</p>
+<ul class="simple">
+<li><p>Manage namespaces</p></li>
+<li><p>Install <a class="reference external" href="https://kubernetes.io/docs/concepts/extend-kubernetes/api-extension/custom-resources/">CRDs</a></p></li>
+<li><p>Manage resources in namespaces</p></li>
+</ul>
+<p>Run the following to check that you have the required Kubernetes permissions to run the install (or run <code class="docutils literal notranslate"><span class="pre">./installation/precheck.sh</span></code>):</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>kubectl<span class="w"> </span>auth<span class="w"> </span>can-i<span class="w"> </span>create<span class="w"> </span>namespaces<span class="w"> </span>--all-namespaces
+kubectl<span class="w"> </span>auth<span class="w"> </span>can-i<span class="w"> </span>create<span class="w"> </span>customresourcedefinitions<span class="w"> </span>--all-namespaces<span class="w">  </span>
+kubectl<span class="w"> </span>auth<span class="w"> </span>can-i<span class="w"> </span>create<span class="w"> </span>clusterroles<span class="w"> </span>--all-namespaces
+kubectl<span class="w"> </span>auth<span class="w"> </span>can-i<span class="w"> </span>create<span class="w"> </span>clusterrolebindings<span class="w"> </span>--all-namespaces
+kubectl<span class="w"> </span>auth<span class="w"> </span>can-i<span class="w"> </span>create<span class="w"> </span>mutatingwebhookconfigurations<span class="w"> </span>--all-namespaces
+kubectl<span class="w"> </span>auth<span class="w"> </span>can-i<span class="w"> </span>create<span class="w"> </span>validatingwebhookconfigurations<span class="w"> </span>--all-namespaces
+kubectl<span class="w"> </span>auth<span class="w"> </span>can-i<span class="w"> </span>create<span class="w"> </span>clusterissuers<span class="w">  </span>--all-namespaces
+kubectl<span class="w"> </span>auth<span class="w"> </span>can-i<span class="w"> </span>create<span class="w"> </span>serviceaccounts
+kubectl<span class="w"> </span>auth<span class="w"> </span>can-i<span class="w"> </span>create<span class="w"> </span>secrets
+kubectl<span class="w"> </span>auth<span class="w"> </span>can-i<span class="w"> </span>create<span class="w"> </span>configmaps
+kubectl<span class="w"> </span>auth<span class="w"> </span>can-i<span class="w"> </span>create<span class="w"> </span>roles
+kubectl<span class="w"> </span>auth<span class="w"> </span>can-i<span class="w"> </span>create<span class="w"> </span>rolebindings
+kubectl<span class="w"> </span>auth<span class="w"> </span>can-i<span class="w"> </span>create<span class="w"> </span>services
+kubectl<span class="w"> </span>auth<span class="w"> </span>can-i<span class="w"> </span>create<span class="w"> </span>deployments
+kubectl<span class="w"> </span>auth<span class="w"> </span>can-i<span class="w"> </span>create<span class="w"> </span>statefulsets
+kubectl<span class="w"> </span>auth<span class="w"> </span>can-i<span class="w"> </span>create<span class="w"> </span>gateways<span class="w">  </span>
+kubectl<span class="w"> </span>auth<span class="w"> </span>can-i<span class="w"> </span>create<span class="w"> </span><span class="nb">jobs</span>
+kubectl<span class="w"> </span>auth<span class="w"> </span>can-i<span class="w"> </span>create<span class="w"> </span>certificates<span class="w">  </span>
+kubectl<span class="w"> </span>auth<span class="w"> </span>can-i<span class="w"> </span>create<span class="w"> </span>issuers
+</pre></div>
+</div>
+</section>
+<section id="helm">
+<h3>2. Helm<a class="headerlink" href="#helm" title="Link to this heading">¶</a></h3>
+<p>A <a class="reference external" href="https://helm.sh/docs/intro/install/#through-package-managers">Helm 3.0+ installation</a> is needed.</p>
+<p>Helm currently has an issue with the dependencies declared, the <strong>helm dependency update</strong> command only takes care of the dependencies at the first level preventing the correct installation. It supposes to be addressed in a future (May’23) 3.12 version</p>
+<p>Until that version is released, we can use a plugin to sort it out this
+<a class="reference external" href="https://github.com/Noksa/helm-resolve-deps">https://github.com/Noksa/helm-resolve-deps</a></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>helm<span class="w"> </span>plugin<span class="w"> </span>install<span class="w"> </span>--version<span class="w"> </span><span class="s2">"main"</span><span class="w"> </span>https://github.com/Noksa/helm-resolve-deps.git
+</pre></div>
+</div>
+<p>The charts used need the following repositories</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">helm</span> <span class="n">repo</span> <span class="n">add</span> <span class="n">jetstack</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">charts</span><span class="o">.</span><span class="n">jetstack</span><span class="o">.</span><span class="n">io</span>
+<span class="n">helm</span> <span class="n">repo</span> <span class="n">add</span> <span class="n">bitnami</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">charts</span><span class="o">.</span><span class="n">bitnami</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">bitnami</span>
+</pre></div>
+</div>
+</section>
+<section id="istio">
+<h3>3. Istio<a class="headerlink" href="#istio" title="Link to this heading">¶</a></h3>
+<p>We follow the helm steps provided by <a class="reference external" href="https://istio.io/latest/docs/setup/install/helm/">Istio</a></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>helm<span class="w"> </span>repo<span class="w"> </span>add<span class="w"> </span>istio<span class="w"> </span>https://istio-release.storage.googleapis.com/charts
+helm<span class="w"> </span>repo<span class="w"> </span>update
+kubectl<span class="w"> </span>create<span class="w"> </span>namespace<span class="w"> </span>istio-system
+helm<span class="w"> </span>install<span class="w"> </span>istio-base<span class="w"> </span>istio/base<span class="w"> </span>-n<span class="w"> </span>istio-system
+helm<span class="w"> </span>install<span class="w"> </span>istiod<span class="w"> </span>istio/istiod<span class="w"> </span>-n<span class="w"> </span>istio-system<span class="w"> </span>--wait
+kubectl<span class="w"> </span>create<span class="w"> </span>namespace<span class="w"> </span>istio-ingress
+kubectl<span class="w"> </span>label<span class="w"> </span>namespace<span class="w"> </span>istio-ingress<span class="w"> </span>istio-injection<span class="o">=</span>enabled
+helm<span class="w"> </span>install<span class="w"> </span>istio-ingress<span class="w"> </span>istio/gateway<span class="w"> </span>-n<span class="w"> </span>istio-ingress<span class="w"> </span>--set<span class="w"> </span>labels.app<span class="o">=</span>istio-ingress<span class="w"> </span>--set<span class="w"> </span>labels.istio<span class="o">=</span>ingressgateway<span class="w"> </span>--wait
+</pre></div>
+</div>
+</section>
+<section id="hashicorp-vault">
+<h3>4. HashiCorp Vault<a class="headerlink" href="#hashicorp-vault" title="Link to this heading">¶</a></h3>
+<p>By default HashiCorp Vault is deployed into the namespace canvas-vault.
+The deployment can be disabled by setting <code class="docutils literal notranslate"><span class="pre">canvas-vault.enabled</span></code> to <code class="docutils literal notranslate"><span class="pre">false</span></code> in the values.yaml:</p>
+<p><a class="reference external" href="https://github.com/tmforum-oda/oda-canvas/blob/21329156c71a361baaec0955fd244755d01f0227/charts/canvas-oda/values.yaml#L202-L203">https://github.com/tmforum-oda/oda-canvas/blob/21329156c71a361baaec0955fd244755d01f0227/charts/canvas-oda/values.yaml#L202-L203</a></p>
+<p>Instead of changing the values.yaml the value can also be overridden on the command line:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">helm</span> <span class="n">install</span> <span class="n">canvas</span> <span class="n">oda</span><span class="o">-</span><span class="n">canvas</span><span class="o">/</span><span class="n">canvas</span><span class="o">-</span><span class="n">oda</span> <span class="o">-</span><span class="n">n</span> <span class="n">canvas</span> <span class="o">--</span><span class="n">create</span><span class="o">-</span><span class="n">namespace</span> <span class="o">--</span><span class="nb">set</span><span class="o">=</span><span class="n">canvas</span><span class="o">-</span><span class="n">vault</span><span class="o">.</span><span class="n">enabled</span><span class="o">=</span><span class="n">false</span>
+</pre></div>
+</div>
+<p>If HashiCorp Vault is <strong>NOT</strong> installed:</p>
+<ul class="simple">
+<li><p>everything works fine as long as Secrets-Management is not requested by any component.</p></li>
+<li><p>If Secrets-Management is needed by a component, this component will not reach the state “Completed” but get stuck in state “InProgress-SecretsConfig”. Also the Secrets-Management-Operator <code class="docutils literal notranslate"><span class="pre">canvas-smanop</span></code> in the canvas namespace will have a failure with <code class="docutils literal notranslate"><span class="pre">CreateContainerConfigError</span></code>.</p></li>
+</ul>
+<p>Components which do not request Secrets-Management will work without any errors.</p>
+</section>
+<section id="reference-implementation">
+<h3>5. Reference implementation<a class="headerlink" href="#reference-implementation" title="Link to this heading">¶</a></h3>
+<ol class="arabic">
+<li><p>Add oda-canvas helm repo</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>helm<span class="w"> </span>repo<span class="w"> </span>add<span class="w"> </span>oda-canvas<span class="w"> </span>https://tmforum-oda.github.io/oda-canvas
+helm<span class="w"> </span>repo<span class="w"> </span>update
+</pre></div>
+</div>
+</li>
+<li><p>Install the reference implementation</p>
+<p><strong>Do not use <code class="docutils literal notranslate"><span class="pre">--wait</span></code> on <code class="docutils literal notranslate"><span class="pre">helm</span> <span class="pre">install</span></code> or <code class="docutils literal notranslate"><span class="pre">helm</span> <span class="pre">upgrade</span></code>.</strong> The chart runs post-install hooks that create TLS certificates and initialize Vault. With <code class="docutils literal notranslate"><span class="pre">--wait</span></code>, Helm blocks until Deployments and StatefulSets are Ready before running those hooks; but since several workloads need hook-created secrets first, the whole installation ends in a deadlock. Install without <code class="docutils literal notranslate"><span class="pre">--wait</span></code>; hooks run immediately after the manifest phase and pods recover as secrets appear. A <code class="docutils literal notranslate"><span class="pre">--timeout</span></code> is still useful for hook completion.</p>
+<p><strong>Istio API Operator as the Default:</strong>
+By default, the Istio API Operator is enabled in the Canvas installation. If you do not modify the <a class="reference external" href="https://github.com/tmforum-oda/oda-canvas/blob/main/charts/canvas-oda/values.yaml">values.yaml</a> file, Canvas will use the Istio API Operator which manages a Canvas environment that exposes APIs through the Istio Service Mesh without any additional API Gateway.</p>
+</li>
+</ol>
+<ul>
+<li><p><strong>For Istio (Default) no change required in <a class="reference external" href="https://github.com/tmforum-oda/oda-canvas/blob/main/charts/canvas-oda/values.yaml">values.yaml</a>.:</strong></p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">api-operator-istio</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="nt">apisix-gateway-install</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<span class="nt">kong-gateway-install</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+</pre></div>
+</div>
+<p>Install the canvas using the following command.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>helm<span class="w"> </span>install<span class="w"> </span>canvas<span class="w"> </span>oda-canvas/canvas-oda<span class="w"> </span>-n<span class="w"> </span>canvas<span class="w"> </span>--create-namespace<span class="w"> </span>
+</pre></div>
+</div>
+<p><strong>Selecting a Different Gateway Operator (Optional):</strong></p>
+<p>For users seeking advanced API gateway capabilities, the ODA Canvas provides the option to install either the Kong Gateway or the APISIX Gateway.These gateways offer powerful features for managing APIs, including traffic management,         security, load balancing, rate limiting, and observability.
+If you prefer to use Apisix or Kong, update the values.yaml file for the Canvas Helm chart.Only one API operator can be enabled at a time.</p>
+</li>
+<li><p><strong>For Apisix change required in <a class="reference external" href="https://github.com/tmforum-oda/oda-canvas/blob/main/charts/canvas-oda/values.yaml">values.yaml</a> file to disable Istio and enable Apisix.:</strong></p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">api-operator-istio</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<span class="nt">apisix-gateway-install</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="nt">kong-gateway-install</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+</pre></div>
+</div>
+<p>Using updated values.yaml directly Install the canvas using the following command.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>helm<span class="w"> </span>install<span class="w"> </span>canvas<span class="w"> </span>oda-canvas/canvas-oda<span class="w"> </span>-n<span class="w"> </span>canvas<span class="w"> </span>--create-namespace<span class="w"> </span>-f<span class="w"> </span>values.yaml
+</pre></div>
+</div>
+<p><strong>“or”</strong></p>
+<p>If you prefer to use the <strong>–set</strong> option instead of editing <strong>values.yaml</strong>.You can disable Istio and enable Apisix inline without modifying your values file:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>helm<span class="w"> </span>install<span class="w"> </span>canvas<span class="w"> </span>oda-canvas/canvas-oda<span class="w"> </span>-n<span class="w"> </span>canvas<span class="w"> </span>--create-namespace<span class="w"> </span><span class="se">\</span>
+--set<span class="w"> </span>api-operator-istio.enabled<span class="o">=</span><span class="nb">false</span><span class="w"> </span><span class="se">\</span>
+--set<span class="w"> </span>apisix-gateway-install.enabled<span class="o">=</span><span class="nb">true</span><span class="w"> </span><span class="se">\</span>
+--set<span class="w"> </span>kong-gateway-install.enabled<span class="o">=</span><span class="nb">false</span>
+</pre></div>
+</div>
+</li>
+<li><p><strong>For Kong change required in <a class="reference external" href="https://github.com/tmforum-oda/oda-canvas/blob/main/charts/canvas-oda/values.yaml">values.yaml</a> file to disable Istio and enable Kong.:</strong></p>
+<p><strong>Prerequisite: Install the Gateway API CRDs if required to enable the advanced networking capabilities required by Kong Gateway:</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>kubectl<span class="w"> </span>apply<span class="w"> </span>-f<span class="w"> </span>https://github.com/kubernetes-sigs/gateway-api/releases/download/v1.0.0/standard-install.yaml
+</pre></div>
+</div>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">api-operator-istio</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<span class="nt">apisix-gateway-install</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<span class="nt">kong-gateway-install</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+</pre></div>
+</div>
+<p>Using updated values.yaml directly Install the canvas using the following command.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>helm<span class="w"> </span>install<span class="w"> </span>canvas<span class="w"> </span>oda-canvas/canvas-oda<span class="w"> </span>-n<span class="w"> </span>canvas<span class="w"> </span>--create-namespace<span class="w"> </span>-f<span class="w"> </span>values.yaml
+</pre></div>
+</div>
+<p><strong>“or”</strong></p>
+<p>If you prefer to use the <strong>–set</strong> option instead of editing <strong>values.yaml</strong>.You can disable Istio and enable Kong inline without modifying your values file:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>helm<span class="w"> </span>install<span class="w"> </span>canvas<span class="w"> </span>oda-canvas/canvas-oda<span class="w"> </span>-n<span class="w"> </span>canvas<span class="w"> </span>--create-namespace<span class="w"> </span><span class="se">\</span>
+--set<span class="w"> </span>api-operator-istio.enabled<span class="o">=</span><span class="nb">false</span><span class="w"> </span><span class="se">\</span>
+--set<span class="w"> </span>apisix-gateway-install.enabled<span class="o">=</span><span class="nb">false</span><span class="w"> </span><span class="se">\</span>
+--set<span class="w"> </span>kong-gateway-install.enabled<span class="o">=</span><span class="nb">true</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</section>
+<section id="component-registry">
+<h3>Component Registry<a class="headerlink" href="#component-registry" title="Link to this heading">¶</a></h3>
+<blockquote>
+<div><p>[!NOTE]
+The Component Registry is included in the <code class="docutils literal notranslate"><span class="pre">main</span></code> branch, but is not part of the latest release (1.2.5 from March 2026).</p>
+</div></blockquote>
+<p>By default, the Component Registry is deployed into the canvas namespace.<br />
+A description of the UI and instructions on how to set up Component Registry for a multi-canvas scenario<br />
+can be found here: <a class="reference internal" href="../docs/component-registry/README.html"><span class="std std-doc">Component Registry</span></a></p>
+<section id="disable-component-registry">
+<h4>Disable Component Registry<a class="headerlink" href="#disable-component-registry" title="Link to this heading">¶</a></h4>
+<p>The deployment of the Component Registry can be disabled by setting <code class="docutils literal notranslate"><span class="pre">component-registry.enabled</span></code> to <code class="docutils literal notranslate"><span class="pre">false</span></code> in the <code class="docutils literal notranslate"><span class="pre">values.yaml</span></code>:</p>
+<p><a class="reference external" href="https://github.com/tmforum-oda/oda-canvas/blob/6218a78420c731a36456b62b0f6de5c07d4bafd4/charts/canvas-oda/values.yaml#L647-L648">https://github.com/tmforum-oda/oda-canvas/blob/6218a78420c731a36456b62b0f6de5c07d4bafd4/charts/canvas-oda/values.yaml#L647-L648</a></p>
+<p>To tell the dependency resolver that there is no Component Registry the <code class="docutils literal notranslate"><span class="pre">componentRegistryUrl</span></code> has to be removed:</p>
+<p><a class="reference external" href="https://github.com/tmforum-oda/oda-canvas/blob/6218a78420c731a36456b62b0f6de5c07d4bafd4/charts/canvas-oda/values.yaml#L224-L225">https://github.com/tmforum-oda/oda-canvas/blob/6218a78420c731a36456b62b0f6de5c07d4bafd4/charts/canvas-oda/values.yaml#L224-L225</a></p>
+<p>Instead of changing the <code class="docutils literal notranslate"><span class="pre">values.yaml</span></code>, the values can also be overridden on the command line:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">helm</span> <span class="n">install</span> <span class="n">canvas</span> <span class="n">oda</span><span class="o">-</span><span class="n">canvas</span><span class="o">/</span><span class="n">canvas</span><span class="o">-</span><span class="n">oda</span> \
+   <span class="o">-</span><span class="n">n</span> <span class="n">canvas</span> <span class="o">--</span><span class="n">create</span><span class="o">-</span><span class="n">namespace</span> \\
+   <span class="o">--</span><span class="nb">set</span> <span class="n">component</span><span class="o">-</span><span class="n">registry</span><span class="o">.</span><span class="n">enabled</span><span class="o">=</span><span class="n">false</span> \
+   <span class="o">--</span><span class="nb">set</span> <span class="n">dependentapi</span><span class="o">-</span><span class="n">simple</span><span class="o">-</span><span class="n">operator</span><span class="o">.</span><span class="n">componentRegistryUrl</span><span class="o">=</span>
+</pre></div>
+</div>
+<p>In a single canvas scenario everything works as expected.<br />
+Dependencies are resolved by directly using Kubernetes Custom Resources instead of the Component Registry.</p>
+</section>
+</section>
+<section id="local-clusters-kind">
+<h3>Local clusters (kind)<a class="headerlink" href="#local-clusters-kind" title="Link to this heading">¶</a></h3>
+<p>kind has no load balancer, so the <code class="docutils literal notranslate"><span class="pre">istio-ingress</span></code> service never gets an external IP. Two things depend on that address.</p>
+<p><strong>The Istio pre-install check.</strong> <code class="docutils literal notranslate"><span class="pre">pre-install-check-istio</span></code> fails while the ingress has no external IP. Skip it, as the CI workflows do:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>helm<span class="w"> </span>install<span class="w"> </span>canvas<span class="w"> </span>oda-canvas/canvas-oda<span class="w"> </span>-n<span class="w"> </span>canvas<span class="w"> </span>--create-namespace<span class="w"> </span>--set<span class="w"> </span>preqrequisitechecks.istio<span class="o">=</span><span class="nb">false</span>
+</pre></div>
+</div>
+<p><strong>API URLs.</strong> The API operator builds each <code class="docutils literal notranslate"><span class="pre">ExposedAPI</span></code> URL from the ingress address. Without one, the URLs stay empty and components stay at <code class="docutils literal notranslate"><span class="pre">In-Progress-CompCon</span></code>. Give the ingress an address <strong>before installing components</strong>, because the operator reads it when the APIs are created (see <a class="reference external" href="https://github.com/tmforum-oda/oda-canvas/issues/621">#621</a>). Either:</p>
+<ul>
+<li><p>run <a class="reference external" href="https://github.com/kubernetes-sigs/cloud-provider-kind">cloud-provider-kind</a>, which allocates LoadBalancer IPs (used in the <code class="docutils literal notranslate"><span class="pre">Chart-Releaser-ReleasedChartTester-TrivyScanner</span></code> workflow); or</p></li>
+<li><p>on a single machine, set the address yourself and forward the gateway ports to it:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>kubectl<span class="w"> </span>patch<span class="w"> </span>svc<span class="w"> </span>istio-ingress<span class="w"> </span>-n<span class="w"> </span>istio-ingress<span class="w"> </span>--subresource<span class="o">=</span>status<span class="w"> </span>--type<span class="o">=</span>merge<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-p<span class="w"> </span><span class="s1">'{"status":{"loadBalancer":{"ingress":[{"ip":"127.0.0.1"}]}}}'</span>
+kubectl<span class="w"> </span>port-forward<span class="w"> </span>-n<span class="w"> </span>istio-ingress<span class="w"> </span>svc/istio-ingress<span class="w"> </span><span class="m">80</span>:80<span class="w"> </span><span class="m">443</span>:443
+</pre></div>
+</div>
+</li>
+</ul>
+<p><strong>Conformance testing.</strong> The TM Forum Open API CTKs run in Docker containers and call the URLs the canvas publishes. Inside a container <code class="docutils literal notranslate"><span class="pre">127.0.0.1</span></code> is the container itself, so use an address that both your machine and its containers can reach:</p>
+<ul class="simple">
+<li><p><strong>Docker Desktop:</strong> use the hostname <code class="docutils literal notranslate"><span class="pre">host.docker.internal</span></code> (<code class="docutils literal notranslate"><span class="pre">{&quot;hostname&quot;:&quot;host.docker.internal&quot;}</span></code> in the patch above). The containers reach it through Docker Desktop; to call the APIs from the host as well, the port-forward must also listen on the address <code class="docutils literal notranslate"><span class="pre">host.docker.internal</span></code> resolves to on the host.</p></li>
+<li><p><strong>Linux:</strong> use the <code class="docutils literal notranslate"><span class="pre">docker0</span></code> address (for example <code class="docutils literal notranslate"><span class="pre">172.17.0.1</span></code>) and run the port-forward with <code class="docutils literal notranslate"><span class="pre">--address</span> <span class="pre">0.0.0.0</span></code>.</p></li>
+</ul>
+</section>
+</section>
+<section id="troubleshooting">
+<h2>Troubleshooting<a class="headerlink" href="#troubleshooting" title="Link to this heading">¶</a></h2>
+<section id="error-installing-values-don-t-meet-the-specifications-of-the-schema-s">
+<h3>Error installing: values don’t meet the specifications of the schema(s)<a class="headerlink" href="#error-installing-values-don-t-meet-the-specifications-of-the-schema-s" title="Link to this heading">¶</a></h3>
+<p>If you see an error like this, it means that you have enabled more than one gateway operator at the same time. The chart’s schema validation enforces that only one gateway operator (Istio, Apisix, or Kong) can be active. To resolve this, edit your  <a class="reference external" href="https://github.com/tmforum-oda/oda-canvas/blob/main/charts/canvas-oda/values.yaml">values.yaml</a> so that only one of these is set to true and the others are set to false.</p>
+</section>
+<section id="error-installing-backofflimitexceeded">
+<h3>Error installing: BackoffLimitExceeded<a class="headerlink" href="#error-installing-backofflimitexceeded" title="Link to this heading">¶</a></h3>
+<p>The installation can fail with an error</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="m">1</span>.<span class="w"> </span>Error:<span class="w"> </span>INSTALLATION<span class="w"> </span>FAILED:<span class="w"> </span>failed<span class="w"> </span>pre-install:<span class="w"> </span>job<span class="w"> </span>failed:<span class="w"> </span>BackoffLimitExceeded
+</pre></div>
+</div>
+<p>It can be failed due to below mentioned reasons.Please use –debug option in helm install command in order to verify the reason</p>
+<p>Prehook to check the prerequisite for istio-ingress service in istio-ingress namespace.</p>
+<p>To solve this ensure below points:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>   <span class="n">a</span><span class="o">.</span> <span class="n">Istio</span> <span class="ow">in</span> <span class="n">properly</span> <span class="n">installed</span> <span class="ow">in</span> <span class="n">istio</span><span class="o">-</span><span class="n">ingress</span> <span class="n">namespace</span> <span class="ow">and</span> <span class="n">the</span> <span class="n">service</span> <span class="n">has</span> <span class="n">obtained</span> <span class="n">an</span> <span class="n">External</span> <span class="n">IP</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>   <span class="n">b</span><span class="o">.</span> <span class="n">Virtual</span> <span class="n">Service</span> <span class="n">CRD</span> <span class="ow">is</span> <span class="n">installed</span> <span class="ow">in</span> <span class="n">the</span> <span class="n">cluster</span><span class="o">.</span>
+</pre></div>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="m">2</span>.<span class="w"> </span>Error:<span class="w"> </span>INSTALLATION<span class="w"> </span>FAILED:<span class="w"> </span>failed<span class="w"> </span>post-install:<span class="w"> </span>job<span class="w"> </span>failed:<span class="w"> </span>BackoffLimitExceeded
+</pre></div>
+</div>
+<p>There are two major causes of this error</p>
+<ol class="arabic simple">
+<li><p>An error on the Job for configuring keycloak</p></li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>kubectl<span class="w"> </span>get<span class="w"> </span>pods<span class="w"> </span>-n<span class="w"> </span>canvas
+</pre></div>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>NAME<span class="w">                                        </span>READY<span class="w">   </span>STATUS<span class="w">      </span>RESTARTS<span class="w">   </span>AGE
+canvas-keycloak-0<span class="w">                           </span><span class="m">1</span>/1<span class="w">     </span>Running<span class="w">     </span><span class="m">0</span><span class="w">          </span>4m43s
+canvas-keycloak-keycloak-config-cli-5k6h7<span class="w">   </span><span class="m">0</span>/1<span class="w">     </span>Error<span class="w">       </span><span class="m">0</span><span class="w">          </span>2m50s
+canvas-keycloak-keycloak-config-cli-fq5ph<span class="w">   </span><span class="m">1</span>/1<span class="w">     </span>Running<span class="w">     </span><span class="m">0</span><span class="w">          </span>30s
+canvas-postgresql-0<span class="w">                         </span><span class="m">1</span>/1<span class="w">     </span>Running<span class="w">     </span><span class="m">0</span><span class="w">          </span>4m43s
+compcrdwebhook-658f4868b8-48cvx<span class="w">             </span><span class="m">1</span>/1<span class="w">     </span>Running<span class="w">     </span><span class="m">0</span><span class="w">          </span>4m43s
+job-hook-postinstall-6bm99<span class="w">                  </span><span class="m">0</span>/1<span class="w">     </span>Completed<span class="w">   </span><span class="m">0</span><span class="w">          </span>4m43s
+oda-controller-d5c495bbb-crt4t<span class="w">      </span><span class="m">2</span>/2<span class="w">     </span>Running<span class="w">     </span><span class="m">0</span><span class="w">          </span>4m43s
+</pre></div>
+</div>
+<p>Checking the logs of the failed Job</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="m">2023</span>-02-01<span class="w"> </span><span class="m">15</span>:23:19.488<span class="w">  </span>INFO<span class="w"> </span><span class="m">1</span><span class="w"> </span>---<span class="w"> </span><span class="o">[</span><span class="w">           </span>main<span class="o">]</span><span class="w"> </span>d.a.k.config.provider.KeycloakProvider<span class="w">   </span>:<span class="w"> </span>Wait<span class="w"> </span><span class="m">120</span><span class="w"> </span>seconds<span class="w"> </span><span class="k">until</span><span class="w"> </span>http://canvas-keycloak-headless:8083/auth/<span class="w"> </span>is<span class="w"> </span>available<span class="w"> </span>...
+<span class="m">2023</span>-02-01<span class="w"> </span><span class="m">15</span>:25:19.511<span class="w"> </span>ERROR<span class="w"> </span><span class="m">1</span><span class="w"> </span>---<span class="w"> </span><span class="o">[</span><span class="w">           </span>main<span class="o">]</span><span class="w"> </span>d.a.k.config.KeycloakConfigRunner<span class="w">        </span>:<span class="w"> </span>Could<span class="w"> </span>not<span class="w"> </span>connect<span class="w"> </span>to<span class="w"> </span>keycloak<span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="m">120</span><span class="w"> </span>seconds:<span class="w"> </span>HTTP<span class="w"> </span><span class="m">403</span><span class="w"> </span>Forbidden
+</pre></div>
+</div>
+<p>That means that your k8s cluster assign IPs to PODs that <a class="reference external" href="https://www.keycloak.org/docs/latest/server_admin/#_ssl_modes">Keycloak consider public ones and forced to use HTTPS</a>
+The ranges valid are the following
+<code class="docutils literal notranslate"><span class="pre">localhost</span></code>, <code class="docutils literal notranslate"><span class="pre">127.0.0.1</span></code>, <code class="docutils literal notranslate"><span class="pre">10.x.x.x</span></code>, <code class="docutils literal notranslate"><span class="pre">192.168.x.x</span></code>, and <code class="docutils literal notranslate"><span class="pre">172.16.x.x</span></code></p>
+<ol class="arabic simple" start="2">
+<li><p>An Error in the Job but caused because the canvas-keycloak-0 that is in CrashLoopBackOff</p></li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>kubectl<span class="w"> </span>get<span class="w"> </span>pods<span class="w"> </span>-A
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">NAMESPACE</span>       <span class="n">NAME</span>                                              <span class="n">READY</span>   <span class="n">STATUS</span>             <span class="n">RESTARTS</span>      <span class="n">AGE</span>
+<span class="n">canvas</span>          <span class="n">canvas</span><span class="o">-</span><span class="n">keycloak</span><span class="o">-</span><span class="mi">0</span>                                 <span class="mi">0</span><span class="o">/</span><span class="mi">1</span>     <span class="n">CrashLoopBackOff</span>   <span class="mi">4</span> <span class="p">(</span><span class="mi">89</span><span class="n">s</span> <span class="n">ago</span><span class="p">)</span>   <span class="mi">6</span><span class="n">m11s</span>
+<span class="n">canvas</span>          <span class="n">canvas</span><span class="o">-</span><span class="n">keycloak</span><span class="o">-</span><span class="n">keycloak</span><span class="o">-</span><span class="n">config</span><span class="o">-</span><span class="n">cli</span><span class="o">-</span><span class="mi">9</span><span class="n">ks9d</span>         <span class="mi">0</span><span class="o">/</span><span class="mi">1</span>     <span class="n">Error</span>              <span class="mi">0</span>             <span class="mi">2</span><span class="n">m28s</span>
+<span class="n">canvas</span>          <span class="n">canvas</span><span class="o">-</span><span class="n">keycloak</span><span class="o">-</span><span class="n">keycloak</span><span class="o">-</span><span class="n">config</span><span class="o">-</span><span class="n">cli</span><span class="o">-</span><span class="n">cd2gv</span>         <span class="mi">0</span><span class="o">/</span><span class="mi">1</span>     <span class="n">Error</span>              <span class="mi">0</span>             <span class="mi">4</span><span class="n">m38s</span>
+<span class="n">canvas</span>          <span class="n">canvas</span><span class="o">-</span><span class="n">postgresql</span><span class="o">-</span><span class="mi">0</span>                               <span class="mi">1</span><span class="o">/</span><span class="mi">1</span>     <span class="n">Running</span>            <span class="mi">0</span>             <span class="mi">6</span><span class="n">m11s</span>
+<span class="n">canvas</span>          <span class="n">compcrdwebhook</span><span class="o">-</span><span class="mi">658</span><span class="n">f4868b8</span><span class="o">-</span><span class="n">v9sc2</span>                   <span class="mi">1</span><span class="o">/</span><span class="mi">1</span>     <span class="n">Running</span>            <span class="mi">0</span>             <span class="mi">6</span><span class="n">m11s</span>
+<span class="n">canvas</span>          <span class="n">job</span><span class="o">-</span><span class="n">hook</span><span class="o">-</span><span class="n">postinstall</span><span class="o">-</span><span class="n">v56pt</span>                        <span class="mi">0</span><span class="o">/</span><span class="mi">1</span>     <span class="n">Completed</span>          <span class="mi">0</span>             <span class="mi">6</span><span class="n">m10</span>
+</pre></div>
+</div>
+<p>Checking the logs <code class="docutils literal notranslate"><span class="pre">kubectl</span> <span class="pre">logs</span> <span class="pre">-n</span> <span class="pre">canvas</span> <span class="pre">sts/canvas-postgresql</span></code>  we can see an error</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>FATAL:<span class="w">  </span>password<span class="w"> </span>authentication<span class="w"> </span>failed<span class="w"> </span><span class="k">for</span><span class="w"> </span>user<span class="w"> </span><span class="s2">"bn_keycloak"</span>
+</pre></div>
+</div>
+<p>In that case, a previous installation left a PVC reused by the Postgres pod.</p>
+<p>To solve that issue</p>
+<ul class="simple">
+<li><p>Uninstall the helm chart</p></li>
+<li><p>Delete the PVC with <code class="docutils literal notranslate"><span class="pre">kubectl</span> <span class="pre">delete</span> <span class="pre">pvc</span> <span class="pre">-n</span> <span class="pre">canvas</span> <span class="pre">data-canvas-postgresql-0</span></code></p></li>
+<li><p>reinstall the canvas</p></li>
+</ul>
+</section>
+<section id="error-installing-failed-post-install">
+<h3>Error installing : Failed post-install<a class="headerlink" href="#error-installing-failed-post-install" title="Link to this heading">¶</a></h3>
+<p>The installation could fail with this error</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>failed<span class="w"> </span>post-install:<span class="w"> </span>warning:<span class="w"> </span>Hook<span class="w"> </span>post-install<span class="w"> </span>canvas-oda/charts/cert-manager-init/templates/issuer.yaml<span class="w"> </span>failed:<span class="w"> </span>Internal<span class="w"> </span>error<span class="w"> </span>occurred:
+failed<span class="w"> </span>calling<span class="w"> </span>webhook<span class="w"> </span><span class="s2">"webhook.cert-manager.io"</span>:<span class="w"> </span>failed<span class="w"> </span>to<span class="w"> </span>call<span class="w"> </span>webhook:<span class="w"> </span>Post<span class="w"> </span><span class="s2">"https://canvas-cert-manager-webhook.cert-manager.svc:443/mutate?timeout=10s"</span>:
+x509:<span class="w"> </span>certificate<span class="w"> </span>signed<span class="w"> </span>by<span class="w"> </span>unknown<span class="w"> </span>authority
+</pre></div>
+</div>
+<p>That error arises when Cert-Manager is not ready to accept Issuers</p>
+<p>Try first to uninstall the chart</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>helm<span class="w"> </span>uninstall<span class="w"> </span>-n<span class="w"> </span>canvas<span class="w"> </span>canvas
+</pre></div>
+</div>
+<p>Delete persistence volume claim used  for Keycloak</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>kubectl<span class="w"> </span>delete<span class="w"> </span>pvc<span class="w"> </span>-n<span class="w"> </span>canvas<span class="w"> </span>data-canvas-postgresql-0
+</pre></div>
+</div>
+<p>Then manually delete the Lease object that causes the problem (Cert Manager relies on this object to select a leader)</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>kubectl<span class="w"> </span>get<span class="w"> </span>lease<span class="w"> </span>-n<span class="w"> </span>kube-system
+</pre></div>
+</div>
+<p>Force the release of the lease without waiting for a timeout</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>kubectl<span class="w"> </span>delete<span class="w"> </span>lease<span class="w"> </span>cert-manager-cainjector-leader-election<span class="w"> </span>-n<span class="w"> </span>kube-system
+</pre></div>
+</div>
+<p>The post-install hook waits for the cert-manager webhook to be ready before creating issuers, for up to
+<code class="docutils literal notranslate"><span class="pre">cert-manager-init.certManagerReadyTimeout</span></code> seconds (default 600). If the wait timed out, increase it, for example
+<code class="docutils literal notranslate"><span class="pre">--set</span> <span class="pre">cert-manager-init.certManagerReadyTimeout=900</span></code>, and reinstall.</p>
+</section>
+</section>
+<section id="changes">
+<h2>Changes<a class="headerlink" href="#changes" title="Link to this heading">¶</a></h2>
+<p>The Helm chart has been refactored to move all the different subcharts to the same level to improve readability. A new chart, oda-ca has been created as an umbrella to simplify the deployment.</p>
+<div class="table-wrapper colwidths-auto docutils container">
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>OLD</p></th>
+<th class="head"><p>NEW</p></th>
+<th class="head"><p>DESCRIPTION</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>shell script</p></td>
+<td><p>oda-ca</p></td>
+<td><p>Chart of chart.</p></td>
+</tr>
+<tr class="row-odd"><td><p>shell script</p></td>
+<td><p>cert-manager-init</p></td>
+<td><p>Install cert-manager Deploy Issuer and generate Certificate used by CRD webhook</p></td>
+</tr>
+<tr class="row-even"><td><p>canvas/chart/keycloak</p></td>
+<td><p>Bitnami/keycloak</p></td>
+<td><p>Direct remote dependency  on oda-ca</p></td>
+</tr>
+<tr class="row-odd"><td><p>canvas/</p></td>
+<td><p>canvas-namespaces</p></td>
+<td><p>Namespaces</p></td>
+</tr>
+<tr class="row-even"><td><p>canvas/chart/controller</p></td>
+<td><p>controller</p></td>
+<td><p>ODA ingress controller</p></td>
+</tr>
+<tr class="row-odd"><td><p>canvas/chart/crds</p></td>
+<td><p>oda-crds</p></td>
+<td><p>ODA crds</p></td>
+</tr>
+<tr class="row-even"><td><p>canvas/chart/weebhooks</p></td>
+<td><p>oda-webhook</p></td>
+<td><p>ODA mutating webhook to handle conversion among versions</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="oda-canvas-helm-chart-uninstallation">
+<h2>oda-canvas helm chart uninstallation<a class="headerlink" href="#oda-canvas-helm-chart-uninstallation" title="Link to this heading">¶</a></h2>
+<p>Uninstall any components first: the chart’s pre-uninstall check aborts the uninstallation while components are deployed. Then uninstall the canvas release (named <code class="docutils literal notranslate"><span class="pre">canvas</span></code> in the install steps above):</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>helm<span class="w"> </span>uninstall<span class="w"> </span>canvas<span class="w"> </span>-n<span class="w"> </span>canvas
+</pre></div>
+</div>
+<div class="toctree-wrapper compound">
+</div>
+</section>
+</section>
+
+        </article>
+      </div>
+      <footer>
+        
+        <div class="related-pages">
+          <a class="next-page" href="CanvasVault/README.html">
+              <div class="page-info">
+                <div class="context">
+                  <span>Next</span>
+                </div>
+                <div class="title">HashiCorp Vault installation</div>
+              </div>
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+            </a>
+          <a class="prev-page" href="../usecase-library/use-case-naming-conventions.html">
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+              <div class="page-info">
+                <div class="context">
+                  <span>Previous</span>
+                </div>
+                
+                <div class="title">Use-Case Naming Conventions</div>
+                
+              </div>
+            </a>
+        </div>
+        <div class="bottom-of-page">
+          <div class="left-details">
+            <div class="copyright">
+                Copyright &#169; 2026, TM Forum ODA-Component Accelerator project
+            </div>
+            Made with <a href="https://www.sphinx-doc.org/">Sphinx</a> and <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
+            
+            <a href="https://github.com/pradyunsg/furo">Furo</a>
+            
+          </div>
+          <div class="right-details">
+            
+          </div>
+        </div>
+        
+      </footer>
+    </div>
+    <aside class="toc-drawer">
+      
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            On this page
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">ODA Canvas installation</a><ul>
+<li><a class="reference internal" href="#software-versions">Software Versions</a></li>
+<li><a class="reference internal" href="#configuration-values">Configuration values</a></li>
+<li><a class="reference internal" href="#hardware-requirements">Hardware requirements</a></li>
+<li><a class="reference internal" href="#environment-installation">Environment installation</a><ul>
+<li><a class="reference internal" href="#kubernetes-distribution">1. Kubernetes distribution</a></li>
+<li><a class="reference internal" href="#helm">2. Helm</a></li>
+<li><a class="reference internal" href="#istio">3. Istio</a></li>
+<li><a class="reference internal" href="#hashicorp-vault">4. HashiCorp Vault</a></li>
+<li><a class="reference internal" href="#reference-implementation">5. Reference implementation</a></li>
+<li><a class="reference internal" href="#component-registry">Component Registry</a><ul>
+<li><a class="reference internal" href="#disable-component-registry">Disable Component Registry</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#local-clusters-kind">Local clusters (kind)</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#troubleshooting">Troubleshooting</a><ul>
+<li><a class="reference internal" href="#error-installing-values-don-t-meet-the-specifications-of-the-schema-s">Error installing: values don’t meet the specifications of the schema(s)</a></li>
+<li><a class="reference internal" href="#error-installing-backofflimitexceeded">Error installing: BackoffLimitExceeded</a></li>
+<li><a class="reference internal" href="#error-installing-failed-post-install">Error installing : Failed post-install</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#changes">Changes</a></li>
+<li><a class="reference internal" href="#oda-canvas-helm-chart-uninstallation">oda-canvas helm chart uninstallation</a></li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
+      
+      
+    </aside>
+  </div>
+</div><script src="../../_static/documentation_options.js?v=13610682"></script>
+    <script src="../../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../../_static/scripts/furo.js?v=46bd48cc"></script>
+    <script src="../../_static/js/default-dark.js?v=658bd94d"></script>
+    </body>
+</html>

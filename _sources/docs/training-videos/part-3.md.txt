@@ -1,0 +1,140 @@
+# Authentication and Authorization in the ODA Canvas
+
+<p class="oda-video-meta">Part 3 · 8:45 · Published 19 October 2026</p>
+
+<div class="oda-video-player">
+<iframe src="https://www.youtube-nocookie.com/embed/a6j6tUDTS80" title="Authentication and Authorization in the ODA Canvas" loading="lazy"
+  allow="accelerometer; encrypted-media; gyroscope; picture-in-picture; fullscreen" allowfullscreen></iframe>
+</div>
+
+An ODA Component doesn't implement identity management. It declares the roles it supports, and the ODA Canvas configures them in one shared identity platform, such as Keycloak, Microsoft Entra ID or another identity platform. This third video in the ODA Canvas training series explains how that works.
+
+It covers how a component's YAML declares its security needs, how every component gets its own client, the Canvas system role, and static and dynamic roles (through TMF672). It then runs a complete example on a real Canvas with three components: a product catalog, product order capture and product inventory. You'll see their clients and roles appear in Keycloak, a role grant that also connects one component to another, a product order flowing through all three, and the automated cleanup.
+
+[Watch on YouTube](https://youtu.be/a6j6tUDTS80). Next in the series: [Part 4, The AI-Native ODA Canvas](part-4.md).
+
+## Related documentation
+
+- {doc}`/canvas/Authentication-design`
+- {doc}`/canvas/SecurityPrinciples`
+- {doc}`/canvas/source/operators/TMFOP003-Identity-Config/README`
+- {doc}`/canvas/source/operators/TMFOP004-Credentials-Management/README`
+- {doc}`/canvas/source/operators/TMFOP005-Dependency-Management/README`
+- {doc}`/canvas/source/operators/TMFOP008-OAuth2-Config/README`
+- {doc}`/canvas/usecase-library/UC005-Configure-Clients-and-Roles`
+- {doc}`/canvas/usecase-library/UC009-Internal-Authentication`
+- {doc}`/canvas/usecase-library/UC010-External-Authentication`
+
+## Chapters
+
+- [0:00](https://youtu.be/a6j6tUDTS80?t=0) Title (presenter introduction)
+- [1:00](https://youtu.be/a6j6tUDTS80?t=60) Four questions
+- [1:25](https://youtu.be/a6j6tUDTS80?t=85) Components declare, the Canvas implements
+- [2:01](https://youtu.be/a6j6tUDTS80?t=121) Every component gets its own client
+- [2:23](https://youtu.be/a6j6tUDTS80?t=143) The Canvas system role
+- [2:48](https://youtu.be/a6j6tUDTS80?t=168) Static and dynamic roles
+- [3:23](https://youtu.be/a6j6tUDTS80?t=203) A grant is also a connection
+- [3:56](https://youtu.be/a6j6tUDTS80?t=236) The scenario
+- [4:19](https://youtu.be/a6j6tUDTS80?t=259) Deploy the product catalog
+- [4:39](https://youtu.be/a6j6tUDTS80?t=279) Its client appears in Keycloak
+- [4:59](https://youtu.be/a6j6tUDTS80?t=299) Static roles
+- [5:23](https://youtu.be/a6j6tUDTS80?t=323) Dynamic roles through TMF672
+- [5:48](https://youtu.be/a6j6tUDTS80?t=348) Deploy the order and inventory components
+- [6:16](https://youtu.be/a6j6tUDTS80?t=376) Grant a catalog role, and the dependency is met
+- [6:41](https://youtu.be/a6j6tUDTS80?t=401) The same for the inventory
+- [6:57](https://youtu.be/a6j6tUDTS80?t=417) Send a product order
+- [7:14](https://youtu.be/a6j6tUDTS80?t=434) What happened behind the scenes
+- [7:37](https://youtu.be/a6j6tUDTS80?t=457) Automated cleanup
+- [7:59](https://youtu.be/a6j6tUDTS80?t=479) Answers to the four questions
+- [8:26](https://youtu.be/a6j6tUDTS80?t=506) Find out more
+
+## Transcript
+
+The narration of the video, chapter by chapter. The captions on YouTube use the same text.
+
+<details class="oda-transcript">
+<summary>Show the transcript</summary>
+
+**[0:00](https://youtu.be/a6j6tUDTS80?t=0) Title (presenter introduction)**
+
+Welcome to the third video in our series about the ODA Canvas. This one is about authentication and authorization. Traditionally, every application ships with its own identity management. Operations teams then have to integrate each one, and manage users and roles in many places. An ODA Component is different. It doesn't implement any identity management at all. Instead, it declares the roles it supports. The Canvas configures these roles in one shared identity platform. That could be Keycloak, Microsoft Entra ID, or any other identity platform.
+
+In this video we'll look at how that works. We'll see how a component's YAML declares its security needs, and how the Canvas sets up its clients and roles. Then we'll run a complete example with three components. You'll see a role grant, and also that it connects from one component to another.
+
+**[1:00](https://youtu.be/a6j6tUDTS80?t=60) Four questions**
+
+It answers four questions. First, what is the job of the component, and what is the job of the Canvas? Second, how does the Canvas get permission to manage a component? Third, how does a component define the roles that others can be granted? And fourth, how does granting one of those roles connect one component to another?
+
+**[1:25](https://youtu.be/a6j6tUDTS80?t=85) Components declare, the Canvas implements**
+
+An ODA component does not bring its own identity management. Instead, its YAML specification declares what it needs, in the security function section. When the component is deployed, the component operator copies those requirements into an identity config resource. An identity config operator then configures the identity platform to match. The reference Canvas has operators for Keycloak and for Microsoft Entra ID. Another identity platform can be used, through the same standard pattern.
+
+**[2:01](https://youtu.be/a6j6tUDTS80?t=121) Every component gets its own client**
+
+The operator first creates a client for the component. This client is the component's own identity. When the component calls another component's API, it uses this client to get an access token. So every call between components carries the identity of the caller.
+
+**[2:23](https://youtu.be/a6j6tUDTS80?t=143) The Canvas system role**
+
+The Canvas has its own identity too, called the Canvas system client. Every component must name one of its roles as its Canvas system role. When the component is deployed, the operator grants that role to the Canvas system client. That's how the Canvas earns permission to call the component's management and security APIs.
+
+**[2:48](https://youtu.be/a6j6tUDTS80?t=168) Static and dynamic roles**
+
+A component can define its other roles in two ways. Static roles are listed directly in its YAML. Dynamic roles are published through a TM Forum Open API, the TMF672 roles and permissions API. The operator registers for events on that API. When the component adds a permission set, the matching role is added in the identity platform. When it removes one, the role is removed. A product catalog might add a role for each new partner catalog.
+
+**[3:23](https://youtu.be/a6j6tUDTS80?t=203) A grant is also a connection**
+
+Roles are how access is granted. Other systems, or other components, are given roles on a component's client. The reference Canvas can go one step further. Its dependency management operator watches for role grants. Suppose a component is granted a role on another component. The operator then connects its dependent API to the matching exposed API. So a component can only discover an API it has been allowed to call.
+
+**[3:56](https://youtu.be/a6j6tUDTS80?t=236) The scenario**
+
+Here's the scenario. A product catalog holds two catalogs. One is a communication service provider's retail catalog, and one is a wholesale catalog for MVNOs. A product order capture and validation component depends on the catalog, to check what is ordered. It also depends on a product inventory, where the ordered products are created.
+
+**[4:19](https://youtu.be/a6j6tUDTS80?t=259) Deploy the product catalog**
+
+We start by deploying the product catalog component. In the Canvas Portal we follow it until it is complete. Its security function names a Canvas system role, and exposes the TMF672 roles and permissions API for its other roles.
+
+**[4:39](https://youtu.be/a6j6tUDTS80?t=279) Its client appears in Keycloak**
+
+In Keycloak, the identity config operator has created a client for the new component. It holds the Canvas system role that the component declared. This is the role the Canvas uses to manage the component. Nobody configured any of this by hand.
+
+**[4:59](https://youtu.be/a6j6tUDTS80?t=299) Static roles**
+
+Before we go further, here is what static roles look like. This example from the Canvas test kit lists three roles in its YAML. There's an administrator and two catalog owners. When a component like this is deployed, the operator adds all three to its client. Our three components use dynamic roles instead.
+
+**[5:23](https://youtu.be/a6j6tUDTS80?t=323) Dynamic roles through TMF672**
+
+Now we load the catalog's test data. Along with the products, it creates two permission specification sets through the TMF672 API. One is for the CSP, and one is for MVNOs. The component publishes an event for each. The operator receives them, and the two new roles appear on the component's client in Keycloak.
+
+**[5:48](https://youtu.be/a6j6tUDTS80?t=348) Deploy the order and inventory components**
+
+Next we deploy the product inventory and the product order components. Both get their own clients in Keycloak. The order component declares two dependencies, on the product catalog API and the product inventory API. The Canvas Portal shows both dependencies as unmet. The APIs exist, but the order component hasn't been granted access to either of them.
+
+**[6:16](https://youtu.be/a6j6tUDTS80?t=376) Grant a catalog role, and the dependency is met**
+
+Now we act as the identity administrator. We open the order component's service account in Keycloak and assign it the CSP role on the product catalog. Within a few seconds, the Canvas Portal shows the catalog dependency as met, with the catalog's address filled in. One grant gave permission and made the connection.
+
+**[6:41](https://youtu.be/a6j6tUDTS80?t=401) The same for the inventory**
+
+We do the same for the product inventory, granting the order component the CSP role on the inventory's client. The second dependency is now met too. The order component is ready to do its job.
+
+**[6:57](https://youtu.be/a6j6tUDTS80?t=417) Send a product order**
+
+Now we send a valid product order to the order component. It's a retail customer of the CSP, ordering an unlimited SIM-only plan. The order is accepted and acknowledged.
+
+**[7:14](https://youtu.be/a6j6tUDTS80?t=434) What happened behind the scenes**
+
+Behind the scenes, the order component looked up each ordered offering in the product catalog. It used the address it was given when access was granted. The offering was found, so the order was valid. Then it created the product in the product inventory. The customer's new product is now in the inventory, ready to use.
+
+**[7:37](https://youtu.be/a6j6tUDTS80?t=457) Automated cleanup**
+
+Finally, the cleanup. As each component is uninstalled, the operator deletes its client from Keycloak, along with every role the component defined. The grants to the Canvas system client and to other components go with them. No orphaned identities or permissions are left behind.
+
+**[7:59](https://youtu.be/a6j6tUDTS80?t=479) Answers to the four questions**
+
+So, the answers. Components declare their security needs, and the Canvas configures a shared identity platform. Each component gets a client, its own identity for outbound calls. The Canvas gets access through the Canvas system role. Components define other roles statically, or dynamically through TMF672. And granting a role can also resolve a dependency.
+
+**[8:26](https://youtu.be/a6j6tUDTS80?t=506) Find out more**
+
+The authentication design, the use cases and the operator documentation are all in the oda-canvas repository on GitHub. The example components and their test data are in the reference example components repository. If you'd like to contribute, please get involved.
+
+</details>

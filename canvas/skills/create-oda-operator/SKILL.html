@@ -1,0 +1,1483 @@
+<!doctype html>
+<html class="no-js" lang="en" data-content_root="../../../">
+  <head><meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="index" title="Index" href="../../../genindex.html"><link rel="search" title="Search" href="../../../search.html"><link rel="next" title="Kopf Documentation Reference" href="references/kopf-docs.html"><link rel="prev" title="Canvas Use-Case Documentation — Skill Instructions" href="../canvas-usecase-documentation/SKILL.html">
+        <link rel="prefetch" href="../../../_static/ODA-Canvas.svg" as="image">
+        <link rel="prefetch" href="../../../_static/ODA-Canvas-dark.svg" as="image">
+
+    <!-- Generated with Sphinx 9.2.0 and Furo 2025.12.19 -->
+        <title>Create ODA Operator - ODA Canvas and Components</title>
+      <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=d75fae25" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/styles/furo.css?v=7bdb33bb" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/styles/furo-extensions.css?v=8dab3a3b" />
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/css/custom.css?v=b2790eba" />
+    
+    
+
+
+<style>
+  body {
+    --color-code-background: #f0f0f0;
+  --color-code-foreground: black;
+  
+  }
+  @media not print {
+    body[data-theme="dark"] {
+      --color-code-background: #0d1117;
+  --color-code-foreground: #e6edf3;
+  
+    }
+    @media (prefers-color-scheme: dark) {
+      body:not([data-theme="light"]) {
+        --color-code-background: #0d1117;
+  --color-code-foreground: #e6edf3;
+  
+      }
+    }
+  }
+</style></head>
+  <body>
+    
+    <script>
+      document.body.dataset.theme = localStorage.getItem("theme") || "auto";
+    </script>
+    
+
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="svg-toc" viewBox="0 0 24 24">
+    <title>Contents</title>
+    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024">
+      <path d="M408 442h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8zm-8 204c0 4.4 3.6 8 8 8h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56zm504-486H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 632H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zM115.4 518.9L271.7 642c5.8 4.6 14.4.5 14.4-6.9V388.9c0-7.4-8.5-11.5-14.4-6.9L115.4 505.1a8.74 8.74 0 0 0 0 13.8z"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+    <title>Menu</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-menu">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+    <title>Expand</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-chevron-right">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </symbol>
+  <symbol id="svg-sun" viewBox="0 0 24 24">
+    <title>Light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="feather-sun">
+      <circle cx="12" cy="12" r="5"></circle>
+      <line x1="12" y1="1" x2="12" y2="3"></line>
+      <line x1="12" y1="21" x2="12" y2="23"></line>
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+      <line x1="1" y1="12" x2="3" y2="12"></line>
+      <line x1="21" y1="12" x2="23" y2="12"></line>
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon" viewBox="0 0 24 24">
+    <title>Dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-moon">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
+    </svg>
+  </symbol>
+  <symbol id="svg-sun-with-moon" viewBox="0 0 24 24">
+    <title>Auto light/dark, in light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path style="opacity: 50%" d="M 5.411 14.504 C 5.471 14.504 5.532 14.504 5.591 14.504 C 3.639 16.319 4.383 19.569 6.931 20.352 C 7.693 20.586 8.512 20.551 9.25 20.252 C 8.023 23.207 4.056 23.725 2.11 21.184 C 0.166 18.642 1.702 14.949 4.874 14.536 C 5.051 14.512 5.231 14.5 5.411 14.5 L 5.411 14.504 Z"/>
+      <line x1="14.5" y1="3.25" x2="14.5" y2="1.25"/>
+      <line x1="14.5" y1="15.85" x2="14.5" y2="17.85"/>
+      <line x1="10.044" y1="5.094" x2="8.63" y2="3.68"/>
+      <line x1="19" y1="14.05" x2="20.414" y2="15.464"/>
+      <line x1="8.2" y1="9.55" x2="6.2" y2="9.55"/>
+      <line x1="20.8" y1="9.55" x2="22.8" y2="9.55"/>
+      <line x1="10.044" y1="14.006" x2="8.63" y2="15.42"/>
+      <line x1="19" y1="5.05" x2="20.414" y2="3.636"/>
+      <circle cx="14.5" cy="9.55" r="3.6"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon-with-sun" viewBox="0 0 24 24">
+    <title>Auto light/dark, in dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path d="M 8.282 7.007 C 8.385 7.007 8.494 7.007 8.595 7.007 C 5.18 10.184 6.481 15.869 10.942 17.24 C 12.275 17.648 13.706 17.589 15 17.066 C 12.851 22.236 5.91 23.143 2.505 18.696 C -0.897 14.249 1.791 7.786 7.342 7.063 C 7.652 7.021 7.965 7 8.282 7 L 8.282 7.007 Z"/>
+      <line style="opacity: 50%" x1="18" y1="3.705" x2="18" y2="2.5"/>
+      <line style="opacity: 50%" x1="18" y1="11.295" x2="18" y2="12.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="4.816" x2="14.464" y2="3.964"/>
+      <line style="opacity: 50%" x1="20.711" y1="10.212" x2="21.563" y2="11.063"/>
+      <line style="opacity: 50%" x1="14.205" y1="7.5" x2="13.001" y2="7.5"/>
+      <line style="opacity: 50%" x1="21.795" y1="7.5" x2="23" y2="7.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="10.184" x2="14.464" y2="11.036"/>
+      <line style="opacity: 50%" x1="20.711" y1="4.789" x2="21.563" y2="3.937"/>
+      <circle style="opacity: 50%" cx="18" cy="7.5" r="2.169"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-pencil" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-pencil-code">
+      <path d="M4 20h4l10.5 -10.5a2.828 2.828 0 1 0 -4 -4l-10.5 10.5v4" />
+      <path d="M13.5 6.5l4 4" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+  <symbol id="svg-eye" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-eye-code">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M10 12a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" />
+      <path
+        d="M11.11 17.958c-3.209 -.307 -5.91 -2.293 -8.11 -5.958c2.4 -4 5.4 -6 9 -6c3.6 0 6.6 2 9 6c-.21 .352 -.427 .688 -.647 1.008" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+</svg>
+
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle site navigation sidebar">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc" aria-label="Toggle table of contents sidebar">
+<label class="overlay sidebar-overlay" for="__navigation"></label>
+<label class="overlay toc-overlay" for="__toc"></label>
+
+<a class="skip-to-content muted-link" href="#furo-main-content">Skip to content</a>
+
+
+
+<div class="page">
+  <header class="mobile-header">
+    <div class="header-left">
+      <label class="nav-overlay-icon" for="__navigation">
+        <span class="icon"><svg><use href="#svg-menu"></use></svg></span>
+      </label>
+    </div>
+    <div class="header-center">
+      <a href="../../../index.html"><div class="brand">ODA Canvas and Components</div></a>
+    </div>
+    <div class="header-right">
+      <div class="theme-toggle-container theme-toggle-header">
+        <button class="theme-toggle" aria-label="Toggle Light / Dark / Auto color theme">
+          <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+          <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+          <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+          <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+        </button>
+      </div>
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
+        <span class="icon"><svg><use href="#svg-toc"></use></svg></span>
+      </label>
+    </div>
+  </header>
+  <aside class="sidebar-drawer">
+    <div class="sidebar-container">
+      
+      <div class="sidebar-sticky"><a class="sidebar-brand" href="../../../index.html">
+  <div class="sidebar-logo-container">
+    <img class="sidebar-logo only-light" src="../../../_static/ODA-Canvas.svg" alt="Light Logo"/>
+    <img class="sidebar-logo only-dark" src="../../../_static/ODA-Canvas-dark.svg" alt="Dark Logo"/>
+  </div>
+  
+  <span class="sidebar-brand-text">ODA Canvas and Components</span>
+  
+</a><form class="sidebar-search-container" method="get" action="../../../search.html" role="search">
+  <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
+  <input type="hidden" name="check_keywords" value="yes">
+  <input type="hidden" name="area" value="default">
+</form>
+<div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
+  <p class="caption" role="heading"><span class="caption-text">Get started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../README.html">Open Digital Architecture Canvas</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../docs/training-videos/index.html">Training videos</a><input aria-label="Toggle navigation of Training videos" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../docs/training-videos/part-1.html">Introduction to the ODA Canvas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../docs/training-videos/part-2.html">How do I buy or build an ODA Canvas?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../docs/training-videos/part-3.html">Authentication and Authorization in the ODA Canvas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../docs/training-videos/part-4.html">The AI-Native ODA Canvas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../docs/training-videos/part-5.html">Observability in the ODA Canvas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../docs/training-videos/part-7.html">The ODA Agent Skills Marketplace</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../docs/Getting_started.html">Getting started checklist for new members of ODA-CA</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../docs/Playbook.html">Introduction to the ODA Component Accelerator Project (ODA-CA)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Concepts and design</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../Canvas-design.html">ODA Canvas Design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../SecurityPrinciples.html">Open Digital Architecture Reference Implementation (RI) Security Principles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Authentication-design.html">Authentication design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Observability-design.html">Observability design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Event-based-integration-design.html">Event based integration design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../AI-Native-Canvas-design.html">AI-Native Canvas design</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Use cases</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../usecase-library/README.html">ODA Canvas - Use-Case Library</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../usecase-library/UC001-Install-Canvas.html">Install Canvas use case</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../usecase-library/UC002-Manage-Components.html">Manage Components use case</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../usecase-library/UC003-Configure-Exposed-APIs.html">Configure Exposed APIs use-case</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../usecase-library/UC004-Configure-Published-Events.html">Configure Published Events use-case</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../usecase-library/UC005-Configure-Clients-and-Roles.html">Configure Clients and Roles use case</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../usecase-library/UC006-Configure-Observability.html">Configure Observability use case</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../usecase-library/UC007-Configure-Dependent-APIs.html">Configure dependent APIs use case</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../usecase-library/UC008-Configure-Subscribed-Events.html">Configure Subscribed Events use-case</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../usecase-library/UC009-Internal-Authentication.html">Internal authentication use-case</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../usecase-library/UC010-External-Authentication.html">External authentication use-case</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../usecase-library/UC011-View-Technical-Observability.html">View technical observability use-case</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../usecase-library/UC012-View-Business-Observability.html">View business observability use-case</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../usecase-library/UC013-Upgrade-Canvas.html">Upgrade Canvas use case</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../usecase-library/UC014-Secrets-Management-JWT-based.html">Secrets Management for Component</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../usecase-library/UC016-ODA-Component-and-API-Registry.html">UC016 - ODA Component and API Inventory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../usecase-library/use-case-naming-conventions.html">Use-Case Naming Conventions</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Install and operate</span></p>
+<ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../installation/README.html">ODA Canvas installation</a><input aria-label="Toggle navigation of ODA Canvas installation" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../installation/CanvasVault/README.html">HashiCorp Vault installation</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../installation/azure/README.html">Deployment Guide for TM Forum ODA Canvas on Azure</a><input aria-label="Toggle navigation of Deployment Guide for TM Forum ODA Canvas on Azure" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" role="switch" type="checkbox"/><label for="toctree-checkbox-3"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../installation/azure/automated/automated_install_azure_README.html">End-to-End Deployment and Observability Guide for TM Forum ODA Canvas on Azure</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../installation/prerequisites/README.html">Prerequisites installation</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../release-notes/ReleaseNotes.html">Component Specification Release Notes</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Canvas operators</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../source/operators/README.html">ODA Canvas Operators</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../source/operators/TMFOP001-Component-Management/README.html">TMFOP001 Component Management Operators</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../source/operators/TMFOP002-API-Management/README.html">TMFOP002 API Management Operators</a><input aria-label="Toggle navigation of TMFOP002 API Management Operators" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" role="switch" type="checkbox"/><label for="toctree-checkbox-4"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../source/operators/TMFOP002-API-Management/apache-apisix/README.html">Apache APISIX API Management Operator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../source/operators/TMFOP002-API-Management/azure-apim/README.html">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../source/operators/TMFOP002-API-Management/azure-apim/README.html#operator-architecture">Operator Architecture</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../source/operators/TMFOP002-API-Management/azure-apim/README.html#key-components">Key Components</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../source/operators/TMFOP002-API-Management/azure-apim/README.html#event-handling-workflow">Event Handling Workflow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../source/operators/TMFOP002-API-Management/azure-apim/README.html#code-structure-and-functions">Code Structure and Functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../source/operators/TMFOP002-API-Management/azure-apim/README.html#interaction-with-azure-services">Interaction with Azure Services</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../source/operators/TMFOP002-API-Management/azure-apim/README.html#security-considerations">Security Considerations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../source/operators/TMFOP002-API-Management/azure-apim/README.html#testing-and-debugging">Testing and Debugging</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../source/operators/TMFOP002-API-Management/azure-apim/README.html#limitations-and-future-enhancements">Limitations and Future Enhancements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../source/operators/TMFOP002-API-Management/azure-apim/README.html#conclusion">Conclusion</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../source/operators/TMFOP002-API-Management/azure-apim/README.html#key-takeaways">Key Takeaways:</a><input aria-label="Toggle navigation of Key Takeaways:" class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" role="switch" type="checkbox"/><label for="toctree-checkbox-5"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../source/operators/TMFOP002-API-Management/azure-apim/automated/automated_apiManagement_README.html">Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../source/operators/TMFOP002-API-Management/azure-apim/automated/automated_apiManagement_README.html#operator-architecture">Operator Architecture</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../source/operators/TMFOP002-API-Management/azure-apim/automated/automated_apiManagement_README.html#key-components">Key Components</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../source/operators/TMFOP002-API-Management/azure-apim/automated/automated_apiManagement_README.html#event-handling-workflow">Event Handling Workflow</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../source/operators/TMFOP002-API-Management/azure-apim/automated/automated_apiManagement_README.html#code-structure-and-functions">Code Structure and Functions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../source/operators/TMFOP002-API-Management/azure-apim/automated/automated_apiManagement_README.html#interaction-with-azure-services">Interaction with Azure Services</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../source/operators/TMFOP002-API-Management/azure-apim/automated/automated_apiManagement_README.html#security-considerations">Security Considerations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../source/operators/TMFOP002-API-Management/azure-apim/automated/automated_apiManagement_README.html#testing-and-debugging">Testing and Debugging</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../source/operators/TMFOP002-API-Management/azure-apim/automated/automated_apiManagement_README.html#limitations-and-future-enhancements">Limitations and Future Enhancements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../source/operators/TMFOP002-API-Management/azure-apim/automated/automated_apiManagement_README.html#conclusion">Conclusion</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../source/operators/TMFOP002-API-Management/azure-apim/automated/automated_apiManagement_README.html#key-takeaways">Key Takeaways:</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../source/operators/TMFOP002-API-Management/istio/README.html">API Operator for Istio</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../source/operators/TMFOP002-API-Management/kong/README.html">Kubernetes Kong API Lifecycle Management Operator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../source/operators/TMFOP002-API-Management/whalecloud-apim/README.html">API Operator apig - Introduction</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../source/operators/TMFOP003-Identity-Config/README.html">TMFOP003 Identity Config Operators</a><input aria-label="Toggle navigation of TMFOP003 Identity Config Operators" class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" role="switch" type="checkbox"/><label for="toctree-checkbox-6"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../source/operators/TMFOP003-Identity-Config/LOGGING-ENHANCEMENTS.html">Enhanced Logging for Identity Config Operator and Listener</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../source/operators/TMFOP003-Identity-Config/README-PermissionSpecificationSet.html">Identity Config Operator - Permission Specification Set Support</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../source/operators/TMFOP003-Identity-Config/keycloak/README.html">Identity Config operator for Keycloak - Introduction</a><input aria-label="Toggle navigation of Identity Config operator for Keycloak - Introduction" class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" role="switch" type="checkbox"/><label for="toctree-checkbox-7"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../source/operators/TMFOP003-Identity-Config/keycloak/identity-listener-keycloak/README.html">Identity Listener Keycloak</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../source/operators/TMFOP003-Identity-Config/keycloak/identity-listener-keycloak/README.html#buildautomation-and-versioning">Buildautomation and Versioning</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../source/operators/TMFOP004-Credentials-Management/README.html">TMFOP004 Credentials Management Operators</a><input aria-label="Toggle navigation of TMFOP004 Credentials Management Operators" class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" role="switch" type="checkbox"/><label for="toctree-checkbox-8"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../source/operators/TMFOP004-Credentials-Management/credentials-management/README.html">Credentials Management Operator for Kubernetes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../source/operators/TMFOP004-Credentials-Management/credentials-management/README.html#installation">Installation</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../source/operators/TMFOP005-Dependency-Management/README.html">TMFOP005 Dependency Management Operators</a><input aria-label="Toggle navigation of TMFOP005 Dependency Management Operators" class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" role="switch" type="checkbox"/><label for="toctree-checkbox-9"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../source/operators/TMFOP005-Dependency-Management/dependency-management-using-keycloak-authorization/README.html">Dependency Management Operator — Keycloak Authorization</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../source/operators/TMFOP005-Dependency-Management/simple-dependency-management/README.html">Simple Dependency Management Operator</a><input aria-label="Toggle navigation of Simple Dependency Management Operator" class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" role="switch" type="checkbox"/><label for="toctree-checkbox-10"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../source/operators/TMFOP005-Dependency-Management/simple-dependency-management/docker/README.html">DependentAPI Simple Operator</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../source/operators/TMFOP005-Dependency-Management/simple-dependency-management/docker/README.html#buildautomation-and-versioning">Buildautomation and Versioning</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../source/operators/TMFOP006-Event-Management/README.html">TMFOP006 Event Management Operators</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../source/operators/TMFOP007-Secrets-Management/README.html">TMFOP007 Secrets Management Operators</a><input aria-label="Toggle navigation of TMFOP007 Secrets Management Operators" class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" role="switch" type="checkbox"/><label for="toctree-checkbox-11"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../source/operators/TMFOP007-Secrets-Management/vault/README.html">Vault Secrets Management Operator</a><input aria-label="Toggle navigation of Vault Secrets Management Operator" class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" role="switch" type="checkbox"/><label for="toctree-checkbox-12"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../source/operators/TMFOP007-Secrets-Management/vault/docker/README.html">Secrets Management Operator HC</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../source/operators/TMFOP007-Secrets-Management/vault/docker/README.html#buildautomation-and-versioning">Buildautomation and Versioning</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../source/operators/TMFOP007-Secrets-Management/vault/sidecar/docker/README.html">Secrets Management Sidecar</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../source/operators/TMFOP007-Secrets-Management/vault/sidecar/docker/README.html#buildautomation-and-versioning">Buildautomation and Versioning</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../source/operators/TMFOP008-OAuth2-Config/README.html">TMFOP008 OAuth2 Config Operators</a><input aria-label="Toggle navigation of TMFOP008 OAuth2 Config Operators" class="toctree-checkbox" id="toctree-checkbox-13" name="toctree-checkbox-13" role="switch" type="checkbox"/><label for="toctree-checkbox-13"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../source/operators/TMFOP008-OAuth2-Config/envoy-filter/README.html">OAuth2 EnvoyFilter Operator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../source/operators/TMFOP008-OAuth2-Config/envoy-filter/README.html#error-analysis">error analysis</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../source/operators/TMFOP008-OAuth2-Config/envoy-filter/README.html#deploy">deploy</a><input aria-label="Toggle navigation of deploy" class="toctree-checkbox" id="toctree-checkbox-14" name="toctree-checkbox-14" role="switch" type="checkbox"/><label for="toctree-checkbox-14"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../source/operators/TMFOP008-OAuth2-Config/envoy-filter/OAUTH2DEMO.html">OAuth2 EnvoyFilter Demo</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../source/operators/TMFOP008-OAuth2-Config/envoy-filter/OAUTH2DEMO.html#closing">closing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../source/operators/TMFOP008-OAuth2-Config/envoy-filter/OAUTH2DEMO.html#error-analysis">error analysis</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../source/operators/TMFOP008-OAuth2-Config/envoy-filter/docker/README.html">OAuth2 EnvoyFilter Operator</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../source/operators/TMFOP008-OAuth2-Config/envoy-filter/docker/README.html#buildautomation-and-versioning">Buildautomation and Versioning</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../source/operators/TMFOP009-Model-as-a-Service/README.html">TMFOP009 Model-as-a-Service Operators</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../source/operators/TMFOP010-Disruption-Budget-Management/README.html">TMFOP010 Disruption Budget Management Operators</a><input aria-label="Toggle navigation of TMFOP010 Disruption Budget Management Operators" class="toctree-checkbox" id="toctree-checkbox-15" name="toctree-checkbox-15" role="switch" type="checkbox"/><label for="toctree-checkbox-15"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../source/operators/TMFOP010-Disruption-Budget-Management/pdb-management/README.html">PDB Management Operator</a><input aria-label="Toggle navigation of PDB Management Operator" class="toctree-checkbox" id="toctree-checkbox-16" name="toctree-checkbox-16" role="switch" type="checkbox"/><label for="toctree-checkbox-16"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../source/operators/TMFOP010-Disruption-Budget-Management/pdb-management/MAINTAINERS.html">Maintainers</a></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../source/operators/TMFOP010-Disruption-Budget-Management/pdb-management/config/grafana/README.html">PDB Management Operator - Grafana Dashboards</a><input aria-label="Toggle navigation of PDB Management Operator - Grafana Dashboards" class="toctree-checkbox" id="toctree-checkbox-17" name="toctree-checkbox-17" role="switch" type="checkbox"/><label for="toctree-checkbox-17"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../source/operators/TMFOP010-Disruption-Budget-Management/pdb-management/config/grafana/DASHBOARD_IMPORT_GUIDE.html">PDB Management Operator - Grafana Dashboard Import Guide</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../source/operators/TMFOP010-Disruption-Budget-Management/pdb-management/config/mcp/README.html">MCP Server Configuration</a></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../source/operators/TMFOP010-Disruption-Budget-Management/pdb-management/docs/README.html">PDB Management Operator</a><input aria-label="Toggle navigation of PDB Management Operator" class="toctree-checkbox" id="toctree-checkbox-18" name="toctree-checkbox-18" role="switch" type="checkbox"/><label for="toctree-checkbox-18"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../source/operators/TMFOP010-Disruption-Budget-Management/pdb-management/docs/MCP_INTEGRATION.html">MCP Server Integration</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../source/operators/TMFOP010-Disruption-Budget-Management/pdb-management/docs/OPERATIONAL_RUNBOOK.html">PDB Management Operator - Operational Runbook</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../source/operators/TMFOP010-Disruption-Budget-Management/pdb-management/docs/PERFORMANCE_AND_CACHING.html">PDB Management Operator - Performance and Caching</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../source/operators/TMFOP010-Disruption-Budget-Management/pdb-management/docs/TECHNICAL_DOCUMENTATION.html">PDB Management Operator - Technical Documentation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../source/operators/TMFOP010-Disruption-Budget-Management/pdb-management/docs/VERIFICATION.html">Test Verification and Performance Testing Guide</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../source/operators/TMFOP010-Disruption-Budget-Management/pdb-management/docs/WEBHOOK_DEPLOYMENT.html">Webhook Deployment Guide</a></li>
+</ul>
+</li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../source/operators/TMFOP010-Disruption-Budget-Management/pdb-management/examples/demo/README.html">Demo Examples for PDB Management Operator</a><input aria-label="Toggle navigation of Demo Examples for PDB Management Operator" class="toctree-checkbox" id="toctree-checkbox-19" name="toctree-checkbox-19" role="switch" type="checkbox"/><label for="toctree-checkbox-19"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../source/operators/TMFOP010-Disruption-Budget-Management/pdb-management/examples/demo/DEMO_PRESENTATION_SCRIPT.html">PDB Management Operator - Complete Demo Presentation Script</a></li>
+</ul>
+</li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../source/operators/TMFOP010-Disruption-Budget-Management/pdb-management/toolsforlocal/README.html">PDB Management Operator - Demo Tools</a><input aria-label="Toggle navigation of PDB Management Operator - Demo Tools" class="toctree-checkbox" id="toctree-checkbox-20" name="toctree-checkbox-20" role="switch" type="checkbox"/><label for="toctree-checkbox-20"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../source/operators/TMFOP010-Disruption-Budget-Management/pdb-management/toolsforlocal/PDB_RECREATION_GUIDE.html">🚀 PDB Instant Recreation Guide</a></li>
+<li class="toctree-l4 has-children"><a class="reference internal" href="../../source/operators/TMFOP010-Disruption-Budget-Management/pdb-management/toolsforlocal/mcp/README.html">AI + MCP Integration Clients</a><input aria-label="Toggle navigation of AI + MCP Integration Clients" class="toctree-checkbox" id="toctree-checkbox-21" name="toctree-checkbox-21" role="switch" type="checkbox"/><label for="toctree-checkbox-21"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l5"><a class="reference internal" href="../../source/operators/TMFOP010-Disruption-Budget-Management/pdb-management/toolsforlocal/mcp/CLAUDE_MCP_USAGE.html">Claude API + MCP Integration Usage Guide</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../source/operators/TMFOP010-Disruption-Budget-Management/pdb-management/toolsforlocal/mcp/README_GO_CLIENT.html">Claude MCP Client - Go Version</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="../../source/operators/TMFOP010-Disruption-Budget-Management/pdb-management/toolsforlocal/observability/README.html">PDB Management Operator - Observability Stack</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../source/operators/TMFOP010-Disruption-Budget-Management/pdb-management/web/README.html">ODA Canvas - PDB Management MCP Web Interface</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../source/operators/TMFOP011-Carbon-Management/README.html">TMFOP011 Carbon Management Operators</a><input aria-label="Toggle navigation of TMFOP011 Carbon Management Operators" class="toctree-checkbox" id="toctree-checkbox-22" name="toctree-checkbox-22" role="switch" type="checkbox"/><label for="toctree-checkbox-22"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../source/operators/TMFOP011-Carbon-Management/carbon-management/README.html">Carbon Management Operator</a><input aria-label="Toggle navigation of Carbon Management Operator" class="toctree-checkbox" id="toctree-checkbox-23" name="toctree-checkbox-23" role="switch" type="checkbox"/><label for="toctree-checkbox-23"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../source/operators/TMFOP011-Carbon-Management/carbon-management/carbon-aware-scaling-scenario.html">Carbon-Aware Scaling Scenario: ProductOrderCaptureAndValidation</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Helm charts</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../charts/api-operator-istio/README.html">api-operator-istio</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../charts/apisix-gateway/README.html">apisix-gateway</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../charts/canvas-info-service/README.html">canvas-info-service</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../charts/canvas-oda/README.html">canvas-oda</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../charts/canvas-vault/README.html">canvas-vault</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../charts/carbon-intensity-service/README.html">carbon-intensity-service</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../charts/carbon-management-operator/README.html">carbon-management-operator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../charts/cert-manager-init/README.html">cert-manager-init</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../charts/component-operator/README.html">component-operator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../charts/credentialsmanagement-operator/README.html">Credentials Management Operator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../charts/dependentapi-simple-operator/README.html">dependentapi-simple-operator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../charts/identityconfig-operator-keycloak/README.html">identityconfig-operator-keycloak</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../charts/kong-gateway/README.html">kong-gateway</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../charts/observability-stack/README.html">ODA Canvas Observability Stack</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../charts/oda-webhook/README.html">oda-webhook</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../charts/pdb-management-operator/README.html">PDB Management Operator Helm Chart</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../charts/resource-inventory/README.html">canvas-resource-inventory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../charts/secretsmanagement-operator/README.html">secretsmanagement-operator</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Canvas services and tools</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../source/README.html">ODA Canvas source code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../canvas-portal-v2/README.html">Canvas Portal v2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../canvas-portal/README.html">Canvas portal</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../canvas-portal/README.html#how-to-install">How to install</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../canvas-portal/README.html#uninstall">Uninstall</a><input aria-label="Toggle navigation of Uninstall" class="toctree-checkbox" id="toctree-checkbox-24" name="toctree-checkbox-24" role="switch" type="checkbox"/><label for="toctree-checkbox-24"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../canvas-portal/portal-web/README.html">oda-dashboard</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../docs/component-registry/README.html">Component-Registry</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../docs/component-registry/README.html#multi-canvas-support">Multi-Canvas Support</a><input aria-label="Toggle navigation of Multi-Canvas Support" class="toctree-checkbox" id="toctree-checkbox-25" name="toctree-checkbox-25" role="switch" type="checkbox"/><label for="toctree-checkbox-25"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../docs/component-registry/SECURED-SETUP-COMPREG.html">Secure Setup of Component-Registry</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../source/services/ComponentRegistry/README.html">TMF639 Resource Inventory Management Service</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../source/services/ComponentRegistry/README.html#buildautomation-and-versioning">Buildautomation and Versioning</a><input aria-label="Toggle navigation of Buildautomation and Versioning" class="toctree-checkbox" id="toctree-checkbox-26" name="toctree-checkbox-26" role="switch" type="checkbox"/><label for="toctree-checkbox-26"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../source/services/ComponentRegistry/NOTES.html">deploy kc init compreg</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../source/services/ComponentRegistry/OAUTH2_README.html">OAuth2 Authentifizierung für Component Registry</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../source/tmf-services/MCP_Resource_Inventory/README.html">TMF639 Resource Inventory MCP Server with Helm Integration</a><input aria-label="Toggle navigation of TMF639 Resource Inventory MCP Server with Helm Integration" class="toctree-checkbox" id="toctree-checkbox-27" name="toctree-checkbox-27" role="switch" type="checkbox"/><label for="toctree-checkbox-27"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../source/tmf-services/MCP_Resource_Inventory/SETUP_COMPLETE.html">TMF639 Resource Inventory MCP Server Setup Complete</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../source/tmf-services/TMF628_Performance_Management/README.html">TMF628 Performance Management API - Carbon Intensity Service</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../source/tmf-services/TMF638_Service_Inventory/README.html">OpenAPI Generated JavaScript/Express Server</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../source/tmf-services/TMF638_Service_Inventory/README.html#buildautomation-and-versioning">Buildautomation and Versioning</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../source/tmf-services/TMF639_Resource_Inventory/README.html">TMF639 Resource Inventory Management API</a><input aria-label="Toggle navigation of TMF639 Resource Inventory Management API" class="toctree-checkbox" id="toctree-checkbox-28" name="toctree-checkbox-28" role="switch" type="checkbox"/><label for="toctree-checkbox-28"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../source/tmf-services/TMF639_Resource_Inventory/test/README.html">TMF639 Resource Inventory Test Suite</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../source/webhooks/README.html">ODA Component webhooks</a><input aria-label="Toggle navigation of ODA Component webhooks" class="toctree-checkbox" id="toctree-checkbox-29" name="toctree-checkbox-29" role="switch" type="checkbox"/><label for="toctree-checkbox-29"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../source/webhooks/command-line/README.html">Command-line tool for Conversion Webhook</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../source/webhooks/implementation/README.html">Implementation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../source/webhooks/implementation/README.html#buildautomation-and-versioning">Buildautomation and Versioning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../source/webhooks/system-tests/README.html">System tests</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../source/webhooks/unit-tests/README.html">Unit tests for Webhook</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../source/utilities/README.html">ODA Canvas utilities</a><input aria-label="Toggle navigation of ODA Canvas utilities" class="toctree-checkbox" id="toctree-checkbox-30" name="toctree-checkbox-30" role="switch" type="checkbox"/><label for="toctree-checkbox-30"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../source/utilities/canvas-log-viewer/README.html">Canvas Log Viewer utility</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../source/utilities/canvas-log-viewer/README.html#installation">Installation</a><input aria-label="Toggle navigation of Installation" class="toctree-checkbox" id="toctree-checkbox-31" name="toctree-checkbox-31" role="switch" type="checkbox"/><label for="toctree-checkbox-31"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../source/utilities/canvas-log-viewer/python_alternative/README.html">Python Canvas Log Viewer</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../source/utilities/component-viewer/README.html">Component Viewer utility</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../source/utilities/component-viewer/README.html#installation">Installation</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../demos/multi-canvas-service-discovery/README.html">Live-Demo Dependent API Resolution in a Multi-Canvas Scenario using TMF639</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../demos/multi-canvas-service-discovery/README.html#service-discovery-in-single-canvas-environment">Service Discovery in Single-Canvas Environment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../demos/multi-canvas-service-discovery/README.html#service-discovery-in-multi-canvas-environment">Service Discovery in Multi-Canvas Environment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../demos/multi-canvas-service-discovery/README.html#bdd-uc007-f002">BDD UC007-F002</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../demos/multi-canvas-service-discovery/README.html#from-bdd-uc007-f002-data-magenta-populate-and-green-verify-data-in-federated-product-catalog">From BDD UC007-F002 (data) -  [magenta] Populate and [green] verify data in federated product catalog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../demos/multi-canvas-service-discovery/README.html#green-show-access-of-r-cat-in-f-cat-logs">[green] show access of r-cat in f-cat logs:</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../demos/multi-canvas-service-discovery/README.html#cleanup-all">cleanup all</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../demos/multi-canvas-service-discovery/README.html#cleanup-all-ihc-dt-b-magenta">cleanup all IHC-DT-B (magenta)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../demos/multi-canvas-service-discovery/README.html#canvas-installation">Canvas installation</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../demos/multi-canvas-service-discovery/README.html#links">Links</a><input aria-label="Toggle navigation of Links" class="toctree-checkbox" id="toctree-checkbox-32" name="toctree-checkbox-32" role="switch" type="checkbox"/><label for="toctree-checkbox-32"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../demos/multi-canvas-service-discovery/COMPREG-MULTICANVAS.html">Live-Demo Dependent API Resolution in a Multi-Canvas Scenario using TMF639</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../demos/multi-canvas-service-discovery/COMPREG-MULTICANVAS.html#service-discovery-in-single-canvas-environment">Service Discovery in Single-Canvas Environment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../demos/multi-canvas-service-discovery/COMPREG-MULTICANVAS.html#service-discovery-in-multi-canvas-environment">Service Discovery in Multi-Canvas Environment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../demos/multi-canvas-service-discovery/COMPREG-MULTICANVAS.html#bdd-uc007-f002">BDD UC007-F002</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../demos/multi-canvas-service-discovery/COMPREG-MULTICANVAS.html#from-bdd-uc007-f002-data-magenta-populate-and-green-verify-data-in-federated-product-catalog">From BDD UC007-F002 (data) -  [magenta] Populate and [green] verify data in federated product catalog</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../demos/multi-canvas-service-discovery/COMPREG-MULTICANVAS.html#green-show-access-of-r-cat-in-f-cat-logs">[green] show access of r-cat in f-cat logs:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../demos/multi-canvas-service-discovery/COMPREG-MULTICANVAS.html#cleanup-all">cleanup all</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../demos/multi-canvas-service-discovery/COMPREG-MULTICANVAS.html#cleanup-all-ihc-dt-b-magenta">cleanup all IHC-DT-B (magenta)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../demos/multi-canvas-service-discovery/COMPREG-MULTICANVAS.html#canvas-installation">Canvas installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../demos/multi-canvas-service-discovery/COMPREG-MULTICANVAS.html#links">Links</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../demos/multi-canvas-service-discovery/COMPREG-SINGLECANVAS-SETUP.html">Live-Demo Dependent API Resolution in a Multi-Canvas Scenario using TMF639</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../demos/multi-canvas-service-discovery/COMPREG-SINGLECANVAS-SETUP.html#service-discovery-in-single-canvas-environment">Service Discovery in Single-Canvas Environment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../demos/multi-canvas-service-discovery/COMPREG-SINGLECANVAS-SETUP.html#service-discovery-in-multi-canvas-environment">Service Discovery in Multi-Canvas Environment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../demos/multi-canvas-service-discovery/COMPREG-SINGLECANVAS-SETUP.html#bdd-uc007-f002">BDD UC007-F002</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../demos/multi-canvas-service-discovery/COMPREG-SINGLECANVAS-SETUP.html#from-bdd-uc007-f002-data-magenta-populate-and-green-verify-data-in-federated-product-catalog">From BDD UC007-F002 (data) -  [magenta] Populate and [green] verify data in federated product catalog</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../demos/multi-canvas-service-discovery/COMPREG-SINGLECANVAS-SETUP.html#green-show-access-of-r-cat-in-f-cat-logs">[green] show access of r-cat in f-cat logs:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../demos/multi-canvas-service-discovery/COMPREG-SINGLECANVAS-SETUP.html#cleanup-all">cleanup all</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../demos/multi-canvas-service-discovery/COMPREG-SINGLECANVAS-SETUP.html#cleanup-all-ihc-dt-b-magenta">cleanup all IHC-DT-B (magenta)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../demos/multi-canvas-service-discovery/COMPREG-SINGLECANVAS-SETUP.html#canvas-installation">Canvas installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../demos/multi-canvas-service-discovery/COMPREG-SINGLECANVAS-SETUP.html#links">Links</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../demos/multi-canvas-service-discovery/COMPREG-SINGLECANVAS-SETUP.html#auth">AUTH</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../demos/multi-canvas-service-discovery/COMPREG-TESTS.html">Cluster IHC-DT-A (green)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../demos/multi-canvas-service-discovery/COMPREG-TESTS.html#cleanup">Cleanup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../demos/multi-canvas-service-discovery/COMPREG-TESTS.html#cleanup-canvas-completely">cleanup canvas completely</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../demos/multi-canvas-service-discovery/COMPREG-TESTS.html#install-default-canvas">Install default canvas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../demos/multi-canvas-service-discovery/COMPREG-TESTS.html#deploy-and-register-upstream-global-compreg">deploy and register upstream global-compreg</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../demos/multi-canvas-service-discovery/COMPREG-TESTS.html#test">Test</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../demos/multi-canvas-service-discovery/COMPREG-TESTS.html#bdd-uc007-f002">BDD UC007-F002</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../demos/multi-canvas-service-discovery/COMPREG-TESTS.html#from-bdd-uc007-f002-data-magenta-populate-and-green-verify-data-in-federated-product-catalog">From BDD UC007-F002 (data) -  [magenta] Populate and [green] verify data in federated product catalog</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../demos/multi-canvas-service-discovery/COMPREG-TESTS.html#green-show-access-of-r-cat-in-f-cat-logs">[green] show access of r-cat in f-cat logs:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../demos/multi-canvas-service-discovery/COMPREG-TESTS.html#cleanup-all">cleanup all</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../demos/multi-canvas-service-discovery/COMPREG-TESTS.html#cleanup-all-ihc-dt-b-magenta">cleanup all IHC-DT-B (magenta)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../demos/multi-canvas-service-discovery/COMPREG-TESTS.html#canvas-installation">Canvas installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../demos/multi-canvas-service-discovery/COMPREG-TESTS.html#links">Links</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../demos/multi-canvas-service-discovery/COMPREG-TESTS.html#auth">AUTH</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../demos/multi-canvas-service-discovery/COMPREG-TESTS.html#tests-with-kind">Tests with kind</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../demos/multi-canvas-service-discovery/COMPREG-TESTS.html#cucumber-reports">cucumber reports</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../demos/multi-canvas-service-discovery/COMPREG-TESTS_OLD.html">Cluster IHC-DT-A (green)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../demos/multi-canvas-service-discovery/COMPREG-TESTS_OLD.html#cleanup">Cleanup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../demos/multi-canvas-service-discovery/COMPREG-TESTS_OLD.html#cleanup-canvas-completely">cleanup canvas completely</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../demos/multi-canvas-service-discovery/COMPREG-TESTS_OLD.html#install-default-canvas">Install default canvas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../demos/multi-canvas-service-discovery/COMPREG-TESTS_OLD.html#manual-install-compreg">manual install compreg</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../demos/multi-canvas-service-discovery/COMPREG-TESTS_OLD.html#deploy-and-register-upstream-global-compreg">deploy and register upstream global-compreg</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../demos/multi-canvas-service-discovery/COMPREG-TESTS_OLD.html#test">Test</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../demos/multi-canvas-service-discovery/COMPREG-TESTS_OLD.html#bdd-uc007-f002">BDD UC007-F002</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../demos/multi-canvas-service-discovery/COMPREG-TESTS_OLD.html#from-bdd-uc007-f002-data-magenta-populate-and-green-verify-data-in-federated-product-catalog">From BDD UC007-F002 (data) -  [magenta] Populate and [green] verify data in federated product catalog</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../demos/multi-canvas-service-discovery/COMPREG-TESTS_OLD.html#green-show-access-of-r-cat-in-f-cat-logs">[green] show access of r-cat in f-cat logs:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../demos/multi-canvas-service-discovery/COMPREG-TESTS_OLD.html#cleanup-all">cleanup all</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../demos/multi-canvas-service-discovery/COMPREG-TESTS_OLD.html#cleanup-all-ihc-dt-b-magenta">cleanup all IHC-DT-B (magenta)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../demos/multi-canvas-service-discovery/COMPREG-TESTS_OLD.html#canvas-installation">Canvas installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../demos/multi-canvas-service-discovery/COMPREG-TESTS_OLD.html#links">Links</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../demos/multi-canvas-service-discovery/COMPREG-TESTS_OLD.html#auth">AUTH</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Testing</span></p>
+<ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../feature-definition-and-test-kit/README.html">ODA Canvas Features and Test Kit</a><input aria-label="Toggle navigation of ODA Canvas Features and Test Kit" class="toctree-checkbox" id="toctree-checkbox-33" name="toctree-checkbox-33" role="switch" type="checkbox"/><label for="toctree-checkbox-33"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../feature-definition-and-test-kit/Executing-tests.html">Installing and executing the BDD tests</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../feature-definition-and-test-kit/PDB-TEST-README.html">PDB Management Operator BDD Tests - Local Testing Guide</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../feature-definition-and-test-kit/features/step-definition/README.html">BDD Step Definition Framework and Guidelines</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../feature-definition-and-test-kit/testData/README.html">BDD test charts</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../feature-definition-and-test-kit/utilities/README.html">ODA Canvas Test Utilities</a><input aria-label="Toggle navigation of ODA Canvas Test Utilities" class="toctree-checkbox" id="toctree-checkbox-34" name="toctree-checkbox-34" role="switch" type="checkbox"/><label for="toctree-checkbox-34"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../feature-definition-and-test-kit/utilities/observability-utils-kubernetes/README.html">Observability Utils for Kubernetes</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Building ODA Components</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../docs/ODAComponentDesignGuidelines.html">Design Guidelines to create a new ODA Component</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../docs/ODAComponentTutorial/README.html">Tutorial to build ODA-Component from Open-API Reference Implementation</a><input aria-label="Toggle navigation of Tutorial to build ODA-Component from Open-API Reference Implementation" class="toctree-checkbox" id="toctree-checkbox-35" name="toctree-checkbox-35" role="switch" type="checkbox"/><label for="toctree-checkbox-35"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../../docs/ODAComponentTutorial/ProductInventory/README.html">Example Product Inventory component (including Security_role)</a><input aria-label="Toggle navigation of Example Product Inventory component (including Security_role)" class="toctree-checkbox" id="toctree-checkbox-36" name="toctree-checkbox-36" role="switch" type="checkbox"/><label for="toctree-checkbox-36"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../docs/ODAComponentTutorial/ProductInventory/implementation/README.html">Swagger generated server 2.3.1</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../docs/ODAComponentTutorial/ProductInventory/partyRole-implementation/README.html">Swagger generated server 2.3.1</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../docs/ODAComponentTutorial/ProductInventory/productinventory/README.html">Example Product Inventory component (including Security_role)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../docs/ODAComponentTutorial/ProductInventory/roleInit-implementation/README.html">Initialization microservice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../docs/ODAComponentTutorial/implementation/README.html">Swagger generated server 2.3.1</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../docs/Observability-Tutorial/README.html">Tutorial: deploy and observe a running component</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">AI-assisted development</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../docs/AI-Assisted-Development.html">AI-assisted development with ODA Agent Skills</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ai-coding-assistants.html">AI Coding Assistants for ODA Canvas Development</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../canvas-ops-tutorial/SKILL.html">ODA Canvas Kubernetes Tutorial</a><input aria-label="Toggle navigation of ODA Canvas Kubernetes Tutorial" class="toctree-checkbox" id="toctree-checkbox-37" name="toctree-checkbox-37" role="switch" type="checkbox"/><label for="toctree-checkbox-37"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../canvas-ops-tutorial/references/01-about-oda-canvas.html">About ODA Canvas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../canvas-ops-tutorial/references/02-install-oda-canvas.html">Install ODA Canvas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../canvas-ops-tutorial/references/03-deploy-component.html">Deploy an ODA Component</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../canvas-ops-tutorial/references/04-view-components.html">View Deployed ODA Components</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../canvas-ops-tutorial/references/05-view-exposedapis.html">View ExposedAPIs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../canvas-ops-tutorial/references/06-view-dependentapis.html">View DependentAPIs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../canvas-ops-tutorial/references/07-view-observability.html">View Observability Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../canvas-ops-tutorial/references/08-manage-identities.html">Manage Identities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../canvas-ops-tutorial/references/09-run-bdd-tests.html">Run BDD Feature Tests</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../canvas-usecase-documentation/SKILL.html">Canvas Use-Case Documentation — Skill Instructions</a></li>
+<li class="toctree-l1 current has-children current-page"><a class="current reference internal" href="#">Create ODA Operator</a><input aria-label="Toggle navigation of Create ODA Operator" checked="" class="toctree-checkbox" id="toctree-checkbox-38" name="toctree-checkbox-38" role="switch" type="checkbox"/><label for="toctree-checkbox-38"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="references/kopf-docs.html">Kopf Documentation Reference</a></li>
+<li class="toctree-l2"><a class="reference internal" href="references/operator-catalog.html">ODA Canvas Operator Catalog</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../github-actions-debugging/SKILL.html">GitHub Actions Debugging — Skill Instructions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../helm-chart-development/SKILL.html">Helm Chart Development — Skill Instructions</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../skill-creator/SKILL.html">Skill Creator</a><input aria-label="Toggle navigation of Skill Creator" class="toctree-checkbox" id="toctree-checkbox-39" name="toctree-checkbox-39" role="switch" type="checkbox"/><label for="toctree-checkbox-39"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../skill-creator/agents/analyzer.html">Post-hoc Analyzer Agent</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../skill-creator/agents/analyzer.html#analyzing-benchmark-results">Analyzing Benchmark Results</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../skill-creator/agents/comparator.html">Blind Comparator Agent</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../skill-creator/agents/grader.html">Grader Agent</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../skill-creator/references/schemas.html">JSON Schemas</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../write-bdd-feature/SKILL.html">Write BDD Feature — Skill Instructions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../docs/custom-copilot-documentation-agent.html">Custom GitHub Copilot Documentation Agent</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../docs/bdd-feature-generator-agent-guide.html">BDD Feature Generator Custom Agent - Usage Guide</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Architecture decisions</span></p>
+<ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../docs/Decision-Log/README.html">Architecture Decision Log</a><input aria-label="Toggle navigation of Architecture Decision Log" class="toctree-checkbox" id="toctree-checkbox-40" name="toctree-checkbox-40" role="switch" type="checkbox"/><label for="toctree-checkbox-40"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../docs/Decision-Log/0001-record-architecture-decisions.html">1. Record architecture decisions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../docs/Decision-Log/0002-role-vs-permission.html">2. Role vs Permissions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../docs/Decision-Log/0003-reference-api-gateway.html">3. Reference Implementation API Gateway</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../docs/Decision-Log/0004-which-authentication-protocol-should-be-supported.html">4. Which authentication protocol should be supported</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../docs/Decision-Log/0005-which-languages-and-libraries-should-be-used.html">5. Which languages and libraries should be used for Software Operators</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../docs/Decision-Log/0006-common-set-of-minimum-mandatory-JWT-claims-for-interoperability.html">6. Create common set of minimum mandatory JWT claims for interoperability</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../docs/Decision-Log/0007-provisioning-identities-across-identity-providers.html">7. Provisioning identities across identity providers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../docs/Decision-Log/0008-identity-propagation.html">8. Identity Propagation from Component to Component</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../docs/Decision-Log/0009-monorepo-helm-container-versioning.html">9. Monorepo Helm and Container versioning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../docs/Decision-Log/0010-ai4canvas-operator.html">0010: AI4Canvas Operator Scope Decision</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../docs/Decision-Log/0011-canvas-information-transfer.html">0011: Uniform Method for Canvas-to-Component Information Transfer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../docs/Decision-Log/0012-exposed-api-handling.html">0012: Handling of Exposed APIs by Different Operators</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../docs/Decision-Log/0013-canvas-certification.html">13. No certification for canvas implementation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../docs/Decision-Log/0014-multiple-component-namespaces.html">14. Supporting Multiple Component Namespaces</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../docs/Decision-Log/0015-ai-gateway-for-llm-access.html">15. AI Model Gateway for LLM Access</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../docs/Decision-Log/0016-mcp-server-for-tmforum-open-apis.html">16. Model Context Protocol (MCP) Server for TM Forum Open-APIs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../docs/Decision-Log/0017-strategy-for-ai-agents.html">17. Strategy for AI Agents: Modular, Autonomous, Self-Descriptive, CSP-Specific</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../docs/Decision-Log/0018-ai-model-operator-for-agentic-components.html">18. AI Model Operator for Agentic Components</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../docs/Decision-Log/0019-adopt-a2a-protocol-for-agent-skill-exposure.html">19. Adopt A2A Protocol as Open Standard for Agent Skill Exposure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../docs/Decision-Log/0020-ml-model-integration-via-ml-ops-pipeline.html">20. ML Model Integration via ML Ops Pipeline</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../docs/Decision-Log/0021-optimize-oda-canvas-for-ai-coding-agents.html">21. Optimize ODA Canvas Repository for AI Coding Agents</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../docs/Decision-Log/0022-modular-independent-operators.html">22. Modular and Independent Operators</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Contributing</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../CONTRIBUTING.html">How to contribute to the ODA Canvas Accelerator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../docs/CONTRIBUTING.html">How to contribute to the ODA Canvas Accelerator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../code-of-conduct.html">ODA Accelerator Code of Conduct</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../docs/README.html">ODA Canvas Documentation</a><input aria-label="Toggle navigation of ODA Canvas Documentation" class="toctree-checkbox" id="toctree-checkbox-41" name="toctree-checkbox-41" role="switch" type="checkbox"/><label for="toctree-checkbox-41"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../docs/plantuml-to-svg-guide.html">PlantUML to SVG Conversion Guide</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../docs/templates/README.html">Documentation Templates</a><input aria-label="Toggle navigation of Documentation Templates" class="toctree-checkbox" id="toctree-checkbox-42" name="toctree-checkbox-42" role="switch" type="checkbox"/><label for="toctree-checkbox-42"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../docs/templates/chart-readme-template.html">{Chart Name}</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../docs/templates/operator-readme-template.html">{Operator Name}</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../docs/templates/test-component-readme-template.html">{Component Name}</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../docs/templates/use-case-template.html">{Verb} {Object} use case</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../docs/writing-style.html">ODA Canvas Documentation Writing Style Guide</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../devcontainer.html">ODA Canvas Development Environment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../docs/developer/work-with-dockerimages.html">Developer How-Tos: Work with Dockerimages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../source/operators/Installing%20KOPF%20development%20environment.html">Installing KOPF (tested in GKE)</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../docs/TroubleshootingGuide/index.html">Troubleshooting Guide</a><input aria-label="Toggle navigation of Troubleshooting Guide" class="toctree-checkbox" id="toctree-checkbox-43" name="toctree-checkbox-43" role="switch" type="checkbox"/><label for="toctree-checkbox-43"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../docs/TroubleshootingGuide/CTK.html">CTK Troubleshooting Guide</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../docs/TroubleshootingGuide/Controller-Logging.html">Controller Logging Troubleshooting Guide</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../docs/TroubleshootingGuide/Exploring-Custom-Resources.html">Exploring Custom Resources Troubleshooting Guide</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../docs/TroubleshootingGuide/Microservice-Logging.html">Microservice Logging Troubleshooting Guide</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../docs/TroubleshootingGuide/Internal-Kubernetes-Testing.html">Internal Kubernetes Testing Troubleshooting Guide</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../docs/TroubleshootingGuide/Postman-API-Tests.html">Postman API Tests Troubleshooting Guide</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../docs/DocumentationProcess.html">Documentation Process</a></li>
+</ul>
+
+</div>
+</div>
+
+      </div>
+      
+    </div>
+  </aside>
+  <div class="main">
+    <div class="content">
+      <div class="article-container">
+        <a href="#" class="back-to-top muted-link">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+          </svg>
+          <span>Back to top</span>
+        </a>
+        <div class="content-icon-container">
+          <div class="theme-toggle-container theme-toggle-content">
+            <button class="theme-toggle" aria-label="Toggle Light / Dark / Auto color theme">
+              <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+              <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+              <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+              <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+            </button>
+          </div>
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
+            <span class="icon"><svg><use href="#svg-toc"></use></svg></span>
+          </label>
+        </div>
+        <article role="main" id="furo-main-content">
+          <section id="create-oda-operator">
+<h1>Create ODA Operator<a class="headerlink" href="#create-oda-operator" title="Link to this heading">¶</a></h1>
+<section id="technology">
+<h2>Technology<a class="headerlink" href="#technology" title="Link to this heading">¶</a></h2>
+<p>Most ODA Canvas operators use <strong>KOPF</strong> — <a class="reference external" href="https://docs.kopf.dev/en/stable/">Kubernetes Operators Framework for Python</a>.</p>
+<p>The Go-based operators (<code class="docutils literal notranslate"><span class="pre">pdb-management/</span></code>, <code class="docutils literal notranslate"><span class="pre">oauth2EnvoyfilterOperator/</span></code>) are outside this skill’s scope.</p>
+<p><strong>Core dependencies (pinned versions used by this project):</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">kopf</span><span class="o">==</span><span class="mf">1.37.2</span>
+<span class="n">kubernetes</span><span class="o">==</span><span class="mf">27.2.0</span>
+<span class="n">python</span><span class="o">-</span><span class="n">json</span><span class="o">-</span><span class="n">logger</span><span class="o">==</span><span class="mf">2.0.7</span>
+<span class="n">PyYAML</span>
+<span class="n">requests</span>              <span class="c1"># for external HTTP calls</span>
+</pre></div>
+</div>
+<p>Additional per-operator: <code class="docutils literal notranslate"><span class="pre">cloudevents</span></code>, <code class="docutils literal notranslate"><span class="pre">jinja2</span></code>, <code class="docutils literal notranslate"><span class="pre">hvac</span></code> (HashiCorp Vault), <code class="docutils literal notranslate"><span class="pre">google-auth</span></code>.</p>
+<p><strong>References:</strong></p>
+<ul class="simple">
+<li><p><a class="reference internal" href="references/kopf-docs.html"><span class="std std-doc"><code class="docutils literal notranslate"><span class="pre">references/kopf-docs.md</span></code></span></a> — curated kopf documentation links by topic</p></li>
+<li><p><a class="reference internal" href="references/operator-catalog.html"><span class="std std-doc"><code class="docutils literal notranslate"><span class="pre">references/operator-catalog.md</span></code></span></a> — all existing operators with file paths and patterns</p></li>
+</ul>
+</section>
+<section id="quick-reference-existing-operators">
+<h2>Quick Reference: Existing Operators<a class="headerlink" href="#quick-reference-existing-operators" title="Link to this heading">¶</a></h2>
+<p>Before writing new code, check if an existing operator matches your use case:</p>
+<div class="table-wrapper colwidths-auto docutils container">
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Use case</p></th>
+<th class="head"><p>Reference operator</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Component/CRD lifecycle, sub-resource management</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">source/operators/TMFOP001-Component-Management/component-management/</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>API gateway integration (HTTPRoute, Kong plugins)</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">source/operators/TMFOP002-API-Management/kong/</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>Service mesh integration (VirtualService, EndpointSlice)</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">source/operators/TMFOP002-API-Management/istio/</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>External identity service integration + health timers</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">source/operators/TMFOP003-Identity-Config/keycloak/</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>Pod sidecar injection, admission webhooks</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">source/operators/TMFOP007-Secrets-Management/vault/</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>Cross-resource URL discovery, dependency resolution</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">source/operators/TMFOP005-Dependency-Management/simple-dependency-management/</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>Field-triggered handler, Kubernetes Secret creation</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">source/operators/TMFOP004-Credentials-Management/credentials-management/</span></code></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>See <code class="docutils literal notranslate"><span class="pre">references/operator-catalog.md</span></code> for kopf decorators used and detailed patterns in each.</p>
+</section>
+<section id="directory-structure">
+<h2>Directory Structure<a class="headerlink" href="#directory-structure" title="Link to this heading">¶</a></h2>
+<p>Operators are organised under <code class="docutils literal notranslate"><span class="pre">source/operators/</span></code> in two-level directories.</p>
+<section id="modern-pattern-recommended">
+<h3>Modern Pattern (Recommended)<a class="headerlink" href="#modern-pattern-recommended" title="Link to this heading">¶</a></h3>
+<p>For new operators, use a <code class="docutils literal notranslate"><span class="pre">docker/</span></code> subdirectory with standard <code class="docutils literal notranslate"><span class="pre">Dockerfile</span></code> naming:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">source</span><span class="o">/</span><span class="n">operators</span><span class="o">/</span><span class="n">TMFOP</span><span class="c1">###-&lt;Domain&gt;/</span>
+  <span class="o">&lt;</span><span class="n">implementation</span><span class="o">&gt;/</span>
+    <span class="n">README</span><span class="o">.</span><span class="n">md</span>                   <span class="c1"># Operator documentation</span>
+    <span class="n">docker</span><span class="o">/</span>                     <span class="c1"># Docker build context</span>
+      <span class="n">Dockerfile</span>                <span class="c1"># Standard Docker filename (capital D)</span>
+      <span class="n">requirements</span><span class="o">.</span><span class="n">txt</span>          <span class="c1"># Python dependencies</span>
+      <span class="n">src</span><span class="o">/</span>                      <span class="c1"># Python source files</span>
+        <span class="o">&lt;</span><span class="n">operatorName</span><span class="o">&gt;.</span><span class="n">py</span>       <span class="c1"># Main operator file</span>
+        <span class="n">log_wrapper</span><span class="o">.</span><span class="n">py</span>          <span class="c1"># Structured logging helper</span>
+        <span class="o">...</span>                     <span class="c1"># Other Python modules</span>
+      <span class="n">templates</span><span class="o">/</span>                <span class="c1"># Optional Jinja2 templates</span>
+      <span class="n">DockerfileTest</span>            <span class="c1"># Optional test Dockerfile</span>
+</pre></div>
+</div>
+<p><strong>Example</strong>: <code class="docutils literal notranslate"><span class="pre">source/operators/TMFOP005-Dependency-Management/simple-dependency-management/</span></code></p>
+<p><strong>Advantages</strong>:</p>
+<ul class="simple">
+<li><p>Follows standard Docker conventions (<code class="docutils literal notranslate"><span class="pre">Dockerfile</span></code> with capital D)</p></li>
+<li><p>Clean separation of build context</p></li>
+<li><p>Supports multi-stage builds and test dockerfiles</p></li>
+<li><p>No need for explicit <code class="docutils literal notranslate"><span class="pre">buildDockerfile</span></code> in workflow config</p></li>
+</ul>
+</section>
+<section id="legacy-pattern-existing-operators">
+<h3>Legacy Pattern (Existing Operators)<a class="headerlink" href="#legacy-pattern-existing-operators" title="Link to this heading">¶</a></h3>
+<p>Older operators use files in the operator root directory:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">source</span><span class="o">/</span><span class="n">operators</span><span class="o">/</span><span class="n">TMFOP</span><span class="c1">###-&lt;Domain&gt;/</span>
+  <span class="o">&lt;</span><span class="n">implementation</span><span class="o">&gt;/</span>
+    <span class="o">&lt;</span><span class="n">operatorName</span><span class="o">&gt;.</span><span class="n">py</span>           <span class="c1"># Main operator file</span>
+    <span class="n">log_wrapper</span><span class="o">.</span><span class="n">py</span>              <span class="c1"># Structured logging shared helper</span>
+    <span class="o">&lt;</span><span class="n">operatorName</span><span class="o">&gt;-</span><span class="n">dockerfile</span>   <span class="c1"># Dockerfile (no extension, lowercase)</span>
+    <span class="n">requirements</span><span class="o">.</span><span class="n">txt</span>            <span class="c1"># Optional per-operator deps</span>
+</pre></div>
+</div>
+<p><strong>Examples</strong>: <code class="docutils literal notranslate"><span class="pre">component-management/</span></code>, <code class="docutils literal notranslate"><span class="pre">kong/</span></code>, <code class="docutils literal notranslate"><span class="pre">keycloak/</span></code></p>
+<p><strong>Note</strong>: When maintaining legacy operators, keep the existing pattern for consistency. New operators should use the modern pattern.</p>
+<p>The matching Helm chart lives at <code class="docutils literal notranslate"><span class="pre">charts/&lt;operator-chart-name&gt;/</span></code>.</p>
+</section>
+</section>
+<section id="constants-startup">
+<h2>Constants &amp; Startup<a class="headerlink" href="#constants-startup" title="Link to this heading">¶</a></h2>
+<p>Define CRD coordinates and HTTP codes at the top of every operator:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">GROUP</span> <span class="o">=</span> <span class="s2">"oda.tmforum.org"</span>
+<span class="n">VERSION</span> <span class="o">=</span> <span class="s2">"v1"</span>
+<span class="n">COMPONENTS_PLURAL</span> <span class="o">=</span> <span class="s2">"components"</span>   <span class="c1"># or "exposedapis", "dependentapis", "identityconfigs", etc.</span>
+<span class="n">HTTP_CONFLICT</span> <span class="o">=</span> <span class="mi">409</span>
+<span class="n">HTTP_NOT_FOUND</span> <span class="o">=</span> <span class="mi">404</span>
+</pre></div>
+</div>
+<p>Always configure the watcher timeout in a startup hook to recover from stale watch connections:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nd">@kopf</span><span class="o">.</span><span class="n">on</span><span class="o">.</span><span class="n">startup</span><span class="p">()</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">configure</span><span class="p">(</span><span class="n">settings</span><span class="p">:</span> <span class="n">kopf</span><span class="o">.</span><span class="n">OperatorSettings</span><span class="p">,</span> <span class="o">**</span><span class="n">_</span><span class="p">):</span>
+    <span class="n">settings</span><span class="o">.</span><span class="n">watching</span><span class="o">.</span><span class="n">server_timeout</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">*</span> <span class="mi">60</span>  <span class="c1"># recover from broken watchers every 60s</span>
+    <span class="c1"># Optional — see https://docs.kopf.dev/en/stable/configuration/</span>
+    <span class="c1"># settings.posting.level = logging.WARNING    # reduce K8s event verbosity</span>
+    <span class="c1"># settings.peering.priority = 100             # set if running alongside other operators</span>
+</pre></div>
+</div>
+</section>
+<section id="handler-patterns">
+<h2>Handler Patterns<a class="headerlink" href="#handler-patterns" title="Link to this heading">¶</a></h2>
+<section id="create-resume-update-triple-stacked">
+<h3>Create / Resume / Update (triple-stacked)<a class="headerlink" href="#create-resume-update-triple-stacked" title="Link to this heading">¶</a></h3>
+<p>The standard CRD lifecycle pattern — one function handles all three events. <code class="docutils literal notranslate"><span class="pre">resume</span></code> fires when
+the operator starts and finds pre-existing objects, ensuring continuity after restarts.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nd">@kopf</span><span class="o">.</span><span class="n">on</span><span class="o">.</span><span class="n">resume</span><span class="p">(</span><span class="n">GROUP</span><span class="p">,</span> <span class="n">VERSION</span><span class="p">,</span> <span class="n">COMPONENTS_PLURAL</span><span class="p">,</span> <span class="n">retries</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+<span class="nd">@kopf</span><span class="o">.</span><span class="n">on</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">GROUP</span><span class="p">,</span> <span class="n">VERSION</span><span class="p">,</span> <span class="n">COMPONENTS_PLURAL</span><span class="p">,</span> <span class="n">retries</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+<span class="nd">@kopf</span><span class="o">.</span><span class="n">on</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">GROUP</span><span class="p">,</span> <span class="n">VERSION</span><span class="p">,</span> <span class="n">COMPONENTS_PLURAL</span><span class="p">,</span> <span class="n">retries</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+<span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">coreAPIs</span><span class="p">(</span><span class="n">meta</span><span class="p">,</span> <span class="n">spec</span><span class="p">,</span> <span class="n">status</span><span class="p">,</span> <span class="n">body</span><span class="p">,</span> <span class="n">namespace</span><span class="p">,</span> <span class="n">labels</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="k">pass</span>
+</pre></div>
+</div>
+<p>Docs: <a class="reference external" href="https://docs.kopf.dev/en/stable/handlers/">https://docs.kopf.dev/en/stable/handlers/</a></p>
+</section>
+<section id="delete-handlers">
+<h3>Delete Handlers<a class="headerlink" href="#delete-handlers" title="Link to this heading">¶</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nd">@kopf</span><span class="o">.</span><span class="n">on</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="n">GROUP</span><span class="p">,</span> <span class="n">VERSION</span><span class="p">,</span> <span class="n">COMPONENTS_PLURAL</span><span class="p">,</span> <span class="n">retries</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+<span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">componentDelete</span><span class="p">(</span><span class="n">meta</span><span class="p">,</span> <span class="n">spec</span><span class="p">,</span> <span class="n">status</span><span class="p">,</span> <span class="n">namespace</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="k">pass</span>
+</pre></div>
+</div>
+<p>Kopf adds a finalizer so the object isn’t fully deleted until this handler succeeds.
+Pass <code class="docutils literal notranslate"><span class="pre">optional=True</span></code> if the handler shouldn’t block object deletion.</p>
+</section>
+<section id="field-handlers">
+<h3>Field Handlers<a class="headerlink" href="#field-handlers" title="Link to this heading">¶</a></h3>
+<p>React to specific field changes. Use a <code class="docutils literal notranslate"><span class="pre">when=</span></code> callback to conditionally filter to avoid
+re-processing unchanged states:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">is_status_changed</span><span class="p">(</span><span class="n">status</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">status</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"identityConfig"</span><span class="p">)</span> <span class="o">!=</span> <span class="s2">"In-Progress-Done"</span>
+
+<span class="nd">@kopf</span><span class="o">.</span><span class="n">on</span><span class="o">.</span><span class="n">field</span><span class="p">(</span><span class="n">GROUP</span><span class="p">,</span> <span class="n">VERSION</span><span class="p">,</span> <span class="n">COMPONENTS_PLURAL</span><span class="p">,</span>
+               <span class="n">field</span><span class="o">=</span><span class="s2">"status.identityConfig"</span><span class="p">,</span>
+               <span class="n">when</span><span class="o">=</span><span class="n">is_status_changed</span><span class="p">,</span> <span class="n">retries</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+<span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">identityConfig</span><span class="p">(</span><span class="n">meta</span><span class="p">,</span> <span class="n">spec</span><span class="p">,</span> <span class="n">status</span><span class="p">,</span> <span class="n">old</span><span class="p">,</span> <span class="n">new</span><span class="p">,</span> <span class="n">namespace</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="k">pass</span>
+</pre></div>
+</div>
+<p>Docs: <a class="reference external" href="https://docs.kopf.dev/en/stable/filters/">https://docs.kopf.dev/en/stable/filters/</a></p>
+</section>
+<section id="timer-handlers">
+<h3>Timer Handlers<a class="headerlink" href="#timer-handlers" title="Link to this heading">¶</a></h3>
+<p>Run periodically as long as the object exists — useful for health polling and reconciliation.
+<code class="docutils literal notranslate"><span class="pre">idle</span></code> waits for the resource to stabilise before first invocation:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nd">@kopf</span><span class="o">.</span><span class="n">timer</span><span class="p">(</span><span class="n">GROUP</span><span class="p">,</span> <span class="n">VERSION</span><span class="p">,</span> <span class="s2">"identityconfigs"</span><span class="p">,</span> <span class="n">interval</span><span class="o">=</span><span class="mf">300.0</span><span class="p">,</span> <span class="n">idle</span><span class="o">=</span><span class="mf">30.0</span><span class="p">)</span>
+<span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">healthProbe</span><span class="p">(</span><span class="n">spec</span><span class="p">,</span> <span class="n">status</span><span class="p">,</span> <span class="n">namespace</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="c1"># Periodic reconciliation / external service health check</span>
+    <span class="k">pass</span>
+</pre></div>
+</div>
+<p>Docs: <a class="reference external" href="https://docs.kopf.dev/en/stable/timers/">https://docs.kopf.dev/en/stable/timers/</a></p>
+</section>
+<section id="health-check-probes">
+<h3>Health Check Probes<a class="headerlink" href="#health-check-probes" title="Link to this heading">¶</a></h3>
+<p>Expose a health endpoint Kubernetes liveness probes can call:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nd">@kopf</span><span class="o">.</span><span class="n">on</span><span class="o">.</span><span class="n">probe</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="s2">"http-check"</span><span class="p">)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">check_http_connection</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+    <span class="n">resp</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">SERVICE_URL</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+    <span class="n">resp</span><span class="o">.</span><span class="n">raise_for_status</span><span class="p">()</span>
+    <span class="k">return</span> <span class="s2">"ok"</span>
+</pre></div>
+</div>
+<p>Docs: <a class="reference external" href="https://docs.kopf.dev/en/stable/probing/">https://docs.kopf.dev/en/stable/probing/</a></p>
+</section>
+<section id="low-level-event-watching">
+<h3>Low-Level Event Watching<a class="headerlink" href="#low-level-event-watching" title="Link to this heading">¶</a></h3>
+<p>Watch raw watch-stream events without kopf storing handler state — useful for mirroring changes
+from another operator’s CRDs or for lightweight reactive logic:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nd">@kopf</span><span class="o">.</span><span class="n">on</span><span class="o">.</span><span class="n">event</span><span class="p">(</span><span class="n">GROUP</span><span class="p">,</span> <span class="n">VERSION</span><span class="p">,</span> <span class="s2">"exposedapis"</span><span class="p">)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">onExposedAPIEvent</span><span class="p">(</span><span class="n">event</span><span class="p">,</span> <span class="n">body</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">event</span><span class="p">[</span><span class="s2">"type"</span><span class="p">]</span> <span class="ow">in</span> <span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="s2">"ADDED"</span><span class="p">,</span> <span class="s2">"MODIFIED"</span><span class="p">):</span>
+        <span class="k">pass</span>  <span class="c1"># react to changes; no retry/status tracking by kopf</span>
+</pre></div>
+</div>
+<p>Docs: <a class="reference external" href="https://docs.kopf.dev/en/stable/handlers/#event-watching-handlers">https://docs.kopf.dev/en/stable/handlers/#event-watching-handlers</a></p>
+</section>
+<section id="admission-mutation-webhooks">
+<h3>Admission / Mutation Webhooks<a class="headerlink" href="#admission-mutation-webhooks" title="Link to this heading">¶</a></h3>
+<p>Intercept resource creation/updates before they reach the cluster — the secretsmanagement
+operator uses this to inject a Vault sidecar into pods:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nd">@kopf</span><span class="o">.</span><span class="n">on</span><span class="o">.</span><span class="n">mutate</span><span class="p">(</span><span class="s2">""</span><span class="p">,</span> <span class="s2">"v1"</span><span class="p">,</span> <span class="s2">"pods"</span><span class="p">,</span> <span class="n">operation</span><span class="o">=</span><span class="s2">"CREATE"</span><span class="p">)</span>
+<span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">inject_sidecar</span><span class="p">(</span><span class="n">patch</span><span class="p">,</span> <span class="n">spec</span><span class="p">,</span> <span class="n">namespace</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">should_inject</span><span class="p">(</span><span class="n">spec</span><span class="p">):</span>
+        <span class="n">patch</span><span class="o">.</span><span class="n">spec</span><span class="o">.</span><span class="n">setdefault</span><span class="p">(</span><span class="s2">"containers"</span><span class="p">,</span> <span class="p">[])</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">SIDECAR_CONTAINER</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Requires a webhook server configured in startup. In-cluster, use a <code class="docutils literal notranslate"><span class="pre">ServiceTunnel</span></code> so Kubernetes
+calls back via the operator’s Service DNS name. For simpler cases kopf can manage the webhook
+configuration automatically:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nd">@kopf</span><span class="o">.</span><span class="n">on</span><span class="o">.</span><span class="n">startup</span><span class="p">()</span>
+<span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">configure</span><span class="p">(</span><span class="n">settings</span><span class="p">:</span> <span class="n">kopf</span><span class="o">.</span><span class="n">OperatorSettings</span><span class="p">,</span> <span class="o">**</span><span class="n">_</span><span class="p">):</span>
+    <span class="n">settings</span><span class="o">.</span><span class="n">admission</span><span class="o">.</span><span class="n">server</span> <span class="o">=</span> <span class="n">kopf</span><span class="o">.</span><span class="n">WebhookServer</span><span class="p">(</span><span class="n">addr</span><span class="o">=</span><span class="s2">"0.0.0.0"</span><span class="p">,</span> <span class="n">port</span><span class="o">=</span><span class="mi">8080</span><span class="p">)</span>
+    <span class="n">settings</span><span class="o">.</span><span class="n">admission</span><span class="o">.</span><span class="n">managed</span> <span class="o">=</span> <span class="s2">"auto.kopf.dev"</span>
+    <span class="n">settings</span><span class="o">.</span><span class="n">peering</span><span class="o">.</span><span class="n">priority</span> <span class="o">=</span> <span class="mi">200</span>  <span class="c1"># ensure admission operator has highest priority</span>
+</pre></div>
+</div>
+<p>See <code class="docutils literal notranslate"><span class="pre">source/operators/TMFOP007-Secrets-Management/vault/docker/</span></code> for the full <code class="docutils literal notranslate"><span class="pre">ServiceTunnel</span></code> implementation.
+Docs: <a class="reference external" href="https://docs.kopf.dev/en/stable/admission/">https://docs.kopf.dev/en/stable/admission/</a></p>
+</section>
+<section id="sub-handlers">
+<h3>Sub-Handlers<a class="headerlink" href="#sub-handlers" title="Link to this heading">¶</a></h3>
+<p>Process a list of items with per-item kopf lifecycle (retries, status, logging):</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nd">@kopf</span><span class="o">.</span><span class="n">on</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">GROUP</span><span class="p">,</span> <span class="n">VERSION</span><span class="p">,</span> <span class="n">COMPONENTS_PLURAL</span><span class="p">)</span>
+<span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">processAPIs</span><span class="p">(</span><span class="n">spec</span><span class="p">,</span> <span class="o">**</span><span class="n">_</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">api</span> <span class="ow">in</span> <span class="n">spec</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"coreFunction"</span><span class="p">,</span> <span class="p">{})</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"exposedAPIs"</span><span class="p">,</span> <span class="p">[]):</span>
+        <span class="nd">@kopf</span><span class="o">.</span><span class="n">subhandler</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="n">api</span><span class="p">[</span><span class="s2">"name"</span><span class="p">])</span>
+        <span class="k">def</span><span class="w"> </span><span class="nf">handle_api</span><span class="p">(</span><span class="n">api</span><span class="o">=</span><span class="n">api</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+            <span class="k">pass</span>
+</pre></div>
+</div>
+<p>Docs: <a class="reference external" href="https://docs.kopf.dev/en/stable/handlers/#sub-handlers">https://docs.kopf.dev/en/stable/handlers/#sub-handlers</a></p>
+</section>
+</section>
+<section id="error-handling">
+<h2>Error Handling<a class="headerlink" href="#error-handling" title="Link to this heading">¶</a></h2>
+<p>Three error categories — pick the right one to control retry behaviour:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Transient failure — kopf will retry after delay (default delay is 60s)</span>
+<span class="k">raise</span> <span class="n">kopf</span><span class="o">.</span><span class="n">TemporaryError</span><span class="p">(</span><span class="s2">"External service not ready"</span><span class="p">,</span> <span class="n">delay</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span>
+
+<span class="c1"># Permanent failure — stop retrying, mark handler as failed</span>
+<span class="k">raise</span> <span class="n">kopf</span><span class="o">.</span><span class="n">PermanentError</span><span class="p">(</span><span class="s2">"Invalid spec: field X is required"</span><span class="p">)</span>
+
+<span class="c1"># Configure error mode per handler (default is TEMPORARY = retry forever)</span>
+<span class="nd">@kopf</span><span class="o">.</span><span class="n">on</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">GROUP</span><span class="p">,</span> <span class="n">VERSION</span><span class="p">,</span> <span class="n">PLURAL</span><span class="p">,</span>
+                <span class="n">errors</span><span class="o">=</span><span class="n">kopf</span><span class="o">.</span><span class="n">ErrorsMode</span><span class="o">.</span><span class="n">PERMANENT</span><span class="p">,</span>
+                <span class="n">retries</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>
+                <span class="n">backoff</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span>
+<span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">handler</span><span class="p">(</span><span class="o">**</span><span class="n">_</span><span class="p">):</span> <span class="o">...</span>
+</pre></div>
+</div>
+<p>Always handle <code class="docutils literal notranslate"><span class="pre">ApiException</span></code> explicitly when calling the Kubernetes client:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">kubernetes.client.rest</span><span class="w"> </span><span class="kn">import</span> <span class="n">ApiException</span>
+
+<span class="k">try</span><span class="p">:</span>
+    <span class="n">resource</span> <span class="o">=</span> <span class="n">custom_api</span><span class="o">.</span><span class="n">get_namespaced_custom_object</span><span class="p">(</span><span class="o">...</span><span class="p">)</span>
+<span class="k">except</span> <span class="n">ApiException</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">e</span><span class="o">.</span><span class="n">status</span> <span class="o">==</span> <span class="n">HTTP_NOT_FOUND</span><span class="p">:</span>
+        <span class="k">pass</span>  <span class="c1"># create it</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="n">kopf</span><span class="o">.</span><span class="n">TemporaryError</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">),</span> <span class="n">delay</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Docs: <a class="reference external" href="https://docs.kopf.dev/en/stable/errors/">https://docs.kopf.dev/en/stable/errors/</a></p>
+</section>
+<section id="status-updates-results-delivery">
+<h2>Status Updates &amp; Results Delivery<a class="headerlink" href="#status-updates-results-delivery" title="Link to this heading">¶</a></h2>
+<p>A handler’s return value is automatically written to <code class="docutils literal notranslate"><span class="pre">status.&lt;handler_id&gt;</span></code>. Use a dict to
+store structured results:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nd">@kopf</span><span class="o">.</span><span class="n">on</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">GROUP</span><span class="p">,</span> <span class="n">VERSION</span><span class="p">,</span> <span class="n">COMPONENTS_PLURAL</span><span class="p">,</span> <span class="n">retries</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+<span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">coreAPIs</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="k">await</span> <span class="n">processAPIs</span><span class="p">(</span><span class="o">...</span><span class="p">)</span>
+    <span class="k">return</span> <span class="p">{</span><span class="s2">"apiCount"</span><span class="p">:</span> <span class="nb">len</span><span class="p">(</span><span class="n">result</span><span class="p">),</span> <span class="s2">"status"</span><span class="p">:</span> <span class="s2">"Active"</span><span class="p">}</span>  <span class="c1"># → status.coreAPIs = {...}</span>
+</pre></div>
+</div>
+<p>Docs: <a class="reference external" href="https://docs.kopf.dev/en/stable/results/">https://docs.kopf.dev/en/stable/results/</a></p>
+</section>
+<section id="kubernetes-api-calls">
+<h2>Kubernetes API Calls<a class="headerlink" href="#kubernetes-api-calls" title="Link to this heading">¶</a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">kubernetes</span>
+
+<span class="c1"># Custom resources (CRDs)</span>
+<span class="n">coa</span> <span class="o">=</span> <span class="n">kubernetes</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">CustomObjectsApi</span><span class="p">()</span>
+
+<span class="c1"># Idempotent create-or-update pattern</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="n">coa</span><span class="o">.</span><span class="n">get_namespaced_custom_object</span><span class="p">(</span><span class="n">GROUP</span><span class="p">,</span> <span class="n">VERSION</span><span class="p">,</span> <span class="n">namespace</span><span class="p">,</span> <span class="n">PLURAL</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span>
+    <span class="n">coa</span><span class="o">.</span><span class="n">patch_namespaced_custom_object</span><span class="p">(</span><span class="n">GROUP</span><span class="p">,</span> <span class="n">VERSION</span><span class="p">,</span> <span class="n">namespace</span><span class="p">,</span> <span class="n">PLURAL</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">body</span><span class="p">)</span>
+<span class="k">except</span> <span class="n">ApiException</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">e</span><span class="o">.</span><span class="n">status</span> <span class="o">==</span> <span class="n">HTTP_NOT_FOUND</span><span class="p">:</span>
+        <span class="n">coa</span><span class="o">.</span><span class="n">create_namespaced_custom_object</span><span class="p">(</span><span class="n">GROUP</span><span class="p">,</span> <span class="n">VERSION</span><span class="p">,</span> <span class="n">namespace</span><span class="p">,</span> <span class="n">PLURAL</span><span class="p">,</span> <span class="n">body</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="n">kopf</span><span class="o">.</span><span class="n">TemporaryError</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">),</span> <span class="n">delay</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span>
+
+<span class="c1"># Core Kubernetes resources</span>
+<span class="n">core_v1</span> <span class="o">=</span> <span class="n">kubernetes</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">CoreV1Api</span><span class="p">()</span>
+<span class="n">core_v1</span><span class="o">.</span><span class="n">create_namespaced_secret</span><span class="p">(</span><span class="n">namespace</span><span class="p">,</span> <span class="n">secret_body</span><span class="p">)</span>
+
+<span class="c1"># List cluster-wide resources for cross-resource discovery</span>
+<span class="n">all_apis</span> <span class="o">=</span> <span class="n">coa</span><span class="o">.</span><span class="n">list_cluster_custom_object</span><span class="p">(</span><span class="n">GROUP</span><span class="p">,</span> <span class="n">VERSION</span><span class="p">,</span> <span class="s2">"exposedapis"</span><span class="p">)</span>
+
+<span class="c1"># Watch non-CRD resources (e.g. EndpointSlice for service implementation discovery)</span>
+<span class="nd">@kopf</span><span class="o">.</span><span class="n">on</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="s2">"discovery.k8s.io"</span><span class="p">,</span> <span class="s2">"v1"</span><span class="p">,</span> <span class="s2">"endpointslices"</span><span class="p">,</span> <span class="n">retries</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+<span class="nd">@kopf</span><span class="o">.</span><span class="n">on</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="s2">"discovery.k8s.io"</span><span class="p">,</span> <span class="s2">"v1"</span><span class="p">,</span> <span class="s2">"endpointslices"</span><span class="p">,</span> <span class="n">retries</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+<span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">onEndpointSlice</span><span class="p">(</span><span class="n">meta</span><span class="p">,</span> <span class="n">spec</span><span class="p">,</span> <span class="n">namespace</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="k">pass</span>
+</pre></div>
+</div>
+<p>Docs: <a class="reference external" href="https://docs.kopf.dev/en/stable/idempotence/">https://docs.kopf.dev/en/stable/idempotence/</a></p>
+</section>
+<section id="resource-hierarchies">
+<h2>Resource Hierarchies<a class="headerlink" href="#resource-hierarchies" title="Link to this heading">¶</a></h2>
+<p>Use <code class="docutils literal notranslate"><span class="pre">kopf.adopt()</span></code> to set <code class="docutils literal notranslate"><span class="pre">ownerReferences</span></code> on child resources so they are deleted with the
+parent (cascaded deletion):</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">child</span> <span class="o">=</span> <span class="p">{</span><span class="s2">"apiVersion"</span><span class="p">:</span> <span class="s2">"oda.tmforum.org/v1"</span><span class="p">,</span> <span class="s2">"kind"</span><span class="p">:</span> <span class="s2">"ExposedAPI"</span><span class="p">,</span> <span class="o">...</span><span class="p">}</span>
+<span class="n">kopf</span><span class="o">.</span><span class="n">adopt</span><span class="p">(</span><span class="n">child</span><span class="p">)</span>   <span class="c1"># sets ownerReferences, namespace, and labels from current handler context</span>
+<span class="n">coa</span><span class="o">.</span><span class="n">create_namespaced_custom_object</span><span class="p">(</span><span class="n">GROUP</span><span class="p">,</span> <span class="n">VERSION</span><span class="p">,</span> <span class="n">namespace</span><span class="p">,</span> <span class="s2">"exposedapis"</span><span class="p">,</span> <span class="n">child</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Individual hierarchy helpers when you need fine-grained control:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">kopf</span><span class="o">.</span><span class="n">label</span><span class="p">(</span><span class="n">objs</span><span class="p">,</span> <span class="p">{</span><span class="s2">"oda.tmforum.org/componentName"</span><span class="p">:</span> <span class="n">name</span><span class="p">})</span>   <span class="c1"># add labels</span>
+<span class="n">kopf</span><span class="o">.</span><span class="n">harmonize_naming</span><span class="p">(</span><span class="n">objs</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">strict</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>               <span class="c1"># align name to parent</span>
+<span class="n">kopf</span><span class="o">.</span><span class="n">adjust_namespace</span><span class="p">(</span><span class="n">objs</span><span class="p">,</span> <span class="n">namespace</span><span class="p">,</span> <span class="n">forced</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>          <span class="c1"># set namespace</span>
+</pre></div>
+</div>
+<p>Docs: <a class="reference external" href="https://docs.kopf.dev/en/stable/hierarchies/">https://docs.kopf.dev/en/stable/hierarchies/</a></p>
+</section>
+<section id="async-vs-sync">
+<h2>Async vs Sync<a class="headerlink" href="#async-vs-sync" title="Link to this heading">¶</a></h2>
+<ul class="simple">
+<li><p>Use <code class="docutils literal notranslate"><span class="pre">async</span> <span class="pre">def</span></code> for handlers that make multiple Kubernetes or external HTTP API calls — keeps the event loop unblocked so other resources are handled concurrently</p></li>
+<li><p>Sync handlers are fine for lightweight single-purpose logic (many API-management operators use sync)</p></li>
+<li><p>If you have many sync handlers, scale the worker pool: <code class="docutils literal notranslate"><span class="pre">settings.execution.max_workers</span> <span class="pre">=</span> <span class="pre">20</span></code></p></li>
+</ul>
+<p>Docs: <a class="reference external" href="https://docs.kopf.dev/en/stable/async/">https://docs.kopf.dev/en/stable/async/</a></p>
+</section>
+<section id="logging">
+<h2>Logging<a class="headerlink" href="#logging" title="Link to this heading">¶</a></h2>
+<p>Use the shared <code class="docutils literal notranslate"><span class="pre">LogWrapper</span></code> for consistent structured log output across all operators:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">log_wrapper</span><span class="w"> </span><span class="kn">import</span> <span class="n">LogWrapper</span>
+
+<span class="n">logging_level</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"LOGGING"</span><span class="p">,</span> <span class="n">logging</span><span class="o">.</span><span class="n">INFO</span><span class="p">)</span>
+<span class="n">logger</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="s2">"OperatorName"</span><span class="p">)</span>
+<span class="n">logger</span><span class="o">.</span><span class="n">setLevel</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">logging_level</span><span class="p">))</span>
+<span class="n">LogWrapper</span><span class="o">.</span><span class="n">set_defaultLogger</span><span class="p">(</span><span class="n">logger</span><span class="p">)</span>
+
+<span class="n">logw</span> <span class="o">=</span> <span class="n">LogWrapper</span><span class="p">(</span><span class="n">handler_name</span><span class="o">=</span><span class="s2">"coreAPIs"</span><span class="p">,</span> <span class="n">function_name</span><span class="o">=</span><span class="s2">"processExposedAPIs"</span><span class="p">)</span>
+<span class="n">logw</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">component_name</span><span class="o">=</span><span class="n">name</span><span class="p">,</span> <span class="n">resource_name</span><span class="o">=</span><span class="n">api_name</span><span class="p">)</span>
+<span class="n">logw</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">"Processing"</span><span class="p">,</span> <span class="sa">f</span><span class="s2">"Found </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">apis</span><span class="p">)</span><span class="si">}</span><span class="s2"> APIs"</span><span class="p">)</span>
+<span class="n">logw</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s2">"Failed"</span><span class="p">,</span> <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">traceback</span><span class="o">.</span><span class="n">format_exc</span><span class="p">()</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Log format: <code class="docutils literal notranslate"><span class="pre">[componentName|resourceName|handlerName|functionName]</span> <span class="pre">subject:</span> <span class="pre">message</span></code></p>
+<p>Simple operators (e.g. <code class="docutils literal notranslate"><span class="pre">credentials-management</span></code>) may use standard <code class="docutils literal notranslate"><span class="pre">logging</span></code> without <code class="docutils literal notranslate"><span class="pre">LogWrapper</span></code>.</p>
+</section>
+<section id="segment-configuration-data-driven">
+<h2>Segment Configuration (Data-Driven)<a class="headerlink" href="#segment-configuration-data-driven" title="Link to this heading">¶</a></h2>
+<p>For operators processing multiple named segments of a Component spec, use a registry to avoid
+duplicating handler logic. The component-management operator uses this pattern for six segments:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">SEGMENT_CONFIG</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">"coreAPIs"</span><span class="p">:</span>       <span class="p">{</span><span class="s2">"spec_path"</span><span class="p">:</span> <span class="s2">"coreFunction"</span><span class="p">,</span>       <span class="s2">"status_key"</span><span class="p">:</span> <span class="s2">"coreAPIs"</span><span class="p">},</span>
+    <span class="s2">"managementAPIs"</span><span class="p">:</span> <span class="p">{</span><span class="s2">"spec_path"</span><span class="p">:</span> <span class="s2">"managementFunction"</span><span class="p">,</span> <span class="s2">"status_key"</span><span class="p">:</span> <span class="s2">"managementAPIs"</span><span class="p">},</span>
+    <span class="s2">"securityAPIs"</span><span class="p">:</span>   <span class="p">{</span><span class="s2">"spec_path"</span><span class="p">:</span> <span class="s2">"securityFunction"</span><span class="p">,</span>   <span class="s2">"status_key"</span><span class="p">:</span> <span class="s2">"securityAPIs"</span><span class="p">},</span>
+<span class="p">}</span>
+
+<span class="c1"># One implementation driven by SEGMENT_CONFIG[kwargs["handler"].id]</span>
+</pre></div>
+</div>
+</section>
+<section id="peering-configuration">
+<h2>Peering Configuration<a class="headerlink" href="#peering-configuration" title="Link to this heading">¶</a></h2>
+<p>When multiple operators run in the same cluster watching overlapping resources, set distinct
+priorities. Higher priority wins; equal priority causes both operators to freeze.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nd">@kopf</span><span class="o">.</span><span class="n">on</span><span class="o">.</span><span class="n">startup</span><span class="p">()</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">configure</span><span class="p">(</span><span class="n">settings</span><span class="p">:</span> <span class="n">kopf</span><span class="o">.</span><span class="n">OperatorSettings</span><span class="p">,</span> <span class="o">**</span><span class="n">_</span><span class="p">):</span>
+    <span class="n">settings</span><span class="o">.</span><span class="n">peering</span><span class="o">.</span><span class="n">priority</span> <span class="o">=</span> <span class="mi">200</span>      <span class="c1"># secretsmanagement: 200 (highest)</span>
+    <span class="n">settings</span><span class="o">.</span><span class="n">peering</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s2">"default"</span>    <span class="c1"># uses ClusterKopfPeering named "default"</span>
+    <span class="n">settings</span><span class="o">.</span><span class="n">watching</span><span class="o">.</span><span class="n">server_timeout</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">*</span> <span class="mi">60</span>
+</pre></div>
+</div>
+<p>ODA Canvas priority conventions:</p>
+<ul class="simple">
+<li><p>Most operators: leave unset (priority=0, auto-standalone if no peering object found)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">secretsmanagement-operator</span></code>: 200 (admission webhooks must stay responsive)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">dependentapi-operator</span></code>: 110 (uses custom named peering object <code class="docutils literal notranslate"><span class="pre">&quot;dependentapi&quot;</span></code>)</p></li>
+</ul>
+<p>Docs: <a class="reference external" href="https://docs.kopf.dev/en/stable/peering/">https://docs.kopf.dev/en/stable/peering/</a></p>
+</section>
+<section id="admission-webhooks-advanced">
+<h2>Admission Webhooks (Advanced)<a class="headerlink" href="#admission-webhooks-advanced" title="Link to this heading">¶</a></h2>
+<p>The <code class="docutils literal notranslate"><span class="pre">secretsmanagementOperator</span></code> uses a custom <code class="docutils literal notranslate"><span class="pre">ServiceTunnel</span></code> class so the Kubernetes API server
+calls the webhook via the operator’s in-cluster Service DNS name:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">ServiceTunnel</span><span class="p">:</span>
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">fn</span><span class="p">:</span> <span class="n">kopf</span><span class="o">.</span><span class="n">WebhookFn</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">AsyncIterator</span><span class="p">[</span><span class="n">kopf</span><span class="o">.</span><span class="n">WebhookClientConfig</span><span class="p">]:</span>
+        <span class="n">namespace</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"WEBHOOK_SERVICE_NAMESPACE"</span><span class="p">)</span>
+        <span class="n">svc_name</span>  <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"WEBHOOK_SERVICE_NAME"</span><span class="p">)</span>
+        <span class="k">yield</span> <span class="n">kopf</span><span class="o">.</span><span class="n">WebhookClientConfigService</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="n">svc_name</span><span class="p">,</span> <span class="n">namespace</span><span class="o">=</span><span class="n">namespace</span><span class="p">,</span> <span class="n">path</span><span class="o">=</span><span class="s2">"/"</span><span class="p">)</span>
+        <span class="k">await</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">Event</span><span class="p">()</span><span class="o">.</span><span class="n">wait</span><span class="p">()</span>
+
+<span class="nd">@kopf</span><span class="o">.</span><span class="n">on</span><span class="o">.</span><span class="n">startup</span><span class="p">()</span>
+<span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">configure</span><span class="p">(</span><span class="n">settings</span><span class="p">:</span> <span class="n">kopf</span><span class="o">.</span><span class="n">OperatorSettings</span><span class="p">,</span> <span class="o">**</span><span class="n">_</span><span class="p">):</span>
+    <span class="n">settings</span><span class="o">.</span><span class="n">admission</span><span class="o">.</span><span class="n">server</span> <span class="o">=</span> <span class="n">ServiceTunnel</span><span class="p">()</span>
+    <span class="n">settings</span><span class="o">.</span><span class="n">admission</span><span class="o">.</span><span class="n">managed</span> <span class="o">=</span> <span class="s2">"auto.kopf.dev"</span>
+    <span class="n">settings</span><span class="o">.</span><span class="n">peering</span><span class="o">.</span><span class="n">priority</span> <span class="o">=</span> <span class="mi">200</span>
+</pre></div>
+</div>
+<p>Requires RBAC for <code class="docutils literal notranslate"><span class="pre">admissionregistration.k8s.io</span></code> (<code class="docutils literal notranslate"><span class="pre">mutatingwebhookconfigurations</span></code> with verbs
+<code class="docutils literal notranslate"><span class="pre">create</span></code>, <code class="docutils literal notranslate"><span class="pre">patch</span></code>).</p>
+<p>Docs: <a class="reference external" href="https://docs.kopf.dev/en/stable/admission/">https://docs.kopf.dev/en/stable/admission/</a></p>
+</section>
+<section id="environment-variables">
+<h2>Environment Variables<a class="headerlink" href="#environment-variables" title="Link to this heading">¶</a></h2>
+<div class="table-wrapper colwidths-auto docutils container">
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Variable</p></th>
+<th class="head"><p>Default</p></th>
+<th class="head"><p>Purpose</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">COMPONENT_NAMESPACE</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">&quot;components&quot;</span></code></p></td>
+<td><p>Namespace(s) to monitor (comma-separated)</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">LOGGING</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">logging.INFO</span></code></p></td>
+<td><p>Log level integer</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">COMPONENTNAME_LABEL</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">&quot;oda.tmforum.org/componentName&quot;</span></code></p></td>
+<td><p>Label key for component name</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">CICD_BUILD_TIME</span></code></p></td>
+<td><p>—</p></td>
+<td><p>Build timestamp injected via Dockerfile <code class="docutils literal notranslate"><span class="pre">ARG</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">GIT_COMMIT_SHA</span></code></p></td>
+<td><p>—</p></td>
+<td><p>Git commit injected via Dockerfile <code class="docutils literal notranslate"><span class="pre">ARG</span></code></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>API-management operators additionally use: <code class="docutils literal notranslate"><span class="pre">API_CONNECT_TIMEOUT</span></code>, <code class="docutils literal notranslate"><span class="pre">API_READ_TIMEOUT</span></code>, <code class="docutils literal notranslate"><span class="pre">API_WRITE_TIMEOUT</span></code>, plus gateway-specific variables (hostnames, credentials).</p>
+</section>
+<section id="dockerfile-pattern">
+<h2>Dockerfile Pattern<a class="headerlink" href="#dockerfile-pattern" title="Link to this heading">¶</a></h2>
+<div class="highlight-dockerfile notranslate"><div class="highlight"><pre><span></span><span class="k">FROM</span><span class="w"> </span><span class="s">python:3.12-alpine</span>
+<span class="k">RUN</span><span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span><span class="nv">kopf</span><span class="o">==</span><span class="m">1</span>.37.2<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span><span class="o">&amp;&amp;</span><span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span><span class="nv">kubernetes</span><span class="o">==</span><span class="m">27</span>.2.0<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span><span class="o">&amp;&amp;</span><span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>python-json-logger<span class="o">==</span><span class="m">2</span>.0.7<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span><span class="o">&amp;&amp;</span><span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>PyYAML<span class="w"> </span>requests
+<span class="k">COPY</span><span class="w"> </span>./&lt;operatorName&gt;.py<span class="w"> </span>/operator/
+<span class="k">COPY</span><span class="w"> </span>./log_wrapper.py<span class="w"> </span>/operator/
+<span class="k">ARG</span><span class="w"> </span>CICD_BUILD_TIME
+<span class="k">ENV</span><span class="w"> </span><span class="nv">CICD_BUILD_TIME</span><span class="o">=</span><span class="nv">$CICD_BUILD_TIME</span>
+<span class="k">ARG</span><span class="w"> </span>GIT_COMMIT_SHA
+<span class="k">ENV</span><span class="w"> </span><span class="nv">GIT_COMMIT_SHA</span><span class="o">=</span><span class="nv">$GIT_COMMIT_SHA</span>
+<span class="k">CMD</span><span class="w"> </span>kopf<span class="w"> </span>run<span class="w"> </span>--namespace<span class="o">=</span><span class="nv">$COMPONENT_NAMESPACE</span><span class="w"> </span>--verbose<span class="w"> </span>/operator/&lt;operatorName&gt;.py
+</pre></div>
+</div>
+<p>Docs: <a class="reference external" href="https://docs.kopf.dev/en/stable/docker/">https://docs.kopf.dev/en/stable/docker/</a></p>
+</section>
+<section id="helm-chart-for-operator">
+<h2>Helm Chart for Operator<a class="headerlink" href="#helm-chart-for-operator" title="Link to this heading">¶</a></h2>
+<p>Every operator needs a chart in <code class="docutils literal notranslate"><span class="pre">charts/&lt;chart-name&gt;/</span></code>. See <code class="docutils literal notranslate"><span class="pre">charts/component-operator/</span></code> as the
+canonical example.</p>
+<section id="standard-structure">
+<h3>Standard Structure<a class="headerlink" href="#standard-structure" title="Link to this heading">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">charts</span><span class="o">/&lt;</span><span class="n">chart</span><span class="o">-</span><span class="n">name</span><span class="o">&gt;/</span>
+  <span class="n">Chart</span><span class="o">.</span><span class="n">yaml</span>
+  <span class="n">values</span><span class="o">.</span><span class="n">yaml</span>
+  <span class="n">templates</span><span class="o">/</span>
+    <span class="n">deployment</span><span class="o">.</span><span class="n">yaml</span>   <span class="c1"># Runs kopf with namespace CLI args</span>
+    <span class="n">rbac</span><span class="o">.</span><span class="n">yaml</span>         <span class="c1"># ServiceAccount + ClusterRole + ClusterRoleBinding</span>
+    <span class="n">configMap</span><span class="o">.</span><span class="n">yaml</span>    <span class="c1"># Non-sensitive env vars (log level, namespaces, URLs)</span>
+    <span class="n">_helpers</span><span class="o">.</span><span class="n">tpl</span>      <span class="c1"># dockerimage, labels, monitoredNamespacesCLIOpts helpers</span>
+</pre></div>
+</div>
+<p>Add <code class="docutils literal notranslate"><span class="pre">secret.yaml</span></code> for credentials. Add <code class="docutils literal notranslate"><span class="pre">certificate.yaml</span></code> for webhook TLS via cert-manager.</p>
+</section>
+<section id="shared-helpers-always-reuse-from-umbrella-chart">
+<h3>Shared Helpers (always reuse from umbrella chart)<a class="headerlink" href="#shared-helpers-always-reuse-from-umbrella-chart" title="Link to this heading">¶</a></h3>
+<p>The umbrella chart <code class="docutils literal notranslate"><span class="pre">charts/canvas-oda/templates/_helpers.tpl</span></code> provides two helpers that every
+operator chart must reuse — do not reimplement them:</p>
+<ul class="simple">
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">docker.registry</span></code></strong> — registry prefix with trailing slash, or empty string</p></li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">image-pull-secrets</span></code></strong> — <code class="docutils literal notranslate"><span class="pre">imagePullSecrets:</span></code> block from <code class="docutils literal notranslate"><span class="pre">global.imagePullSecrets</span></code></p></li>
+</ul>
+<p>In your <code class="docutils literal notranslate"><span class="pre">_helpers.tpl</span></code>:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="p p-Indicator">{{</span><span class="nv">- define "myoperator.dockerimage" -</span><span class="p p-Indicator">}}</span>
+<span class="w">  </span><span class="p p-Indicator">{{</span><span class="w"> </span><span class="nv">include "docker.registry" .</span><span class="w"> </span><span class="p p-Indicator">}}{{</span><span class="w"> </span><span class="nv">.Values.deployment.image</span><span class="w"> </span><span class="p p-Indicator">}}</span><span class="l l-Scalar l-Scalar-Plain">:{{ .Values.deployment.version -}}</span>
+<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">{{- if .Values.deployment.prereleaseSuffix }}-{{ .Values.deployment.prereleaseSuffix }}{{- end -}}</span>
+<span class="l l-Scalar l-Scalar-Plain">{{- end -}}</span>
+
+<span class="l l-Scalar l-Scalar-Plain">{{/* Converts "ns1,ns2" → "-n ns1 -n ns2" for kopf run CLI */}}</span>
+<span class="l l-Scalar l-Scalar-Plain">{{- define "myoperator.monitoredNamespacesCLIOpts" -}}</span>
+<span class="l l-Scalar l-Scalar-Plain">{{- printf "-n %s" .Values.deployment.monitoredNamespaces | replace "," " -n " }}</span>
+<span class="l l-Scalar l-Scalar-Plain">{{- end -}}</span>
+</pre></div>
+</div>
+<p>When <code class="docutils literal notranslate"><span class="pre">prereleaseSuffix</span></code> is set, force <code class="docutils literal notranslate"><span class="pre">imagePullPolicy:</span> <span class="pre">Always</span></code>. In <code class="docutils literal notranslate"><span class="pre">deployment.yaml</span></code>:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{{</span><span class="w"> </span><span class="nv">include "myoperator.dockerimage" .</span><span class="w"> </span><span class="p p-Indicator">}}</span>
+<span class="nt">imagePullPolicy</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{{</span><span class="w"> </span><span class="nv">if .Values.deployment.prereleaseSuffix</span><span class="w"> </span><span class="p p-Indicator">}}</span><span class="l l-Scalar l-Scalar-Plain">Always{{ else }}{{ .Values.deployment.imagePullPolicy }}{{ end }}</span>
+<span class="p p-Indicator">{{</span><span class="nv">- if .Values.global.imagePullSecrets</span><span class="w"> </span><span class="p p-Indicator">}}</span>
+<span class="nt">imagePullSecrets</span><span class="p">:</span>
+<span class="p p-Indicator">{{</span><span class="nv">- include "image-pull-secrets" . | nindent 6</span><span class="w"> </span><span class="p p-Indicator">}}</span>
+<span class="p p-Indicator">{{</span><span class="nv">- end</span><span class="w"> </span><span class="p p-Indicator">}}</span>
+</pre></div>
+</div>
+</section>
+<section id="portal-discovery-labels">
+<h3>Portal Discovery Labels<a class="headerlink" href="#portal-discovery-labels" title="Link to this heading">¶</a></h3>
+<p>Add these labels to the operator Deployment’s <code class="docutils literal notranslate"><span class="pre">metadata.labels</span></code> so it appears on the Canvas Portal v2 <strong>Operators</strong> page without a portal change:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">labels</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">{{</span><span class="nv">- include "myoperator.labels" . | nindent 4</span><span class="w"> </span><span class="p p-Indicator">}}</span>
+<span class="w">    </span><span class="nt">oda.tmforum.org/operator</span><span class="p">:</span><span class="w"> </span><span class="s">"true"</span>
+<span class="w">    </span><span class="nt">oda.tmforum.org/operatorName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">my-operator</span><span class="w">    </span><span class="c1"># hyphen-separated words; the portal shows "My Operator"</span>
+<span class="w">    </span><span class="nt">oda.tmforum.org/operatorId</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">TMFOP0xx</span><span class="w">         </span><span class="c1"># the operator's TMF ID</span>
+</pre></div>
+</div>
+<p>See the helm-chart-development skill (“Operator Discovery Labels”) for the rules.</p>
+</section>
+<section id="rbac-requirements">
+<h3>RBAC Requirements<a class="headerlink" href="#rbac-requirements" title="Link to this heading">¶</a></h3>
+<p>All kopf operators need <code class="docutils literal notranslate"><span class="pre">ClusterRole</span></code> permissions for:</p>
+<ul class="simple">
+<li><p>Kopf peering: <code class="docutils literal notranslate"><span class="pre">kopf.dev</span></code> (<code class="docutils literal notranslate"><span class="pre">clusterkopfpeerings</span></code>, <code class="docutils literal notranslate"><span class="pre">kopfpeerings</span></code>)</p></li>
+<li><p>K8s events: <code class="docutils literal notranslate"><span class="pre">&quot;&quot;</span></code> and <code class="docutils literal notranslate"><span class="pre">events.k8s.io</span></code> (create, patch, get)</p></li>
+<li><p>CRD discovery: <code class="docutils literal notranslate"><span class="pre">apiextensions.k8s.io</span></code> (<code class="docutils literal notranslate"><span class="pre">customresourcedefinitions</span></code>, list/watch/get)</p></li>
+<li><p>ODA resources: <code class="docutils literal notranslate"><span class="pre">oda.tmforum.org</span></code> — specific plurals (components, exposedapis, etc.)</p></li>
+<li><p>Gateway-specific CRDs for API-management operators (Kong, APISIX, Istio)</p></li>
+</ul>
+<p>Operators creating namespace-scoped resources (Secrets, ConfigMaps) also add a <code class="docutils literal notranslate"><span class="pre">Role</span></code> + <code class="docutils literal notranslate"><span class="pre">RoleBinding</span></code>.</p>
+<p>Docs: <a class="reference external" href="https://docs.kopf.dev/en/stable/deployment/">https://docs.kopf.dev/en/stable/deployment/</a></p>
+</section>
+</section>
+<section id="api-management-operators">
+<h2>API-Management Operators<a class="headerlink" href="#api-management-operators" title="Link to this heading">¶</a></h2>
+<p>API-management operators follow a distinct sub-pattern:</p>
+<ul class="simple">
+<li><p>Watch <code class="docutils literal notranslate"><span class="pre">exposedapis</span></code> CRD (not <code class="docutils literal notranslate"><span class="pre">components</span></code>)</p></li>
+<li><p>Create gateway-specific routing resources (HTTPRoute, VirtualService, ApisixRoute)</p></li>
+<li><p>Watch <code class="docutils literal notranslate"><span class="pre">EndpointSlice</span></code> or <code class="docutils literal notranslate"><span class="pre">Service</span></code> resources to discover service implementation details</p></li>
+<li><p>Some use synchronous handlers (single Kubernetes API call per handler is fine without async)</p></li>
+<li><p>Each gateway lives in its own directory under <code class="docutils literal notranslate"><span class="pre">source/operators/TMFOP002-API-Management/</span></code></p></li>
+</ul>
+<p>See <code class="docutils literal notranslate"><span class="pre">references/operator-catalog.md</span></code> for details on each gateway implementation.</p>
+</section>
+<section id="testing">
+<h2>Testing<a class="headerlink" href="#testing" title="Link to this heading">¶</a></h2>
+<p>Run locally during development:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Standalone mode — no peering object required, good for local dev</span>
+kopf<span class="w"> </span>run<span class="w"> </span>--namespace<span class="o">=</span>components<span class="w"> </span>--standalone<span class="w"> </span>&lt;operatorName&gt;.py
+
+<span class="c1"># Multiple namespaces with wildcard (how the Helm chart deploys it)</span>
+kopf<span class="w"> </span>run<span class="w"> </span>-n<span class="w"> </span>components<span class="w"> </span>-n<span class="w"> </span>odacompns-*<span class="w"> </span>--verbose<span class="w"> </span>&lt;operatorName&gt;.py
+</pre></div>
+</div>
+<p>Integration testing with <code class="docutils literal notranslate"><span class="pre">kopf.testing.KopfRunner</span></code>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">kopf.testing</span><span class="w"> </span><span class="kn">import</span> <span class="n">KopfRunner</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">subprocess</span><span class="o">,</span><span class="w"> </span><span class="nn">time</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">test_operator</span><span class="p">():</span>
+    <span class="k">with</span> <span class="n">KopfRunner</span><span class="p">([</span><span class="s2">"run"</span><span class="p">,</span> <span class="s2">"--standalone"</span><span class="p">,</span> <span class="s2">"-n"</span><span class="p">,</span> <span class="s2">"default"</span><span class="p">,</span> <span class="s2">"myoperator.py"</span><span class="p">])</span> <span class="k">as</span> <span class="n">runner</span><span class="p">:</span>
+        <span class="n">subprocess</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s2">"kubectl apply -f test-component.yaml"</span><span class="p">,</span> <span class="n">shell</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">check</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+        <span class="n">subprocess</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s2">"kubectl delete -f test-component.yaml"</span><span class="p">,</span> <span class="n">shell</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">check</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+    <span class="k">assert</span> <span class="n">runner</span><span class="o">.</span><span class="n">exit_code</span> <span class="o">==</span> <span class="mi">0</span>
+    <span class="k">assert</span> <span class="n">runner</span><span class="o">.</span><span class="n">exception</span> <span class="ow">is</span> <span class="kc">None</span>
+</pre></div>
+</div>
+<p>BDD integration tests are in <code class="docutils literal notranslate"><span class="pre">feature-definition-and-test-kit/</span></code>.
+Docs: <a class="reference external" href="https://docs.kopf.dev/en/stable/testing/">https://docs.kopf.dev/en/stable/testing/</a></p>
+</section>
+<section id="do">
+<h2>Do<a class="headerlink" href="#do" title="Link to this heading">¶</a></h2>
+<ul class="simple">
+<li><p>Use triple-stacked handlers (resume + create + update) for CRD lifecycle</p></li>
+<li><p>Always set <code class="docutils literal notranslate"><span class="pre">retries=5</span></code> on handlers; use <code class="docutils literal notranslate"><span class="pre">kopf.TemporaryError(delay=N)</span></code> for appropriate backoff</p></li>
+<li><p>Set <code class="docutils literal notranslate"><span class="pre">settings.watching.server_timeout</span> <span class="pre">=</span> <span class="pre">1</span> <span class="pre">*</span> <span class="pre">60</span></code> in the startup hook</p></li>
+<li><p>Use <code class="docutils literal notranslate"><span class="pre">kopf.PermanentError</span></code> when the failure is definitively unrecoverable</p></li>
+<li><p>Use structured logging via <code class="docutils literal notranslate"><span class="pre">LogWrapper</span></code></p></li>
+<li><p>Load namespace configuration from environment variables, never hard-code</p></li>
+<li><p>Use <code class="docutils literal notranslate"><span class="pre">kopf.adopt()</span></code> to link child resources to their parent for cascaded deletion</p></li>
+<li><p>Use <code class="docutils literal notranslate"><span class="pre">python:3.12-alpine</span></code> as the Dockerfile base image</p></li>
+<li><p>Reuse shared Helm helpers (<code class="docutils literal notranslate"><span class="pre">docker.registry</span></code>, <code class="docutils literal notranslate"><span class="pre">image-pull-secrets</span></code>) from the umbrella chart</p></li>
+</ul>
+</section>
+<section id="don-t">
+<h2>Don’t<a class="headerlink" href="#don-t" title="Link to this heading">¶</a></h2>
+<ul class="simple">
+<li><p>Don’t hard-code namespace references — use Helm template variables and env vars</p></li>
+<li><p>Don’t swallow exceptions without logging (<code class="docutils literal notranslate"><span class="pre">except</span> <span class="pre">Exception:</span> <span class="pre">pass</span></code> is forbidden)</p></li>
+<li><p>Don’t block the event loop with synchronous I/O inside <code class="docutils literal notranslate"><span class="pre">async</span> <span class="pre">def</span></code> handlers — use <code class="docutils literal notranslate"><span class="pre">await</span></code> or <code class="docutils literal notranslate"><span class="pre">asyncio.to_thread()</span></code></p></li>
+<li><p>Don’t duplicate CRD status field updates across handlers — use status sub-resource + field handlers to propagate changes</p></li>
+<li><p>Don’t add a new operator-managed CRD field without updating <code class="docutils literal notranslate"><span class="pre">source/webhooks/</span></code> conversion logic</p></li>
+<li><p>Don’t edit <code class="docutils literal notranslate"><span class="pre">pdb-management/</span></code> or <code class="docutils literal notranslate"><span class="pre">oauth2EnvoyfilterOperator/</span></code> as if they were Python/KOPF (they’re Go/kubebuilder)</p></li>
+</ul>
+</section>
+<section id="id1">
+<h2>Helm Chart for Operator<a class="headerlink" href="#id1" title="Link to this heading">¶</a></h2>
+<p>Every operator needs a Helm chart in <code class="docutils literal notranslate"><span class="pre">charts/&lt;chart-name&gt;/</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">charts</span><span class="o">/&lt;</span><span class="n">chart</span><span class="o">-</span><span class="n">name</span><span class="o">&gt;/</span>
+  <span class="n">Chart</span><span class="o">.</span><span class="n">yaml</span>
+  <span class="n">values</span><span class="o">.</span><span class="n">yaml</span>
+  <span class="n">templates</span><span class="o">/</span>
+    <span class="n">deployment</span><span class="o">.</span><span class="n">yaml</span>     <span class="c1"># Runs kopf with namespace args</span>
+    <span class="n">rbac</span><span class="o">.</span><span class="n">yaml</span>           <span class="c1"># ServiceAccount + ClusterRole + ClusterRoleBinding</span>
+    <span class="n">configMap</span><span class="o">.</span><span class="n">yaml</span>      <span class="c1"># Environment variables</span>
+    <span class="n">_helpers</span><span class="o">.</span><span class="n">tpl</span>        <span class="c1"># Name, labels, Docker image helpers</span>
+</pre></div>
+</div>
+<section id="key-helpers-tpl-patterns">
+<h3>Key _helpers.tpl Patterns<a class="headerlink" href="#key-helpers-tpl-patterns" title="Link to this heading">¶</a></h3>
+<ul class="simple">
+<li><p>Docker image construction: <code class="docutils literal notranslate"><span class="pre">registry/image:version[-prereleaseSuffix]</span></code></p></li>
+<li><p>Force <code class="docutils literal notranslate"><span class="pre">imagePullPolicy:</span> <span class="pre">Always</span></code> when prereleaseSuffix is set</p></li>
+<li><p>Convert comma-separated namespaces to CLI flags: <code class="docutils literal notranslate"><span class="pre">&quot;ns1,ns2&quot;</span></code> → <code class="docutils literal notranslate"><span class="pre">&quot;-n</span> <span class="pre">ns1</span> <span class="pre">-n</span> <span class="pre">ns2&quot;</span></code></p></li>
+</ul>
+</section>
+<section id="id2">
+<h3>RBAC Requirements<a class="headerlink" href="#id2" title="Link to this heading">¶</a></h3>
+<p>Operators need ClusterRole permissions for:</p>
+<ul class="simple">
+<li><p>KOPF peering: <code class="docutils literal notranslate"><span class="pre">zalando.org</span></code> (clusterkopfpeerings, kopfpeerings)</p></li>
+<li><p>CRD management: <code class="docutils literal notranslate"><span class="pre">apiextensions.k8s.io</span></code> (customresourcedefinitions)</p></li>
+<li><p>ODA resources: <code class="docutils literal notranslate"><span class="pre">oda.tmforum.org</span></code> (components, exposedapis, etc.)</p></li>
+<li><p>Core K8s: pods, services, deployments, configmaps, events, namespaces</p></li>
+<li><p>Networking: gateway APIs (Kong, APISIX, Istio) as applicable</p></li>
+</ul>
+</section>
+</section>
+<section id="id3">
+<h2>API-Management Operators<a class="headerlink" href="#id3" title="Link to this heading">¶</a></h2>
+<p>API-management operators have a different pattern:</p>
+<ul class="simple">
+<li><p>Watch <code class="docutils literal notranslate"><span class="pre">exposedapis</span></code> CRD (not <code class="docutils literal notranslate"><span class="pre">components</span></code>)</p></li>
+<li><p>Handlers may be <strong>synchronous</strong> (not async)</p></li>
+<li><p>Create gateway-specific resources (HTTPRoutes, VirtualServices, ApisixRoutes)</p></li>
+<li><p>Use additional environment variables: <code class="docutils literal notranslate"><span class="pre">API_CONNECT_TIMEOUT</span></code>, <code class="docutils literal notranslate"><span class="pre">API_READ_TIMEOUT</span></code>, <code class="docutils literal notranslate"><span class="pre">API_WRITE_TIMEOUT</span></code></p></li>
+</ul>
+</section>
+<section id="id4">
+<h2>Testing<a class="headerlink" href="#id4" title="Link to this heading">¶</a></h2>
+<ul class="simple">
+<li><p>Run locally: <code class="docutils literal notranslate"><span class="pre">kopf</span> <span class="pre">run</span> <span class="pre">--namespace=components</span> <span class="pre">--standalone</span> <span class="pre">&lt;operatorName&gt;.py</span></code></p></li>
+<li><p>Unit tests: <code class="docutils literal notranslate"><span class="pre">pytest</span></code> in operator directory</p></li>
+<li><p>Integration: BDD features in <code class="docutils literal notranslate"><span class="pre">feature-definition-and-test-kit/</span></code></p></li>
+</ul>
+</section>
+<section id="id5">
+<h2>Do<a class="headerlink" href="#id5" title="Link to this heading">¶</a></h2>
+<ul class="simple">
+<li><p>Use triple-stacked handlers (resume + create + update)</p></li>
+<li><p>Always set <code class="docutils literal notranslate"><span class="pre">retries=5</span></code> on handlers</p></li>
+<li><p>Use <code class="docutils literal notranslate"><span class="pre">kopf.TemporaryError</span></code> for retryable failures</p></li>
+<li><p>Use structured logging via LogWrapper</p></li>
+<li><p>Load namespace configuration from environment variables</p></li>
+<li><p>Use <code class="docutils literal notranslate"><span class="pre">python:3.12-alpine</span></code> as base Docker image</p></li>
+</ul>
+</section>
+<section id="id6">
+<h2>Don’t<a class="headerlink" href="#id6" title="Link to this heading">¶</a></h2>
+<ul class="simple">
+<li><p>Don’t hard-code namespace references</p></li>
+<li><p>Don’t swallow exceptions without logging</p></li>
+<li><p>Don’t use synchronous handlers if making multiple API calls (use async)</p></li>
+<li><p>Don’t duplicate CRD field updates across handlers — use status sub-resource</p></li>
+<li><p>Don’t edit the <code class="docutils literal notranslate"><span class="pre">pdb-management</span></code> operator as if it were Python/KOPF (it’s Go)</p></li>
+</ul>
+<div class="toctree-wrapper compound">
+</div>
+</section>
+</section>
+
+        </article>
+      </div>
+      <footer>
+        
+        <div class="related-pages">
+          <a class="next-page" href="references/kopf-docs.html">
+              <div class="page-info">
+                <div class="context">
+                  <span>Next</span>
+                </div>
+                <div class="title">Kopf Documentation Reference</div>
+              </div>
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+            </a>
+          <a class="prev-page" href="../canvas-usecase-documentation/SKILL.html">
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+              <div class="page-info">
+                <div class="context">
+                  <span>Previous</span>
+                </div>
+                
+                <div class="title">Canvas Use-Case Documentation — Skill Instructions</div>
+                
+              </div>
+            </a>
+        </div>
+        <div class="bottom-of-page">
+          <div class="left-details">
+            <div class="copyright">
+                Copyright &#169; 2026, TM Forum ODA-Component Accelerator project
+            </div>
+            Made with <a href="https://www.sphinx-doc.org/">Sphinx</a> and <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
+            
+            <a href="https://github.com/pradyunsg/furo">Furo</a>
+            
+          </div>
+          <div class="right-details">
+            
+          </div>
+        </div>
+        
+      </footer>
+    </div>
+    <aside class="toc-drawer">
+      
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            On this page
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">Create ODA Operator</a><ul>
+<li><a class="reference internal" href="#technology">Technology</a></li>
+<li><a class="reference internal" href="#quick-reference-existing-operators">Quick Reference: Existing Operators</a></li>
+<li><a class="reference internal" href="#directory-structure">Directory Structure</a><ul>
+<li><a class="reference internal" href="#modern-pattern-recommended">Modern Pattern (Recommended)</a></li>
+<li><a class="reference internal" href="#legacy-pattern-existing-operators">Legacy Pattern (Existing Operators)</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#constants-startup">Constants &amp; Startup</a></li>
+<li><a class="reference internal" href="#handler-patterns">Handler Patterns</a><ul>
+<li><a class="reference internal" href="#create-resume-update-triple-stacked">Create / Resume / Update (triple-stacked)</a></li>
+<li><a class="reference internal" href="#delete-handlers">Delete Handlers</a></li>
+<li><a class="reference internal" href="#field-handlers">Field Handlers</a></li>
+<li><a class="reference internal" href="#timer-handlers">Timer Handlers</a></li>
+<li><a class="reference internal" href="#health-check-probes">Health Check Probes</a></li>
+<li><a class="reference internal" href="#low-level-event-watching">Low-Level Event Watching</a></li>
+<li><a class="reference internal" href="#admission-mutation-webhooks">Admission / Mutation Webhooks</a></li>
+<li><a class="reference internal" href="#sub-handlers">Sub-Handlers</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#error-handling">Error Handling</a></li>
+<li><a class="reference internal" href="#status-updates-results-delivery">Status Updates &amp; Results Delivery</a></li>
+<li><a class="reference internal" href="#kubernetes-api-calls">Kubernetes API Calls</a></li>
+<li><a class="reference internal" href="#resource-hierarchies">Resource Hierarchies</a></li>
+<li><a class="reference internal" href="#async-vs-sync">Async vs Sync</a></li>
+<li><a class="reference internal" href="#logging">Logging</a></li>
+<li><a class="reference internal" href="#segment-configuration-data-driven">Segment Configuration (Data-Driven)</a></li>
+<li><a class="reference internal" href="#peering-configuration">Peering Configuration</a></li>
+<li><a class="reference internal" href="#admission-webhooks-advanced">Admission Webhooks (Advanced)</a></li>
+<li><a class="reference internal" href="#environment-variables">Environment Variables</a></li>
+<li><a class="reference internal" href="#dockerfile-pattern">Dockerfile Pattern</a></li>
+<li><a class="reference internal" href="#helm-chart-for-operator">Helm Chart for Operator</a><ul>
+<li><a class="reference internal" href="#standard-structure">Standard Structure</a></li>
+<li><a class="reference internal" href="#shared-helpers-always-reuse-from-umbrella-chart">Shared Helpers (always reuse from umbrella chart)</a></li>
+<li><a class="reference internal" href="#portal-discovery-labels">Portal Discovery Labels</a></li>
+<li><a class="reference internal" href="#rbac-requirements">RBAC Requirements</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#api-management-operators">API-Management Operators</a></li>
+<li><a class="reference internal" href="#testing">Testing</a></li>
+<li><a class="reference internal" href="#do">Do</a></li>
+<li><a class="reference internal" href="#don-t">Don’t</a></li>
+<li><a class="reference internal" href="#id1">Helm Chart for Operator</a><ul>
+<li><a class="reference internal" href="#key-helpers-tpl-patterns">Key _helpers.tpl Patterns</a></li>
+<li><a class="reference internal" href="#id2">RBAC Requirements</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id3">API-Management Operators</a></li>
+<li><a class="reference internal" href="#id4">Testing</a></li>
+<li><a class="reference internal" href="#id5">Do</a></li>
+<li><a class="reference internal" href="#id6">Don’t</a></li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
+      
+      
+    </aside>
+  </div>
+</div><script src="../../../_static/documentation_options.js?v=13610682"></script>
+    <script src="../../../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../../../_static/scripts/furo.js?v=46bd48cc"></script>
+    <script src="../../../_static/js/default-dark.js?v=658bd94d"></script>
+    </body>
+</html>

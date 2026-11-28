@@ -1,0 +1,28 @@
+@startuml
+' UC004 "Upgrade component - with changed publishedNotifications" scenario
+
+actor Operations
+entity Component
+participant ComponentOperator
+entity PublishedNotification
+participant EventPublishingEnablementOperator
+participant "Event Manager"
+
+Component <- Operations : Install
+Component -> ComponentOperator: on.update
+group For each publishedNotification
+    ComponentOperator -> PublishedNotification: modify
+    note right
+        A separate publishedNotification resource is created
+        for each published notification in the core function,
+        security and management sections
+    end note
+    PublishedNotification -> EventPublishingEnablementOperator: on.modify
+    EventPublishingEnablementOperator -> "Event Manager": reconfigure Hub
+    EventPublishingEnablementOperator <-- "Event Manager": reconfigured
+    PublishedNotification <- EventPublishingEnablementOperator: update
+    ComponentOperator <- PublishedNotification: on.update
+end
+Component <- ComponentOperator: update
+
+@enduml

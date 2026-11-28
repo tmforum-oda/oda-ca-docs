@@ -1,0 +1,1745 @@
+<!doctype html>
+<html class="no-js" lang="en" data-content_root="../../../">
+  <head><meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="index" title="Index" href="../../../genindex.html"><link rel="search" title="Search" href="../../../search.html"><link rel="next" title="End-to-End Deployment and Observability Guide for TM Forum ODA Canvas on Azure" href="automated/automated_install_azure_README.html"><link rel="prev" title="HashiCorp Vault installation" href="../CanvasVault/README.html">
+        <link rel="prefetch" href="../../../_static/ODA-Canvas.svg" as="image">
+        <link rel="prefetch" href="../../../_static/ODA-Canvas-dark.svg" as="image">
+
+    <!-- Generated with Sphinx 9.2.0 and Furo 2025.12.19 -->
+        <title>Deployment Guide for TM Forum ODA Canvas on Azure - ODA Canvas and Components</title>
+      <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=d75fae25" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/styles/furo.css?v=7bdb33bb" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/styles/furo-extensions.css?v=8dab3a3b" />
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/css/custom.css?v=b2790eba" />
+    
+    
+
+
+<style>
+  body {
+    --color-code-background: #f0f0f0;
+  --color-code-foreground: black;
+  
+  }
+  @media not print {
+    body[data-theme="dark"] {
+      --color-code-background: #0d1117;
+  --color-code-foreground: #e6edf3;
+  
+    }
+    @media (prefers-color-scheme: dark) {
+      body:not([data-theme="light"]) {
+        --color-code-background: #0d1117;
+  --color-code-foreground: #e6edf3;
+  
+      }
+    }
+  }
+</style></head>
+  <body>
+    
+    <script>
+      document.body.dataset.theme = localStorage.getItem("theme") || "auto";
+    </script>
+    
+
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="svg-toc" viewBox="0 0 24 24">
+    <title>Contents</title>
+    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024">
+      <path d="M408 442h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8zm-8 204c0 4.4 3.6 8 8 8h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56zm504-486H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 632H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zM115.4 518.9L271.7 642c5.8 4.6 14.4.5 14.4-6.9V388.9c0-7.4-8.5-11.5-14.4-6.9L115.4 505.1a8.74 8.74 0 0 0 0 13.8z"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+    <title>Menu</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-menu">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+    <title>Expand</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-chevron-right">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </symbol>
+  <symbol id="svg-sun" viewBox="0 0 24 24">
+    <title>Light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="feather-sun">
+      <circle cx="12" cy="12" r="5"></circle>
+      <line x1="12" y1="1" x2="12" y2="3"></line>
+      <line x1="12" y1="21" x2="12" y2="23"></line>
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+      <line x1="1" y1="12" x2="3" y2="12"></line>
+      <line x1="21" y1="12" x2="23" y2="12"></line>
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon" viewBox="0 0 24 24">
+    <title>Dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-moon">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
+    </svg>
+  </symbol>
+  <symbol id="svg-sun-with-moon" viewBox="0 0 24 24">
+    <title>Auto light/dark, in light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path style="opacity: 50%" d="M 5.411 14.504 C 5.471 14.504 5.532 14.504 5.591 14.504 C 3.639 16.319 4.383 19.569 6.931 20.352 C 7.693 20.586 8.512 20.551 9.25 20.252 C 8.023 23.207 4.056 23.725 2.11 21.184 C 0.166 18.642 1.702 14.949 4.874 14.536 C 5.051 14.512 5.231 14.5 5.411 14.5 L 5.411 14.504 Z"/>
+      <line x1="14.5" y1="3.25" x2="14.5" y2="1.25"/>
+      <line x1="14.5" y1="15.85" x2="14.5" y2="17.85"/>
+      <line x1="10.044" y1="5.094" x2="8.63" y2="3.68"/>
+      <line x1="19" y1="14.05" x2="20.414" y2="15.464"/>
+      <line x1="8.2" y1="9.55" x2="6.2" y2="9.55"/>
+      <line x1="20.8" y1="9.55" x2="22.8" y2="9.55"/>
+      <line x1="10.044" y1="14.006" x2="8.63" y2="15.42"/>
+      <line x1="19" y1="5.05" x2="20.414" y2="3.636"/>
+      <circle cx="14.5" cy="9.55" r="3.6"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon-with-sun" viewBox="0 0 24 24">
+    <title>Auto light/dark, in dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path d="M 8.282 7.007 C 8.385 7.007 8.494 7.007 8.595 7.007 C 5.18 10.184 6.481 15.869 10.942 17.24 C 12.275 17.648 13.706 17.589 15 17.066 C 12.851 22.236 5.91 23.143 2.505 18.696 C -0.897 14.249 1.791 7.786 7.342 7.063 C 7.652 7.021 7.965 7 8.282 7 L 8.282 7.007 Z"/>
+      <line style="opacity: 50%" x1="18" y1="3.705" x2="18" y2="2.5"/>
+      <line style="opacity: 50%" x1="18" y1="11.295" x2="18" y2="12.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="4.816" x2="14.464" y2="3.964"/>
+      <line style="opacity: 50%" x1="20.711" y1="10.212" x2="21.563" y2="11.063"/>
+      <line style="opacity: 50%" x1="14.205" y1="7.5" x2="13.001" y2="7.5"/>
+      <line style="opacity: 50%" x1="21.795" y1="7.5" x2="23" y2="7.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="10.184" x2="14.464" y2="11.036"/>
+      <line style="opacity: 50%" x1="20.711" y1="4.789" x2="21.563" y2="3.937"/>
+      <circle style="opacity: 50%" cx="18" cy="7.5" r="2.169"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-pencil" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-pencil-code">
+      <path d="M4 20h4l10.5 -10.5a2.828 2.828 0 1 0 -4 -4l-10.5 10.5v4" />
+      <path d="M13.5 6.5l4 4" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+  <symbol id="svg-eye" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-eye-code">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M10 12a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" />
+      <path
+        d="M11.11 17.958c-3.209 -.307 -5.91 -2.293 -8.11 -5.958c2.4 -4 5.4 -6 9 -6c3.6 0 6.6 2 9 6c-.21 .352 -.427 .688 -.647 1.008" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+</svg>
+
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle site navigation sidebar">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc" aria-label="Toggle table of contents sidebar">
+<label class="overlay sidebar-overlay" for="__navigation"></label>
+<label class="overlay toc-overlay" for="__toc"></label>
+
+<a class="skip-to-content muted-link" href="#furo-main-content">Skip to content</a>
+
+
+
+<div class="page">
+  <header class="mobile-header">
+    <div class="header-left">
+      <label class="nav-overlay-icon" for="__navigation">
+        <span class="icon"><svg><use href="#svg-menu"></use></svg></span>
+      </label>
+    </div>
+    <div class="header-center">
+      <a href="../../../index.html"><div class="brand">ODA Canvas and Components</div></a>
+    </div>
+    <div class="header-right">
+      <div class="theme-toggle-container theme-toggle-header">
+        <button class="theme-toggle" aria-label="Toggle Light / Dark / Auto color theme">
+          <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+          <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+          <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+          <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+        </button>
+      </div>
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
+        <span class="icon"><svg><use href="#svg-toc"></use></svg></span>
+      </label>
+    </div>
+  </header>
+  <aside class="sidebar-drawer">
+    <div class="sidebar-container">
+      
+      <div class="sidebar-sticky"><a class="sidebar-brand" href="../../../index.html">
+  <div class="sidebar-logo-container">
+    <img class="sidebar-logo only-light" src="../../../_static/ODA-Canvas.svg" alt="Light Logo"/>
+    <img class="sidebar-logo only-dark" src="../../../_static/ODA-Canvas-dark.svg" alt="Dark Logo"/>
+  </div>
+  
+  <span class="sidebar-brand-text">ODA Canvas and Components</span>
+  
+</a><form class="sidebar-search-container" method="get" action="../../../search.html" role="search">
+  <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
+  <input type="hidden" name="check_keywords" value="yes">
+  <input type="hidden" name="area" value="default">
+</form>
+<div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
+  <p class="caption" role="heading"><span class="caption-text">Get started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../README.html">Open Digital Architecture Canvas</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../docs/training-videos/index.html">Training videos</a><input aria-label="Toggle navigation of Training videos" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../docs/training-videos/part-1.html">Introduction to the ODA Canvas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../docs/training-videos/part-2.html">How do I buy or build an ODA Canvas?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../docs/training-videos/part-3.html">Authentication and Authorization in the ODA Canvas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../docs/training-videos/part-4.html">The AI-Native ODA Canvas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../docs/training-videos/part-5.html">Observability in the ODA Canvas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../docs/training-videos/part-7.html">The ODA Agent Skills Marketplace</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../docs/Getting_started.html">Getting started checklist for new members of ODA-CA</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../docs/Playbook.html">Introduction to the ODA Component Accelerator Project (ODA-CA)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Concepts and design</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../Canvas-design.html">ODA Canvas Design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../SecurityPrinciples.html">Open Digital Architecture Reference Implementation (RI) Security Principles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Authentication-design.html">Authentication design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Observability-design.html">Observability design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Event-based-integration-design.html">Event based integration design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../AI-Native-Canvas-design.html">AI-Native Canvas design</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Use cases</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../usecase-library/README.html">ODA Canvas - Use-Case Library</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../usecase-library/UC001-Install-Canvas.html">Install Canvas use case</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../usecase-library/UC002-Manage-Components.html">Manage Components use case</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../usecase-library/UC003-Configure-Exposed-APIs.html">Configure Exposed APIs use-case</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../usecase-library/UC004-Configure-Published-Events.html">Configure Published Events use-case</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../usecase-library/UC005-Configure-Clients-and-Roles.html">Configure Clients and Roles use case</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../usecase-library/UC006-Configure-Observability.html">Configure Observability use case</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../usecase-library/UC007-Configure-Dependent-APIs.html">Configure dependent APIs use case</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../usecase-library/UC008-Configure-Subscribed-Events.html">Configure Subscribed Events use-case</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../usecase-library/UC009-Internal-Authentication.html">Internal authentication use-case</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../usecase-library/UC010-External-Authentication.html">External authentication use-case</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../usecase-library/UC011-View-Technical-Observability.html">View technical observability use-case</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../usecase-library/UC012-View-Business-Observability.html">View business observability use-case</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../usecase-library/UC013-Upgrade-Canvas.html">Upgrade Canvas use case</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../usecase-library/UC014-Secrets-Management-JWT-based.html">Secrets Management for Component</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../usecase-library/UC016-ODA-Component-and-API-Registry.html">UC016 - ODA Component and API Inventory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../usecase-library/use-case-naming-conventions.html">Use-Case Naming Conventions</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Install and operate</span></p>
+<ul class="current">
+<li class="toctree-l1 current has-children"><a class="reference internal" href="../README.html">ODA Canvas installation</a><input aria-label="Toggle navigation of ODA Canvas installation" checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../CanvasVault/README.html">HashiCorp Vault installation</a></li>
+<li class="toctree-l2 current has-children current-page"><a class="current reference internal" href="#">Deployment Guide for TM Forum ODA Canvas on Azure</a><input aria-label="Toggle navigation of Deployment Guide for TM Forum ODA Canvas on Azure" checked="" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" role="switch" type="checkbox"/><label for="toctree-checkbox-3"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="automated/automated_install_azure_README.html">End-to-End Deployment and Observability Guide for TM Forum ODA Canvas on Azure</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../prerequisites/README.html">Prerequisites installation</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../release-notes/ReleaseNotes.html">Component Specification Release Notes</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Canvas operators</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../source/operators/README.html">ODA Canvas Operators</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../source/operators/TMFOP001-Component-Management/README.html">TMFOP001 Component Management Operators</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../source/operators/TMFOP002-API-Management/README.html">TMFOP002 API Management Operators</a><input aria-label="Toggle navigation of TMFOP002 API Management Operators" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" role="switch" type="checkbox"/><label for="toctree-checkbox-4"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../source/operators/TMFOP002-API-Management/apache-apisix/README.html">Apache APISIX API Management Operator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../source/operators/TMFOP002-API-Management/azure-apim/README.html">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../source/operators/TMFOP002-API-Management/azure-apim/README.html#operator-architecture">Operator Architecture</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../source/operators/TMFOP002-API-Management/azure-apim/README.html#key-components">Key Components</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../source/operators/TMFOP002-API-Management/azure-apim/README.html#event-handling-workflow">Event Handling Workflow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../source/operators/TMFOP002-API-Management/azure-apim/README.html#code-structure-and-functions">Code Structure and Functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../source/operators/TMFOP002-API-Management/azure-apim/README.html#interaction-with-azure-services">Interaction with Azure Services</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../source/operators/TMFOP002-API-Management/azure-apim/README.html#security-considerations">Security Considerations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../source/operators/TMFOP002-API-Management/azure-apim/README.html#testing-and-debugging">Testing and Debugging</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../source/operators/TMFOP002-API-Management/azure-apim/README.html#limitations-and-future-enhancements">Limitations and Future Enhancements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../source/operators/TMFOP002-API-Management/azure-apim/README.html#conclusion">Conclusion</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../source/operators/TMFOP002-API-Management/azure-apim/README.html#key-takeaways">Key Takeaways:</a><input aria-label="Toggle navigation of Key Takeaways:" class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" role="switch" type="checkbox"/><label for="toctree-checkbox-5"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../source/operators/TMFOP002-API-Management/azure-apim/automated/automated_apiManagement_README.html">Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../source/operators/TMFOP002-API-Management/azure-apim/automated/automated_apiManagement_README.html#operator-architecture">Operator Architecture</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../source/operators/TMFOP002-API-Management/azure-apim/automated/automated_apiManagement_README.html#key-components">Key Components</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../source/operators/TMFOP002-API-Management/azure-apim/automated/automated_apiManagement_README.html#event-handling-workflow">Event Handling Workflow</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../source/operators/TMFOP002-API-Management/azure-apim/automated/automated_apiManagement_README.html#code-structure-and-functions">Code Structure and Functions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../source/operators/TMFOP002-API-Management/azure-apim/automated/automated_apiManagement_README.html#interaction-with-azure-services">Interaction with Azure Services</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../source/operators/TMFOP002-API-Management/azure-apim/automated/automated_apiManagement_README.html#security-considerations">Security Considerations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../source/operators/TMFOP002-API-Management/azure-apim/automated/automated_apiManagement_README.html#testing-and-debugging">Testing and Debugging</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../source/operators/TMFOP002-API-Management/azure-apim/automated/automated_apiManagement_README.html#limitations-and-future-enhancements">Limitations and Future Enhancements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../source/operators/TMFOP002-API-Management/azure-apim/automated/automated_apiManagement_README.html#conclusion">Conclusion</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../source/operators/TMFOP002-API-Management/azure-apim/automated/automated_apiManagement_README.html#key-takeaways">Key Takeaways:</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../source/operators/TMFOP002-API-Management/istio/README.html">API Operator for Istio</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../source/operators/TMFOP002-API-Management/kong/README.html">Kubernetes Kong API Lifecycle Management Operator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../source/operators/TMFOP002-API-Management/whalecloud-apim/README.html">API Operator apig - Introduction</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../source/operators/TMFOP003-Identity-Config/README.html">TMFOP003 Identity Config Operators</a><input aria-label="Toggle navigation of TMFOP003 Identity Config Operators" class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" role="switch" type="checkbox"/><label for="toctree-checkbox-6"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../source/operators/TMFOP003-Identity-Config/LOGGING-ENHANCEMENTS.html">Enhanced Logging for Identity Config Operator and Listener</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../source/operators/TMFOP003-Identity-Config/README-PermissionSpecificationSet.html">Identity Config Operator - Permission Specification Set Support</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../source/operators/TMFOP003-Identity-Config/keycloak/README.html">Identity Config operator for Keycloak - Introduction</a><input aria-label="Toggle navigation of Identity Config operator for Keycloak - Introduction" class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" role="switch" type="checkbox"/><label for="toctree-checkbox-7"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../source/operators/TMFOP003-Identity-Config/keycloak/identity-listener-keycloak/README.html">Identity Listener Keycloak</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../source/operators/TMFOP003-Identity-Config/keycloak/identity-listener-keycloak/README.html#buildautomation-and-versioning">Buildautomation and Versioning</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../source/operators/TMFOP004-Credentials-Management/README.html">TMFOP004 Credentials Management Operators</a><input aria-label="Toggle navigation of TMFOP004 Credentials Management Operators" class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" role="switch" type="checkbox"/><label for="toctree-checkbox-8"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../source/operators/TMFOP004-Credentials-Management/credentials-management/README.html">Credentials Management Operator for Kubernetes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../source/operators/TMFOP004-Credentials-Management/credentials-management/README.html#installation">Installation</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../source/operators/TMFOP005-Dependency-Management/README.html">TMFOP005 Dependency Management Operators</a><input aria-label="Toggle navigation of TMFOP005 Dependency Management Operators" class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" role="switch" type="checkbox"/><label for="toctree-checkbox-9"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../source/operators/TMFOP005-Dependency-Management/dependency-management-using-keycloak-authorization/README.html">Dependency Management Operator — Keycloak Authorization</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../source/operators/TMFOP005-Dependency-Management/simple-dependency-management/README.html">Simple Dependency Management Operator</a><input aria-label="Toggle navigation of Simple Dependency Management Operator" class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" role="switch" type="checkbox"/><label for="toctree-checkbox-10"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../source/operators/TMFOP005-Dependency-Management/simple-dependency-management/docker/README.html">DependentAPI Simple Operator</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../source/operators/TMFOP005-Dependency-Management/simple-dependency-management/docker/README.html#buildautomation-and-versioning">Buildautomation and Versioning</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../source/operators/TMFOP006-Event-Management/README.html">TMFOP006 Event Management Operators</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../source/operators/TMFOP007-Secrets-Management/README.html">TMFOP007 Secrets Management Operators</a><input aria-label="Toggle navigation of TMFOP007 Secrets Management Operators" class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" role="switch" type="checkbox"/><label for="toctree-checkbox-11"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../source/operators/TMFOP007-Secrets-Management/vault/README.html">Vault Secrets Management Operator</a><input aria-label="Toggle navigation of Vault Secrets Management Operator" class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" role="switch" type="checkbox"/><label for="toctree-checkbox-12"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../source/operators/TMFOP007-Secrets-Management/vault/docker/README.html">Secrets Management Operator HC</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../source/operators/TMFOP007-Secrets-Management/vault/docker/README.html#buildautomation-and-versioning">Buildautomation and Versioning</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../source/operators/TMFOP007-Secrets-Management/vault/sidecar/docker/README.html">Secrets Management Sidecar</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../source/operators/TMFOP007-Secrets-Management/vault/sidecar/docker/README.html#buildautomation-and-versioning">Buildautomation and Versioning</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../source/operators/TMFOP008-OAuth2-Config/README.html">TMFOP008 OAuth2 Config Operators</a><input aria-label="Toggle navigation of TMFOP008 OAuth2 Config Operators" class="toctree-checkbox" id="toctree-checkbox-13" name="toctree-checkbox-13" role="switch" type="checkbox"/><label for="toctree-checkbox-13"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../source/operators/TMFOP008-OAuth2-Config/envoy-filter/README.html">OAuth2 EnvoyFilter Operator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../source/operators/TMFOP008-OAuth2-Config/envoy-filter/README.html#error-analysis">error analysis</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../source/operators/TMFOP008-OAuth2-Config/envoy-filter/README.html#deploy">deploy</a><input aria-label="Toggle navigation of deploy" class="toctree-checkbox" id="toctree-checkbox-14" name="toctree-checkbox-14" role="switch" type="checkbox"/><label for="toctree-checkbox-14"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../source/operators/TMFOP008-OAuth2-Config/envoy-filter/OAUTH2DEMO.html">OAuth2 EnvoyFilter Demo</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../source/operators/TMFOP008-OAuth2-Config/envoy-filter/OAUTH2DEMO.html#closing">closing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../source/operators/TMFOP008-OAuth2-Config/envoy-filter/OAUTH2DEMO.html#error-analysis">error analysis</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../source/operators/TMFOP008-OAuth2-Config/envoy-filter/docker/README.html">OAuth2 EnvoyFilter Operator</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../source/operators/TMFOP008-OAuth2-Config/envoy-filter/docker/README.html#buildautomation-and-versioning">Buildautomation and Versioning</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../source/operators/TMFOP009-Model-as-a-Service/README.html">TMFOP009 Model-as-a-Service Operators</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../source/operators/TMFOP010-Disruption-Budget-Management/README.html">TMFOP010 Disruption Budget Management Operators</a><input aria-label="Toggle navigation of TMFOP010 Disruption Budget Management Operators" class="toctree-checkbox" id="toctree-checkbox-15" name="toctree-checkbox-15" role="switch" type="checkbox"/><label for="toctree-checkbox-15"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../source/operators/TMFOP010-Disruption-Budget-Management/pdb-management/README.html">PDB Management Operator</a><input aria-label="Toggle navigation of PDB Management Operator" class="toctree-checkbox" id="toctree-checkbox-16" name="toctree-checkbox-16" role="switch" type="checkbox"/><label for="toctree-checkbox-16"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../source/operators/TMFOP010-Disruption-Budget-Management/pdb-management/MAINTAINERS.html">Maintainers</a></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../source/operators/TMFOP010-Disruption-Budget-Management/pdb-management/config/grafana/README.html">PDB Management Operator - Grafana Dashboards</a><input aria-label="Toggle navigation of PDB Management Operator - Grafana Dashboards" class="toctree-checkbox" id="toctree-checkbox-17" name="toctree-checkbox-17" role="switch" type="checkbox"/><label for="toctree-checkbox-17"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../source/operators/TMFOP010-Disruption-Budget-Management/pdb-management/config/grafana/DASHBOARD_IMPORT_GUIDE.html">PDB Management Operator - Grafana Dashboard Import Guide</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../source/operators/TMFOP010-Disruption-Budget-Management/pdb-management/config/mcp/README.html">MCP Server Configuration</a></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../source/operators/TMFOP010-Disruption-Budget-Management/pdb-management/docs/README.html">PDB Management Operator</a><input aria-label="Toggle navigation of PDB Management Operator" class="toctree-checkbox" id="toctree-checkbox-18" name="toctree-checkbox-18" role="switch" type="checkbox"/><label for="toctree-checkbox-18"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../source/operators/TMFOP010-Disruption-Budget-Management/pdb-management/docs/MCP_INTEGRATION.html">MCP Server Integration</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../source/operators/TMFOP010-Disruption-Budget-Management/pdb-management/docs/OPERATIONAL_RUNBOOK.html">PDB Management Operator - Operational Runbook</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../source/operators/TMFOP010-Disruption-Budget-Management/pdb-management/docs/PERFORMANCE_AND_CACHING.html">PDB Management Operator - Performance and Caching</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../source/operators/TMFOP010-Disruption-Budget-Management/pdb-management/docs/TECHNICAL_DOCUMENTATION.html">PDB Management Operator - Technical Documentation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../source/operators/TMFOP010-Disruption-Budget-Management/pdb-management/docs/VERIFICATION.html">Test Verification and Performance Testing Guide</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../source/operators/TMFOP010-Disruption-Budget-Management/pdb-management/docs/WEBHOOK_DEPLOYMENT.html">Webhook Deployment Guide</a></li>
+</ul>
+</li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../source/operators/TMFOP010-Disruption-Budget-Management/pdb-management/examples/demo/README.html">Demo Examples for PDB Management Operator</a><input aria-label="Toggle navigation of Demo Examples for PDB Management Operator" class="toctree-checkbox" id="toctree-checkbox-19" name="toctree-checkbox-19" role="switch" type="checkbox"/><label for="toctree-checkbox-19"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../source/operators/TMFOP010-Disruption-Budget-Management/pdb-management/examples/demo/DEMO_PRESENTATION_SCRIPT.html">PDB Management Operator - Complete Demo Presentation Script</a></li>
+</ul>
+</li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../source/operators/TMFOP010-Disruption-Budget-Management/pdb-management/toolsforlocal/README.html">PDB Management Operator - Demo Tools</a><input aria-label="Toggle navigation of PDB Management Operator - Demo Tools" class="toctree-checkbox" id="toctree-checkbox-20" name="toctree-checkbox-20" role="switch" type="checkbox"/><label for="toctree-checkbox-20"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../source/operators/TMFOP010-Disruption-Budget-Management/pdb-management/toolsforlocal/PDB_RECREATION_GUIDE.html">🚀 PDB Instant Recreation Guide</a></li>
+<li class="toctree-l4 has-children"><a class="reference internal" href="../../source/operators/TMFOP010-Disruption-Budget-Management/pdb-management/toolsforlocal/mcp/README.html">AI + MCP Integration Clients</a><input aria-label="Toggle navigation of AI + MCP Integration Clients" class="toctree-checkbox" id="toctree-checkbox-21" name="toctree-checkbox-21" role="switch" type="checkbox"/><label for="toctree-checkbox-21"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l5"><a class="reference internal" href="../../source/operators/TMFOP010-Disruption-Budget-Management/pdb-management/toolsforlocal/mcp/CLAUDE_MCP_USAGE.html">Claude API + MCP Integration Usage Guide</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../source/operators/TMFOP010-Disruption-Budget-Management/pdb-management/toolsforlocal/mcp/README_GO_CLIENT.html">Claude MCP Client - Go Version</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="../../source/operators/TMFOP010-Disruption-Budget-Management/pdb-management/toolsforlocal/observability/README.html">PDB Management Operator - Observability Stack</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../source/operators/TMFOP010-Disruption-Budget-Management/pdb-management/web/README.html">ODA Canvas - PDB Management MCP Web Interface</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../source/operators/TMFOP011-Carbon-Management/README.html">TMFOP011 Carbon Management Operators</a><input aria-label="Toggle navigation of TMFOP011 Carbon Management Operators" class="toctree-checkbox" id="toctree-checkbox-22" name="toctree-checkbox-22" role="switch" type="checkbox"/><label for="toctree-checkbox-22"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../source/operators/TMFOP011-Carbon-Management/carbon-management/README.html">Carbon Management Operator</a><input aria-label="Toggle navigation of Carbon Management Operator" class="toctree-checkbox" id="toctree-checkbox-23" name="toctree-checkbox-23" role="switch" type="checkbox"/><label for="toctree-checkbox-23"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../source/operators/TMFOP011-Carbon-Management/carbon-management/carbon-aware-scaling-scenario.html">Carbon-Aware Scaling Scenario: ProductOrderCaptureAndValidation</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Helm charts</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../charts/api-operator-istio/README.html">api-operator-istio</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../charts/apisix-gateway/README.html">apisix-gateway</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../charts/canvas-info-service/README.html">canvas-info-service</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../charts/canvas-oda/README.html">canvas-oda</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../charts/canvas-vault/README.html">canvas-vault</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../charts/carbon-intensity-service/README.html">carbon-intensity-service</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../charts/carbon-management-operator/README.html">carbon-management-operator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../charts/cert-manager-init/README.html">cert-manager-init</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../charts/component-operator/README.html">component-operator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../charts/credentialsmanagement-operator/README.html">Credentials Management Operator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../charts/dependentapi-simple-operator/README.html">dependentapi-simple-operator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../charts/identityconfig-operator-keycloak/README.html">identityconfig-operator-keycloak</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../charts/kong-gateway/README.html">kong-gateway</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../charts/observability-stack/README.html">ODA Canvas Observability Stack</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../charts/oda-webhook/README.html">oda-webhook</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../charts/pdb-management-operator/README.html">PDB Management Operator Helm Chart</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../charts/resource-inventory/README.html">canvas-resource-inventory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../charts/secretsmanagement-operator/README.html">secretsmanagement-operator</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Canvas services and tools</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../source/README.html">ODA Canvas source code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../canvas-portal-v2/README.html">Canvas Portal v2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../canvas-portal/README.html">Canvas portal</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../canvas-portal/README.html#how-to-install">How to install</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../canvas-portal/README.html#uninstall">Uninstall</a><input aria-label="Toggle navigation of Uninstall" class="toctree-checkbox" id="toctree-checkbox-24" name="toctree-checkbox-24" role="switch" type="checkbox"/><label for="toctree-checkbox-24"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../canvas-portal/portal-web/README.html">oda-dashboard</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../docs/component-registry/README.html">Component-Registry</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../docs/component-registry/README.html#multi-canvas-support">Multi-Canvas Support</a><input aria-label="Toggle navigation of Multi-Canvas Support" class="toctree-checkbox" id="toctree-checkbox-25" name="toctree-checkbox-25" role="switch" type="checkbox"/><label for="toctree-checkbox-25"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../docs/component-registry/SECURED-SETUP-COMPREG.html">Secure Setup of Component-Registry</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../source/services/ComponentRegistry/README.html">TMF639 Resource Inventory Management Service</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../source/services/ComponentRegistry/README.html#buildautomation-and-versioning">Buildautomation and Versioning</a><input aria-label="Toggle navigation of Buildautomation and Versioning" class="toctree-checkbox" id="toctree-checkbox-26" name="toctree-checkbox-26" role="switch" type="checkbox"/><label for="toctree-checkbox-26"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../source/services/ComponentRegistry/NOTES.html">deploy kc init compreg</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../source/services/ComponentRegistry/OAUTH2_README.html">OAuth2 Authentifizierung für Component Registry</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../source/tmf-services/MCP_Resource_Inventory/README.html">TMF639 Resource Inventory MCP Server with Helm Integration</a><input aria-label="Toggle navigation of TMF639 Resource Inventory MCP Server with Helm Integration" class="toctree-checkbox" id="toctree-checkbox-27" name="toctree-checkbox-27" role="switch" type="checkbox"/><label for="toctree-checkbox-27"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../source/tmf-services/MCP_Resource_Inventory/SETUP_COMPLETE.html">TMF639 Resource Inventory MCP Server Setup Complete</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../source/tmf-services/TMF628_Performance_Management/README.html">TMF628 Performance Management API - Carbon Intensity Service</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../source/tmf-services/TMF638_Service_Inventory/README.html">OpenAPI Generated JavaScript/Express Server</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../source/tmf-services/TMF638_Service_Inventory/README.html#buildautomation-and-versioning">Buildautomation and Versioning</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../source/tmf-services/TMF639_Resource_Inventory/README.html">TMF639 Resource Inventory Management API</a><input aria-label="Toggle navigation of TMF639 Resource Inventory Management API" class="toctree-checkbox" id="toctree-checkbox-28" name="toctree-checkbox-28" role="switch" type="checkbox"/><label for="toctree-checkbox-28"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../source/tmf-services/TMF639_Resource_Inventory/test/README.html">TMF639 Resource Inventory Test Suite</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../source/webhooks/README.html">ODA Component webhooks</a><input aria-label="Toggle navigation of ODA Component webhooks" class="toctree-checkbox" id="toctree-checkbox-29" name="toctree-checkbox-29" role="switch" type="checkbox"/><label for="toctree-checkbox-29"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../source/webhooks/command-line/README.html">Command-line tool for Conversion Webhook</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../source/webhooks/implementation/README.html">Implementation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../source/webhooks/implementation/README.html#buildautomation-and-versioning">Buildautomation and Versioning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../source/webhooks/system-tests/README.html">System tests</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../source/webhooks/unit-tests/README.html">Unit tests for Webhook</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../source/utilities/README.html">ODA Canvas utilities</a><input aria-label="Toggle navigation of ODA Canvas utilities" class="toctree-checkbox" id="toctree-checkbox-30" name="toctree-checkbox-30" role="switch" type="checkbox"/><label for="toctree-checkbox-30"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../source/utilities/canvas-log-viewer/README.html">Canvas Log Viewer utility</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../source/utilities/canvas-log-viewer/README.html#installation">Installation</a><input aria-label="Toggle navigation of Installation" class="toctree-checkbox" id="toctree-checkbox-31" name="toctree-checkbox-31" role="switch" type="checkbox"/><label for="toctree-checkbox-31"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../source/utilities/canvas-log-viewer/python_alternative/README.html">Python Canvas Log Viewer</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../source/utilities/component-viewer/README.html">Component Viewer utility</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../source/utilities/component-viewer/README.html#installation">Installation</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../demos/multi-canvas-service-discovery/README.html">Live-Demo Dependent API Resolution in a Multi-Canvas Scenario using TMF639</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../demos/multi-canvas-service-discovery/README.html#service-discovery-in-single-canvas-environment">Service Discovery in Single-Canvas Environment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../demos/multi-canvas-service-discovery/README.html#service-discovery-in-multi-canvas-environment">Service Discovery in Multi-Canvas Environment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../demos/multi-canvas-service-discovery/README.html#bdd-uc007-f002">BDD UC007-F002</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../demos/multi-canvas-service-discovery/README.html#from-bdd-uc007-f002-data-magenta-populate-and-green-verify-data-in-federated-product-catalog">From BDD UC007-F002 (data) -  [magenta] Populate and [green] verify data in federated product catalog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../demos/multi-canvas-service-discovery/README.html#green-show-access-of-r-cat-in-f-cat-logs">[green] show access of r-cat in f-cat logs:</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../demos/multi-canvas-service-discovery/README.html#cleanup-all">cleanup all</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../demos/multi-canvas-service-discovery/README.html#cleanup-all-ihc-dt-b-magenta">cleanup all IHC-DT-B (magenta)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../demos/multi-canvas-service-discovery/README.html#canvas-installation">Canvas installation</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../demos/multi-canvas-service-discovery/README.html#links">Links</a><input aria-label="Toggle navigation of Links" class="toctree-checkbox" id="toctree-checkbox-32" name="toctree-checkbox-32" role="switch" type="checkbox"/><label for="toctree-checkbox-32"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../demos/multi-canvas-service-discovery/COMPREG-MULTICANVAS.html">Live-Demo Dependent API Resolution in a Multi-Canvas Scenario using TMF639</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../demos/multi-canvas-service-discovery/COMPREG-MULTICANVAS.html#service-discovery-in-single-canvas-environment">Service Discovery in Single-Canvas Environment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../demos/multi-canvas-service-discovery/COMPREG-MULTICANVAS.html#service-discovery-in-multi-canvas-environment">Service Discovery in Multi-Canvas Environment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../demos/multi-canvas-service-discovery/COMPREG-MULTICANVAS.html#bdd-uc007-f002">BDD UC007-F002</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../demos/multi-canvas-service-discovery/COMPREG-MULTICANVAS.html#from-bdd-uc007-f002-data-magenta-populate-and-green-verify-data-in-federated-product-catalog">From BDD UC007-F002 (data) -  [magenta] Populate and [green] verify data in federated product catalog</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../demos/multi-canvas-service-discovery/COMPREG-MULTICANVAS.html#green-show-access-of-r-cat-in-f-cat-logs">[green] show access of r-cat in f-cat logs:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../demos/multi-canvas-service-discovery/COMPREG-MULTICANVAS.html#cleanup-all">cleanup all</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../demos/multi-canvas-service-discovery/COMPREG-MULTICANVAS.html#cleanup-all-ihc-dt-b-magenta">cleanup all IHC-DT-B (magenta)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../demos/multi-canvas-service-discovery/COMPREG-MULTICANVAS.html#canvas-installation">Canvas installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../demos/multi-canvas-service-discovery/COMPREG-MULTICANVAS.html#links">Links</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../demos/multi-canvas-service-discovery/COMPREG-SINGLECANVAS-SETUP.html">Live-Demo Dependent API Resolution in a Multi-Canvas Scenario using TMF639</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../demos/multi-canvas-service-discovery/COMPREG-SINGLECANVAS-SETUP.html#service-discovery-in-single-canvas-environment">Service Discovery in Single-Canvas Environment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../demos/multi-canvas-service-discovery/COMPREG-SINGLECANVAS-SETUP.html#service-discovery-in-multi-canvas-environment">Service Discovery in Multi-Canvas Environment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../demos/multi-canvas-service-discovery/COMPREG-SINGLECANVAS-SETUP.html#bdd-uc007-f002">BDD UC007-F002</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../demos/multi-canvas-service-discovery/COMPREG-SINGLECANVAS-SETUP.html#from-bdd-uc007-f002-data-magenta-populate-and-green-verify-data-in-federated-product-catalog">From BDD UC007-F002 (data) -  [magenta] Populate and [green] verify data in federated product catalog</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../demos/multi-canvas-service-discovery/COMPREG-SINGLECANVAS-SETUP.html#green-show-access-of-r-cat-in-f-cat-logs">[green] show access of r-cat in f-cat logs:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../demos/multi-canvas-service-discovery/COMPREG-SINGLECANVAS-SETUP.html#cleanup-all">cleanup all</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../demos/multi-canvas-service-discovery/COMPREG-SINGLECANVAS-SETUP.html#cleanup-all-ihc-dt-b-magenta">cleanup all IHC-DT-B (magenta)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../demos/multi-canvas-service-discovery/COMPREG-SINGLECANVAS-SETUP.html#canvas-installation">Canvas installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../demos/multi-canvas-service-discovery/COMPREG-SINGLECANVAS-SETUP.html#links">Links</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../demos/multi-canvas-service-discovery/COMPREG-SINGLECANVAS-SETUP.html#auth">AUTH</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../demos/multi-canvas-service-discovery/COMPREG-TESTS.html">Cluster IHC-DT-A (green)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../demos/multi-canvas-service-discovery/COMPREG-TESTS.html#cleanup">Cleanup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../demos/multi-canvas-service-discovery/COMPREG-TESTS.html#cleanup-canvas-completely">cleanup canvas completely</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../demos/multi-canvas-service-discovery/COMPREG-TESTS.html#install-default-canvas">Install default canvas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../demos/multi-canvas-service-discovery/COMPREG-TESTS.html#deploy-and-register-upstream-global-compreg">deploy and register upstream global-compreg</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../demos/multi-canvas-service-discovery/COMPREG-TESTS.html#test">Test</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../demos/multi-canvas-service-discovery/COMPREG-TESTS.html#bdd-uc007-f002">BDD UC007-F002</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../demos/multi-canvas-service-discovery/COMPREG-TESTS.html#from-bdd-uc007-f002-data-magenta-populate-and-green-verify-data-in-federated-product-catalog">From BDD UC007-F002 (data) -  [magenta] Populate and [green] verify data in federated product catalog</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../demos/multi-canvas-service-discovery/COMPREG-TESTS.html#green-show-access-of-r-cat-in-f-cat-logs">[green] show access of r-cat in f-cat logs:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../demos/multi-canvas-service-discovery/COMPREG-TESTS.html#cleanup-all">cleanup all</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../demos/multi-canvas-service-discovery/COMPREG-TESTS.html#cleanup-all-ihc-dt-b-magenta">cleanup all IHC-DT-B (magenta)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../demos/multi-canvas-service-discovery/COMPREG-TESTS.html#canvas-installation">Canvas installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../demos/multi-canvas-service-discovery/COMPREG-TESTS.html#links">Links</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../demos/multi-canvas-service-discovery/COMPREG-TESTS.html#auth">AUTH</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../demos/multi-canvas-service-discovery/COMPREG-TESTS.html#tests-with-kind">Tests with kind</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../demos/multi-canvas-service-discovery/COMPREG-TESTS.html#cucumber-reports">cucumber reports</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../demos/multi-canvas-service-discovery/COMPREG-TESTS_OLD.html">Cluster IHC-DT-A (green)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../demos/multi-canvas-service-discovery/COMPREG-TESTS_OLD.html#cleanup">Cleanup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../demos/multi-canvas-service-discovery/COMPREG-TESTS_OLD.html#cleanup-canvas-completely">cleanup canvas completely</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../demos/multi-canvas-service-discovery/COMPREG-TESTS_OLD.html#install-default-canvas">Install default canvas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../demos/multi-canvas-service-discovery/COMPREG-TESTS_OLD.html#manual-install-compreg">manual install compreg</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../demos/multi-canvas-service-discovery/COMPREG-TESTS_OLD.html#deploy-and-register-upstream-global-compreg">deploy and register upstream global-compreg</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../demos/multi-canvas-service-discovery/COMPREG-TESTS_OLD.html#test">Test</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../demos/multi-canvas-service-discovery/COMPREG-TESTS_OLD.html#bdd-uc007-f002">BDD UC007-F002</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../demos/multi-canvas-service-discovery/COMPREG-TESTS_OLD.html#from-bdd-uc007-f002-data-magenta-populate-and-green-verify-data-in-federated-product-catalog">From BDD UC007-F002 (data) -  [magenta] Populate and [green] verify data in federated product catalog</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../demos/multi-canvas-service-discovery/COMPREG-TESTS_OLD.html#green-show-access-of-r-cat-in-f-cat-logs">[green] show access of r-cat in f-cat logs:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../demos/multi-canvas-service-discovery/COMPREG-TESTS_OLD.html#cleanup-all">cleanup all</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../demos/multi-canvas-service-discovery/COMPREG-TESTS_OLD.html#cleanup-all-ihc-dt-b-magenta">cleanup all IHC-DT-B (magenta)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../demos/multi-canvas-service-discovery/COMPREG-TESTS_OLD.html#canvas-installation">Canvas installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../demos/multi-canvas-service-discovery/COMPREG-TESTS_OLD.html#links">Links</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../demos/multi-canvas-service-discovery/COMPREG-TESTS_OLD.html#auth">AUTH</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Testing</span></p>
+<ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../feature-definition-and-test-kit/README.html">ODA Canvas Features and Test Kit</a><input aria-label="Toggle navigation of ODA Canvas Features and Test Kit" class="toctree-checkbox" id="toctree-checkbox-33" name="toctree-checkbox-33" role="switch" type="checkbox"/><label for="toctree-checkbox-33"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../feature-definition-and-test-kit/Executing-tests.html">Installing and executing the BDD tests</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../feature-definition-and-test-kit/PDB-TEST-README.html">PDB Management Operator BDD Tests - Local Testing Guide</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../feature-definition-and-test-kit/features/step-definition/README.html">BDD Step Definition Framework and Guidelines</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../feature-definition-and-test-kit/testData/README.html">BDD test charts</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../feature-definition-and-test-kit/utilities/README.html">ODA Canvas Test Utilities</a><input aria-label="Toggle navigation of ODA Canvas Test Utilities" class="toctree-checkbox" id="toctree-checkbox-34" name="toctree-checkbox-34" role="switch" type="checkbox"/><label for="toctree-checkbox-34"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../feature-definition-and-test-kit/utilities/observability-utils-kubernetes/README.html">Observability Utils for Kubernetes</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Building ODA Components</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../docs/ODAComponentDesignGuidelines.html">Design Guidelines to create a new ODA Component</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../docs/ODAComponentTutorial/README.html">Tutorial to build ODA-Component from Open-API Reference Implementation</a><input aria-label="Toggle navigation of Tutorial to build ODA-Component from Open-API Reference Implementation" class="toctree-checkbox" id="toctree-checkbox-35" name="toctree-checkbox-35" role="switch" type="checkbox"/><label for="toctree-checkbox-35"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../../docs/ODAComponentTutorial/ProductInventory/README.html">Example Product Inventory component (including Security_role)</a><input aria-label="Toggle navigation of Example Product Inventory component (including Security_role)" class="toctree-checkbox" id="toctree-checkbox-36" name="toctree-checkbox-36" role="switch" type="checkbox"/><label for="toctree-checkbox-36"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../docs/ODAComponentTutorial/ProductInventory/implementation/README.html">Swagger generated server 2.3.1</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../docs/ODAComponentTutorial/ProductInventory/partyRole-implementation/README.html">Swagger generated server 2.3.1</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../docs/ODAComponentTutorial/ProductInventory/productinventory/README.html">Example Product Inventory component (including Security_role)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../docs/ODAComponentTutorial/ProductInventory/roleInit-implementation/README.html">Initialization microservice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../docs/ODAComponentTutorial/implementation/README.html">Swagger generated server 2.3.1</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../docs/Observability-Tutorial/README.html">Tutorial: deploy and observe a running component</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">AI-assisted development</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../docs/AI-Assisted-Development.html">AI-assisted development with ODA Agent Skills</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ai-coding-assistants.html">AI Coding Assistants for ODA Canvas Development</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../skills/canvas-ops-tutorial/SKILL.html">ODA Canvas Kubernetes Tutorial</a><input aria-label="Toggle navigation of ODA Canvas Kubernetes Tutorial" class="toctree-checkbox" id="toctree-checkbox-37" name="toctree-checkbox-37" role="switch" type="checkbox"/><label for="toctree-checkbox-37"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../skills/canvas-ops-tutorial/references/01-about-oda-canvas.html">About ODA Canvas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../skills/canvas-ops-tutorial/references/02-install-oda-canvas.html">Install ODA Canvas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../skills/canvas-ops-tutorial/references/03-deploy-component.html">Deploy an ODA Component</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../skills/canvas-ops-tutorial/references/04-view-components.html">View Deployed ODA Components</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../skills/canvas-ops-tutorial/references/05-view-exposedapis.html">View ExposedAPIs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../skills/canvas-ops-tutorial/references/06-view-dependentapis.html">View DependentAPIs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../skills/canvas-ops-tutorial/references/07-view-observability.html">View Observability Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../skills/canvas-ops-tutorial/references/08-manage-identities.html">Manage Identities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../skills/canvas-ops-tutorial/references/09-run-bdd-tests.html">Run BDD Feature Tests</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../skills/canvas-usecase-documentation/SKILL.html">Canvas Use-Case Documentation — Skill Instructions</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../skills/create-oda-operator/SKILL.html">Create ODA Operator</a><input aria-label="Toggle navigation of Create ODA Operator" class="toctree-checkbox" id="toctree-checkbox-38" name="toctree-checkbox-38" role="switch" type="checkbox"/><label for="toctree-checkbox-38"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../skills/create-oda-operator/references/kopf-docs.html">Kopf Documentation Reference</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../skills/create-oda-operator/references/operator-catalog.html">ODA Canvas Operator Catalog</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../skills/github-actions-debugging/SKILL.html">GitHub Actions Debugging — Skill Instructions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../skills/helm-chart-development/SKILL.html">Helm Chart Development — Skill Instructions</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../skills/skill-creator/SKILL.html">Skill Creator</a><input aria-label="Toggle navigation of Skill Creator" class="toctree-checkbox" id="toctree-checkbox-39" name="toctree-checkbox-39" role="switch" type="checkbox"/><label for="toctree-checkbox-39"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../skills/skill-creator/agents/analyzer.html">Post-hoc Analyzer Agent</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../skills/skill-creator/agents/analyzer.html#analyzing-benchmark-results">Analyzing Benchmark Results</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../skills/skill-creator/agents/comparator.html">Blind Comparator Agent</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../skills/skill-creator/agents/grader.html">Grader Agent</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../skills/skill-creator/references/schemas.html">JSON Schemas</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../skills/write-bdd-feature/SKILL.html">Write BDD Feature — Skill Instructions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../docs/custom-copilot-documentation-agent.html">Custom GitHub Copilot Documentation Agent</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../docs/bdd-feature-generator-agent-guide.html">BDD Feature Generator Custom Agent - Usage Guide</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Architecture decisions</span></p>
+<ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../docs/Decision-Log/README.html">Architecture Decision Log</a><input aria-label="Toggle navigation of Architecture Decision Log" class="toctree-checkbox" id="toctree-checkbox-40" name="toctree-checkbox-40" role="switch" type="checkbox"/><label for="toctree-checkbox-40"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../docs/Decision-Log/0001-record-architecture-decisions.html">1. Record architecture decisions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../docs/Decision-Log/0002-role-vs-permission.html">2. Role vs Permissions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../docs/Decision-Log/0003-reference-api-gateway.html">3. Reference Implementation API Gateway</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../docs/Decision-Log/0004-which-authentication-protocol-should-be-supported.html">4. Which authentication protocol should be supported</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../docs/Decision-Log/0005-which-languages-and-libraries-should-be-used.html">5. Which languages and libraries should be used for Software Operators</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../docs/Decision-Log/0006-common-set-of-minimum-mandatory-JWT-claims-for-interoperability.html">6. Create common set of minimum mandatory JWT claims for interoperability</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../docs/Decision-Log/0007-provisioning-identities-across-identity-providers.html">7. Provisioning identities across identity providers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../docs/Decision-Log/0008-identity-propagation.html">8. Identity Propagation from Component to Component</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../docs/Decision-Log/0009-monorepo-helm-container-versioning.html">9. Monorepo Helm and Container versioning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../docs/Decision-Log/0010-ai4canvas-operator.html">0010: AI4Canvas Operator Scope Decision</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../docs/Decision-Log/0011-canvas-information-transfer.html">0011: Uniform Method for Canvas-to-Component Information Transfer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../docs/Decision-Log/0012-exposed-api-handling.html">0012: Handling of Exposed APIs by Different Operators</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../docs/Decision-Log/0013-canvas-certification.html">13. No certification for canvas implementation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../docs/Decision-Log/0014-multiple-component-namespaces.html">14. Supporting Multiple Component Namespaces</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../docs/Decision-Log/0015-ai-gateway-for-llm-access.html">15. AI Model Gateway for LLM Access</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../docs/Decision-Log/0016-mcp-server-for-tmforum-open-apis.html">16. Model Context Protocol (MCP) Server for TM Forum Open-APIs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../docs/Decision-Log/0017-strategy-for-ai-agents.html">17. Strategy for AI Agents: Modular, Autonomous, Self-Descriptive, CSP-Specific</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../docs/Decision-Log/0018-ai-model-operator-for-agentic-components.html">18. AI Model Operator for Agentic Components</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../docs/Decision-Log/0019-adopt-a2a-protocol-for-agent-skill-exposure.html">19. Adopt A2A Protocol as Open Standard for Agent Skill Exposure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../docs/Decision-Log/0020-ml-model-integration-via-ml-ops-pipeline.html">20. ML Model Integration via ML Ops Pipeline</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../docs/Decision-Log/0021-optimize-oda-canvas-for-ai-coding-agents.html">21. Optimize ODA Canvas Repository for AI Coding Agents</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../docs/Decision-Log/0022-modular-independent-operators.html">22. Modular and Independent Operators</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Contributing</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../CONTRIBUTING.html">How to contribute to the ODA Canvas Accelerator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../docs/CONTRIBUTING.html">How to contribute to the ODA Canvas Accelerator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../code-of-conduct.html">ODA Accelerator Code of Conduct</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../docs/README.html">ODA Canvas Documentation</a><input aria-label="Toggle navigation of ODA Canvas Documentation" class="toctree-checkbox" id="toctree-checkbox-41" name="toctree-checkbox-41" role="switch" type="checkbox"/><label for="toctree-checkbox-41"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../docs/plantuml-to-svg-guide.html">PlantUML to SVG Conversion Guide</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../docs/templates/README.html">Documentation Templates</a><input aria-label="Toggle navigation of Documentation Templates" class="toctree-checkbox" id="toctree-checkbox-42" name="toctree-checkbox-42" role="switch" type="checkbox"/><label for="toctree-checkbox-42"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../docs/templates/chart-readme-template.html">{Chart Name}</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../docs/templates/operator-readme-template.html">{Operator Name}</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../docs/templates/test-component-readme-template.html">{Component Name}</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../docs/templates/use-case-template.html">{Verb} {Object} use case</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../docs/writing-style.html">ODA Canvas Documentation Writing Style Guide</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../devcontainer.html">ODA Canvas Development Environment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../docs/developer/work-with-dockerimages.html">Developer How-Tos: Work with Dockerimages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../source/operators/Installing%20KOPF%20development%20environment.html">Installing KOPF (tested in GKE)</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../docs/TroubleshootingGuide/index.html">Troubleshooting Guide</a><input aria-label="Toggle navigation of Troubleshooting Guide" class="toctree-checkbox" id="toctree-checkbox-43" name="toctree-checkbox-43" role="switch" type="checkbox"/><label for="toctree-checkbox-43"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../docs/TroubleshootingGuide/CTK.html">CTK Troubleshooting Guide</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../docs/TroubleshootingGuide/Controller-Logging.html">Controller Logging Troubleshooting Guide</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../docs/TroubleshootingGuide/Exploring-Custom-Resources.html">Exploring Custom Resources Troubleshooting Guide</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../docs/TroubleshootingGuide/Microservice-Logging.html">Microservice Logging Troubleshooting Guide</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../docs/TroubleshootingGuide/Internal-Kubernetes-Testing.html">Internal Kubernetes Testing Troubleshooting Guide</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../docs/TroubleshootingGuide/Postman-API-Tests.html">Postman API Tests Troubleshooting Guide</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../docs/DocumentationProcess.html">Documentation Process</a></li>
+</ul>
+
+</div>
+</div>
+
+      </div>
+      
+    </div>
+  </aside>
+  <div class="main">
+    <div class="content">
+      <div class="article-container">
+        <a href="#" class="back-to-top muted-link">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+          </svg>
+          <span>Back to top</span>
+        </a>
+        <div class="content-icon-container">
+          <div class="theme-toggle-container theme-toggle-content">
+            <button class="theme-toggle" aria-label="Toggle Light / Dark / Auto color theme">
+              <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+              <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+              <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+              <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+            </button>
+          </div>
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
+            <span class="icon"><svg><use href="#svg-toc"></use></svg></span>
+          </label>
+        </div>
+        <article role="main" id="furo-main-content">
+          <ul class="simple">
+<li><p><a class="reference internal" href="#deployment-guide-for-tm-forum-oda-canvas-on-azure"><span class="xref myst">Deployment Guide for TM Forum ODA Canvas on Azure</span></a></p>
+<ul>
+<li><p><a class="reference internal" href="#prerequisites"><span class="xref myst">Prerequisites</span></a></p></li>
+<li><p><a class="reference internal" href="#architecture-overview"><span class="xref myst">Architecture Overview</span></a></p></li>
+<li><p><a class="reference internal" href="#step-1-set-up-azure-key-vault-and-store-secrets"><span class="xref myst">Step 1: Set Up Azure Key Vault and Store Secrets</span></a></p>
+<ul>
+<li><p><a class="reference internal" href="#11-create-an-azure-key-vault"><span class="xref myst">1.1 Create an Azure Key Vault</span></a></p></li>
+<li><p><a class="reference internal" href="#12-store-required-secrets"><span class="xref myst">1.2 Store Required Secrets</span></a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#step-2-configure-azure-entra-id-with-app-registrations"><span class="xref myst">Step 2: Configure Azure Entra ID with App Registrations</span></a></p>
+<ul>
+<li><p><a class="reference internal" href="#21-create-backend-app-registration"><span class="xref myst">2.1 Create Backend App Registration</span></a></p></li>
+<li><p><a class="reference internal" href="#22-create-frontend-app-registration"><span class="xref myst">2.2 Create Frontend App Registration</span></a></p></li>
+<li><p><a class="reference internal" href="#23-update-apioperatorazureapim-configuration"><span class="xref myst">2.3 Update apiOperatorAzureAPIM Configuration</span></a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#step-3-set-up-azure-api-management-apim"><span class="xref myst">Step 3: Set Up Azure API Management (APIM)</span></a></p>
+<ul>
+<li><p><a class="reference internal" href="#31-create-or-verify-apim-instance"><span class="xref myst">3.1 Create or Verify APIM Instance</span></a></p></li>
+<li><p><a class="reference internal" href="#32-configure-networking-for-apim"><span class="xref myst">3.2 Configure Networking for APIM</span></a></p></li>
+<li><p><a class="reference internal" href="#33-enable-entra-id-integration"><span class="xref myst">3.3 Enable Entra ID Integration</span></a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#step-4-set-up-azure-database-for-postgresql"><span class="xref myst">Step 4: Set Up Azure Database for PostgreSQL</span></a></p>
+<ul>
+<li><p><a class="reference internal" href="#41-create-a-managed-postgresql-database"><span class="xref myst">4.1 Create a Managed PostgreSQL Database</span></a></p></li>
+<li><p><a class="reference internal" href="#42-configure-networking"><span class="xref myst">4.2 Configure Networking</span></a></p></li>
+<li><p><a class="reference internal" href="#43-create-tmf620-database-structures"><span class="xref myst">4.3 Create TMF620 Database Structures</span></a></p></li>
+<li><p><a class="reference internal" href="#44-update-connection-string"><span class="xref myst">4.4 Update Connection String</span></a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#step-5-prepare-the-aks-cluster"><span class="xref myst">Step 5: Prepare the AKS Cluster</span></a></p>
+<ul>
+<li><p><a class="reference internal" href="#51-verify-aks-cluster-accessibility"><span class="xref myst">5.1 Verify AKS Cluster Accessibility</span></a></p></li>
+<li><p><a class="reference internal" href="#52-enable-managed-identity"><span class="xref myst">5.2 Enable Managed Identity</span></a></p></li>
+<li><p><a class="reference internal" href="#53-grant-access-to-key-vault"><span class="xref myst">5.3 Grant Access to Key Vault</span></a></p></li>
+<li><p><a class="reference internal" href="#54-configure-network-policies"><span class="xref myst">5.4 Configure Network Policies</span></a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#step-6-deploy-the-tm-forum-oda-canvas-including-istio"><span class="xref myst">Step 6: Deploy the TM Forum ODA Canvas (Including Istio)</span></a></p>
+<ul>
+<li><p><a class="reference internal" href="#61-clone-the-tm-forum-oda-canvas-repository"><span class="xref myst">6.1 Clone the TM Forum ODA Canvas Repository</span></a></p></li>
+<li><p><a class="reference internal" href="#62-deploy-oda-canvas-with-istio"><span class="xref myst">6.2 Deploy ODA Canvas with Istio</span></a></p></li>
+<li><p><a class="reference internal" href="#63-verify-istio-deployment"><span class="xref myst">6.3 Verify Istio Deployment</span></a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#step-7-configure-azure-managed-grafana-and-azure-monitor"><span class="xref myst">Step 7: Configure Azure Managed Grafana and Azure Monitor</span></a></p>
+<ul>
+<li><p><a class="reference internal" href="#71-set-up-azure-monitor-for-containers"><span class="xref myst">7.1 Set Up Azure Monitor for Containers</span></a></p></li>
+<li><p><a class="reference internal" href="#72-create-azure-managed-grafana-instance"><span class="xref myst">7.2 Create Azure Managed Grafana Instance</span></a></p></li>
+<li><p><a class="reference internal" href="#73-configure-data-sources-in-azure-managed-grafana"><span class="xref myst">7.3 Configure Data Sources in Azure Managed Grafana</span></a></p></li>
+<li><p><a class="reference internal" href="#74-import-dashboards"><span class="xref myst">7.4 Import Dashboards</span></a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#step-8-deploy-the-operator-apioperatorazureapim"><span class="xref myst">Step 8: Deploy the Operator (apiOperatorAzureAPIM)</span></a></p>
+<ul>
+<li><p><a class="reference internal" href="#81-build-the-operator-docker-image"><span class="xref myst">8.1 Build the Operator Docker Image</span></a></p></li>
+<li><p><a class="reference internal" href="#82-push-the-image-to-a-container-registry"><span class="xref myst">8.2 Push the Image to a Container Registry</span></a></p></li>
+<li><p><a class="reference internal" href="#83-create-kubernetes-resources-for-the-operator"><span class="xref myst">8.3 Create Kubernetes Resources for the Operator</span></a></p></li>
+<li><p><a class="reference internal" href="#84-apply-the-resources"><span class="xref myst">8.4 Apply the Resources</span></a></p></li>
+<li><p><a class="reference internal" href="#85-verify-operator-status"><span class="xref myst">8.5 Verify Operator Status</span></a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#step-9-apply-the-custom-resource-definition-crd"><span class="xref myst">Step 9: Apply the Custom Resource Definition (CRD)</span></a></p></li>
+<li><p><a class="reference internal" href="#step-10-deploy-the-tmf620-product-catalog-component"><span class="xref myst">Step 10: Deploy the TMF620 Product Catalog Component</span></a></p>
+<ul>
+<li><p><a class="reference internal" href="#101-clone-the-repository"><span class="xref myst">10.1 Clone the Repository</span></a></p></li>
+<li><p><a class="reference internal" href="#102-build-the-docker-image"><span class="xref myst">10.2 Build the Docker Image</span></a></p></li>
+<li><p><a class="reference internal" href="#103-push-the-image-to-a-container-registry"><span class="xref myst">10.3 Push the Image to a Container Registry</span></a></p></li>
+<li><p><a class="reference internal" href="#104-create-kubernetes-manifests"><span class="xref myst">10.4 Create Kubernetes Manifests</span></a></p></li>
+<li><p><a class="reference internal" href="#105-apply-the-manifests"><span class="xref myst">10.5 Apply the Manifests</span></a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#step-11-create-exposedapi-custom-resource-for-product-catalog"><span class="xref myst">Step 11: Create ExposedAPI Custom Resource for Product Catalog</span></a></p></li>
+<li><p><a class="reference internal" href="#step-12-configure-aks-rbac-and-network-policies"><span class="xref myst">Step 12: Configure AKS RBAC and Network Policies</span></a></p>
+<ul>
+<li><p><a class="reference internal" href="#121-restrict-access-to-services-from-apim"><span class="xref myst">12.1 Restrict Access to Services from APIM</span></a></p></li>
+<li><p><a class="reference internal" href="#122-implement-rbac"><span class="xref myst">12.2 Implement RBAC</span></a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#step-13-ensure-tls-communication"><span class="xref myst">Step 13: Ensure TLS Communication</span></a></p>
+<ul>
+<li><p><a class="reference internal" href="#131-tls-within-istio-service-mesh"><span class="xref myst">13.1 TLS within Istio Service Mesh</span></a></p></li>
+<li><p><a class="reference internal" href="#132-tls-termination-at-ingress"><span class="xref myst">13.2 TLS Termination at Ingress</span></a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#step-14-monitor-and-verify-the-deployment"><span class="xref myst">Step 14: Monitor and Verify the Deployment</span></a></p>
+<ul>
+<li><p><a class="reference internal" href="#141-check-operator-logs"><span class="xref myst">14.1 Check Operator Logs</span></a></p></li>
+<li><p><a class="reference internal" href="#142-verify-istio-resources"><span class="xref myst">14.2 Verify Istio Resources</span></a></p></li>
+<li><p><a class="reference internal" href="#143-check-azure-apim-configuration"><span class="xref myst">14.3 Check Azure APIM Configuration</span></a></p></li>
+<li><p><a class="reference internal" href="#144-use-azure-managed-grafana"><span class="xref myst">14.4 Use Azure Managed Grafana</span></a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#step-15-test-the-product-catalog-api"><span class="xref myst">Step 15: Test the Product Catalog API</span></a></p>
+<ul>
+<li><p><a class="reference internal" href="#151-obtain-the-apim-gateway-url"><span class="xref myst">15.1 Obtain the APIM Gateway URL</span></a></p></li>
+<li><p><a class="reference internal" href="#152-test-api-endpoints-via-apim"><span class="xref myst">15.2 Test API Endpoints via APIM</span></a></p></li>
+<li><p><a class="reference internal" href="#153-test-authentication"><span class="xref myst">15.3 Test Authentication</span></a></p></li>
+<li><p><a class="reference internal" href="#154-verify-rate-limiting-and-cors"><span class="xref myst">15.4 Verify Rate Limiting and CORS</span></a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#additional-considerations"><span class="xref myst">Additional Considerations</span></a></p></li>
+<li><p><a class="reference internal" href="#helpful-resources"><span class="xref myst">Helpful Resources</span></a></p></li>
+</ul>
+</li>
+</ul>
+<section id="deployment-guide-for-tm-forum-oda-canvas-on-azure">
+<h1>Deployment Guide for TM Forum ODA Canvas on Azure<a class="headerlink" href="#deployment-guide-for-tm-forum-oda-canvas-on-azure" title="Link to this heading">¶</a></h1>
+<p>This guide provides detailed steps to deploy the TM Forum Open Digital Architecture (ODA) canvas into an Azure environment. It focuses on deploying the <strong>TMF620 Product Catalog component</strong>, integrating with <strong>Azure Entra ID</strong> for authentication, utilizing <strong>Istio</strong> (deployed as part of the ODA Canvas process) as the service mesh, securing communication with <strong>TLS</strong>, and ensuring that only <strong>Azure API Management (APIM)</strong> can access the services in <strong>Azure Kubernetes Service (AKS)</strong>. Additionally, it covers configuring a managed <strong>Azure Database for PostgreSQL</strong>, including setting up the TMF620 database structures, and using <strong>Azure Managed Grafana</strong> and <strong>Azure Monitor for monitoring</strong>.</p>
+<section id="prerequisites">
+<h2>Prerequisites<a class="headerlink" href="#prerequisites" title="Link to this heading">¶</a></h2>
+<p>Before you begin, ensure you have the following:</p>
+<ul class="simple">
+<li><p><strong>Azure Subscription</strong>: With permissions to create and manage resources.</p></li>
+<li><p><strong>Azure Kubernetes Service (AKS) Cluster</strong>: A running AKS cluster for deploying ODA components.</p></li>
+<li><p><strong>Azure API Management (APIM)</strong> Instance: For managing and securing your APIs.</p></li>
+<li><p><strong>Azure Key Vault</strong>: To securely store secrets accessed by the operator.</p></li>
+<li><p><strong>Azure Entra ID (Azure AD)</strong>: For authentication and authorization.</p></li>
+<li><p><strong>Azure Database for PostgreSQL</strong>: Managed PostgreSQL service for database needs.</p></li>
+<li><p><strong>Ingress Controller</strong>: Deployed in your AKS cluster (though Istio’s ingress will be used).</p></li>
+<li><p><strong>Istio Service Mesh</strong>: Deployed as part of the TM Forum ODA Canvas process.</p></li>
+<li><p><strong>Azure Managed Grafana and Azure Monitor</strong>: For monitoring and visualization.</p></li>
+<li><p><strong>Development Tools</strong>: Docker, Kubernetes CLI (<em>kubectl</em>), Helm, Git, and Azure CLI installed on your local machine.</p></li>
+</ul>
+</section>
+<section id="architecture-overview">
+<h2>Architecture Overview<a class="headerlink" href="#architecture-overview" title="Link to this heading">¶</a></h2>
+<p>The architecture includes:</p>
+<ul class="simple">
+<li><p><strong>AKS Cluster</strong>: Hosting the TMF620 Product Catalog component.</p></li>
+<li><p><strong>Istio Service Mesh</strong>: Managing internal service communication with mutual TLS (mTLS).</p></li>
+<li><p><strong>Azure API Management (APIM)</strong>: Exposing and securing the API with policies and integration with Entra ID.</p></li>
+<li><p><strong>Azure Entra ID</strong>: Providing authentication via OAuth2 and JWT tokens.</p></li>
+<li><p><strong>Azure Database for PostgreSQL</strong>: Hosting the TMF620 database structures.</p></li>
+<li><p><strong>Azure Key Vault</strong>: Storing secrets and certificates securely.</p></li>
+<li><p><strong>apiOperatorAzureAPIM</strong>: A Kubernetes operator managing API exposure and APIM configuration.</p></li>
+<li><p><strong>Azure Managed Grafana and Azure Monitor</strong>: For monitoring AKS and application performance.</p></li>
+</ul>
+<p><img alt="Diagram" src="../../../_images/overview.png" /></p>
+</section>
+<section id="step-1-set-up-azure-key-vault-and-store-secrets">
+<h2>Step 1: Set Up Azure Key Vault and Store Secrets<a class="headerlink" href="#step-1-set-up-azure-key-vault-and-store-secrets" title="Link to this heading">¶</a></h2>
+<section id="create-an-azure-key-vault">
+<h3>1.1 Create an Azure Key Vault<a class="headerlink" href="#create-an-azure-key-vault" title="Link to this heading">¶</a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>az<span class="w"> </span>keyvault<span class="w"> </span>create<span class="w"> </span>--name<span class="w"> </span>&lt;YourKeyVaultName&gt;<span class="w"> </span>--resource-group<span class="w"> </span>&lt;YourResourceGroup&gt;<span class="w"> </span>--location<span class="w"> </span>&lt;YourLocation
+</pre></div>
+</div>
+</section>
+<section id="store-required-secrets">
+<h3>1.2 Store Required Secrets<a class="headerlink" href="#store-required-secrets" title="Link to this heading">¶</a></h3>
+<p>Store the following secrets:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">apim-service-name</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">resource-group</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">subscription-id</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">aad-tenant-id</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">aad-client-id</span></code> (for backend app registration)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">aad-client-id-frontend</span></code> (for frontend app registration)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">db-connection-string</span></code></p></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># APIM and Azure details</span>
+az<span class="w"> </span>keyvault<span class="w"> </span>secret<span class="w"> </span><span class="nb">set</span><span class="w"> </span>--vault-name<span class="w"> </span>&lt;YourKeyVaultName&gt;<span class="w"> </span>--name<span class="w"> </span>apim-service-name<span class="w"> </span>--value<span class="w"> </span><span class="s2">"&lt;YourAPIMServiceName&gt;"</span>
+az<span class="w"> </span>keyvault<span class="w"> </span>secret<span class="w"> </span><span class="nb">set</span><span class="w"> </span>--vault-name<span class="w"> </span>&lt;YourKeyVaultName&gt;<span class="w"> </span>--name<span class="w"> </span>resource-group<span class="w"> </span>--value<span class="w"> </span><span class="s2">"&lt;YourResourceGroup&gt;"</span>
+az<span class="w"> </span>keyvault<span class="w"> </span>secret<span class="w"> </span><span class="nb">set</span><span class="w"> </span>--vault-name<span class="w"> </span>&lt;YourKeyVaultName&gt;<span class="w"> </span>--name<span class="w"> </span>subscription-id<span class="w"> </span>--value<span class="w"> </span><span class="s2">"&lt;YourSubscriptionID&gt;"</span>
+az<span class="w"> </span>keyvault<span class="w"> </span>secret<span class="w"> </span><span class="nb">set</span><span class="w"> </span>--vault-name<span class="w"> </span>&lt;YourKeyVaultName&gt;<span class="w"> </span>--name<span class="w"> </span>aad-tenant-id<span class="w"> </span>--value<span class="w"> </span><span class="s2">"&lt;YourAADTenantID&gt;"</span>
+az<span class="w"> </span>keyvault<span class="w"> </span>secret<span class="w"> </span><span class="nb">set</span><span class="w"> </span>--vault-name<span class="w"> </span>&lt;YourKeyVaultName&gt;<span class="w"> </span>--name<span class="w"> </span>aad-client-id<span class="w"> </span>--value<span class="w"> </span><span class="s2">"&lt;YourAADClientID&gt;"</span>
+az<span class="w"> </span>keyvault<span class="w"> </span>secret<span class="w"> </span><span class="nb">set</span><span class="w"> </span>--vault-name<span class="w"> </span>&lt;YourKeyVaultName&gt;<span class="w"> </span>--name<span class="w"> </span>aad-client-id-frontend<span class="w"> </span>--value<span class="w"> </span><span class="s2">"&lt;YourAADClientIDFrontend&gt;"</span>
+
+<span class="c1"># Database connection string</span>
+az<span class="w"> </span>keyvault<span class="w"> </span>secret<span class="w"> </span><span class="nb">set</span><span class="w"> </span>--vault-name<span class="w"> </span>&lt;YourKeyVaultName&gt;<span class="w"> </span>--name<span class="w"> </span>db-connection-string<span class="w"> </span>--value<span class="w"> </span><span class="s2">"&lt;YourDBConnectionString&gt;"</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="step-2-configure-azure-entra-id-with-app-registrations">
+<h2>Step 2: Configure Azure Entra ID with App Registrations<a class="headerlink" href="#step-2-configure-azure-entra-id-with-app-registrations" title="Link to this heading">¶</a></h2>
+<p>We’ll create two app registrations: one for the frontend and one for the backend (API).</p>
+<section id="create-backend-app-registration">
+<h3>2.1 Create Backend App Registration<a class="headerlink" href="#create-backend-app-registration" title="Link to this heading">¶</a></h3>
+<ul class="simple">
+<li><p>Register a New Application</p>
+<ul>
+<li><p>Go to <strong>Azure Entra ID &gt; App registrations &gt; New registration</strong>.</p></li>
+<li><p>Name: <code class="docutils literal notranslate"><span class="pre">TMF620-ProductCatalog-Backend</span></code></p></li>
+<li><p>Supported account types: Choose based on your organization’s needs.</p></li>
+<li><p>Click <strong>Register</strong>.</p></li>
+</ul>
+</li>
+<li><p>Expose an API</p>
+<ul>
+<li><p>In the <strong>Expose an API</strong> section, set the Application ID URI (e.g., <code class="docutils literal notranslate"><span class="pre">api://&lt;YourAADClientID&gt;</span></code>).</p></li>
+<li><p>Add a scope:</p>
+<ul>
+<li><p>Scope name: <code class="docutils literal notranslate"><span class="pre">access_as_user</span></code></p></li>
+<li><p>Who can consent: <strong>Admins and users</strong></p></li>
+<li><p>Admin consent display name: <strong>Access Product Catalog API</strong></p></li>
+<li><p>Admin consent description: <strong>Allows the app to access the Product Catalog API as the user</strong>.</p></li>
+<li><p>Click <strong>Add scope</strong>.</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>Create a Client Secret (if needed)</strong></p>
+<ul>
+<li><p>Under <strong>Certificates &amp; secrets</strong>, create a new client secret.</p></li>
+<li><p>Store the secret securely (e.g., in Azure Key Vault if needed).</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="create-frontend-app-registration">
+<h3>2.2 Create Frontend App Registration<a class="headerlink" href="#create-frontend-app-registration" title="Link to this heading">¶</a></h3>
+<ul class="simple">
+<li><p>Register a New Application</p>
+<ul>
+<li><p>Name: <code class="docutils literal notranslate"><span class="pre">TMF620-ProductCatalog-Frontend</span></code></p></li>
+<li><p>Supported account types: Same as backend.</p></li>
+<li><p>Redirect URI: Specify the URI where the frontend application will be hosted.</p></li>
+</ul>
+</li>
+<li><p>Configure API Permissions</p>
+<ul>
+<li><p>Under <strong>API permissions</strong>, click <strong>Add a permission</strong>.</p></li>
+<li><p>Select <strong>My APIs</strong> and choose <code class="docutils literal notranslate"><span class="pre">TMF620-ProductCatalog-Backend</span></code>.</p></li>
+<li><p>Select the scope <code class="docutils literal notranslate"><span class="pre">access_as_user</span></code>.</p></li>
+<li><p>Click <strong>Add permissions</strong>.</p></li>
+</ul>
+</li>
+<li><p>Grant Admin Consent</p>
+<ul>
+<li><p>Click <strong>Grant admin consent for [Your Organization]</strong>.</p></li>
+</ul>
+</li>
+<li><p>Authentication Settings</p>
+<ul>
+<li><p>Under <strong>Authentication</strong>, configure the following:</p></li>
+<li><p><strong>Redirect URIs</strong>: Add the frontend application’s URI.</p></li>
+<li><p><strong>Implicit grant and hybrid flows</strong>: Enable <strong>Access tokens</strong> and <strong>ID tokens</strong>.</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="update-apioperatorazureapim-configuration">
+<h3>2.3 Update apiOperatorAzureAPIM Configuration<a class="headerlink" href="#update-apioperatorazureapim-configuration" title="Link to this heading">¶</a></h3>
+<p>Ensure the operator is aware of the Entra ID configurations:</p>
+<ul class="simple">
+<li><p>The <strong>backend app registration</strong> (<code class="docutils literal notranslate"><span class="pre">aad-client-id</span></code>) is used for validating tokens in APIM policies.</p></li>
+<li><p>The <strong>frontend app registration</strong> (<code class="docutils literal notranslate"><span class="pre">aad-client-id-frontend</span></code>) is used by clients to obtain tokens.</p></li>
+</ul>
+</section>
+</section>
+<section id="step-3-set-up-azure-api-management-apim">
+<h2>Step 3: Set Up Azure API Management (APIM)<a class="headerlink" href="#step-3-set-up-azure-api-management-apim" title="Link to this heading">¶</a></h2>
+<section id="create-or-verify-apim-instance">
+<h3>3.1 Create or Verify APIM Instance<a class="headerlink" href="#create-or-verify-apim-instance" title="Link to this heading">¶</a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>az<span class="w"> </span>apim<span class="w"> </span>create<span class="w"> </span>--name<span class="w"> </span>&lt;YourAPIMServiceName&gt;<span class="w"> </span>--resource-group<span class="w"> </span>&lt;YourResourceGroup&gt;<span class="w"> </span>--publisher-email<span class="w"> </span>&lt;YourEmail&gt;<span class="w"> </span>--publisher-name<span class="w"> </span>&lt;YourName&gt;
+</pre></div>
+</div>
+</section>
+<section id="configure-networking-for-apim">
+<h3>3.2 Configure Networking for APIM<a class="headerlink" href="#configure-networking-for-apim" title="Link to this heading">¶</a></h3>
+<p>Virtual Network Integration: Ensure APIM is integrated with the same Virtual Network (VNet) as AKS or has network access to the AKS cluster.
+IP Whitelisting: Note the outbound IP addresses of APIM to configure network policies in AKS.</p>
+</section>
+<section id="enable-entra-id-integration">
+<h3>3.3 Enable Entra ID Integration<a class="headerlink" href="#enable-entra-id-integration" title="Link to this heading">¶</a></h3>
+<p>In the APIM instance, configure Entra ID as an OpenID Connect provider.</p>
+</section>
+</section>
+<section id="step-4-set-up-azure-database-for-postgresql">
+<h2>Step 4: Set Up Azure Database for PostgreSQL<a class="headerlink" href="#step-4-set-up-azure-database-for-postgresql" title="Link to this heading">¶</a></h2>
+<section id="create-a-managed-postgresql-database">
+<h3>4.1 Create a Managed PostgreSQL Database<a class="headerlink" href="#create-a-managed-postgresql-database" title="Link to this heading">¶</a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>az<span class="w"> </span>postgres<span class="w"> </span>flexible-server<span class="w"> </span>create<span class="w"> </span>--resource-group<span class="w"> </span>&lt;YourResourceGroup&gt;<span class="w"> </span>--name<span class="w"> </span>&lt;YourPostgresServerName&gt;<span class="w"> </span>--location<span class="w"> </span>&lt;YourLocation&gt;<span class="w"> </span>--admin-user<span class="w"> </span>&lt;YourAdminUser&gt;<span class="w"> </span>--admin-password<span class="w"> </span>&lt;YourAdminPassword&gt;<span class="w"> </span>--tier<span class="w"> </span>Burstable<span class="w"> </span>--sku-name<span class="w"> </span>Standard_B1ms<span class="w"> </span>--version<span class="w"> </span><span class="m">13</span>
+</pre></div>
+</div>
+</section>
+<section id="configure-networking">
+<h3>4.2 Configure Networking<a class="headerlink" href="#configure-networking" title="Link to this heading">¶</a></h3>
+<p>VNet Integration: Place the PostgreSQL server in the same VNet as your AKS cluster for secure connectivity.
+Private Endpoint: Use Azure Private Link to create a private endpoint for the PostgreSQL server.</p>
+</section>
+<section id="create-tmf620-database-structures">
+<h3>4.3 Create TMF620 Database Structures<a class="headerlink" href="#create-tmf620-database-structures" title="Link to this heading">¶</a></h3>
+<ul class="simple">
+<li><p>Connect to the Database</p></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>psql<span class="w"> </span><span class="s2">"host=&lt;YourPostgresServerName&gt;.postgres.database.azure.com port=5432 dbname=postgres user=&lt;YourAdminUser&gt;@&lt;YourPostgresServerName&gt; sslmode=require"</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Create Database and User</p></li>
+</ul>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">CREATE</span><span class="w"> </span><span class="k">DATABASE</span><span class="w"> </span><span class="n">tmf620db</span><span class="p">;</span>
+<span class="k">CREATE</span><span class="w"> </span><span class="k">USER</span><span class="w"> </span><span class="n">tmf620user</span><span class="w"> </span><span class="k">WITH</span><span class="w"> </span><span class="n">PASSWORD</span><span class="w"> </span><span class="s1">'&lt;YourPassword&gt;'</span><span class="p">;</span>
+<span class="k">GRANT</span><span class="w"> </span><span class="k">ALL</span><span class="w"> </span><span class="k">PRIVILEGES</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="k">DATABASE</span><span class="w"> </span><span class="n">tmf620db</span><span class="w"> </span><span class="k">TO</span><span class="w"> </span><span class="n">tmf620user</span><span class="p">;</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Set Up Database Schema
+Execute the SQL scripts provided by the TMF620 Product Catalog component to create tables and schemas.
+Alternatively, run migration scripts if available.</p></li>
+</ul>
+</section>
+<section id="update-connection-string">
+<h3>4.4 Update Connection String<a class="headerlink" href="#update-connection-string" title="Link to this heading">¶</a></h3>
+<ul class="simple">
+<li><p>Format: <code class="docutils literal notranslate"><span class="pre">postgresql://tmf620user:&lt;YourPassword&gt;&#64;&lt;YourPostgresServerName&gt;.postgres.database.azure.com:5432/tmf620db?sslmode=require</span></code></p></li>
+<li><p>Store this connection string in Azure Key Vault under <code class="docutils literal notranslate"><span class="pre">db-connection-string</span></code>.</p></li>
+</ul>
+</section>
+</section>
+<section id="step-5-prepare-the-aks-cluster">
+<h2>Step 5: Prepare the AKS Cluster<a class="headerlink" href="#step-5-prepare-the-aks-cluster" title="Link to this heading">¶</a></h2>
+<section id="verify-aks-cluster-accessibility">
+<h3>5.1 Verify AKS Cluster Accessibility<a class="headerlink" href="#verify-aks-cluster-accessibility" title="Link to this heading">¶</a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>az<span class="w"> </span>aks<span class="w"> </span>get-credentials<span class="w"> </span>--resource-group<span class="w"> </span>&lt;YourResourceGroup&gt;<span class="w"> </span>--name<span class="w"> </span>&lt;YourAKSClusterName&gt;
+kubectl<span class="w"> </span>get<span class="w"> </span>nodes
+</pre></div>
+</div>
+</section>
+<section id="enable-managed-identity">
+<h3>5.2 Enable Managed Identity<a class="headerlink" href="#enable-managed-identity" title="Link to this heading">¶</a></h3>
+<p>Ensure the AKS cluster has a Managed Identity for accessing Key Vault.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>az<span class="w"> </span>aks<span class="w"> </span>update<span class="w"> </span>-n<span class="w"> </span>&lt;YourAKSClusterName&gt;<span class="w"> </span>-g<span class="w"> </span>&lt;YourResourceGroup&gt;<span class="w"> </span>--enable-managed-identity
+</pre></div>
+</div>
+</section>
+<section id="grant-access-to-key-vault">
+<h3>5.3 Grant Access to Key Vault<a class="headerlink" href="#grant-access-to-key-vault" title="Link to this heading">¶</a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>az<span class="w"> </span>keyvault<span class="w"> </span>set-policy<span class="w"> </span>-n<span class="w"> </span>&lt;YourKeyVaultName&gt;<span class="w"> </span>--object-id<span class="w"> </span>&lt;AKS-Managed-Identity-Object-ID&gt;<span class="w"> </span>--secret-permissions<span class="w"> </span>get<span class="w"> </span>list
+</pre></div>
+</div>
+</section>
+<section id="configure-network-policies">
+<h3>5.4 Configure Network Policies<a class="headerlink" href="#configure-network-policies" title="Link to this heading">¶</a></h3>
+<p>Enable Network Policy: Ensure your AKS cluster has network policy enabled (Azure or Calico).</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>az<span class="w"> </span>aks<span class="w"> </span>create<span class="w"> </span>--name<span class="w"> </span>&lt;YourAKSClusterName&gt;<span class="w"> </span>--resource-group<span class="w"> </span>&lt;YourResourceGroup&gt;<span class="w"> </span>--network-policy<span class="w"> </span>azure
+</pre></div>
+</div>
+</section>
+</section>
+<section id="step-6-deploy-the-tm-forum-oda-canvas-including-istio">
+<h2>Step 6: Deploy the TM Forum ODA Canvas (Including Istio)<a class="headerlink" href="#step-6-deploy-the-tm-forum-oda-canvas-including-istio" title="Link to this heading">¶</a></h2>
+<section id="clone-the-tm-forum-oda-canvas-repository">
+<h3>6.1 Clone the TM Forum ODA Canvas Repository<a class="headerlink" href="#clone-the-tm-forum-oda-canvas-repository" title="Link to this heading">¶</a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/tmforum-oda/oda-canvas-charts.git
+<span class="nb">cd</span><span class="w"> </span>oda-canvas-charts
+</pre></div>
+</div>
+</section>
+<section id="deploy-oda-canvas-with-istio">
+<h3>6.2 Deploy ODA Canvas with Istio<a class="headerlink" href="#deploy-oda-canvas-with-istio" title="Link to this heading">¶</a></h3>
+<p>The ODA Canvas Helm charts include Istio deployment.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>helm<span class="w"> </span>install<span class="w"> </span>oda-canvas<span class="w"> </span>./charts/oda-canvas<span class="w"> </span>-n<span class="w"> </span>oda<span class="w"> </span>--create-namespace
+</pre></div>
+</div>
+<p>Namespace Labeling: The Helm chart should automatically label namespaces for Istio sidecar injection.</p>
+</section>
+<section id="verify-istio-deployment">
+<h3>6.3 Verify Istio Deployment<a class="headerlink" href="#verify-istio-deployment" title="Link to this heading">¶</a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>kubectl<span class="w"> </span>get<span class="w"> </span>pods<span class="w"> </span>-n<span class="w"> </span>istio-system
+</pre></div>
+</div>
+<p>Ensure that Istio components are running.</p>
+</section>
+</section>
+<section id="step-7-configure-azure-managed-grafana-and-azure-monitor">
+<h2>Step 7: Configure Azure Managed Grafana and Azure Monitor<a class="headerlink" href="#step-7-configure-azure-managed-grafana-and-azure-monitor" title="Link to this heading">¶</a></h2>
+<section id="set-up-azure-monitor-for-containers">
+<h3>7.1 Set Up Azure Monitor for Containers<a class="headerlink" href="#set-up-azure-monitor-for-containers" title="Link to this heading">¶</a></h3>
+<p>Enable Azure Monitor for your AKS cluster.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>az<span class="w"> </span>monitor<span class="w"> </span>log-analytics<span class="w"> </span>workspace<span class="w"> </span>create<span class="w"> </span>--resource-group<span class="w"> </span>&lt;YourResourceGroup&gt;<span class="w"> </span>--workspace-name<span class="w"> </span>&lt;YourWorkspaceName&gt;
+az<span class="w"> </span>monitor<span class="w"> </span>monitor-container<span class="w"> </span>health<span class="w"> </span><span class="nb">enable</span><span class="w"> </span>--resource-group<span class="w"> </span>&lt;YourResourceGroup&gt;<span class="w"> </span>--workspace-id<span class="w"> </span>&lt;YourWorkspaceID&gt;<span class="w"> </span>--cluster-name<span class="w"> </span>&lt;YourAKSClusterName&gt;
+</pre></div>
+</div>
+</section>
+<section id="create-azure-managed-grafana-instance">
+<h3>7.2 Create Azure Managed Grafana Instance<a class="headerlink" href="#create-azure-managed-grafana-instance" title="Link to this heading">¶</a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>az<span class="w"> </span>grafana<span class="w"> </span>create<span class="w"> </span>--name<span class="w"> </span>&lt;YourGrafanaInstanceName&gt;<span class="w"> </span>--resource-group<span class="w"> </span>&lt;YourResourceGroup&gt;
+</pre></div>
+</div>
+</section>
+<section id="configure-data-sources-in-azure-managed-grafana">
+<h3>7.3 Configure Data Sources in Azure Managed Grafana<a class="headerlink" href="#configure-data-sources-in-azure-managed-grafana" title="Link to this heading">¶</a></h3>
+<p>In the Azure Portal, navigate to your Grafana instance.</p>
+<ul class="simple">
+<li><p>Go to Configuration &gt; Data sources.</p></li>
+<li><p>Add Azure Monitor as a data source.</p></li>
+<li><p>Configure with your subscription, resource group, and workspace.</p></li>
+</ul>
+</section>
+<section id="import-dashboards">
+<h3>7.4 Import Dashboards<a class="headerlink" href="#import-dashboards" title="Link to this heading">¶</a></h3>
+<p>Use built-in dashboards or import community dashboards for AKS and Istio monitoring.
+Configure alerts as needed.</p>
+</section>
+</section>
+<section id="step-8-deploy-the-operator-apioperatorazureapim">
+<h2>Step 8: Deploy the Operator (apiOperatorAzureAPIM)<a class="headerlink" href="#step-8-deploy-the-operator-apioperatorazureapim" title="Link to this heading">¶</a></h2>
+<section id="build-the-operator-docker-image">
+<h3>8.1 Build the Operator Docker Image<a class="headerlink" href="#build-the-operator-docker-image" title="Link to this heading">¶</a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>docker<span class="w"> </span>build<span class="w"> </span>-t<span class="w"> </span>&lt;YourRegistry&gt;/apioperatorazureapim:latest<span class="w"> </span>.
+</pre></div>
+</div>
+</section>
+<section id="push-the-image-to-a-container-registry">
+<h3>8.2 Push the Image to a Container Registry<a class="headerlink" href="#push-the-image-to-a-container-registry" title="Link to this heading">¶</a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>docker<span class="w"> </span>push<span class="w"> </span>&lt;YourRegistry&gt;/apioperatorazureapim:latest
+</pre></div>
+</div>
+</section>
+<section id="create-kubernetes-resources-for-the-operator">
+<h3>8.3 Create Kubernetes Resources for the Operator<a class="headerlink" href="#create-kubernetes-resources-for-the-operator" title="Link to this heading">¶</a></h3>
+<p>ServiceAccount and RBAC</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="c1"># apioperatorazureapim-serviceaccount.yaml</span>
+<span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ServiceAccount</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">apioperatorazureapim-sa</span>
+<span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">operators</span>
+<span class="nn">---</span>
+<span class="c1"># apioperatorazureapim-role.yaml</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Role</span>
+<span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">rbac.authorization.k8s.io/v1</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">operators</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">apioperatorazureapim-role</span>
+<span class="nt">rules</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">apiGroups</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">""</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">"apps"</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">"extensions"</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">"networking.k8s.io"</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">"oda.tmforum.org"</span><span class="p p-Indicator">]</span>
+<span class="w">    </span><span class="nt">resources</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">"pods"</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">"services"</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">"deployments"</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">"ingresses"</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">"secrets"</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">"configmaps"</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">"exposedapis"</span><span class="p p-Indicator">]</span>
+<span class="w">    </span><span class="nt">verbs</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">"get"</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">"list"</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">"watch"</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">"create"</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">"update"</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">"patch"</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">"delete"</span><span class="p p-Indicator">]</span>
+<span class="nn">---</span>
+<span class="c1"># apioperatorazureapim-rolebinding.yaml</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">RoleBinding</span>
+<span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">rbac.authorization.k8s.io/v1</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">apioperatorazureapim-rolebinding</span>
+<span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">operators</span>
+<span class="nt">subjects</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ServiceAccount</span>
+<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">apioperatorazureapim-sa</span>
+<span class="w">    </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">operators</span>
+<span class="nt">roleRef</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Role</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">apioperatorazureapim-role</span>
+<span class="w">  </span><span class="nt">apiGroup</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">rbac.authorization.k8s.io</span>
+</pre></div>
+</div>
+<p>Deployment</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="c1"># apioperatorazureapim-deployment.yaml</span>
+<span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">apps/v1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Deployment</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">apioperatorazureapim</span>
+<span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">operators</span>
+<span class="nt">spec</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">replicas</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
+<span class="w">  </span><span class="nt">selector</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">matchLabels</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">app</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">apioperatorazureapim</span>
+<span class="w">  </span><span class="nt">template</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">metadata</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">labels</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">app</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">apioperatorazureapim</span>
+<span class="w">    </span><span class="nt">spec</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">serviceAccountName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">apioperatorazureapim-sa</span>
+<span class="w">      </span><span class="nt">containers</span><span class="p">:</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">apioperatorazureapim</span>
+<span class="w">          </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;YourRegistry&gt;/apioperatorazureapim:latest</span>
+<span class="w">          </span><span class="nt">env</span><span class="p">:</span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">KEY_VAULT_NAME</span>
+<span class="w">              </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="s">"&lt;YourKeyVaultName&gt;"</span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">LOGGING</span>
+<span class="w">              </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="s">"INFO"</span>
+</pre></div>
+</div>
+</section>
+<section id="apply-the-resources">
+<h3>8.4 Apply the Resources<a class="headerlink" href="#apply-the-resources" title="Link to this heading">¶</a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>kubectl<span class="w"> </span>create<span class="w"> </span>namespace<span class="w"> </span>operators
+kubectl<span class="w"> </span>apply<span class="w"> </span>-f<span class="w"> </span>apioperatorazureapim-serviceaccount.yaml
+kubectl<span class="w"> </span>apply<span class="w"> </span>-f<span class="w"> </span>apioperatorazureapim-role.yaml
+kubectl<span class="w"> </span>apply<span class="w"> </span>-f<span class="w"> </span>apioperatorazureapim-rolebinding.yaml
+kubectl<span class="w"> </span>apply<span class="w"> </span>-f<span class="w"> </span>apioperatorazureapim-deployment.yaml
+</pre></div>
+</div>
+</section>
+<section id="verify-operator-status">
+<h3>8.5 Verify Operator Status<a class="headerlink" href="#verify-operator-status" title="Link to this heading">¶</a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>kubectl<span class="w"> </span>get<span class="w"> </span>pods<span class="w"> </span>-n<span class="w"> </span>operators
+kubectl<span class="w"> </span>logs<span class="w"> </span>&lt;apioperatorazureapim-pod-name&gt;<span class="w"> </span>-n<span class="w"> </span>operators
+</pre></div>
+</div>
+</section>
+</section>
+<section id="step-9-apply-the-custom-resource-definition-crd">
+<h2>Step 9: Apply the Custom Resource Definition (CRD)<a class="headerlink" href="#step-9-apply-the-custom-resource-definition-crd" title="Link to this heading">¶</a></h2>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="c1"># exposedapi-crd.yaml</span>
+<span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">apiextensions.k8s.io/v1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">CustomResourceDefinition</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">exposedapis.oda.tmforum.org</span>
+<span class="nt">spec</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">group</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">oda.tmforum.org</span>
+<span class="w">  </span><span class="nt">versions</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1beta3</span>
+<span class="w">      </span><span class="nt">served</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">      </span><span class="nt">storage</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">      </span><span class="nt">schema</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">openAPIV3Schema</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">object</span>
+<span class="w">          </span><span class="nt">properties</span><span class="p">:</span>
+<span class="w">            </span><span class="nt">spec</span><span class="p">:</span>
+<span class="w">              </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">object</span>
+<span class="w">              </span><span class="nt">properties</span><span class="p">:</span>
+<span class="w">                </span><span class="nt">path</span><span class="p">:</span>
+<span class="w">                  </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
+<span class="w">                </span><span class="nt">specification</span><span class="p">:</span>
+<span class="w">                  </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
+<span class="w">                </span><span class="nt">implementation</span><span class="p">:</span>
+<span class="w">                  </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
+<span class="w">                </span><span class="nt">port</span><span class="p">:</span>
+<span class="w">                  </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">integer</span>
+<span class="w">                </span><span class="nt">rateLimit</span><span class="p">:</span>
+<span class="w">                  </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">object</span>
+<span class="w">                </span><span class="nt">CORS</span><span class="p">:</span>
+<span class="w">                  </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">object</span>
+<span class="w">  </span><span class="nt">scope</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Namespaced</span>
+<span class="w">  </span><span class="nt">names</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">plural</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">exposedapis</span>
+<span class="w">    </span><span class="nt">singular</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">exposedapi</span>
+<span class="w">    </span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ExposedAPI</span>
+</pre></div>
+</div>
+<p>Apply the CRD:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>kubectl<span class="w"> </span>apply<span class="w"> </span>-f<span class="w"> </span>exposedapi-crd.yaml
+</pre></div>
+</div>
+</section>
+<section id="step-10-deploy-the-tmf620-product-catalog-component">
+<h2>Step 10: Deploy the TMF620 Product Catalog Component<a class="headerlink" href="#step-10-deploy-the-tmf620-product-catalog-component" title="Link to this heading">¶</a></h2>
+<section id="clone-the-repository">
+<h3>10.1 Clone the Repository<a class="headerlink" href="#clone-the-repository" title="Link to this heading">¶</a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/tmforum-oda/TMF620_Product_Catalog.git
+<span class="nb">cd</span><span class="w"> </span>TMF620_Product_Catalog
+</pre></div>
+</div>
+</section>
+<section id="build-the-docker-image">
+<h3>10.2 Build the Docker Image<a class="headerlink" href="#build-the-docker-image" title="Link to this heading">¶</a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>docker<span class="w"> </span>build<span class="w"> </span>-t<span class="w"> </span>&lt;YourRegistry&gt;/tmf620-product-catalog:latest<span class="w"> </span>.
+</pre></div>
+</div>
+</section>
+<section id="id1">
+<h3>10.3 Push the Image to a Container Registry<a class="headerlink" href="#id1" title="Link to this heading">¶</a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>docker<span class="w"> </span>push<span class="w"> </span>&lt;YourRegistry&gt;/tmf620-product-catalog:latest
+</pre></div>
+</div>
+</section>
+<section id="create-kubernetes-manifests">
+<h3>10.4 Create Kubernetes Manifests<a class="headerlink" href="#create-kubernetes-manifests" title="Link to this heading">¶</a></h3>
+<p>Deployment</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="c1"># tmf620-product-catalog-deployment.yaml</span>
+<span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">apps/v1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Deployment</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tmf620-product-catalog</span>
+<span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">components</span>
+<span class="w">  </span><span class="nt">labels</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">app</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tmf620-product-catalog</span>
+<span class="nt">spec</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">replicas</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2</span>
+<span class="w">  </span><span class="nt">selector</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">matchLabels</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">app</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tmf620-product-catalog</span>
+<span class="w">  </span><span class="nt">template</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">metadata</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">labels</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">app</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tmf620-product-catalog</span>
+<span class="w">    </span><span class="nt">spec</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">containers</span><span class="p">:</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tmf620-product-catalog</span>
+<span class="w">          </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;YourRegistry&gt;/tmf620-product-catalog:latest</span>
+<span class="w">          </span><span class="nt">ports</span><span class="p">:</span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">containerPort</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">8080</span>
+<span class="w">          </span><span class="nt">env</span><span class="p">:</span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DB_CONNECTION_STRING</span>
+<span class="w">              </span><span class="nt">valueFrom</span><span class="p">:</span>
+<span class="w">                </span><span class="nt">secretKeyRef</span><span class="p">:</span>
+<span class="w">                  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">db-connection-string</span>
+<span class="w">                  </span><span class="nt">key</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">connectionString</span>
+<span class="w">      </span><span class="c1"># Istio sidecar injection is handled by namespace labeling</span>
+</pre></div>
+</div>
+<p>Service</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="c1"># tmf620-product-catalog-service.yaml</span>
+<span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Service</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tmf620-product-catalog-service</span>
+<span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">components</span>
+<span class="w">  </span><span class="nt">labels</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">app</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tmf620-product-catalog</span>
+<span class="nt">spec</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">selector</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">app</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tmf620-product-catalog</span>
+<span class="w">  </span><span class="nt">ports</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">protocol</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">TCP</span>
+<span class="w">      </span><span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">8080</span>
+<span class="w">      </span><span class="nt">targetPort</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">8080</span>
+</pre></div>
+</div>
+</section>
+<section id="apply-the-manifests">
+<h3>10.5 Apply the Manifests<a class="headerlink" href="#apply-the-manifests" title="Link to this heading">¶</a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>kubectl<span class="w"> </span>create<span class="w"> </span>namespace<span class="w"> </span>components
+kubectl<span class="w"> </span>label<span class="w"> </span>namespace<span class="w"> </span>components<span class="w"> </span>istio-injection<span class="o">=</span>enabled
+kubectl<span class="w"> </span>apply<span class="w"> </span>-f<span class="w"> </span>tmf620-product-catalog-deployment.yaml
+kubectl<span class="w"> </span>apply<span class="w"> </span>-f<span class="w"> </span>tmf620-product-catalog-service.yaml
+</pre></div>
+</div>
+</section>
+</section>
+<section id="step-11-create-exposedapi-custom-resource-for-product-catalog">
+<h2>Step 11: Create ExposedAPI Custom Resource for Product Catalog<a class="headerlink" href="#step-11-create-exposedapi-custom-resource-for-product-catalog" title="Link to this heading">¶</a></h2>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="c1"># tmf620-product-catalog-exposedapi.yaml</span>
+<span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">oda.tmforum.org/v1beta3</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ExposedAPI</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tmf620-product-catalog-api</span>
+<span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">components</span>
+<span class="nt">spec</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/product-catalog</span>
+<span class="w">  </span><span class="nt">specification</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
+<span class="w">    </span><span class="no">{</span>
+<span class="w">      </span><span class="no">"openapi": "3.0.0",</span>
+<span class="w">      </span><span class="no">"info": {</span>
+<span class="w">        </span><span class="no">"title": "TMF620 Product Catalog API",</span>
+<span class="w">        </span><span class="no">"version": "1.0.0"</span>
+<span class="w">      </span><span class="no">},</span>
+<span class="w">      </span><span class="no">"paths": {</span>
+<span class="w">        </span><span class="no"># ... include the full OpenAPI specification here ...</span>
+<span class="w">      </span><span class="no">}</span>
+<span class="w">    </span><span class="no">}</span>
+<span class="w">  </span><span class="nt">implementation</span><span class="p">:</span><span class="w"> </span><span class="s">"tmf620-product-catalog-service"</span>
+<span class="w">  </span><span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">8080</span>
+<span class="w">  </span><span class="nt">rateLimit</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">limit</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span>
+<span class="w">    </span><span class="nt">period</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">60</span>
+<span class="w">  </span><span class="nt">CORS</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">allowOrigins</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">"*"</span>
+<span class="w">    </span><span class="nt">allowMethods</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">GET</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">POST</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PUT</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DELETE</span>
+<span class="w">    </span><span class="nt">allowHeaders</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Content-Type</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Authorization</span>
+<span class="w">    </span><span class="nt">exposeHeaders</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">"*"</span>
+<span class="w">    </span><span class="nt">maxAge</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3600</span>
+<span class="w">    </span><span class="nt">allowCredentials</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+</pre></div>
+</div>
+<p>Apply the ExposedAPI resource:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>kubectl<span class="w"> </span>apply<span class="w"> </span>-f<span class="w"> </span>tmf620-product-catalog-exposedapi.yaml
+</pre></div>
+</div>
+</section>
+<section id="step-12-configure-aks-rbac-and-network-policies">
+<h2>Step 12: Configure AKS RBAC and Network Policies<a class="headerlink" href="#step-12-configure-aks-rbac-and-network-policies" title="Link to this heading">¶</a></h2>
+<section id="restrict-access-to-services-from-apim">
+<h3>12.1 Restrict Access to Services from APIM<a class="headerlink" href="#restrict-access-to-services-from-apim" title="Link to this heading">¶</a></h3>
+<p>Create a Network Policy</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="c1"># network-policy.yaml</span>
+<span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.k8s.io/v1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">NetworkPolicy</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">allow-apim-access</span>
+<span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">components</span>
+<span class="nt">spec</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">podSelector</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">matchLabels</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">app</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tmf620-product-catalog</span>
+<span class="w">  </span><span class="nt">ingress</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">from</span><span class="p">:</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">ipBlock</span><span class="p">:</span>
+<span class="w">            </span><span class="nt">cidr</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;APIM-Outbound-IP-Address&gt;/32</span><span class="w">  </span><span class="c1"># Replace with APIM's outbound IP</span>
+<span class="w">      </span><span class="nt">ports</span><span class="p">:</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">protocol</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">TCP</span>
+<span class="w">          </span><span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">8080</span>
+<span class="w">  </span><span class="nt">policyTypes</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Ingress</span>
+</pre></div>
+</div>
+<p>Apply the Network Policy:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>kubectl<span class="w"> </span>apply<span class="w"> </span>-f<span class="w"> </span>network-policy.yaml
+</pre></div>
+</div>
+</section>
+<section id="implement-rbac">
+<h3>12.2 Implement RBAC<a class="headerlink" href="#implement-rbac" title="Link to this heading">¶</a></h3>
+<p>Ensure that only authorized identities can access Kubernetes resources.</p>
+<ul class="simple">
+<li><p>Create roles and role bindings as necessary.</p></li>
+<li><p>Use Azure Entra ID integration with AKS for identity management.</p></li>
+</ul>
+</section>
+</section>
+<section id="step-13-ensure-tls-communication">
+<h2>Step 13: Ensure TLS Communication<a class="headerlink" href="#step-13-ensure-tls-communication" title="Link to this heading">¶</a></h2>
+<section id="tls-within-istio-service-mesh">
+<h3>13.1 TLS within Istio Service Mesh<a class="headerlink" href="#tls-within-istio-service-mesh" title="Link to this heading">¶</a></h3>
+<ul class="simple">
+<li><p><strong>mTLS Enabled</strong>: Istio is deployed as part of the ODA Canvas process with mTLS enabled by default.</p></li>
+<li><p><strong>No Additional Configuration Needed</strong>: Internal service communication is secured with TLS.</p></li>
+</ul>
+</section>
+<section id="tls-termination-at-ingress">
+<h3>13.2 TLS Termination at Ingress<a class="headerlink" href="#tls-termination-at-ingress" title="Link to this heading">¶</a></h3>
+<p>Istio ingress gateway handles TLS termination.</p>
+<p><strong>Create a TLS Certificate</strong></p>
+<ul class="simple">
+<li><p><strong>Obtain Certificate</strong>: Use Azure Key Vault certificates or another trusted CA.</p></li>
+<li><p><strong>Store Certificate in Kubernetes Secret</strong>:</p></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>kubectl<span class="w"> </span>create<span class="w"> </span>-n<span class="w"> </span>istio-system<span class="w"> </span>secret<span class="w"> </span>tls<span class="w"> </span>istio-ingressgateway-certs<span class="w"> </span>--key<span class="w"> </span>&lt;yourdomain.key&gt;<span class="w"> </span>--cert<span class="w"> </span>&lt;yourdomain.crt&gt;
+</pre></div>
+</div>
+<p>Configure Gateway and VirtualService</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="c1"># gateway.yaml</span>
+<span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.istio.io/v1beta1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Gateway</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">product-catalog-gateway</span>
+<span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">components</span>
+<span class="nt">spec</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">selector</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">istio</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ingressgateway</span>
+<span class="w">  </span><span class="nt">servers</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">port</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">number</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">443</span>
+<span class="w">        </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https</span>
+<span class="w">        </span><span class="nt">protocol</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">HTTPS</span>
+<span class="w">      </span><span class="nt">tls</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">mode</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SIMPLE</span>
+<span class="w">        </span><span class="nt">credentialName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">istio-ingressgateway-certs</span>
+<span class="w">      </span><span class="nt">hosts</span><span class="p">:</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">"product-catalog.yourdomain.com"</span>
+
+<span class="c1"># virtualservice.yaml</span>
+<span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.istio.io/v1beta1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">VirtualService</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">product-catalog-virtualservice</span>
+<span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">components</span>
+<span class="nt">spec</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">hosts</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">"product-catalog.yourdomain.com"</span>
+<span class="w">  </span><span class="nt">gateways</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">product-catalog-gateway</span>
+<span class="w">  </span><span class="nt">http</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">match</span><span class="p">:</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">uri</span><span class="p">:</span>
+<span class="w">            </span><span class="nt">prefix</span><span class="p">:</span><span class="w"> </span><span class="s">"/product-catalog"</span>
+<span class="w">      </span><span class="nt">route</span><span class="p">:</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">destination</span><span class="p">:</span>
+<span class="w">            </span><span class="nt">host</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tmf620-product-catalog-service.components.svc.cluster.local</span>
+<span class="w">            </span><span class="nt">port</span><span class="p">:</span>
+<span class="w">              </span><span class="nt">number</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">8080</span>
+</pre></div>
+</div>
+<p>Apply the Gateway and VirtualService:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>kubectl<span class="w"> </span>apply<span class="w"> </span>-f<span class="w"> </span>gateway.yaml
+kubectl<span class="w"> </span>apply<span class="w"> </span>-f<span class="w"> </span>virtualservice.yaml
+</pre></div>
+</div>
+</section>
+</section>
+<section id="step-14-monitor-and-verify-the-deployment">
+<h2>Step 14: Monitor and Verify the Deployment<a class="headerlink" href="#step-14-monitor-and-verify-the-deployment" title="Link to this heading">¶</a></h2>
+<section id="check-operator-logs">
+<h3>14.1 Check Operator Logs<a class="headerlink" href="#check-operator-logs" title="Link to this heading">¶</a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>kubectl<span class="w"> </span>logs<span class="w"> </span>&lt;apioperatorazureapim-pod-name&gt;<span class="w"> </span>-n<span class="w"> </span>operators
+</pre></div>
+</div>
+</section>
+<section id="verify-istio-resources">
+<h3>14.2 Verify Istio Resources<a class="headerlink" href="#verify-istio-resources" title="Link to this heading">¶</a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>kubectl<span class="w"> </span>get<span class="w"> </span>gateway,virtualservice<span class="w"> </span>-n<span class="w"> </span>components
+kubectl<span class="w"> </span>get<span class="w"> </span>pods<span class="w"> </span>-n<span class="w"> </span>components
+</pre></div>
+</div>
+</section>
+<section id="check-azure-apim-configuration">
+<h3>14.3 Check Azure APIM Configuration<a class="headerlink" href="#check-azure-apim-configuration" title="Link to this heading">¶</a></h3>
+<ul class="simple">
+<li><p>Log in to the Azure Portal.</p></li>
+<li><p>Navigate to your APIM instance.</p></li>
+<li><p>Verify that the <code class="docutils literal notranslate"><span class="pre">tmf620-product-catalog-api</span></code> is listed and configured.</p></li>
+</ul>
+</section>
+<section id="use-azure-managed-grafana">
+<h3>14.4 Use Azure Managed Grafana<a class="headerlink" href="#use-azure-managed-grafana" title="Link to this heading">¶</a></h3>
+<ul class="simple">
+<li><p>Access Azure Managed Grafana via the Azure Portal.</p></li>
+<li><p>View dashboards for AKS cluster monitoring.</p></li>
+<li><p>Use Azure Monitor data source for metrics and logs.</p></li>
+</ul>
+</section>
+</section>
+<section id="step-15-test-the-product-catalog-api">
+<h2>Step 15: Test the Product Catalog API<a class="headerlink" href="#step-15-test-the-product-catalog-api" title="Link to this heading">¶</a></h2>
+<section id="obtain-the-apim-gateway-url">
+<h3>15.1 Obtain the APIM Gateway URL<a class="headerlink" href="#obtain-the-apim-gateway-url" title="Link to this heading">¶</a></h3>
+<p>Find the gateway URL in the APIM instance overview.</p>
+</section>
+<section id="test-api-endpoints-via-apim">
+<h3>15.2 Test API Endpoints via APIM<a class="headerlink" href="#test-api-endpoints-via-apim" title="Link to this heading">¶</a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl<span class="w"> </span>-X<span class="w"> </span>GET<span class="w"> </span>https://&lt;YourAPIMGatewayURL&gt;/product-catalog
+</pre></div>
+</div>
+</section>
+<section id="test-authentication">
+<h3>15.3 Test Authentication<a class="headerlink" href="#test-authentication" title="Link to this heading">¶</a></h3>
+<p>Obtain a JWT Token from Entra ID
+Use Azure CLI or Postman to authenticate using the frontend app registration.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>az<span class="w"> </span>login
+az<span class="w"> </span>account<span class="w"> </span>get-access-token<span class="w"> </span>--resource<span class="w"> </span>api://&lt;YourAADClientID&gt;<span class="w"> </span>--query<span class="w"> </span>accessToken<span class="w"> </span>--output<span class="w"> </span>tsv
+</pre></div>
+</div>
+<p>Use the token in your API requests.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl<span class="w"> </span>-H<span class="w"> </span><span class="s2">"Authorization: Bearer &lt;YourJWTToken&gt;"</span><span class="w"> </span>https://&lt;YourAPIMGatewayURL&gt;/product-catalog
+</pre></div>
+</div>
+</section>
+<section id="verify-rate-limiting-and-cors">
+<h3>15.4 Verify Rate Limiting and CORS<a class="headerlink" href="#verify-rate-limiting-and-cors" title="Link to this heading">¶</a></h3>
+<ul class="simple">
+<li><p>Exceed the rate limit to ensure it’s enforced.</p></li>
+<li><p>Test cross-origin requests from allowed and disallowed origins.</p></li>
+</ul>
+</section>
+</section>
+<section id="additional-considerations">
+<h2>Additional Considerations<a class="headerlink" href="#additional-considerations" title="Link to this heading">¶</a></h2>
+<ul class="simple">
+<li><p><strong>Security</strong></p>
+<ul>
+<li><p><strong>Secure Database Access</strong>: Use Azure Private Link for the PostgreSQL database.</p></li>
+<li><p><strong>Secrets Management</strong>: Use Azure Key Vault and Kubernetes secrets securely.</p></li>
+<li><p><strong>Network Security</strong>: Implement <strong>Network Security Groups (NSGs)</strong> and <strong>Azure Firewall</strong>.</p></li>
+</ul>
+</li>
+<li><p><strong>Monitoring and Logging</strong></p>
+<ul>
+<li><p><strong>Enhanced Monitoring</strong>: Leverage <strong>Azure Monitor</strong> for logs and metrics.</p></li>
+<li><p><strong>Logging</strong>: Centralize logs using <strong>Azure Log Analytics</strong>.</p></li>
+</ul>
+</li>
+<li><p><strong>Scaling and Performance</strong></p>
+<ul>
+<li><p><strong>Database Scaling</strong>: Adjust the SKU of Azure Database for PostgreSQL.</p></li>
+<li><p><strong>Application Scaling</strong>: Configure <strong>Horizontal Pod Autoscalers (HPA)</strong>.
+-<strong>Disaster Recovery and Backup</strong></p></li>
+<li><p><strong>Database Backups</strong>: Ensure automated backups are enabled.</p></li>
+<li><p><strong>Application Backups</strong>: Backup configurations and data.
+-<strong>Compliance and Governance</strong></p></li>
+<li><p><strong>Compliance Standards</strong>: Ensure data handling complies with regulations like GDPR.</p></li>
+<li><p><strong>Policies and Auditing</strong>: Implement <strong>Azure Policies</strong> and use Entra ID auditing features.</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="helpful-resources">
+<h2>Helpful Resources<a class="headerlink" href="#helpful-resources" title="Link to this heading">¶</a></h2>
+<ul class="simple">
+<li><p>TM Forum ODA: <a class="reference external" href="https://www.tmforum.org/oda/">TM Forum Open Digital Architecture</a></p></li>
+<li><p>TMF620 Product Catalog: <a class="reference external" href="https://github.com/tmforum-oda/TMF620_Product_Catalog">TMF620 Product Catalog Component</a></p></li>
+<li><p>Azure Documentation:</p>
+<ul>
+<li><p><a class="reference external" href="https://docs.microsoft.com/azure/aks/">Azure Kubernetes Service (AKS)</a></p></li>
+<li><p><a class="reference external" href="https://docs.microsoft.com/azure/api-management/">Azure API Management</a></p></li>
+<li><p><a class="reference external" href="https://docs.microsoft.com/azure/postgresql/">Azure Database for PostgreSQL</a></p></li>
+<li><p><a class="reference external" href="https://docs.microsoft.com/azure/key-vault/">Azure Key Vault</a></p></li>
+<li><p><a class="reference external" href="https://learn.microsoft.com/azure/active-directory/fundamentals/entra-overview">Azure Entra ID</a></p></li>
+<li><p><a class="reference external" href="https://docs.microsoft.com/azure/managed-grafana/">Azure Managed Grafana</a></p></li>
+<li><p><a class="reference external" href="https://docs.microsoft.com/azure/azure-monitor/">Azure Monitor</a></p></li>
+</ul>
+</li>
+<li><p>Istio Documentation: <a class="reference external" href="https://istio.io/latest/about/service-mesh/">Istio Service Mesh</a></p></li>
+</ul>
+<div class="toctree-wrapper compound">
+</div>
+</section>
+</section>
+
+        </article>
+      </div>
+      <footer>
+        
+        <div class="related-pages">
+          <a class="next-page" href="automated/automated_install_azure_README.html">
+              <div class="page-info">
+                <div class="context">
+                  <span>Next</span>
+                </div>
+                <div class="title">End-to-End Deployment and Observability Guide for TM Forum ODA Canvas on Azure</div>
+              </div>
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+            </a>
+          <a class="prev-page" href="../CanvasVault/README.html">
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+              <div class="page-info">
+                <div class="context">
+                  <span>Previous</span>
+                </div>
+                
+                <div class="title">HashiCorp Vault installation</div>
+                
+              </div>
+            </a>
+        </div>
+        <div class="bottom-of-page">
+          <div class="left-details">
+            <div class="copyright">
+                Copyright &#169; 2026, TM Forum ODA-Component Accelerator project
+            </div>
+            Made with <a href="https://www.sphinx-doc.org/">Sphinx</a> and <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
+            
+            <a href="https://github.com/pradyunsg/furo">Furo</a>
+            
+          </div>
+          <div class="right-details">
+            
+          </div>
+        </div>
+        
+      </footer>
+    </div>
+    <aside class="toc-drawer">
+      
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            On this page
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">Deployment Guide for TM Forum ODA Canvas on Azure</a><ul>
+<li><a class="reference internal" href="#prerequisites">Prerequisites</a></li>
+<li><a class="reference internal" href="#architecture-overview">Architecture Overview</a></li>
+<li><a class="reference internal" href="#step-1-set-up-azure-key-vault-and-store-secrets">Step 1: Set Up Azure Key Vault and Store Secrets</a><ul>
+<li><a class="reference internal" href="#create-an-azure-key-vault">1.1 Create an Azure Key Vault</a></li>
+<li><a class="reference internal" href="#store-required-secrets">1.2 Store Required Secrets</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#step-2-configure-azure-entra-id-with-app-registrations">Step 2: Configure Azure Entra ID with App Registrations</a><ul>
+<li><a class="reference internal" href="#create-backend-app-registration">2.1 Create Backend App Registration</a></li>
+<li><a class="reference internal" href="#create-frontend-app-registration">2.2 Create Frontend App Registration</a></li>
+<li><a class="reference internal" href="#update-apioperatorazureapim-configuration">2.3 Update apiOperatorAzureAPIM Configuration</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#step-3-set-up-azure-api-management-apim">Step 3: Set Up Azure API Management (APIM)</a><ul>
+<li><a class="reference internal" href="#create-or-verify-apim-instance">3.1 Create or Verify APIM Instance</a></li>
+<li><a class="reference internal" href="#configure-networking-for-apim">3.2 Configure Networking for APIM</a></li>
+<li><a class="reference internal" href="#enable-entra-id-integration">3.3 Enable Entra ID Integration</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#step-4-set-up-azure-database-for-postgresql">Step 4: Set Up Azure Database for PostgreSQL</a><ul>
+<li><a class="reference internal" href="#create-a-managed-postgresql-database">4.1 Create a Managed PostgreSQL Database</a></li>
+<li><a class="reference internal" href="#configure-networking">4.2 Configure Networking</a></li>
+<li><a class="reference internal" href="#create-tmf620-database-structures">4.3 Create TMF620 Database Structures</a></li>
+<li><a class="reference internal" href="#update-connection-string">4.4 Update Connection String</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#step-5-prepare-the-aks-cluster">Step 5: Prepare the AKS Cluster</a><ul>
+<li><a class="reference internal" href="#verify-aks-cluster-accessibility">5.1 Verify AKS Cluster Accessibility</a></li>
+<li><a class="reference internal" href="#enable-managed-identity">5.2 Enable Managed Identity</a></li>
+<li><a class="reference internal" href="#grant-access-to-key-vault">5.3 Grant Access to Key Vault</a></li>
+<li><a class="reference internal" href="#configure-network-policies">5.4 Configure Network Policies</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#step-6-deploy-the-tm-forum-oda-canvas-including-istio">Step 6: Deploy the TM Forum ODA Canvas (Including Istio)</a><ul>
+<li><a class="reference internal" href="#clone-the-tm-forum-oda-canvas-repository">6.1 Clone the TM Forum ODA Canvas Repository</a></li>
+<li><a class="reference internal" href="#deploy-oda-canvas-with-istio">6.2 Deploy ODA Canvas with Istio</a></li>
+<li><a class="reference internal" href="#verify-istio-deployment">6.3 Verify Istio Deployment</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#step-7-configure-azure-managed-grafana-and-azure-monitor">Step 7: Configure Azure Managed Grafana and Azure Monitor</a><ul>
+<li><a class="reference internal" href="#set-up-azure-monitor-for-containers">7.1 Set Up Azure Monitor for Containers</a></li>
+<li><a class="reference internal" href="#create-azure-managed-grafana-instance">7.2 Create Azure Managed Grafana Instance</a></li>
+<li><a class="reference internal" href="#configure-data-sources-in-azure-managed-grafana">7.3 Configure Data Sources in Azure Managed Grafana</a></li>
+<li><a class="reference internal" href="#import-dashboards">7.4 Import Dashboards</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#step-8-deploy-the-operator-apioperatorazureapim">Step 8: Deploy the Operator (apiOperatorAzureAPIM)</a><ul>
+<li><a class="reference internal" href="#build-the-operator-docker-image">8.1 Build the Operator Docker Image</a></li>
+<li><a class="reference internal" href="#push-the-image-to-a-container-registry">8.2 Push the Image to a Container Registry</a></li>
+<li><a class="reference internal" href="#create-kubernetes-resources-for-the-operator">8.3 Create Kubernetes Resources for the Operator</a></li>
+<li><a class="reference internal" href="#apply-the-resources">8.4 Apply the Resources</a></li>
+<li><a class="reference internal" href="#verify-operator-status">8.5 Verify Operator Status</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#step-9-apply-the-custom-resource-definition-crd">Step 9: Apply the Custom Resource Definition (CRD)</a></li>
+<li><a class="reference internal" href="#step-10-deploy-the-tmf620-product-catalog-component">Step 10: Deploy the TMF620 Product Catalog Component</a><ul>
+<li><a class="reference internal" href="#clone-the-repository">10.1 Clone the Repository</a></li>
+<li><a class="reference internal" href="#build-the-docker-image">10.2 Build the Docker Image</a></li>
+<li><a class="reference internal" href="#id1">10.3 Push the Image to a Container Registry</a></li>
+<li><a class="reference internal" href="#create-kubernetes-manifests">10.4 Create Kubernetes Manifests</a></li>
+<li><a class="reference internal" href="#apply-the-manifests">10.5 Apply the Manifests</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#step-11-create-exposedapi-custom-resource-for-product-catalog">Step 11: Create ExposedAPI Custom Resource for Product Catalog</a></li>
+<li><a class="reference internal" href="#step-12-configure-aks-rbac-and-network-policies">Step 12: Configure AKS RBAC and Network Policies</a><ul>
+<li><a class="reference internal" href="#restrict-access-to-services-from-apim">12.1 Restrict Access to Services from APIM</a></li>
+<li><a class="reference internal" href="#implement-rbac">12.2 Implement RBAC</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#step-13-ensure-tls-communication">Step 13: Ensure TLS Communication</a><ul>
+<li><a class="reference internal" href="#tls-within-istio-service-mesh">13.1 TLS within Istio Service Mesh</a></li>
+<li><a class="reference internal" href="#tls-termination-at-ingress">13.2 TLS Termination at Ingress</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#step-14-monitor-and-verify-the-deployment">Step 14: Monitor and Verify the Deployment</a><ul>
+<li><a class="reference internal" href="#check-operator-logs">14.1 Check Operator Logs</a></li>
+<li><a class="reference internal" href="#verify-istio-resources">14.2 Verify Istio Resources</a></li>
+<li><a class="reference internal" href="#check-azure-apim-configuration">14.3 Check Azure APIM Configuration</a></li>
+<li><a class="reference internal" href="#use-azure-managed-grafana">14.4 Use Azure Managed Grafana</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#step-15-test-the-product-catalog-api">Step 15: Test the Product Catalog API</a><ul>
+<li><a class="reference internal" href="#obtain-the-apim-gateway-url">15.1 Obtain the APIM Gateway URL</a></li>
+<li><a class="reference internal" href="#test-api-endpoints-via-apim">15.2 Test API Endpoints via APIM</a></li>
+<li><a class="reference internal" href="#test-authentication">15.3 Test Authentication</a></li>
+<li><a class="reference internal" href="#verify-rate-limiting-and-cors">15.4 Verify Rate Limiting and CORS</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#additional-considerations">Additional Considerations</a></li>
+<li><a class="reference internal" href="#helpful-resources">Helpful Resources</a></li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
+      
+      
+    </aside>
+  </div>
+</div><script src="../../../_static/documentation_options.js?v=13610682"></script>
+    <script src="../../../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../../../_static/scripts/furo.js?v=46bd48cc"></script>
+    <script src="../../../_static/js/default-dark.js?v=658bd94d"></script>
+    </body>
+</html>
